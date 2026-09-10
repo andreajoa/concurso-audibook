@@ -39,6 +39,8 @@ npm run verify
 npm run build
 ```
 
+O workflow `.github/workflows/verify.yml` repete automaticamente essas verificações no GitHub para proteger o projeto contra regressões.
+
 ## Deploy na Vercel
 O repositório está preparado para importação direta na Vercel. `vercel.json` já define o build e `public` como diretório de saída.
 
