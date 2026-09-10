@@ -10,7 +10,7 @@
     "description": "Um material direto para reconhecer a assinatura de cada autor, diferenciar conceitos próximos e treinar as pegadinhas mais comuns da banca IBAM.",
     "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "Áudio de estudo: 15:57"],
     "tags": ["IBAM", "Autores", "Educação", "Educação Especial"],
-    "cover": "/assets/apostila-autores-cover.svg",
+    "cover": "/files/apostila-autores-capa.png",
     "pdf": "/files/apostila-autores-ibam-santos-2026.pdf",
     "audio": "/files/como-desarmar-as-armadilhas-da-ibam.mp3",
     "audioTitle": "Como desarmar as armadilhas da IBAM",
