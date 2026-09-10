@@ -5,6 +5,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/files/apostila-autores-capa.png",
+      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/74ae80f6-2e7b-48c4-83de-9e141ec6098d-apostila-autores-capa.png"
+    },
+    {
       "source": "/files/apostila-autores-ibam-santos-2026.pdf",
       "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/25c38207-6b86-46f5-b237-dc00211054e7-apostila-autores-ibam-santos-2026.pdf"
     },
