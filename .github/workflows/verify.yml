@@ -23,5 +23,7 @@ jobs:
           node-version: 22
       - name: Verify project
         run: npm run verify
+      - name: Verify remote PDF, audio and cover
+        run: npm run verify:remote
       - name: Build static output
         run: npm run build
