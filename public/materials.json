@@ -1,0 +1,21 @@
+[
+  {
+    "id": "autores-ibam-2026",
+    "type": "Apostila + Audiobook",
+    "title": "Quem disse o quê?",
+    "subtitle": "Apostila de Autores — Banca IBAM",
+    "audience": "Professor Adjunto I • Professor Adjunto II — Educação Especial",
+    "edition": "Santos 2026",
+    "author": "Margareth Almeida",
+    "description": "Um material direto para reconhecer a assinatura de cada autor, diferenciar conceitos próximos e treinar as pegadinhas mais comuns da banca IBAM.",
+    "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "Áudio de estudo: 15:57"],
+    "tags": ["IBAM", "Autores", "Educação", "Educação Especial"],
+    "cover": "/assets/apostila-autores-cover.png",
+    "pdf": "/assets/apostila-autores-ibam-santos-2026.pdf",
+    "audio": "/assets/como-desarmar-armadilhas-ibam.opus",
+    "audioTitle": "Como desarmar as armadilhas da IBAM",
+    "audioDownloadName": "como-desarmar-as-armadilhas-da-ibam.opus",
+    "pdfDownloadName": "apostila-autores-ibam-santos-2026.pdf",
+    "featured": true
+  }
+]
