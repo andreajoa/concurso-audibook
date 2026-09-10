@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1272" role="img" aria-labelledby="title desc">
+  <title id="title">Quem disse o quê? — Apostila de Autores</title>
+  <desc id="desc">Capa editorial em azul-marinho, terracota e papel claro para a apostila de autores da banca IBAM.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffaf2"/><stop offset="1" stop-color="#efe3d5"/></linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#143b67"/><stop offset="1" stop-color="#091d35"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#07182a" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="900" height="1272" rx="42" fill="url(#paper)"/>
+  <rect x="0" y="0" width="28" height="1272" rx="14" fill="#a84b2b"/>
+  <rect x="70" y="70" width="760" height="1132" rx="30" fill="#fffdf9" stroke="#d9ccbd" filter="url(#shadow)"/>
+  <rect x="70" y="70" width="760" height="206" rx="30" fill="url(#navy)"/>
+  <rect x="70" y="242" width="760" height="34" fill="url(#navy)"/>
+  <text x="122" y="126" fill="#e9a183" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" letter-spacing="5">CONCURSO • PREFEITURA DE SANTOS</text>
+  <text x="122" y="194" fill="#ffffff" font-family="Georgia,serif" font-size="54" font-weight="700">QUEM DISSE O QUÊ?</text>
+  <text x="122" y="234" fill="#dbe6f0" font-family="Arial,Helvetica,sans-serif" font-size="21">Apostila de Autores • Banca IBAM</text>
+  <text x="122" y="354" fill="#a84b2b" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" letter-spacing="3">PROFESSOR ADJUNTO I + II</text>
+  <text x="122" y="398" fill="#102c4d" font-family="Arial,Helvetica,sans-serif" font-size="29" font-weight="700">Educação Especial • Santos 2026</text>
+  <line x1="122" y1="442" x2="778" y2="442" stroke="#d8cabb"/>
+  <g transform="translate(122 514)">
+    <circle cx="38" cy="38" r="38" fill="#102c4d"/><text x="38" y="48" text-anchor="middle" fill="#fff" font-family="Arial" font-size="27" font-weight="700">100</text>
+    <text x="94" y="28" fill="#102c4d" font-family="Georgia,serif" font-size="34">questões com</text><text x="94" y="68" fill="#102c4d" font-family="Georgia,serif" font-size="34">gabarito comentado</text>
+  </g>
+  <g transform="translate(122 670)" fill="#526070" font-family="Arial,Helvetica,sans-serif" font-size="24">
+    <text y="0">60 autorais de treino</text><text y="52">24 reconstruções de provas IBAM</text><text y="104">16 questões de simulado final</text>
+  </g>
+  <rect x="122" y="865" width="656" height="142" rx="24" fill="#f2e8dd"/>
+  <text x="154" y="915" fill="#a84b2b" font-family="Arial" font-size="16" font-weight="700" letter-spacing="3">OBJETIVO</text>
+  <text x="154" y="958" fill="#102c4d" font-family="Georgia,serif" font-size="30">Reconhecer rapidamente a</text>
+  <text x="154" y="995" fill="#102c4d" font-family="Georgia,serif" font-size="30">“assinatura” de cada autor.</text>
+  <line x1="122" y1="1072" x2="778" y2="1072" stroke="#d8cabb"/>
+  <text x="122" y="1124" fill="#102c4d" font-family="Arial" font-size="20" font-weight="700">Margareth Almeida</text>
+  <text x="122" y="1156" fill="#7b6d61" font-family="Arial" font-size="16">Material independente de preparação para concursos</text>
+</svg>
