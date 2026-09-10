@@ -5,6 +5,7 @@
   "description": "Biblioteca de estudos com apostilas, leitura online e audiobooks.",
   "scripts": {
     "build": "npm run verify && bash scripts/build-assets.sh",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "verify:remote": "node scripts/verify-remote.mjs"
   }
 }
