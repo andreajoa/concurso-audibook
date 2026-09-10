@@ -1,0 +1,10 @@
+{
+  "name": "concurso-audiobook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Biblioteca de estudos com apostilas, leitura online e audiobooks.",
+  "scripts": {
+    "build": "bash scripts/build-assets.sh",
+    "verify": "node scripts/verify.mjs"
+  }
+}
