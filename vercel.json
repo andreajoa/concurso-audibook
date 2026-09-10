@@ -5,8 +5,12 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/files/:path*",
-      "destination": "https://br-sweet-meadow-ayg44ehb.storage.c-5.us-east-2.aws.neon.tech/concurso-audiobook/:path*"
+      "source": "/files/apostila-autores-ibam-santos-2026.pdf",
+      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/25c38207-6b86-46f5-b237-dc00211054e7-apostila-autores-ibam-santos-2026.pdf"
+    },
+    {
+      "source": "/files/como-desarmar-as-armadilhas-da-ibam.mp3",
+      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/d6fc2120-266a-4517-809a-89ff73d12d2f-Como_desarmar_as_armadilhas_da_IBAM_web.mp3"
     }
   ],
   "headers": [
@@ -26,7 +30,8 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
       ]
     }
   ]
