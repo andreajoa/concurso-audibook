@@ -4,7 +4,7 @@
   "private": true,
   "description": "Biblioteca de estudos com apostilas, leitura online e audiobooks.",
   "scripts": {
-    "build": "bash scripts/build-assets.sh",
+    "build": "npm run verify && bash scripts/build-assets.sh",
     "verify": "node scripts/verify.mjs"
   }
 }
