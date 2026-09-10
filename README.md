@@ -1,31 +1,45 @@
 # Sala de Estudos — Apostilas + Audiobooks
 
-Mini biblioteca de estudos preparada para deploy na Vercel. O projeto foi criado em HTML/CSS/JavaScript sem framework porque o repositório estava vazio; assim, não havia uma arquitetura existente a preservar. A experiência é orientada a conteúdo, mobile-first e não depende de backend.
+Biblioteca de estudos para concursos, preparada para crescer com novas apostilas e audiobooks. O front-end do repositório é estático (HTML/CSS/JavaScript), adequado à Vercel e sem backend obrigatório.
 
-## O que já existe
-- Biblioteca data-driven (`public/materials.json`)
-- Leitura de PDF dentro do site
+## Experiência já implementada
+- Biblioteca orientada por dados em `public/materials.json`
+- Leitura do PDF dentro do próprio site
 - Audiobook com 1×, 1.25×, 1.5× e 2×
-- Progresso do áudio salvo no navegador
-- Download de PDF e áudio
+- Retomada automática do ponto do áudio no navegador
+- Download do PDF e do audiobook
 - Busca e filtros
-- Motion/reveal com respeito a `prefers-reduced-motion`
-- Layout responsivo e modal de estudo adaptado ao celular
+- Motion/reveal com suporte a `prefers-reduced-motion`
+- Layout responsivo, inclusive modal de estudo no celular
 - Estrutura pronta para novos materiais sem reescrever a interface
 
-## Adicionar uma nova apostila
-1. Coloque o PDF, capa e áudio em `public/assets/` (ou adicione-os ao pipeline de `asset-parts`).
-2. Acrescente um novo objeto em `public/materials.json` seguindo o primeiro item como modelo.
-3. Rode `npm run verify`.
+## Material inicial
+**Quem disse o quê? — Apostila de Autores — Banca IBAM**  
+Professor Adjunto I • Professor Adjunto II — Educação Especial  
+Santos 2026 • Margareth Almeida  
+34 páginas • 100 questões • gabarito comentado • audiobook de estudo
 
-## Assets binários no GitHub
-Para contornar limites de upload em conectores de texto, os binários podem ser versionados como partes Base64 em `asset-parts/`. O build da Vercel executa `scripts/build-assets.sh` e recria os arquivos dentro de `public/assets/` antes de publicar.
+## Arquivos grandes
+PDFs e audiobooks ficam em object storage, não no repositório. A Vercel expõe URLs amigáveis em `/files/...` usando rewrites do `vercel.json`. Isso mantém o GitHub leve mesmo quando a biblioteca crescer.
 
-## Deploy na Vercel
-Importe `andreajoa/concurso-audibook` na Vercel. O `vercel.json` já define `npm run build` e `public` como diretório de saída.
+Os dois arquivos atuais são entregues pelas rotas:
+- `/files/apostila-autores-ibam-santos-2026.pdf`
+- `/files/como-desarmar-as-armadilhas-da-ibam.mp3`
+
+## Como adicionar uma nova apostila
+1. Hospede o PDF e, se houver, o audiobook em object storage.
+2. Adicione rotas amigáveis para os arquivos no bloco `rewrites` do `vercel.json`.
+3. Acrescente um novo objeto em `public/materials.json`, usando o item atual como modelo.
+4. Adicione a capa em `public/assets/` ou use uma URL pública estável.
+5. Rode a verificação antes da publicação.
 
 ## Verificação
 ```bash
 npm run verify
 npm run build
 ```
+
+## Deploy na Vercel
+O repositório está preparado para importação direta na Vercel. `vercel.json` já define o build e `public` como diretório de saída.
+
+Repositório: `andreajoa/concurso-audibook`
