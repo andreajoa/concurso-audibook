@@ -8,6 +8,7 @@ const required = [
   'public/app.js',
   'public/materials.json',
   'scripts/build-assets.sh',
+  'scripts/verify-remote.mjs',
   'vercel.json'
 ];
 
@@ -55,7 +56,9 @@ for (const marker of ['IntersectionObserver', 'localStorage', 'playbackRate', 'r
 const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 const rewrites = Array.isArray(vercel.rewrites) ? vercel.rewrites : [];
 for (const material of materials) {
-  for (const route of [material.pdf, material.audio]) {
+  const routes = [material.pdf, material.audio];
+  if (String(material.cover).startsWith('/files/')) routes.push(material.cover);
+  for (const route of routes) {
     const rewrite = rewrites.find((item) => item.source === route);
     if (!rewrite) fail(`Vercel rewrite missing for ${route}`);
     else if (!String(rewrite.destination || '').startsWith('https://')) fail(`Rewrite destination must be HTTPS for ${route}`);
