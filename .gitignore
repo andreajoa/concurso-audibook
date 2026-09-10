@@ -1,0 +1,6 @@
+.DS_Store
+.vercel
+node_modules
+public/assets/*.pdf
+public/assets/*.opus
+public/assets/*.png
