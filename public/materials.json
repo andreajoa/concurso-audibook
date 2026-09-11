@@ -10,10 +10,11 @@
     "description": "Um material direto para reconhecer a assinatura de cada autor, diferenciar conceitos próximos e treinar as pegadinhas mais comuns da banca IBAM.",
     "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "8 capítulos de audiobook + resumo"],
     "tags": ["IBAM", "Autores", "Educação", "Educação Especial"],
-    "cover": "/files/apostila-autores-capa.png",
-    "pdf": "/files/apostila-autores-ibam-santos-2026.pdf",
+    "cover": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/images/apostila-autores-capa.png",
+    "pdf": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/docs/apostila-autores-ibam-santos-2026.pdf",
     "audio": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/autores-ibam-2026/resumo-como-desarmar-armadilhas-ibam.mp3",
     "audioTitle": "Resumo da Apostila — Como desarmar as armadilhas da IBAM",
+    "audioSubtitle": "Resumo complementar para revisão rápida",
     "audioDownloadName": "Resumo_Como_desarmar_as_armadilhas_da_IBAM.mp3",
     "pdfDownloadName": "apostila-autores-ibam-santos-2026.pdf",
     "chapters": [
@@ -21,49 +22,57 @@
         "id": "c1",
         "title": "Antes de começar + Mapa-mãe",
         "subtitle": "Estratégia de estudo e associações essenciais",
-        "url": "https://www.aidocmaker.com/g0/audio?name=2df3dd45686e4b228a156c3da7e6b8c5"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/01-mapa-mae.mp3",
+        "downloadName": "01-mapa-mae.mp3"
       },
       {
         "id": "c2",
         "title": "Autores comuns aos dois cargos",
         "subtitle": "Freire, Libâneo, Hoffmann, Zabala, Lerner, Soares, Solé e mais",
-        "url": "https://www.aidocmaker.com/g0/audio?name=ea1399c46450454195d96a5753fd8cb1"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/02-autores-comuns.mp3",
+        "downloadName": "02-autores-comuns.mp3"
       },
       {
         "id": "c3",
         "title": "Professor Adjunto I",
         "subtitle": "Educação Infantil, alfabetização e Matemática",
-        "url": "https://www.aidocmaker.com/g0/audio?name=078818eba2704b0aa31678b207aa5e12"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/03-professor-adjunto-i.mp3",
+        "downloadName": "03-professor-adjunto-i.mp3"
       },
       {
         "id": "c4",
         "title": "Educação Especial + matrizes de confusão",
         "subtitle": "AEE, inclusão, TA, barreiras, AH/SD e contrastes",
-        "url": "https://www.aidocmaker.com/g0/audio?name=8dbed9e26a0e4196b9b8be562f57c16b"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/04-educacao-especial-matrizes.mp3",
+        "downloadName": "04-educacao-especial-matrizes.mp3"
       },
       {
         "id": "c5",
         "title": "Questões autorais 1 a 30",
         "subtitle": "Fixação auditiva com alternativas e raciocínio",
-        "url": "https://www.aidocmaker.com/g0/audio?name=6762b0dd1a2442c1ba8465d14c9517ed"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/05-questoes-01-30.mp3",
+        "downloadName": "05-questoes-01-30.mp3"
       },
       {
         "id": "c6",
         "title": "Questões autorais 31 a 60",
         "subtitle": "Adjunto I e Educação Especial",
-        "url": "https://www.aidocmaker.com/g0/audio?name=f8469e4709f042dfb77fe1559fc32749"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/06-questoes-31-60.mp3",
+        "downloadName": "06-questoes-31-60.mp3"
       },
       {
         "id": "c7",
         "title": "Questões IBAM + simulado 61 a 100",
         "subtitle": "Reconstruções pedagógicas e simulado final",
-        "url": "https://www.aidocmaker.com/g0/audio?name=657218a6191a4997b5d5bcdb4e7f2a93"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/07-questoes-ibam-simulado.mp3",
+        "downloadName": "07-questoes-ibam-simulado.mp3"
       },
       {
         "id": "c8",
         "title": "Gabarito + revisão de véspera",
         "subtitle": "Comentários, flashcards e fechamento",
-        "url": "https://www.aidocmaker.com/g0/audio?name=7ecfa521f83d4de6833c01ab7267ae71"
+        "url": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/08-gabarito-revisao.mp3",
+        "downloadName": "08-gabarito-revisao.mp3"
       }
     ],
     "featured": true
