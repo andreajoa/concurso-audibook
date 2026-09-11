@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     const product = getProduct(slug);
     if (!product) return res.status(400).json({ error: 'Produto indisponível.' });
     const analytics = body.analytics && typeof body.analytics === 'object' ? body.analytics : {};
-    const session = await createHostedCheckout(req, slug, { email: body.email, analytics });
+    const session = await createHostedCheckout(req, slug, { email: body.email, analytics, marketingConsent: body.marketingConsent === true });
     if (body.email) {
       await rpc('crm_mark_checkout', { payload: {
         email: String(body.email).trim().toLowerCase(),
