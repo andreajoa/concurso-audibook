@@ -1,0 +1,2 @@
+const {rpc}=require('../lib/crm-rpc');
+module.exports=async(req,res)=>{if(req.method!=='POST')return res.status(405).json({error:'Método não permitido.'});try{const key=String(req.headers['x-dashboard-key']||'');if(key.length<20)return res.status(401).json({error:'Acesso negado.'});const data=await rpc('crm_dashboard_breakdown',{p_admin_key:key});res.setHeader('Cache-Control','private, no-store, max-age=0');return res.status(200).json(data);}catch(e){return res.status(401).json({error:'Acesso negado.'});}};
