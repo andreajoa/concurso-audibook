@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
     const email = sessionEmail(session);
     if (!product || !email) return res.status(200).json({ received: true });
 
-    const accessUrl = `${baseUrl(req)}/acesso.html?session_id=${encodeURIComponent(session.id)}`;
+    const accessUrl = `${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
     await sendAccessEmail({ to: email, productName: product.name, accessUrl });
     await updateSessionMetadata(session.id, { access_email_sent: event.id });
     return res.status(200).json({ received: true });
