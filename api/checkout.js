@@ -9,6 +9,7 @@ async function getJsonBody(req) {
 }
 
 module.exports = async (req, res) => {
+  res.setHeader('Cache-Control','private, no-store, max-age=0');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Método não permitido.' });
