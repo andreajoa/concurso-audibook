@@ -31,8 +31,28 @@ for (const material of materials) {
   }
   if (ids.has(material.id)) fail(`duplicate material id: ${material.id}`);
   ids.add(material.id);
-  if (!String(material.pdf).startsWith('/files/')) fail(`${material.id} PDF must use /files route`);
-  if (!String(material.audio).startsWith('/files/')) fail(`${material.id} audio must use /files route`);
+
+  for (const [kind, value] of [['PDF', material.pdf], ['audio', material.audio], ['cover', material.cover]]) {
+    if (!String(value).startsWith('https://') && !String(value).startsWith('/files/')) {
+      fail(`${material.id} ${kind} must use HTTPS or /files route`);
+    }
+    if (/aidocmaker\.com|floot\.app/i.test(String(value))) {
+      fail(`${material.id} ${kind} still depends on an external legacy host`);
+    }
+  }
+
+  if (!Array.isArray(material.chapters) || material.chapters.length !== 8) {
+    fail(`${material.id} must contain exactly 8 audiobook chapters`);
+  } else {
+    for (const chapter of material.chapters) {
+      if (!chapter.title || !String(chapter.url || '').startsWith('https://')) {
+        fail(`${material.id} chapter ${chapter.id || '?'} missing title or HTTPS audio URL`);
+      }
+      if (/aidocmaker\.com|floot\.app/i.test(String(chapter.url || ''))) {
+        fail(`${material.id} chapter ${chapter.id || '?'} still points to a legacy player`);
+      }
+    }
+  }
 }
 
 const html = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
@@ -49,16 +69,15 @@ for (const marker of ['prefers-reduced-motion', '@media', '.study-rail', '.revea
 }
 
 const app = fs.readFileSync(path.join(root, 'public/app.js'), 'utf8');
-for (const marker of ['IntersectionObserver', 'localStorage', 'playbackRate', 'restoreFromUrl', 'escapeHtml']) {
+for (const marker of ['IntersectionObserver', 'localStorage', 'playbackRate', 'restoreFromUrl', 'escapeHtml', 'data-prev-track', 'data-next-track']) {
   if (!app.includes(marker)) fail(`app behavior missing: ${marker}`);
 }
 
 const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 const rewrites = Array.isArray(vercel.rewrites) ? vercel.rewrites : [];
 for (const material of materials) {
-  const routes = [material.pdf, material.audio];
-  if (String(material.cover).startsWith('/files/')) routes.push(material.cover);
-  for (const route of routes) {
+  for (const route of [material.pdf, material.audio, material.cover]) {
+    if (!String(route).startsWith('/files/')) continue;
     const rewrite = rewrites.find((item) => item.source === route);
     if (!rewrite) fail(`Vercel rewrite missing for ${route}`);
     else if (!String(rewrite.destination || '').startsWith('https://')) fail(`Rewrite destination must be HTTPS for ${route}`);
@@ -67,5 +86,5 @@ for (const material of materials) {
 
 if (failed) process.exit(1);
 console.log(`\nVerification passed: ${materials.length} material(s).`);
-console.log('Scroll Craft checks: journey ✓ page grammar ✓ feeling curve ✓ signature motion ✓ fingerprint ✓ mobile art direction ✓');
-console.log('Core flows: read online ✓ listen ✓ resume progress ✓ speed control ✓ download ✓ search/filter ✓');
+console.log('Architecture: GitHub ✓ Vercel ✓ Cloudflare R2 ✓ Workers AI generator ✓ legacy hosts removed ✓');
+console.log('Core flows: read online ✓ native chapter playlist ✓ previous/next ✓ resume progress ✓ speed control ✓ download ✓ search/filter ✓');
