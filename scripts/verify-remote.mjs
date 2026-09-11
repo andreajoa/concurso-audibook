@@ -1,61 +1,15 @@
 import fs from 'node:fs';
-
-const materials = JSON.parse(fs.readFileSync('public/materials.json', 'utf8'));
-let failed = false;
-const fail = (message) => { console.error(`FAIL ${message}`); failed = true; };
-const ok = (message) => console.log(`OK   ${message}`);
-
-const assets = [];
-for (const material of materials) {
-  assets.push({ label: `${material.id} cover`, url: material.cover, stream: false });
-  assets.push({ label: `${material.id} PDF`, url: material.pdf, stream: true });
-  assets.push({ label: `${material.id} summary`, url: material.audio, stream: true });
-  for (const chapter of material.chapters || []) {
-    assets.push({ label: `${material.id} ${chapter.id}`, url: chapter.url, stream: true });
-  }
+import {S3Client,HeadObjectCommand,GetObjectCommand} from '@aws-sdk/client-s3';
+const catalog=JSON.parse(fs.readFileSync('products/catalog.json','utf8'));
+const accountId=process.env.R2_ACCOUNT_ID||'dbad4dc0550693a69d5956df7344e001';
+const bucket=process.env.R2_BUCKET||'apostila';
+const accessKeyId=process.env.R2_ACCESS_KEY_ID,secretAccessKey=process.env.R2_SECRET_ACCESS_KEY;
+if(!accessKeyId||!secretAccessKey){console.error('FAIL missing R2 credentials');process.exit(1)}
+const s3=new S3Client({region:'auto',endpoint:`https://${accountId}.r2.cloudflarestorage.com`,credentials:{accessKeyId,secretAccessKey}});
+let failed=false;const fail=m=>{console.error('FAIL '+m);failed=true},ok=m=>console.log('OK   '+m);
+for(const [slug,p] of Object.entries(catalog)){
+ const items=[p.assets.coverKey,p.assets.pdfKey,p.assets.summary.key,...(p.assets.chapters||[]).map(x=>x.key)];
+ for(const key of items){try{const h=await s3.send(new HeadObjectCommand({Bucket:bucket,Key:key}));if(!Number(h.ContentLength||0))fail(`${slug} ${key} empty`);else ok(`${slug} ${key} • ${h.ContentLength} bytes`)}catch(e){fail(`${slug} ${key} unavailable`)}}
+ try{const g=await s3.send(new GetObjectCommand({Bucket:bucket,Key:p.assets.summary.key,Range:'bytes=0-31'}));const bytes=await g.Body.transformToByteArray();if(bytes.length!==32)fail(`${slug} audio range failed`);else ok(`${slug} authenticated audio range delivery`)}catch(e){fail(`${slug} authenticated audio range failed`)}
 }
-
-const unique = [...new Map(assets.map(item => [item.url, item])).values()];
-
-for (const asset of unique) {
-  const url = String(asset.url || '');
-  if (!url.startsWith('https://')) {
-    fail(`${asset.label} is not a direct HTTPS asset: ${url}`);
-    continue;
-  }
-  if (/aidocmaker\.com|floot\.app/i.test(url)) {
-    fail(`${asset.label} still uses a legacy host: ${url}`);
-    continue;
-  }
-
-  try {
-    const head = await fetch(url, { method: 'HEAD', redirect: 'follow' });
-    if (!head.ok) {
-      fail(`${asset.label} returned ${head.status}`);
-      continue;
-    }
-
-    const type = head.headers.get('content-type') || 'unknown';
-    const length = Number(head.headers.get('content-length') || 0);
-    if (!length) fail(`${asset.label} has no content length`);
-    else ok(`${asset.label} → ${type} • ${length} bytes`);
-
-    if (asset.stream) {
-      const range = await fetch(url, {
-        headers: { Range: 'bytes=0-31' },
-        redirect: 'follow'
-      });
-      const bytes = (await range.arrayBuffer()).byteLength;
-      if (range.status !== 206 || bytes !== 32) {
-        fail(`${asset.label} does not support byte-range delivery (status ${range.status}, ${bytes} bytes)`);
-      } else {
-        ok(`${asset.label} byte-range streaming`);
-      }
-    }
-  } catch (error) {
-    fail(`${asset.label} check failed: ${error instanceof Error ? error.message : String(error)}`);
-  }
-}
-
-if (failed) process.exit(1);
-console.log(`\nRemote asset verification passed: ${unique.length} Cloudflare R2 asset(s).`);
+if(failed)process.exit(1);console.log('\nAuthenticated R2 verification passed.');

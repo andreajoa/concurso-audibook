@@ -13,7 +13,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,9 +21,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
       - name: Verify project
         run: npm run verify
-      - name: Verify remote PDF, audio and cover
+      - name: Verify paid R2 assets with authenticated S3
         run: npm run verify:remote
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ACCOUNT_ID: dbad4dc0550693a69d5956df7344e001
+          R2_BUCKET: apostila
       - name: Build static output
         run: npm run build
