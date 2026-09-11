@@ -25,6 +25,25 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Verify project
         run: npm run verify
+      - name: Verify public R2 access is disabled
+        shell: bash
+        run: |
+          set -u
+          urls=(
+            "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/docs/apostila-autores-ibam-santos-2026.pdf"
+            "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/audio/pt-br-v2/01-mapa-mae.mp3"
+          )
+          for url in "${urls[@]}"; do
+            set +e
+            code=$(curl -L -sS -o /dev/null -w "%{http_code}" --max-time 15 "$url")
+            rc=$?
+            set -e
+            if [ "$rc" -eq 0 ] && [ "$code" -ge 200 ] && [ "$code" -lt 400 ]; then
+              echo "FAIL public paid asset is still reachable: $url (HTTP $code)"
+              exit 1
+            fi
+            echo "OK public access blocked: $url (curl=$rc http=${code:-000})"
+          done
       - name: Verify paid R2 assets with authenticated S3
         run: npm run verify:remote
         env:
