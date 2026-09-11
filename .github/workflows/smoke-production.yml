@@ -1,0 +1,68 @@
+name: Production commerce smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/smoke-production.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test public sales page, checkout and paywall
+        shell: bash
+        run: |
+          node <<'NODE'
+          const base='https://concurso-audibook.vercel.app';
+          const fail=(m)=>{console.error('FAIL',m);process.exit(1)};
+          const ok=(m)=>console.log('OK  ',m);
+
+          async function get(path, opts={}){
+            const r=await fetch(base+path,{redirect:opts.redirect||'follow'});
+            return r;
+          }
+
+          const home=await get('/');
+          const html=await home.text();
+          if(!home.ok) fail(`home HTTP ${home.status}`);
+          for(const marker of ['R$ 24,99','Pagamento seguro via Stripe','Quero acessar a apostila + audiobook']){
+            if(!html.includes(marker)) fail(`home missing marker: ${marker}`);
+          }
+          ok('sales home is live with price and payment CTA');
+
+          const manifest=await get('/materials.json',{redirect:'manual'});
+          if(manifest.status>=200&&manifest.status<400) fail(`public paid manifest still reachable: HTTP ${manifest.status}`);
+          ok(`public paid manifest blocked/absent: HTTP ${manifest.status}`);
+
+          const locked=await get('/acesso',{redirect:'manual'});
+          if(![301,302,303,307,308].includes(locked.status)) fail(`/acesso without purchase did not redirect: HTTP ${locked.status}`);
+          const loc=locked.headers.get('location')||'';
+          if(!loc.includes('recuperar')) fail(`/acesso redirect unexpected: ${loc}`);
+          ok('buyer area is locked without a valid purchase session');
+
+          const qa=`qa-${Date.now()}@example.com`;
+          const checkout=await fetch(base+'/api/checkout',{
+            method:'POST',
+            headers:{'content-type':'application/json'},
+            body:JSON.stringify({
+              slug:'autores-ibam-2026',
+              name:'Teste QA Checkout',
+              email:qa,
+              whatsapp:'11999999999',
+              marketingConsent:false,
+              analytics:{visitorId:'qa-smoke',sessionId:`qa-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}
+            })
+          });
+          const text=await checkout.text();
+          let data={};try{data=JSON.parse(text)}catch{}
+          if(!checkout.ok) fail(`checkout HTTP ${checkout.status}: ${text.slice(0,500)}`);
+          if(!data.url||!/^https:\/\/.+stripe\.com\//i.test(data.url)) fail(`checkout did not return Stripe URL: ${text.slice(0,500)}`);
+          ok('production checkout creates a Stripe Checkout Session');
+          console.log('SMOKE PASS');
+          NODE
