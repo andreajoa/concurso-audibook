@@ -10,36 +10,58 @@ async function getJsonBody(req) {
   try { return JSON.parse(raw); } catch { return {}; }
 }
 
+const clean = (value, max) => String(value || '').trim().slice(0, max);
+
 module.exports = async (req, res) => {
-  res.setHeader('Cache-Control','private, no-store, max-age=0');
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Método não permitido.' });
   }
+
   try {
     const body = await getJsonBody(req);
-    const slug = String(body.slug || 'autores-ibam-2026');
+    const slug = clean(body.slug || 'autores-ibam-2026', 120);
     const product = getProduct(slug);
     if (!product) return res.status(400).json({ error: 'Produto indisponível.' });
+
+    const name = clean(body.name, 180);
+    const email = clean(body.email, 240).toLowerCase();
+    const whatsapp = String(body.whatsapp || '').replace(/\D/g, '').slice(0, 15);
     const analytics = body.analytics && typeof body.analytics === 'object' ? body.analytics : {};
-    const session = await createHostedCheckout(req, slug, { email: body.email, analytics, marketingConsent: body.marketingConsent === true });
-    if (body.email) {
-      await rpc('crm_mark_checkout', { payload: {
-        email: String(body.email).trim().toLowerCase(),
-        name: String(body.name || '').trim(),
-        whatsapp: String(body.whatsapp || '').replace(/\D/g,''),
-        product_slug: slug,
-        marketing_consent: body.marketingConsent === true,
-        visitor_id: String(analytics.visitorId || ''),
-        session_id: String(analytics.sessionId || ''),
-        source: String(analytics.source || ''),
-        medium: String(analytics.medium || ''),
-        campaign: String(analytics.campaign || ''),
-        stripe_session_id: session.id,
-        amount_total_cents: product.priceCents,
-        currency: product.currency
-      }}).catch(error => console.error('crm_mark_checkout', error));
+
+    if (name.length < 3 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || whatsapp.length < 10) {
+      return res.status(400).json({ error: 'Confira nome, e-mail e WhatsApp.' });
     }
+
+    await rpc('crm_upsert_lead', { payload: {
+      email,
+      name,
+      whatsapp,
+      product_slug: slug,
+      marketing_consent: body.marketingConsent === true,
+      visitor_id: clean(analytics.visitorId, 120),
+      session_id: clean(analytics.sessionId, 120)
+    }}).catch(error => console.error('crm_upsert_lead', error));
+
+    const session = await createHostedCheckout(req, slug, { email, analytics });
+
+    await rpc('crm_mark_checkout', { payload: {
+      email,
+      name,
+      whatsapp,
+      product_slug: slug,
+      marketing_consent: body.marketingConsent === true,
+      visitor_id: clean(analytics.visitorId, 120),
+      session_id: clean(analytics.sessionId, 120),
+      source: clean(analytics.source, 120),
+      medium: clean(analytics.medium, 80),
+      campaign: clean(analytics.campaign, 240),
+      stripe_session_id: session.id,
+      amount_total_cents: product.priceCents,
+      currency: product.currency
+    }}).catch(error => console.error('crm_mark_checkout', error));
+
     return res.status(200).json({ url: session.url, sessionId: session.id });
   } catch (error) {
     console.error('checkout', error);
