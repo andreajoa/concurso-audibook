@@ -8,8 +8,12 @@
     { "source": "/acesso.html", "destination": "/api/access-page" }
   ],
   "functions": {
-    "api/*.js": { "maxDuration": 20 }
+    "api/*.js": { "maxDuration": 20 },
+    "api/marketing-cron.js": { "maxDuration": 60 }
   },
+  "crons": [
+    { "path": "/api/marketing-cron", "schedule": "0 13 * * *" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
