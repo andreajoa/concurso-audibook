@@ -1,0 +1,31 @@
+name: Secure paid assets in private R2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/secure-r2.mjs'
+      - '.github/workflows/secure-paid-assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Create private bucket and copy paid assets
+        run: node scripts/secure-r2.mjs
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ACCOUNT_ID: dbad4dc0550693a69d5956df7344e001
+          R2_SOURCE_BUCKET: apostila
+          R2_TARGET_BUCKET: apostila-paga
