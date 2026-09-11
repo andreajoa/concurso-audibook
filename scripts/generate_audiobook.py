@@ -138,9 +138,9 @@ def extract_pages(pdf_path: Path) -> list[str]:
 
 def strip_repeated_layout(text: str) -> str:
     text = text.replace("\u00a0", " ").replace("•", " - ")
-    text = re.sub(r"APOSTILA DE AUTORES\s*-?\s*IBAM\s*-?\s*SANTOS 2026", "", text, flags=re.I)
+    text = re.sub(r"APOSTILA\s+DE\s+AUTORES\s*-?\s*IBAM\s*-?\s*SANTOS\s+2026", "", text, flags=re.I)
     text = re.sub(
-        r"Material independente\s*-?\s*Professor Adjunto I e Professor Adjunto II\s*-?\s*Educa[cç][aã]o Especial",
+        r"Material\s+independente\s*-?\s*Professor\s+Adjunto\s+I\s+e\s+Professor\s+Adjunto\s+II\s*-?\s*Educa[cç][aã]o\s+Especial",
         "",
         text,
         flags=re.I,
@@ -152,31 +152,47 @@ def strip_repeated_layout(text: str) -> str:
     return text.strip()
 
 
-def index_of(text: str, marker: str, start: int = 0) -> int:
-    pos = text.lower().find(marker.lower(), start)
-    if pos < 0:
-        raise RuntimeError(f"Could not locate marker in PDF text: {marker}")
-    return pos
+def regex_pos(text: str, pattern: str, start: int = 0, label: str | None = None) -> int:
+    match = re.search(pattern, text[start:], flags=re.I | re.S)
+    if not match:
+        section_samples = [
+            re.sub(r"\s+", " ", item.group(0)).strip()
+            for item in re.finditer(r"PARTE\s+[IVX]+.{0,110}", text, flags=re.I | re.S)
+        ][:20]
+        raise RuntimeError(
+            f"Could not locate PDF section: {label or pattern}. "
+            f"Detected section samples: {section_samples}"
+        )
+    return start + match.start()
 
 
 def build_chapter_texts(pages: list[str]) -> list[str]:
     intro = strip_repeated_layout(pages[1])
     mapa_page = strip_repeated_layout(pages[3])
-    part2_in_mapa = index_of(mapa_page, "PARTE II - AUTORES COMUNS AOS DOIS CARGOS")
+
+    p2_pattern = r"PARTE\s+II\s*[-–—]?\s*AUTORES\s+COMUNS\s+AOS\s+DOIS\s+CARGOS"
+    p3_pattern = r"PARTE\s+III\s*[-–—]?\s*PROFESSOR\s+ADJUNTO\s+I\b"
+    p4_pattern = r"PARTE\s+IV\s*[-–—]?\s*PROFESSOR\s+ADJUNTO\s+II\s*[-–—]?\s*EDUCA[CÇ][AÃ]O\s+ESPECIAL"
+    p6_pattern = r"PARTE\s+VI\s*[-–—]?\s*60\s+QUEST[ÕO]ES\s+AUTORAIS(?:\s+DE\s+FIXA[CÇ][AÃ]O)?"
+    p7_pattern = r"PARTE\s+VII\s*[-–—]?\s*24\s+QUEST[ÕO]ES\s+DE\s+PROVAS\s+IBAM"
+    p9_pattern = r"PARTE\s+IX\s*[-–—]?\s*GABARITO"
+    p10_pattern = r"PARTE\s+X\s*[-–—]?\s*BIBLIOGRAFIA"
+
+    part2_in_mapa = regex_pos(mapa_page, p2_pattern, label="PARTE II")
     chapter1 = intro + "\n\n" + mapa_page[:part2_in_mapa]
 
     full = "\n\n".join(strip_repeated_layout(page) for page in pages[3:])
 
-    p2 = index_of(full, "PARTE II - AUTORES COMUNS AOS DOIS CARGOS")
-    p3 = index_of(full, "PARTE III - PROFESSOR ADJUNTO I", p2)
-    p4 = index_of(full, "PARTE IV - PROFESSOR ADJUNTO II - EDUCAÇÃO ESPECIAL", p3)
-    p6 = index_of(full, "PARTE VI - 60 QUESTÕES AUTORAIS DE FIXAÇÃO", p4)
-    p7 = index_of(full, "PARTE VII - 24 QUESTÕES DE PROVAS IBAM", p6)
-    p9 = index_of(full, "PARTE IX - GABARITO", p7)
-    p10 = index_of(full, "PARTE X - BIBLIOGRAFIA", p9)
+    p2 = regex_pos(full, p2_pattern, label="PARTE II")
+    p3 = regex_pos(full, p3_pattern, p2, "PARTE III")
+    p4 = regex_pos(full, p4_pattern, p3, "PARTE IV")
+    p6 = regex_pos(full, p6_pattern, p4, "PARTE VI")
+    p7 = regex_pos(full, p7_pattern, p6, "PARTE VII")
+    p9 = regex_pos(full, p9_pattern, p7, "PARTE IX")
+    p10 = regex_pos(full, p10_pattern, p9, "PARTE X")
 
     part6 = full[p6:p7]
-    q31_match = re.search(r"(?:^|\n)31\.\s", part6)
+    q31_match = re.search(r"(?:^|\n)\s*31\.\s+", part6)
     if not q31_match:
         raise RuntimeError("Could not split questions 1-30 from 31-60")
     q31 = q31_match.start()
