@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 """Generate the IBAM audiobook with Cloudflare Workers AI and publish it to R2.
 
-The script keeps credentials in GitHub Actions secrets only. It:
-1. Ensures the PDF and cover are copied into the R2 bucket.
-2. Extracts the source text from the PDF and divides it into eight study chapters.
-3. Sends short Portuguese chunks to Cloudflare MeloTTS.
-4. Joins the returned audio chunks into one MP3 per chapter.
-5. Uploads the MP3 files and a manifest to Cloudflare R2.
+Runtime architecture: GitHub Actions + Cloudflare Workers AI + Cloudflare R2.
+No application asset is read from Floot or AI Doc Maker.
 """
 
 from __future__ import annotations
@@ -22,6 +18,7 @@ from pathlib import Path
 from typing import Iterable
 
 import boto3
+import fitz
 import requests
 from botocore.config import Config
 from botocore.exceptions import ClientError
@@ -34,18 +31,6 @@ R2_ENDPOINT = f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com"
 WORKERS_AI_URL = (
     f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}"
     "/ai/run/@cf/myshell-ai/melotts"
-)
-
-# Temporary migration sources. They are used only if the corresponding R2 object
-# does not exist yet. After the first successful migration the site no longer
-# depends on these URLs.
-PDF_FALLBACK = (
-    "https://sala-de-estudos-margareth.floot.app/_cdn/static/"
-    "25c38207-6b86-46f5-b237-dc00211054e7-apostila-autores-ibam-santos-2026.pdf"
-)
-COVER_FALLBACK = (
-    "https://sala-de-estudos-margareth.floot.app/_cdn/static/"
-    "479a53e4-83dc-42f6-ad51-a593f2f51643-apostila-autores-capa.png"
 )
 
 PDF_KEY = "docs/apostila-autores-ibam-santos-2026.pdf"
@@ -94,16 +79,6 @@ def object_exists(s3, key: str) -> bool:
         raise
 
 
-def download(url: str, target: Path) -> None:
-    print(f"Downloading migration source -> {target.name}")
-    with requests.get(url, stream=True, timeout=120) as response:
-        response.raise_for_status()
-        with target.open("wb") as handle:
-            for chunk in response.iter_content(1024 * 1024):
-                if chunk:
-                    handle.write(chunk)
-
-
 def upload_file(s3, source: Path, key: str, content_type: str) -> None:
     print(f"Uploading s3://{BUCKET}/{key}")
     s3.upload_file(
@@ -117,19 +92,30 @@ def upload_file(s3, source: Path, key: str, content_type: str) -> None:
     )
 
 
+def render_cover(pdf_path: Path, target: Path) -> None:
+    print("Rendering cover from page 1 of the R2 PDF.")
+    doc = fitz.open(str(pdf_path))
+    page = doc.load_page(0)
+    pix = page.get_pixmap(matrix=fitz.Matrix(2.0, 2.0), alpha=False)
+    pix.save(str(target))
+    doc.close()
+
+
 def ensure_source_assets(s3, workdir: Path) -> Path:
     pdf_path = workdir / "apostila.pdf"
     cover_path = workdir / "capa.png"
 
-    if object_exists(s3, PDF_KEY):
-        print("PDF already exists in R2; downloading from R2 for text extraction.")
-        s3.download_file(BUCKET, PDF_KEY, str(pdf_path))
-    else:
-        download(PDF_FALLBACK, pdf_path)
-        upload_file(s3, pdf_path, PDF_KEY, "application/pdf")
+    if not object_exists(s3, PDF_KEY):
+        raise RuntimeError(
+            f"Required source PDF is missing from R2: s3://{BUCKET}/{PDF_KEY}. "
+            "The PDF must be uploaded to R2 before audiobook generation."
+        )
+
+    print("Downloading source PDF from R2 for text extraction.")
+    s3.download_file(BUCKET, PDF_KEY, str(pdf_path))
 
     if not object_exists(s3, COVER_KEY):
-        download(COVER_FALLBACK, cover_path)
+        render_cover(pdf_path, cover_path)
         upload_file(s3, cover_path, COVER_KEY, "image/png")
     else:
         print("Cover already exists in R2.")
@@ -174,8 +160,6 @@ def index_of(text: str, marker: str, start: int = 0) -> int:
 
 
 def build_chapter_texts(pages: list[str]) -> list[str]:
-    # Chapter 1 is intentionally assembled from the introductory page and the
-    # Mapa-mãe page so the printed summary page is not narrated as a table of contents.
     intro = strip_repeated_layout(pages[1])
     mapa_page = strip_repeated_layout(pages[3])
     part2_in_mapa = index_of(mapa_page, "PARTE II - AUTORES COMUNS AOS DOIS CARGOS")
@@ -197,15 +181,16 @@ def build_chapter_texts(pages: list[str]) -> list[str]:
         raise RuntimeError("Could not split questions 1-30 from 31-60")
     q31 = q31_match.start()
 
-    chapter2 = full[p2:p3]
-    chapter3 = full[p3:p4]
-    chapter4 = full[p4:p6]
-    chapter5 = part6[:q31]
-    chapter6 = part6[q31:]
-    chapter7 = full[p7:p9]
-    chapter8 = full[p9:p10]
-
-    chapters = [chapter1, chapter2, chapter3, chapter4, chapter5, chapter6, chapter7, chapter8]
+    chapters = [
+        chapter1,
+        full[p2:p3],
+        full[p3:p4],
+        full[p4:p6],
+        part6[:q31],
+        part6[q31:],
+        full[p7:p9],
+        full[p9:p10],
+    ]
     return [prepare_for_speech(text, i + 1) for i, text in enumerate(chapters)]
 
 
@@ -213,7 +198,6 @@ def prepare_for_speech(text: str, chapter_number: int) -> str:
     title = CHAPTERS[chapter_number - 1][1]
     text = strip_repeated_layout(text)
 
-    # Make multiple-choice alternatives and question numbers sound natural.
     text = re.sub(r"(?m)^([ABCD])\)\s*", r"Alternativa \1: ", text)
     text = re.sub(r"(?m)^(\d{1,3})\.\s+", r"Questão \1. ", text)
     text = re.sub(r"(?m)^SENHA DE MEMÓRIA\s*$", "Senha de memória.", text, flags=re.I)
@@ -231,8 +215,7 @@ def prepare_for_speech(text: str, chapter_number: int) -> str:
         f"Sala de Estudos Margareth Almeida. Capítulo {chapter_number}: {title}. "
         "Acompanhe com atenção e, se desejar, aumente a velocidade no player durante a revisão.\n\n"
     )
-    closing = "\n\nFim deste capítulo."
-    return opening + text.strip() + closing
+    return opening + text.strip() + "\n\nFim deste capítulo."
 
 
 def chunk_text(text: str, target: int = 1700, hard_max: int = 2100) -> list[str]:
@@ -248,7 +231,6 @@ def chunk_text(text: str, target: int = 1700, hard_max: int = 2100) -> list[str]
         buffer = ""
         for sentence in sentences:
             if len(sentence) > hard_max:
-                # Final safety split on word boundaries.
                 words = sentence.split()
                 piece = ""
                 for word in words:
@@ -310,10 +292,7 @@ def generate_chunk(token: str, text: str, destination: Path, retries: int = 6) -
             if not audio_b64:
                 raise RuntimeError(f"Workers AI returned no audio field: {str(data)[:500]}")
             raw = base64.b64decode(audio_b64)
-            # Current MeloTTS JSON output is commonly WAV. Keep the matching suffix
-            # so ffmpeg can decode it reliably.
-            suffix = ".wav" if raw[:4] == b"RIFF" else ".mp3"
-            actual = destination.with_suffix(suffix)
+            actual = destination.with_suffix(".wav" if raw[:4] == b"RIFF" else ".mp3")
             actual.write_bytes(raw)
             return actual
 
@@ -335,30 +314,32 @@ def join_audio(parts: list[Path], output: Path) -> None:
             escaped = str(part).replace("'", "'\\''")
             handle.write(f"file '{escaped}'\n")
 
-    cmd = [
-        "ffmpeg",
-        "-hide_banner",
-        "-loglevel",
-        "error",
-        "-y",
-        "-f",
-        "concat",
-        "-safe",
-        "0",
-        "-i",
-        str(list_file),
-        "-vn",
-        "-ac",
-        "1",
-        "-ar",
-        "24000",
-        "-codec:a",
-        "libmp3lame",
-        "-b:a",
-        "96k",
-        str(output),
-    ]
-    subprocess.run(cmd, check=True)
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-y",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            str(list_file),
+            "-vn",
+            "-ac",
+            "1",
+            "-ar",
+            "24000",
+            "-codec:a",
+            "libmp3lame",
+            "-b:a",
+            "96k",
+            str(output),
+        ],
+        check=True,
+    )
 
 
 def generate_chapter(token: str, chapter_id: str, title: str, text: str, workdir: Path) -> Path:
