@@ -1,7 +1,7 @@
 const state = { materials: [], filter: 'all', search: '', current: null, tab: 'read' };
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
-const escapeHtml = (value='') => value.replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
+const escapeHtml = (value='') => String(value).replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
 
 async function init(){
   const res = await fetch('/materials.json', { cache:'no-store' });
@@ -17,7 +17,8 @@ function renderMaterials(){
   const q = state.search.trim().toLowerCase();
   const visible = state.materials.filter(m => {
     const filterOk = state.filter === 'all' || m.tags.includes(state.filter);
-    const haystack = [m.title,m.subtitle,m.audience,m.description,...m.tags].join(' ').toLowerCase();
+    const chapterText = Array.isArray(m.chapters) ? m.chapters.map(c => `${c.title} ${c.subtitle || ''}`).join(' ') : '';
+    const haystack = [m.title,m.subtitle,m.audience,m.description,...m.tags,chapterText].join(' ').toLowerCase();
     return filterOk && (!q || haystack.includes(q));
   });
   grid.innerHTML = visible.map(cardTemplate).join('');
@@ -67,6 +68,31 @@ function wireEvents(){
   $('#audio-player').addEventListener('loadedmetadata', restoreAudioProgress);
 }
 
+function renderAudioChapters(m){
+  const info = $('.audio-info');
+  if(!info) return;
+  let host = $('#audio-chapters');
+  if(!host){
+    host = document.createElement('div');
+    host.id = 'audio-chapters';
+    const player = $('#audio-player');
+    info.insertBefore(host, player);
+  }
+  const chapters = Array.isArray(m.chapters) ? m.chapters : [];
+  if(!chapters.length){ host.innerHTML=''; return; }
+  host.innerHTML = `<div style="margin:18px 0 16px;padding:14px;border:1px solid rgba(12,39,72,.13);border-radius:16px;background:rgba(255,255,255,.45)">
+    <div style="font-size:10px;letter-spacing:.14em;font-weight:800;color:#a84b2b;margin-bottom:10px">AUDIOBOOK COMPLETO • ${chapters.length} CAPÍTULOS</div>
+    <div style="display:grid;gap:7px">
+      ${chapters.map((chapter,index)=>`<a href="${escapeHtml(chapter.url)}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;text-decoration:none;padding:10px 11px;border:1px solid rgba(12,39,72,.11);border-radius:12px;background:#fffdf9;color:#0b1f36">
+        <span style="font-family:Georgia,serif;color:#a84b2b">${String(index+1).padStart(2,'0')}</span>
+        <span><b style="display:block;font-size:11px">${escapeHtml(chapter.title)}</b><small style="display:block;color:#66717e;font-size:9px;margin-top:2px">${escapeHtml(chapter.subtitle || '')}</small></span>
+        <span style="font-size:10px;font-weight:800;color:#0c2748">OUVIR ↗</span>
+      </a>`).join('')}
+    </div>
+    <p style="font-size:10px;color:#66717e;margin:10px 2px 0">Os capítulos completos abrem no player dedicado do audiobook. O áudio bônus abaixo toca diretamente nesta página e pode ser baixado.</p>
+  </div>`;
+}
+
 function openMaterial(id, view='read'){
   const m = state.materials.find(x=>x.id===id); if(!m) return;
   state.current=m;
@@ -78,6 +104,7 @@ function openMaterial(id, view='read'){
   $('#audio-cover').src=m.cover;
   $('#audio-title').textContent=m.audioTitle;
   $('#audio-player').src=m.audio;
+  renderAudioChapters(m);
   $('#download-pdf').href=m.pdf; $('#download-pdf').setAttribute('download',m.pdfDownloadName);
   $('#download-audio').href=m.audio; $('#download-audio').setAttribute('download',m.audioDownloadName);
   const modal=$('#study-modal'); modal.hidden=false; modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
