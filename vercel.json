@@ -3,31 +3,11 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/files/apostila-autores-capa.png",
-      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/74ae80f6-2e7b-48c4-83de-9e141ec6098d-apostila-autores-capa.png"
-    },
-    {
-      "source": "/files/apostila-autores-ibam-santos-2026.pdf",
-      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/25c38207-6b86-46f5-b237-dc00211054e7-apostila-autores-ibam-santos-2026.pdf"
-    },
-    {
-      "source": "/files/como-desarmar-as-armadilhas-da-ibam.mp3",
-      "destination": "https://sala-de-estudos-margareth.floot.app/_cdn/static/8c87eb58-e8df-4006-947b-df2658172be1-bonus-armadilhas-ibam.mp3"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/files/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
       ]
     },
     {
