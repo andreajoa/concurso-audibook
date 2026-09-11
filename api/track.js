@@ -1,2 +1,2 @@
-const { trackHandler } = require('./_analytics');
+const { trackHandler } = require('../lib/analytics');
 module.exports = trackHandler();
