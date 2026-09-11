@@ -8,13 +8,13 @@
     "edition": "Santos 2026",
     "author": "Margareth Almeida",
     "description": "Um material direto para reconhecer a assinatura de cada autor, diferenciar conceitos próximos e treinar as pegadinhas mais comuns da banca IBAM.",
-    "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "8 capítulos de audiobook + bônus"],
+    "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "8 capítulos de audiobook + resumo"],
     "tags": ["IBAM", "Autores", "Educação", "Educação Especial"],
     "cover": "/files/apostila-autores-capa.png",
     "pdf": "/files/apostila-autores-ibam-santos-2026.pdf",
-    "audio": "/files/como-desarmar-as-armadilhas-da-ibam.mp3",
-    "audioTitle": "Bônus — Como desarmar as armadilhas da IBAM",
-    "audioDownloadName": "Como_desarmar_as_armadilhas_da_IBAM.mp3",
+    "audio": "https://pub-7783b168338945eebb519768f0dbd176.r2.dev/autores-ibam-2026/resumo-como-desarmar-armadilhas-ibam.mp3",
+    "audioTitle": "Resumo da Apostila — Como desarmar as armadilhas da IBAM",
+    "audioDownloadName": "Resumo_Como_desarmar_as_armadilhas_da_IBAM.mp3",
     "pdfDownloadName": "apostila-autores-ibam-santos-2026.pdf",
     "chapters": [
       {
