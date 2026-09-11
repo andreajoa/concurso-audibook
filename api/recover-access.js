@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     for (const purchase of purchases.slice(0, 10)) {
       const product = getProduct(purchase.slug);
       if (!product) continue;
-      const accessUrl = `${origin}/acesso.html?session_id=${encodeURIComponent(purchase.sessionId)}`;
+      const accessUrl = `${origin}/acesso?session_id=${encodeURIComponent(purchase.sessionId)}`;
       await sendAccessEmail({ to: email, productName: product.name, accessUrl });
     }
     return res.status(200).json(generic);
