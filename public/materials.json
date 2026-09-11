@@ -8,14 +8,64 @@
     "edition": "Santos 2026",
     "author": "Margareth Almeida",
     "description": "Um material direto para reconhecer a assinatura de cada autor, diferenciar conceitos próximos e treinar as pegadinhas mais comuns da banca IBAM.",
-    "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "Áudio de estudo: 15:57"],
+    "highlights": ["34 páginas", "100 questões", "Gabarito comentado", "8 capítulos de audiobook + bônus"],
     "tags": ["IBAM", "Autores", "Educação", "Educação Especial"],
     "cover": "/files/apostila-autores-capa.png",
     "pdf": "/files/apostila-autores-ibam-santos-2026.pdf",
     "audio": "/files/como-desarmar-as-armadilhas-da-ibam.mp3",
-    "audioTitle": "Como desarmar as armadilhas da IBAM",
+    "audioTitle": "Bônus — Como desarmar as armadilhas da IBAM",
     "audioDownloadName": "Como_desarmar_as_armadilhas_da_IBAM.mp3",
     "pdfDownloadName": "apostila-autores-ibam-santos-2026.pdf",
+    "chapters": [
+      {
+        "id": "c1",
+        "title": "Antes de começar + Mapa-mãe",
+        "subtitle": "Estratégia de estudo e associações essenciais",
+        "url": "https://www.aidocmaker.com/g0/audio?name=2df3dd45686e4b228a156c3da7e6b8c5"
+      },
+      {
+        "id": "c2",
+        "title": "Autores comuns aos dois cargos",
+        "subtitle": "Freire, Libâneo, Hoffmann, Zabala, Lerner, Soares, Solé e mais",
+        "url": "https://www.aidocmaker.com/g0/audio?name=ea1399c46450454195d96a5753fd8cb1"
+      },
+      {
+        "id": "c3",
+        "title": "Professor Adjunto I",
+        "subtitle": "Educação Infantil, alfabetização e Matemática",
+        "url": "https://www.aidocmaker.com/g0/audio?name=078818eba2704b0aa31678b207aa5e12"
+      },
+      {
+        "id": "c4",
+        "title": "Educação Especial + matrizes de confusão",
+        "subtitle": "AEE, inclusão, TA, barreiras, AH/SD e contrastes",
+        "url": "https://www.aidocmaker.com/g0/audio?name=8dbed9e26a0e4196b9b8be562f57c16b"
+      },
+      {
+        "id": "c5",
+        "title": "Questões autorais 1 a 30",
+        "subtitle": "Fixação auditiva com alternativas e raciocínio",
+        "url": "https://www.aidocmaker.com/g0/audio?name=6762b0dd1a2442c1ba8465d14c9517ed"
+      },
+      {
+        "id": "c6",
+        "title": "Questões autorais 31 a 60",
+        "subtitle": "Adjunto I e Educação Especial",
+        "url": "https://www.aidocmaker.com/g0/audio?name=f8469e4709f042dfb77fe1559fc32749"
+      },
+      {
+        "id": "c7",
+        "title": "Questões IBAM + simulado 61 a 100",
+        "subtitle": "Reconstruções pedagógicas e simulado final",
+        "url": "https://www.aidocmaker.com/g0/audio?name=657218a6191a4997b5d5bcdb4e7f2a93"
+      },
+      {
+        "id": "c8",
+        "title": "Gabarito + revisão de véspera",
+        "subtitle": "Comentários, flashcards e fechamento",
+        "url": "https://www.aidocmaker.com/g0/audio?name=7ecfa521f83d4de6833c01ab7267ae71"
+      }
+    ],
     "featured": true
   }
 ]
