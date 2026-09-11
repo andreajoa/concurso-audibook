@@ -12,7 +12,53 @@ const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const escapeHtml = (value='') => String(value).replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
 
+function installModalScrollFix(){
+  if($('#modal-scroll-fix')) return;
+  const style = document.createElement('style');
+  style.id = 'modal-scroll-fix';
+  style.textContent = `
+    .tab-panel[data-panel="audio"].active{
+      overflow-y:auto;
+      overflow-x:hidden;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-gutter:stable;
+    }
+    .tab-panel[data-panel="audio"] .audio-stage{
+      height:auto;
+      min-height:100%;
+      align-items:start;
+      padding-top:32px;
+      padding-bottom:52px;
+    }
+    .tab-panel[data-panel="audio"] .audio-info{
+      min-width:0;
+      padding-bottom:24px;
+    }
+    #audio-chapters{
+      margin-top:18px;
+    }
+    #audio-chapters .track-list{
+      max-height:none!important;
+      overflow:visible!important;
+    }
+    @media (max-width:620px){
+      .tab-panel[data-panel="audio"] .audio-stage{
+        height:auto;
+        min-height:100%;
+        overflow:visible;
+        padding:22px 18px 92px;
+      }
+      .tab-panel[data-panel="audio"] .audio-info{
+        text-align:center;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 async function init(){
+  installModalScrollFix();
   const res = await fetch('/materials.json', { cache:'no-store' });
   if(!res.ok) throw new Error(`materials.json: ${res.status}`);
   state.materials = await res.json();
@@ -129,16 +175,16 @@ function renderAudioChapters(m){
   if(!host){
     host = document.createElement('div');
     host.id = 'audio-chapters';
-    info.insertBefore(host, $('#audio-player'));
+    info.appendChild(host);
   }
 
   const tracks = state.tracks;
-  host.innerHTML = `<div style="margin:18px 0 16px;padding:14px;border:1px solid rgba(12,39,72,.13);border-radius:16px;background:rgba(255,255,255,.45)">
+  host.innerHTML = `<div style="margin:0 0 16px;padding:14px;border:1px solid rgba(12,39,72,.13);border-radius:16px;background:rgba(255,255,255,.45)">
     <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap">
       <div style="font-size:10px;letter-spacing:.14em;font-weight:800;color:#a84b2b">AUDIOBOOK COMPLETO • ${Math.max(0,tracks.length-1)} CAPÍTULOS + RESUMO</div>
       <div id="track-counter" style="font-size:10px;font-weight:800;color:#0c2748"></div>
     </div>
-    <div style="display:grid;gap:7px;max-height:330px;overflow:auto;padding-right:2px">
+    <div class="track-list" style="display:grid;gap:7px;padding-right:2px">
       ${tracks.map((track,index)=>`<div data-track-row="${index}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;align-items:center">
         <button type="button" data-track-index="${index}" aria-current="${index===0?'true':'false'}" style="width:100%;display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;text-align:left;padding:10px 11px;border:1px solid ${index===0?'#a84b2b':'rgba(12,39,72,.11)'};border-radius:12px;background:${index===0?'rgba(168,75,43,.07)':'#fffdf9'};color:#0b1f36;cursor:pointer">
           <span style="font-family:Georgia,serif;color:#a84b2b">${index===0?'R':String(index).padStart(2,'0')}</span>
@@ -184,6 +230,11 @@ function updateTrackUI(){
   const download = $('#download-audio');
   download.href = current.url;
   download.setAttribute('download', current.downloadName || 'audiobook.mp3');
+
+  const activeRow = $(`[data-track-row="${state.trackIndex}"]`);
+  if(activeRow && state.tab === 'audio'){
+    activeRow.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
 }
 
 function playTrack(index, autoplay=false){
@@ -250,6 +301,10 @@ function switchTab(name){
   $$('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));
   $$('[data-tab]').forEach(b=>{const on=b.dataset.tab===name;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
   $$('[data-mobile-action]').forEach(b=>b.classList.toggle('active',b.dataset.mobileAction===name));
+  if(name === 'audio'){
+    const panel = $('.tab-panel[data-panel="audio"]');
+    if(panel) panel.scrollTop = 0;
+  }
   if(state.current) updateUrl(state.current.id,name);
 }
 
