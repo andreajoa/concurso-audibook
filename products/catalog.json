@@ -1,0 +1,46 @@
+{
+  "autores-ibam-2026": {
+    "slug": "autores-ibam-2026",
+    "active": true,
+    "name": "Quem disse o quê? — Apostila de Autores IBAM",
+    "shortName": "Apostila de Autores — Banca IBAM",
+    "edition": "Santos 2026",
+    "author": "Margareth Almeida",
+    "audience": "Professor Adjunto I • Professor Adjunto II — Educação Especial",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_AUTORES_IBAM_2026",
+    "description": "Material de preparação focado em reconhecer autores, conceitos e armadilhas recorrentes da banca IBAM, com leitura em PDF e revisão em audiobook.",
+    "proofPoints": [
+      "34 páginas de conteúdo direcionado",
+      "100 questões com gabarito comentado",
+      "60 questões autorais + 24 reconstruções IBAM + 16 questões de simulado",
+      "PDF para leitura online ou download",
+      "Audiobook completo para ouvir online ou baixar",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "images/apostila-autores-capa.png",
+      "pdfKey": "docs/apostila-autores-ibam-santos-2026.pdf",
+      "pdfDownloadName": "apostila-autores-ibam-santos-2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo da Apostila — Como desarmar as armadilhas da IBAM",
+        "subtitle": "Revisão complementar para acelerar a fixação",
+        "key": "autores-ibam-2026/resumo-como-desarmar-armadilhas-ibam.mp3",
+        "downloadName": "Resumo_Como_desarmar_as_armadilhas_da_IBAM.mp3"
+      },
+      "chapters": [
+        {"id":"c1","title":"Antes de começar + Mapa-mãe","subtitle":"Estratégia de estudo e associações essenciais","key":"audio/pt-br-v2/01-mapa-mae.mp3","downloadName":"01-mapa-mae.mp3"},
+        {"id":"c2","title":"Autores comuns aos dois cargos","subtitle":"Freire, Libâneo, Hoffmann, Zabala, Lerner, Soares, Solé e mais","key":"audio/pt-br-v2/02-autores-comuns.mp3","downloadName":"02-autores-comuns.mp3"},
+        {"id":"c3","title":"Professor Adjunto I","subtitle":"Educação Infantil, alfabetização e Matemática","key":"audio/pt-br-v2/03-professor-adjunto-i.mp3","downloadName":"03-professor-adjunto-i.mp3"},
+        {"id":"c4","title":"Educação Especial + matrizes de confusão","subtitle":"AEE, inclusão, TA, barreiras, AH/SD e contrastes","key":"audio/pt-br-v2/04-educacao-especial-matrizes.mp3","downloadName":"04-educacao-especial-matrizes.mp3"},
+        {"id":"c5","title":"Questões autorais 1 a 30","subtitle":"Fixação auditiva com alternativas e raciocínio","key":"audio/pt-br-v2/05-questoes-01-30.mp3","downloadName":"05-questoes-01-30.mp3"},
+        {"id":"c6","title":"Questões autorais 31 a 60","subtitle":"Adjunto I e Educação Especial","key":"audio/pt-br-v2/06-questoes-31-60.mp3","downloadName":"06-questoes-31-60.mp3"},
+        {"id":"c7","title":"Questões IBAM + simulado 61 a 100","subtitle":"Reconstruções pedagógicas e simulado final","key":"audio/pt-br-v2/07-questoes-ibam-simulado.mp3","downloadName":"07-questoes-ibam-simulado.mp3"},
+        {"id":"c8","title":"Gabarito + revisão de véspera","subtitle":"Comentários, flashcards e fechamento","key":"audio/pt-br-v2/08-gabarito-revisao.mp3","downloadName":"08-gabarito-revisao.mp3"}
+      ]
+    }
+  }
+}
