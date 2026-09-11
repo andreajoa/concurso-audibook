@@ -1,44 +1,61 @@
 import fs from 'node:fs';
 
-const vercel = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
-const rewrites = Array.isArray(vercel.rewrites) ? vercel.rewrites : [];
-
+const materials = JSON.parse(fs.readFileSync('public/materials.json', 'utf8'));
 let failed = false;
 const fail = (message) => { console.error(`FAIL ${message}`); failed = true; };
 const ok = (message) => console.log(`OK   ${message}`);
 
-for (const rewrite of rewrites) {
-  const destination = String(rewrite.destination || '');
-  if (!destination.startsWith('https://')) continue;
+const assets = [];
+for (const material of materials) {
+  assets.push({ label: `${material.id} cover`, url: material.cover, stream: false });
+  assets.push({ label: `${material.id} PDF`, url: material.pdf, stream: true });
+  assets.push({ label: `${material.id} summary`, url: material.audio, stream: true });
+  for (const chapter of material.chapters || []) {
+    assets.push({ label: `${material.id} ${chapter.id}`, url: chapter.url, stream: true });
+  }
+}
+
+const unique = [...new Map(assets.map(item => [item.url, item])).values()];
+
+for (const asset of unique) {
+  const url = String(asset.url || '');
+  if (!url.startsWith('https://')) {
+    fail(`${asset.label} is not a direct HTTPS asset: ${url}`);
+    continue;
+  }
+  if (/aidocmaker\.com|floot\.app/i.test(url)) {
+    fail(`${asset.label} still uses a legacy host: ${url}`);
+    continue;
+  }
 
   try {
-    const head = await fetch(destination, { method: 'HEAD', redirect: 'follow' });
+    const head = await fetch(url, { method: 'HEAD', redirect: 'follow' });
     if (!head.ok) {
-      fail(`${rewrite.source} upstream returned ${head.status}`);
+      fail(`${asset.label} returned ${head.status}`);
       continue;
     }
 
     const type = head.headers.get('content-type') || 'unknown';
     const length = Number(head.headers.get('content-length') || 0);
-    if (!length) fail(`${rewrite.source} upstream has no content length`);
-    else ok(`${rewrite.source} → ${type} • ${length} bytes`);
+    if (!length) fail(`${asset.label} has no content length`);
+    else ok(`${asset.label} → ${type} • ${length} bytes`);
 
-    if (/\.(pdf|mp3|m4a|opus)$/i.test(rewrite.source)) {
-      const range = await fetch(destination, {
+    if (asset.stream) {
+      const range = await fetch(url, {
         headers: { Range: 'bytes=0-31' },
         redirect: 'follow'
       });
       const bytes = (await range.arrayBuffer()).byteLength;
       if (range.status !== 206 || bytes !== 32) {
-        fail(`${rewrite.source} does not support byte-range delivery (status ${range.status}, ${bytes} bytes)`);
+        fail(`${asset.label} does not support byte-range delivery (status ${range.status}, ${bytes} bytes)`);
       } else {
-        ok(`${rewrite.source} byte-range streaming`);
+        ok(`${asset.label} byte-range streaming`);
       }
     }
   } catch (error) {
-    fail(`${rewrite.source} upstream check failed: ${error instanceof Error ? error.message : String(error)}`);
+    fail(`${asset.label} check failed: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
 if (failed) process.exit(1);
-console.log('\nRemote asset verification passed.');
+console.log(`\nRemote asset verification passed: ${unique.length} Cloudflare R2 asset(s).`);
