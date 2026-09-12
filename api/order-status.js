@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     if (!session.metadata?.access_email_sent && purchase.email) {
       const accessUrl=`${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
       try {
-        await sendAccessEmail({to:purchase.email,productName:product.name,accessUrl});
+        await sendAccessEmail({to:purchase.email,productName:product.name,accessUrl,idempotencyKey:`purchase-access-${session.id}`});
         await updateSessionMetadata(session.id,{access_email_sent:`status-${Date.now()}`});
       } catch (error) {
         console.error('access_email_status',error);
