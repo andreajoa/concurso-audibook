@@ -1,2 +1,3 @@
-deploy-trigger: 2026-09-11T18:04:00-03:00
-reason: force Vercel redeploy after CRM/paywall updates
+Trilha Aprova production rollout
+2026-09-12
+storefront + Stripe hybrid checkout + protected buyer portal
