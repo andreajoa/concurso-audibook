@@ -7,9 +7,11 @@ on:
       - '.github/workflows/smoke-production.yml'
       - 'public/**'
       - 'api/checkout.js'
+      - 'api/order-status.js'
       - 'api/access-page.js'
       - 'lib/checkout-hosted.js'
       - 'lib/stripe.js'
+      - 'lib/payment-public-key.js'
       - 'products/**'
   workflow_dispatch:
 
@@ -35,7 +37,7 @@ jobs:
               try{
                 const r=await fetch(base+'/',{cache:'no-store'});
                 const html=await r.text();
-                if(r.ok&&html.includes('Trilha Aprova')&&html.includes('R$ 49,99')&&html.includes('R$ 24,99')&&html.includes('apostila-santos-ibam-3d.webp')) return html;
+                if(r.ok&&html.includes('Trilha Aprova')&&html.includes('R$ 49,99')&&html.includes('R$ 24,99')&&html.includes('bf874874')) return html;
               }catch{}
               console.log(`waiting for Vercel production deploy (${i+1}/24)`);
               await sleep(5000);
@@ -45,13 +47,16 @@ jobs:
 
           const html=await waitForHome();
           if(!/<del[^>]*>R\$ 49,99<\/del>/.test(html)) fail('R$ 49,99 is not rendered as crossed-out price on storefront');
-          ok('Trilha Aprova storefront is live with 3D cover and crossed-out reference price');
+          if(/>[^<]*Stripe[^<]*</i.test(html)) fail('payment provider name is visible on storefront');
+          ok('storefront live with restored 3D cover and provider-neutral payment copy');
 
           const logo=await fetch(base+'/assets/trilha-aprova-logo.webp',{cache:'no-store'});
-          if(!logo.ok||!(logo.headers.get('content-type')||'').includes('image')) fail(`brand logo asset invalid: HTTP ${logo.status} ${logo.headers.get('content-type')}`);
-          const cover=await fetch(base+'/assets/apostila-santos-ibam-3d.webp',{cache:'no-store'});
-          if(!cover.ok||!(cover.headers.get('content-type')||'').includes('image')) fail(`3D cover asset invalid: HTTP ${cover.status} ${cover.headers.get('content-type')}`);
-          ok('brand and 3D product assets are valid images');
+          if(!logo.ok||!(logo.headers.get('content-type')||'').includes('image')) fail(`brand logo asset invalid: HTTP ${logo.status}`);
+          const cover=await fetch(base+'/assets/apostila-santos-ibam-3d.webp?v=bf874874',{cache:'no-store'});
+          if(!cover.ok||!(cover.headers.get('content-type')||'').includes('image')) fail(`3D cover asset invalid: HTTP ${cover.status}`);
+          const coverBytes=(await cover.arrayBuffer()).byteLength;
+          if(coverBytes<30000) fail(`3D cover asset suspiciously small: ${coverBytes} bytes`);
+          ok(`brand and restored 3D cover assets valid (${coverBytes} bytes)`);
 
           const manifest=await fetch(base+'/materials.json',{redirect:'manual'});
           if(manifest.status>=200&&manifest.status<400) fail(`public paid manifest still reachable: HTTP ${manifest.status}`);
@@ -59,9 +64,8 @@ jobs:
 
           const locked=await fetch(base+'/acesso',{redirect:'manual'});
           if(![301,302,303,307,308].includes(locked.status)) fail(`/acesso without purchase did not redirect: HTTP ${locked.status}`);
-          const loc=locked.headers.get('location')||'';
-          if(!loc.includes('recuperar')) fail(`/acesso redirect unexpected: ${loc}`);
-          ok('buyer area is locked without a valid purchase session');
+          if(!(locked.headers.get('location')||'').includes('recuperar')) fail('buyer area redirect is unexpected');
+          ok('buyer area locked without a valid purchase session');
 
           let config={};
           for(let i=0;i<18;i++){
@@ -71,28 +75,23 @@ jobs:
             await sleep(4000);
           }
           if(!config.readiness) fail('production checkout readiness endpoint is not current');
-          console.log('READINESS',JSON.stringify({embedded:Boolean(config.embedded),stripeSecret:Boolean(config.readiness.stripeSecret),webhook:Boolean(config.readiness.webhook),email:Boolean(config.readiness.email),delivery:Boolean(config.readiness.delivery)}));
-          if(!config.readiness.stripeSecret) fail('STRIPE_SECRET_KEY is not configured in production');
-          if(!config.readiness.delivery) fail('R2 delivery credentials are not configured in production');
-          if(!config.readiness.webhook) fail('STRIPE_WEBHOOK_SECRET is not configured in production');
+          console.log('READINESS',JSON.stringify({embedded:Boolean(config.embedded),paymentSecret:Boolean(config.readiness.paymentSecret),webhook:Boolean(config.readiness.webhook),email:Boolean(config.readiness.email),delivery:Boolean(config.readiness.delivery)}));
+          if(!config.readiness.paymentSecret) fail('payment secret is not configured in production');
+          if(!config.readiness.delivery) fail('private delivery credentials are not configured in production');
           if(!config.readiness.email) fail('transactional email provider is not configured in production');
-          ok(`checkout mode available: ${config.embedded?'embedded':'hosted fallback'}`);
+          if(!config.embedded||!String(config.publishableKey||'').startsWith('pk_')) fail('embedded payment is not available in production');
+          if(!config.readiness.webhook) console.warn('WARN webhook signing secret absent; paid-order confirmation fallback remains active');
+          ok('embedded payment configuration is available');
 
           const qa=`qa-${Date.now()}@example.com`;
           const checkout=await fetch(base+'/api/checkout',{
             method:'POST',headers:{'content-type':'application/json'},
-            body:JSON.stringify({slug:'autores-ibam-2026',name:'Teste QA Trilha Aprova',email:qa,whatsapp:'11999999999',marketingConsent:false,embedded:Boolean(config.embedded),analytics:{visitorId:'qa-smoke-visitor',sessionId:`qa-smoke-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}})
+            body:JSON.stringify({slug:'autores-ibam-2026',name:'Teste QA Trilha Aprova',email:qa,whatsapp:'11999999999',marketingConsent:false,embedded:true,analytics:{visitorId:'qa-smoke-visitor',sessionId:`qa-smoke-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}})
           });
-          const text=await checkout.text();
-          let data={};try{data=JSON.parse(text)}catch{}
+          const text=await checkout.text();let data={};try{data=JSON.parse(text)}catch{}
           if(!checkout.ok) fail(`checkout HTTP ${checkout.status}: ${text.slice(0,500)}`);
-          if(!String(data.sessionId||'').startsWith('cs_')) fail(`checkout missing Stripe session: ${text.slice(0,500)}`);
-          if(data.mode==='embedded'){
-            if(!data.clientSecret||!String(data.clientSecret).includes('_secret_')) fail('embedded checkout missing client secret');
-            ok('production Stripe Embedded Checkout session created');
-          }else{
-            if(!data.url||!/^https:\/\/.+stripe\.com\//i.test(data.url)) fail(`hosted checkout missing Stripe URL: ${text.slice(0,500)}`);
-            ok('production Stripe hosted checkout session created');
-          }
+          if(!String(data.sessionId||'').startsWith('cs_')) fail(`checkout missing payment session: ${text.slice(0,500)}`);
+          if(data.mode!=='embedded'||!data.clientSecret||!String(data.clientSecret).includes('_secret_')) fail('embedded checkout session is invalid');
+          ok('production embedded checkout session created');
           console.log('SMOKE PASS');
           NODE
