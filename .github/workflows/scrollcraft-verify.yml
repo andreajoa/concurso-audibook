@@ -1,0 +1,54 @@
+name: Scroll Craft visual verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/index.html'
+      - 'public/trilha.css'
+      - 'public/trilha-page.js'
+      - 'public/assets/**'
+      - 'scrollcraft/**'
+      - 'scripts/scrollcraft-visual.mjs'
+      - '.github/workflows/scrollcraft-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Wait for production storefront
+        shell: bash
+        run: |
+          for i in {1..30}; do
+            HTML="$(curl -fsSL --max-time 12 https://concurso-audibook.vercel.app/ || true)"
+            if echo "$HTML" | grep -q 'data-trail-map' && echo "$HTML" | grep -q 'apostila-santos-ibam-3d.webp?v=ea6d7814'; then
+              echo "Production storefront is current"
+              exit 0
+            fi
+            echo "Waiting for Vercel production deployment ($i/30)"
+            sleep 5
+          done
+          echo "Production storefront did not update in time"
+          exit 1
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run Scroll Craft visual pass
+        run: node scripts/scrollcraft-visual.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scrollcraft-verification
+          path: scrollcraft-artifacts/*.png
+          if-no-files-found: error
+          retention-days: 14
