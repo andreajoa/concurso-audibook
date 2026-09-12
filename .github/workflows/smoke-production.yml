@@ -63,9 +63,19 @@ jobs:
           if(!loc.includes('recuperar')) fail(`/acesso redirect unexpected: ${loc}`);
           ok('buyer area is locked without a valid purchase session');
 
-          const configResponse=await fetch(base+'/api/checkout',{cache:'no-store'});
-          const config=await configResponse.json().catch(()=>({}));
-          if(!configResponse.ok) fail(`checkout config HTTP ${configResponse.status}`);
+          let config={};
+          for(let i=0;i<18;i++){
+            const response=await fetch(base+'/api/checkout',{cache:'no-store'});
+            config=await response.json().catch(()=>({}));
+            if(response.ok&&config.readiness) break;
+            await sleep(4000);
+          }
+          if(!config.readiness) fail('production checkout readiness endpoint is not current');
+          console.log('READINESS',JSON.stringify({embedded:Boolean(config.embedded),stripeSecret:Boolean(config.readiness.stripeSecret),webhook:Boolean(config.readiness.webhook),email:Boolean(config.readiness.email),delivery:Boolean(config.readiness.delivery)}));
+          if(!config.readiness.stripeSecret) fail('STRIPE_SECRET_KEY is not configured in production');
+          if(!config.readiness.delivery) fail('R2 delivery credentials are not configured in production');
+          if(!config.readiness.webhook) fail('STRIPE_WEBHOOK_SECRET is not configured in production');
+          if(!config.readiness.email) fail('transactional email provider is not configured in production');
           ok(`checkout mode available: ${config.embedded?'embedded':'hosted fallback'}`);
 
           const qa=`qa-${Date.now()}@example.com`;
