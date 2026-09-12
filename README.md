@@ -1,47 +1,63 @@
-# Sala de Estudos — Apostilas + Audiobooks
+# Trilha Aprova
 
-Biblioteca de estudos para concursos, preparada para crescer com novas apostilas e audiobooks. O front-end do repositório é estático (HTML/CSS/JavaScript), adequado à Vercel e sem backend obrigatório.
+Plataforma digital para venda e entrega protegida de materiais de preparação para concursos públicos.
 
-## Experiência já implementada
-- Biblioteca orientada por dados em `public/materials.json`
-- Leitura do PDF dentro do próprio site
-- Audiobook com 1×, 1.25×, 1.5× e 2×
-- Retomada automática do ponto do áudio no navegador
-- Download do PDF e do audiobook
-- Busca e filtros
-- Motion/reveal com suporte a `prefers-reduced-motion`
-- Layout responsivo, inclusive modal de estudo no celular
-- Estrutura pronta para novos materiais sem reescrever a interface
+## Arquitetura atual
 
-## Material inicial
-**Quem disse o quê? — Apostila de Autores — Banca IBAM**  
-Professor Adjunto I • Professor Adjunto II — Educação Especial  
-Santos 2026 • Margareth Almeida  
-34 páginas • 100 questões • gabarito comentado • audiobook de estudo
+- **Vitrine multi-concurso** em `public/index.html`
+- **Catálogo** em `products/catalog.json`
+- **Checkout Stripe** híbrido: Embedded Checkout quando `STRIPE_PUBLISHABLE_KEY` está disponível, com fallback seguro para Checkout hospedado
+- **Paywall** em `/acesso`, validando a sessão diretamente na Stripe antes de gerar URLs temporárias dos arquivos
+- **R2 privado** para PDF e áudio; `r2.dev` público deve permanecer desativado
+- **CRM** com visitas, leads, checkout, compras e consumo do conteúdo
+- **E-mails** transacionais e marketing consentido
+- **Dashboard** privado em `/dashboard.html`
 
-## Arquivos grandes
-PDFs e audiobooks ficam em object storage, não no repositório. A Vercel expõe URLs amigáveis em `/files/...` usando rewrites do `vercel.json`. Isso mantém o GitHub leve mesmo quando a biblioteca crescer.
+## Estrutura de funil
 
-Os dois arquivos atuais são entregues pelas rotas:
-- `/files/apostila-autores-ibam-santos-2026.pdf`
-- `/files/como-desarmar-as-armadilhas-da-ibam.mp3`
+Cada produto pode declarar no catálogo:
 
-## Como adicionar uma nova apostila
-1. Hospede o PDF e, se houver, o audiobook em object storage.
-2. Adicione rotas amigáveis para os arquivos no bloco `rewrites` do `vercel.json`.
-3. Acrescente um novo objeto em `public/materials.json`, usando o item atual como modelo.
-4. Adicione a capa em `public/assets/` ou use uma URL pública estável.
-5. Rode a verificação antes da publicação.
+- `orderBump`
+- `upsell`
+- `crossSell`
+- `downsell`
 
-## Verificação
-```bash
-npm run verify
-npm run build
-```
+Enquanto existir apenas um produto, essas relações ficam vazias. Novos produtos podem ser conectados sem alterar o modelo de dados da plataforma.
 
-O workflow `.github/workflows/verify.yml` repete automaticamente essas verificações no GitHub para proteger o projeto contra regressões.
+## Produto ativo
 
-## Deploy na Vercel
-O repositório está preparado para importação direta na Vercel. `vercel.json` já define o build e `public` como diretório de saída.
+`autores-ibam-2026` — Concurso Prefeitura de Santos • Banca IBAM.
 
-Repositório: `andreajoa/concurso-audibook`
+Preço atual: **R$ 24,99**. Preço de referência: ~~R$ 49,99~~.
+
+## Variáveis de ambiente
+
+### Pagamento
+
+- `STRIPE_SECRET_KEY` — obrigatória
+- `STRIPE_PUBLISHABLE_KEY` — necessária para Embedded Checkout; sem ela o sistema usa Checkout hospedado
+- `STRIPE_WEBHOOK_SECRET` — necessária para eventos assíncronos e e-mails pós-compra
+- `APP_BASE_URL=https://concurso-audibook.vercel.app`
+
+### Entrega R2
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `R2_ACCESS_KEY_ID`
+- `R2_SECRET_ACCESS_KEY`
+- `R2_BUCKET=apostila`
+
+### E-mail
+
+- `RESEND_API_KEY` ou SMTP configurado
+- `EMAIL_FROM=Trilha Aprova <noreply@adhdautism.online>` se o domínio estiver verificado
+- `UNSUBSCRIBE_SECRET`
+
+### Dashboard e cron
+
+- `DASHBOARD_PASSWORD`
+- `DASHBOARD_SESSION_SECRET`
+- `CRON_SECRET`
+
+## Segurança
+
+Não disponibilizar `materials.json` público. Não reativar o domínio público `r2.dev` do bucket pago. O navegador só recebe URLs temporárias depois que a Stripe confirma uma compra válida e não reembolsada.
