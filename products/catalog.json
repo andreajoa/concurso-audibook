@@ -47,14 +47,170 @@
         "downloadName": "Resumo_Como_desarmar_as_armadilhas_da_IBAM.mp3"
       },
       "chapters": [
-        {"id":"c1","title":"Antes de começar + Mapa-mãe","subtitle":"Estratégia de estudo e associações essenciais","key":"audio/pt-br-v2/01-mapa-mae.mp3","downloadName":"01-mapa-mae.mp3"},
-        {"id":"c2","title":"Autores comuns aos dois cargos","subtitle":"Freire, Libâneo, Hoffmann, Zabala, Lerner, Soares, Solé e mais","key":"audio/pt-br-v2/02-autores-comuns.mp3","downloadName":"02-autores-comuns.mp3"},
-        {"id":"c3","title":"Professor Adjunto I","subtitle":"Educação Infantil, alfabetização e Matemática","key":"audio/pt-br-v2/03-professor-adjunto-i.mp3","downloadName":"03-professor-adjunto-i.mp3"},
-        {"id":"c4","title":"Educação Especial + matrizes de confusão","subtitle":"AEE, inclusão, TA, barreiras, AH/SD e contrastes","key":"audio/pt-br-v2/04-educacao-especial-matrizes.mp3","downloadName":"04-educacao-especial-matrizes.mp3"},
-        {"id":"c5","title":"Questões autorais 1 a 30","subtitle":"Fixação auditiva com alternativas e raciocínio","key":"audio/pt-br-v2/05-questoes-01-30.mp3","downloadName":"05-questoes-01-30.mp3"},
-        {"id":"c6","title":"Questões autorais 31 a 60","subtitle":"Adjunto I e Educação Especial","key":"audio/pt-br-v2/06-questoes-31-60.mp3","downloadName":"06-questoes-31-60.mp3"},
-        {"id":"c7","title":"Questões IBAM + simulado 61 a 100","subtitle":"Reconstruções pedagógicas e simulado final","key":"audio/pt-br-v2/07-questoes-ibam-simulado.mp3","downloadName":"07-questoes-ibam-simulado.mp3"},
-        {"id":"c8","title":"Gabarito + revisão de véspera","subtitle":"Comentários, flashcards e fechamento","key":"audio/pt-br-v2/08-gabarito-revisao.mp3","downloadName":"08-gabarito-revisao.mp3"}
+        {
+          "id": "c1",
+          "title": "Antes de começar + Mapa-mãe",
+          "subtitle": "Estratégia de estudo e associações essenciais",
+          "key": "audio/pt-br-v2/01-mapa-mae.mp3",
+          "downloadName": "01-mapa-mae.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Autores comuns aos dois cargos",
+          "subtitle": "Freire, Libâneo, Hoffmann, Zabala, Lerner, Soares, Solé e mais",
+          "key": "audio/pt-br-v2/02-autores-comuns.mp3",
+          "downloadName": "02-autores-comuns.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Professor Adjunto I",
+          "subtitle": "Educação Infantil, alfabetização e Matemática",
+          "key": "audio/pt-br-v2/03-professor-adjunto-i.mp3",
+          "downloadName": "03-professor-adjunto-i.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Educação Especial + matrizes de confusão",
+          "subtitle": "AEE, inclusão, TA, barreiras, AH/SD e contrastes",
+          "key": "audio/pt-br-v2/04-educacao-especial-matrizes.mp3",
+          "downloadName": "04-educacao-especial-matrizes.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Questões autorais 1 a 30",
+          "subtitle": "Fixação auditiva com alternativas e raciocínio",
+          "key": "audio/pt-br-v2/05-questoes-01-30.mp3",
+          "downloadName": "05-questoes-01-30.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Questões autorais 31 a 60",
+          "subtitle": "Adjunto I e Educação Especial",
+          "key": "audio/pt-br-v2/06-questoes-31-60.mp3",
+          "downloadName": "06-questoes-31-60.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Questões IBAM + simulado 61 a 100",
+          "subtitle": "Reconstruções pedagógicas e simulado final",
+          "key": "audio/pt-br-v2/07-questoes-ibam-simulado.mp3",
+          "downloadName": "07-questoes-ibam-simulado.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Gabarito + revisão de véspera",
+          "subtitle": "Comentários, flashcards e fechamento",
+          "key": "audio/pt-br-v2/08-gabarito-revisao.mp3",
+          "downloadName": "08-gabarito-revisao.mp3"
+        }
+      ]
+    }
+  },
+  "redacao-nivel-fundamental-2026": {
+    "slug": "redacao-nivel-fundamental-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Língua Portuguesa",
+    "name": "Redação para Concursos — Ensino Fundamental Completo",
+    "shortName": "Redação — Ensino Fundamental Completo",
+    "edition": "2026",
+    "author": "Margareth Almeida",
+    "audience": "Candidatos a cargos de Ensino Fundamental Completo",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_REDACAO_NIVEL_FUNDAMENTAL_2026",
+    "description": "Método prático para entender o comando da prova, organizar as ideias e produzir textos claros, corretos e adequados ao gênero solicitado, com teoria simples, modelos, exercícios e gabarito.",
+    "storefront": {
+      "badge": "REDAÇÃO PARA CONCURSOS • ENSINO FUNDAMENTAL COMPLETO",
+      "cover3d": "/api/cover?slug=redacao-nivel-fundamental-2026",
+      "cta": "Quero esta apostila + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "19 páginas de conteúdo prático e direto",
+      "Método para dissertação, argumentação, narração/relato, carta, e-mail e textos funcionais",
+      "10 questões de fixação + 5 propostas de produção textual",
+      "Gabarito comentado, modelos de resposta e checklist de revisão",
+      "PDF para leitura online ou download",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "images/redacao-nivel-fundamental-2026-capa.png",
+      "pdfKey": "docs/redacao-ensino-fundamental-completo-2026.pdf",
+      "pdfDownloadName": "redacao-ensino-fundamental-completo-2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo da Apostila — Como gabaritar a redação de nível fundamental",
+        "subtitle": "Revisão em áudio para entender o método antes de aprofundar os capítulos",
+        "key": "redacao-nivel-fundamental-2026/resumo-como-gabaritar-redacao-nivel-fundamental.mp3",
+        "downloadName": "Resumo_Como_gabaritar_a_redacao_de_nivel_fundamental.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Antes de escrever + Método universal",
+          "subtitle": "Comando da prova, planejamento e estrutura de começo, meio e fim",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/01-antes-de-escrever-metodo-universal.mp3",
+          "downloadName": "01-antes-de-escrever-metodo-universal.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Construção do texto + Dissertação expositiva",
+          "subtitle": "Parágrafos, conectivos, clareza e estrutura expositiva",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/02-construcao-dissertacao-expositiva.mp3",
+          "downloadName": "02-construcao-dissertacao-expositiva.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Dissertação argumentativa + Narração e relato",
+          "subtitle": "Como defender uma posição e como organizar acontecimentos",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/03-argumentacao-narracao-relato.mp3",
+          "downloadName": "03-argumentacao-narracao-relato.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Carta, e-mail, textos funcionais + Gramática",
+          "subtitle": "Gêneros práticos, pontuação, concordância e dúvidas frequentes",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/04-textos-funcionais-gramatica.mp3",
+          "downloadName": "04-textos-funcionais-gramatica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Coesão, clareza e planejamento",
+          "subtitle": "Como evitar repetição, manter o tema e transformar rascunho em texto",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/05-coesao-clareza-planejamento.mp3",
+          "downloadName": "05-coesao-clareza-planejamento.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Erros frequentes + Questões de fixação",
+          "subtitle": "O que mais derruba a qualidade da redação e treino de reconhecimento",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/06-erros-frequentes-exercicios.mp3",
+          "downloadName": "06-erros-frequentes-exercicios.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Treino prático — Produção textual",
+          "subtitle": "Dissertação, argumentação, relato, e-mail formal e aviso",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/07-treino-pratico.mp3",
+          "downloadName": "07-treino-pratico.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Gabarito, modelos de resposta + revisão final",
+          "subtitle": "Correção comentada, respostas-modelo e checklist de prova",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/08-gabarito-modelos-revisao.mp3",
+          "downloadName": "08-gabarito-modelos-revisao.mp3"
+        }
       ]
     }
   }
