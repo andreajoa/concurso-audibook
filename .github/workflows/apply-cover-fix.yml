@@ -1,0 +1,33 @@
+name: Apply existing 3D cover asset
+
+on:
+  push:
+    branches: [cover-binary-fix]
+    paths:
+      - '.asset-chunks/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cover-binary-fix
+      - name: Restore existing correct 3D cover
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .asset-chunks/chunk-* > /tmp/apostila-cover.b64
+          base64 -d /tmp/apostila-cover.b64 > public/assets/apostila-santos-ibam-3d.webp
+          file public/assets/apostila-santos-ibam-3d.webp
+          test "$(wc -c < public/assets/apostila-santos-ibam-3d.webp)" -gt 30000
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/assets/apostila-santos-ibam-3d.webp
+          git rm -r .asset-chunks
+          git rm .github/workflows/apply-cover-fix.yml
+          git commit -m 'fix: restore existing 3D apostila cover asset'
+          git push origin HEAD:cover-binary-fix
