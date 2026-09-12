@@ -1,17 +1,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
 const root=path.resolve(process.cwd());
-const required=['public/index.html','public/comprar.html','public/store.css','public/trilha.css','public/checkout.js','public/obrigado.html','public/recuperar.html','api/checkout.js','api/access-page.js','api/stripe-webhook.js','products/catalog.json','vercel.json'];
+const required=['public/index.html','public/comprar.html','public/store.css','public/trilha.css','public/experience.css','public/experience.js','public/checkout-embedded.css','public/checkout-embedded.js','public/obrigado.html','public/recuperar.html','api/checkout.js','api/access-page.js','api/stripe-webhook.js','lib/payment-public-key.js','products/catalog.json','vercel.json'];
 let failed=false;const fail=m=>{console.error('FAIL '+m);failed=true},ok=m=>console.log('OK   '+m);
 for(const file of required){fs.existsSync(path.join(root,file))?ok(file):fail('missing '+file)}
 if(fs.existsSync(path.join(root,'public/materials.json')))fail('public/materials.json must not expose paid asset URLs');
 const html=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
+const buy=fs.readFileSync(path.join(root,'public/comprar.html'),'utf8');
 const normalized=html.toLowerCase();
-for(const marker of ['r$ 49,99','r$ 24,99','pagamento único','stripe','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
+for(const marker of ['r$ 49,99','r$ 24,99','pagamento único','pagamento','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
 if(!/<del[^>]*>R\$ 49,99<\/del>/i.test(html))fail('reference price must be crossed out with del');
-if(!html.includes('/assets/apostila-santos-ibam-3d.webp'))fail('storefront missing 3D product cover');
+if(!html.includes('/assets/apostila-santos-ibam-3d.webp?v=bf874874'))fail('storefront missing versioned restored 3D product cover');
 if(!html.includes('/assets/trilha-aprova-logo.webp'))fail('storefront missing Trilha Aprova logo');
 if(/materials\.json|\/app\.js|pub-[a-z0-9]+\.r2\.dev/i.test(html))fail('sales home exposes legacy/public library assets');
+if(/\bstripe\b/i.test(html)||/\bstripe\b/i.test(buy))fail('payment provider name must not appear in customer-facing HTML');
+for(const marker of ['checkout-form','embedded-stage','embedded-checkout','Pagamento seguro dentro da Trilha Aprova'])if(!buy.includes(marker))fail('embedded purchase page missing '+marker);
+if(!buy.includes('/checkout-embedded.js'))fail('purchase page is not using embedded controller');
+const publicKey=fs.readFileSync(path.join(root,'lib/payment-public-key.js'),'utf8');
+if(!/pk_(live|test)_/.test(publicKey))fail('embedded payment public key missing');
+const apiCheckout=fs.readFileSync(path.join(root,'api/checkout.js'),'utf8');
+if(!apiCheckout.includes("embedded:true")||apiCheckout.includes("mode:'hosted'"))fail('checkout API must create embedded payment only');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'products/catalog.json'),'utf8'));
 const product=catalog['autores-ibam-2026'];
 if(!product||product.priceCents!==2499||product.compareAtCents!==4999)fail('catalog price configuration invalid');
@@ -20,4 +28,4 @@ if(!product?.funnel||!Array.isArray(product.funnel.orderBump)||!Array.isArray(pr
 const access=fs.readFileSync(path.join(root,'api/access-page.js'),'utf8');
 for(const marker of ['verifyPurchase','signedProductAssets','no-store','noindex','Trilha Aprova'])if(!access.includes(marker))fail('paid access missing '+marker);
 if(failed)process.exit(1);
-console.log('\nVerification passed: Trilha Aprova storefront + Stripe paywall + buyer-only asset delivery.');
+console.log('\nVerification passed: Trilha Aprova storefront + embedded payment + buyer-only asset delivery.');
