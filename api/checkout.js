@@ -9,12 +9,22 @@ async function getJsonBody(req){
   try{return JSON.parse(raw)}catch{return{}};
 }
 const clean=(value,max)=>String(value||'').trim().slice(0,max);
+const publishableKey=()=>String(process.env.STRIPE_PUBLISHABLE_KEY||process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY||'').trim();
 
 module.exports=async(req,res)=>{
   res.setHeader('Cache-Control','private, no-store, max-age=0');
   if(req.method==='GET'){
-    const publishableKey=String(process.env.STRIPE_PUBLISHABLE_KEY||'').trim();
-    return res.status(200).json({embedded:Boolean(publishableKey),publishableKey});
+    const pk=publishableKey();
+    return res.status(200).json({
+      embedded:Boolean(pk),
+      publishableKey:pk,
+      readiness:{
+        stripeSecret:Boolean(process.env.STRIPE_SECRET_KEY),
+        webhook:Boolean(process.env.STRIPE_WEBHOOK_SECRET),
+        email:Boolean(process.env.RESEND_API_KEY||(process.env.SMTP_USER&&process.env.SMTP_APP_PASSWORD)),
+        delivery:Boolean(process.env.R2_ACCESS_KEY_ID&&process.env.R2_SECRET_ACCESS_KEY)
+      }
+    });
   }
   if(req.method!=='POST'){
     res.setHeader('Allow','GET, POST');
@@ -30,7 +40,7 @@ module.exports=async(req,res)=>{
     const whatsapp=String(body.whatsapp||'').replace(/\D/g,'').slice(0,15);
     const analytics=body.analytics&&typeof body.analytics==='object'?body.analytics:{};
     const marketingConsent=body.marketingConsent===true;
-    const embedded=body.embedded===true&&Boolean(String(process.env.STRIPE_PUBLISHABLE_KEY||'').trim());
+    const embedded=body.embedded===true&&Boolean(publishableKey());
     if(name.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||whatsapp.length<10){
       return res.status(400).json({error:'Confira nome, e-mail e WhatsApp.'});
     }
