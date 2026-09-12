@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "autores-ibam-2026",
+    "source": "docs/apostila-autores-ibam-santos-2026.pdf",
+    "target": "autores-ibam-2026/docs/apostila-autores-ibam-santos-2026.pdf"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "images/apostila-autores-capa.png",
+    "target": "autores-ibam-2026/images/apostila-autores-capa.png"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "autores-ibam-2026/resumo-como-desarmar-armadilhas-ibam.mp3",
+    "target": "autores-ibam-2026/audio/resumo.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/01-mapa-mae.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/01-mapa-mae.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/02-autores-comuns.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/02-autores-comuns.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/03-professor-adjunto-i.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/03-professor-adjunto-i.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/04-educacao-especial-matrizes.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/04-educacao-especial-matrizes.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/05-questoes-01-30.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/05-questoes-01-30.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/06-questoes-31-60.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/06-questoes-31-60.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/07-questoes-ibam-simulado.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/07-questoes-ibam-simulado.mp3"
+  },
+  {
+    "slug": "autores-ibam-2026",
+    "source": "audio/pt-br-v2/08-gabarito-revisao.mp3",
+    "target": "autores-ibam-2026/audio/pt-br-v2/08-gabarito-revisao.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "docs/redacao-ensino-fundamental-completo-2026.pdf",
+    "target": "redacao-nivel-fundamental-2026/docs/redacao-ensino-fundamental-completo-2026.pdf"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "images/redacao-nivel-fundamental-2026-capa.png",
+    "target": "redacao-nivel-fundamental-2026/images/redacao-nivel-fundamental-2026-capa.png"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/resumo-como-gabaritar-redacao-nivel-fundamental.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/resumo.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/01-antes-de-escrever-metodo-universal.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/01-antes-de-escrever-metodo-universal.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/02-construcao-dissertacao-expositiva.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/02-construcao-dissertacao-expositiva.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/03-argumentacao-narracao-relato.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/03-argumentacao-narracao-relato.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/04-textos-funcionais-gramatica.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/04-textos-funcionais-gramatica.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/05-coesao-clareza-planejamento.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/05-coesao-clareza-planejamento.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/06-erros-frequentes-exercicios.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/06-erros-frequentes-exercicios.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/07-treino-pratico.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/07-treino-pratico.mp3"
+  },
+  {
+    "slug": "redacao-nivel-fundamental-2026",
+    "source": "redacao-nivel-fundamental-2026/audio/pt-br-v1/08-gabarito-modelos-revisao.mp3",
+    "target": "redacao-nivel-fundamental-2026/audio/pt-br-v1/08-gabarito-modelos-revisao.mp3"
+  }
+]

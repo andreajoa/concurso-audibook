@@ -1,0 +1,28 @@
+name: Organize private media by purchased product
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/organize-study-media.py'
+      - 'products/media-migration.json'
+      - '.github/workflows/organize-study-media.yml'
+permissions:
+  contents: read
+jobs:
+  organize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install boto3
+      - name: Copy and checksum each product asset
+        run: python -u scripts/organize-study-media.py
+        env:
+          R2_ACCOUNT_ID: dbad4dc0550693a69d5956df7344e001
+          R2_BUCKET: apostila
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
