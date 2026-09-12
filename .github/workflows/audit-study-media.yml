@@ -1,0 +1,35 @@
+name: Audit PDF and audiobook integrity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'products/catalog.json'
+      - 'scripts/audit-study-media.py'
+      - '.github/workflows/audit-study-media.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media validation tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check boto3 pypdf requests
+      - name: Verify source PDFs, audio integrity and private streaming
+        run: python -u scripts/audit-study-media.py
+        env:
+          R2_ACCOUNT_ID: dbad4dc0550693a69d5956df7344e001
+          R2_BUCKET: apostila
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
