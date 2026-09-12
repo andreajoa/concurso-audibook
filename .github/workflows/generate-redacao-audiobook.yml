@@ -6,7 +6,6 @@ on:
     branches: [main]
     paths:
       - "scripts/generate_redacao_audiobook.py"
-      - ".github/workflows/generate-redacao-audiobook.yml"
 
 permissions:
   contents: read
@@ -38,46 +37,6 @@ jobs:
 
       - name: Install Python dependencies
         run: python -m pip install --disable-pip-version-check requests boto3 pypdf pymupdf piper-tts
-
-      - name: Seed exact Redacao source files in private R2 on first run
-        env:
-          REDACAO_PDF_URL: https://margareth-5-estrategias.floot.app/_cdn/static/bcd22257-15f1-44c8-8150-d3656f585096-redacao-ensino-fundamental-completo-2026.pdf
-          REDACAO_SUMMARY_URL: https://margareth-5-estrategias.floot.app/_cdn/static/d3d870a5-a774-4d38-8951-5fb1ef83749b-redacao-resumo-upload.mp3
-        run: |
-          python - <<'PY'
-          import hashlib, os, requests, boto3
-          from botocore.config import Config
-          from botocore.exceptions import ClientError
-
-          account = "dbad4dc0550693a69d5956df7344e001"
-          bucket = "apostila"
-          s3 = boto3.client(
-              "s3",
-              endpoint_url=f"https://{account}.r2.cloudflarestorage.com",
-              region_name="auto",
-              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
-              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
-              config=Config(signature_version="s3v4"),
-          )
-          sources = [
-              ("docs/redacao-ensino-fundamental-completo-2026.pdf", os.environ["REDACAO_PDF_URL"], "70076df5fa4eb3677261f2e308d3aa0a475f6b20f97f073e7e50e2d5a59645b9", "application/pdf"),
-              ("redacao-nivel-fundamental-2026/resumo-como-gabaritar-redacao-nivel-fundamental.mp3", os.environ["REDACAO_SUMMARY_URL"], "f3919014ef3d2faca631777b5f4895774c3e968acd7a03ecfb3dee2a575610c4", "audio/mpeg"),
-          ]
-          for key, url, expected, content_type in sources:
-              try:
-                  s3.head_object(Bucket=bucket, Key=key)
-                  print(f"Already in R2: {key}")
-                  continue
-              except ClientError as exc:
-                  if exc.response.get("ResponseMetadata", {}).get("HTTPStatusCode") not in (403, 404):
-                      raise
-              data = requests.get(url, timeout=300).content
-              actual = hashlib.sha256(data).hexdigest()
-              if actual != expected:
-                  raise RuntimeError(f"SHA-256 mismatch for {key}: {actual}")
-              s3.put_object(Bucket=bucket, Key=key, Body=data, ContentType=content_type, CacheControl="private, max-age=0, no-store")
-              print(f"Uploaded verified source: {key} ({len(data)} bytes)")
-          PY
 
       - name: Generate cover and Brazilian Portuguese audiobook chapters
         run: python scripts/generate_redacao_audiobook.py
