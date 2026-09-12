@@ -2,6 +2,10 @@
   "autores-ibam-2026": {
     "slug": "autores-ibam-2026",
     "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Prefeitura de Santos",
+    "examBoard": "IBAM",
+    "category": "Educação",
     "name": "Quem disse o quê? — Apostila de Autores IBAM",
     "shortName": "Apostila de Autores — Banca IBAM",
     "edition": "Santos 2026",
@@ -12,6 +16,17 @@
     "compareAtCents": 4999,
     "stripePriceEnv": "STRIPE_PRICE_AUTORES_IBAM_2026",
     "description": "Material de preparação focado em reconhecer autores, conceitos e armadilhas recorrentes da banca IBAM, com leitura em PDF e revisão em audiobook.",
+    "storefront": {
+      "badge": "CONCURSO PREFEITURA DE SANTOS • BANCA IBAM",
+      "cover3d": "/assets/apostila-santos-ibam-3d.webp",
+      "cta": "Quero esta apostila + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
     "proofPoints": [
       "34 páginas de conteúdo direcionado",
       "100 questões com gabarito comentado",
