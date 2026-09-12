@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/smoke-production.yml'
+      - 'public/**'
+      - 'api/checkout.js'
+      - 'api/access-page.js'
+      - 'lib/checkout-hosted.js'
+      - 'lib/stripe.js'
+      - 'products/**'
   workflow_dispatch:
 
 permissions:
@@ -13,56 +19,70 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Test public sales page, checkout and paywall
+      - name: Wait for production deploy and test commerce
         shell: bash
         run: |
           node <<'NODE'
           const base='https://concurso-audibook.vercel.app';
-          const fail=(m)=>{console.error('FAIL',m);process.exit(1)};
-          const ok=(m)=>console.log('OK  ',m);
+          const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+          const fail=m=>{console.error('FAIL',m);process.exit(1)};
+          const ok=m=>console.log('OK  ',m);
 
-          async function get(path, opts={}){
-            const r=await fetch(base+path,{redirect:opts.redirect||'follow'});
-            return r;
+          async function waitForHome(){
+            for(let i=0;i<24;i++){
+              try{
+                const r=await fetch(base+'/',{cache:'no-store'});
+                const html=await r.text();
+                if(r.ok&&html.includes('Trilha Aprova')&&html.includes('R$ 49,99')&&html.includes('R$ 24,99')&&html.includes('apostila-santos-ibam-3d.webp')) return html;
+              }catch{}
+              console.log(`waiting for Vercel production deploy (${i+1}/24)`);
+              await sleep(5000);
+            }
+            fail('new Trilha Aprova storefront did not reach production in time');
           }
 
-          const home=await get('/');
-          const html=await home.text();
-          if(!home.ok) fail(`home HTTP ${home.status}`);
-          for(const marker of ['R$ 24,99','Pagamento seguro via Stripe','Quero acessar a apostila + audiobook']){
-            if(!html.includes(marker)) fail(`home missing marker: ${marker}`);
-          }
-          ok('sales home is live with price and payment CTA');
+          const html=await waitForHome();
+          if(!/<del[^>]*>R\$ 49,99<\/del>/.test(html)) fail('R$ 49,99 is not rendered as crossed-out price on storefront');
+          ok('Trilha Aprova storefront is live with 3D cover and crossed-out reference price');
 
-          const manifest=await get('/materials.json',{redirect:'manual'});
+          const logo=await fetch(base+'/assets/trilha-aprova-logo.webp',{cache:'no-store'});
+          if(!logo.ok||!(logo.headers.get('content-type')||'').includes('image')) fail(`brand logo asset invalid: HTTP ${logo.status} ${logo.headers.get('content-type')}`);
+          const cover=await fetch(base+'/assets/apostila-santos-ibam-3d.webp',{cache:'no-store'});
+          if(!cover.ok||!(cover.headers.get('content-type')||'').includes('image')) fail(`3D cover asset invalid: HTTP ${cover.status} ${cover.headers.get('content-type')}`);
+          ok('brand and 3D product assets are valid images');
+
+          const manifest=await fetch(base+'/materials.json',{redirect:'manual'});
           if(manifest.status>=200&&manifest.status<400) fail(`public paid manifest still reachable: HTTP ${manifest.status}`);
           ok(`public paid manifest blocked/absent: HTTP ${manifest.status}`);
 
-          const locked=await get('/acesso',{redirect:'manual'});
+          const locked=await fetch(base+'/acesso',{redirect:'manual'});
           if(![301,302,303,307,308].includes(locked.status)) fail(`/acesso without purchase did not redirect: HTTP ${locked.status}`);
           const loc=locked.headers.get('location')||'';
           if(!loc.includes('recuperar')) fail(`/acesso redirect unexpected: ${loc}`);
           ok('buyer area is locked without a valid purchase session');
 
+          const configResponse=await fetch(base+'/api/checkout',{cache:'no-store'});
+          const config=await configResponse.json().catch(()=>({}));
+          if(!configResponse.ok) fail(`checkout config HTTP ${configResponse.status}`);
+          ok(`checkout mode available: ${config.embedded?'embedded':'hosted fallback'}`);
+
           const qa=`qa-${Date.now()}@example.com`;
           const checkout=await fetch(base+'/api/checkout',{
-            method:'POST',
-            headers:{'content-type':'application/json'},
-            body:JSON.stringify({
-              slug:'autores-ibam-2026',
-              name:'Teste QA Checkout',
-              email:qa,
-              whatsapp:'11999999999',
-              marketingConsent:false,
-              analytics:{visitorId:'qa-smoke',sessionId:`qa-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}
-            })
+            method:'POST',headers:{'content-type':'application/json'},
+            body:JSON.stringify({slug:'autores-ibam-2026',name:'Teste QA Trilha Aprova',email:qa,whatsapp:'11999999999',marketingConsent:false,embedded:Boolean(config.embedded),analytics:{visitorId:'qa-smoke-visitor',sessionId:`qa-smoke-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}})
           });
           const text=await checkout.text();
           let data={};try{data=JSON.parse(text)}catch{}
           if(!checkout.ok) fail(`checkout HTTP ${checkout.status}: ${text.slice(0,500)}`);
-          if(!data.url||!/^https:\/\/.+stripe\.com\//i.test(data.url)) fail(`checkout did not return Stripe URL: ${text.slice(0,500)}`);
-          ok('production checkout creates a Stripe Checkout Session');
+          if(!String(data.sessionId||'').startsWith('cs_')) fail(`checkout missing Stripe session: ${text.slice(0,500)}`);
+          if(data.mode==='embedded'){
+            if(!data.clientSecret||!String(data.clientSecret).includes('_secret_')) fail('embedded checkout missing client secret');
+            ok('production Stripe Embedded Checkout session created');
+          }else{
+            if(!data.url||!/^https:\/\/.+stripe\.com\//i.test(data.url)) fail(`hosted checkout missing Stripe URL: ${text.slice(0,500)}`);
+            ok('production Stripe hosted checkout session created');
+          }
           console.log('SMOKE PASS');
           NODE
