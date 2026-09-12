@@ -17,10 +17,11 @@ References supplied by the user: the existing Trilha Aprova brand, its navy/gold
 
 ## 3. Energy curve
 - Object 01 / hero: focused confidence — the 3D cover dominates the first screen.
-- Evidence: calm clarity — factual blocks explain what is inside and what problem each part solves.
+- Scroll statement: editorial emphasis — words fill as the core study belief becomes explicit.
+- Evidence: controlled momentum — four cards stack rather than appearing as a generic grid.
 - Signature route: rising momentum — the gold Trilha line advances through four study stages.
-- Formats: relief — PDF and audio adapt to different moments of the day.
-- Access: reassurance — protected delivery and payment flow are made explicit.
+- Formats: useful interaction — panels expand to show PDF, audiobook and questions without adding decorative motion.
+- Access: reassurance — protected delivery and in-page payment flow are made explicit.
 - Close: decisive — quiet catalog plate with the same purchase action.
 
 ## 4. Feeling curve and peak
@@ -33,6 +34,8 @@ Tell-someone sentence: “É a plataforma de apostilas em que cada concurso apar
 ## 5. Signature move
 **Trilha de Estudo** — a bespoke gold route whose fill and active station advance with scroll through the four intended study stages. It belongs to the Trilha Aprova brand and is not a generic progress bar.
 
+Supplemental devices intentionally selected from the user’s animation reference: stacking cards, scroll-filled text, subtle pointer light, and expanding panels. Horizontal scroll-jacking is reserved for a future catalog with multiple real products. Sequence scrub, mask reveal, cube, fake countdown, particles, shader and wave mesh are intentionally excluded because they do not improve the current customer journey.
+
 ## 6. Aesthetic range
 Premium-editorial / catalog. Not maximalist, not playful, not brutalist. High contrast between paper, navy and champagne gold; strong typography; product object first.
 
@@ -43,8 +46,8 @@ Reason: the platform is intended to host multiple apostilas. The product object 
 
 ## 8. Existing assets
 - Trilha Aprova logo: `public/assets/trilha-aprova-logo.webp`
-- 3D apostila: `public/assets/apostila-santos-ibam-3d.webp`
-- Existing Stripe checkout, CRM analytics, buyer access and recovery flows.
+- Restored 3D apostila: `public/assets/apostila-santos-ibam-3d.webp`
+- Existing payment backend, CRM analytics, buyer access and recovery flows.
 
 No KIE asset generation is used.
 
@@ -53,6 +56,9 @@ No KIE asset generation is used.
 - Audience: candidates preparing for Professor Adjunto I / II — Educação Especial.
 - Belief to install: a well-structured, targeted material can reduce study dispersion and make revision more efficient, without falsely guaranteeing approval.
 - One action: **Comprar esta apostila**.
+
+## Payment experience
+The payment provider is infrastructure, not marketing copy. Customer-facing language uses “pagamento seguro”, “confirmação automática” and “liberação do acesso”. Checkout is embedded inside the Trilha Aprova purchase page and must not redirect to a separate hosted checkout as the normal path.
 
 ## Authored silence
 The space around the 3D cover and the quiet catalog close are intentional pauses, not dead scroll.
