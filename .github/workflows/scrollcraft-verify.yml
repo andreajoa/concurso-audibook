@@ -7,6 +7,10 @@ on:
       - 'public/index.html'
       - 'public/trilha.css'
       - 'public/trilha-page.js'
+      - 'public/experience.css'
+      - 'public/experience.js'
+      - 'public/checkout-embedded.css'
+      - 'public/checkout-embedded.js'
       - 'public/assets/**'
       - 'scrollcraft/**'
       - 'scripts/scrollcraft-visual.mjs'
@@ -30,7 +34,7 @@ jobs:
         run: |
           for i in {1..30}; do
             HTML="$(curl -fsSL --max-time 12 https://concurso-audibook.vercel.app/ || true)"
-            if echo "$HTML" | grep -q 'data-trail-map' && echo "$HTML" | grep -q 'apostila-santos-ibam-3d.webp?v=ea6d7814'; then
+            if echo "$HTML" | grep -q 'data-trail-map' && echo "$HTML" | grep -q 'apostila-santos-ibam-3d.webp?v=bf874874'; then
               echo "Production storefront is current"
               exit 0
             fi
