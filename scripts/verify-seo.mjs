@@ -125,7 +125,7 @@ const subdir = (d) => exists(d) ? fs.readdirSync(path.join(root, d)).filter((f) 
 const pages = fs.readdirSync(path.join(root, 'public'))
   .filter((f) => f.endsWith('.html'))
   .map((f) => `public/${f}`)
-  .concat(subdir('public/apostilas'), subdir('public/materias'));
+  .concat(subdir('public/apostilas'), subdir('public/materias'), subdir('public/ferramentas'));
 
 const titles = new Map();
 const descriptions = new Map();
@@ -255,6 +255,46 @@ for (const t of backlog) {
   if (!t.id || !t.title || !t.angle || !t.keyword || !t.scope || !t.type) fail(`pauta incompleta no backlog: ${t.id || '(sem id)'}`);
 }
 ok(`backlog editorial com ${remaining} pauta(s) restante(s) (${Math.floor(remaining / 4)} meses de publicação semanal)`);
+
+// -------------------------------------------------------- ferramentas grátis
+// A promessa da página é forte — "roda no navegador, não pedimos cadastro, nada
+// é enviado". Se alguém acrescentar um fetch ou um campo de e-mail, o texto
+// vira mentira. Estas travas existem para isso, não para estilo.
+const tools = JSON.parse(read('content/ferramentas.json'));
+
+if (!exists('public/ferramentas.js')) fail('public/ferramentas.js ausente: as ferramentas não funcionariam');
+if (!exists('public/ferramentas.css')) fail('public/ferramentas.css ausente');
+
+const toolJs = read('public/ferramentas.js');
+if (/\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon/.test(toolJs)) {
+  fail('ferramentas.js faz requisição de rede — as páginas prometem que nada é enviado');
+}
+if (!/localStorage/.test(toolJs)) fail('ferramentas.js não persiste nada: o progresso seria perdido a cada visita');
+
+for (const t of tools) {
+  const page = `public/ferramentas/${t.slug}.html`;
+  if (!exists(page)) { fail('ferramenta não gerada: ' + t.slug); continue; }
+  const html = read(page);
+  const main = html.match(/<main[\s\S]*?<\/main>/)?.[0] || '';
+
+  if (!main.includes(`data-tool="${t.tool}"`)) fail(`ferramenta ${t.slug} sem o contêiner data-tool no HTML`);
+  if (!html.includes('/ferramentas.js')) fail(`ferramenta ${t.slug} não carrega o script`);
+  if (!html.includes('/ferramentas.css')) fail(`ferramenta ${t.slug} não carrega o CSS`);
+  if (!/"SoftwareApplication"/.test(html)) fail(`ferramenta ${t.slug} sem JSON-LD de SoftwareApplication`);
+
+  const text = main.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const problems = factualProblems(text);
+  if (problems.length) fail(`ferramenta ${t.slug} afirma o que não pode sustentar — ${problems.join('; ')}`);
+  if ((main.match(/href="\//g) || []).length < 5) fail(`ferramenta ${t.slug} com poucos links internos`);
+
+  // A isca de e-mail é exatamente o que estas páginas prometem não fazer.
+  if (/type="email"/.test(main)) fail(`ferramenta ${t.slug} pede e-mail, contrariando a promessa da página`);
+}
+
+const toolSlugs = tools.map((t) => t.slug);
+if (new Set(toolSlugs).size !== toolSlugs.length) fail('duas ferramentas com o mesmo slug');
+if (!exists('public/ferramentas.html')) fail('hub /ferramentas não gerado');
+ok(`${tools.length} ferramenta(s) gratuita(s) sem rede, sem cadastro e com dados estruturados`);
 
 // ------------------------------------------------------------------ IndexNow
 const keyFile = fs.readdirSync(path.join(root, 'public')).find((f) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(f) && f !== 'robots.txt' && !f.startsWith('llms'));

@@ -1,0 +1,55 @@
+.tool{max-width:860px;margin:28px 0;padding:24px;background:#fff;border:1px solid #e1e7ee;border-radius:14px}
+.tool-step{margin:0 0 22px}
+.tool-step>strong,.tool-step>label>strong{display:block;color:#08284f;font-size:16px;margin-bottom:4px}
+.tool-hint{display:block;font-size:14px;color:#5b6e82;margin-bottom:10px;line-height:1.5}
+.tool textarea,.tool input[type=text],.tool input[type=number]{width:100%;font:16px/1.5 system-ui,sans-serif;color:#15304e;border:1px solid #d7dfe8;border-radius:8px;padding:10px 12px;background:#fff}
+.tool textarea{resize:vertical;min-height:150px}
+.tool textarea:focus,.tool input:focus{outline:3px solid #b99754;outline-offset:1px;border-color:#08284f}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;align-items:start}
+.tool-grid label{display:block}
+.tool-actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 0}
+.tool-button{font:600 15px system-ui,sans-serif;background:#08284f;color:#fff;border:1px solid #08284f;border-radius:10px;padding:12px 20px;cursor:pointer}
+.tool-button:hover{background:#0d3a6e;border-color:#0d3a6e}
+.tool-button-ghost{background:#fff;color:#184c77;border-color:#d7dfe8}
+.tool-button-ghost:hover{background:#f5f7fa}
+.tool-button:focus-visible{outline:3px solid #b99754;outline-offset:3px}
+.tool-scroll{overflow-x:auto;margin:12px 0}
+.tool-table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
+.tool-table th{text-align:left;font:600 13px system-ui,sans-serif;color:#5b6e82;letter-spacing:.02em;padding:6px 8px;border-bottom:1px solid #e1e7ee;white-space:nowrap}
+.tool-table td{padding:6px 8px;vertical-align:middle;border-bottom:1px solid #f0f4f8}
+.tool-table input[type=number]{max-width:92px}
+.tool-result td{color:#2c4763}
+.tool-result tr.is-risk td{background:#fdf3f0}
+.tool-remove{background:none;border:0;color:#9aa8b5;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:6px}
+.tool-remove:hover{color:#a3402c;background:#fdf3f0}
+.tool-output{margin-top:26px;padding-top:22px;border-top:1px solid #e1e7ee}
+.tool-output h3{font:600 19px/1.35 Georgia,serif;color:#08284f;margin:22px 0 10px}
+.tool-progress{margin:0 0 18px}
+.tool-progress-bar{height:10px;border-radius:999px;background:#e8edf3;overflow:hidden}
+.tool-progress-bar span{display:block;height:100%;width:0;background:#08284f;border-radius:999px;transition:width .25s ease}
+.tool-progress p{margin:8px 0 0;font-size:14px;color:#5b6e82}
+.tool-group{margin:0 0 22px}
+.tool-group h3{font:600 15px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#85662c;margin:0 0 8px}
+.tool-check{list-style:none;padding:0;margin:0}
+.tool-check li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f4f8}
+.tool-check input[type=checkbox]{margin-top:4px;width:19px;height:19px;flex:0 0 auto;accent-color:#08284f}
+.tool-topic{flex:1;line-height:1.55;color:#15304e;padding:2px 4px;border-radius:6px;min-width:0}
+.tool-topic:focus{outline:2px solid #b99754;background:#fffdf7}
+.tool-check li.is-done .tool-topic{color:#8a97a3;text-decoration:line-through}
+.tool-verdict{max-width:780px;font-size:17px;line-height:1.65;color:#12314f;border-left:4px solid #b99754;padding:6px 0 6px 16px;margin:14px 0}
+.tool-verdict.is-ok{border-left-color:#2f7d52}
+.tool-verdict.is-risk{border-left-color:#a3402c;color:#7a3222}
+.tool-path{max-width:780px;padding-left:20px;margin:10px 0}
+.tool-path li{margin-bottom:8px}
+.tool-note{max-width:780px;font-size:14px;line-height:1.65;color:#5b6e82;margin:12px 0}
+.tool-saved{font-size:13px;color:#2f7d52;margin:14px 0 0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tool-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:28px 0;max-width:1000px}
+.tool-card{border:1px solid #e1e7ee;border-radius:14px;padding:22px;background:#fff}
+.tool-card h3{font:400 21px/1.3 Georgia,serif;color:#08284f;margin:0 0 8px}
+.tool-card h3 a{text-decoration:none;color:inherit}
+.tool-card h3 a:hover{text-decoration:underline}
+.tool-card p{margin:0 0 12px;font-size:15px}
+.tool-card .tool-card-tag{display:inline-block;font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2f7d52;background:#eef7f1;border-radius:999px;padding:4px 10px;margin-bottom:10px}
+@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table input[type=number]{max-width:70px}.tool-verdict{font-size:16px}}
+@media print{.guide-header,.site-footer,.tool-actions,.tool-step,.tool-remove,.newsletter-invite{display:none!important}.tool{border:0;padding:0}.tool-output{border-top:0}}

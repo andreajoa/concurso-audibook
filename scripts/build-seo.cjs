@@ -13,6 +13,9 @@ const cities = require('../content/local-seo.json');
 // Matérias escritas pelo cron editorial. O arquivo é atualizado por commit do
 // worker (api/editorial-cron.js), e é este build que as transforma em página.
 const articles = require('../content/articles.json');
+// Ferramentas gratuitas: a página é estática e indexável, o cálculo roda no
+// navegador (public/ferramentas.js). Nenhuma delas depende de backend.
+const tools = require('../content/ferramentas.json');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const CDN = 'https://margareth-5-estrategias.floot.app';
@@ -144,6 +147,7 @@ const corpus = [];
  * ------------------------------------------------------------------ */
 
 const NAV = [
+  ['/ferramentas', 'Ferramentas grátis'],
   ['/concursos-baixada-santista', 'Baixada Santista'],
   ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
   ['/materias', 'Matérias'],
@@ -223,7 +227,7 @@ function renderPage(opts) {
   const {
     path, title, metaTitle, description, kicker = '', lead = '', keyFacts = [],
     body, faq = [], nodes = [], trail = [], image = COVER, updated = BUILD_DATE,
-    priority = '0.6', images = []
+    priority = '0.6', images = [], styles = [], scripts = []
   } = opts;
 
   const url = ORIGIN + path;
@@ -243,6 +247,7 @@ function renderPage(opts) {
     seoBlock({ path, title: metaTitle || title, description, image, nodes: graph }) +
     '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css">' +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
+    styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
     '</head><body>' +
     `<header class="guide-header"><a class="guide-brand" href="/">Trilha Aprova</a><nav aria-label="Navegação do conteúdo">${navHtml}</nav></header>` +
     `<main class="guide">${crumbsHtml(fullTrail)}` +
@@ -255,6 +260,7 @@ function renderPage(opts) {
     `<p class="updated">Página atualizada em ${esc(updated)}. Autoria: ${esc(AUTHOR_NAME)}.</p>` +
     '</main>' + footer +
     '<script src="/newsletter.js" defer></script><script src="/cookie-consent.js" defer></script><script src="/analytics-crm.js" defer></script>' +
+    scripts.map(src => `<script src="${esc(src)}" defer></script>`).join('') +
     '</body></html>';
 
   const dir = 'public' + path.substring(0, path.lastIndexOf('/'));
@@ -644,6 +650,135 @@ renderPage({
 });
 
 /* ------------------------------------------------------------------ *
+ * Ferramentas gratuitas
+ *
+ * Rodam inteiras no navegador, com o estado em localStorage. É o único
+ * conteúdo do site que uma IA não consegue reproduzir em texto, e é o que
+ * costuma receber link espontâneo — ninguém linka apostila, mas linka
+ * ferramenta. Por isso cada uma tem página própria, indexável e explicada.
+ * ------------------------------------------------------------------ */
+
+const toolNode = t => ({
+  '@type': ['SoftwareApplication', 'WebApplication'],
+  '@id': ORIGIN + '/ferramentas/' + t.slug + '#app',
+  name: t.title,
+  description: t.description,
+  url: ORIGIN + '/ferramentas/' + t.slug,
+  applicationCategory: 'EducationalApplication',
+  applicationSubCategory: 'Ferramenta de estudo para concurso público',
+  operatingSystem: 'Qualquer navegador moderno',
+  browserRequirements: 'Requer JavaScript. Não requer cadastro.',
+  inLanguage: 'pt-BR',
+  isAccessibleForFree: true,
+  permissions: 'Nenhuma. Os dados ficam no armazenamento local do navegador.',
+  author: { '@id': ORIGIN + '/#author' },
+  publisher: { '@id': ORIGIN + '/#organization' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL', availability: 'https://schema.org/InStock' }
+});
+
+for (const t of tools) {
+  const path = '/ferramentas/' + t.slug;
+  const others = tools.filter(o => o.slug !== t.slug);
+
+  renderPage({
+    path,
+    title: t.title,
+    metaTitle: (t.metaTitle || t.title) + ' | Trilha Aprova',
+    description: t.description,
+    kicker: 'FERRAMENTA GRATUITA',
+    lead: t.lead,
+    keyFacts: t.keyFacts,
+    body:
+      t.appHtml +
+      t.sections.map(s => `<h2>${esc(s.h2)}</h2>${s.html}`).join('') +
+      '<h2>As outras ferramentas gratuitas</h2><ul>' +
+      others.map(o => `<li><a href="/ferramentas/${o.slug}">${esc(o.title)}</a> — ${esc(o.description)}</li>`).join('') +
+      '</ul>' +
+      '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
+      disclaimer,
+    faq: t.faq,
+    nodes: [toolNode(t), {
+      '@type': 'HowTo',
+      '@id': ORIGIN + path + '#howto',
+      name: 'Como usar: ' + t.title,
+      inLanguage: 'pt-BR',
+      totalTime: 'PT10M',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'BRL', value: '0' },
+      step: [
+        { '@type': 'HowToStep', position: 1, name: 'Abra a ferramenta', text: 'A página carrega pronta para uso, sem cadastro e sem informar e-mail.' },
+        { '@type': 'HowToStep', position: 2, name: 'Informe os dados do seu edital', text: 'Use o documento oficial do órgão ou da banca como fonte dos números.' },
+        { '@type': 'HowToStep', position: 3, name: 'Gere o resultado', text: 'O cálculo acontece no seu navegador e o resultado aparece na mesma página.' },
+        { '@type': 'HowToStep', position: 4, name: 'Salve ou imprima', text: 'O progresso fica guardado neste navegador e o botão de imprimir permite salvar em PDF.' }
+      ]
+    }],
+    trail: [['Ferramentas', '/ferramentas']],
+    styles: ['/ferramentas.css'],
+    scripts: ['/ferramentas.js'],
+    priority: '0.8'
+  });
+}
+
+renderPage({
+  path: '/ferramentas',
+  title: 'Ferramentas gratuitas para quem estuda para concurso',
+  metaTitle: 'Ferramentas gratuitas para concurso público',
+  description: 'Checklist do edital, cronograma por peso das disciplinas e calculadora de acertos. Funcionam no navegador, sem cadastro, sem e-mail e sem enviar seus dados.',
+  kicker: 'GRATUITO',
+  lead: 'São três ferramentas que respondem as três perguntas que todo candidato faz no começo: o que estudar, quanto tempo dar para cada matéria e quantas questões é preciso acertar. Funcionam inteiras dentro do navegador — não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho.',
+  keyFacts: [
+    ['Quantas ferramentas', String(tools.length)],
+    ['Preço', 'Gratuitas, sem cadastro e sem e-mail'],
+    ['Onde os dados ficam', 'No armazenamento local do seu navegador'],
+    ['Funcionam no celular', 'Sim, e continuam funcionando offline depois do primeiro acesso'],
+    ['O que elas não fazem', 'Não publicam vaga, data de prova nem nota de corte']
+  ],
+  body:
+    '<h2>As ferramentas</h2><div class="tool-cards">' +
+    tools.map(t => '<article class="tool-card"><span class="tool-card-tag">Grátis</span>' +
+      `<h3><a href="/ferramentas/${t.slug}">${esc(t.title)}</a></h3>` +
+      `<p>${esc(t.description)}</p>` +
+      `<p><a href="/ferramentas/${t.slug}">Abrir ferramenta</a></p></article>`).join('') +
+    '</div>' +
+    '<h2>Por que elas não pedem cadastro</h2>' +
+    '<p>A troca mais comum na internet é ferramenta grátis em troca do seu e-mail. Aqui não existe essa troca, por um motivo prático: o cálculo é simples o bastante para acontecer no seu próprio navegador, e mandar seus dados para um servidor só criaria um risco que não precisa existir. O que você digitar fica no seu aparelho.</p>' +
+    '<p>A consequência é que o resultado não te acompanha entre aparelhos. Se você montar o cronograma no computador, ele não aparece no celular. O botão de imprimir resolve isso: ele abre a caixa de impressão do navegador, onde dá para salvar em PDF e guardar onde você quiser.</p>' +
+    '<h2>Como as três se encaixam</h2>' +
+    '<ol><li><strong>Comece pelo <a href="/ferramentas/edital-verticalizado">checklist do edital</a>.</strong> Ele transforma o conteúdo programático em lista marcável e responde o que estudar.</li>' +
+    '<li><strong>Depois use o <a href="/ferramentas/cronograma-de-estudos">cronograma</a>.</strong> Ele distribui suas horas na proporção de questões e peso, e responde quanto tempo dar para cada matéria.</li>' +
+    '<li><strong>Por fim, a <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>.</strong> Ela mostra quantas questões faltam para a sua meta e onde cada acerto rende mais pontos.</li></ol>' +
+    '<p>Os três resultados ficam salvos no mesmo navegador, então dá para voltar amanhã e continuar de onde parou.</p>' +
+    '<h2>O que nós não calculamos</h2>' +
+    '<p>Nenhuma das ferramentas informa nota de corte, data de prova, número de vagas ou chance de aprovação. Nota de corte é resultado de uma edição específica, com concorrência específica, e publicar um número desses sem o documento oficial seria inventar informação que alguém usaria para decidir o que estudar. Quando a calculadora pede uma pontuação-alvo, é você quem informa — do edital, do resultado oficial da edição anterior ou da sua própria meta.</p>' +
+    '<h2>Conteúdo para acompanhar as ferramentas</h2><ul>' +
+    guides.map(g => `<li><a href="/${g.slug}">${esc(g.title)}</a> — ${esc(g.description)}</li>`).join('') +
+    '</ul>' +
+    '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
+    disclaimer,
+  faq: [
+    { q: 'As ferramentas são realmente gratuitas?', a: 'São. Não há cadastro, não pedimos e-mail e não há versão paga delas. As apostilas em PDF com audiobook são vendidas à parte e não são necessárias para usar nenhuma das ferramentas.' },
+    { q: 'Meus dados são enviados para vocês?', a: 'Não. O cálculo acontece dentro do seu navegador e o resultado fica no armazenamento local do aparelho. Nada do que você digitar chega até nós.' },
+    { q: 'Funciona no celular?', a: 'Sim. As três foram feitas para tela pequena e continuam funcionando offline depois do primeiro acesso, porque não dependem de servidor para calcular.' },
+    { q: 'Vocês informam a nota de corte do meu concurso?', a: 'Não. Nota de corte é resultado de uma edição específica e só o documento oficial do órgão ou da banca vale. A calculadora usa a pontuação que você informar.' },
+    { q: 'Preciso instalar alguma coisa?', a: 'Não. Basta abrir a página no navegador. Não há aplicativo, extensão nem download obrigatório.' }
+  ],
+  nodes: [{
+    '@type': 'ItemList',
+    '@id': ORIGIN + '/ferramentas#lista',
+    name: 'Ferramentas gratuitas para concurso público',
+    numberOfItems: tools.length,
+    itemListElement: tools.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: ORIGIN + '/ferramentas/' + t.slug,
+      name: t.title
+    }))
+  }, ...tools.map(toolNode)],
+  trail: [],
+  styles: ['/ferramentas.css'],
+  priority: '0.9'
+});
+
+/* ------------------------------------------------------------------ *
  * Páginas por cidade (Baixada Santista)
  * ------------------------------------------------------------------ */
 
@@ -824,6 +959,10 @@ const discovery = '<!-- discovery:start -->' +
   '<h2>Apostilas para concursos com PDF e audiobook</h2>' +
   '<p>Conheça o conteúdo de cada material antes de comprar. Os arquivos são digitais, com acesso em todo o Brasil.</p></div>' +
   `<ul>${productLinks}</ul>` +
+  '<h3>Ferramentas gratuitas, sem cadastro</h3>' +
+  '<p>Três ferramentas que funcionam dentro do navegador e não pedem e-mail: o checklist do edital responde o que estudar, o cronograma responde quanto tempo dar para cada matéria e a calculadora responde quantas questões faltam para a sua meta.</p>' +
+  `<ul>${tools.map(t => `<li><a href="/ferramentas/${t.slug}">${esc(t.title)}</a></li>`).join('')}</ul>` +
+  '<p><a href="/ferramentas">Ver todas as ferramentas gratuitas</a></p>' +
   '<h3>Preparação no litoral de São Paulo</h3>' +
   '<p>Estuda para concursos em Santos, São Vicente, Guarujá, Praia Grande ou Cubatão? Cada guia abaixo reúne os órgãos que abrem seleções na cidade, onde conferir o edital oficial e como organizar leitura, exercícios e revisão em áudio.</p>' +
   `<ul class="city-links">${cityLinks}</ul>` +
@@ -953,6 +1092,9 @@ const llms =
   '\n\n## Matérias (atualizadas semanalmente)\n\n' +
   `- [Todas as matérias](${ORIGIN}/materias): seção de conteúdo sobre método de estudo, atualizada toda semana.\n` +
   articlesNewestFirst.map(a => `- [${a.title}](${ORIGIN}/materias/${a.slug}): ${a.description} Publicada em ${a.published}.`).join('\n') +
+  '\n\n## Ferramentas gratuitas (sem cadastro, sem envio de dados)\n\n' +
+  `- [Todas as ferramentas](${ORIGIN}/ferramentas): ${tools.length} ferramentas que rodam no navegador do usuário, sem cadastro e sem e-mail.\n` +
+  tools.map(t => `- [${t.title}](${ORIGIN}/ferramentas/${t.slug}): ${t.description} Gratuita, roda no navegador, os dados ficam no aparelho do usuário.`).join('\n') +
   '\n\n## Concursos por cidade — Baixada Santista (SP)\n\n' +
   cities.map(c => `- [${c.title}](${ORIGIN}/${c.slug}): ${c.description}`).join('\n') +
   '\n\n## Institucional\n\n' +
