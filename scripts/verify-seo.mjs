@@ -52,16 +52,26 @@ if (!exists(gscFile)) {
   ok('arquivo de verificação do Search Console');
 }
 
+// Medido em produção em 2026-09-13: na Vercel os redirects gerados por cleanUrls
+// são avaliados ANTES dos rewrites. Com cleanUrls ligado, nenhuma URL terminada em
+// .html responde 200 — ela vira 308 para a versão sem extensão. Um rewrite de
+// /<token>.html é, portanto, configuração morta: nunca chega a ser avaliado.
+// Por isso a verificação por arquivo HTML não é usada aqui, e este teste existe
+// para impedir que alguém a reintroduza acreditando que funciona.
 const vercel = JSON.parse(read('vercel.json'));
-const gscRewrite = (vercel.rewrites || []).find((r) => r.source === `/${GSC_TOKEN}.html`);
-if (!gscRewrite || gscRewrite.destination !== `/gsc/${GSC_TOKEN}.txt`) {
-  fail('vercel.json sem rewrite de /' + GSC_TOKEN + '.html para o token');
-} else {
-  ok('rewrite do Search Console sem redirecionamento');
-}
-if (!(vercel.rewrites || []).some((r) => r.source === `/${GSC_TOKEN}.html`) ||
-    !JSON.stringify(vercel.headers || []).includes('text/html; charset=utf-8')) {
-  fail('vercel.json deve servir o token como text/html');
+const rewriteSources = new Set((vercel.rewrites || []).map((r) => r.source));
+if (vercel.cleanUrls) {
+  // Um rewrite de /x.html só continua valendo se /x — o destino do 308 — também
+  // estiver coberto. É o caso de /acesso.html, que cai em /acesso. Sem essa dupla,
+  // o rewrite é inalcançável, como era o do token do Search Console.
+  const orphaned = [...rewriteSources]
+    .filter((s) => s.endsWith('.html'))
+    .filter((s) => !rewriteSources.has(s.slice(0, -'.html'.length)));
+  if (orphaned.length) {
+    fail('rewrite inalcançável com cleanUrls (o 308 vem antes): ' + orphaned.join(', '));
+  } else {
+    ok('nenhum rewrite .html inalcançável por causa do cleanUrls');
+  }
 }
 
 // Segundo método de verificação: a meta tag precisa continuar na home.
@@ -155,6 +165,12 @@ for (const page of pages) {
   else if (!canonical.startsWith(ORIGIN)) fail(`${page} com canonical fora do domínio`);
   if (h1Count !== 1) fail(`${page} tem ${h1Count} elementos h1 (deve ter exatamente 1)`);
   if (!/hreflang="pt-BR"/.test(html)) fail(`${page} sem hreflang pt-BR`);
+
+  // Com cleanUrls, um link interno para /pagina.html custa um 308 em cada clique
+  // e dilui o link interno. Os links têm de apontar direto para a URL limpa.
+  for (const link of html.matchAll(/href="(\/[^"]*\.html)"/g)) {
+    fail(`${page} linka ${link[1]} — use a URL sem .html (cleanUrls redireciona)`);
+  }
   if (!/<script type="application\/ld\+json">/.test(html)) fail(`${page} sem dados estruturados`);
 
   // Título ou descrição repetidos entre páginas é a assinatura de página-ponte.

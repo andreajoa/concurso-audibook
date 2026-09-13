@@ -12,10 +12,6 @@
     {
       "source": "/acesso.html",
       "destination": "/api/access-page"
-    },
-    {
-      "source": "/googlef2a7a77b144edac3.html",
-      "destination": "/gsc/googlef2a7a77b144edac3.txt"
     }
   ],
   "functions": {
@@ -30,19 +26,6 @@
     }
   ],
   "headers": [
-    {
-      "source": "/googlef2a7a77b144edac3.html",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
-    },
     {
       "source": "/assets/(.*)",
       "headers": [
