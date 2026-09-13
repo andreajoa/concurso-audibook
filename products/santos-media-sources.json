@@ -1,0 +1,92 @@
+{
+  "agente-de-portaria-ibam-santos-2026": {
+    "pdfFile": "agente-de-portaria-ibam-santos-2026.pdf",
+    "pdfSha256": "808af1b8216ad3b1fb0d36712ec2fcc349654d31a67cfbec3be7ff626f5aa6bc",
+    "coverFile": "agente-de-portaria-ibam-santos-2026.png",
+    "coverSha256": "8dc2c6ea25ad011f7872f9e5b54556e23eade102b237c91af4a67ce7769fc25b",
+    "pageCount": 72,
+    "chapters": [
+      [
+        2,
+        4
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        18,
+        24
+      ],
+      [
+        25,
+        28
+      ],
+      [
+        29,
+        37
+      ],
+      [
+        38,
+        62
+      ],
+      [
+        63,
+        72
+      ]
+    ],
+    "summaryPages": [
+      2,
+      2
+    ]
+  },
+  "inspetor-de-alunos-ibam-santos-2026": {
+    "pdfFile": "inspetor-de-alunos-ibam-santos-2026.pdf",
+    "pdfSha256": "0853dcd1287ce6b9e45d3fe8d016f493028814266f5d0f4bf48a7e2935c21099",
+    "coverFile": "inspetor-de-alunos-ibam-santos-2026.png",
+    "coverSha256": "c5b4e67f27c73fb2bf4d83386ba7d5085e3f0fe0175d6177a457531dfea48476",
+    "pageCount": 76,
+    "chapters": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        10,
+        13
+      ],
+      [
+        14,
+        19
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        23,
+        29
+      ],
+      [
+        30,
+        56
+      ],
+      [
+        57,
+        76
+      ]
+    ],
+    "summaryPages": [
+      2,
+      2
+    ]
+  }
+}

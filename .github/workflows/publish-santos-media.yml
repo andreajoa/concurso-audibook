@@ -1,0 +1,68 @@
+name: Publish private Santos study media
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-santos-media
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        slug:
+          - agente-de-portaria-ibam-santos-2026
+          - inspetor-de-alunos-ibam-santos-2026
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check boto3 pypdf requests pymupdf cryptography piper-tts==1.4.2
+      - name: Decrypt supplied source materials in the runner only
+        env:
+          SANTOS_MEDIA_SOURCE_KEY: ${{ secrets.SANTOS_MEDIA_SOURCE_KEY }}
+        run: |
+          python - <<'PY'
+          import io, json, os, zipfile
+          from pathlib import Path
+          from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+          encrypted = Path('ops/santos-2026.sources.enc').read_bytes()
+          key = bytes.fromhex(os.environ['SANTOS_MEDIA_SOURCE_KEY'])
+          clear = AESGCM(key).decrypt(encrypted[:12], encrypted[12:], b'trilha-aprova:santos-2026:v1')
+          specs = json.loads(Path('products/santos-media-sources.json').read_text())
+          expected = {row[field] for row in specs.values() for field in ['pdfFile', 'coverFile']}
+          destination = Path(os.environ['RUNNER_TEMP']) / 'santos-private-sources'
+          destination.mkdir(mode=0o700, exist_ok=True)
+          with zipfile.ZipFile(io.BytesIO(clear)) as bundle:
+              assert set(bundle.namelist()) == expected, 'Unexpected source bundle entries'
+              for name in expected:
+                  (destination / name).write_bytes(bundle.read(name))
+          print('Authenticated source bundle decrypted; private files are not logged or uploaded as artifacts.')
+          PY
+      - name: Validate supplied sources and chapter coverage
+        run: python scripts/publish_santos_media.py --slug '${{ matrix.slug }}' --source-dir "$RUNNER_TEMP/santos-private-sources" --validate-only
+      - name: Publish and verify private R2 delivery
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: python -u scripts/publish_santos_media.py --slug '${{ matrix.slug }}' --source-dir "$RUNNER_TEMP/santos-private-sources"
+      - name: Remove decrypted runner sources
+        if: always()
+        run: |
+          python - <<'PY'
+          import os, shutil
+          from pathlib import Path
+          shutil.rmtree(Path(os.environ['RUNNER_TEMP']) / 'santos-private-sources', ignore_errors=True)
+          PY
