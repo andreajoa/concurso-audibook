@@ -45,7 +45,7 @@ module.exports=async(req,res)=>{
     const analytics=body.analytics&&typeof body.analytics==='object'?body.analytics:{};
     const marketingConsent=body.marketingConsent===true;
     if(name.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||whatsapp.length<10){
-      return res.status(400).json({error:'Confira nome, e-mail e WhatsApp.'});
+      return res.status(400).json({error:'Confira nome, e-mail e telefone.'});
     }
     await rpc('crm_upsert_lead',{payload:{email,name,whatsapp,product_slug:slug,marketing_consent:marketingConsent,visitor_id:clean(analytics.visitorId,120),session_id:clean(analytics.sessionId,120)}}).catch(error=>console.error('crm_upsert_lead',error));
     const session=await createCheckout(req,slug,{email,analytics,marketingConsent,embedded:true});

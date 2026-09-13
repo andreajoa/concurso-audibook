@@ -13,10 +13,10 @@ from pypdf import PdfReader
 import generate_audiobook as base
 
 PRODUCT_SLUG = "redacao-nivel-fundamental-2026"
-PDF_KEY = "docs/redacao-ensino-fundamental-completo-2026.pdf"
-COVER_KEY = "images/redacao-nivel-fundamental-2026-capa.png"
-SUMMARY_KEY = f"{PRODUCT_SLUG}/resumo-como-gabaritar-redacao-nivel-fundamental.mp3"
-MANIFEST_KEY = f"{PRODUCT_SLUG}/audiobook-manifest-pt-br-v1.json"
+PDF_KEY = "redacao-nivel-fundamental-2026/docs/redacao-ensino-fundamental-completo-2026.pdf"
+COVER_KEY = "redacao-nivel-fundamental-2026/images/redacao-nivel-fundamental-2026-capa.png"
+SUMMARY_KEY = f"{PRODUCT_SLUG}/audio/resumo.mp3"
+MANIFEST_KEY = f"{PRODUCT_SLUG}/audio/manifest.json"
 AUDIO_PREFIX = f"{PRODUCT_SLUG}/audio/pt-br-v1"
 
 CHAPTERS = [

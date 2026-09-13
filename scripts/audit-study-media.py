@@ -49,7 +49,7 @@ def main():
             manifest = None
             if expected == 19:
                 manifest = json.loads(s3.get_object(Bucket=bucket,
-                    Key=f'{slug}/audiobook-manifest-pt-br-v1.json')['Body'].read())
+                    Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(manifest['pdfKey'] == assets['pdfKey'], 'Redacao manifest: wrong PDF')
                 require(manifest['summaryKey'] == assets['summary']['key'], 'Redacao manifest: wrong summary')
                 require([c['key'] for c in manifest['chapters']] == [c['key'] for c in assets['chapters']],

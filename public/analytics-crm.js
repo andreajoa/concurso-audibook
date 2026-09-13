@@ -1,4 +1,7 @@
 (() => {
+  function allowed(){try{return localStorage.getItem("trilha_cookie_consent")==="analytics";}catch{return false;}}
+  let started=false;
+  function start(){if(started)return;started=true;
   const VISITOR_KEY='concurso_visitor_v1', SESSION_KEY='concurso_session_v1', TIMEOUT=30*60*1000;
   let session=null, maxScroll=0, pendingSeconds=0, lastInteraction=Date.now();
   function uuid(){ try{return crypto.randomUUID();}catch{return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;} }
@@ -21,4 +24,6 @@
   addEventListener('pagehide',()=>{track('session_end',{duration_seconds:pendingSeconds,max_scroll:maxScroll},true);});
   document.addEventListener('click',event=>{const el=event.target.closest('[data-crm-event]');if(!el)return;const eventName=el.dataset.crmEvent;track(eventName,{link_id:el.id||'',link_label:(el.getAttribute('aria-label')||el.textContent||'').replace(/\s+/g,' ').trim().slice(0,300),target_url:el.href||'',section:el.closest('section')?.id||'geral',product_slug:el.dataset.product||'',value_cents:Number(el.dataset.valueCents||0)},true);},true);
   window.concursoCRM={track,identity:()=>({sessionId:session.id,visitorId:visitor(),parentSessionId:session.parentSessionId||'',...acquisition()})};
+}
+  if(allowed())start();else addEventListener("trilha:consent",event=>{if(event.detail==="analytics")start();});
 })();

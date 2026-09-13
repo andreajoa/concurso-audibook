@@ -28,11 +28,11 @@ BUCKET = "apostila"
 PUBLIC_BASE = "https://pub-7783b168338945eebb519768f0dbd176.r2.dev"
 R2_ENDPOINT = f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com"
 
-PDF_KEY = "docs/apostila-autores-ibam-santos-2026.pdf"
-COVER_KEY = "images/apostila-autores-capa.png"
-SUMMARY_KEY = "autores-ibam-2026/resumo-como-desarmar-armadilhas-ibam.mp3"
+PDF_KEY = "autores-ibam-2026/docs/apostila-autores-ibam-santos-2026.pdf"
+COVER_KEY = "autores-ibam-2026/images/apostila-autores-capa.png"
+SUMMARY_KEY = "autores-ibam-2026/audio/resumo.mp3"
 MANIFEST_KEY = "autores-ibam-2026/audiobook-manifest-pt-br-v2.json"
-AUDIO_PREFIX = "audio/pt-br-v2"
+AUDIO_PREFIX = "autores-ibam-2026/audio/pt-br-v2"
 
 VOICE_NAME = "pt_BR-cadu-medium"
 VOICE_BASE = "https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/cadu/medium"
@@ -337,7 +337,7 @@ def main() -> None:
     s3 = r2_client()
     with tempfile.TemporaryDirectory(prefix="concurso-audiobook-ptbr-") as temp:
         workdir = Path(temp)
-        model = ensure_voice(workdir)
+        model = None
         pdf_path = ensure_source_assets(s3, workdir)
         pages = extract_pages(pdf_path)
         chapter_texts = build_chapter_texts(pages)
@@ -356,14 +356,20 @@ def main() -> None:
 
         for (chapter_id, title), text in zip(CHAPTERS, chapter_texts):
             key = f"{AUDIO_PREFIX}/{chapter_id}.mp3"
-            output = generate_chapter(model, chapter_id, title, text, workdir)
-            upload_file(s3, output, key, "audio/mpeg")
+            if object_exists(s3, key) and os.environ.get("FORCE_REGENERATE") != "1":
+                size = int(s3.head_object(Bucket=BUCKET, Key=key)["ContentLength"])
+            else:
+                if model is None:
+                    model = ensure_voice(workdir)
+                output = generate_chapter(model, chapter_id, title, text, workdir)
+                upload_file(s3, output, key, "audio/mpeg")
+                size = output.stat().st_size
             manifest["chapters"].append({
                 "id": chapter_id,
                 "title": title,
                 "language": "pt-BR",
                 "url": f"{PUBLIC_BASE}/{key}",
-                "bytes": output.stat().st_size,
+                "bytes": size,
             })
 
         manifest_path = workdir / "audiobook-manifest-pt-br-v2.json"
