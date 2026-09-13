@@ -4,7 +4,7 @@
   "private": true,
   "description": "Biblioteca de estudos com checkout, acesso individual, apostilas e audiobooks.",
   "scripts": {
-    "build": "npm test && npm run verify && npm run verify:scrollcraft && bash scripts/build-assets.sh",
+    "build": "node scripts/build-seo.cjs && npm test && npm run verify && npm run verify:scrollcraft && bash scripts/build-assets.sh",
     "verify": "node scripts/verify.mjs",
     "verify:scrollcraft": "node scripts/verify-scrollcraft.mjs",
     "verify:remote": "node scripts/verify-remote.mjs",

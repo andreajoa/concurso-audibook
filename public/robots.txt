@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /acesso
+
+Sitemap: https://www.concursotrilhaaprova.online/sitemap.xml
