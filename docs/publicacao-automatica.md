@@ -30,7 +30,7 @@ um site com páginas que ninguém pode acreditar.
 
 ```
 Vercel Cron (terça, 11h UTC)
-  → api/editorial-cron.js          autentica com Bearer CRON_SECRET
+  → lib/editorial-cron-handler.js          autentica com Bearer CRON_SECRET
   → lê content/articles.json no GitHub        (fonte de verdade, não o bundle)
   → lib/editorial.js: pickTopic()             próxima pauta, sem repetir
   → API Anthropic escreve o texto             prompt com as regras inegociáveis

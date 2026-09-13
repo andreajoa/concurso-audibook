@@ -23,7 +23,9 @@ Para publicar conteúdo novo, edite o JSON correspondente e rode o build; não e
 
 ## Publicação automática
 
-`api/editorial-cron.js` publica uma matéria por semana sem intervenção humana: escolhe a pauta em `content/editorial-backlog.json`, pede o texto à API da Anthropic, valida com `lib/editorial.js` e commita em `content/articles.json` pela API do GitHub — o que dispara o build e transforma a matéria em página estática.
+Os cron jobs compartilham `api/cron.js`. Os endereços `/api/marketing-cron` e `/api/editorial-cron` são preservados por rewrites em `vercel.json`, com os mesmos horários e autenticação por `CRON_SECRET`. Os handlers ficam em `lib/` para manter o deploy dentro do limite de 12 funções do plano Hobby. `npm test` verifica esse limite e o roteamento dos jobs.
+
+`lib/editorial-cron-handler.js` publica uma matéria por semana sem intervenção humana: escolhe a pauta em `content/editorial-backlog.json`, pede o texto à API da Anthropic, valida com `lib/editorial.js` e commita em `content/articles.json` pela API do GitHub — o que dispara o build e transforma a matéria em página estática.
 
 A regra que governa o sistema: o cron escreve **preparação, não notícia**. Qualquer texto que afirme vaga, data de prova, inscrição, salário ou número de edital é **descartado sem publicar**, porque um modelo de linguagem não tem como saber essas informações e inventá-las é *scaled content abuse* aos olhos do Google. O desenho completo, as travas e as variáveis de ambiente necessárias estão em `docs/publicacao-automatica.md`.
 

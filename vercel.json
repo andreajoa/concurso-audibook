@@ -6,6 +6,14 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/api/marketing-cron",
+      "destination": "/api/cron?job=marketing"
+    },
+    {
+      "source": "/api/editorial-cron",
+      "destination": "/api/cron?job=editorial"
+    },
+    {
       "source": "/acesso",
       "destination": "/api/access-page"
     },

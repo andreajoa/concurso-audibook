@@ -11,7 +11,7 @@ const catalog = require('../products/catalog.json');
 const guides = require('../content/search-guides.json');
 const cities = require('../content/local-seo.json');
 // Matérias escritas pelo cron editorial. O arquivo é atualizado por commit do
-// worker (api/editorial-cron.js), e é este build que as transforma em página.
+// worker (lib/editorial-cron-handler.js), e é este build que as transforma em página.
 const articles = require('../content/articles.json');
 // Ferramentas gratuitas: a página é estática e indexável, o cálculo roda no
 // navegador (public/ferramentas.js). Nenhuma delas depende de backend.
