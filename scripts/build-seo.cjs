@@ -1,27 +1,933 @@
-const fs=require('node:fs');
-const catalog=require('../products/catalog.json');
-const origin='https://www.concursotrilhaaprova.online';
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const products=Object.values(catalog).filter(p=>p.active);
-const footer=fs.readFileSync('lib/site-footer.html','utf8');
-const org={'@type':'Organization','@id':origin+'/#organization',name:'Trilha Aprova',url:origin+'/',email:'suporte@concursotrilhaaprova.online',areaServed:{'@type':'Country',name:'Brasil'}};
-const json=v=>JSON.stringify(v).replace(/</g,'\\u003c');
-const verification=process.env.GOOGLE_SITE_VERIFICATION || 'WBWn3z5Lp6fkNKGivLwE5zUfi6LWK94BWs6NcQl2puY';
-if(!/^[A-Za-z0-9_-]{10,200}$/.test(verification))throw new Error('Invalid Search Console verification token');
-function meta(title,description,path,nodes=[]){return `<!-- seo:start --><meta name="google-site-verification" content="${verification}"><link rel="canonical" href="${origin}${path}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Trilha Aprova"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${origin}${path}"><meta property="og:image" content="${esc(products[0].storefront.cover3d)}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${json({'@context':'https://schema.org','@graph':[org,...nodes]})}</script><!-- seo:end -->`;}
-function page(path,title,description,body,nodes=[]){fs.mkdirSync('public'+path.substring(0,path.lastIndexOf('/')),{recursive:true});fs.writeFileSync('public'+path+'.html',`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}">${meta(title,description,path,nodes)}<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css"><link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css"></head><body><header class="guide-header"><a href="/">Trilha Aprova</a><nav><a href="/concursos-baixada-santista">Concursos na Baixada</a><a href="/como-estudar-com-apostila-e-audiobook">Como estudar</a><a href="/contato">Atendimento</a></nav></header><main class="guide"><a href="/">Início</a>${body}</main>${footer}<script src="/newsletter.js" defer></script><script src="/cookie-consent.js" defer></script><script src="/analytics-crm.js" defer></script></body></html>`);}
-const links=products.map(p=>`<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`).join('');
-for(const p of products){const path='/apostilas/'+p.slug;const price=(p.priceCents/100).toFixed(2);const title=p.shortName+' com audiobook | Trilha Aprova';page(path,title,p.description,`<p class="eyebrow">${esc(p.edition)} · ${esc(p.category)}</p><h1>${esc(p.shortName)} com audiobook</h1><div class="product-intro"><img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="360" height="450"><div><p>${esc(p.description)}</p><p><strong>Para quem:</strong> ${esc(p.audience)}.</p><p>Autoria: ${esc(p.author)}.</p><p class="guide-price">R$ ${price.replace('.',',')}</p><p>Pagamento único. Material digital em português, disponível online em todo o Brasil.</p><a class="guide-button" href="/comprar?produto=${p.slug}">Comprar PDF + audiobook</a></div></div><h2>O que está incluído</h2><ul>${p.proofPoints.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><h2>Resumo em áudio e capítulos</h2><p>${esc(p.assets.summary.title)}. O resumo é uma revisão complementar; os capítulos organizam o estudo por assunto.</p><ol>${p.assets.chapters.map(c=>`<li><strong>${esc(c.title)}</strong><p>${esc(c.subtitle)}</p></li>`).join('')}</ol><h2>Este material serve para o meu concurso?</h2><p>${p.slug.startsWith('autores')?'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.':'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p><h2>Como recebo os arquivos?</h2><p>Após a confirmação do pagamento, sua área individual libera o PDF e os áudios desta apostila para leitura, reprodução e download. <a href="/entrega-e-acesso">Veja como funciona o acesso</a>.</p><p>Material independente, sem vínculo com órgãos públicos ou bancas. Não há garantia de aprovação.</p><h2>Continue sua preparação</h2><ul>${links}</ul><p><a href="/concursos-baixada-santista">Como organizar os estudos para concursos na Baixada Santista</a></p>`,[{'@type':'Product','@id':origin+path+'#product',name:p.shortName,description:p.description,image:p.storefront.cover3d,sku:p.slug,brand:{'@type':'Brand',name:'Trilha Aprova'},offers:{'@type':'Offer',url:origin+path,price,priceCurrency:'BRL',availability:'https://schema.org/InStock',seller:{'@id':origin+'/#organization'}}},{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Início',item:origin+'/'},{'@type':'ListItem',position:2,name:p.shortName,item:origin+path}]}]);}
-const guides=require('../content/search-guides.json');
-for(const g of guides)page('/'+g.slug,g.title+' | Trilha Aprova',g.description,`<p class="eyebrow">GUIA DE ESTUDO</p><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p>${g.body}<h2>Apostilas disponíveis com audiobook</h2><ul>${links}</ul>`);
-let home=fs.readFileSync('public/index.html','utf8').replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g,'').replace(/<meta name="google-site-verification"[^>]*>/g,'').replace(/<!-- discovery:start -->[\s\S]*?<!-- discovery:end -->/g,'');
-const title='Apostilas para concursos com audiobook | Trilha Aprova';const description='Apostilas em PDF com audiobook e resumo em áudio. Autores IBAM para Santos e redação de nível fundamental. Estude na Baixada Santista e em todo o Brasil.';
-home=home.replace(/<title>[\s\S]*?<\/title>/,`<title>${title}</title>`).replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${description}">`).replace('</head>',meta(title,description,'/',[{'@type':'WebSite','@id':origin+'/#website',name:'Trilha Aprova',url:origin+'/',inLanguage:'pt-BR',publisher:{'@id':origin+'/#organization'}}])+'</head>');
-home=home.replace('</main>',`<!-- discovery:start --><section class="section shell"><div class="section-heading"><span class="eyebrow">ENCONTRE SUA PRÓXIMA LEITURA</span><h2>Apostilas para concursos com PDF e audiobook</h2><p>Conheça o conteúdo de cada material antes de comprar. Os arquivos são digitais, com acesso em todo o Brasil.</p></div><ul>${links}</ul><h3>Preparação no litoral de São Paulo</h3><p>Estuda para concursos em Santos ou em outra cidade da Baixada Santista? Confira como comparar o edital com o material e organizar leitura, exercícios e revisão em áudio.</p><ul>${guides.map(g=>`<li><a href="/${g.slug}">${esc(g.title)}</a></li>`).join('')}</ul></section><!-- discovery:end --></main>`);fs.writeFileSync('public/index.html',home);
-const paths=['/',...products.map(p=>'/apostilas/'+p.slug),...guides.map(g=>'/'+g.slug),'/contato','/termos','/privacidade','/cookies','/cancelamentos','/entrega-e-acesso'];
-fs.writeFileSync('public/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+paths.map(p=>`<url><loc>${origin}${p}</loc></url>`).join('')+'</urlset>\n');
-fs.writeFileSync('public/robots.txt',`User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /acesso\n\nSitemap: ${origin}/sitemap.xml\n`);
-for(const name of ['dashboard','comprar','obrigado','recuperar']){const f='public/'+name+'.html';let h=fs.readFileSync(f,'utf8');h=h.replace(/<meta name="robots"[^>]*>/g,'').replace('</head>','<meta name="robots" content="noindex,nofollow"></head>');fs.writeFileSync(f,h);}
-console.log(`SEO: ${paths.length} public URLs, ${products.length} catalog-backed product pages; private files excluded.`);
+/**
+ * Gera as páginas públicas, os metadados, o grafo de dados estruturados,
+ * o sitemap, o robots.txt, o feed RSS e os arquivos llms.txt (GEO).
+ *
+ * Tudo é derivado de products/catalog.json, content/search-guides.json e
+ * content/local-seo.json. Nada aqui inventa vagas, datas, notas ou avaliações.
+ */
+const fs = require('node:fs');
 
-for(const name of ['contato','termos','privacidade','cookies','cancelamentos','entrega-e-acesso']){const f='public/'+name+'.html';let h=fs.readFileSync(f,'utf8').replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g,'');const title=h.match(/<title>(.*?)<\/title>/)?.[1]||'Trilha Aprova';h=h.replace('</head>',meta(title,'Informações da Trilha Aprova: '+title,'/'+name)+'</head>');fs.writeFileSync(f,h);}
+const catalog = require('../products/catalog.json');
+const guides = require('../content/search-guides.json');
+const cities = require('../content/local-seo.json');
+
+const ORIGIN = 'https://www.concursotrilhaaprova.online';
+const CDN = 'https://margareth-5-estrategias.floot.app';
+const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';
+const AUTHOR_NAME = 'Margareth Almeida';
+const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
+
+const products = Object.values(catalog).filter(p => p.active);
+const footer = fs.readFileSync('lib/site-footer.html', 'utf8');
+const COVER = products[0].storefront.cover3d;
+
+const verification = process.env.GOOGLE_SITE_VERIFICATION || 'WBWn3z5Lp6fkNKGivLwE5zUfi6LWK94BWs6NcQl2puY';
+if (!/^[A-Za-z0-9_-]{10,200}$/.test(verification)) throw new Error('Invalid Search Console verification token');
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const json = v => JSON.stringify(v).replace(/</g, '\\u003c');
+const plain = html => String(html ?? '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+const money = cents => (cents / 100).toFixed(2);
+const brl = cents => 'R$ ' + money(cents).replace('.', ',');
+
+/* ------------------------------------------------------------------ *
+ * Nós reutilizáveis do grafo schema.org
+ * ------------------------------------------------------------------ */
+
+const areaServed = [
+  { '@type': 'Country', name: 'Brasil' },
+  ...cities.map(c => ({ '@type': 'City', name: c.city, addressRegion: c.state, addressCountry: 'BR' }))
+];
+
+const organization = {
+  '@type': ['Organization', 'EducationalOrganization'],
+  '@id': ORIGIN + '/#organization',
+  name: 'Trilha Aprova',
+  alternateName: 'Trilha Aprova — apostilas para concursos',
+  url: ORIGIN + '/',
+  email: SUPPORT_EMAIL,
+  description: 'Editora digital independente de apostilas em PDF com audiobook para candidatos a concursos públicos no Brasil.',
+  logo: { '@type': 'ImageObject', '@id': ORIGIN + '/#logo', url: ORIGIN + '/assets/trilha-aprova-logo.webp', width: 180, height: 84, caption: 'Trilha Aprova' },
+  image: { '@id': ORIGIN + '/#logo' },
+  founder: { '@id': ORIGIN + '/#author' },
+  knowsLanguage: 'pt-BR',
+  knowsAbout: [
+    'Concursos públicos no Brasil',
+    'Apostilas para concurso',
+    'Audiobooks de estudo',
+    'Preparação para concursos na Baixada Santista',
+    'Banca IBAM',
+    'Redação para concursos de nível fundamental'
+  ],
+  areaServed,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: SUPPORT_EMAIL,
+    areaServed: 'BR',
+    availableLanguage: ['Portuguese', 'pt-BR']
+  }
+};
+
+const author = {
+  '@type': 'Person',
+  '@id': ORIGIN + '/#author',
+  name: AUTHOR_NAME,
+  url: ORIGIN + '/sobre',
+  jobTitle: 'Autora de materiais de preparação para concursos públicos',
+  worksFor: { '@id': ORIGIN + '/#organization' },
+  knowsLanguage: 'pt-BR',
+  knowsAbout: ['Educação', 'Educação Especial', 'Produção textual', 'Preparação para concursos públicos']
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': ORIGIN + '/#website',
+  name: 'Trilha Aprova',
+  url: ORIGIN + '/',
+  inLanguage: 'pt-BR',
+  publisher: { '@id': ORIGIN + '/#organization' },
+  copyrightHolder: { '@id': ORIGIN + '/#organization' }
+};
+
+const BASE_NODES = [organization, author, website];
+
+const faqNode = (url, faq) => ({
+  '@type': 'FAQPage',
+  '@id': url + '#faq',
+  mainEntity: faq.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a }
+  }))
+});
+
+const breadcrumbNode = (url, trail) => ({
+  '@type': 'BreadcrumbList',
+  '@id': url + '#breadcrumb',
+  itemListElement: trail.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t[0], item: ORIGIN + t[1] }))
+});
+
+const webPageNode = (url, { title, description, image, updated, published, hasFaq, hasBreadcrumb }) => {
+  const node = {
+    '@type': 'WebPage',
+    '@id': url + '#webpage',
+    url,
+    name: title,
+    description,
+    inLanguage: 'pt-BR',
+    isPartOf: { '@id': ORIGIN + '/#website' },
+    about: { '@id': ORIGIN + '/#organization' },
+    datePublished: published || updated,
+    dateModified: updated,
+    primaryImageOfPage: { '@type': 'ImageObject', url: image },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.answer', '.key-facts'] }
+  };
+  if (hasBreadcrumb) node.breadcrumb = { '@id': url + '#breadcrumb' };
+  if (hasFaq) node.mainEntity = { '@id': url + '#faq' };
+  return node;
+};
+
+/* ------------------------------------------------------------------ *
+ * Registro de URLs para sitemap / llms.txt / feed
+ * ------------------------------------------------------------------ */
+
+const urls = [];
+const addUrl = (loc, opts = {}) => urls.push({ loc, lastmod: BUILD_DATE, priority: '0.6', images: [], ...opts });
+const corpus = [];
+
+/* ------------------------------------------------------------------ *
+ * Blocos visuais compartilhados
+ * ------------------------------------------------------------------ */
+
+const NAV = [
+  ['/concursos-baixada-santista', 'Baixada Santista'],
+  ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
+  ['/apostila-para-concurso-como-escolher', 'Escolher apostila'],
+  ['/glossario-concursos-publicos', 'Glossário'],
+  ['/perguntas-frequentes', 'Dúvidas'],
+  ['/contato', 'Atendimento']
+];
+
+const navHtml = NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('');
+
+const productLinks = products
+  .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
+  .join('');
+
+const cityLinks = cities
+  .map(c => `<li><a href="/${c.slug}">Concursos públicos em ${esc(c.city)}</a></li>`)
+  .join('');
+
+const keyFactsHtml = facts => !facts || !facts.length ? '' :
+  `<dl class="key-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
+
+const faqHtml = faq => !faq || !faq.length ? '' :
+  `<section class="faq-block"><h2>Perguntas frequentes</h2>${faq.map(f => `<div class="faq-item"><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join('')}</section>`;
+
+const crumbsHtml = trail => `<nav class="crumbs" aria-label="Trilha de navegação">${
+  trail.map((t, i) => i === trail.length - 1
+    ? `<span aria-current="page">${esc(t[0])}</span>`
+    : `<a href="${t[1]}">${esc(t[0])}</a><span class="crumb-sep" aria-hidden="true">›</span>`).join('')
+}</nav>`;
+
+const disclaimer = '<p class="page-note">Material independente de estudo, sem vínculo com órgãos públicos ou bancas organizadoras. Não divulgamos vagas, datas ou inscrições abertas e não há garantia de aprovação. Confirme sempre as informações no edital oficial.</p>';
+
+/* ------------------------------------------------------------------ *
+ * <head> comum
+ * ------------------------------------------------------------------ */
+
+function seoBlock({ path, title, description, image, nodes }) {
+  const url = ORIGIN + path;
+  return '<!-- seo:start -->' +
+    `<meta name="google-site-verification" content="${verification}">` +
+    `<link rel="canonical" href="${url}">` +
+    `<link rel="alternate" hreflang="pt-BR" href="${url}">` +
+    `<link rel="alternate" hreflang="x-default" href="${url}">` +
+    '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' +
+    '<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1">' +
+    '<meta property="og:type" content="website">' +
+    '<meta property="og:locale" content="pt_BR">' +
+    '<meta property="og:site_name" content="Trilha Aprova">' +
+    `<meta property="og:title" content="${esc(title)}">` +
+    `<meta property="og:description" content="${esc(description)}">` +
+    `<meta property="og:url" content="${url}">` +
+    `<meta property="og:image" content="${esc(image)}">` +
+    '<meta property="og:image:width" content="1200">' +
+    '<meta property="og:image:height" content="1200">' +
+    `<meta property="og:image:alt" content="${esc(title)}">` +
+    '<meta name="twitter:card" content="summary_large_image">' +
+    `<meta name="twitter:title" content="${esc(title)}">` +
+    `<meta name="twitter:description" content="${esc(description)}">` +
+    `<meta name="twitter:image" content="${esc(image)}">` +
+    `<meta name="author" content="${esc(AUTHOR_NAME)}">` +
+    '<meta name="geo.region" content="BR-SP">' +
+    '<meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">' +
+    `<link rel="preconnect" href="${CDN}" crossorigin>` +
+    `<link rel="dns-prefetch" href="${CDN}">` +
+    '<link rel="manifest" href="/site.webmanifest">' +
+    '<link rel="alternate" type="application/rss+xml" title="Trilha Aprova — guias de estudo" href="/feed.xml">' +
+    `<script type="application/ld+json">${json({ '@context': 'https://schema.org', '@graph': [...BASE_NODES, ...nodes] })}</script>` +
+    '<!-- seo:end -->';
+}
+
+/* ------------------------------------------------------------------ *
+ * Renderizador de página de conteúdo
+ * ------------------------------------------------------------------ */
+
+function renderPage(opts) {
+  const {
+    path, title, metaTitle, description, kicker = '', lead = '', keyFacts = [],
+    body, faq = [], nodes = [], trail = [], image = COVER, updated = BUILD_DATE,
+    priority = '0.6', images = []
+  } = opts;
+
+  const url = ORIGIN + path;
+  const fullTrail = [['Início', '/'], ...trail, [title, path]];
+  const graph = [
+    webPageNode(url, { title: metaTitle || title, description, image, updated, hasFaq: faq.length > 0, hasBreadcrumb: true }),
+    breadcrumbNode(url, fullTrail),
+    ...(faq.length ? [faqNode(url, faq)] : []),
+    ...nodes
+  ];
+
+  const html = '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<meta name="theme-color" content="#08284f">' +
+    `<title>${esc(metaTitle || title)}</title>` +
+    `<meta name="description" content="${esc(description)}">` +
+    seoBlock({ path, title: metaTitle || title, description, image, nodes: graph }) +
+    '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css">' +
+    '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
+    '</head><body>' +
+    `<header class="guide-header"><a class="guide-brand" href="/">Trilha Aprova</a><nav aria-label="Navegação do conteúdo">${navHtml}</nav></header>` +
+    `<main class="guide">${crumbsHtml(fullTrail)}` +
+    (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
+    `<h1>${esc(title)}</h1>` +
+    (lead ? `<p class="answer">${esc(lead)}</p>` : '') +
+    keyFactsHtml(keyFacts) +
+    body +
+    faqHtml(faq) +
+    `<p class="updated">Página atualizada em ${esc(updated)}. Autoria: ${esc(AUTHOR_NAME)}.</p>` +
+    '</main>' + footer +
+    '<script src="/newsletter.js" defer></script><script src="/cookie-consent.js" defer></script><script src="/analytics-crm.js" defer></script>' +
+    '</body></html>';
+
+  const dir = 'public' + path.substring(0, path.lastIndexOf('/'));
+  if (dir) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync('public' + path + '.html', html);
+
+  addUrl(path, { lastmod: updated, priority, images });
+  corpus.push({ path, title: metaTitle || title, description, updated, text: plain(lead + ' ' + body + ' ' + faq.map(f => f.q + ' ' + f.a).join(' ')) });
+}
+
+/* ------------------------------------------------------------------ *
+ * Páginas de produto
+ * ------------------------------------------------------------------ */
+
+for (const p of products) {
+  const path = '/apostilas/' + p.slug;
+  const url = ORIGIN + path;
+  const price = money(p.priceCents);
+  const isAutores = p.slug.startsWith('autores');
+
+  const fit = isAutores
+    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
+    : 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.';
+
+  const productNode = {
+    '@type': 'Product',
+    '@id': url + '#product',
+    name: p.shortName,
+    description: p.description,
+    image: [p.storefront.cover3d],
+    sku: p.slug,
+    category: p.category,
+    inLanguage: 'pt-BR',
+    brand: { '@type': 'Brand', name: 'Trilha Aprova' },
+    manufacturer: { '@id': ORIGIN + '/#organization' },
+    author: { '@id': ORIGIN + '/#author' },
+    audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: p.audience },
+    isFamilyFriendly: true,
+    offers: {
+      '@type': 'Offer',
+      '@id': url + '#offer',
+      url,
+      price,
+      priceCurrency: 'BRL',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      areaServed: { '@type': 'Country', name: 'Brasil' },
+      eligibleRegion: { '@type': 'Country', name: 'Brasil' },
+      seller: { '@id': ORIGIN + '/#organization' },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'BR',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 7,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn',
+        merchantReturnLink: ORIGIN + '/cancelamentos'
+      }
+    }
+  };
+
+  const audiobookNode = {
+    '@type': 'Audiobook',
+    '@id': url + '#audiobook',
+    name: p.name + ' — audiobook',
+    description: p.assets.summary.title,
+    inLanguage: 'pt-BR',
+    author: { '@id': ORIGIN + '/#author' },
+    publisher: { '@id': ORIGIN + '/#organization' },
+    numberOfPages: undefined,
+    hasPart: p.assets.chapters.map((c, i) => ({
+      '@type': 'Chapter',
+      position: i + 1,
+      name: c.title,
+      description: c.subtitle
+    }))
+  };
+  delete audiobookNode.numberOfPages;
+
+  const faq = [
+    { q: `Quanto custa a ${p.shortName}?`, a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },
+    { q: 'Como recebo o material depois de pagar?', a: 'A confirmação do pagamento libera automaticamente uma área individual com o PDF e os arquivos de áudio, para leitura, reprodução e download. Não há envio físico.' },
+    { q: 'Esta apostila serve para o meu concurso?', a: fit + ' Compare o sumário com o anexo de conteúdo programático do seu edital antes de comprar.' },
+    { q: 'Posso pedir reembolso?', a: 'Sim. O Código de Defesa do Consumidor prevê o prazo de 7 dias para o direito de arrependimento em compras pela internet. Basta solicitar pelo canal de atendimento dentro do prazo.' },
+    { q: 'Preciso de internet para usar o material?', a: 'Apenas para acessar a área individual e baixar os arquivos. Depois do download, o PDF e os áudios podem ser usados sem conexão.' }
+  ];
+
+  const keyFacts = [
+    ['Preço', `${brl(p.priceCents)} — pagamento único, sem assinatura`],
+    ['Formatos', `PDF + resumo em áudio + ${p.assets.chapters.length} capítulos de audiobook`],
+    ['Indicado para', p.audience],
+    ['Concurso de referência', `${p.contest} · Banca ${p.examBoard} · ${p.edition}`],
+    ['Autoria', AUTHOR_NAME],
+    ['Entrega', 'Digital e imediata após a confirmação do pagamento, em todo o Brasil']
+  ];
+
+  const body =
+    '<div class="product-intro">' +
+    `<img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
+    `<div><p>${esc(p.description)}</p>` +
+    `<p><strong>Para quem:</strong> ${esc(p.audience)}.</p>` +
+    `<p>Autoria: ${esc(p.author)}.</p>` +
+    `<p class="guide-price">${brl(p.priceCents)}</p>` +
+    '<p>Pagamento único. Material digital em português, disponível online em todo o Brasil.</p>' +
+    `<a class="guide-button" href="/comprar?produto=${p.slug}">Comprar PDF + audiobook</a></div></div>` +
+    `<h2>O que está incluído</h2><ul>${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
+    '<h2>Resumo em áudio e capítulos</h2>' +
+    `<p>${esc(p.assets.summary.title)}. O resumo é uma revisão complementar; os capítulos organizam o estudo por assunto.</p>` +
+    `<ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong><p>${esc(c.subtitle)}</p></li>`).join('')}</ol>` +
+    `<h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p>` +
+    '<h2>Como recebo os arquivos?</h2>' +
+    '<p>Após a confirmação do pagamento, sua área individual libera o PDF e os áudios desta apostila para leitura, reprodução e download. <a href="/entrega-e-acesso">Veja como funciona o acesso</a>.</p>' +
+    (isAutores
+      ? '<h2>Quem estuda na Baixada Santista</h2><p>Esta apostila nasceu do edital de Santos, mas o conteúdo de autores é o mesmo cobrado em muitos concursos municipais de educação. Veja os guias por cidade:</p><ul class="city-links">' + cityLinks + '</ul>'
+      : '<h2>Onde a redação costuma ser cobrada</h2><p>Cargos de nível fundamental completo frequentemente incluem prova de produção textual. Veja os guias por cidade da Baixada Santista:</p><ul class="city-links">' + cityLinks + '</ul>') +
+    '<h2>Continue sua preparação</h2>' +
+    `<ul>${productLinks}</ul>` +
+    '<p><a href="/apostila-para-concurso-como-escolher">Como escolher a apostila certa para o seu edital</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
+    disclaimer;
+
+  renderPage({
+    path,
+    title: p.shortName + ' com audiobook',
+    metaTitle: p.shortName + ' com audiobook | Trilha Aprova',
+    // A descrição do catálogo é a de venda e pode ser longa; a da SERP tem de caber.
+    description: p.seoDescription || p.description,
+    kicker: `${p.edition} · ${p.category}`,
+    lead: `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
+    keyFacts,
+    body,
+    faq,
+    nodes: [productNode, audiobookNode],
+    trail: [['Apostilas', '/apostilas-para-concurso']],
+    image: p.storefront.cover3d,
+    priority: '0.9',
+    images: [p.storefront.cover3d]
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * Hub do catálogo
+ * ------------------------------------------------------------------ */
+
+renderPage({
+  path: '/apostilas-para-concurso',
+  title: 'Apostilas para concurso com audiobook',
+  metaTitle: 'Apostilas para concurso público com audiobook | Trilha Aprova',
+  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Pagamento único de R$ 24,99 por apostila e acesso imediato em todo o Brasil.',
+  kicker: 'CATÁLOGO',
+  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, por ${brl(products[0].priceCents)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
+  keyFacts: [
+    ['Apostilas disponíveis', String(products.length)],
+    ['Preço por apostila', `${brl(products[0].priceCents)} — pagamento único`],
+    ['Formatos incluídos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
+    ['Entrega', 'Digital e imediata, válida em todo o Brasil'],
+    ['Autoria', AUTHOR_NAME]
+  ],
+  body:
+    '<h2>Materiais disponíveis</h2>' +
+    '<div class="product-grid">' +
+    products.map(p => `<article class="product-card"><img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="240" height="300" loading="lazy" decoding="async"><div><h3><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a></h3><p>${esc(p.description)}</p><p><strong>${brl(p.priceCents)}</strong> · ${esc(p.audience)}</p></div></article>`).join('') +
+    '</div>' +
+    '<h2>O que vem em cada apostila</h2><ul><li>PDF completo para ler online ou baixar.</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook dividido em capítulos por assunto.</li><li>Questões com gabarito comentado.</li><li>Acesso individual recuperável pelo e-mail da compra.</li></ul>' +
+    '<h2>Como escolher entre elas</h2><p>A escolha depende do cargo do seu edital, não do preço. Se o cargo é de professor com conteúdo pedagógico, comece pela apostila de autores. Se o cargo é de nível fundamental com prova de redação, comece pela apostila de redação. Em caso de dúvida, leia o guia sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa</a>.</p>' +
+    '<h2>Preparação por região</h2><ul class="city-links">' + cityLinks + '</ul>' +
+    disclaimer,
+  faq: [
+    { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
+    { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única de ${brl(products[0].priceCents)}, sem mensalidade e sem renovação automática.` },
+    { q: 'Recebo em quanto tempo?', a: 'Imediatamente. Assim que o pagamento é confirmado, a área individual com o PDF e os áudios é liberada automaticamente.' },
+    { q: 'Vocês entregam em todo o Brasil?', a: 'Sim. Como a entrega é totalmente digital, o material fica disponível para qualquer cidade do país, sem frete e sem prazo de envio.' }
+  ],
+  nodes: [{
+    '@type': 'ItemList',
+    '@id': ORIGIN + '/apostilas-para-concurso#list',
+    name: 'Apostilas para concurso com audiobook',
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: ORIGIN + '/apostilas/' + p.slug,
+      name: p.shortName
+    }))
+  }],
+  priority: '0.9',
+  images: products.map(p => p.storefront.cover3d)
+});
+
+/* ------------------------------------------------------------------ *
+ * Guias de estudo
+ * ------------------------------------------------------------------ */
+
+for (const g of guides) {
+  const path = '/' + g.slug;
+  const url = ORIGIN + path;
+  const nodes = [{
+    '@type': 'Article',
+    '@id': url + '#article',
+    headline: g.title,
+    description: g.description,
+    inLanguage: 'pt-BR',
+    author: { '@id': ORIGIN + '/#author' },
+    publisher: { '@id': ORIGIN + '/#organization' },
+    datePublished: g.updated || BUILD_DATE,
+    dateModified: g.updated || BUILD_DATE,
+    mainEntityOfPage: { '@id': url + '#webpage' },
+    image: [COVER],
+    articleSection: 'Guia de estudo'
+  }];
+
+  if (g.howTo) {
+    nodes.push({
+      '@type': 'HowTo',
+      '@id': url + '#howto',
+      name: g.howTo.name,
+      description: g.description,
+      inLanguage: 'pt-BR',
+      ...(g.howTo.totalTime ? { totalTime: g.howTo.totalTime } : {}),
+      step: g.howTo.steps.map((s, i) => ({
+        '@type': 'HowToStep',
+        position: i + 1,
+        name: s.name,
+        text: s.text,
+        url: url + '#passo-' + (i + 1)
+      }))
+    });
+  }
+
+  if (g.glossary) {
+    nodes.push({
+      '@type': 'DefinedTermSet',
+      '@id': url + '#glossary',
+      name: g.title,
+      inLanguage: 'pt-BR',
+      hasDefinedTerm: g.glossary.map(t => ({
+        '@type': 'DefinedTerm',
+        name: t.term,
+        description: t.definition,
+        inDefinedTermSet: { '@id': url + '#glossary' }
+      }))
+    });
+  }
+
+  let body = '';
+  if (g.howTo) {
+    body += `<section class="howto"><h2>${esc(g.howTo.name)}</h2><ol class="howto-steps">` +
+      g.howTo.steps.map((s, i) => `<li id="passo-${i + 1}"><strong>${esc(s.name)}</strong><p>${esc(s.text)}</p></li>`).join('') +
+      '</ol></section>';
+  }
+  body += g.body;
+  if (g.glossary) {
+    body += '<h2>Termos do edital de A a Z</h2><dl class="glossary">' +
+      g.glossary.map(t => `<div id="termo-${t.term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-')}"><dt>${esc(t.term)}</dt><dd>${esc(t.definition)}</dd></div>`).join('') +
+      '</dl>';
+  }
+  body += '<h2>Apostilas disponíveis com audiobook</h2><ul>' + productLinks + '</ul>' + disclaimer;
+
+  renderPage({
+    path,
+    title: g.title,
+    // O h1 pode ser longo e descritivo; o <title> precisa caber na SERP (~60 caracteres).
+    metaTitle: (g.metaTitle || g.title) + ' | Trilha Aprova',
+    description: g.description,
+    kicker: 'GUIA DE ESTUDO',
+    lead: g.lead || g.description,
+    keyFacts: g.keyFacts,
+    body,
+    faq: g.faq || [],
+    nodes,
+    trail: [['Guias de estudo', '/perguntas-frequentes']],
+    updated: g.updated || BUILD_DATE,
+    priority: '0.8'
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * Páginas por cidade (Baixada Santista)
+ * ------------------------------------------------------------------ */
+
+for (const c of cities) {
+  const path = '/' + c.slug;
+  const url = ORIGIN + path;
+  const others = cities.filter(o => o.slug !== c.slug);
+
+  const body =
+    '<h2>Órgãos públicos que abrem seleções em ' + esc(c.city) + '</h2>' +
+    '<ul class="orgaos">' + c.orgaos.map(o =>
+      `<li><a href="${esc(o.url)}" rel="external nofollow">${esc(o.name)}</a><p>${esc(o.note)}</p></li>`).join('') + '</ul>' +
+    c.sections.map(s => `<h2>${esc(s.h2)}</h2>${s.html}`).join('') +
+    '<h2>Outras cidades da Baixada Santista</h2><ul class="city-links">' +
+    others.map(o => `<li><a href="/${o.slug}">Concursos públicos em ${esc(o.city)}</a></li>`).join('') +
+    '</ul><p>Veja também o panorama regional em <a href="/concursos-baixada-santista">como estudar para concursos na Baixada Santista</a>.</p>' +
+    '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
+    disclaimer;
+
+  renderPage({
+    path,
+    title: `Concursos públicos em ${c.city} (${c.state})`,
+    metaTitle: (c.metaTitle || `Concursos públicos em ${c.city} (${c.state})`) + ' | Trilha Aprova',
+    description: c.description,
+    kicker: `${c.region.toUpperCase()} · ${c.stateName.toUpperCase()}`,
+    lead: c.lead,
+    keyFacts: c.keyFacts,
+    body,
+    faq: c.faq,
+    nodes: [{
+      '@type': 'WebPageElement',
+      '@id': url + '#local',
+      name: `Preparação para concursos em ${c.city}`,
+      about: {
+        '@type': 'City',
+        name: c.city,
+        address: { '@type': 'PostalAddress', addressLocality: c.city, addressRegion: c.state, addressCountry: 'BR' },
+        containedInPlace: { '@type': 'AdministrativeArea', name: c.region }
+      },
+      isPartOf: { '@id': url + '#webpage' }
+    }, {
+      '@type': 'Service',
+      '@id': url + '#service',
+      name: `Apostilas para concursos públicos em ${c.city}`,
+      serviceType: 'Material digital de preparação para concursos públicos',
+      provider: { '@id': ORIGIN + '/#organization' },
+      areaServed: { '@type': 'City', name: c.city, addressRegion: c.state, addressCountry: 'BR' },
+      audience: { '@type': 'Audience', audienceType: 'Candidatos a concursos públicos' }
+    }],
+    trail: [['Baixada Santista', '/concursos-baixada-santista']],
+    priority: '0.8'
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * Página de autoria (E-E-A-T)
+ * ------------------------------------------------------------------ */
+
+renderPage({
+  path: '/sobre',
+  title: 'Sobre a Trilha Aprova e a autoria dos materiais',
+  metaTitle: 'Sobre a Trilha Aprova | Quem escreve as apostilas',
+  description: 'Quem é a Trilha Aprova, quem escreve as apostilas, como os materiais são produzidos e quais são os limites do que prometemos a quem estuda.',
+  kicker: 'INSTITUCIONAL',
+  lead: `A Trilha Aprova é uma editora digital independente que publica apostilas para concursos públicos em PDF com audiobook. Os materiais são de autoria de ${AUTHOR_NAME} e vendidos em pagamento único, com entrega digital para todo o Brasil. Não temos vínculo com órgãos públicos nem com bancas organizadoras.`,
+  keyFacts: [
+    ['Autoria dos materiais', AUTHOR_NAME],
+    ['Tipo de operação', 'Editora digital independente'],
+    ['Vínculo com bancas ou órgãos públicos', 'Nenhum'],
+    ['Modelo de venda', 'Compra única por apostila, sem assinatura'],
+    ['Atendimento', SUPPORT_EMAIL]
+  ],
+  body:
+    '<h2>O que a Trilha Aprova faz</h2><p>Publicamos materiais de estudo direcionados: cada apostila tem um recorte declarado — uma banca, um conjunto de cargos, um tipo de prova — em vez de tentar cobrir todo o edital de qualquer concurso. O material é entregue em PDF e em audiobook, porque leitura e revisão em áudio resolvem momentos diferentes da rotina de quem estuda trabalhando.</p>' +
+    `<h2>Quem escreve</h2><p>Os materiais são escritos por ${esc(AUTHOR_NAME)}, com foco em educação, educação especial e produção textual. O trabalho parte de conteúdos programáticos reais de editais e do estilo de formulação das bancas, organizando os assuntos por contraste — que é onde as provas costumam montar as alternativas parecidas.</p>` +
+    '<h2>O que não fazemos</h2><ul><li>Não divulgamos vagas, datas, inscrições abertas ou notas de corte.</li><li>Não publicamos avaliações, depoimentos ou números de aprovação que não possamos comprovar.</li><li>Não prometemos aprovação: nenhum material sério pode fazer isso.</li><li>Não vendemos assinatura nem cobrança recorrente.</li><li>Não temos relação institucional com bancas ou órgãos públicos.</li></ul>' +
+    '<h2>Como o conteúdo é revisado</h2><p>Quando um edital é retificado ou uma informação de referência muda, o material e as páginas públicas são corrigidos. As páginas de guia trazem a data da última atualização no rodapé do texto. Se você encontrar algo incorreto, escreva para o atendimento — correções são tratadas como prioridade.</p>' +
+    `<h2>Atendimento</h2><p>Dúvidas sobre compra, acesso, reembolso ou conteúdo: <a href="/contato">formulário de contato</a> ou <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Perdeu o link da sua compra? Use <a href="/recuperar">recuperar minha compra</a> com o mesmo e-mail do pagamento.</p>` +
+    '<h2>Materiais publicados</h2><ul>' + productLinks + '</ul>',
+  faq: [
+    { q: 'A Trilha Aprova é uma banca organizadora?', a: 'Não. Somos uma editora digital independente de materiais de estudo. Não organizamos concursos, não aplicamos provas e não temos vínculo com órgãos públicos ou bancas organizadoras.' },
+    { q: 'Quem escreve as apostilas da Trilha Aprova?', a: `Os materiais são de autoria de ${AUTHOR_NAME}, com foco em educação, educação especial e produção textual para concursos públicos.` },
+    { q: 'As apostilas garantem aprovação?', a: 'Não. Nenhum material de estudo pode garantir aprovação. A proposta é reduzir dispersão, direcionar a revisão e aumentar a qualidade do estudo, o que melhora as chances sem oferecer qualquer garantia de resultado.' },
+    { q: 'Como falo com a Trilha Aprova?', a: `Pelo formulário em /contato ou pelo e-mail ${SUPPORT_EMAIL}. O atendimento também resolve recuperação de acesso e pedidos de reembolso.` }
+  ],
+  nodes: [{
+    '@type': 'AboutPage',
+    '@id': ORIGIN + '/sobre#aboutpage',
+    mainEntity: { '@id': ORIGIN + '/#organization' }
+  }],
+  priority: '0.5'
+});
+
+/* ------------------------------------------------------------------ *
+ * Hub de dúvidas — agrega perguntas de todo o site
+ * ------------------------------------------------------------------ */
+
+const hubFaq = [
+  { q: 'O que é a Trilha Aprova?', a: 'Uma editora digital independente que publica apostilas para concursos públicos em PDF acompanhadas de audiobook, com entrega digital imediata para todo o Brasil e pagamento único por material.' },
+  { q: 'Quanto custa uma apostila?', a: `${brl(products[0].priceCents)} por apostila, em pagamento único. Não há assinatura, mensalidade nem renovação automática.` },
+  { q: 'O que vem junto com a apostila?', a: 'O PDF completo, um resumo em áudio e o audiobook dividido em oito capítulos, além das questões com gabarito comentado descritas na página de cada material.' },
+  { q: 'Como recebo o material?', a: 'A confirmação do pagamento libera automaticamente uma área individual com os arquivos para leitura, reprodução e download. Não há envio físico nem prazo de entrega.' },
+  { q: 'Perdi o link de acesso. E agora?', a: 'Use a opção de recuperar minha compra informando o mesmo e-mail utilizado no pagamento. O acesso é reenviado para esse endereço.' },
+  { q: 'Posso pedir reembolso?', a: 'Sim. O Código de Defesa do Consumidor prevê o prazo de 7 dias para o direito de arrependimento em compras pela internet. Solicite pelo canal de atendimento informando o e-mail usado na compra.' },
+  { q: 'Vocês divulgam concursos abertos?', a: 'Não. Não publicamos vagas, datas nem inscrições abertas, porque essas informações mudam constantemente e só têm validade no edital oficial do órgão. Nossos guias tratam de preparação e de como ler o edital.' },
+  { q: 'As apostilas servem para concursos fora do litoral de São Paulo?', a: 'Servem, conforme o conteúdo. A apostila de redação é de método e se aplica a concursos de nível fundamental em qualquer estado. A apostila de autores tem como referência a banca IBAM e a edição Santos 2026, mas o conteúdo de autores é cobrado em muitos concursos municipais de educação.' },
+  { q: 'Audiobook substitui a leitura da apostila?', a: 'Não. O áudio funciona como revisão de conteúdo já lido. Ler, resolver questões e revisar erros continuam sendo as etapas que produzem aprendizado; o áudio aproveita os momentos em que ler é inviável.' },
+  { q: 'As apostilas garantem aprovação?', a: 'Não. Nenhum material pode garantir aprovação. O objetivo é direcionar a revisão e melhorar a qualidade do estudo.' }
+];
+
+renderPage({
+  path: '/perguntas-frequentes',
+  title: 'Perguntas frequentes sobre as apostilas e sobre concursos',
+  metaTitle: 'Perguntas frequentes | Trilha Aprova',
+  description: 'Respostas diretas sobre preço, formato, entrega, reembolso e uso das apostilas da Trilha Aprova, e dúvidas de quem começa a estudar para concurso.',
+  kicker: 'CENTRAL DE DÚVIDAS',
+  lead: `As apostilas da Trilha Aprova custam ${brl(products[0].priceCents)} cada, em pagamento único, e incluem PDF, resumo em áudio e audiobook em oito capítulos. A entrega é digital e imediata após a confirmação do pagamento, válida em todo o Brasil. Abaixo estão as dúvidas mais frequentes sobre compra, acesso e método de estudo.`,
+  keyFacts: [
+    ['Preço por apostila', `${brl(products[0].priceCents)}, pagamento único`],
+    ['Formatos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
+    ['Prazo de entrega', 'Imediato, após a confirmação do pagamento'],
+    ['Direito de arrependimento', '7 dias, conforme o Código de Defesa do Consumidor'],
+    ['Atendimento', SUPPORT_EMAIL]
+  ],
+  body:
+    '<h2>Guias completos por assunto</h2><ul>' +
+    guides.map(g => `<li><a href="/${g.slug}">${esc(g.title)}</a> — ${esc(g.description)}</li>`).join('') +
+    '</ul>' +
+    '<h2>Preparação por cidade no litoral de São Paulo</h2><ul class="city-links">' + cityLinks + '</ul>' +
+    '<h2>Materiais disponíveis</h2><ul>' + productLinks + '</ul>' +
+    '<h2>Ainda com dúvida?</h2>' +
+    `<p>Escreva para <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a> ou use o <a href="/contato">formulário de contato</a>. Para questões de compra, informe o e-mail usado no pagamento.</p>` +
+    disclaimer,
+  faq: hubFaq,
+  trail: [],
+  priority: '0.7'
+});
+
+/* ------------------------------------------------------------------ *
+ * Home
+ * ------------------------------------------------------------------ */
+
+const homeFaq = [
+  { q: 'O valor é mensal?', a: `Não. Esta apostila é uma compra única. O valor atual é ${brl(products[0].priceCents)}; o preço de referência de ${brl(products[0].compareAtCents)} aparece riscado.` },
+  { q: 'O material garante aprovação?', a: 'Nenhum material sério pode prometer aprovação sozinho. A proposta da Trilha Aprova é reduzir dispersão, melhorar a qualidade da revisão e ajudar você a chegar à prova mais preparado para reconhecer o conteúdo cobrado.' },
+  { q: 'Posso baixar o PDF e os áudios?', a: 'Sim. Após a confirmação do pagamento, os formatos incluídos podem ser usados online e baixados na sua área de acesso.' },
+  { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
+];
+
+const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
+const homeDescription = 'Apostilas em PDF com audiobook para concursos públicos: Autores IBAM para Santos e redação de nível fundamental. Baixada Santista e todo o Brasil.';
+
+const homeNodes = [
+  webPageNode(ORIGIN + '/', { title: homeTitle, description: homeDescription, image: COVER, updated: BUILD_DATE, hasFaq: true, hasBreadcrumb: false }),
+  faqNode(ORIGIN + '/', homeFaq),
+  {
+    '@type': 'ItemList',
+    '@id': ORIGIN + '/#catalog',
+    name: 'Apostilas Trilha Aprova',
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: ORIGIN + '/apostilas/' + p.slug, name: p.shortName }))
+  }
+];
+
+let home = fs.readFileSync('public/index.html', 'utf8')
+  .replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g, '')
+  .replace(/<meta name="google-site-verification"[^>]*>/g, '')
+  .replace(/<!-- discovery:start -->[\s\S]*?<!-- discovery:end -->/g, '');
+
+home = home
+  .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(homeTitle)}</title>`)
+  .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(homeDescription)}">`)
+  .replace('</head>', seoBlock({ path: '/', title: homeTitle, description: homeDescription, image: COVER, nodes: homeNodes }) + '</head>');
+
+const discovery = '<!-- discovery:start -->' +
+  '<section class="section shell seo-discovery">' +
+  '<div class="section-heading"><span class="eyebrow">ENCONTRE SUA PRÓXIMA LEITURA</span>' +
+  '<h2>Apostilas para concursos com PDF e audiobook</h2>' +
+  '<p>Conheça o conteúdo de cada material antes de comprar. Os arquivos são digitais, com acesso em todo o Brasil.</p></div>' +
+  `<ul>${productLinks}</ul>` +
+  '<h3>Preparação no litoral de São Paulo</h3>' +
+  '<p>Estuda para concursos em Santos, São Vicente, Guarujá, Praia Grande ou Cubatão? Cada guia abaixo reúne os órgãos que abrem seleções na cidade, onde conferir o edital oficial e como organizar leitura, exercícios e revisão em áudio.</p>' +
+  `<ul class="city-links">${cityLinks}</ul>` +
+  '<h3>Guias de estudo</h3>' +
+  `<ul>${guides.map(g => `<li><a href="/${g.slug}">${esc(g.title)}</a></li>`).join('')}</ul>` +
+  '<p><a href="/apostilas-para-concurso">Ver o catálogo completo</a> · <a href="/perguntas-frequentes">Perguntas frequentes</a> · <a href="/sobre">Sobre a Trilha Aprova</a></p>' +
+  '</section><!-- discovery:end --></main>';
+
+home = home.replace('</main>', discovery);
+fs.writeFileSync('public/index.html', home);
+
+addUrl('/', { priority: '1.0', images: products.map(p => p.storefront.cover3d) });
+corpus.unshift({ path: '/', title: homeTitle, description: homeDescription, updated: BUILD_DATE, text: plain(homeDescription + ' ' + homeFaq.map(f => f.q + ' ' + f.a).join(' ')) });
+
+/* ------------------------------------------------------------------ *
+ * Páginas institucionais existentes
+ * ------------------------------------------------------------------ */
+
+const legalPages = [
+  ['contato', 'Atendimento e contato da Trilha Aprova', '0.5',
+    'Fale com a Trilha Aprova: dúvidas sobre apostilas, audiobooks, pagamento, acesso aos materiais e recuperação de compra. Atendimento por e-mail, em português.'],
+  ['termos', 'Termos de uso e compra', '0.3',
+    'Termos de uso e de compra da Trilha Aprova: o que você recebe ao comprar uma apostila digital, regras de uso do material, pagamento e responsabilidades.'],
+  ['privacidade', 'Política de privacidade', '0.3',
+    'Política de privacidade da Trilha Aprova: quais dados coletamos na compra, como são usados, por quanto tempo ficam guardados e como pedir a exclusão deles.'],
+  ['cookies', 'Política de cookies', '0.3',
+    'Política de cookies da Trilha Aprova: quais cookies o site usa, para que servem, quais são opcionais e como gerenciar suas preferências a qualquer momento.'],
+  ['cancelamentos', 'Cancelamentos e reembolsos', '0.4',
+    'Cancelamentos e reembolsos da Trilha Aprova: o prazo de arrependimento de 7 dias previsto no Código de Defesa do Consumidor e como solicitar o estorno.'],
+  ['entrega-e-acesso', 'Entrega e acesso aos materiais', '0.4',
+    'Entrega e acesso aos materiais da Trilha Aprova: como o PDF e o audiobook chegam após o pagamento, em quanto tempo e o que fazer se você perder o link.']
+];
+
+for (const [name, label, priority, description] of legalPages) {
+  const file = 'public/' + name + '.html';
+  const path = '/' + name;
+  let h = fs.readFileSync(file, 'utf8').replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g, '');
+  const title = h.match(/<title>(.*?)<\/title>/)?.[1] || 'Trilha Aprova';
+  h = h.replace(/<meta name="description"[^>]*>/g, '')
+    .replace('</title>', `</title><meta name="description" content="${esc(description)}">`);
+  const nodes = [
+    webPageNode(ORIGIN + path, { title, description, image: COVER, updated: BUILD_DATE, hasFaq: false, hasBreadcrumb: true }),
+    breadcrumbNode(ORIGIN + path, [['Início', '/'], [label, path]])
+  ];
+  h = h.replace('</head>', seoBlock({ path, title, description, image: COVER, nodes }) + '</head>');
+  fs.writeFileSync(file, h);
+  addUrl(path, { priority });
+}
+
+/* ------------------------------------------------------------------ *
+ * Páginas privadas: noindex
+ * ------------------------------------------------------------------ */
+
+for (const name of ['dashboard', 'comprar', 'obrigado', 'recuperar']) {
+  const file = 'public/' + name + '.html';
+  let h = fs.readFileSync(file, 'utf8')
+    .replace(/<meta name="robots"[^>]*>/g, '')
+    .replace('</head>', '<meta name="robots" content="noindex,nofollow"></head>');
+  fs.writeFileSync(file, h);
+}
+
+/* ------------------------------------------------------------------ *
+ * sitemap.xml (com lastmod e imagens)
+ * ------------------------------------------------------------------ */
+
+const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' +
+  urls.map(u =>
+    '  <url><loc>' + ORIGIN + u.loc + '</loc>' +
+    '<lastmod>' + u.lastmod + '</lastmod>' +
+    '<priority>' + u.priority + '</priority>' +
+    [...new Set(u.images)].map(i => '<image:image><image:loc>' + esc(i) + '</image:loc></image:image>').join('') +
+    '</url>').join('\n') +
+  '\n</urlset>\n';
+fs.writeFileSync('public/sitemap.xml', sitemap);
+
+/* ------------------------------------------------------------------ *
+ * robots.txt — inclui liberação explícita para rastreadores de IA (GEO)
+ * ------------------------------------------------------------------ */
+
+const AI_AGENTS = [
+  'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot',
+  'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot',
+  'Applebot-Extended', 'Bingbot', 'DuckAssistBot', 'Amazonbot', 'meta-externalagent',
+  'CCBot', 'cohere-ai', 'YouBot', 'Diffbot', 'MistralAI-User', 'Bytespider'
+];
+
+const robots =
+  '# Trilha Aprova — apostilas para concursos públicos\n' +
+  '# Conteúdo público liberado para buscadores e para assistentes de IA.\n\n' +
+  'User-agent: *\n' +
+  'Allow: /\n' +
+  'Disallow: /api/\n' +
+  'Disallow: /acesso\n' +
+  'Disallow: /dashboard\n' +
+  'Disallow: /comprar\n' +
+  'Disallow: /obrigado\n' +
+  'Disallow: /recuperar\n' +
+  'Disallow: /gsc/\n\n' +
+  AI_AGENTS.map(a => `User-agent: ${a}\nAllow: /\nDisallow: /api/\nDisallow: /acesso\nDisallow: /dashboard\n`).join('\n') +
+  '\n' +
+  `Sitemap: ${ORIGIN}/sitemap.xml\n`;
+fs.writeFileSync('public/robots.txt', robots);
+
+/* ------------------------------------------------------------------ *
+ * llms.txt e llms-full.txt (GEO)
+ * ------------------------------------------------------------------ */
+
+const llms =
+  '# Trilha Aprova\n\n' +
+  '> Editora digital independente de apostilas para concursos públicos no Brasil. Cada apostila reúne PDF, resumo em áudio e audiobook em capítulos, ' +
+  `por ${brl(products[0].priceCents)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
+  `Autoria: ${AUTHOR_NAME}. Atendimento: ${SUPPORT_EMAIL}. Idioma: português do Brasil.\n` +
+  'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos, não divulga vagas, datas ou inscrições abertas e não promete aprovação.\n' +
+  'Foco regional de conteúdo: Baixada Santista, litoral de São Paulo (Santos, São Vicente, Guarujá, Praia Grande e Cubatão). Venda e entrega: todo o Brasil.\n\n' +
+  '## Apostilas\n\n' +
+  products.map(p => `- [${p.shortName}](${ORIGIN}/apostilas/${p.slug}): ${p.description} Preço: ${brl(p.priceCents)}, pagamento único. Público: ${p.audience}. Referência: ${p.contest}, banca ${p.examBoard}, ${p.edition}.`).join('\n') +
+  `\n- [Catálogo completo](${ORIGIN}/apostilas-para-concurso): todas as apostilas disponíveis com PDF e audiobook.\n\n` +
+  '## Guias de estudo\n\n' +
+  guides.map(g => `- [${g.title}](${ORIGIN}/${g.slug}): ${g.description}`).join('\n') +
+  '\n\n## Concursos por cidade — Baixada Santista (SP)\n\n' +
+  cities.map(c => `- [${c.title}](${ORIGIN}/${c.slug}): ${c.description}`).join('\n') +
+  '\n\n## Institucional\n\n' +
+  `- [Sobre a Trilha Aprova](${ORIGIN}/sobre): quem escreve os materiais, como são produzidos e o que não prometemos.\n` +
+  `- [Perguntas frequentes](${ORIGIN}/perguntas-frequentes): preço, formato, entrega, reembolso e método de estudo.\n` +
+  `- [Entrega e acesso](${ORIGIN}/entrega-e-acesso): como o material é liberado após a compra.\n` +
+  `- [Cancelamentos e reembolsos](${ORIGIN}/cancelamentos): direito de arrependimento de 7 dias (CDC art. 49).\n` +
+  `- [Contato](${ORIGIN}/contato): atendimento ao cliente.\n\n` +
+  '## Optional\n\n' +
+  `- [Termos de uso](${ORIGIN}/termos)\n` +
+  `- [Política de privacidade](${ORIGIN}/privacidade)\n` +
+  `- [Política de cookies](${ORIGIN}/cookies)\n`;
+fs.writeFileSync('public/llms.txt', llms);
+
+const llmsFull =
+  '# Trilha Aprova — conteúdo completo\n\n' +
+  `Última atualização: ${BUILD_DATE}. Origem: ${ORIGIN}\n\n` +
+  corpus.map(c => `---\n\n## ${c.title}\nURL: ${ORIGIN}${c.path}\nAtualizado: ${c.updated}\n\n${c.description}\n\n${c.text}\n`).join('\n');
+fs.writeFileSync('public/llms-full.txt', llmsFull);
+
+/* ------------------------------------------------------------------ *
+ * feed.xml
+ * ------------------------------------------------------------------ */
+
+const feedItems = [...guides.map(g => ({ path: '/' + g.slug, title: g.title, description: g.description, date: g.updated || BUILD_DATE })),
+  ...cities.map(c => ({ path: '/' + c.slug, title: c.title, description: c.description, date: BUILD_DATE }))];
+
+const feed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>' +
+  '<title>Trilha Aprova — guias de estudo para concursos</title>' +
+  `<link>${ORIGIN}/</link>` +
+  '<description>Guias de preparação para concursos públicos, com foco na Baixada Santista e em todo o Brasil.</description>' +
+  '<language>pt-BR</language>' +
+  `<lastBuildDate>${new Date(BUILD_DATE + 'T12:00:00Z').toUTCString()}</lastBuildDate>` +
+  `<atom:link href="${ORIGIN}/feed.xml" rel="self" type="application/rss+xml"/>` +
+  feedItems.map(i =>
+    '<item>' +
+    `<title>${esc(i.title)}</title>` +
+    `<link>${ORIGIN}${i.path}</link>` +
+    `<guid isPermaLink="true">${ORIGIN}${i.path}</guid>` +
+    `<description>${esc(i.description)}</description>` +
+    `<pubDate>${new Date(i.date + 'T12:00:00Z').toUTCString()}</pubDate>` +
+    '</item>').join('') +
+  '</channel></rss>\n';
+fs.writeFileSync('public/feed.xml', feed);
+
+/* ------------------------------------------------------------------ *
+ * Web manifest
+ * ------------------------------------------------------------------ */
+
+fs.writeFileSync('public/site.webmanifest', JSON.stringify({
+  name: 'Trilha Aprova — apostilas para concursos',
+  short_name: 'Trilha Aprova',
+  description: 'Apostilas em PDF com audiobook para concursos públicos no Brasil.',
+  start_url: '/',
+  scope: '/',
+  display: 'standalone',
+  lang: 'pt-BR',
+  background_color: '#ffffff',
+  theme_color: '#08284f',
+  icons: [{ src: '/assets/trilha-aprova-logo.webp', sizes: '180x84', type: 'image/webp', purpose: 'any' }]
+}, null, 2) + '\n');
+
+/* ------------------------------------------------------------------ *
+ * 404
+ * ------------------------------------------------------------------ */
+
+fs.writeFileSync('public/404.html',
+  '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">' +
+  '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+  '<title>Página não encontrada | Trilha Aprova</title>' +
+  '<meta name="robots" content="noindex,follow">' +
+  '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css"><link rel="stylesheet" href="/seo.css">' +
+  '</head><body><header class="guide-header"><a class="guide-brand" href="/">Trilha Aprova</a>' +
+  `<nav aria-label="Navegação do conteúdo">${navHtml}</nav></header>` +
+  '<main class="guide"><h1>Esta página não existe</h1>' +
+  '<p class="answer">O endereço que você abriu não corresponde a nenhuma página da Trilha Aprova. Ele pode ter sido digitado incorretamente ou o conteúdo pode ter mudado de lugar.</p>' +
+  '<h2>Para onde ir agora</h2><ul>' +
+  `<li><a href="/apostilas-para-concurso">Catálogo de apostilas</a></li>${productLinks}` +
+  '<li><a href="/concursos-baixada-santista">Concursos na Baixada Santista</a></li>' +
+  '<li><a href="/perguntas-frequentes">Perguntas frequentes</a></li>' +
+  '<li><a href="/recuperar">Recuperar minha compra</a></li>' +
+  '<li><a href="/contato">Falar com o atendimento</a></li>' +
+  '</ul></main>' + footer + '</body></html>');
+
+// O rodapé é a principal malha de links internos do site e cada página estática
+// carrega a sua própria cópia. Aqui a cópia é realinhada com lib/site-footer.html
+// para que um link novo apareça em todas as páginas de uma vez, sem divergência.
+const canonicalFooter = footer.trim();
+let footersSynced = 0;
+for (const file of fs.readdirSync('public')) {
+  if (!file.endsWith('.html')) continue;
+  const full = `public/${file}`;
+  const html = fs.readFileSync(full, 'utf8');
+  const current = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/);
+  if (!current || current[0] === canonicalFooter) continue;
+  fs.writeFileSync(full, html.replace(current[0], canonicalFooter));
+  footersSynced++;
+}
+
+console.log(`SEO: ${urls.length} URLs públicas, ${products.length} páginas de produto, ${cities.length} páginas de cidade, ${guides.length} guias.`);
+console.log(`Rodapé sincronizado a partir de lib/site-footer.html em ${footersSynced} página(s).`);
+console.log('GEO: robots.txt com liberação para rastreadores de IA, llms.txt, llms-full.txt e feed.xml gerados.');
+console.log('Arquivos privados e páginas de compra permanecem fora do sitemap e marcados como noindex.');

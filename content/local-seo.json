@@ -1,0 +1,427 @@
+[
+  {
+    "slug": "concursos-publicos-santos",
+    "city": "Santos",
+    "state": "SP",
+    "stateName": "São Paulo",
+    "region": "Baixada Santista",
+    "title": "Concursos públicos em Santos (SP): como se preparar e onde conferir o edital",
+    "description": "Como se preparar para concursos públicos em Santos (SP): quais órgãos abrem seleções, onde conferir o edital oficial e como estudar com apostila e audiobook.",
+    "lead": "Santos é a cidade-sede da Região Metropolitana da Baixada Santista e concentra o maior número de órgãos públicos do litoral paulista: prefeitura, câmara municipal, autoridade portuária, fundações de saúde e campus federal. Isso significa mais editais por ano do que nas cidades vizinhas — e conteúdos programáticos que variam bastante de um órgão para outro. Esta página explica onde conferir os editais oficiais e como transformar o conteúdo programático em uma rotina de estudo.",
+    "keyFacts": [
+      [
+        "Região",
+        "Região Metropolitana da Baixada Santista (cidade-sede)"
+      ],
+      [
+        "Portal oficial da prefeitura",
+        "santos.sp.gov.br"
+      ],
+      [
+        "Banca citada no edital municipal de referência deste material",
+        "IBAM"
+      ],
+      [
+        "Material da Trilha Aprova com foco em Santos",
+        "Apostila de Autores — Banca IBAM"
+      ],
+      [
+        "Formato de entrega",
+        "PDF + audiobook, 100% digital"
+      ]
+    ],
+    "orgaos": [
+      {
+        "name": "Prefeitura Municipal de Santos",
+        "url": "https://www.santos.sp.gov.br/",
+        "note": "Concentra os cargos da administração direta: educação, saúde, fiscalização, administrativo e obras. É o portal onde os editais municipais e as retificações são publicados."
+      },
+      {
+        "name": "Câmara Municipal de Santos",
+        "url": "https://www.camarasantos.sp.gov.br/",
+        "note": "Seleções próprias para o quadro legislativo, geralmente com conteúdo de direito administrativo, processo legislativo e regimento interno."
+      },
+      {
+        "name": "Autoridade Portuária de Santos",
+        "url": "https://www.portodesantos.com.br/",
+        "note": "Empresa pública ligada ao Porto de Santos. Os processos seletivos seguem regras próprias e conteúdos técnicos, diferentes dos municipais."
+      },
+      {
+        "name": "UNIFESP — Campus Baixada Santista",
+        "url": "https://www.unifesp.br/",
+        "note": "Concursos federais para docentes e técnicos-administrativos em educação, com editais publicados no portal da universidade e no Diário Oficial da União."
+      },
+      {
+        "name": "IBAM — Instituto Brasileiro de Administração Municipal",
+        "url": "https://www.ibamsp-concursos.org.br/",
+        "note": "Banca que já organizou seleções municipais na região. Quando o edital indicar IBAM, confira no portal da banca o estilo das provas anteriores."
+      }
+    ],
+    "sections": [
+      {
+        "h2": "Quais cargos costumam aparecer nos editais de Santos?",
+        "html": "<p>A administração municipal de Santos é grande e diversificada, então os editais costumam reunir cargos de níveis diferentes no mesmo documento. Em linhas gerais você encontra três blocos:</p><ul><li><strong>Educação:</strong> professor adjunto, professor de educação básica, cargos de apoio escolar e especialistas em educação especial.</li><li><strong>Saúde:</strong> profissionais de nível técnico e superior ligados à rede municipal.</li><li><strong>Administrativo e fiscalização:</strong> agentes, auxiliares, analistas e cargos de nível fundamental e médio.</li></ul><p>Não trabalhamos com listas de vagas ou datas nesta página: número de vagas, salário e cronograma mudam a cada edital e só valem quando confirmados no documento oficial. Use o portal da prefeitura como fonte e esta página como roteiro de estudo.</p>"
+      },
+      {
+        "h2": "Como conferir o edital oficial antes de estudar",
+        "html": "<ol><li>Abra o portal da Prefeitura de Santos e localize a seção de concursos e processos seletivos.</li><li>Baixe o edital completo em PDF, não apenas o resumo divulgado em notícias.</li><li>Vá direto ao anexo de conteúdo programático do <em>seu</em> cargo — é o único trecho que define o que estudar.</li><li>Confira se há retificações publicadas depois do edital original; elas podem incluir ou remover tópicos.</li><li>Anote a banca indicada. Se for o IBAM, procure provas anteriores da mesma banca para entender o estilo de formulação.</li></ol>"
+      },
+      {
+        "h2": "Estudar em Santos sem perder o tempo de deslocamento",
+        "html": "<p>Santos tem uma particularidade útil para quem estuda: boa parte dos deslocamentos internos é feita de ônibus ou pelo VLT, que liga a cidade a São Vicente. São trajetos em que não dá para ler um PDF com atenção, mas dá para ouvir.</p><p>Uma divisão que funciona bem: reserve a leitura e os exercícios para o tempo sentado em casa e use o trajeto para os capítulos em áudio do assunto que você leu no dia anterior. A repetição espaçada faz mais diferença do que tentar ler no transporte.</p>"
+      },
+      {
+        "h2": "Material da Trilha Aprova com foco no edital de Santos",
+        "html": "<p>A <a href=\"/apostilas/autores-ibam-2026\">Apostila de Autores — Banca IBAM</a> foi construída a partir da edição Santos 2026 e trabalha o reconhecimento de autores e conceitos cobrados nos cargos de Professor Adjunto I e Professor Adjunto II — Educação Especial. Ela revisa autores e armadilhas de formulação; não cobre todas as disciplinas do edital.</p><p>Para cargos de nível fundamental que exigem produção textual, a <a href=\"/apostilas/redacao-nivel-fundamental-2026\">apostila de Redação</a> trabalha o método de escrita, não um cargo específico.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Onde sai o edital de concurso da Prefeitura de Santos?",
+        "a": "No portal oficial da Prefeitura de Santos (santos.sp.gov.br), na seção de concursos e processos seletivos, e no Diário Oficial do município. Notícias e perfis de redes sociais podem adiantar a informação, mas só o edital publicado no canal oficial tem valor — inclusive as retificações."
+      },
+      {
+        "q": "Qual banca organiza os concursos de Santos?",
+        "a": "A banca é definida a cada edital e pode mudar de uma seleção para outra. O IBAM já organizou seleções municipais na região e é a banca de referência do material de autores da Trilha Aprova. Confirme sempre a banca no edital do seu cargo antes de comprar qualquer material direcionado."
+      },
+      {
+        "q": "Preciso morar em Santos para prestar concurso na cidade?",
+        "a": "Em regra, não. A maioria dos editais municipais não exige residência prévia no município para inscrição, mas alguns cargos podem ter exigências específicas de residência ou disponibilidade. Verifique os requisitos do cargo no edital."
+      },
+      {
+        "q": "As apostilas da Trilha Aprova são entregues fisicamente em Santos?",
+        "a": "Não. A entrega é 100% digital: após a confirmação do pagamento você recebe acesso a uma área individual com o PDF e os arquivos de áudio, para ler, ouvir e baixar. Não há envio de material impresso, em Santos ou em qualquer outra cidade."
+      }
+    ],
+    "metaTitle": "Concursos públicos em Santos (SP)"
+  },
+  {
+    "slug": "concursos-publicos-sao-vicente",
+    "city": "São Vicente",
+    "state": "SP",
+    "stateName": "São Paulo",
+    "region": "Baixada Santista",
+    "title": "Concursos públicos em São Vicente (SP): guia de preparação e editais oficiais",
+    "description": "Preparação para concursos públicos em São Vicente (SP): órgãos que abrem seleções, onde sai o edital oficial e como estudar com apostila em PDF e audiobook.",
+    "lead": "São Vicente é conurbada com Santos: muita gente mora em uma cidade e trabalha na outra, e quem estuda para concurso na região costuma acompanhar os editais das duas prefeituras ao mesmo tempo. A cidade tem uma característica que afeta a rotina de estudo: ela é dividida entre a área insular e a área continental, com deslocamentos longos entre os bairros. Esta página mostra onde conferir os editais e como montar uma rotina realista.",
+    "keyFacts": [
+      [
+        "Região",
+        "Região Metropolitana da Baixada Santista"
+      ],
+      [
+        "Portal oficial da prefeitura",
+        "saovicente.sp.gov.br"
+      ],
+      [
+        "Característica geográfica",
+        "Área insular e área continental (Humaitá, Samaritá, Japuí)"
+      ],
+      [
+        "Ligação com Santos",
+        "Conurbação urbana, com VLT ligando as duas cidades"
+      ],
+      [
+        "Formato de entrega dos materiais",
+        "PDF + audiobook, 100% digital"
+      ]
+    ],
+    "orgaos": [
+      {
+        "name": "Prefeitura Municipal de São Vicente",
+        "url": "https://www.saovicente.sp.gov.br/",
+        "note": "Portal oficial onde são publicados os editais municipais, o cronograma e as retificações das seleções da administração direta."
+      },
+      {
+        "name": "Câmara Municipal de São Vicente",
+        "url": "https://www.saovicente.sp.leg.br/",
+        "note": "Seleções para o quadro do legislativo municipal, com conteúdo próprio de processo legislativo e regimento interno."
+      },
+      {
+        "name": "Diário Oficial de São Vicente",
+        "url": "https://www.saovicente.sp.gov.br/",
+        "note": "Canal de publicação oficial. Convocações e retificações costumam aparecer primeiro aqui, antes de circularem em outros canais."
+      }
+    ],
+    "sections": [
+      {
+        "h2": "Quem estuda em São Vicente costuma concorrer também em Santos",
+        "html": "<p>A proximidade entre as duas cidades faz com que o mesmo candidato acompanhe os dois calendários. Isso é uma vantagem — mais oportunidades — mas cria um risco comum: estudar um conteúdo genérico que não atende bem a nenhum dos dois editais.</p><p>A forma de resolver é simples: monte uma única planilha com os tópicos dos dois conteúdos programáticos lado a lado. O que se repete vira prioridade máxima. O que aparece em só um edital entra depois, na ordem da prova que vier primeiro.</p>"
+      },
+      {
+        "h2": "Área insular e área continental: planeje o tempo de deslocamento",
+        "html": "<p>Quem mora na parte continental — Humaitá, Samaritá, Japuí e região — enfrenta trajetos consideravelmente mais longos até o centro da cidade e até Santos. Na prática, isso significa uma coisa: o tempo de transporte é o maior bloco de estudo disponível na semana, e ele é um bloco auditivo.</p><p>Sugestão de organização: leitura e exercícios em dois blocos fixos em casa; revisão em áudio no deslocamento; e um bloco curto de refazer erros antes de dormir. É mais sustentável do que tentar concentrar tudo no fim de semana.</p>"
+      },
+      {
+        "h2": "Confira o edital antes de escolher qualquer material",
+        "html": "<ol><li>Localize no portal da prefeitura a seção de concursos e baixe o edital completo.</li><li>Separe o anexo de conteúdo programático do seu cargo.</li><li>Confira a escolaridade exigida — muitos cargos de nível fundamental cobram redação, e não apenas questões objetivas.</li><li>Anote a banca e procure o estilo de prova dela.</li><li>Só então compare o sumário do material com a sua lista de tópicos.</li></ol><p>Esta página é um guia de preparação. Não publicamos vagas, datas nem inscrições abertas: essas informações mudam e só valem quando confirmadas no edital oficial.</p>"
+      },
+      {
+        "h2": "Se o seu cargo cobra redação",
+        "html": "<p>Cargos de ensino fundamental completo frequentemente incluem uma prova de produção textual, e é justamente aí que muita gente perde ponto sem perceber. A <a href=\"/apostilas/redacao-nivel-fundamental-2026\">apostila de Redação para Ensino Fundamental Completo</a> trabalha o método: entender o comando, identificar o gênero pedido, organizar as ideias e revisar o próprio texto. Ouvir o conteúdo ajuda a fixar o método, mas escrever continua sendo insubstituível.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Onde encontro os editais de concurso de São Vicente?",
+        "a": "No portal oficial da Prefeitura de São Vicente (saovicente.sp.gov.br), na seção de concursos e processos seletivos, e no Diário Oficial do município. Retificações e convocações também saem por esses canais."
+      },
+      {
+        "q": "Posso usar o mesmo material para concursos de São Vicente e de Santos?",
+        "a": "Depende do conteúdo programático de cada cargo. Cidades vizinhas podem contratar bancas diferentes e cobrar tópicos diferentes para cargos de nome parecido. Compare os dois anexos antes de decidir: o que se repete nos dois editais é o que vale estudar primeiro."
+      },
+      {
+        "q": "Concursos de São Vicente cobram redação?",
+        "a": "Vários editais municipais incluem prova de produção textual, inclusive para cargos de nível fundamental completo. O gênero cobrado e os critérios de correção variam conforme o edital, então confirme no anexo do seu cargo antes de escolher um material de redação."
+      },
+      {
+        "q": "Como recebo a apostila morando em São Vicente?",
+        "a": "Por acesso digital, imediatamente após a confirmação do pagamento. Você abre uma área individual com o PDF e os áudios, que podem ser lidos, ouvidos e baixados. Não depende de entrega física nem de endereço."
+      }
+    ],
+    "metaTitle": "Concursos públicos em São Vicente (SP)"
+  },
+  {
+    "slug": "concursos-publicos-guaruja",
+    "city": "Guarujá",
+    "state": "SP",
+    "stateName": "São Paulo",
+    "region": "Baixada Santista",
+    "title": "Concursos públicos no Guarujá (SP): como estudar e onde conferir os editais",
+    "description": "Concursos públicos no Guarujá (SP): órgãos municipais, onde conferir o edital oficial e como organizar o estudo com apostila em PDF e audiobook em capítulos.",
+    "lead": "O Guarujá fica na Ilha de Santo Amaro e tem uma rotina de deslocamento diferente do resto da Baixada Santista: quem precisa chegar a Santos normalmente depende da travessia de balsa ou do contorno rodoviário pelo continente. Esse detalhe muda bastante a forma mais eficiente de estudar. Esta página reúne os canais oficiais de edital e um roteiro de preparação pensado para essa realidade.",
+    "keyFacts": [
+      [
+        "Região",
+        "Região Metropolitana da Baixada Santista"
+      ],
+      [
+        "Portal oficial da prefeitura",
+        "guaruja.sp.gov.br"
+      ],
+      [
+        "Característica geográfica",
+        "Ilha de Santo Amaro; distritos da sede e de Vicente de Carvalho"
+      ],
+      [
+        "Ligação com Santos",
+        "Travessia de balsa ou acesso rodoviário pelo continente"
+      ],
+      [
+        "Formato de entrega dos materiais",
+        "PDF + audiobook, 100% digital"
+      ]
+    ],
+    "orgaos": [
+      {
+        "name": "Prefeitura Municipal de Guarujá",
+        "url": "https://www.guaruja.sp.gov.br/",
+        "note": "Publica os editais da administração direta: educação, saúde, turismo, fiscalização e administrativo. É o canal oficial para cronograma e retificações."
+      },
+      {
+        "name": "Câmara Municipal de Guarujá",
+        "url": "https://www.guaruja.sp.leg.br/",
+        "note": "Seleções próprias do legislativo municipal, com conteúdo específico de processo legislativo e legislação orgânica do município."
+      }
+    ],
+    "sections": [
+      {
+        "h2": "A fila da balsa é o seu bloco de revisão",
+        "html": "<p>Parece um detalhe menor, mas não é: quem faz a travessia com frequência acumula, por semana, várias horas de espera e trajeto. É um tempo em que ler é desconfortável e ouvir é perfeitamente viável.</p><p>Se você transformar esse período em revisão auditiva estruturada — e não em rolagem de rede social — ganha um bloco de estudo inteiro sem tirar tempo de nenhuma outra atividade. O ponto é que a revisão em áudio precisa vir <em>depois</em> da leitura, para funcionar como recuperação e não como primeiro contato com o assunto.</p>"
+      },
+      {
+        "h2": "Sede e Vicente de Carvalho: confira o local de prova",
+        "html": "<p>O município tem dois grandes polos urbanos, a sede e Vicente de Carvalho, e os locais de prova podem ficar distantes da sua casa mesmo dentro da mesma cidade. Quando o edital publicar o local de aplicação, calcule o trajeto com antecedência considerando a travessia e o trânsito de temporada — o litoral tem picos sazonais que alteram bastante o tempo de deslocamento.</p>"
+      },
+      {
+        "h2": "Como ler o edital do Guarujá sem perder tempo",
+        "html": "<ol><li>Acesse o portal da Prefeitura de Guarujá e localize a seção de concursos.</li><li>Baixe o edital completo em PDF.</li><li>Vá ao anexo de conteúdo programático do seu cargo e ignore o resto por enquanto.</li><li>Confira a banca responsável e o formato da prova (objetiva, discursiva, prática, títulos).</li><li>Acompanhe as retificações até a data da prova.</li></ol><p>Não divulgamos vagas, salários ou datas: são dados que mudam a cada edital e precisam vir da fonte oficial.</p>"
+      },
+      {
+        "h2": "Materiais que se encaixam nos editais da região",
+        "html": "<p>Para cargos de professor com conteúdo pedagógico, a <a href=\"/apostilas/autores-ibam-2026\">Apostila de Autores</a> trabalha o reconhecimento de autores e conceitos, com foco no estilo da banca IBAM. Para cargos de nível fundamental com prova de redação, a <a href=\"/apostilas/redacao-nivel-fundamental-2026\">apostila de Redação</a> ensina o método de produção textual. Compare o sumário de cada uma com o anexo do seu edital antes de comprar.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Onde sai o edital de concurso da Prefeitura de Guarujá?",
+        "a": "No portal oficial guaruja.sp.gov.br, na seção de concursos e processos seletivos, além do Diário Oficial do município. Confira também as retificações publicadas após o edital original, porque elas podem alterar o conteúdo programático."
+      },
+      {
+        "q": "Concursos do Guarujá exigem morar na cidade?",
+        "a": "Em regra a inscrição é aberta a candidatos de qualquer município. Alguns cargos específicos podem trazer exigências próprias de disponibilidade ou residência, então confirme os requisitos no edital do cargo."
+      },
+      {
+        "q": "Vale a pena estudar por audiobook no trajeto da balsa?",
+        "a": "Sim, desde que como revisão. O áudio funciona bem para retomar um assunto já lido e fixar conceitos por repetição. Ele não substitui a leitura com marcação nem a resolução de questões, que exigem atenção visual e escrita."
+      },
+      {
+        "q": "A apostila é enviada pelos Correios para o Guarujá?",
+        "a": "Não há envio físico. Todo o material é digital: PDF e áudios liberados em uma área individual logo após a confirmação do pagamento, acessíveis de qualquer lugar do Brasil."
+      }
+    ],
+    "metaTitle": "Concursos públicos no Guarujá (SP)"
+  },
+  {
+    "slug": "concursos-publicos-praia-grande",
+    "city": "Praia Grande",
+    "state": "SP",
+    "stateName": "São Paulo",
+    "region": "Baixada Santista",
+    "title": "Concursos públicos em Praia Grande (SP): preparação e editais oficiais",
+    "description": "Concursos públicos em Praia Grande (SP): onde conferir o edital oficial, quais órgãos abrem seleções e como montar a rotina de estudo com apostila e áudio.",
+    "lead": "Praia Grande é uma das cidades que mais cresceram na Baixada Santista e tem uma malha urbana bastante alongada, acompanhando a faixa de praia contínua de cerca de 22 quilômetros. Para quem estuda, isso se traduz em deslocamentos internos longos e uma rede municipal grande de educação e saúde. Esta página explica onde acompanhar os editais e como montar uma rotina de estudo compatível.",
+    "keyFacts": [
+      [
+        "Região",
+        "Região Metropolitana da Baixada Santista"
+      ],
+      [
+        "Portal oficial da prefeitura",
+        "praiagrande.sp.gov.br"
+      ],
+      [
+        "Característica geográfica",
+        "Faixa de praia contínua de cerca de 22 km, com malha urbana alongada"
+      ],
+      [
+        "Perfil da administração",
+        "Rede municipal ampla de educação e saúde"
+      ],
+      [
+        "Formato de entrega dos materiais",
+        "PDF + audiobook, 100% digital"
+      ]
+    ],
+    "orgaos": [
+      {
+        "name": "Prefeitura Municipal de Praia Grande",
+        "url": "https://www.praiagrande.sp.gov.br/",
+        "note": "Canal oficial dos editais municipais. Reúne as seleções da administração direta, incluindo os cargos das redes de educação e saúde."
+      },
+      {
+        "name": "Câmara Municipal de Praia Grande",
+        "url": "https://www.praiagrande.sp.leg.br/",
+        "note": "Seleções do quadro legislativo, com conteúdo programático próprio e foco em legislação municipal."
+      }
+    ],
+    "sections": [
+      {
+        "h2": "Cidade comprida, deslocamento longo: use isso a favor",
+        "html": "<p>A geografia de Praia Grande faz com que ir de um bairro a outro possa levar bastante tempo, especialmente no sentido dos bairros mais distantes do centro. Some a isso quem trabalha em Santos ou em São Vicente e o trajeto diário vira o bloco de tempo mais previsível da semana.</p><p>A recomendação prática é sempre a mesma, e funciona: leitura e exercícios em ambiente fixo, revisão em áudio no deslocamento. O erro comum é inverter — tentar aprender um assunto novo de ouvido, no trânsito, e depois não conseguir responder questões sobre ele.</p>"
+      },
+      {
+        "h2": "Educação e saúde concentram boa parte dos cargos",
+        "html": "<p>Municípios com rede própria ampla tendem a abrir seleções recorrentes para professor, cargos de apoio escolar e profissionais de saúde de nível técnico e superior. Se o seu objetivo é a área da educação, priorize desde já o bloco de conhecimentos pedagógicos: ele costuma ser o que mais diferencia candidatos, porque a parte de português e matemática muita gente já domina.</p><p>Vale reforçar: não publicamos aqui número de vagas nem datas de inscrição. Esses dados mudam a cada edital e precisam ser conferidos no portal oficial.</p>"
+      },
+      {
+        "h2": "Checklist do edital de Praia Grande",
+        "html": "<ol><li>Baixe o edital completo no portal da prefeitura — não apenas o extrato.</li><li>Localize o anexo de conteúdo programático do seu cargo.</li><li>Verifique se há prova discursiva ou de redação além da objetiva.</li><li>Anote a banca responsável e busque o padrão de questões dela.</li><li>Marque no calendário a data-limite de inscrição e acompanhe retificações.</li></ol>"
+      },
+      {
+        "h2": "Qual material combina com o seu cargo",
+        "html": "<p>Se você vai concorrer a cargo de professor com conteúdo pedagógico, a <a href=\"/apostilas/autores-ibam-2026\">Apostila de Autores — Banca IBAM</a> organiza autores e conceitos por contraste, que é exatamente onde as bancas montam as alternativas parecidas. Se o seu cargo é de nível fundamental e cobra produção textual, comece pela <a href=\"/apostilas/redacao-nivel-fundamental-2026\">apostila de Redação</a>.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Onde acompanhar os concursos da Prefeitura de Praia Grande?",
+        "a": "No portal oficial praiagrande.sp.gov.br, na área de concursos e processos seletivos, e no Diário Oficial do município. Só considere confirmada a informação que estiver no edital publicado nesses canais."
+      },
+      {
+        "q": "Quais áreas mais abrem vagas em Praia Grande?",
+        "a": "Municípios com rede própria ampla de educação e saúde costumam abrir seleções recorrentes nessas duas áreas, além dos cargos administrativos. Ainda assim, a composição de cada concurso é definida no edital — não existe regra fixa de um ano para o outro."
+      },
+      {
+        "q": "Dá para estudar para concurso trabalhando em outra cidade?",
+        "a": "Dá, mas exige aceitar blocos curtos e constantes em vez de maratonas de fim de semana. Um formato que funciona: 30 minutos de leitura e questões em casa, o trajeto inteiro em revisão de áudio e 10 minutos refazendo os erros do dia anterior."
+      },
+      {
+        "q": "O material da Trilha Aprova é específico de Praia Grande?",
+        "a": "Não. A apostila de autores tem como referência a edição Santos 2026 e a banca IBAM, e a apostila de redação é de método, aplicável a qualquer concurso de nível fundamental. Compare sempre o sumário com o conteúdo programático do seu edital antes de comprar."
+      }
+    ],
+    "metaTitle": "Concursos públicos em Praia Grande (SP)"
+  },
+  {
+    "slug": "concursos-publicos-cubatao",
+    "city": "Cubatão",
+    "state": "SP",
+    "stateName": "São Paulo",
+    "region": "Baixada Santista",
+    "title": "Concursos públicos em Cubatão (SP): guia de estudo e editais oficiais",
+    "description": "Concursos públicos em Cubatão (SP): órgãos que abrem seleções, onde sai o edital oficial e como estudar em rotina de turnos com apostila e audiobook.",
+    "lead": "Cubatão é o polo industrial da Baixada Santista, com forte presença dos setores petroquímico e siderúrgico. Isso cria um perfil de candidato bastante específico na cidade: muita gente trabalha em escala de turno, incluindo noites e fins de semana, e precisa de uma rotina de estudo que não dependa de horário fixo. Esta página traz os canais oficiais de edital e um método de preparação pensado para escalas irregulares.",
+    "keyFacts": [
+      [
+        "Região",
+        "Região Metropolitana da Baixada Santista"
+      ],
+      [
+        "Portal oficial da prefeitura",
+        "cubatao.sp.gov.br"
+      ],
+      [
+        "Perfil econômico",
+        "Polo industrial, petroquímico e siderúrgico"
+      ],
+      [
+        "Desafio típico do candidato local",
+        "Trabalho em escala de turno, sem horário fixo de estudo"
+      ],
+      [
+        "Formato de entrega dos materiais",
+        "PDF + audiobook, 100% digital"
+      ]
+    ],
+    "orgaos": [
+      {
+        "name": "Prefeitura Municipal de Cubatão",
+        "url": "https://www.cubatao.sp.gov.br/",
+        "note": "Portal oficial dos editais municipais, com os cargos de educação, saúde, meio ambiente, fiscalização e administrativo."
+      },
+      {
+        "name": "Câmara Municipal de Cubatão",
+        "url": "https://www.cubatao.sp.leg.br/",
+        "note": "Seleções do quadro legislativo municipal, com conteúdo programático próprio."
+      }
+    ],
+    "sections": [
+      {
+        "h2": "Estudar em escala de turno: constância vale mais que horário",
+        "html": "<p>Quem trabalha em turnos não consegue manter o clássico “estudar todo dia às 19h”. Tentar isso normalmente produz uma sequência de falhas e a sensação de que não dá para estudar. Dá — mas o compromisso precisa ser com a <em>quantidade</em> de blocos por semana, não com o horário deles.</p><p>Um modelo que funciona bem: defina uma meta semanal de blocos (por exemplo, oito blocos de 30 minutos) e encaixe-os onde a escala permitir. Cada bloco tem a mesma estrutura: 15 minutos de leitura, 10 de questões, 5 de anotação dos erros. Nos dias de turno pesado, você cumpre só a revisão em áudio — e isso já mantém a continuidade.</p>"
+      },
+      {
+        "h2": "Por que o áudio resolve bem o problema da escala",
+        "html": "<p>Depois de um turno longo, ler com atenção é difícil. Ouvir um capítulo que você já leu antes, porém, continua sendo viável e produtivo — é recuperação, não aprendizado novo. É por isso que a combinação PDF + audiobook costuma se encaixar melhor na rotina industrial do que um material só de leitura.</p><p>A regra para não se enganar: áudio serve para revisar o que já foi lido. Se você só ouviu e nunca resolveu uma questão sobre o assunto, você ainda não estudou aquele tópico.</p>"
+      },
+      {
+        "h2": "Como conferir o edital de Cubatão",
+        "html": "<ol><li>Acesse o portal da Prefeitura de Cubatão e localize a seção de concursos.</li><li>Baixe o edital completo e vá ao anexo do seu cargo.</li><li>Confira escolaridade exigida, etapas da seleção e se há prova discursiva.</li><li>Anote a banca e procure o estilo de questões dela.</li><li>Acompanhe as retificações até a véspera da prova.</li></ol><p>Esta página não divulga vagas, datas nem inscrições abertas. Use o portal oficial como fonte dessas informações.</p>"
+      },
+      {
+        "h2": "Materiais indicados para quem estuda em Cubatão",
+        "html": "<p>Ambas as apostilas da Trilha Aprova incluem o PDF e o audiobook completo, justamente para permitir o estudo em blocos irregulares. A <a href=\"/apostilas/autores-ibam-2026\">Apostila de Autores</a> atende cargos de professor com conteúdo pedagógico; a <a href=\"/apostilas/redacao-nivel-fundamental-2026\">apostila de Redação</a> atende cargos de nível fundamental com produção textual. Confira o conteúdo programático do seu edital antes de escolher.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Onde sai o edital de concurso de Cubatão?",
+        "a": "No portal oficial cubatao.sp.gov.br, na seção de concursos e processos seletivos, e no Diário Oficial do município. Retificações e convocações seguem os mesmos canais."
+      },
+      {
+        "q": "Como estudar para concurso trabalhando em turno na indústria?",
+        "a": "Troque a meta de horário fixo por uma meta semanal de blocos curtos. Estruture cada bloco em leitura, questões e anotação de erros, e use os capítulos em áudio nos dias de turno pesado para manter a continuidade sem exigir concentração visual."
+      },
+      {
+        "q": "Concursos de Cubatão cobram conhecimentos sobre meio ambiente?",
+        "a": "Alguns cargos técnicos e de fiscalização podem incluir tópicos ambientais no conteúdo programático, o que é coerente com o perfil industrial do município. Isso varia por cargo e por edital, então confirme no anexo específico da sua vaga."
+      },
+      {
+        "q": "Consigo baixar os áudios para ouvir sem internet?",
+        "a": "Sim. Após a confirmação do pagamento, a área individual permite ouvir online e também baixar os arquivos de áudio e o PDF, o que é útil em locais de trabalho com sinal instável."
+      }
+    ],
+    "metaTitle": "Concursos públicos em Cubatão (SP)"
+  }
+]

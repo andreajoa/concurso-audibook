@@ -1,0 +1,19 @@
+{
+  "name": "Trilha Aprova — apostilas para concursos",
+  "short_name": "Trilha Aprova",
+  "description": "Apostilas em PDF com audiobook para concursos públicos no Brasil.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "pt-BR",
+  "background_color": "#ffffff",
+  "theme_color": "#08284f",
+  "icons": [
+    {
+      "src": "/assets/trilha-aprova-logo.webp",
+      "sizes": "180x84",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

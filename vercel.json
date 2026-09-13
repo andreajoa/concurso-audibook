@@ -3,6 +3,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/acesso",
@@ -11,6 +12,10 @@
     {
       "source": "/acesso.html",
       "destination": "/api/access-page"
+    },
+    {
+      "source": "/googlef2a7a77b144edac3.html",
+      "destination": "/gsc/googlef2a7a77b144edac3.txt"
     }
   ],
   "functions": {
@@ -26,7 +31,55 @@
   ],
   "headers": [
     {
+      "source": "/googlef2a7a77b144edac3.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(llms.txt|llms-full.txt)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/feed.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
       "headers": [
         {
           "key": "Cache-Control",
@@ -52,6 +105,10 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
         }
       ]
     },

@@ -13,6 +13,14 @@ Plataforma digital para venda e entrega protegida de materiais de preparação p
 - **E-mails** transacionais e marketing consentido
 - **Dashboard** privado em `/dashboard.html`
 
+## SEO e GEO
+
+`node scripts/build-seo.cjs` gera todo o conteúdo indexável a partir de três fontes: `products/catalog.json`, `content/search-guides.json` (guias nacionais e glossário) e `content/local-seo.json` (cidades da Baixada Santista). Ele produz as páginas de produto, catálogo, guias, cidades, sobre e FAQ, mais `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `feed.xml`, `site.webmanifest` e `404.html` — e sincroniza o rodapé de `lib/site-footer.html` em todas as páginas estáticas.
+
+Para publicar conteúdo novo, edite o JSON correspondente e rode o build; não edite o HTML gerado à mão, ele é sobrescrito.
+
+`npm run verify:seo` roda junto do build e derruba a publicação se a verificação do Search Console quebrar, se o sitemap apontar para página inexistente, se faltar canonical/h1/JSON-LD, se dois títulos ficarem iguais ou se uma página de cidade virar página-ponte. Os detalhes estão em `docs/search-console.md`.
+
 ## Estrutura de funil
 
 Cada produto pode declarar no catálogo:

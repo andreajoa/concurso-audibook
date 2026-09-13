@@ -1,1 +1,37 @@
 .guide-header{max-width:1100px;margin:auto;padding:24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.guide-header>a{font:700 24px Georgia,serif;color:#08284f}.guide-header nav{display:flex;gap:20px;flex-wrap:wrap}.guide{max-width:1000px;margin:20px auto 80px;padding:24px;color:#15304e;line-height:1.8}.guide h1{font:400 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:850px;margin:24px 0}.guide h2{font:400 28px/1.25 Georgia,serif;margin-top:40px}.guide p,.guide li{max-width:780px}.guide a{color:#184c77;text-underline-offset:4px}.eyebrow{letter-spacing:.1em;font-size:12px;color:#85662c}.product-intro{display:grid;grid-template-columns:minmax(200px,360px) 1fr;gap:36px;align-items:center}.product-intro img{width:100%;height:auto;object-fit:contain}.guide .guide-price{font-size:36px;font-weight:bold;margin:16px 0}.guide .guide-button{display:inline-block;background:#08284f;color:white;border-radius:10px;padding:14px 22px;text-decoration:none}.guide a:focus-visible{outline:3px solid #b99754;outline-offset:4px}@media(max-width:650px){.product-intro{grid-template-columns:1fr;gap:12px}.product-intro img{max-width:260px;margin:auto}.guide{padding:20px}.guide-header nav{font-size:14px}}
+.guide-brand{font:700 24px Georgia,serif;color:#08284f;text-decoration:none}
+.crumbs{font-size:13px;color:#5b6e82;margin:8px 0 4px;max-width:780px}
+.crumbs a{color:#5b6e82}
+.crumb-sep{margin:0 6px;color:#a8b4bf}
+.updated{font-size:13px;color:#6b7a88;margin:0 0 24px}
+.answer{font-size:19px;line-height:1.75;color:#12314f;border-left:4px solid #b99754;padding:2px 0 2px 18px;margin:24px 0;max-width:820px}
+.key-facts{max-width:820px;margin:28px 0;padding:20px 22px;background:#f5f7fa;border:1px solid #e1e7ee;border-radius:12px}
+.key-facts dt{font-weight:700;color:#08284f;font-size:14px;letter-spacing:.02em}
+.key-facts dd{margin:2px 0 14px;color:#2c4763}
+.key-facts dd:last-child{margin-bottom:0}
+.faq-block{max-width:820px;margin:36px 0}
+.faq-item{padding:16px 0;border-top:1px solid #e1e7ee}
+.faq-item h3{font:600 18px/1.4 Georgia,serif;color:#08284f;margin:0 0 8px}
+.faq-item p{margin:0}
+.howto{max-width:820px;margin:32px 0}
+.howto-steps{counter-reset:step;list-style:none;padding:0;margin:16px 0}
+.howto-steps li{counter-increment:step;position:relative;padding:0 0 18px 44px;max-width:780px}
+.howto-steps li::before{content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:#08284f;color:#fff;font:700 14px/28px system-ui,sans-serif;text-align:center}
+.howto-steps strong{display:block;color:#08284f}
+.glossary{max-width:820px;margin:28px 0}
+.glossary dt{font-weight:700;color:#08284f;margin-top:18px}
+.glossary dd{margin:4px 0 0;color:#2c4763}
+.chapter-list{max-width:780px;padding-left:20px}
+.chapter-list li{margin-bottom:6px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:32px 0;max-width:1000px}
+.product-card{border:1px solid #e1e7ee;border-radius:14px;padding:22px;background:#fff}
+.product-card h3{font:400 22px/1.3 Georgia,serif;color:#08284f;margin:0 0 10px}
+.product-card p{margin:0 0 14px}
+.city-links{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:20px 0;list-style:none;max-width:900px}
+.city-links li a{display:inline-block;border:1px solid #d7dfe8;border-radius:999px;padding:8px 16px;text-decoration:none;color:#184c77;font-size:15px}
+.city-links li a:hover{background:#f5f7fa}
+.orgaos{max-width:820px;padding-left:20px}
+.orgaos li{margin-bottom:10px}
+.page-note{max-width:820px;margin:40px 0 0;padding:16px 18px;background:#fbf7ef;border:1px solid #ecdfc4;border-radius:10px;font-size:14px;color:#6a5526}
+.seo-discovery a{color:#184c77}
+@media(max-width:650px){.answer{font-size:17px}.key-facts{padding:16px}}
