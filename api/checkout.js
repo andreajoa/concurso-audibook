@@ -1,5 +1,5 @@
 const { createCheckout } = require('../lib/checkout-hosted');
-const { getProduct } = require('../lib/catalog');
+const { getSellableProduct } = require('../lib/catalog');
 const { rpc } = require('../lib/crm-rpc');
 
 let bundledPublicKey='';
@@ -37,7 +37,7 @@ module.exports=async(req,res)=>{
     if(!/^pk_(live|test)_/.test(pk)) return res.status(503).json({error:'O ambiente de pagamento está temporariamente indisponível.'});
     const body=await getJsonBody(req);
     const slug=clean(body.slug||'autores-ibam-2026',120);
-    const product=getProduct(slug);
+    const product=getSellableProduct(slug);
     if(!product)return res.status(400).json({error:'Produto indisponível.'});
     const name=clean(body.name,180);
     const email=clean(body.email,240).toLowerCase();

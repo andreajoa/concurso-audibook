@@ -104,7 +104,8 @@
           "downloadName": "08-gabarito-revisao.mp3"
         }
       ]
-    }
+    },
+    "exam": null
   },
   "redacao-nivel-fundamental-2026": {
     "slug": "redacao-nivel-fundamental-2026",
@@ -211,6 +212,245 @@
           "subtitle": "Correção comentada, respostas-modelo e checklist de prova",
           "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/08-gabarito-modelos-revisao.mp3",
           "downloadName": "08-gabarito-modelos-revisao.mp3"
+        }
+      ]
+    },
+    "exam": null
+  },
+  "agente-de-portaria-ibam-santos-2026": {
+    "slug": "agente-de-portaria-ibam-santos-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Prefeitura de Santos — Edital nº 73/2026",
+    "examBoard": "IBAM",
+    "category": "Concursos públicos",
+    "name": "Agente de Portaria — Prefeitura de Santos 2026 · apostila do zero + audiobook",
+    "shortName": "Agente de Portaria — Santos 2026",
+    "edition": "Santos 2026",
+    "author": "Margareth Almeida",
+    "audience": "Agente de Portaria (código 601) — Prefeitura de Santos",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_AGENTE_DE_PORTARIA_IBAM_SANTOS_2026",
+    "description": "Curso completo para o cargo de Agente de Portaria do Edital nº 73/2026 da Prefeitura de Santos, banca IBAM. Cada matéria é explicada do zero, na proporção de pontos que a prova realmente cobra, com 120 questões de treinamento, 2 simulados de 40 questões e gabarito comentado.",
+    "seoDescription": "Apostila de Agente de Portaria para o concurso da Prefeitura de Santos 2026 (IBAM): teoria do zero, 120 questões, 2 simulados e gabarito comentado.",
+    "exam": {
+      "date": "2026-10-11",
+      "confirmed": false,
+      "source": "Edital nº 73/2026 — Prefeitura de Santos (banca IBAM)",
+      "sourceUrl": "https://www.santos.sp.gov.br/?q=servico/concursos-publicos",
+      "note": "Data prevista no edital de abertura, sujeita a confirmação em edital de convocação."
+    },
+    "storefront": {
+      "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 73/2026 • BANCA IBAM",
+      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-agente-de-portaria-3d.webp",
+      "cta": "Quero esta apostila + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "72 páginas escritas para o cargo de Agente de Portaria, código 601",
+      "Estudo do zero: cada tópico é explicado antes de ser cobrado",
+      "Conteúdo distribuído pelo peso real do edital — os Específicos valem 50 dos 100 pontos",
+      "120 questões de treinamento, 24 por bloco",
+      "2 simulados completos de 40 questões, na distribuição da prova",
+      "Gabarito comentado em todas as questões, com o raciocínio de cada alternativa",
+      "Revisão final de véspera e mapas mentais",
+      "PDF para leitura online ou download",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "agente-de-portaria-ibam-santos-2026/images/agente-de-portaria-ibam-santos-2026-capa.png",
+      "pdfKey": "agente-de-portaria-ibam-santos-2026/docs/apostila-agente-de-portaria-ibam-santos-2026.pdf",
+      "pdfDownloadName": "apostila-agente-de-portaria-ibam-santos-2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo da Apostila — O raio-X da prova de Agente de Portaria",
+        "subtitle": "Onde estão os 100 pontos e por onde começar a estudar",
+        "key": "agente-de-portaria-ibam-santos-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Raio_X_da_prova_de_Agente_de_Portaria.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Antes de começar + raio-X da pontuação",
+          "subtitle": "Ficha do concurso, pesos por bloco e o método em 4 ciclos",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/01-antes-de-comecar-raio-x.mp3",
+          "downloadName": "01-antes-de-comecar-raio-x.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Parte I — Língua Portuguesa",
+          "subtitle": "10 questões, peso 1: interpretação, ortografia, pontuação e concordância",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+          "downloadName": "02-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Parte II — Matemática",
+          "subtitle": "6 questões, peso 1: operações, frações, porcentagem, regra de três e medidas",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Parte III — Legislação, serviço público e atendimento ao usuário",
+          "subtitle": "8 questões, peso 2: deveres do servidor, direitos do usuário e conduta",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/04-legislacao-servico-publico.mp3",
+          "downloadName": "04-legislacao-servico-publico.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Parte IV — Informática, comunicação e rotinas administrativas",
+          "subtitle": "6 questões, peso 3: arquivos, e-mail, segurança e registros",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/05-informatica-rotinas.mp3",
+          "downloadName": "05-informatica-rotinas.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Parte V — Conhecimentos específicos de Agente de Portaria",
+          "subtitle": "10 questões, peso 5: controle de acesso, portaria, segurança e atendimento",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/06-conhecimentos-especificos.mp3",
+          "downloadName": "06-conhecimentos-especificos.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Partes VI e VII — 120 questões e 2 simulados",
+          "subtitle": "Treino por bloco e prova completa cronometrada em 3h30",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/07-questoes-e-simulados.mp3",
+          "downloadName": "07-questoes-e-simulados.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Partes VIII e IX — Gabarito comentado e revisão de véspera",
+          "subtitle": "Por que cada alternativa está certa ou errada, e o que revisar no fim",
+          "key": "agente-de-portaria-ibam-santos-2026/audio/pt-br-v1/08-gabarito-revisao-vespera.mp3",
+          "downloadName": "08-gabarito-revisao-vespera.mp3"
+        }
+      ]
+    }
+  },
+  "inspetor-de-alunos-ibam-santos-2026": {
+    "slug": "inspetor-de-alunos-ibam-santos-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Prefeitura de Santos — Edital nº 73/2026",
+    "examBoard": "IBAM",
+    "category": "Concursos públicos",
+    "name": "Inspetor de Alunos — Prefeitura de Santos 2026 · curso completo + audiobook",
+    "shortName": "Inspetor de Alunos — Santos 2026",
+    "edition": "Santos 2026",
+    "author": "Margareth Almeida",
+    "audience": "Inspetor de Alunos (código 606) — Prefeitura de Santos",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_INSPETOR_DE_ALUNOS_IBAM_SANTOS_2026",
+    "description": "Curso completo para o cargo de Inspetor de Alunos do Edital nº 73/2026 da Prefeitura de Santos, banca IBAM. Feito para quem pode estar há anos sem estudar: cada tema é explicado em linguagem direta, ligado a situações reais da escola, com 120 questões, 2 simulados e gabarito comentado.",
+    "seoDescription": "Apostila de Inspetor de Alunos para o concurso da Prefeitura de Santos 2026 (IBAM): curso do zero, 120 questões, 2 simulados e gabarito comentado.",
+    "exam": {
+      "date": "2026-10-11",
+      "confirmed": false,
+      "source": "Edital nº 73/2026 — Prefeitura de Santos (banca IBAM)",
+      "sourceUrl": "https://www.santos.sp.gov.br/?q=servico/concursos-publicos",
+      "note": "Data prevista no edital de abertura, sujeita a confirmação em edital de convocação."
+    },
+    "storefront": {
+      "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 73/2026 • BANCA IBAM",
+      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-inspetor-de-alunos-3d.webp",
+      "cta": "Quero esta apostila + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "76 páginas escritas para o cargo de Inspetor de Alunos, código 606",
+      "Curso, não resumo: pensado para quem pode estar há anos sem estudar",
+      "Conteúdo distribuído pelo peso real do edital — Legislação e Específicos somam 72 dos 100 pontos",
+      "Caderno de questões resolvidas passo a passo",
+      "120 questões de treinamento e 2 simulados completos de 40 questões",
+      "Gabarito comentado em todas as questões, com o raciocínio de cada alternativa",
+      "Pausas ativas, mapas mentais e revisão de véspera",
+      "PDF para leitura online ou download",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "inspetor-de-alunos-ibam-santos-2026/images/inspetor-de-alunos-ibam-santos-2026-capa.png",
+      "pdfKey": "inspetor-de-alunos-ibam-santos-2026/docs/apostila-inspetor-de-alunos-ibam-santos-2026.pdf",
+      "pdfDownloadName": "apostila-inspetor-de-alunos-ibam-santos-2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo da Apostila — O raio-X da prova de Inspetor de Alunos",
+        "subtitle": "Onde estão os 100 pontos e por onde começar a estudar",
+        "key": "inspetor-de-alunos-ibam-santos-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Raio_X_da_prova_de_Inspetor_de_Alunos.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Antes de começar + raio-X da prova",
+          "subtitle": "Ficha do concurso, pesos por bloco e o método em três camadas",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/01-antes-de-comecar-raio-x.mp3",
+          "downloadName": "01-antes-de-comecar-raio-x.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Parte I — Língua Portuguesa",
+          "subtitle": "10 questões, peso 1: ler a questão antes de decorar gramática",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+          "downloadName": "02-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Parte II — Matemática",
+          "subtitle": "6 questões, peso 1: cálculo passo a passo para quem está retomando",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Parte III — Legislação municipal e atendimento escolar",
+          "subtitle": "8 questões, peso 4: Lei Orgânica, ECA, LBI, LGPD e conduta do servidor",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/04-legislacao-atendimento-escolar.mp3",
+          "downloadName": "04-legislacao-atendimento-escolar.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Parte IV — Informática, comunicação e rotinas escolares",
+          "subtitle": "6 questões, peso 2: arquivos, planilhas, e-mail, segurança e registros",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/05-informatica-rotinas-escolares.mp3",
+          "downloadName": "05-informatica-rotinas-escolares.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Parte V — Conhecimentos específicos do Inspetor de Alunos",
+          "subtitle": "10 questões, peso 4: circulação, disciplina, conflitos, bullying e emergências",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/06-conhecimentos-especificos.mp3",
+          "downloadName": "06-conhecimentos-especificos.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Partes V-A e VI — Questões resolvidas e 120 questões de treino",
+          "subtitle": "Resolução passo a passo e treino por bloco",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/07-questoes-resolvidas-e-treino.mp3",
+          "downloadName": "07-questoes-resolvidas-e-treino.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Partes VII a IX — Simulados, gabarito comentado e revisão de véspera",
+          "subtitle": "Duas provas completas, correção comentada e o que revisar no fim",
+          "key": "inspetor-de-alunos-ibam-santos-2026/audio/pt-br-v1/08-simulados-gabarito-revisao.mp3",
+          "downloadName": "08-simulados-gabarito-revisao.mp3"
         }
       ]
     }

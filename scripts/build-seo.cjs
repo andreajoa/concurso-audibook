@@ -978,6 +978,34 @@ const discovery = '<!-- discovery:start -->' +
   '</section><!-- discovery:end --></main>';
 
 home = home.replace('</main>', discovery);
+
+/* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
+   a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
+const shelf = products.map((p, i) => {
+  // "72 páginas • 120 questões" sai dos pontos de prova, que saem do material.
+  const medidas = p.proofPoints
+    .map(point => /^(\d[\d.,]*\s+\S+)/.exec(point)?.[1])
+    .filter(Boolean).slice(0, 2);
+  const meta = [...medidas, 'PDF + audiobook'].join(' • ');
+  return '<article class="future-card active spotlight-card catalog-product-card">' +
+    '<small>APOSTILA ' + String(i + 1).padStart(2, '0') + ' • DISPONÍVEL</small>' +
+    '<div class="catalog-card-cover"><img src="' + esc(p.storefront.cover3d) +
+      '" alt="Capa da ' + esc(p.shortName) + '" width="240" height="230" loading="lazy" decoding="async"></div>' +
+    '<span class="catalog-card-badge">' + esc(p.storefront.badge) + '</span>' +
+    '<div class="catalog-card-name">' + esc(p.shortName) + '</div>' +
+    '<div class="catalog-card-meta">' + esc(meta) + '</div>' +
+    '<div class="catalog-card-price"><del>' + brl(p.compareAtCents) + '</del><strong>' + brl(p.priceCents) + '</strong></div>' +
+    '<a class="catalog-card-buy" href="/apostilas/' + esc(p.slug) + '">Ver esta apostila</a></article>';
+}).join('');
+
+home = home
+  .replace(/<!-- catalogo:intro:start -->[\s\S]*?<!-- catalogo:intro:end -->/,
+    '<!-- catalogo:intro:start -->' + esc(products.length === 1
+      ? 'Uma apostila publicada. Cada material tem concurso, banca, formatos e oferta próprios.'
+      : `São ${products.length} apostilas publicadas. Cada uma tem concurso, banca, formatos e oferta próprios, e só entra aqui com PDF, resumo em áudio e audiobook em capítulos completos.`) + '<!-- catalogo:intro:end -->')
+  .replace(/<!-- catalogo:start -->[\s\S]*?<!-- catalogo:end -->/,
+    '<!-- catalogo:start -->' + shelf + '<!-- catalogo:end -->');
+
 fs.writeFileSync('public/index.html', home);
 
 addUrl('/', { priority: '1.0', images: products.map(p => p.storefront.cover3d) });
@@ -1029,6 +1057,59 @@ for (const name of ['dashboard', 'comprar', 'obrigado', 'recuperar']) {
     .replace('</head>', '<meta name="robots" content="noindex,nofollow"></head>');
   fs.writeFileSync(file, h);
 }
+
+/* ------------------------------------------------------------------ *
+ * /comprar: a página de pagamento precisa falar do produto certo
+ *
+ * O slug chega por ?produto= e já roteava o pagamento corretamente, mas o
+ * texto visível era fixo — quem clicava em "Comprar" na apostila de Inspetor
+ * lia a descrição da apostila de Autores. Aqui o catálogo vira um JSON na
+ * própria página; o HTML escrito à mão continua sendo o que aparece sem JS.
+ * ------------------------------------------------------------------ */
+
+/** Divide um ponto de prova em parte forte e resto, para o olho achar o número. */
+function benefit(point) {
+  const text = String(point);
+  const numeric = /^(\d[\d.,]*\s+\S+)\s+([\s\S]+)$/.exec(text);
+  if (numeric) return { strong: numeric[1], rest: numeric[2] };
+  const colon = text.indexOf(': ');
+  if (colon > 0) return { strong: text.slice(0, colon + 1), rest: text.slice(colon + 2) };
+  const dash = text.indexOf(' — ');
+  if (dash > 0) return { strong: text.slice(0, dash), rest: text.slice(dash + 1) };
+  return { strong: '', rest: text };
+}
+
+/** Capa otimizada servida do próprio domínio, quando existe uma. */
+const LOCAL_COVER = { 'autores-ibam-2026': '/assets/apostila-santos-ibam-3d.webp' };
+
+function checkoutCover(product) {
+  const local = LOCAL_COVER[product.slug];
+  if (local) {
+    if (!fs.existsSync('public' + local)) throw new Error('Capa local ausente: ' + local);
+    return local;
+  }
+  const url = product.storefront.cover3d;
+  return url.startsWith(ORIGIN) ? url.slice(ORIGIN.length) : url;
+}
+
+const checkoutProducts = Object.fromEntries(products.map(p => [p.slug, {
+  badge: p.storefront.badge,
+  nome: p.shortName,
+  descricao: p.description,
+  publico: p.audience,
+  capa: checkoutCover(p),
+  alt: 'Capa da apostila ' + p.shortName,
+  preco: brl(p.priceCents),
+  de: p.compareAtCents ? brl(p.compareAtCents) : '',
+  centavos: p.priceCents,
+  beneficios: p.proofPoints.slice(0, 4).map(benefit)
+}]));
+
+fs.writeFileSync('public/comprar.html',
+  fs.readFileSync('public/comprar.html', 'utf8').replace(
+    /<!-- produtos:start -->[\s\S]*?<!-- produtos:end -->/,
+    '<!-- produtos:start --><script id="produtos-json" type="application/json">' +
+    json(checkoutProducts) + '</script><!-- produtos:end -->'));
 
 /* ------------------------------------------------------------------ *
  * sitemap.xml (com lastmod e imagens)
