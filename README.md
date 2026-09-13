@@ -15,11 +15,17 @@ Plataforma digital para venda e entrega protegida de materiais de preparação p
 
 ## SEO e GEO
 
-`node scripts/build-seo.cjs` gera todo o conteúdo indexável a partir de três fontes: `products/catalog.json`, `content/search-guides.json` (guias nacionais e glossário) e `content/local-seo.json` (cidades da Baixada Santista). Ele produz as páginas de produto, catálogo, guias, cidades, sobre e FAQ, mais `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `feed.xml`, `site.webmanifest` e `404.html` — e sincroniza o rodapé de `lib/site-footer.html` em todas as páginas estáticas.
+`node scripts/build-seo.cjs` gera todo o conteúdo indexável a partir de quatro fontes: `products/catalog.json`, `content/search-guides.json` (guias nacionais e glossário), `content/local-seo.json` (cidades da Baixada Santista) e `content/articles.json` (matérias publicadas pelo cron editorial). Ele produz as páginas de produto, catálogo, guias, cidades, matérias, sobre e FAQ, mais `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `feed.xml`, `site.webmanifest`, a chave do IndexNow e `404.html` — e sincroniza o rodapé de `lib/site-footer.html` em todas as páginas estáticas.
 
 Para publicar conteúdo novo, edite o JSON correspondente e rode o build; não edite o HTML gerado à mão, ele é sobrescrito.
 
 `npm run verify:seo` roda junto do build e derruba a publicação se a verificação do Search Console quebrar, se o sitemap apontar para página inexistente, se faltar canonical/h1/JSON-LD, se dois títulos ficarem iguais ou se uma página de cidade virar página-ponte. Os detalhes estão em `docs/search-console.md`.
+
+## Publicação automática
+
+`api/editorial-cron.js` publica uma matéria por semana sem intervenção humana: escolhe a pauta em `content/editorial-backlog.json`, pede o texto à API da Anthropic, valida com `lib/editorial.js` e commita em `content/articles.json` pela API do GitHub — o que dispara o build e transforma a matéria em página estática.
+
+A regra que governa o sistema: o cron escreve **preparação, não notícia**. Qualquer texto que afirme vaga, data de prova, inscrição, salário ou número de edital é **descartado sem publicar**, porque um modelo de linguagem não tem como saber essas informações e inventá-las é *scaled content abuse* aos olhos do Google. O desenho completo, as travas e as variáveis de ambiente necessárias estão em `docs/publicacao-automatica.md`.
 
 ## Estrutura de funil
 

@@ -35,6 +35,8 @@ const artifacts = [
   'public/404.html',
   'content/local-seo.json',
   'content/search-guides.json',
+  'content/articles.json',
+  'content/editorial-backlog.json',
 ];
 for (const file of artifacts) exists(file) ? ok(file) : fail('missing ' + file);
 
@@ -118,12 +120,12 @@ if (read('public/llms-full.txt').length < 20000) fail('llms-full.txt curto demai
 ok('llms.txt e llms-full.txt no formato esperado');
 
 // --------------------------------------------------- auditoria página a página
+const subdir = (d) => exists(d) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.html')).map((f) => `${d}/${f}`) : [];
+
 const pages = fs.readdirSync(path.join(root, 'public'))
   .filter((f) => f.endsWith('.html'))
   .map((f) => `public/${f}`)
-  .concat(exists('public/apostilas')
-    ? fs.readdirSync(path.join(root, 'public/apostilas')).map((f) => `public/apostilas/${f}`)
-    : []);
+  .concat(subdir('public/apostilas'), subdir('public/materias'));
 
 const titles = new Map();
 const descriptions = new Map();
@@ -215,6 +217,54 @@ for (const city of cities) {
   }
 }
 ok(`${cities.length} páginas de cidade com conteúdo próprio e sem promessa de vaga`);
+
+// ------------------------------------------------- matérias escritas por IA
+// Estas páginas não foram escritas por uma pessoa. A validação em
+// lib/editorial.js roda ANTES de publicar, mas ela vive no worker: se alguém
+// editar content/articles.json à mão, ou se o worker for alterado, a única
+// coisa entre uma vaga inventada e o índice do Google é esta trava aqui. Por
+// isso ela repete a verificação factual em vez de confiar na anterior.
+const articles = JSON.parse(read('content/articles.json'));
+const { factualProblems } = await import('../lib/editorial.js').then((m) => m.default || m);
+
+for (const a of articles) {
+  const page = `public/materias/${a.slug}.html`;
+  if (!exists(page)) { fail('matéria não gerada: ' + a.slug); continue; }
+  const html = read(page);
+  const text = (html.match(/<main[\s\S]*?<\/main>/)?.[0] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+
+  const problems = factualProblems(text);
+  if (problems.length) fail(`matéria ${a.slug} afirma o que não pode sustentar — ${problems.join('; ')}`);
+
+  // Uma matéria sem link interno é um beco sem saída: não distribui autoridade
+  // e não leva o leitor a lugar nenhum.
+  const internal = [...html.matchAll(/<main[\s\S]*?<\/main>/g)][0]?.[0] || '';
+  if ((internal.match(/href="\//g) || []).length < 5) fail(`matéria ${a.slug} com poucos links internos`);
+  if (!a.published || !/^\d{4}-\d{2}-\d{2}$/.test(a.published)) fail(`matéria ${a.slug} sem data de publicação válida`);
+  if (!a.topicId) fail(`matéria ${a.slug} sem pauta de origem`);
+}
+const topicIds = articles.map((a) => a.topicId);
+if (new Set(topicIds).size !== topicIds.length) fail('a mesma pauta foi publicada duas vezes');
+ok(`${articles.length} matéria(s) publicada(s) sem afirmação factual não sustentável`);
+
+// O backlog é o que impede o cron de inventar pauta quando a fila acaba.
+const backlog = JSON.parse(read('content/editorial-backlog.json'));
+const remaining = backlog.filter((t) => !topicIds.includes(t.id)).length;
+if (new Set(backlog.map((t) => t.id)).size !== backlog.length) fail('backlog editorial com id duplicado');
+for (const t of backlog) {
+  if (!t.id || !t.title || !t.angle || !t.keyword || !t.scope || !t.type) fail(`pauta incompleta no backlog: ${t.id || '(sem id)'}`);
+}
+ok(`backlog editorial com ${remaining} pauta(s) restante(s) (${Math.floor(remaining / 4)} meses de publicação semanal)`);
+
+// ------------------------------------------------------------------ IndexNow
+const keyFile = fs.readdirSync(path.join(root, 'public')).find((f) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(f) && f !== 'robots.txt' && !f.startsWith('llms'));
+if (!keyFile) {
+  fail('sem arquivo de chave do IndexNow na raiz pública');
+} else if (read(`public/${keyFile}`).trim() !== keyFile.replace(/\.txt$/, '')) {
+  fail('o arquivo de chave do IndexNow precisa conter exatamente a própria chave');
+} else {
+  ok('chave do IndexNow publicada na raiz');
+}
 
 if (failed) process.exit(1);
 console.log('\nVerificação de SEO/GEO aprovada: indexação, dados estruturados e camada para IAs.');

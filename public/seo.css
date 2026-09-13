@@ -34,4 +34,11 @@
 .orgaos li{margin-bottom:10px}
 .page-note{max-width:820px;margin:40px 0 0;padding:16px 18px;background:#fbf7ef;border:1px solid #ecdfc4;border-radius:10px;font-size:14px;color:#6a5526}
 .seo-discovery a{color:#184c77}
-@media(max-width:650px){.answer{font-size:17px}.key-facts{padding:16px}}
+.article-list{list-style:none;padding:0;margin:24px 0;max-width:860px}
+.article-list li{padding:18px 0;border-top:1px solid #e1e7ee}
+.article-list li:last-child{border-bottom:1px solid #e1e7ee}
+.article-list li>a{font:400 21px/1.35 Georgia,serif;color:#08284f;text-decoration:none}
+.article-list li>a:hover{text-decoration:underline}
+.article-list li p{margin:6px 0 0;color:#2c4763}
+.article-meta{font-size:13px;color:#6b7d90;letter-spacing:.02em}
+@media(max-width:650px){.answer{font-size:17px}.key-facts{padding:16px}.article-list li>a{font-size:19px}}

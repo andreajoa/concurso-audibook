@@ -10,6 +10,9 @@ const fs = require('node:fs');
 const catalog = require('../products/catalog.json');
 const guides = require('../content/search-guides.json');
 const cities = require('../content/local-seo.json');
+// Matérias escritas pelo cron editorial. O arquivo é atualizado por commit do
+// worker (api/editorial-cron.js), e é este build que as transforma em página.
+const articles = require('../content/articles.json');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const CDN = 'https://margareth-5-estrategias.floot.app';
@@ -143,6 +146,7 @@ const corpus = [];
 const NAV = [
   ['/concursos-baixada-santista', 'Baixada Santista'],
   ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
+  ['/materias', 'Matérias'],
   ['/apostila-para-concurso-como-escolher', 'Escolher apostila'],
   ['/glossario-concursos-publicos', 'Glossário'],
   ['/perguntas-frequentes', 'Dúvidas'],
@@ -527,6 +531,119 @@ for (const g of guides) {
 }
 
 /* ------------------------------------------------------------------ *
+ * Matérias publicadas pelo cron editorial
+ * ------------------------------------------------------------------ *
+ * Estas páginas nascem de content/articles.json, que é escrito por uma IA e
+ * commitado pelo worker. Nada aqui "confia" no conteúdo: o que garante que uma
+ * matéria inventada não vá ao ar é a validação em lib/editorial.js, que roda
+ * antes do commit, e as travas de scripts/verify-seo.mjs, que rodam depois — o
+ * build quebra se uma matéria publicada violar as regras.
+ */
+
+// Ordem de exibição: mais recente primeiro, como se espera de uma seção de
+// conteúdo. A ordem do arquivo é cronológica de publicação.
+const articlesNewestFirst = [...articles].sort((a, b) => String(b.published).localeCompare(String(a.published)));
+
+const articleCard = a =>
+  `<li><a href="/materias/${a.slug}">${esc(a.title)}</a><p>${esc(a.description)}</p>` +
+  `<p class="article-meta">${esc(a.published)}${a.scope && a.scope !== 'nacional' ? ' · Baixada Santista' : ''}</p></li>`;
+
+for (const a of articlesNewestFirst) {
+  const path = '/materias/' + a.slug;
+  const url = ORIGIN + path;
+  const related = articlesNewestFirst.filter(o => o.slug !== a.slug).slice(0, 4);
+
+  const body =
+    a.sections.map(s => `<h2>${esc(s.h2)}</h2>${s.html}`).join('') +
+    (related.length
+      ? '<h2>Outras matérias</h2><ul class="article-list">' + related.map(articleCard).join('') + '</ul>'
+      : '') +
+    '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
+    disclaimer;
+
+  renderPage({
+    path,
+    title: a.title,
+    metaTitle: (a.metaTitle || a.title) + ' | Trilha Aprova',
+    description: a.description,
+    kicker: a.scope === 'nacional' ? 'MATÉRIA' : 'MATÉRIA · BAIXADA SANTISTA',
+    lead: a.lead,
+    keyFacts: a.keyFacts,
+    body,
+    faq: a.faq || [],
+    nodes: [{
+      '@type': 'Article',
+      '@id': url + '#article',
+      headline: a.title,
+      description: a.description,
+      inLanguage: 'pt-BR',
+      author: { '@id': ORIGIN + '/#author' },
+      publisher: { '@id': ORIGIN + '/#organization' },
+      datePublished: a.published,
+      dateModified: a.updated || a.published,
+      mainEntityOfPage: { '@id': url + '#webpage' },
+      image: [COVER],
+      articleSection: 'Preparação para concursos',
+      keywords: a.keyword,
+      isAccessibleForFree: true
+    }],
+    trail: [['Matérias', '/materias']],
+    updated: a.updated || a.published,
+    priority: '0.7'
+  });
+}
+
+/* Hub das matérias — existe mesmo com a lista vazia, porque a rota é linkada
+ * na navegação e um 404 no menu é pior que uma seção ainda sem publicações. */
+renderPage({
+  path: '/materias',
+  title: 'Matérias sobre preparação para concursos públicos',
+  metaTitle: 'Matérias sobre concursos públicos | Trilha Aprova',
+  description: 'Matérias sobre como estudar para concurso público: leitura de edital, cronograma, revisão, questões, redação e preparação na Baixada Santista.',
+  kicker: 'CONTEÚDO',
+  lead: 'Esta seção reúne matérias sobre método de estudo para concursos públicos: como ler o edital, montar cronograma, revisar, resolver questões e organizar a rotina de quem estuda trabalhando. São textos de preparação — não publicamos vagas, datas nem inscrições, porque essas informações só têm validade no edital oficial do órgão.',
+  keyFacts: [
+    ['Matérias publicadas', String(articles.length)],
+    ['Frequência', 'Publicação semanal'],
+    ['Foco', 'Método de estudo e preparação, no Brasil e na Baixada Santista'],
+    ['O que não publicamos', 'Vagas, datas de prova, inscrições e salários'],
+    ['Autoria editorial', AUTHOR_NAME]
+  ],
+  body:
+    (articlesNewestFirst.length
+      ? '<h2>Publicações recentes</h2><ul class="article-list">' + articlesNewestFirst.map(articleCard).join('') + '</ul>'
+      : '<h2>Em breve</h2><p>As primeiras matérias desta seção estão sendo publicadas. Enquanto isso, os guias de estudo abaixo cobrem os assuntos principais.</p>') +
+    '<h2>Guias de estudo completos</h2><ul>' +
+    guides.map(g => `<li><a href="/${g.slug}">${esc(g.title)}</a> — ${esc(g.description)}</li>`).join('') +
+    '</ul>' +
+    '<h2>Preparação por cidade</h2><ul class="city-links">' + cityLinks + '</ul>' +
+    '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
+    disclaimer,
+  faq: [
+    { q: 'Com que frequência saem matérias novas?', a: 'A seção é atualizada semanalmente. Cada matéria trata de um assunto de preparação — leitura de edital, cronograma, revisão, questões, redação ou rotina de estudo.' },
+    { q: 'Vocês publicam concursos abertos nas matérias?', a: 'Não. Não divulgamos vagas, datas de prova, prazos de inscrição nem salários, porque essas informações mudam e só têm validade no edital oficial do órgão. As matérias tratam de método e preparação.' },
+    { q: 'As matérias são gratuitas?', a: 'Sim. Todo o conteúdo desta seção é aberto, sem cadastro e sem pagamento. As apostilas em PDF com audiobook são vendidas à parte.' },
+    { q: 'Posso acompanhar as publicações?', a: 'Sim, pelo feed RSS do site em /feed.xml, que reúne as matérias e os guias de estudo assim que são publicados.' }
+  ],
+  nodes: [{
+    '@type': 'Blog',
+    '@id': ORIGIN + '/materias#blog',
+    name: 'Matérias sobre preparação para concursos públicos',
+    inLanguage: 'pt-BR',
+    publisher: { '@id': ORIGIN + '/#organization' },
+    blogPost: articlesNewestFirst.map(a => ({
+      '@type': 'BlogPosting',
+      '@id': ORIGIN + '/materias/' + a.slug + '#article',
+      headline: a.title,
+      url: ORIGIN + '/materias/' + a.slug,
+      datePublished: a.published
+    }))
+  }],
+  trail: [],
+  priority: '0.8'
+});
+
+/* ------------------------------------------------------------------ *
  * Páginas por cidade (Baixada Santista)
  * ------------------------------------------------------------------ */
 
@@ -712,6 +829,12 @@ const discovery = '<!-- discovery:start -->' +
   `<ul class="city-links">${cityLinks}</ul>` +
   '<h3>Guias de estudo</h3>' +
   `<ul>${guides.map(g => `<li><a href="/${g.slug}">${esc(g.title)}</a></li>`).join('')}</ul>` +
+  '<h3>Matérias novas toda semana</h3>' +
+  '<p>A seção de matérias publica textos sobre método de estudo: leitura de edital, cronograma, revisão, questões e rotina de quem estuda trabalhando.</p>' +
+  (articlesNewestFirst.length
+    ? `<ul>${articlesNewestFirst.slice(0, 5).map(a => `<li><a href="/materias/${a.slug}">${esc(a.title)}</a></li>`).join('')}</ul>`
+    : '') +
+  '<p><a href="/materias">Ver todas as matérias</a></p>' +
   '<p><a href="/apostilas-para-concurso">Ver o catálogo completo</a> · <a href="/perguntas-frequentes">Perguntas frequentes</a> · <a href="/sobre">Sobre a Trilha Aprova</a></p>' +
   '</section><!-- discovery:end --></main>';
 
@@ -827,6 +950,9 @@ const llms =
   `\n- [Catálogo completo](${ORIGIN}/apostilas-para-concurso): todas as apostilas disponíveis com PDF e audiobook.\n\n` +
   '## Guias de estudo\n\n' +
   guides.map(g => `- [${g.title}](${ORIGIN}/${g.slug}): ${g.description}`).join('\n') +
+  '\n\n## Matérias (atualizadas semanalmente)\n\n' +
+  `- [Todas as matérias](${ORIGIN}/materias): seção de conteúdo sobre método de estudo, atualizada toda semana.\n` +
+  articlesNewestFirst.map(a => `- [${a.title}](${ORIGIN}/materias/${a.slug}): ${a.description} Publicada em ${a.published}.`).join('\n') +
   '\n\n## Concursos por cidade — Baixada Santista (SP)\n\n' +
   cities.map(c => `- [${c.title}](${ORIGIN}/${c.slug}): ${c.description}`).join('\n') +
   '\n\n## Institucional\n\n' +
@@ -851,7 +977,11 @@ fs.writeFileSync('public/llms-full.txt', llmsFull);
  * feed.xml
  * ------------------------------------------------------------------ */
 
-const feedItems = [...guides.map(g => ({ path: '/' + g.slug, title: g.title, description: g.description, date: g.updated || BUILD_DATE })),
+// As matérias vêm primeiro porque o feed é lido por data e é ele que sinaliza
+// a leitores e agregadores que o site tem publicação corrente.
+const feedItems = [
+  ...articlesNewestFirst.map(a => ({ path: '/materias/' + a.slug, title: a.title, description: a.description, date: a.published })),
+  ...guides.map(g => ({ path: '/' + g.slug, title: g.title, description: g.description, date: g.updated || BUILD_DATE })),
   ...cities.map(c => ({ path: '/' + c.slug, title: c.title, description: c.description, date: BUILD_DATE }))];
 
 const feed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -872,6 +1002,20 @@ const feed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '</item>').join('') +
   '</channel></rss>\n';
 fs.writeFileSync('public/feed.xml', feed);
+
+/* ------------------------------------------------------------------ *
+ * IndexNow
+ * ------------------------------------------------------------------ *
+ * O Google encerrou o ping de sitemap em 2023; o IndexNow é a única notificação
+ * ativa que ainda funciona. Vale mais do que parece: quem consome o índice do
+ * Bing é o Copilot e parte da busca conectada de assistentes de IA — ou seja,
+ * isto é tanto SEO quanto GEO. O protocolo exige que a chave esteja legível em
+ * https://host/<chave>.txt, e .txt não é afetado pelo cleanUrls.
+ */
+
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || 'a7f3c19d84b24e6ab05c7d1e93f6428b';
+if (!/^[A-Za-z0-9-]{8,128}$/.test(INDEXNOW_KEY)) throw new Error('Invalid IndexNow key');
+fs.writeFileSync(`public/${INDEXNOW_KEY}.txt`, INDEXNOW_KEY + '\n');
 
 /* ------------------------------------------------------------------ *
  * Web manifest

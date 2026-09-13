@@ -1,0 +1,226 @@
+[
+  {
+    "id": "edital-como-ler",
+    "title": "Como ler um edital de concurso sem perder nada importante",
+    "angle": "Percorrer o edital seção por seção (cargo, requisitos, conteúdo programático, critérios de desempate, prazo de validade) e mostrar o que cada uma decide na prática do estudo.",
+    "keyword": "como ler edital de concurso",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "conteudo-programatico-em-cronograma",
+    "title": "Como transformar o conteúdo programático em cronograma de estudo",
+    "angle": "Método para converter a lista de tópicos do edital em blocos de semana, com critério de peso por disciplina e espaço fixo para revisão.",
+    "keyword": "cronograma de estudo para concurso",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "revisao-espacada",
+    "title": "Revisão espaçada aplicada a concurso: como não esquecer o que já estudou",
+    "angle": "Explicar curva do esquecimento e montar um esquema simples de revisão em 1, 7 e 30 dias usando PDF e áudio.",
+    "keyword": "revisão espaçada concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "questoes-antes-da-teoria",
+    "title": "Resolver questões antes de terminar a teoria funciona?",
+    "angle": "Comparar as duas rotinas, explicar quando cada uma rende mais e como usar o gabarito para diagnosticar lacuna em vez de só contar acertos.",
+    "keyword": "resolver questões concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "banca-como-estudar",
+    "title": "Estudar pela banca: por que a mesma matéria cai de formas diferentes",
+    "angle": "Mostrar como estilo de banca muda o recorte da matéria e o que observar em provas anteriores para se adaptar.",
+    "keyword": "estudar pela banca concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "nivel-fundamental-por-onde-comecar",
+    "title": "Concurso de nível fundamental: por onde começar a estudar",
+    "angle": "Orientar quem tem ensino fundamental completo sobre quais disciplinas costumam pesar e como montar uma base de português e matemática.",
+    "keyword": "concurso nível fundamental como estudar",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "redacao-estrutura",
+    "title": "Estrutura de redação para concurso: introdução, desenvolvimento e conclusão na prática",
+    "angle": "Modelo de estrutura com função de cada parágrafo e erros que mais custam pontos na correção.",
+    "keyword": "redação para concurso estrutura",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "portugues-erros-frequentes",
+    "title": "Os erros de português que mais aparecem em prova de concurso",
+    "angle": "Concordância, crase, regência e pontuação explicadas pelo tipo de pegadinha que a prova costuma armar.",
+    "keyword": "português para concurso erros",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "audiobook-rotina",
+    "title": "Como usar audiobook de apostila sem virar escuta passiva",
+    "angle": "Diferença entre ouvir para revisar e ouvir para aprender, e como intercalar áudio com leitura e questões.",
+    "keyword": "audiobook para concurso",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "estudar-trabalhando",
+    "title": "Como estudar para concurso trabalhando em tempo integral",
+    "angle": "Montar rotina realista com blocos curtos, aproveitamento de deslocamento e critério para decidir o que cortar.",
+    "keyword": "estudar para concurso trabalhando",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "prova-de-titulos",
+    "title": "Prova de títulos: o que conta pontos e o que costuma ser indeferido",
+    "angle": "Explicar a lógica da pontuação por titulação e os motivos mais comuns de documento não ser aceito.",
+    "keyword": "prova de títulos concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "cadastro-de-reserva",
+    "title": "Cadastro de reserva vale a pena? O que significa e o que esperar",
+    "angle": "Explicar o instituto, a diferença para vaga imediata e como isso muda a decisão de estudar para aquele certame.",
+    "keyword": "cadastro de reserva concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "recurso-contra-gabarito",
+    "title": "Como funciona o recurso contra o gabarito preliminar",
+    "angle": "O que é um recurso bem fundamentado, o que a banca costuma aceitar e por que copiar recurso alheio raramente funciona.",
+    "keyword": "recurso gabarito concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "simulado-como-usar",
+    "title": "Simulado: como usar para corrigir rota e não só para medir nota",
+    "angle": "Protocolo de simulado com tempo cronometrado, caderno de erros e revisão dirigida pelos erros encontrados.",
+    "keyword": "simulado concurso como fazer",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "caderno-de-erros",
+    "title": "Caderno de erros: o registro que mais acelera a preparação",
+    "angle": "Como registrar o erro pela causa (falta de conteúdo, desatenção, interpretação) e revisar por causa, não por matéria.",
+    "keyword": "caderno de erros concurso",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "concurso-educacao-baixada",
+    "title": "Concursos da área de educação na Baixada Santista: como se preparar",
+    "angle": "Panorama das carreiras de educação nas redes municipais da região e o que costuma ser cobrado além do conteúdo específico.",
+    "keyword": "concurso professor Baixada Santista",
+    "scope": "baixada-santista",
+    "type": "guia"
+  },
+  {
+    "id": "concurso-saude-baixada",
+    "title": "Concursos da área da saúde na Baixada Santista: o que estudar",
+    "angle": "Carreiras de saúde nas prefeituras da região, peso de legislação do SUS e como organizar o estudo específico.",
+    "keyword": "concurso saúde Baixada Santista",
+    "scope": "baixada-santista",
+    "type": "guia"
+  },
+  {
+    "id": "banca-ibam-perfil",
+    "title": "Banca IBAM: como é o estilo de prova e como treinar para ele",
+    "angle": "Características observáveis do estilo da banca em provas anteriores e como ajustar o treino de questões.",
+    "keyword": "banca IBAM concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "estudar-no-transporte",
+    "title": "Estudar no transporte público da Baixada Santista: o que funciona",
+    "angle": "Aproveitar deslocamentos de ônibus, VLT e balsa para revisão em áudio, com limites honestos do que dá para fazer em pé.",
+    "keyword": "estudar no transporte concurso",
+    "scope": "baixada-santista",
+    "type": "guia"
+  },
+  {
+    "id": "legislacao-municipal",
+    "title": "Legislação municipal em concurso: como estudar lei orgânica e estatuto do servidor",
+    "angle": "Por que essas leis costumam pesar em concurso de prefeitura e um método para estudá-las sem decorar artigo por artigo.",
+    "keyword": "lei orgânica concurso municipal",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "informatica-basica",
+    "title": "Informática básica em concurso: o recorte que realmente cai",
+    "angle": "Delimitar o que costuma ser cobrado em editais de nível médio e fundamental e como treinar sem se perder em detalhe técnico.",
+    "keyword": "informática para concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "matematica-raciocinio",
+    "title": "Raciocínio lógico e matemática: como sair do zero sem trauma",
+    "angle": "Sequência de pré-requisitos, do básico à resolução de questão, para quem trava na matéria.",
+    "keyword": "raciocínio lógico concurso do zero",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "ansiedade-dia-da-prova",
+    "title": "Dia da prova: preparação prática e controle do tempo",
+    "angle": "Checklist do que levar, estratégia de ordem de resolução e gestão de tempo por bloco de questões.",
+    "keyword": "dia da prova concurso",
+    "scope": "nacional",
+    "type": "checklist"
+  },
+  {
+    "id": "apostila-vs-curso",
+    "title": "Apostila, videoaula ou curso completo: como escolher pelo seu perfil",
+    "angle": "Comparar formatos por tempo disponível, forma de aprender e orçamento, sem declarar um vencedor universal.",
+    "keyword": "apostila ou videoaula concurso",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "material-desatualizado",
+    "title": "Como saber se o seu material de estudo está desatualizado",
+    "angle": "Sinais de desatualização, o que confere com o edital e o que realmente muda quando a lei muda.",
+    "keyword": "material desatualizado concurso",
+    "scope": "nacional",
+    "type": "checklist"
+  },
+  {
+    "id": "reprovacao-o-que-fazer",
+    "title": "Não passei: como transformar a reprovação em diagnóstico",
+    "angle": "Ler o próprio desempenho por disciplina, identificar a causa dominante e refazer o plano sem recomeçar do zero.",
+    "keyword": "não passei no concurso o que fazer",
+    "scope": "nacional",
+    "type": "guia"
+  },
+  {
+    "id": "concurso-municipal-vs-estadual",
+    "title": "Concurso municipal, estadual e federal: o que muda para quem estuda",
+    "angle": "Diferenças de banca, conteúdo, concorrência e lotação, e como isso afeta a escolha do material.",
+    "keyword": "diferença concurso municipal estadual federal",
+    "scope": "nacional",
+    "type": "explicador"
+  },
+  {
+    "id": "primeiro-concurso-checklist",
+    "title": "Checklist do primeiro concurso: do documento ao dia da prova",
+    "angle": "Sequência prática de providências para quem nunca prestou, sem citar certame, data ou inscrição específica.",
+    "keyword": "primeiro concurso público checklist",
+    "scope": "nacional",
+    "type": "checklist"
+  }
+]

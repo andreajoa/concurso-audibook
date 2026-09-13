@@ -23,6 +23,10 @@
     {
       "path": "/api/marketing-cron",
       "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/editorial-cron",
+      "schedule": "0 11 * * 2"
     }
   ],
   "headers": [
