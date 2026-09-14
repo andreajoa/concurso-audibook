@@ -50,3 +50,9 @@
   .concurso-card{padding:18px}
   .concurso-card h2{font-size:23px}
 }
+
+/* O aviso de urgência. Só aparece quando existe uma data próxima de verdade —
+   quem cria a pressa é o edital, não o site. Sem contador piscando. */
+.alerta-prazo{margin:0 0 24px;padding:16px 18px;border:1px solid #e6dece;border-radius:13px;background:#fffdf8}
+.alerta-prazo .prazo{margin:0 0 8px}
+.alerta-prazo p{margin:0;font-size:14px;color:#46586d}

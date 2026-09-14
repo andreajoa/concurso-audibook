@@ -42,3 +42,21 @@
 .article-list li p{margin:6px 0 0;color:#2c4763}
 .article-meta{font-size:13px;color:#6b7d90;letter-spacing:.02em}
 @media(max-width:650px){.answer{font-size:17px}.key-facts{padding:16px}.article-list li>a{font-size:19px}}
+
+/* Menu de concursos: estado → cidade.
+   Abre no hover e também no foco do teclado, sem script — um painel que depende
+   de JavaScript não abre enquanto a página ainda está carregando, e quem passa
+   por aqui está procurando a cidade dele agora. No celular o painel não existe:
+   o rótulo vira link direto para /concursos, porque não há mouse para passar. */
+.guide-header{position:relative}
+.mega-trigger{position:relative;z-index:2;font-weight:700}
+.mega-panel{position:absolute;left:0;right:0;top:100%;z-index:30;display:none;background:#fff;border:1px solid #e6dece;border-radius:14px;padding:22px 24px;box-shadow:0 26px 44px rgba(8,40,79,.14)}
+.mega:hover .mega-panel,.mega:focus-within .mega-panel{display:block}
+.mega-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+.mega-uf{display:block;margin-bottom:10px;font:900 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#85662c;text-decoration:none}
+.mega-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.mega-col li a{display:block;margin-left:-8px;padding:6px 8px;border-radius:8px;font-size:15px;color:#08284f;text-decoration:none}
+.mega-col li a:hover{background:#f4f0e6}
+.mega-col li a span{display:block;font-size:11px;letter-spacing:.02em;color:#66717d}
+.mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font-size:12px;color:#66717d}
+@media(max-width:900px){.mega-panel{display:none!important}}

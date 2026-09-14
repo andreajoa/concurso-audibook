@@ -155,8 +155,20 @@ const corpus = [];
  * Blocos visuais compartilhados
  * ------------------------------------------------------------------ */
 
+/* A base de concursos é resolvida aqui, antes do menu, porque o menu mostra as
+   cidades. Se alguma entrada não tiver fonte oficial ou tiver data inválida, o
+   build para: é melhor não publicar do que publicar prazo errado. */
+const concursoProblems = concursosRaw.flatMap(cn.problems);
+if (concursoProblems.length) {
+  throw new Error('content/concursos.json tem entrada sem fonte ou com dado inválido:\n  ' + concursoProblems.join('\n  '));
+}
+
+const concursos = concursosRaw.map(c => cn.normalize(c, BUILD_DATE));
+const estados = cn.groupByUf(concursos);
+const estadoPorUf = new Map(estados.map(e => [e.uf, e]));
+const concursosAbertos = concursos.filter(c => c.status === 'inscricoes_abertas');
+
 const NAV = [
-  ['/concursos', 'Concursos abertos'],
   ['/ferramentas', 'Ferramentas grátis'],
   ['/concursos-baixada-santista', 'Baixada Santista'],
   ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
@@ -167,7 +179,38 @@ const NAV = [
   ['/contato', 'Atendimento']
 ];
 
-const navHtml = NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('');
+/**
+ * Menu de concursos: estado -> cidade.
+ *
+ * Abre no hover e também no foco do teclado, sem JavaScript. Um painel que
+ * depende de script não abre enquanto a página ainda carrega, e quem chega
+ * aqui está procurando a cidade dele agora. No celular o painel não aparece e
+ * o rótulo funciona como link direto para /concursos, porque passar o mouse
+ * não existe em tela de toque.
+ */
+const megaHtml = (() => {
+  if (!estados.length) return '<a href="/concursos">Concursos abertos</a>';
+
+  const colunas = estados.map(e => {
+    const cidades = e.municipios.map(m => {
+      const abertos = m.concursos.filter(c => c.status === 'inscricoes_abertas').length;
+      const nota = abertos
+        ? abertos + (abertos === 1 ? ' inscrição aberta' : ' inscrições abertas')
+        : m.concursos[0].statusLabel;
+      return `<li><a href="${m.path}">${esc(m.municipio)}<span>${esc(nota)}</span></a></li>`;
+    }).join('');
+    return `<div class="mega-col"><a class="mega-uf" href="/concursos/${e.ufSlug}">${esc(e.ufNome)}</a><ul>${cidades}</ul></div>`;
+  }).join('');
+
+  const abertos = concursosAbertos.length;
+  return '<div class="mega">' +
+    '<a class="mega-trigger" href="/concursos">Concursos abertos</a>' +
+    `<div class="mega-panel"><div class="mega-cols">${colunas}</div>` +
+    `<p class="mega-foot"><a href="/concursos">Ver todos os estados</a> · ${concursos.length} certames conferidos na página oficial do órgão, ${abertos} com inscrição aberta</p>` +
+    '</div></div>';
+})();
+
+const navHtml = megaHtml + NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('');
 
 const productLinks = products
   .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
@@ -797,16 +840,6 @@ renderPage({
  * um dos cargos daquele edital.
  * ------------------------------------------------------------------ */
 
-const concursoProblems = concursosRaw.flatMap(cn.problems);
-if (concursoProblems.length) {
-  throw new Error('content/concursos.json tem entrada sem fonte ou com dado inválido:\n  ' + concursoProblems.join('\n  '));
-}
-
-const concursos = concursosRaw.map(c => cn.normalize(c, BUILD_DATE));
-const estados = cn.groupByUf(concursos);
-const estadoPorUf = new Map(estados.map(e => [e.uf, e]));
-const concursosAbertos = concursos.filter(c => c.status === 'inscricoes_abertas');
-
 /** Faixa de UFs, como um índice: o que tem concurso vira link, o resto fica opaco. */
 function ufStrip(activeUf) {
   const botoes = Object.keys(cn.UF_NOMES).sort().map(uf => {
@@ -824,6 +857,40 @@ function ufStrip(activeUf) {
 function prazoHtml(c) {
   if (!c.deadline) return '';
   return `<p class="prazo prazo-${c.deadline.tone}" data-prazo="${esc(c.inscricaoFim)}">${esc(c.deadline.text)}</p>`;
+}
+
+/**
+ * Aviso de urgência — mas só quando a urgência é real.
+ *
+ * Quem cria a pressa é a data do edital, não o site. Por isso este bloco
+ * desaparece sozinho se não houver inscrição aberta, se a data mais próxima
+ * ainda estiver a mais de duas semanas ou se o prazo já tiver passado. Não há
+ * contador regressivo piscando nem "últimas vagas": é a mesma frase que a
+ * ficha usa, com o link para conferir na fonte.
+ */
+function alertaPrazo(lista) {
+  const abertos = lista.filter(c => c.status === 'inscricoes_abertas' && c.inscricaoFim);
+  if (!abertos.length) return '';
+
+  const proxima = abertos.map(c => c.inscricaoFim).sort()[0];
+  const dias = cn.daysBetween(BUILD_DATE, proxima);
+  if (dias === null || dias < 0 || dias > 14) return '';
+
+  const naData = abertos.filter(c => c.inscricaoFim === proxima);
+  const aviso = cn.deadlineNotice({ inscricaoFim: proxima }, BUILD_DATE);
+  const cidades = [...new Set(naData.map(c => c.municipio))];
+  const destino = cidades.length === 1 ? naData[0].path : '/concursos';
+  const quantos = naData.length === 1
+    ? 'Um certame encerra'
+    : `${naData.length} certames encerram`;
+  const onde = cidades.length === 1
+    ? ` em ${esc(cidades[0])}`
+    : ` em ${cidades.length} cidades`;
+
+  return '<aside class="alerta-prazo">' +
+    `<span class="prazo prazo-${aviso.tone}" data-prazo="${esc(proxima)}">${esc(aviso.text)}</span>` +
+    `<p>${quantos} a inscrição nesta data${onde}. <a href="${destino}">Conferir ${naData.length === 1 ? 'a ficha' : 'as fichas'}</a> antes de programar o estudo.</p>` +
+    '</aside>';
 }
 
 /** Ficha do certame. Cada linha só existe se o dado existir na fonte. */
@@ -888,6 +955,7 @@ const listaNode = (url, itens) => ({
   const abertos = concursosAbertos.length;
   const body =
     ufStrip(null) +
+    alertaPrazo(concursos) +
     '<h2>O que está mapeado agora</h2>' +
     `<p>São ${concursos.length} certame(s) em ${estados.length} estado(s), ${abertos ? abertos + ' com inscrição aberta' : 'nenhum com inscrição aberta neste momento'}. Cada ficha traz o link da página oficial e a data em que conferimos.</p>` +
     estados.map(e =>
@@ -927,6 +995,7 @@ for (const e of estados) {
   const doEstado = e.municipios.flatMap(m => m.concursos);
   const body =
     ufStrip(e.uf) +
+    alertaPrazo(doEstado) +
     '<h2>Cidades com certame mapeado em ' + esc(e.ufNome) + '</h2>' +
     '<ul class="municipio-links">' +
     e.municipios.map(m => `<li><a href="${m.path}">${esc(m.municipio)}</a> — ${m.concursos.length} certame(s), ${esc(m.concursos[0].statusLabel.toLowerCase())}</li>`).join('') +
@@ -960,6 +1029,7 @@ for (const e of estados) {
     const outras = e.municipios.filter(o => o.municipioSlug !== m.municipioSlug);
     const body =
       ufStrip(e.uf) +
+      alertaPrazo(m.concursos) +
       m.concursos.map(c => concursoCard(c, { heading: 'h2' })).join('') +
       '<h2>Como usar esta página</h2>' +
       '<p>Confirme o prazo e a data na página oficial antes de qualquer coisa: é o documento que vale. Depois transforme o conteúdo programático em lista com o <a href="/ferramentas/edital-verticalizado">checklist do edital</a>, distribua suas horas no <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a> e acompanhe o quanto falta para sua meta na <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>. As três são gratuitas e funcionam dentro do navegador.</p>' +
