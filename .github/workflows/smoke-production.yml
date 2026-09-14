@@ -80,10 +80,10 @@ jobs:
           if(manifest.status>=200&&manifest.status<400) fail(`public paid manifest still reachable: HTTP ${manifest.status}`);
           ok(`public paid manifest blocked/absent: HTTP ${manifest.status}`);
 
-          const locked=await fetch(base+'/acesso',{redirect:'manual'});
-          if(![301,302,303,307,308].includes(locked.status)) fail(`/acesso without purchase did not redirect: HTTP ${locked.status}`);
-          if(!(locked.headers.get('location')||'').includes('recuperar')) fail('buyer area redirect is unexpected');
-          ok('buyer area locked without a valid purchase session');
+          const locked=await fetch(base+'/acesso',{cache:'no-store'});
+          const lockedHtml=await locked.text();
+          if(!locked.ok||!lockedHtml.includes('ACESSO DO PROPRIETÁRIO')||!lockedHtml.includes('Senha do dashboard')) fail(`/acesso without purchase is not protected by owner authentication: HTTP ${locked.status}`);
+          ok('buyer/owner area stays protected without a valid purchase or owner pass');
 
           let config={};
           for(let i=0;i<18;i++){
