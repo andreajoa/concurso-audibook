@@ -233,3 +233,24 @@ test('a origem que o botão envia é a que o servidor aceita', () => {
   }
   assert.ok(encontrados > 0, 'nenhuma página de concurso oferece o aviso de edital');
 });
+
+// Um número grande na home é o que mais convida ao exagero. Este teste é a
+// trava: o total anunciado tem que ser exatamente a soma das vagas dos
+// certames abertos da própria base, e os que não declaram vagas não podem ser
+// contados como se declarassem zero sem que a home diga isso.
+test('o total de vagas da home é a soma da base, não um número redondo', () => {
+  const fs = require('node:fs');
+  const home = fs.readFileSync('public/index.html', 'utf8');
+  const anunciado = /<strong>([\d.]+) vagas com inscrição aberta agora\.<\/strong>/.exec(home);
+  assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
+
+  const abertos = dataset.map(c => cn.normalize(c, '2026-09-14')).filter(c => c.status === 'inscricoes_abertas');
+  const soma = abertos.reduce((s, c) => s + (c.vagas || 0), 0);
+  assert.equal(Number(anunciado[1].replace(/\./g, '')), soma);
+
+  const semVagas = abertos.filter(c => c.vagas == null).length;
+  if (semVagas) {
+    assert.match(home, new RegExp(semVagas + ' deles não declaram número de vagas'),
+      'a home some com os certames sem vagas declaradas em vez de dizer que existem');
+  }
+});

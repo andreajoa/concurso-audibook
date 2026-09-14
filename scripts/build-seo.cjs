@@ -996,7 +996,13 @@ const listaNode = (url, itens) => ({
     description: 'Concursos públicos por estado e município: edital, banca, prazo de inscrição e data de prova, com link da página oficial de cada órgão.',
     kicker: 'CONCURSOS',
     lead: 'Escolha o estado, depois a cidade. Cada ficha mostra o que o edital diz — banca, prazo de inscrição e data de prova — com o link da página oficial e a data em que a informação foi conferida.',
-    keyFacts: [['Certames acompanhados', String(concursos.length)], ['Estados', String(estados.length)], ['Com inscrição aberta', String(concursosAbertos.length)]],
+    keyFacts: [
+      ['Certames acompanhados', String(concursos.length)],
+      ['Com inscrição aberta', String(concursosAbertos.length)],
+      ['Vagas somadas nos certames abertos', concursosAbertos.reduce((s, c) => s + (c.vagas || 0), 0).toLocaleString('pt-BR') +
+        (concursosAbertos.filter(c => c.vagas == null).length ? ' (sem contar os que não declaram vagas)' : '')],
+      ['Estados', String(estados.length)]
+    ],
     body,
     faq: concursoFaq,
     nodes: [listaNode(ORIGIN + path, concursos)],
@@ -1326,10 +1332,20 @@ const promoSlide = (i, href, icone, eyebrow, titulo, texto, cta) =>
   `<strong>${esc(titulo)}</strong><span class="promo-sub">${esc(texto)}</span></span>` +
   `<span class="promo-cta">${esc(cta)}</span></a>`;
 
+/* O número de vagas é a única estatística que o site publica sobre si mesmo,
+   então ele é somado da própria base e não de lugar nenhum. Certame que não
+   declara vagas (cadastro de reserva) fica de fora da soma e é dito em voz
+   alta: um total inflado é a forma mais fácil de perder a confiança de quem
+   confere. */
+const vagasAbertas = concursosAbertos.reduce((s, c) => s + (c.vagas || 0), 0);
+const semVagasDeclaradas = concursosAbertos.filter(c => c.vagas == null).length;
+const vagasTexto = vagasAbertas.toLocaleString('pt-BR');
+
 const promos = [
   ['/concursos', 'mapa', 'CONCURSOS ABERTOS',
-    'Qual concurso está aberto na sua cidade?',
-    `${concursos.length} certames conferidos na página oficial do órgão, ${concursosAbertos.length} com inscrição aberta em ${estados.reduce((n, e) => n + e.municipios.length, 0)} cidades.`,
+    `${vagasTexto} vagas com inscrição aberta agora.`,
+    `Em ${concursosAbertos.length} certames de ${new Set(concursosAbertos.map(c => c.municipio)).size} cidades, somados das páginas oficiais dos órgãos` +
+    (semVagasDeclaradas ? ` (${semVagasDeclaradas} deles não declaram número de vagas e ficaram fora da conta)` : '') + '.',
     'Ver por estado e cidade'],
   ['/ferramentas/trilha-do-dia', 'lista', 'FERRAMENTA GRATUITA',
     'Você senta para estudar e não sabe o que abrir.',
