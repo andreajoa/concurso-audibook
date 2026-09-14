@@ -10,4 +10,4 @@ Os áudios usam a voz brasileira `pt_BR-cadu-medium`, também usada nos materiai
 
 Uma nova execução retoma os capítulos concluídos apenas se os hashes de origem e do áudio coincidirem. Arquivos diferentes já existentes não são sobrescritos. O manifesto de conclusão é gravado em `<slug>/audio/manifest.json` somente depois de validar PDF, capa e nove áudios.
 
-Depois de concluir os dois jobs, execute novamente o workflow `Verify study library` para verificar o catálogo completo contra o R2.
+Depois de concluir os dois jobs, execute novamente os workflows `Verify study library` e `Audit PDF and audiobook integrity` para verificar o catálogo completo contra o R2. A auditoria compara os hashes dos PDFs originais (72 e 76 páginas), das capas e dos nove áudios de cada produto com as fontes e os manifestos de conclusão. A capa ilustrada pode não ter texto extraível; todas as páginas seguintes precisam ter texto e estar cobertas pelos oito capítulos, em ordem. O resumo também precisa corresponder às páginas registradas. Cada MP3 é decodificado integralmente e o streaming privado precisa devolver os mesmos bytes do arquivo validado.

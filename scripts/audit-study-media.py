@@ -20,6 +20,7 @@ def require(condition, message):
 
 def main():
     catalog = json.loads(Path('products/catalog.json').read_text())
+    santos_sources = json.loads(Path('products/santos-media-sources.json').read_text())
     bucket = os.environ.get('R2_BUCKET', 'apostila')
     account = os.environ['R2_ACCOUNT_ID']
     s3 = boto3.client('s3', endpoint_url=f'https://{account}.r2.cloudflarestorage.com',
@@ -40,13 +41,35 @@ def main():
             pdf = work / 'source.pdf'
             s3.download_file(bucket, assets['pdfKey'], str(pdf))
             pages = [page.extract_text() or '' for page in PdfReader(pdf).pages]
-            require(all(p.strip() for p in pages), f'{slug}: unreadable PDF pages')
-            expected = 19 if slug == 'redacao-nivel-fundamental-2026' else 34
+            source = santos_sources.get(slug)
+            # The supplied Santos editions have an image-only first page.
+            readable_pages = pages[1:] if source else pages
+            require(all(p.strip() for p in readable_pages), f'{slug}: unreadable PDF content pages')
+            expected = source['pageCount'] if source else (19 if slug == 'redacao-nivel-fundamental-2026' else 34)
             require(len(pages) == expected, f'{slug}: unexpected PDF page count')
             body = '\n'.join(pages).lower()
-            topics = ['redação', 'dissertação', 'gabarito'] if expected == 19 else ['autores', 'ibam', 'gabarito']
+            if source:
+                topics = ['agente de portaria' if slug.startswith('agente-') else 'inspetor de alunos', 'ibam', 'gabarito']
+                require(hashlib.sha256(pdf.read_bytes()).hexdigest() == source['pdfSha256'], f'{slug}: PDF differs from supplied source')
+                cover = work / 'cover.png'
+                s3.download_file(bucket, assets['coverKey'], str(cover))
+                require(hashlib.sha256(cover.read_bytes()).hexdigest() == source['coverSha256'], f'{slug}: cover differs from supplied source')
+            else:
+                topics = ['redação', 'dissertação', 'gabarito'] if expected == 19 else ['autores', 'ibam', 'gabarito']
             require(all(word in body for word in topics), f'{slug}: PDF subject does not match product')
             manifest = None
+            santos_tracks = {}
+            if source:
+                record = json.loads(s3.get_object(Bucket=bucket, Key=f'{slug}/audio/manifest.json')['Body'].read())
+                require(record['slug'] == slug and record['pdfSha256'] == source['pdfSha256'], f'{slug}: manifest source mismatch')
+                santos_tracks = {track['key']: track for track in record['chapters']}
+                require(len(record['chapters']) == 9 and set(santos_tracks) == {track['key'] for track in tracks}, f'{slug}: manifest track mapping mismatch')
+                require(santos_tracks[assets['summary']['key']]['pages'] == source['summaryPages'], f'{slug}: manifest summary pages differ from source')
+                require(all(santos_tracks[track['key']]['id'] == track['id'] for track in tracks), f'{slug}: manifest track IDs differ from catalog')
+                ranges = [santos_tracks[chapter['key']]['pages'] for chapter in assets['chapters']]
+                require(ranges == source['chapters'], f'{slug}: manifest chapter pages differ from source')
+                covered = [page for first, last in ranges for page in range(first, last + 1)]
+                require(covered == list(range(2, expected + 1)), f'{slug}: missing, repeated or unordered source pages')
             if expected == 19:
                 manifest = json.loads(s3.get_object(Bucket=bucket,
                     Key=f'{slug}/audio/manifest.json')['Body'].read())
@@ -61,6 +84,8 @@ def main():
                 media = work / 'track.mp3'
                 s3.download_file(bucket, track['key'], str(media))
                 digest = hashlib.sha256(media.read_bytes()).hexdigest()
+                if source:
+                    require(digest == santos_tracks[track['key']]['sha256'], f'{slug}/{track["id"]}: audio differs from completion manifest')
                 require(digest not in fingerprints, f'{slug}/{track["id"]}: duplicate audio content')
                 fingerprints[digest] = (slug, track['id'])
                 probe = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
@@ -69,6 +94,9 @@ def main():
                 info = json.loads(probe.stdout)
                 seconds = float(info['format']['duration'])
                 require(seconds > 10, f'{slug}/{track["id"]}: audio too short')
+                if source:
+                    require(abs(seconds - santos_tracks[track['key']]['durationSeconds']) < 0.1,
+                        f'{slug}/{track["id"]}: duration differs from completion manifest')
                 require(any(s.get('codec_name') == 'mp3' for s in info['streams']),
                     f'{slug}/{track["id"]}: expected MP3 audio')
                 decoded = subprocess.run(['ffmpeg', '-v', 'error', '-xerror', '-i', str(media),
@@ -80,7 +108,9 @@ def main():
                 url = s3.generate_presigned_url('get_object', Params={'Bucket': bucket,
                     'Key': track['key']}, ExpiresIn=120)
                 with requests.get(url, headers={'Range': 'bytes=0-31'}, timeout=30) as response:
-                    require(response.status_code == 206 and len(response.content) == 32,
+                    with media.open('rb') as audio_file:
+                        expected_prefix = audio_file.read(32)
+                    require(response.status_code == 206 and response.content == expected_prefix,
                         f'{slug}/{track["id"]}: signed streaming range failed')
                 durations.append(round(seconds, 2))
                 print(f'PASS {slug}/{track["id"]}: MP3 decoded; signed streaming; {seconds:.1f}s', flush=True)
