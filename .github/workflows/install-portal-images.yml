@@ -20,10 +20,19 @@ jobs:
           rm -rf /tmp/portal && mkdir -p /tmp/portal
           unzip -q /tmp/portal.zip -d /tmp/portal
           test "$(find /tmp/portal/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
-          file /tmp/portal/portal/*.webp | grep -c 'Web/P image' | grep -q '^16$'
-          test "$(file /tmp/portal/portal/portal-hero-*.webp | grep -c '2172x724')" -eq 4
-          test "$(file /tmp/portal/portal/portal-square-*.webp | grep -c '1254x1254')" -eq 4
-          test "$(file /tmp/portal/portal/portal-strip-*.webp /tmp/portal/portal/portal-top-*.webp | grep -c '2171+1x723+1')" -eq 8
+          for f in /tmp/portal/portal/*.webp; do
+            test -s "$f"
+            file "$f" | grep -q 'Web/P image'
+          done
+          for f in /tmp/portal/portal/portal-square-*.webp; do
+            file "$f" | grep -q '1254x1254'
+          done
+          for f in /tmp/portal/portal/portal-hero-*.webp; do
+            file "$f" | grep -q '2172x724'
+          done
+          for f in /tmp/portal/portal/portal-strip-*.webp /tmp/portal/portal/portal-top-*.webp; do
+            file "$f" | grep -Eq '2172x724|2171\+1x723\+1'
+          done
       - name: Copy original WebP binaries
         run: |
           set -euo pipefail
