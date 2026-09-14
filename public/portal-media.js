@@ -1,10 +1,10 @@
 (()=>{
   const A='/assets/portal/';
   const M={
-    concursos:['portal-hero-concursos.png','portal-square-concursos.png','/concursos'],
-    prazos:['portal-hero-prazos.png','portal-square-prazos.png','/concursos'],
-    ferramentas:['portal-hero-ferramentas.png','portal-square-ferramentas.png','/ferramentas'],
-    apostilas:['portal-hero-apostilas.png','portal-square-apostilas.png','/apostilas-para-concurso']
+    concursos:['portal-hero-concursos.webp','portal-square-concursos.webp','/concursos'],
+    prazos:['portal-hero-prazos.webp','portal-square-prazos.webp','/concursos'],
+    ferramentas:['portal-hero-ferramentas.webp','portal-square-ferramentas.webp','/ferramentas'],
+    apostilas:['portal-hero-apostilas.webp','portal-square-apostilas.webp','/apostilas-para-concurso']
   };
   const main=document.querySelector('main');
   if(!main||document.documentElement.dataset.portalMediaReady==='1')return;
@@ -40,14 +40,14 @@
     }
     const anchor=document.querySelector('.specimen-strip')||document.querySelector('.catalog-hero');
     if(anchor){const sec=document.createElement('section');sec.className='portal-square-showcase';const h=document.createElement('h2');h.textContent='Escolha seu próximo passo';sec.appendChild(h);const grid=document.createElement('div');grid.className='portal-square-grid';[M.concursos,M.prazos,M.ferramentas,M.apostilas].forEach(item=>{const a=document.createElement('a');a.className='portal-square-card';a.href=item[2];const img=document.createElement('img');img.src=A+item[1];img.alt='Trilha Aprova';img.loading='lazy';img.decoding='async';a.appendChild(img);grid.appendChild(a);});sec.appendChild(grid);after(anchor,sec);}
-    const metodo=document.querySelector('#metodo')||document.querySelector('.evidence-section');if(metodo)after(metodo,strip('portal-strip-edital.png','portal-square-ferramentas.png','/ferramentas/edital-verticalizado'));
-    const catalog=document.querySelector('.catalog-future');if(catalog)after(catalog,strip('portal-strip-materiais.png','portal-square-apostilas.png','/apostilas-para-concurso'));
+    const metodo=document.querySelector('#metodo')||document.querySelector('.evidence-section');if(metodo)after(metodo,strip('portal-strip-edital.webp','portal-square-ferramentas.webp','/ferramentas/edital-verticalizado'));
+    const catalog=document.querySelector('.catalog-future');if(catalog)after(catalog,strip('portal-strip-materiais.webp','portal-square-apostilas.webp','/apostilas-para-concurso'));
   }
   if(path==='/'||path==='/index.html'){home();return;}
-  let hero=M.prazos,mid=['portal-strip-edital.png','portal-square-ferramentas.png','/ferramentas/edital-verticalizado'];
-  if(path.startsWith('/concursos')||path.includes('concursos-publicos')||path.includes('concursos-baixada')){hero=M.concursos;mid=['portal-strip-alertas.png','portal-square-prazos.png','/concursos'];}
-  else if(path.startsWith('/ferramentas')){hero=M.ferramentas;mid=path.includes('edital-verticalizado')?['portal-strip-edital.png','portal-square-ferramentas.png','/ferramentas/edital-verticalizado']:['portal-strip-simulados.png','portal-square-ferramentas.png','/ferramentas/calculadora-de-acertos'];}
-  else if(path.startsWith('/apostilas')||path.includes('apostila')){hero=M.apostilas;mid=['portal-strip-materiais.png','portal-square-apostilas.png','/apostilas-para-concurso'];}
+  let hero=M.prazos,mid=['portal-strip-edital.webp','portal-square-ferramentas.webp','/ferramentas/edital-verticalizado'];
+  if(path.startsWith('/concursos')||path.includes('concursos-publicos')||path.includes('concursos-baixada')){hero=M.concursos;mid=['portal-strip-alertas.webp','portal-square-prazos.webp','/concursos'];}
+  else if(path.startsWith('/ferramentas')){hero=M.ferramentas;mid=path.includes('edital-verticalizado')?['portal-strip-edital.webp','portal-square-ferramentas.webp','/ferramentas/edital-verticalizado']:['portal-strip-simulados.webp','portal-square-ferramentas.webp','/ferramentas/calculadora-de-acertos'];}
+  else if(path.startsWith('/apostilas')||path.includes('apostila')){hero=M.apostilas;mid=['portal-strip-materiais.webp','portal-square-apostilas.webp','/apostilas-para-concurso'];}
   const h1=main.querySelector('h1');if(h1)after(h1,banner(hero));
   const h2=[...main.querySelectorAll('h2')];if(h2.length>1)after(h2[1],strip(...mid));
 })();

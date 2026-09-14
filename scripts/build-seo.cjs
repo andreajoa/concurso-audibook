@@ -321,7 +321,7 @@ function renderPage(opts) {
     HEADER_CSS_TAG +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
     styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
-    '</head><body>' +
+    `</head><body data-portal-path="${esc(path)}">` +
     siteHeader +
     `<main class="guide">${crumbsHtml(fullTrail)}` +
     (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
