@@ -2,8 +2,9 @@
  * Trava visual para telas estreitas.
  *
  * Regra de produto: no mobile nenhuma imagem editorial ou capa pode ser
- * ampliada com `cover` a ponto de perder conteúdo. Banners horizontais ficam
- * menores, com respiro quando necessário, mas aparecem inteiros.
+ * ampliada a ponto de perder informação importante. Quando existe um recorte
+ * horizontal já preparado para o slot, ele ocupa a caixa inteira na mesma
+ * proporção do arquivo; quando não existe, o fallback continua em contain.
  */
 
 @media (max-width: 760px) {
@@ -25,8 +26,21 @@
     padding: 18px 18px 16px !important;
   }
 
-  /* Cards de notícias: a fotografia inteira fica dentro da moldura. */
-  .portal-news-image {
+  /*
+   * Cards de notícias.
+   * Os assets marcados por site-header.js são todos 1440x540 (8:3). A caixa usa
+   * exatamente a mesma proporção: assim a imagem preenche esquerda e direita
+   * sem barras vazias e sem precisar cortar nenhum pedaço.
+   */
+  .portal-news-image[data-card-asset] {
+    height: auto !important;
+    aspect-ratio: 8 / 3 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f3efe7;
+  }
+  .portal-news-image:not([data-card-asset]) {
     height: auto !important;
     aspect-ratio: 16 / 9;
     background-size: contain !important;

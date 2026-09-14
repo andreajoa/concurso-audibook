@@ -73,3 +73,62 @@
   if (largo.addEventListener) largo.addEventListener('change', aoMudar);
   else if (largo.addListener) largo.addListener(aoMudar);
 })();
+
+/*
+ * Imagens editoriais da grade da home.
+ *
+ * O build escolhe as notícias com dados vivos; por isso não podemos amarrar a
+ * primeira, segunda ou terceira posição a uma fotografia fixa. Aqui o destino
+ * do link decide qual asset existente entra. Todos os arquivos abaixo já estão
+ * no repositório e são recortes horizontais 1440x540, feitos pelo
+ * scripts/build-images.py. A regra também impede repetição dentro da mesma grade.
+ */
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.portal-news-grid .portal-news-image'));
+  if (!cards.length) return;
+
+  var preferidas = {
+    '/materias/como-ler-um-edital-de-concurso-sem-perder-nada-importante': 'hero-edital-desk.webp',
+    '/concursos/sp/guarulhos': 'hero-concursos-desk.webp',
+    '/concursos/sp/maua': 'hero-atendimento-desk.webp',
+    '/concursos/sp/sao-paulo': 'hero-concursos-sp-desk.webp',
+    '/concursos/sp/limeira': 'hero-comecar-desk.webp',
+    '/concursos/sp/catanduva': 'hero-cidade-interior-desk.webp',
+    '/concursos/sp/santos': 'hero-cidade-litoral-desk.webp',
+    '/concursos/sp/guaruja': 'hero-baixada-desk.webp'
+  };
+
+  var reserva = [
+    'hero-materias-desk.webp',
+    'hero-calculadora-desk.webp',
+    'hero-cronograma-desk.webp',
+    'hero-caderno-desk.webp',
+    'hero-apostilas-desk.webp',
+    'hero-marca-desk.webp',
+    'hero-artigo-desk.webp',
+    'hero-ferramentas-desk.webp',
+    'hero-apostila-detalhe-desk.webp'
+  ];
+  var usadas = {};
+
+  function caminhoDo(link) {
+    try { return new URL(link.getAttribute('href') || '', window.location.origin).pathname; }
+    catch (e) { return link.getAttribute('href') || ''; }
+  }
+
+  function proximaLivre() {
+    for (var i = 0; i < reserva.length; i += 1) {
+      if (!usadas[reserva[i]]) return reserva[i];
+    }
+    return reserva[0];
+  }
+
+  cards.forEach(function (card) {
+    var destino = caminhoDo(card);
+    var arquivo = preferidas[destino];
+    if (!arquivo || usadas[arquivo]) arquivo = proximaLivre();
+    usadas[arquivo] = true;
+    card.style.backgroundImage = "url('/assets/portal/" + arquivo + "?v=20260914-card-horizontal')";
+    card.setAttribute('data-card-asset', arquivo);
+  });
+})();
