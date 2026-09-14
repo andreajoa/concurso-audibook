@@ -4,6 +4,7 @@ const fs = require('node:fs');
 
 const css = fs.readFileSync('public/mobile-image-fit.css', 'utf8');
 const headerCss = fs.readFileSync('public/site-header.css', 'utf8');
+const headerJs = fs.readFileSync('public/site-header.js', 'utf8');
 const home = fs.readFileSync('public/index.html', 'utf8');
 
 test('a trava anti-recorte é carregada pelo cabeçalho compartilhado', () => {
@@ -15,8 +16,18 @@ test('o banner principal da home é uma imagem real e no mobile usa contain sem 
   assert.match(css, /\.portal-lead-arte\s*\{[\s\S]*?aspect-ratio:\s*auto\s*!important;[\s\S]*?object-fit:\s*contain\s*!important;/);
 });
 
-test('cards de notícias não cortam a fotografia no mobile', () => {
-  assert.match(css, /\.portal-news-image\s*\{[\s\S]*?background-size:\s*contain\s*!important;[\s\S]*?background-repeat:\s*no-repeat\s*!important;/);
+test('cards de notícias usam assets horizontais existentes e sem repetição planejada', () => {
+  assert.match(headerJs, /hero-edital-desk\.webp/);
+  assert.match(headerJs, /hero-concursos-desk\.webp/);
+  assert.match(headerJs, /hero-concursos-sp-desk\.webp/);
+  assert.match(headerJs, /hero-cidade-interior-desk\.webp/);
+  assert.match(headerJs, /var usadas = \{\}/);
+  assert.match(headerJs, /data-card-asset/);
+});
+
+test('cards horizontais preenchem o mobile sem barras laterais e sem mudar a proporção do asset', () => {
+  assert.match(css, /\.portal-news-image\[data-card-asset\]\s*\{[\s\S]*?aspect-ratio:\s*8\s*\/\s*3\s*!important;[\s\S]*?background-size:\s*cover\s*!important;/);
+  assert.match(css, /\.portal-news-image:not\(\[data-card-asset\]\)[\s\S]*?background-size:\s*contain\s*!important;/);
 });
 
 test('heroes internos exibem a imagem inteira no mobile', () => {
