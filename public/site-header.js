@@ -14,13 +14,27 @@
  * navegação nenhuma sempre que um arquivo falhasse.
  */
 (function () {
-  var cabecalho = document.querySelector('.guide-header');
+  var cabecalho = document.querySelector('.portal-site-header') || document.querySelector('.guide-header');
   if (!cabecalho) return;
   var botao = cabecalho.querySelector('.nav-toggle');
   var menu = cabecalho.querySelector('#menu-do-site');
   if (!botao || !menu) return;
 
   cabecalho.classList.add('js-menu');
+
+  /* A data da faixa de serviço. Ela vai no HTML com o dia da publicação, que é
+     verdade quando o robô lê. Aqui ela passa a ser o dia de hoje, porque entre
+     duas publicações a data envelhece e um portal de notícias mostrando
+     anteontem no alto da página parece abandonado. */
+  var campoData = cabecalho.querySelector('[data-data-de-hoje]');
+  if (campoData) {
+    try {
+      var hoje = new Intl.DateTimeFormat('pt-BR', {
+        weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
+      }).format(new Date());
+      campoData.textContent = hoje.charAt(0).toUpperCase() + hoje.slice(1);
+    } catch (e) { /* sem Intl, fica a data da publicação, que é correta */ }
+  }
 
   function estado(aberto) {
     cabecalho.toggleAttribute('data-menu-aberto', aberto);

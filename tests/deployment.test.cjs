@@ -104,10 +104,15 @@ test('toda página pública carrega o mesmo menu de navegação', () => {
     if (nome === 'dashboard.html') continue;
     const html = fs.readFileSync(caminho, 'utf8');
 
-    assert.equal((html.match(/class="guide-header"/g) || []).length, 1,
+    assert.equal((html.match(/class="portal-site-header"/g) || []).length, 1,
       `${nome} precisa de exatamente um cabeçalho de navegação`);
-    assert.ok(html.includes('/site-header.css'),
+    assert.ok(html.includes('/site-header.css') && html.includes('/portal-news.css'),
       `${nome} carrega o cabeçalho sem a folha de estilo dele`);
+    /* A folha do portal é escrita inteira sob body.portal-news-ui, de propósito,
+       para não vazar para o painel interno. Sem a classe, a página recebe o
+       cabeçalho e o mostra sem forma nenhuma — links crus empilhados no topo. */
+    assert.match(html, /<body[^>]*class="[^"]*portal-news-ui/,
+      `${nome} recebe o cabeçalho do portal sem a classe que lhe dá forma`);
     // Sem esta linha o navegador vai buscar /favicon.ico, não acha, e a aba
     // fica com o ícone de página abandonada.
     assert.ok(html.includes('href="/favicon.svg"'),
@@ -156,14 +161,17 @@ test('no celular todo link do menu é grande o bastante para o dedo', () => {
   const celular = css.split('@media(max-width:900px)')[1];
   assert.ok(celular, 'o cabeçalho precisa de um bloco para telas pequenas');
 
-  const regra = celular.match(/\.guide-header nav a\{([^}]*)\}/);
+  const regra = celular.match(/\[data-menu-aberto\][^{]*\.portal-wide a\{([^}]*)\}/);
   assert.ok(regra, 'no celular os links do menu precisam de regra própria');
 
   const padding = regra[1].match(/padding:(\d+)px/);
   assert.ok(padding, 'os links do menu no celular precisam de recuo vertical');
 
-  const fonte = Number((regra[1].match(/font-size:(\d+)px/) || [])[1] || 16);
-  const linha = Number((regra[1].match(/line-height:([\d.]+)/) || [])[1] || 1.2);
+  // A folha declara a tipografia na forma curta — font:800 16px/1.3 ... —, que é
+  // onde o tamanho e a entrelinha de fato moram.
+  const curta = regra[1].match(/font:\s*\d+\s+(\d+)px\/([\d.]+)/);
+  const fonte = Number(curta ? curta[1] : (regra[1].match(/font-size:(\d+)px/) || [])[1] || 16);
+  const linha = Number(curta ? curta[2] : (regra[1].match(/line-height:([\d.]+)/) || [])[1] || 1.2);
   const altura = fonte * linha + Number(padding[1]) * 2;
   assert.ok(altura >= 24,
     `o alvo de toque do menu ficaria com ${altura.toFixed(0)}px; a WCAG pede 24px`);

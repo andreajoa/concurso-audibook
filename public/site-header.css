@@ -55,69 +55,58 @@ html{scroll-padding-top:104px}
 .mega-col li a span{display:block;font-size:11px;font-weight:400;letter-spacing:.02em;color:#66717d}
 .mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font:400 12px/1.5 system-ui,sans-serif;color:#66717d}
 
-/* O botão do menu de celular.
-   Nasce fora da tela em qualquer largura e só é revelado pelo site-header.js,
-   dentro da faixa estreita. Um hambúrguer visível que não abre é pior do que
-   menu nenhum, então ele depende do script que o faz funcionar. */
+
+/* ------------------------------------------------------------------ *
+ * Menu do celular, sobre o cabeçalho do portal.
+ * ------------------------------------------------------------------ */
+
+/* O botão nasce escondido em qualquer largura e só é revelado pela classe
+   js-menu, que apenas o site-header.js aplica. Hambúrguer visível que não abre
+   é pior do que menu nenhum. */
 .nav-toggle{display:none}
 
-/* No celular a lista de links vira uma gaveta atrás de um botão.
+/* Recorte da foto por largura. A faixa das páginas internas usa uma imagem de
+   fundo, e uma foto larga num aparelho estreito é cortada justamente no meio,
+   que é onde o assunto está. Cada largura recebe o recorte feito para ela. */
+@media(max-width:1024px){
+  .portal-inner-hero{background-image:linear-gradient(90deg,rgba(4,28,54,.98) 0%,rgba(4,28,54,.78) 43%,rgba(4,28,54,.20) 76%,rgba(4,28,54,.06)),var(--inner-image-tab,var(--inner-image))}
+}
+@media(max-width:760px){
+  .portal-inner-hero{background-image:linear-gradient(180deg,rgba(4,28,54,.22),rgba(4,28,54,.92) 68%),var(--inner-image-mob,var(--inner-image))}
+}
 
-   O que havia aqui antes era a mesma lista quebrando em três linhas. Como a
-   barra é fixa, essas três linhas tomavam 188 px do alto da tela em toda
-   página e em toda rolagem — num iPhone SE, um terço da altura útil. E os
-   links ficavam com 11 px para caber, letra que o dedo erra e o olho cansa.
+/* A trilha de migalhas dentro da faixa escura. Ela chega com a cor do texto
+   corrido, que sobre fundo azul quase some. */
+.portal-inner-copy .crumbs,.portal-inner-copy nav[aria-label="Trilha"]{margin:0 0 14px;font-size:12px;color:#c3d3e2}
+.portal-inner-copy .crumbs a,.portal-inner-copy nav[aria-label="Trilha"] a{color:#e1bd61;text-decoration:none}
+.portal-inner-copy .crumbs a:hover{text-decoration:underline}
 
-   A gaveta devolve esse espaço: o cabeçalho volta a ter uma linha só, e os
-   links ganham tamanho de leitura e altura de toque de sobra. */
 @media(max-width:900px){
-  html{scroll-padding-top:164px}
-  .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%;overflow:hidden}
-  .guide-brand img{width:64px;height:52px}
-  .mega-panel{display:none!important}
-  .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:2px 12px;overflow:visible;padding:2px 0 6px;-webkit-mask-image:none;mask-image:none}
-  /* O texto do link tem 15px de altura; sozinho ele é um alvo que o dedo erra.
-     O recuo vertical leva a área tocável a 25px (WCAG 2.5.8 pede 24) sem
-     alargar nada na horizontal — é por isso que o espaçamento entre linhas
-     encolhe na mesma medida: a altura vem do alvo, não do vão entre eles. */
-  .guide-header nav a{font-size:12px;white-space:normal;line-height:1.25;padding:5px 2px}
-  /* "Já comprei" sai da fila e ocupa o vazio à direita do logo. Não é enfeite:
-     tirando um item do fluxo, o menu cabe em menos linhas, e o cabeçalho fixo
-     devolve ao leitor a altura que estava tomando da tela em toda página. */
-  .nav-access{position:absolute;top:12px;right:14px;padding:8px 12px}
-
-  /* Daqui para baixo, só quando o script está de pé. */
-  .guide-header.js-menu{flex-wrap:nowrap;align-items:center;justify-content:space-between;overflow:visible;padding:8px 14px}
-  .guide-header.js-menu .nav-toggle{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:9px 15px;border:1px solid rgba(228,201,130,.55);border-radius:999px;background:transparent;color:#e4c982;font:800 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}
-  .guide-header.js-menu .nav-toggle:focus-visible{outline:3px solid #e4c982;outline-offset:3px}
+  /* A barra de navegação do portal vira gaveta. O que ela fazia antes era
+     rolar de lado: oito itens num trilho horizontal, onde os últimos só
+     aparecem para quem descobre que precisa arrastar. Menu escondido atrás de
+     um gesto não descoberto é menu que não existe. */
+  .portal-primary{position:relative}
+  .portal-site-header.js-menu .portal-primary{display:flex;align-items:center;min-height:52px;padding-inline:12px}
+  .portal-site-header.js-menu .nav-toggle{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:9px 15px;border:1px solid rgba(255,255,255,.34);border-radius:999px;background:transparent;color:#fff;font:800 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}
+  .portal-site-header.js-menu .nav-toggle:focus-visible{outline:3px solid #e1bd61;outline-offset:3px}
   .nav-toggle-riscos{display:grid;gap:4px;width:18px}
   .nav-toggle-riscos i{display:block;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
-  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(2){opacity:0}
-  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .portal-site-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .portal-site-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(2){opacity:0}
+  .portal-site-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-  /* A gaveta desce por baixo da barra e cobre a largura da janela. Ela tem
-     rolagem própria com altura limitada: num telefone deitado a lista inteira
-     não cabe, e sem isso os últimos itens ficariam inalcançáveis. */
-  .guide-header.js-menu nav{display:none}
-  .guide-header.js-menu[data-menu-aberto] nav{position:absolute;left:0;right:0;top:100%;z-index:40;display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%;max-height:calc(100dvh - 68px);overflow-y:auto;padding:6px 14px 16px;background:#08284f;border-bottom:1px solid rgba(228,201,130,.3);box-shadow:0 24px 48px rgba(3,17,35,.45)}
-  .guide-header.js-menu[data-menu-aberto] nav a{display:block;padding:14px 4px;font-size:16px;line-height:1.3;border-bottom:1px solid rgba(228,201,130,.14)}
-  .guide-header.js-menu[data-menu-aberto] .mega{display:block}
-  .guide-header.js-menu[data-menu-aberto] .nav-access{position:static;margin-top:14px;align-self:flex-start;border-radius:999px;padding:12px 20px;font-size:15px;border-bottom:1px solid rgba(228,201,130,.55)}
-  /* Com a barra de novo em uma linha só, o destino de um link #ancora deixa de
-     precisar de 164px de folga. :has não existe em navegador antigo — lá vale
-     a regra de cima, que só sobra espaço. */
-  html:has(.guide-header.js-menu){scroll-padding-top:82px}
+  /* A gaveta desce por baixo da barra, com rolagem própria: num telefone
+     deitado a lista inteira não cabe, e sem isso os últimos itens ficariam
+     inalcançáveis. */
+  .portal-site-header.js-menu .portal-primary>.portal-wide{display:none}
+  .portal-site-header.js-menu[data-menu-aberto] .portal-primary>.portal-wide{position:absolute;left:0;right:0;top:100%;z-index:70;display:flex;flex-direction:column;align-items:stretch;width:100%!important;max-height:calc(100dvh - 190px);overflow-y:auto;overflow-x:hidden;margin:0;padding:6px 16px 18px;background:#06294f;border-top:1px solid rgba(225,189,97,.3);box-shadow:0 24px 48px rgba(3,17,35,.45)}
+  .portal-site-header.js-menu[data-menu-aberto] .portal-primary>.portal-wide a{display:block;height:auto;padding:14px 4px;font:800 16px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:0;color:#fff;border-bottom:1px solid rgba(225,189,97,.14)}
+  .portal-site-header.js-menu[data-menu-aberto] .portal-home-link{display:none}
 }
 @media(max-width:520px){
-  html{scroll-padding-top:188px}
-  .guide-header{padding-inline:12px}
-  .guide-header nav{gap:2px 10px}
-  .guide-header nav a{font-size:11px;padding:6px 2px}
-  .guide-header.js-menu{padding-inline:12px}
-  .guide-header.js-menu .nav-toggle{padding:9px 13px}
-  .guide-header.js-menu[data-menu-aberto] nav a{font-size:16px;padding:14px 4px}
+  .portal-site-header.js-menu .nav-toggle{padding:9px 13px}
 }
 @media(prefers-reduced-motion:reduce){.nav-toggle-riscos i{transition:none}}
 @supports not (overflow:clip){html,body{overflow-x:hidden}}
-@media print{.guide-header{display:none!important}}
+@media print{.guide-header,.portal-site-header{display:none!important}}

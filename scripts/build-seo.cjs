@@ -216,33 +216,110 @@ const navHtml = megaHtml +
   NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('') +
   '<a class="nav-access" href="/recuperar">Já comprei</a>';
 
+/* A tarja de plantão do alto do portal.
+ *
+ * As três frases saem da base de concursos, não de texto escrito à mão. É a
+ * diferença entre uma manchete e um cartaz: quando um edital entra, um prazo
+ * vence ou uma prova é marcada, a tarja muda sozinha na build seguinte. A
+ * versão que rodava no navegador trazia estas mesmas frases congeladas em
+ * 14/09/2026 — "724 vagas", "5 concursos em Guarulhos" — e elas continuariam
+ * ali em dezembro, dizendo de um mundo que já tinha mudado. */
+const plantaoItens = (() => {
+  const itens = [];
+  const vagas = concursosAbertos.reduce((s, c) => s + (c.vagas || 0), 0);
+  if (vagas) itens.push(`${vagas.toLocaleString('pt-BR')} vagas somadas nos certames com inscrição aberta`);
+
+  const porCidade = {};
+  for (const c of concursosAbertos) porCidade[c.municipio] = (porCidade[c.municipio] || 0) + 1;
+  const lider = Object.entries(porCidade).sort((a, b) => b[1] - a[1])[0];
+  if (lider && lider[1] > 1) itens.push(`${lider[0]} reúne ${lider[1]} concursos acompanhados pelo portal`);
+
+  const comData = concursosAbertos.filter(c => c.inscricaoFim).sort((a, b) => a.inscricaoFim.localeCompare(b.inscricaoFim))[0];
+  if (comData) itens.push(`${comData.municipio}: inscrições até ${cn.brDate(comData.inscricaoFim)}`);
+
+  const prova = concursos.filter(c => c.dataProva && c.dataProva >= BUILD_DATE)
+    .sort((a, b) => a.dataProva.localeCompare(b.dataProva))[0];
+  if (prova) itens.push(`${prova.municipio} tem prova prevista para ${cn.brDate(prova.dataProva)}`);
+
+  return itens.length ? itens : [`${concursos.length} certames conferidos nas páginas oficiais dos órgãos`];
+})();
+
 /* Um cabeçalho só, para o site inteiro.
    Quem cai em /termos por um link do Google não pode ficar preso ali com uma
    logo apontando para a home como única saída. Este bloco é gerado uma vez e
    depois carimbado em toda página estática — inclusive nas que não passam pelo
    renderPage, como a home, o obrigado e as páginas legais. */
-const siteHeader = '<header class="guide-header">' +
-  '<a class="guide-brand" href="/" aria-label="Trilha Aprova — início">' +
-  // A barra é escura, então quem aparece aqui é a logo de tinta clara. A versão
-  // azul-marinho continua existindo, e é a que vai para o Google e para o ícone
-  // do aplicativo, onde o fundo é branco.
-  '<img src="/assets/trilha-aprova-logo-claro.webp?v=20260914" alt="Trilha Aprova" width="98" height="80"></a>' +
-  /* O botão de menu do celular.
-     Ele nasce escondido e só aparece quando o site-header.js marca o cabeçalho
-     como "js-menu". A ordem importa: sem JavaScript nada o revela, e o menu
-     continua sendo a lista de links que sempre foi. Um hambúrguer que não abre
-     é pior do que menu nenhum. */
+/* O cabeçalho é escrito aqui, no build, e não montado no navegador.
+ *
+ * Existia uma versão deste mesmo desenho que rodava como script: a página
+ * carregava com o cabeçalho antigo e um `replaceWith` trocava tudo depois.
+ * Três coisas quebravam nesse caminho, e todas custam caro num site que vive de
+ * busca: o Google indexa o HTML que chega, ou seja, o layout antigo; o leitor
+ * via a página pular de uma cara para outra; e quem estivesse sem JavaScript
+ * ficava com o site de antes. Escrito no build, o que o robô lê, o que o
+ * visitante vê e o que fica no cache são a mesma coisa. */
+const PORTAL_NAV = [
+  ['/concursos', 'Concursos Abertos'],
+  ['/materias', 'Notícias'],
+  ['/materias/como-ler-um-edital-de-concurso-sem-perder-nada-importante', 'Editais'],
+  ['/concursos', 'Salários'],
+  ['/ferramentas', 'Ferramentas'],
+  ['/apostilas-para-concurso', 'Apostilas'],
+  ['/como-estudar-para-concurso-do-zero', 'Guias de Estudo'],
+  ['/perguntas-frequentes', 'Dúvidas'],
+  ['/contato', 'Atendimento']
+];
+
+const siteHeader = '<header class="portal-site-header">' +
+  /* Faixa de serviço. A data é carimbada na build e corrigida para hoje pelo
+     site-header.js: um portal de notícias que mostra a data de anteontem parece
+     abandonado, e entre duas publicações a data do build envelhece. O valor
+     escrito aqui é o que o robô lê, e é verdadeiro no momento em que foi
+     gerado — o script só o mantém em dia para quem está olhando. */
+  '<div class="portal-utility"><div class="portal-wide">' +
+  `<span data-data-de-hoje>${esc(new Date(BUILD_DATE + 'T12:00:00Z').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Sao_Paulo' }).replace(/^./, m => m.toUpperCase()))}</span>` +
+  '<span class="portal-utility-motto">Seu guia diário para conquistar a aprovação</span>' +
+  '<nav aria-label="Links institucionais"><a href="/sobre">Sobre</a><a href="/contato">Contato</a>' +
+  '<a href="https://www.instagram.com/trilhaaprova.concursos/" target="_blank" rel="noopener">Instagram</a></nav>' +
+  '</div></div>' +
+
+  '<div class="portal-masthead"><div class="portal-wide portal-masthead-grid">' +
+  '<a class="portal-brand" href="/" aria-label="Trilha Aprova — início">' +
+  '<img src="/assets/trilha-aprova-logo.webp?v=20260914" alt="Trilha Aprova" width="218" height="96"></a>' +
+  /* A busca é um formulário de verdade, com method GET para /concursos: sem
+     JavaScript ela ainda leva a algum lugar útil em vez de não fazer nada. */
+  '<form class="portal-search" role="search" action="/concursos" method="get" aria-label="Buscar no portal">' +
+  '<input type="search" name="q" placeholder="Busque por concurso, órgão, cargo ou assunto..." aria-label="Buscar no portal">' +
+  '<button type="submit" aria-label="Buscar">⌕</button></form>' +
+  '<a class="portal-login" href="/recuperar"><span aria-hidden="true">◉</span><strong>Entrar</strong><small>Minha conta</small></a>' +
+  '<a class="portal-approve" href="/apostilas-para-concurso">Quero ser aprovado <span>→</span></a>' +
+  '</div></div>' +
+
+  '<nav class="portal-primary" aria-label="Navegação principal">' +
   '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-do-site">' +
   '<span class="nav-toggle-riscos" aria-hidden="true"><i></i><i></i><i></i></span>' +
   '<span class="nav-toggle-texto">Menu</span></button>' +
-  `<nav id="menu-do-site" aria-label="Navegação do site">${navHtml}</nav>` +
+  '<div class="portal-wide" id="menu-do-site">' +
+  '<a class="portal-home-link" href="/" aria-label="Início">⌂</a>' +
+  PORTAL_NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('') +
+  '</div></nav>' +
+
+  '<div class="portal-breaking"><div class="portal-wide">' +
+  '<strong>⚡ &nbsp;ÚLTIMAS NOTÍCIAS</strong>' +
+  `<div class="portal-breaking-track">${plantaoItens.map(t => `<span>${esc(t)}</span>`).join('<i>•</i>')}</div>` +
+  '<a href="/concursos">Ver todas →</a>' +
+  '</div></div>' +
   '<script src="/site-header.js" defer></script>' +
   '</header>';
 
 /* O estilo do cabeçalho mora num arquivo próprio porque as páginas escritas à
    mão (termos, obrigado, recuperar) não carregam seo.css. Sem esta folha o menu
    aparece, mas como uma pilha de links sem forma. */
-const HEADER_CSS_TAG = '<link rel="stylesheet" href="/site-header.css">';
+/* Duas folhas, e nesta ordem. A portal-news.css desenha o portal inteiro —
+   cabeçalho, home e faixa das páginas internas. A site-header.css vem depois
+   porque é onde mora a gaveta de menu do celular, que precisa vencer as regras
+   de navegação da primeira. */
+const HEADER_CSS_TAG = '<link rel="stylesheet" href="/portal-news.css"><link rel="stylesheet" href="/site-header.css">';
 
 /* Sem um ícone declarado o navegador procura /favicon.ico sozinho, não acha, e a
    aba fica com a folha em branco — o mesmo desenho que o Chrome dá para uma
@@ -371,16 +448,23 @@ const HERO_CSS_TAG = '<link rel="stylesheet" href="/portal-hero.css">';
 /* A faixa de abertura de toda página do portal.
 
    Ela não acrescenta texto nenhum: recebe a trilha, o chapéu, o título e a linha
-   de abertura que a página já tinha e os coloca sobre a fotografia. É por isso
-   que trocar o layout inteiro não mexeu numa única trava de SEO — o que o robô
-   lê dentro de <main> continua sendo exatamente o mesmo. */
+   de abertura que a página já tinha e os coloca sobre a fotografia. O <h1>
+   continua sendo um só na página — a versão que rodava no navegador escondia o
+   título original e criava um segundo, e duas páginas de trava de SEO caem
+   nisso.
+
+   A fotografia entra como fundo, com um recorte para telefone e outro para
+   computador. Num aparelho estreito a imagem larga cortaria justamente o meio,
+   que é onde o assunto está. */
 function heroHtml({ slot, trail, kicker, title, lead }) {
-  return `<section class="portal-hero">${heroArt(slot)}` +
-    '<div class="portal-hero-corpo"><div class="portal-hero-texto">' +
+  const src = n => `/assets/portal/hero-${slot}-${n}.webp?v=${ASSET_VERSION}`;
+  return '<section class="portal-inner-hero" ' +
+    `style="--inner-image:url('${src('desk')}');--inner-image-tab:url('${src('tab')}');--inner-image-mob:url('${src('mob')}')">` +
+    '<div class="portal-wide"><div class="portal-inner-copy">' +
     crumbsHtml(trail) +
-    (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
+    (kicker ? `<span>${esc(kicker)}</span>` : '') +
     `<h1>${esc(title)}</h1>` +
-    (lead ? `<p class="answer">${esc(lead)}</p>` : '') +
+    (lead ? `<p>${esc(lead)}</p>` : '') +
     '</div></div></section>';
 }
 
@@ -454,14 +538,15 @@ function renderPage(opts) {
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
     HERO_CSS_TAG +
     styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
-    `</head><body data-portal-path="${esc(path)}">` +
+    `</head><body class="portal-news-ui portal-inner-page" data-portal-path="${esc(path)}">` +
     siteHeader +
-    /* A abertura fica DENTRO do <main>: as travas de SEO medem o texto de <main>
-       — a impressão digital que separa uma cidade da outra e a contagem de links
-       internos das ferramentas. Pôr a trilha e o título fora mudaria as duas
-       medidas sem mudar nada do que o leitor lê. */
-    '<main class="guide">' +
+    /* A faixa sai do <main> e o conteúdo vira o cartão branco abaixo dela, como
+       num jornal: a foto ocupa a largura da janela e o texto tem coluna própria.
+       As travas de SEO que medem <main> continuam de pé — a impressão digital
+       que separa uma cidade da outra passa a ser o corpo da página, que é
+       justamente a parte que nunca se repete entre duas cidades. */
     heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead }) +
+    '<main class="guide portal-content-surface">' +
     keyFactsHtml(keyFacts) +
     body +
     faqHtml(faq) +
@@ -1538,11 +1623,244 @@ const promos = [
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * A home do portal.
+ *
+ * O desenho é o de um jornal: manchete grande à esquerda, radar de prazos à
+ * direita, grade de notícias abaixo e uma faixa de assuntos. O que muda em
+ * relação à versão que rodava no navegador é de onde vem cada palavra.
+ *
+ * Lá, tudo era texto fixo — "724 vagas", "5 concursos em Guarulhos", "17/09",
+ * "14 set 2026" — escrito à mão num dia e congelado para sempre. Num portal de
+ * concursos isso não é um detalhe de implementação: é a diferença entre
+ * informar e enganar. Quem chega em novembro procurando prazo encontraria o
+ * prazo de setembro, apresentado como se fosse de hoje.
+ *
+ * Aqui cada número e cada data saem de content/concursos.json na hora da build.
+ * Quando um edital entra, um prazo vence ou uma prova é marcada, a home muda
+ * sozinha. E quando não há o que dizer, a seção some em vez de inventar.
+ * ------------------------------------------------------------------ */
+const ASSET_PORTAL = '/assets/portal/';
+
+/* A manchete é o certame mais relevante de hoje, não um texto escolhido a dedo:
+   entre os abertos, o que tem mais vagas. Se nenhum estiver aberto, o portal
+   diz o que de fato tem — os certames que acompanha — em vez de anunciar
+   inscrição que não existe. */
+const manchete = (() => {
+  const abertos = [...concursosAbertos].sort((a, b) => (b.vagas || 0) - (a.vagas || 0));
+  const cidadesAbertas = new Set(concursosAbertos.map(c => c.municipio)).size;
+  if (abertos.length && vagasAbertas) {
+    return {
+      href: '/concursos',
+      chip: 'CONCURSOS EM DESTAQUE',
+      titulo: `${estados.length === 1 ? 'Concursos em ' + estados[0].ufNome : 'Concursos públicos'}: ${vagasTexto} vagas com inscrição aberta agora`,
+      /* O total é somado dos certames que declaram vagas. Quem não declara
+         (cadastro de reserva) fica de fora — e isso é dito na própria manchete,
+         porque um número inflado é a forma mais barata de perder a confiança de
+         quem vai conferir na fonte oficial logo em seguida. */
+      linha: 'Veja cidades, bancas, cargos e prazos em fichas conferidas a partir das páginas oficiais dos órgãos' +
+        (semVagasDeclaradas ? `. São ${concursosAbertos.length} certames abertos, e ${semVagasDeclaradas} deles não declaram número de vagas — ficaram fora da soma` : '') + '.',
+      cta: 'Ver todos os concursos',
+      numeros: [[vagasTexto, 'vagas somadas'], [String(concursosAbertos.length), 'certames abertos'],
+        [String(cidadesAbertas), 'cidades'], [String(estados.length), estados.length === 1 ? 'estado no mapa' : 'estados no mapa']]
+    };
+  }
+  return {
+    href: '/concursos',
+    chip: 'PORTAL DE CONCURSOS',
+    titulo: `${concursos.length} certames acompanhados nas páginas oficiais dos órgãos`,
+    linha: 'Nenhuma inscrição aberta neste momento. As fichas seguem no ar com banca, prazo e data de prova de cada certame.',
+    cta: 'Ver o mapa de concursos',
+    numeros: [[String(concursos.length), 'certames no mapa'],
+      [String(new Set(concursos.map(c => c.municipio)).size), 'cidades'],
+      [String(estados.length), estados.length === 1 ? 'estado' : 'estados'],
+      [String(tools.length), 'ferramentas grátis']]
+  };
+})();
+
+/* Radar: as cidades com mais certames acompanhados. A coluna da direita mostra
+   o prazo quando ele existe — e "Ver ficha" quando não existe, porque escrever
+   uma data onde não há data é a forma mais cara de perder a confiança de quem
+   confere na fonte. */
+const radarCidades = (() => {
+  const porCidade = new Map();
+  for (const c of concursos) {
+    const atual = porCidade.get(c.municipio) || { municipio: c.municipio, path: c.path, total: 0, abertos: 0, prazo: null };
+    atual.total++;
+    if (c.status === 'inscricoes_abertas') {
+      atual.abertos++;
+      if (c.inscricaoFim && (!atual.prazo || c.inscricaoFim < atual.prazo)) atual.prazo = c.inscricaoFim;
+    }
+    porCidade.set(c.municipio, atual);
+  }
+  return [...porCidade.values()]
+    .sort((a, b) => b.abertos - a.abertos || b.total - a.total || a.municipio.localeCompare(b.municipio))
+    .slice(0, 5);
+})();
+
+/* Prazos da semana: só datas que ainda não passaram, em ordem. Inclui fim de
+   inscrição e dia de prova, que são as duas coisas que fazem alguém perder o
+   concurso por desatenção.
+
+   Os eventos são agrupados por data + cidade + tipo, e não listados um a um. A
+   prefeitura que publica cinco editais no mesmo dia tem cinco prazos idênticos,
+   e sem o agrupamento o painel vira "17 SET Guarulhos" repetido cinco vezes —
+   cinco linhas para dizer uma coisa só, empurrando para fora as outras cidades
+   que a pessoa não sabe que existem. Agrupado, cabe o prazo de cinco cidades
+   diferentes no mesmo espaço, que é a informação que ela veio buscar. */
+const prazosProximos = (() => {
+  const grupos = new Map();
+  const juntar = (data, tipo, c, nota) => {
+    const chave = `${data}|${c.municipio}|${tipo}`;
+    const atual = grupos.get(chave);
+    if (atual) { atual.quantos++; return; }
+    grupos.set(chave, { data, tipo, path: c.path, municipio: c.municipio, nota, quantos: 1 });
+  };
+  for (const c of concursos) {
+    if (c.inscricaoFim && c.inscricaoFim >= BUILD_DATE && c.status === 'inscricoes_abertas') {
+      juntar(c.inscricaoFim, 'inscricao', c, `Encerra a inscrição — ${c.edital}`);
+    }
+    if (c.dataProva && c.dataProva >= BUILD_DATE) {
+      juntar(c.dataProva, 'prova', c, (c.dataProvaConfirmada ? 'Prova' : 'Prova prevista') + ` — ${c.edital}`);
+    }
+  }
+  return [...grupos.values()]
+    .map(g => g.quantos === 1 ? g : {
+      ...g,
+      // Mais de um certame na mesma data e cidade: o link passa a ser a página
+      // da cidade, porque a ficha de um deles não responde pelos outros.
+      path: g.path.split('/').slice(0, 4).join('/'),
+      nota: g.tipo === 'inscricao'
+        ? `${g.quantos} certames encerram a inscrição`
+        : `${g.quantos} certames com prova neste dia`
+    })
+    .sort((a, b) => a.data.localeCompare(b.data) || b.quantos - a.quantos)
+    .slice(0, 4);
+})();
+
+const MESES_CURTOS = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+const diaMes = iso => ({ dia: iso.slice(8, 10), mes: MESES_CURTOS[Number(iso.slice(5, 7)) - 1] });
+
+/* As "últimas notícias" de um portal de concursos são os certames acompanhados
+   e as matérias publicadas — não manchetes escritas à mão. Cada cartão aponta
+   para uma página que existe, com um resumo que veio da própria ficha. */
+const cartoesNoticia = (() => {
+  const cartoes = [];
+
+  for (const a of articlesNewestFirst.slice(0, 2)) {
+    cartoes.push({
+      tag: 'MATÉRIAS', href: `/materias/${a.slug}`, imagem: 'portal-strip-edital-foto.webp',
+      titulo: a.title, texto: a.description || a.excerpt || '', data: a.published
+    });
+  }
+
+  const ordem = [...concursos].sort((a, b) => {
+    const peso = c => (c.status === 'inscricoes_abertas' ? 0 : c.dataProva && c.dataProva >= BUILD_DATE ? 1 : 2);
+    return peso(a) - peso(b) || String(b.capturedAt).localeCompare(String(a.capturedAt));
+  });
+  const fotos = ['portal-hero-concursos-foto.webp', 'portal-strip-alertas-foto.webp', 'portal-hero-prazos-foto.webp',
+    'portal-square-concursos-foto.webp', 'portal-hero-ferramentas-foto.webp', 'portal-strip-simulados-foto.webp'];
+  /* Uma cidade por cartão, em duas passadas. A base é feita de prefeituras que
+     publicam vários editais no mesmo dia: sem a trava, os seis cartões viram
+     seis vezes Guarulhos e o portal parece cobrir uma cidade só. A segunda
+     passada só entra se não houver cidades bastantes para encher a grade —
+     repetir cidade é ruim, deixar buraco é pior. */
+    const usadas = new Set();
+    const escolhidos = ordem.filter(c => !usadas.has(c.municipio) && usadas.add(c.municipio));
+    for (const c of ordem) { if (escolhidos.length >= 6 - cartoes.length) break; if (!escolhidos.includes(c)) escolhidos.push(c); }
+
+    escolhidos.slice(0, 6 - cartoes.length).forEach((c, i) => {
+      const tag = c.status === 'inscricoes_abertas' ? 'INSCRIÇÕES ABERTAS'
+        : c.dataProva && c.dataProva >= BUILD_DATE ? 'PROVA MARCADA' : 'CONCURSOS';
+      const detalhe = c.vagas ? `${c.vagas} ${c.vagas === 1 ? 'vaga' : 'vagas'}` : 'cadastro de reserva';
+      cartoes.push({
+        tag, href: c.path, imagem: fotos[i % fotos.length],
+        titulo: `${c.orgao} — ${c.edital}`,
+        texto: c.resumo || `${detalhe}, banca ${c.banca}. ${c.statusLabel}.`,
+        data: c.capturedAt || BUILD_DATE
+      });
+    });
+  return cartoes;
+})();
+
+const cartaoNoticia = n =>
+  `<article class="portal-news-card"><a class="portal-news-image" href="${esc(n.href)}" ` +
+  `style="background-image:url('${ASSET_PORTAL}${n.imagem}')"><span>${esc(n.tag)}</span></a>` +
+  `<a class="portal-news-copy" href="${esc(n.href)}"><h3>${esc(n.titulo)}</h3><p>${esc(n.texto)}</p>` +
+  `<small>${esc(cn.brDate(String(n.data).slice(0, 10)))}</small></a></article>`;
+
+const assuntoLink = (icone, rotulo, href) =>
+  `<a href="${esc(href)}"><span aria-hidden="true">${icone}</span><b>${esc(rotulo)}</b></a>`;
+
+/* A manchete.
+ *
+ * O banner de /assets/portal já é uma peça acabada: traz título, subtítulo,
+ * chips e botão desenhados dentro da imagem, do lado esquerdo, com a fotografia
+ * à direita. Escrever a manchete viva por cima dele resulta em dois títulos
+ * empilhados — foi exatamente o que aconteceu na primeira tentativa.
+ *
+ * Recortar a metade fotográfica também não resolve, porque a pessoa retratada
+ * fica justamente onde o degradê escuro precisa estar para o texto branco ser
+ * legível: ou o texto some, ou ela some.
+ *
+ * Então o banner entra inteiro, como foi desenhado, e a informação viva fica na
+ * faixa logo abaixo, onde ela tem contraste próprio e não disputa espaço com
+ * nada. O texto do banner é permanente ("encontre concursos abertos"), não uma
+ * data nem um número, então não envelhece. O que envelhece — vagas, certames,
+ * cidades, prazo — é justamente o que o build escreve. */
 const bannersHtml = '<!-- banners:start -->' +
-  '<section class="promo-band" aria-label="Por onde começar"><div class="shell">' +
-  '<p class="promo-purpose">A Trilha Aprova responde duas perguntas: <strong>qual concurso está aberto perto de você</strong> e <strong>o que estudar primeiro</strong>. O portal de concursos e as ferramentas são gratuitos; as apostilas são vendidas à parte.</p>' +
-  '<div class="promo-rail">' + promos.map((p, i) => promoSlide(i, ...p)).join('') + '</div>' +
-  '</div></section><!-- banners:end -->';
+  /* Manchete e radar. */
+  '<section class="portal-lead-layout portal-wide" aria-label="Destaques do portal">' +
+  `<a class="portal-lead" href="${esc(manchete.href)}" aria-label="${esc(manchete.titulo)}">` +
+  `<img class="portal-lead-arte" src="${ASSET_PORTAL}portal-hero-concursos.webp?v=${ASSET_VERSION}" ` +
+  `width="2172" height="724" alt="" fetchpriority="high" decoding="async">` +
+  `<div class="portal-lead-copy"><span class="portal-chip">${esc(manchete.chip)}</span>` +
+  `<strong class="portal-lead-titulo">${esc(manchete.titulo)}</strong><p>${esc(manchete.linha)}</p>` +
+  `<span class="portal-button">${esc(manchete.cta)} &nbsp;→</span></div>` +
+  `<div class="portal-lead-stats">${manchete.numeros.map(([n, r]) => `<span><b>${esc(n)}</b> ${esc(r)}</span>`).join('')}</div>` +
+  '</a>' +
+
+  '<aside class="portal-side-stack">' +
+  '<section class="portal-side-card"><header><h2>◆ &nbsp;RADAR DE INSCRIÇÕES</h2><a href="/concursos">Ver todas →</a></header>' +
+  radarCidades.map(c =>
+    `<a href="${esc(c.path)}"><span><b>${esc(c.municipio)}</b><small>` +
+    esc(c.abertos ? `${c.abertos} com inscrição aberta de ${c.total}` :
+      `${c.total} ${c.total === 1 ? 'certame acompanhado' : 'certames acompanhados'}`) +
+    `</small></span><em>${esc(c.prazo ? 'até ' + cn.brDate(c.prazo).slice(0, 5) : 'Ver ficha')}</em></a>`).join('') +
+  '</section>' +
+  (prazosProximos.length ?
+    '<section class="portal-side-card portal-deadlines"><header><h2>▣ &nbsp;PRÓXIMOS PRAZOS</h2><a href="/concursos">Ver calendário →</a></header>' +
+    prazosProximos.map(e => {
+      const { dia, mes } = diaMes(e.data);
+      return `<a href="${esc(e.path)}"><time datetime="${esc(e.data)}">${dia}<br><small>${mes}</small></time>` +
+        `<span><b>${esc(e.municipio)}</b><small>${esc(e.nota)}</small></span></a>`;
+    }).join('') + '</section>' : '') +
+  '</aside></section>' +
+
+  /* Grade de notícias + convite da newsletter. */
+  '<section class="portal-news-layout portal-wide">' +
+  '<div class="portal-news-main"><div class="portal-section-head"><h2>ÚLTIMAS NOTÍCIAS</h2>' +
+  '<a href="/concursos">Ver todos os certames →</a></div>' +
+  `<div class="portal-news-grid">${cartoesNoticia.map(cartaoNoticia).join('')}</div></div>` +
+  '<aside class="portal-news-aside"><section class="portal-newsletter-card"><span aria-hidden="true">✉</span>' +
+  '<h2>RECEBA ALERTAS DE CONCURSOS</h2>' +
+  '<p>Seja avisado sobre novas apostilas, conteúdos e atualizações do portal.</p>' +
+  '<button type="button" data-newsletter-open>Quero receber</button>' +
+  '<small>Sem spam. Cancele quando quiser.</small></section></aside></section>' +
+
+  /* Navegue por assuntos. */
+  '<section class="portal-topics portal-wide"><div class="portal-section-head"><h2>NAVEGUE POR ASSUNTOS</h2></div>' +
+  '<div class="portal-topic-grid">' +
+  assuntoLink('⌖', 'Concursos Abertos', '/concursos') +
+  assuntoLink('▤', 'Editais', '/materias/como-ler-um-edital-de-concurso-sem-perder-nada-importante') +
+  assuntoLink('◉', 'Salários', '/concursos') +
+  assuntoLink('▣', 'Provas', '/concursos') +
+  assuntoLink('▥', 'Matérias', '/materias') +
+  assuntoLink('⌘', 'Ferramentas', '/ferramentas') +
+  assuntoLink('▱', 'Apostilas', '/apostilas-para-concurso') +
+  assuntoLink('◇', 'Guias de Estudo', '/como-estudar-para-concurso-do-zero') +
+  '</div></section>' +
+  '<!-- banners:end -->';
 
 const atalhoCard = (href, icone, titulo, texto, cta) =>
   `<a class="atalho-card" href="${esc(href)}">` +
@@ -1883,13 +2201,24 @@ const SEM_CABECALHO = new Set([
 // link ou de cor chegar às páginas escritas à mão. Enquanto ele não estava
 // listado, mudar o cabeçalho resultava em duas barras empilhadas na mesma
 // página, porque a antiga sobrevivia e a nova entrava logo acima.
-const CABECALHOS_ANTIGOS = /<header[^>]*class="[^"]*(?:guide-header|ta-header|legal-header|site-header|store-header)[^"]*"[\s\S]*?<\/header>/g;
+const CABECALHOS_ANTIGOS = /<header[^>]*class="[^"]*(?:portal-site-header|guide-header|ta-header|legal-header|site-header|store-header)[^"]*"[\s\S]*?<\/header>/g;
 let headersSynced = 0;
 for (const file of fs.readdirSync('public')) {
   if (!file.endsWith('.html') || SEM_CABECALHO.has(file)) continue;
   const full = `public/${file}`;
   const html = fs.readFileSync(full, 'utf8');
   let novo = html.replace(CABECALHOS_ANTIGOS, '');
+
+  /* A folha do portal é escrita inteira sob body.portal-news-ui, de propósito:
+     é o que impede o visual do portal de vazar para o painel interno e para
+     qualquer página que ainda não tenha sido trazida para cá. As páginas
+     escritas à mão não passam por renderPage e por isso nasciam sem a classe —
+     recebiam o cabeçalho do portal e o mostravam sem forma nenhuma. */
+  novo = novo.replace(/<body([^>]*)>/, (inteiro, attrs) => {
+    if (/\bportal-news-ui\b/.test(attrs)) return inteiro;
+    if (/\bclass\s*=\s*"/.test(attrs)) return `<body${attrs.replace(/\bclass\s*=\s*"/, 'class="portal-news-ui ')}>`;
+    return `<body class="portal-news-ui"${attrs}>`;
+  });
 
   if (!novo.includes(siteHeader)) {
     novo = novo.replace(/<body([^>]*)>/, (_, attrs) => `<body${attrs}>${siteHeader}`);

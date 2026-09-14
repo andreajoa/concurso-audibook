@@ -179,19 +179,23 @@ test('nenhum certame publicado aponta para apostila inexistente', () => {
   }
 });
 
-// A faixa da home promete três destinos. Um banner que leva a 404 é pior que
-// banner nenhum, então cada href é conferido contra o arquivo em disco.
+// O topo da home é um portal de notícias montado pelo build a partir da base de
+// certames: manchete, radar de cidades, prazos e cartões. Tudo ali é link, e um
+// link para 404 é pior do que link nenhum — então cada destino é conferido
+// contra o arquivo em disco. O teste não mede quantos quadros existem, porque
+// isso acompanha o tamanho da base; mede que nenhum leva a lugar nenhum.
 test('cada quadro da faixa da home aponta para uma página que existe', () => {
   const fs = require('node:fs');
   const home = fs.readFileSync('public/index.html', 'utf8');
   const banda = /<!-- banners:start -->([\s\S]*?)<!-- banners:end -->/.exec(home);
   assert.ok(banda, 'a faixa de destaques sumiu da home');
 
-  const hrefs = [...banda[1].matchAll(/class="promo-slide" href="([^"]+)"/g)].map(m => m[1]);
-  assert.equal(hrefs.length, 3, 'a faixa deve ter três quadros');
+  const hrefs = [...new Set([...banda[1].matchAll(/href="([^"]+)"/g)].map(m => m[1]))];
+  assert.ok(hrefs.length >= 5, 'a faixa do portal ficou sem destinos');
   for (const href of hrefs) {
     assert.ok(href.startsWith('/'), `destino externo na faixa: ${href}`);
-    assert.ok(fs.existsSync('public' + href + '.html'), `quadro aponta para página inexistente: ${href}`);
+    const alvo = href === '/' ? 'public/index.html' : 'public' + href + '.html';
+    assert.ok(fs.existsSync(alvo), `quadro aponta para página inexistente: ${href}`);
   }
 });
 
@@ -241,7 +245,7 @@ test('a origem que o botão envia é a que o servidor aceita', () => {
 test('o total de vagas da home é a soma da base, não um número redondo', () => {
   const fs = require('node:fs');
   const home = fs.readFileSync('public/index.html', 'utf8');
-  const anunciado = /<strong>([\d.]+) vagas com inscrição aberta agora\.<\/strong>/.exec(home);
+  const anunciado = /([\d.]+) vagas com inscrição aberta agora/.exec(home);
   assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
 
   const abertos = dataset.map(c => cn.normalize(c, '2026-09-14')).filter(c => c.status === 'inscricoes_abertas');
