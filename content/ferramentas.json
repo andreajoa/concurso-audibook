@@ -76,6 +76,86 @@
     ]
   },
   {
+    "slug": "caderno-de-erros",
+    "tool": "caderno",
+    "title": "Caderno de erros: o que você errou volta antes de você esquecer",
+    "metaTitle": "Caderno de erros para concurso, grátis",
+    "description": "Registre a questão errada e o motivo do erro. A ferramenta agenda a revisão e mostra se o seu problema é conteúdo ou leitura de enunciado.",
+    "keyword": "caderno de erros concurso",
+    "lead": "Errar em treino não custa nada — desde que o erro volte. O que acontece na prática é o contrário: a pessoa confere o gabarito, entende o erro, sente que aprendeu e nunca mais vê aquela questão. Três semanas depois erra igual. Este caderno existe para fechar esse buraco: ele guarda o que você errou, traz de volta antes de você esquecer e, depois de alguns registros, responde uma pergunta que nenhuma apostila responde — por que você erra. Roda inteiro no seu navegador, sem cadastro.",
+    "keyFacts": [
+      [
+        "O que ela responde",
+        "O que revisar hoje e por que você erra"
+      ],
+      [
+        "Como decide a data da revisão",
+        "Escada de 1, 3, 7, 16, 35 e 75 dias, que avança a cada acerto"
+      ],
+      [
+        "O que acontece se você errar de novo",
+        "A questão desce dois degraus e volta logo — mas o progresso anterior não é apagado"
+      ],
+      [
+        "Onde os dados ficam",
+        "No seu navegador. Não sobem para lugar nenhum e não pedem e-mail"
+      ],
+      [
+        "O que ela não faz",
+        "Não tem banco de questões, não corrige prova e não promete aprovação"
+      ]
+    ],
+    "appHtml": "<div class=\"tool\" data-tool=\"caderno\"><div class=\"tool-step tool-grid\"><label for=\"caderno-materia\"><strong>1. Matéria</strong><input id=\"caderno-materia\" type=\"text\" maxlength=\"60\" autocomplete=\"off\" placeholder=\"Português\"><span class=\"tool-hint\">Como está escrita no quadro do edital.</span></label><label for=\"caderno-topico\"><strong>2. Tópico</strong><input id=\"caderno-topico\" type=\"text\" maxlength=\"80\" autocomplete=\"off\" placeholder=\"Crase\"><span class=\"tool-hint\">Opcional — mas é o tópico que mostra onde dói, não a matéria.</span></label></div><div class=\"tool-step\"><strong>3. Por que você errou</strong><span class=\"tool-hint\">Esta é a pergunta que muda a sua rotina. Responda o que aconteceu de verdade, não o que soa melhor.</span><div class=\"caderno-motivos\" data-motivos></div></div><div class=\"tool-step\"><label for=\"caderno-anotacao\"><strong>4. O que você não quer esquecer</strong><input id=\"caderno-anotacao\" type=\"text\" maxlength=\"140\" autocomplete=\"off\" placeholder=\"Crase não vai antes de palavra masculina\"><span class=\"tool-hint\">Uma frase, opcional. Ela reaparece no dia da revisão.</span></label></div><p class=\"tool-note\" data-aviso hidden role=\"status\"></p><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button\" data-action=\"registrar\">Registrar este erro</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"exemplo\">Ver com um exemplo</button></div><div class=\"tool-output\" data-output hidden><div data-resultado></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"imprimir\">Imprimir ou salvar em PDF</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"limpar\">Apagar o caderno</button></div></div><p class=\"tool-saved\" data-saved hidden>Seu caderno fica salvo neste navegador.</p></div>",
+    "sections": [
+      {
+        "h2": "Por que conferir o gabarito não é revisar",
+        "html": "<p>Quando você confere o gabarito e lê a explicação, acontece uma coisa muito específica: o conteúdo fica disponível na memória de curto prazo e tudo parece óbvio. É uma sensação honesta e é uma sensação enganosa. Ela mede o quanto a informação está fresca, não o quanto ela ficou.</p><p>O teste de verdade é conseguir responder de novo dias depois, sem a explicação por perto. É por isso que este caderno não guarda o erro para você reler: ele guarda para devolver a questão quando ela já estiver quase saindo da sua cabeça. Revisar cedo demais é fácil e não ensina; revisar tarde demais é recomeçar do zero.</p><p>Se você ainda não tem a lista do que precisa estudar, comece pelo <a href=\"/ferramentas/edital-verticalizado\">checklist do edital</a>. Ele responde o que existe pela frente; este caderno responde o que já falhou.</p>"
+      },
+      {
+        "h2": "Como a data da próxima revisão é calculada",
+        "html": "<p>Cada questão registrada anda por uma escada de intervalos: 1, 3, 7, 16, 35 e 75 dias. Acertou na revisão, sobe um degrau e o próximo reencontro fica mais longe. Passou do último degrau, sai da fila — continuar revisando o que você já domina rouba o tempo do que ainda machuca.</p><p><strong>Errar de novo derruba dois degraus, e não zera.</strong> Essa escolha é deliberada. Zerar é o comportamento mais comum nesse tipo de ferramenta e é o que faz as pessoas abandonarem: quem já acertou três vezes e escorregou na quarta não voltou ao dia zero, e tratar assim enche a fila de revisões desnecessárias até a rotina virar um castigo. Dois degraus devolvem a questão para um intervalo curto sem apagar o que foi construído.</p><p>A fila também não perdoa ausência no sentido errado: o que venceu enquanto você estava fora continua esperando e aparece com o atraso declarado. Dois dias sem abrir o caderno não fazem a questão sumir.</p>"
+      },
+      {
+        "h2": "O motivo do erro importa mais que a matéria",
+        "html": "<p>Quase todo mundo anota <em>o que</em> errou. Quase ninguém anota <em>por que</em>. E é o porquê que decide o que fazer amanhã, porque motivos diferentes pedem remédios opostos:</p><ul><li><strong>Não sabia o conteúdo.</strong> Aqui estudar mais resolve — é o único caso em que resolve.</li><li><strong>Confundi com um conceito parecido.</strong> Reler não separa o que já está embaralhado; escrever a diferença entre os dois em uma frase, sim.</li><li><strong>Li o enunciado errado.</strong> Nenhum capítulo de apostila corrige isso. Corrige treino de leitura: sublinhar o que se pede antes de olhar as alternativas e marcar as palavras que invertem o sentido.</li><li><strong>Chutei.</strong> Chute não deixa rastro e por isso não ensina.</li><li><strong>Sabia, mas marquei errado.</strong> É ritmo, não conteúdo — e é a perda mais barata de recuperar.</li></ul><p>Depois de oito registros, a ferramenta diz qual motivo domina os seus erros. Antes disso ela se cala de propósito: quatro questões não mostram tendência nenhuma, e um diagnóstico inventado mandaria você estudar a coisa errada por semanas.</p>"
+      },
+      {
+        "h2": "As questões que voltam a ser erradas",
+        "html": "<p>Existe uma lista dentro do caderno que vale mais que todas as outras: a das questões que você errou, revisou, achou que tinha resolvido e errou de novo. Elas aparecem separadas na tela.</p><p>São elas que derrubam prova, porque ocupam o lugar mais perigoso da preparação — o de conteúdo que você acredita que sabe. Você não vai revisá-las por conta própria, justamente porque não desconfia delas. O caderno desconfia por você.</p><p>Quando uma matéria concentra reincidências, o problema raramente é a matéria inteira: é um tópico. Por isso o resumo mostra, para cada matéria, o tópico que mais aparece nos seus erros.</p>"
+      },
+      {
+        "h2": "Como o caderno se encaixa no resto do estudo",
+        "html": "<p>As ferramentas gratuitas respondem perguntas diferentes e funcionam em sequência:</p><ol><li><a href=\"/ferramentas/edital-verticalizado\">Checklist do edital</a> — o que existe para estudar.</li><li><a href=\"/ferramentas/cronograma-de-estudos\">Cronograma por peso</a> — quanto tempo cada matéria recebe na semana.</li><li><a href=\"/ferramentas/trilha-do-dia\">Trilha do dia</a> — o que fazer com o tempo de hoje.</li><li>Caderno de erros — o que precisa voltar, e por quê.</li><li><a href=\"/ferramentas/calculadora-de-acertos\">Calculadora de acertos</a> — quanto falta para a sua meta.</li></ol><p>Na prática, a ordem do dia é esta: abra o caderno primeiro e limpe a fila de revisões, porque é o material que já provou ser difícil para você. Só depois siga para o conteúdo novo do plano do dia. Para escolher com que material estudar cada tópico, o guia de <a href=\"/apostila-para-concurso-como-escolher\">como escolher uma apostila</a> ajuda a não comprar por capa.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Meus erros são enviados para algum servidor?",
+        "a": "Não. Tudo acontece no seu navegador e o caderno fica no armazenamento local do aparelho. Se você limpar os dados do navegador ou abrir em outro aparelho, o histórico não aparece lá. O botão de imprimir permite salvar uma cópia em PDF."
+      },
+      {
+        "q": "Preciso digitar a questão inteira?",
+        "a": "Não, e é melhor não digitar. O caderno guarda matéria, tópico, o motivo do erro e uma frase opcional do que você não quer esquecer. O objetivo não é montar um banco de questões: é registrar o que falhou de um jeito rápido o bastante para você continuar fazendo depois da décima questão."
+      },
+      {
+        "q": "Por que a revisão usa 1, 3, 7, 16, 35 e 75 dias?",
+        "a": "Porque o intervalo precisa crescer. O que você acabou de errar tem de voltar quase imediatamente, e o que você já acertou quatro vezes pode esperar meses sem se perder. Intervalos fixos desperdiçam revisão no que já está firme e chegam tarde no que está frágil."
+      },
+      {
+        "q": "Errei de novo uma questão que já tinha acertado três vezes. Perdi todo o progresso?",
+        "a": "Não. A questão desce dois degraus e volta para um intervalo curto, mas o histórico continua. Zerar seria mais simples de programar e pior de usar: encheria a sua fila de revisões que você não precisava fazer, e é assim que se abandona um caderno de erros."
+      },
+      {
+        "q": "Por que o diagnóstico só aparece depois de alguns registros?",
+        "a": "Porque antes disso ele seria chute com aparência de dado. Numa amostra de quatro questões, dois erros de leitura viram \"metade dos seus erros é de leitura\" — uma frase que não descreve nada além do acaso. A ferramenta espera oito registros e exige que um mesmo motivo concentre pelo menos um terço deles antes de dizer qualquer coisa."
+      },
+      {
+        "q": "A ferramenta é gratuita mesmo?",
+        "a": "Sim, e sem cadastro. Ela roda inteira no seu navegador, então não existe custo de servidor para cobrir nem motivo para pedir seu e-mail em troca."
+      }
+    ]
+  },
+  {
     "slug": "edital-verticalizado",
     "tool": "edital",
     "title": "Edital verticalizado: transforme o conteúdo programático em checklist",

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Trilha Aprova">
+  <!-- Marca reduzida ao mínimo que ainda se lê a 16px: a trilha subindo e o
+       ponto de chegada. Letras não sobrevivem nesse tamanho. -->
+  <rect width="64" height="64" rx="14" fill="#08284f"/>
+  <path d="M13 47 L27 33 L36 42 L52 22" fill="none" stroke="#b99754" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="52" cy="22" r="6" fill="#fffdf9"/>
+</svg>

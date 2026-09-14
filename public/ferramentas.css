@@ -66,5 +66,36 @@
 .trilha-micro{margin:20px 0 0;padding:16px 18px;border-radius:12px;background:#eef7f1;border:1px solid #d3e7db}
 .trilha-micro strong{display:block;font:600 14px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#2f7d52;margin-bottom:6px}
 .trilha-micro p{margin:0;font-size:16px;line-height:1.6;color:#1d4733}
-@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table input[type=number]{max-width:70px}.tool-verdict{font-size:16px}}
+/* Caderno de erros. Três blocos com pesos diferentes de propósito: a fila do
+   dia é para agir, o diagnóstico é para entender e a tabela por matéria é
+   para conferir. */
+.caderno-motivos{display:grid;gap:8px;margin-top:10px}
+.caderno-motivo{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1px solid #e1e7ee;border-radius:10px;background:#fff;cursor:pointer;font-size:16px;line-height:1.5;color:#15304e}
+.caderno-motivo:hover{border-color:#b99754;background:#fffdf7}
+.caderno-motivo input{margin-top:4px;accent-color:#85662c}
+.caderno-motivo:focus-within{outline:3px solid #b99754;outline-offset:2px}
+.caderno-placar{margin:0 0 18px;font:400 20px/1.4 Georgia,serif;color:#08284f}
+.caderno-bloco{margin:0 0 22px;padding:18px 20px;border:1px solid #e1e7ee;border-radius:14px;background:#fff}
+.caderno-bloco h3{margin:0 0 6px;font:400 24px/1.25 Georgia,serif;color:#08284f}
+.caderno-explica{margin:6px 0 0;font-size:15px;line-height:1.6;color:#5b6e82}
+.caderno-fila{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:12px}
+.caderno-card{border:1px solid #e1e7ee;border-left:4px solid #b99754;border-radius:12px;padding:14px 16px;background:#fffdf7}
+.caderno-card-topo{display:block;font:600 17px system-ui,-apple-system,sans-serif;color:#08284f}
+.caderno-atraso{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#fbe9e7;color:#9c3b2c;font:600 12px system-ui,sans-serif;vertical-align:middle}
+.caderno-hoje{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#eef7f1;color:#2f7d52;font:600 12px system-ui,sans-serif;vertical-align:middle}
+.caderno-card-nota{margin:8px 0 0;font-size:16px;line-height:1.55;color:#15304e}
+.caderno-card-motivo{margin:4px 0 0;font-size:14px;color:#5b6e82}
+.caderno-card-motivo b{color:#9c3b2c}
+.caderno-card-acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.caderno-veredito{margin:8px 0 0;font:400 21px/1.4 Georgia,serif;color:#08284f}
+.caderno-receita{margin:8px 0 0;font-size:16px;line-height:1.65;color:#2c4763}
+.caderno-barras{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.caderno-barras li{display:grid;grid-template-columns:minmax(120px,1fr) minmax(90px,2fr) auto;align-items:center;gap:12px}
+.caderno-barra-rotulo{font-size:14px;color:#15304e}
+.caderno-barra{display:block;height:9px;border-radius:999px;background:#eef1f5;overflow:hidden}
+.caderno-barra i{display:block;height:100%;border-radius:999px;background:#b99754}
+.caderno-barra-valor{font:600 13px system-ui,sans-serif;color:#5b6e82;white-space:nowrap}
+.caderno-teimosos{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#fbe9e7;border:1px solid #f0cec7;font-size:15px;line-height:1.6;color:#7d2f22}
+.caderno-teimosos strong{color:#9c3b2c}
+@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table input[type=number]{max-width:70px}.tool-verdict{font-size:16px}.caderno-barras li{grid-template-columns:1fr;gap:4px}.caderno-card-acoes .tool-button{flex:1 1 auto}}
 @media print{.guide-header,.site-footer,.tool-actions,.tool-step,.tool-remove,.newsletter-invite{display:none!important}.tool{border:0;padding:0}.tool-output{border-top:0}}

@@ -478,3 +478,32 @@ test('somaDias atravessa mês e ano bissexto sem escorregar', () => {
   assert.equal(somaDias('2028-02-28', 1), '2028-02-29');
   assert.equal(somaDias('2026-12-31', 1), '2027-01-01');
 });
+
+/* O motor acima é conferido sem navegador. O risco que sobra é outro: a tela
+   procurar um campo que o HTML não tem. Um seletor renomeado num lado e não
+   no outro quebra a ferramenta em silêncio — ela carrega e não faz nada. */
+test('a tela do caderno tem todos os campos que o código procura', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const raiz = path.join(__dirname, '..');
+  const ferramenta = JSON.parse(fs.readFileSync(path.join(raiz, 'content/ferramentas.json'), 'utf8'))
+    .find((t) => t.slug === 'caderno-de-erros');
+
+  assert.ok(ferramenta, 'o caderno de erros precisa existir em content/ferramentas.json');
+  assert.equal(ferramenta.tool, 'caderno');
+
+  const html = ferramenta.appHtml;
+  for (const seletor of [
+    'data-tool="caderno"', 'data-output', 'data-resultado', 'data-motivos', 'data-aviso',
+    'data-saved', 'id="caderno-materia"', 'id="caderno-topico"', 'id="caderno-anotacao"',
+    'data-action="registrar"', 'data-action="exemplo"', 'data-action="imprimir"', 'data-action="limpar"'
+  ]) {
+    assert.ok(html.includes(seletor), `a tela do caderno precisa de ${seletor}`);
+  }
+
+  // A ferramenta não pode pedir cadastro nem mandar nada para servidor: é a
+  // promessa impressa em toda a seção de ferramentas gratuitas.
+  const js = fs.readFileSync(path.join(raiz, 'public/ferramentas.js'), 'utf8');
+  assert.ok(!/fetch\(|XMLHttpRequest|navigator\.sendBeacon/.test(js),
+    'as ferramentas não podem enviar nada para a rede');
+});

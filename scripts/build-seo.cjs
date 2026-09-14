@@ -231,6 +231,14 @@ const siteHeader = '<header class="guide-header">' +
    aparece, mas como uma pilha de links sem forma. */
 const HEADER_CSS_TAG = '<link rel="stylesheet" href="/site-header.css">';
 
+/* Sem um ícone declarado o navegador procura /favicon.ico sozinho, não acha, e a
+   aba fica com a folha em branco — o mesmo desenho que o Chrome dá para uma
+   página que ninguém cuida. Num site que cobra pelo material isso custa
+   confiança. O SVG serve qualquer tamanho e dispensa a coleção de PNGs. */
+const FAVICON_TAGS =
+  '<link rel="icon" href="/favicon.svg" type="image/svg+xml">' +
+  '<link rel="apple-touch-icon" href="/favicon.svg">';
+
 const productLinks = products
   .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
   .join('');
@@ -285,6 +293,7 @@ function seoBlock({ path, title, description, image, nodes }) {
     '<meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">' +
     `<link rel="preconnect" href="${CDN}" crossorigin>` +
     `<link rel="dns-prefetch" href="${CDN}">` +
+    FAVICON_TAGS +
     '<link rel="manifest" href="/site.webmanifest">' +
     '<link rel="alternate" type="application/rss+xml" title="Trilha Aprova — guias de estudo" href="/feed.xml">' +
     `<script type="application/ld+json">${json({ '@context': 'https://schema.org', '@graph': [...BASE_NODES, ...nodes] })}</script>` +
@@ -795,7 +804,7 @@ renderPage({
   path: '/ferramentas',
   title: 'Ferramentas gratuitas para quem estuda para concurso',
   metaTitle: 'Ferramentas gratuitas para concurso público',
-  description: 'Trilha do dia, checklist do edital, cronograma por peso e calculadora de acertos. Funcionam no navegador, sem cadastro e sem enviar seus dados.',
+  description: 'Trilha do dia, caderno de erros, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador, sem cadastro.',
   kicker: 'GRATUITO',
   lead: 'Quem estuda para concurso raramente sofre por falta de material: sofre por não saber o que abrir hoje. Estas ferramentas respondem as perguntas práticas da rotina — o que estudar agora, o que o edital cobra, quanto tempo dar para cada matéria e quantas questões faltam para a sua meta. Funcionam inteiras dentro do navegador: não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho.',
   keyFacts: [
@@ -819,6 +828,7 @@ renderPage({
     '<ol><li><strong>Comece pelo <a href="/ferramentas/edital-verticalizado">checklist do edital</a>.</strong> Ele transforma o conteúdo programático em lista marcável e responde o que estudar.</li>' +
     '<li><strong>Depois use o <a href="/ferramentas/cronograma-de-estudos">cronograma</a>.</strong> Ele distribui suas horas na proporção de questões e peso, e responde quanto tempo dar para cada matéria.</li>' +
     '<li><strong>No dia a dia, abra a <a href="/ferramentas/trilha-do-dia">trilha do dia</a>.</strong> Ela pega o tempo que você tem hoje e devolve blocos com hora marcada, começando pela matéria que mais pesa e que você menos domina.</li>' +
+    '<li><strong>Depois de resolver questões, registre o que errou no <a href="/ferramentas/caderno-de-erros">caderno de erros</a>.</strong> Ele devolve a questão antes de você esquecer e, com alguns registros, mostra se o seu problema é conteúdo ou leitura de enunciado.</li>' +
     '<li><strong>Antes da prova, a <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>.</strong> Ela mostra quantas questões faltam para a sua meta e onde cada acerto rende mais pontos.</li></ol>' +
     '<p>Os resultados ficam salvos no mesmo navegador, então dá para voltar amanhã e continuar de onde parou.</p>' +
     '<h2>O que nós não calculamos</h2>' +
@@ -1416,8 +1426,8 @@ const atalhosHtml = '<!-- atalhos:start -->' +
   '<div class="atalho-grid">' +
   atalhoCard('/concursos', 'mapa', 'Concursos por cidade',
     `${concursos.length} certames com banca, prazo e data de prova, cada um com o link da página oficial do órgão.`, 'Abrir o portal') +
-  atalhoCard('/ferramentas', 'lista', `${tools.length === 4 ? 'Quatro' : tools.length} ferramentas de estudo`,
-    'Trilha do dia, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
+  atalhoCard('/ferramentas', 'lista', `${tools.length === 5 ? 'Cinco' : tools.length} ferramentas de estudo`,
+    'Trilha do dia, caderno de erros, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
   atalhoCard('/materias', 'livro', 'Matérias sobre método',
     'Como ler um edital, como revisar e como manter a rotina de quem estuda trabalhando.', 'Ler as matérias') +
   atalhoCard('/como-estudar-com-apostila-e-audiobook', 'fone', 'Estudar ouvindo',
@@ -1676,7 +1686,11 @@ fs.writeFileSync('public/site.webmanifest', JSON.stringify({
   lang: 'pt-BR',
   background_color: '#ffffff',
   theme_color: '#08284f',
-  icons: [{ src: '/assets/trilha-aprova-logo.webp', sizes: '180x84', type: 'image/webp', purpose: 'any' }]
+  icons: [
+    // O SVG cobre qualquer tamanho que o sistema pedir ao instalar o atalho.
+    { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+    { src: '/assets/trilha-aprova-logo.webp', sizes: '180x84', type: 'image/webp', purpose: 'any' }
+  ]
 }, null, 2) + '\n');
 
 /* ------------------------------------------------------------------ *
@@ -1689,7 +1703,7 @@ fs.writeFileSync('public/404.html',
   '<title>Página não encontrada | Trilha Aprova</title>' +
   '<meta name="robots" content="noindex,follow">' +
   '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css"><link rel="stylesheet" href="/seo.css">' +
-  HEADER_CSS_TAG +
+  HEADER_CSS_TAG + FAVICON_TAGS +
   '</head><body>' + siteHeader +
   '<main class="guide"><h1>Esta página não existe</h1>' +
   '<p class="answer">O endereço que você abriu não corresponde a nenhuma página da Trilha Aprova. Ele pode ter sido digitado incorretamente ou o conteúdo pode ter mudado de lugar.</p>' +
@@ -1742,6 +1756,8 @@ for (const file of fs.readdirSync('public')) {
   }
   // Sem a folha de estilo o menu existe mas não tem forma, então ela entra junto.
   if (!novo.includes(HEADER_CSS_TAG)) novo = novo.replace('</head>', HEADER_CSS_TAG + '</head>');
+  // O ícone da aba também: as páginas à mão não passam por renderPage.
+  if (!novo.includes('/favicon.svg')) novo = novo.replace('</head>', FAVICON_TAGS + '</head>');
   if (novo === html) continue;
 
   fs.writeFileSync(full, novo);

@@ -905,16 +905,16 @@
   var QUEDA_POR_ERRO = 2;
 
   var MOTIVOS = [
-    { id: 'nao-sabia', rotulo: 'Não sabia o conteúdo', curto: 'não sabia',
+    { id: 'nao-sabia', rotulo: 'Não sabia o conteúdo', curto: 'falta de conteúdo',
       veredito: 'A maior parte dos seus erros é falta de conteúdo mesmo.',
       receita: 'Aqui estudar mais resolve. Volte à teoria desses tópicos antes de gastar mais questões: resolver sem base vira chute com aparência de treino.' },
-    { id: 'confundi', rotulo: 'Confundi com um conceito parecido', curto: 'confundi',
+    { id: 'confundi', rotulo: 'Confundi com um conceito parecido', curto: 'confusão entre conceitos',
       veredito: 'Seus erros são de fronteira: você sabe os dois conceitos, mas troca um pelo outro.',
       receita: 'Ler de novo não separa o que já está embaralhado. Escreva lado a lado o par que você confunde e a diferença entre eles em uma frase — é a comparação que desfaz o nó, não a releitura.' },
-    { id: 'li-errado', rotulo: 'Li o enunciado errado', curto: 'li errado',
+    { id: 'li-errado', rotulo: 'Li o enunciado errado', curto: 'leitura de enunciado',
       veredito: 'Seu problema não é conteúdo: é leitura de enunciado.',
       receita: 'Estudar mais matéria não muda esse número. Nas próximas questões, sublinhe o que está sendo pedido antes de olhar as alternativas, e marque as palavras que invertem o sentido: exceto, incorreta, não. É treino de leitura, e rende mais rápido que qualquer capítulo.' },
-    { id: 'chutei', rotulo: 'Chutei', curto: 'chutei',
+    { id: 'chutei', rotulo: 'Chutei', curto: 'chute',
       veredito: 'Boa parte do que você registra como erro foi chute.',
       receita: 'Chute não ensina nada porque não deixa rastro. Nas próximas, antes de marcar, anote em uma palavra por que escolheu aquela alternativa — mesmo errando, você passa a ter o que corrigir.' },
     { id: 'desatencao', rotulo: 'Sabia, mas marquei a alternativa errada', curto: 'desatenção',
@@ -1096,9 +1096,201 @@
     });
   }
 
+  var CADERNO_EXEMPLO = [
+    { materia: 'Português', topico: 'Crase', motivo: 'li-errado', anotacao: 'O enunciado pedia a alternativa INCORRETA' },
+    { materia: 'Português', topico: 'Crase', motivo: 'confundi', anotacao: 'Crase antes de palavra masculina' },
+    { materia: 'Português', topico: 'Concordância verbal', motivo: 'li-errado', anotacao: '' },
+    { materia: 'Direito Administrativo', topico: 'Licitação', motivo: 'li-errado', anotacao: 'Marquei sem ler "salvo"' },
+    { materia: 'Direito Administrativo', topico: 'Atos administrativos', motivo: 'nao-sabia', anotacao: '' },
+    { materia: 'Direito Administrativo', topico: 'Licitação', motivo: 'li-errado', anotacao: '' },
+    { materia: 'Informática', topico: 'Excel', motivo: 'nao-sabia', anotacao: '' },
+    { materia: 'Raciocínio Lógico', topico: 'Proposições', motivo: 'chutei', anotacao: '' },
+    { materia: 'Português', topico: 'Crase', motivo: 'li-errado', anotacao: '' }
+  ];
+
+  function initCaderno(root) {
+    var output = root.querySelector('[data-output]');
+    var target = root.querySelector('[data-resultado]');
+    var motivosEl = root.querySelector('[data-motivos]');
+    var materiaEl = root.querySelector('#caderno-materia');
+    var topicoEl = root.querySelector('#caderno-topico');
+    var anotacaoEl = root.querySelector('#caderno-anotacao');
+    var avisoEl = root.querySelector('[data-aviso]');
+
+    // Os motivos são desenhados a partir da mesma lista que o diagnóstico usa:
+    // um motivo novo aparece na tela e na conta sem precisar editar os dois.
+    motivosEl.innerHTML = MOTIVOS.map(function (m, k) {
+      return '<label class="caderno-motivo"><input type="radio" name="caderno-motivo" value="' + m.id + '"' +
+        (k === 0 ? ' checked' : '') + '><span>' + esc(m.rotulo) + '</span></label>';
+    }).join('');
+
+    var estado = load('caderno', null);
+
+    function aviso(texto) {
+      if (!avisoEl) return;
+      avisoEl.textContent = texto || '';
+      avisoEl.hidden = !texto;
+    }
+
+    function motivoEscolhido() {
+      var marcado = motivosEl.querySelector('input:checked');
+      return marcado ? marcado.value : null;
+    }
+
+    function plural(n, um, muitos) { return n + ' ' + (n === 1 ? um : muitos); }
+
+    function rotuloMotivo(id) {
+      var m = motivoPorId(id);
+      return m ? m.curto : id;
+    }
+
+    function filaHtml(fila) {
+      if (!fila.length) {
+        return '<div class="caderno-bloco"><h3>Nada para revisar hoje</h3>' +
+          '<p>A fila está em dia. Quando uma questão registrada vencer o prazo, ela aparece aqui — e é por ela que o estudo de amanhã começa.</p></div>';
+      }
+      var cartoes = fila.map(function (i) {
+        var espera = i.atraso > 0
+          ? '<span class="caderno-atraso">esperando há ' + esc(plural(i.atraso, 'dia', 'dias')) + '</span>'
+          : '<span class="caderno-hoje">vence hoje</span>';
+        return '<li class="caderno-card">' +
+          '<span class="caderno-card-topo">' + esc(i.materia) + (i.topico ? ' · ' + esc(i.topico) : '') + ' ' + espera + '</span>' +
+          (i.anotacao ? '<p class="caderno-card-nota">' + esc(i.anotacao) + '</p>' : '') +
+          '<p class="caderno-card-motivo">Na época o erro foi por ' + esc(rotuloMotivo(i.motivo)) + '.' +
+          (i.erros > 1 ? ' <b>Já errou ' + i.erros + ' vezes.</b>' : '') + '</p>' +
+          '<span class="caderno-card-acoes">' +
+          '<button type="button" class="tool-button" data-action="revisar" data-id="' + i.id + '" data-ok="1">Acertei agora</button>' +
+          '<button type="button" class="tool-button tool-button-ghost" data-action="revisar" data-id="' + i.id + '" data-ok="0">Errei de novo</button>' +
+          '</span></li>';
+      }).join('');
+
+      return '<div class="caderno-bloco"><h3>Para revisar hoje: ' + esc(plural(fila.length, 'questão', 'questões')) + '</h3>' +
+        '<p class="caderno-explica">Resolva de novo a questão antes de responder. Acertou, ela volta mais longe; errou, volta logo.</p>' +
+        '<ol class="caderno-fila">' + cartoes + '</ol></div>';
+    }
+
+    function diagnosticoHtml(d) {
+      var barras = d.contagem.filter(function (m) { return m.quantidade > 0; }).map(function (m) {
+        return '<li><span class="caderno-barra-rotulo">' + esc(m.rotulo) + '</span>' +
+          '<span class="caderno-barra"><i style="width:' + m.percentual + '%"></i></span>' +
+          '<span class="caderno-barra-valor">' + m.percentual + '% · ' + esc(plural(m.quantidade, 'erro', 'erros')) + '</span></li>';
+      }).join('');
+
+      var veredito = d.veredito
+        ? '<p class="caderno-veredito">' + esc(d.veredito) + '</p><p class="caderno-receita">' + esc(d.receita) + '</p>'
+        : '<p class="caderno-explica">Com ' + esc(plural(d.faltam, 'erro', 'erros')) + ' a mais registrados, esta página diz por que você erra. ' +
+          'Antes disso seria chute com cara de dado: quatro questões não mostram tendência nenhuma.</p>';
+
+      var teimosos = d.teimosos.length
+        ? '<p class="caderno-teimosos"><strong>' + esc(plural(d.teimosos.length, 'questão voltou', 'questões voltaram')) +
+          ' a ser errada depois de revisada:</strong> ' +
+          esc(d.teimosos.slice(0, 5).map(function (t) { return t.materia + (t.topico ? ' (' + t.topico + ')' : ''); }).join(', ')) +
+          '. É aqui que mora a diferença entre achar que sabe e saber.</p>'
+        : '';
+
+      return '<div class="caderno-bloco"><h3>Por que você erra</h3>' +
+        veredito +
+        (barras ? '<ul class="caderno-barras">' + barras + '</ul>' : '') +
+        teimosos + '</div>';
+    }
+
+    function materiasHtml(lista) {
+      if (!lista.length) return '';
+      var linhas = lista.map(function (m) {
+        return '<tr><td>' + esc(m.materia) + '</td>' +
+          '<td>' + m.abertos + '</td>' +
+          '<td>' + m.dominados + '</td>' +
+          '<td>' + (m.pior ? esc(m.pior) : '—') + '</td></tr>';
+      }).join('');
+      return '<div class="caderno-bloco"><h3>Onde estão os seus erros</h3>' +
+        '<table class="tool-table"><thead><tr><th scope="col">Matéria</th>' +
+        '<th scope="col">Em aberto</th><th scope="col">Dominados</th>' +
+        '<th scope="col">Tópico que mais dói</th></tr></thead><tbody>' + linhas + '</tbody></table>' +
+        '<p class="caderno-explica">Em aberto é o que ainda volta para revisão. Dominado é o que você acertou nas seis revisões e saiu da fila.</p></div>';
+    }
+
+    function render() {
+      var hoje = hojeLocalIso();
+      var d = diagnosticoErros(estado);
+      if (!d.total) {
+        output.hidden = true;
+        return;
+      }
+      target.innerHTML =
+        '<p class="caderno-placar"><strong>' + esc(plural(d.total, 'erro registrado', 'erros registrados')) + '</strong>' +
+        (d.dominados ? ' · ' + d.dominados + ' já dominado' + (d.dominados === 1 ? '' : 's') : '') + '</p>' +
+        filaHtml(revisoesDoDia(estado, hoje)) +
+        diagnosticoHtml(d) +
+        materiasHtml(resumoPorMateria(estado));
+      output.hidden = false;
+      markSaved(root, save('caderno', estado));
+    }
+
+    root.addEventListener('click', function (ev) {
+      var botao = ev.target.closest('[data-action]');
+      if (!botao) return;
+      var action = botao.dataset.action;
+
+      if (action === 'registrar') {
+        var novo = registrarErro(estado, {
+          materia: materiaEl.value,
+          topico: topicoEl.value,
+          motivo: motivoEscolhido(),
+          anotacao: anotacaoEl.value
+        }, hojeLocalIso());
+
+        if (!novo) {
+          aviso('Informe a matéria e escolha por que você errou. Sem o motivo o caderno vira lista, e lista não diagnostica nada.');
+          materiaEl.focus();
+          return;
+        }
+        aviso('');
+        estado = novo;
+        // O tópico costuma se repetir na mesma sessão de questões; a matéria,
+        // mais ainda. Limpar tudo obrigaria a redigitar a cada erro.
+        anotacaoEl.value = '';
+        render();
+      }
+
+      if (action === 'revisar') {
+        estado = registrarRevisao(estado, Number(botao.dataset.id), botao.dataset.ok === '1', hojeLocalIso());
+        render();
+      }
+
+      if (action === 'exemplo') {
+        estado = CADERNO_EXEMPLO.reduce(function (c, e, k) {
+          // Espalhados no passado, senão nada estaria vencido e a fila do dia
+          // apareceria vazia — justamente a parte que o exemplo precisa mostrar.
+          return registrarErro(c, e, somaDias(hojeLocalIso(), -(CADERNO_EXEMPLO.length - k) * 2));
+        }, null);
+        aviso('');
+        render();
+        output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (action === 'imprimir') window.print();
+
+      if (action === 'limpar') {
+        clear('caderno');
+        estado = null;
+        output.hidden = true;
+        aviso('');
+        markSaved(root, false);
+      }
+    });
+
+    if (estado && estado.itens && estado.itens.length) {
+      render();
+      markSaved(root, true);
+    }
+  }
+
   /* ---------------------------------------------------------------- */
 
-  var INIT = { edital: initEdital, cronograma: initCronograma, acertos: initAcertos, trilha: initTrilha };
+  var INIT = {
+    edital: initEdital, cronograma: initCronograma, acertos: initAcertos,
+    trilha: initTrilha, caderno: initCaderno
+  };
 
   // Node não tem DOM. A exportação existe para os testes: a aritmética das
   // ferramentas precisa ser verificável sem abrir navegador.

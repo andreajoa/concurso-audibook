@@ -108,6 +108,10 @@ test('toda página pública carrega o mesmo menu de navegação', () => {
       `${nome} precisa de exatamente um cabeçalho de navegação`);
     assert.ok(html.includes('/site-header.css'),
       `${nome} carrega o cabeçalho sem a folha de estilo dele`);
+    // Sem esta linha o navegador vai buscar /favicon.ico, não acha, e a aba
+    // fica com o ícone de página abandonada.
+    assert.ok(html.includes('href="/favicon.svg"'),
+      `${nome} não declara o ícone da aba`);
     for (const destino of destinos) {
       assert.ok(html.includes(`href="${destino}"`),
         `${nome} não oferece caminho para ${destino}`);
