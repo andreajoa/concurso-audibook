@@ -138,3 +138,20 @@ test('a fusão usada aqui é a mesma que o navegador usa', () => {
   assert.match(fonte, /require\('\.\.\/public\/ferramentas\.js'\)/,
     'duas implementações da regra de fusão acabam discordando sobre o que revisar');
 });
+
+/* A pior falha possível desta funcionalidade não é o sync quebrar: é alguém
+   pagar e não receber chave nenhuma porque o banco ainda não sabe guardar
+   caderno. O checkout precisa se recusar a vender nesse estado. */
+test('sem banco pronto, a assinatura não abre pagamento', async () => {
+  const assinatura = require('../lib/assinatura');
+  chamadas = [];
+  responder = () => { throw new Error('function caderno_puxar does not exist'); };
+  assert.equal(await assinatura.bancoPronto(), false);
+  assert.equal(chamadas[0][0], 'caderno_puxar');
+
+  // A resposta negativa fica guardada por um minuto: não adianta perguntar de
+  // novo a cada visita enquanto a migration não roda.
+  chamadas = [];
+  assert.equal(await assinatura.bancoPronto(), false);
+  assert.equal(chamadas.length, 0, 'a negativa recente não pode custar outra consulta');
+});

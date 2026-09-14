@@ -1,7 +1,7 @@
 const { createCheckout } = require('../lib/checkout-hosted');
 const { getSellableProduct } = require('../lib/catalog');
 const { rpc } = require('../lib/crm-rpc');
-const { PLANO, criarAssinatura } = require('../lib/assinatura');
+const { PLANO, criarAssinatura, bancoPronto } = require('../lib/assinatura');
 
 let bundledPublicKey='';
 try { bundledPublicKey = String(require('../lib/payment-public-key') || '').trim(); } catch {}
@@ -46,6 +46,10 @@ module.exports=async(req,res)=>{
     if(slug===PLANO.slug){
       const email=clean(body.email,240).toLowerCase();
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({error:'Confira o e-mail: é para ele que vai a chave do seu caderno.'});
+      /* A única coisa pior que não vender é vender e não entregar. Se o banco
+         que guarda os cadernos não responde, a cobrança passaria e a chave não
+         existiria — então o pagamento nem abre. */
+      if(!await bancoPronto()) return res.status(503).json({error:'A assinatura está indisponível neste momento. Seu caderno continua funcionando normalmente neste aparelho.'});
       const analytics=body.analytics&&typeof body.analytics==='object'?body.analytics:{};
       const assinatura=await criarAssinatura(req,{email,analytics});
       if(!assinatura.client_secret)throw new Error('Subscription session did not return a client secret.');
