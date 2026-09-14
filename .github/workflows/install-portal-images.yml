@@ -1,0 +1,45 @@
+name: Install portal images
+on:
+  push:
+    paths:
+      - '.github/workflows/install-portal-images.yml'
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download and validate image bundle
+        run: |
+          set -euo pipefail
+          curl -fL 'https://margareth-5-estrategias.floot.app/_cdn/static/ff0a8943-5fe0-436c-bc5b-d4876df85752-portal-media-assets.zip' -o /tmp/portal.zip
+          unzip -q /tmp/portal.zip -d /tmp/portal
+          test "$(find /tmp/portal/imagem -name '*.png' | wc -l)" -eq 12
+          file /tmp/portal/imagem/*.png | grep -c 'PNG image data' | grep -q '^12$'
+      - name: Copy original PNG binaries
+        run: |
+          set -euo pipefail
+          mkdir -p public/assets/portal
+          cp /tmp/portal/imagem/1.png public/assets/portal/portal-hero-concursos.png
+          cp /tmp/portal/imagem/2.png public/assets/portal/portal-hero-prazos.png
+          cp /tmp/portal/imagem/3.png public/assets/portal/portal-hero-ferramentas.png
+          cp /tmp/portal/imagem/4.png public/assets/portal/portal-hero-apostilas.png
+          cp /tmp/portal/imagem/5.png public/assets/portal/portal-square-prazos.png
+          cp /tmp/portal/imagem/6.png public/assets/portal/portal-square-concursos.png
+          cp /tmp/portal/imagem/7.png public/assets/portal/portal-square-apostilas.png
+          cp /tmp/portal/imagem/8.png public/assets/portal/portal-square-ferramentas.png
+          cp /tmp/portal/imagem/9.png public/assets/portal/portal-strip-alertas.png
+          cp /tmp/portal/imagem/10.png public/assets/portal/portal-strip-simulados.png
+          cp /tmp/portal/imagem/11.png public/assets/portal/portal-strip-edital.png
+          cp /tmp/portal/imagem/12.png public/assets/portal/portal-strip-materiais.png
+          rm -f public/assets/portal/banner-concursos.svg public/assets/portal/banner-prazo.svg public/assets/portal/banner-trilha.svg
+      - name: Commit images
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/assets/portal
+          git commit -m 'feat: replace portal artwork with validated PNG images'
+          git push origin HEAD:main
