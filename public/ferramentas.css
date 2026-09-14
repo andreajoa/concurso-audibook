@@ -13,7 +13,10 @@
 .tool-button-ghost{background:#fff;color:#184c77;border-color:#d7dfe8}
 .tool-button-ghost:hover{background:#f5f7fa}
 .tool-button:focus-visible{outline:3px solid #b99754;outline-offset:3px}
-.tool-scroll{overflow-x:auto;margin:12px 0}
+/* O position:relative não é enfeite: sem ele o .sr-only "Remover", que é
+   absoluto, escapa da caixa que rola e vai parar no canto da tela — dois
+   pixels invisíveis que fazem a página inteira rolar para o lado. */
+.tool-scroll{position:relative;overflow-x:auto;margin:12px 0}
 .tool-table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
 .tool-table th{text-align:left;font:600 13px system-ui,sans-serif;color:#5b6e82;letter-spacing:.02em;padding:6px 8px;border-bottom:1px solid #e1e7ee;white-space:nowrap}
 .tool-table td{padding:6px 8px;vertical-align:middle;border-bottom:1px solid #f0f4f8}
@@ -63,6 +66,14 @@
 .trilha-bloco-acao{margin:8px 0 0;font-size:16px;line-height:1.6;color:#15304e}
 .trilha-bloco-acao b{color:#08284f}
 .trilha-bloco-motivo{margin:4px 0 0;font-size:14px;color:#5b6e82}
+/* O bloco de revisão abre o dia e não é mais uma matéria na fila: é a única
+   parte do plano que veio do histórico da pessoa, e não de uma estimativa.
+   A cor diferente faz essa diferença ser vista antes de ser lida. */
+.trilha-bloco.is-revisao{border-left:4px solid #2f7d52;background:#f4fbf7}
+.trilha-bloco.is-revisao .trilha-bloco-hora{color:#2f7d52}
+.trilha-bloco.is-revisao a{color:#1d4733}
+.trilha-fonte{max-width:780px;margin:0 0 16px;font-size:15px;line-height:1.6;color:#5b6e82}
+.trilha-fonte a{color:#184c77}
 .trilha-micro{margin:20px 0 0;padding:16px 18px;border-radius:12px;background:#eef7f1;border:1px solid #d3e7db}
 .trilha-micro strong{display:block;font:600 14px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#2f7d52;margin-bottom:6px}
 .trilha-micro p{margin:0;font-size:16px;line-height:1.6;color:#1d4733}
@@ -97,5 +108,10 @@
 .caderno-barra-valor{font:600 13px system-ui,sans-serif;color:#5b6e82;white-space:nowrap}
 .caderno-teimosos{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#fbe9e7;border:1px solid #f0cec7;font-size:15px;line-height:1.6;color:#7d2f22}
 .caderno-teimosos strong{color:#9c3b2c}
-@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table input[type=number]{max-width:70px}.tool-verdict{font-size:16px}.caderno-barras li{grid-template-columns:1fr;gap:4px}.caderno-card-acoes .tool-button{flex:1 1 auto}}
+/* No celular a tabela é a única coisa larga da página. O .tool-scroll impede
+   que ela empurre o site inteiro para o lado — mas uma tabela que rola por
+   dentro esconde a coluna do "×", e quem não vê o botão não remove a linha.
+   Por isso o recuo e o nowrap do cabeçalho saem: com o título quebrando em
+   duas linhas, a tabela cabe sozinha e a barra de rolagem nunca aparece. */
+@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table th{white-space:normal;padding:6px 4px}.tool-table td{padding:6px 4px}.tool-table input[type=number]{max-width:56px}.tool-table input[type=text]{padding:10px 8px}.tool-table select{max-width:104px}.tool-verdict{font-size:16px}.caderno-barras li{grid-template-columns:1fr;gap:4px}.caderno-card-acoes .tool-button{flex:1 1 auto}}
 @media print{.guide-header,.site-footer,.tool-actions,.tool-step,.tool-remove,.newsletter-invite{display:none!important}.tool{border:0;padding:0}.tool-output{border-top:0}}

@@ -11,7 +11,7 @@ const assert = require('node:assert/strict');
 const {
   parseEdital, computeCronograma, computeAcertos, hhmm, computeTrilha, faseDoEstudo,
   registrarErro, registrarRevisao, revisoesDoDia, diagnosticoErros, resumoPorMateria,
-  somaDias, ESCADA_REVISAO
+  somaDias, ESCADA_REVISAO, chaveMateria
 } = require('../public/ferramentas.js');
 
 /* -------------------------------------------------- edital verticalizado */
@@ -506,4 +506,158 @@ test('a tela do caderno tem todos os campos que o código procura', () => {
   const js = fs.readFileSync(path.join(raiz, 'public/ferramentas.js'), 'utf8');
   assert.ok(!/fetch\(|XMLHttpRequest|navigator\.sendBeacon/.test(js),
     'as ferramentas não podem enviar nada para a rede');
+});
+
+/* ------------------------------------ a trilha lendo o caderno de erros */
+
+/* O ponto da integração: a trilha deixa de perguntar "você está travado nesta
+   matéria?" e passa a saber. O que se testa aqui é que ela responde pelos
+   erros registrados, e não pelo que a pessoa marcou no formulário — inclusive
+   quando as duas coisas se contradizem, que é exatamente quando importa. */
+
+/** Caderno com n erros em aberto numa matéria, todos registrados no mesmo dia. */
+function abertos(materia, n, dia) {
+  let c = null;
+  for (let k = 0; k < n; k++) {
+    c = registrarErro(c, erro(materia, 'nao-sabia', 'Tópico ' + k), dia || '2026-03-01');
+  }
+  return c;
+}
+
+/** Junta cadernos de matérias diferentes renumerando os ids. */
+function juntar(...cadernos) {
+  const itens = [];
+  let id = 0;
+  for (const c of cadernos) {
+    for (const i of (c ? c.itens : [])) itens.push(Object.assign({}, i, { id: ++id }));
+  }
+  return { versao: 1, itens };
+}
+
+test('sem caderno, a trilha continua obedecendo o formulário', () => {
+  const r = computeTrilha(materias(), 90, 25, 0);
+  assert.equal(r.medidas, 0);
+  assert.equal(r.revisao, null);
+  // Direito Administrativo vale menos questões que Português, mas foi marcado
+  // como travado: sem medição, é a autoavaliação que decide.
+  assert.equal(r.blocos[0].nome, 'Direito Administrativo');
+  assert.match(r.blocos[0].motivo, /você marcou que está travado/);
+});
+
+test('com caderno, quem manda é o erro registrado e não o que a pessoa marcou', () => {
+  /* Informática vale metade das questões de Direito Administrativo e foi
+     marcada como "seguro" no formulário. Mas é onde ela erra — e o caderno
+     cobre todas as matérias, então não sobra nada para a autoavaliação
+     decidir. Se ainda assim o formulário vencer, a integração é enfeite. */
+  const c = juntar(
+    abertos('Informática', 8),
+    abertos('Português', 1),
+    abertos('Direito Administrativo', 1),
+    abertos('Raciocínio Lógico', 0)
+  );
+  const r = computeTrilha(materias(), 200, 25, 0, { caderno: c, hoje: '2026-03-02' });
+
+  assert.equal(r.blocos[0].nome, 'Informática');
+  assert.match(r.blocos[0].motivo, /8 erros em aberto/);
+  assert.ok(!/você já se sente seguro/.test(r.blocos[0].motivo),
+    'a medição tem de silenciar a autoavaliação, não conviver com ela');
+  assert.match(r.blocos.find((b) => b.nome === 'Direito Administrativo').motivo,
+    /1 erro em aberto/, 'travado no formulário, mas o caderno não confirma');
+  assert.equal(r.medidas, 3);
+});
+
+test('matéria sem erro no caderno continua valendo pelo formulário', () => {
+  const r = computeTrilha(materias(), 200, 25, 0,
+    { caderno: abertos('Informática', 5), hoje: '2026-03-02' });
+  const admin = r.blocos.find((b) => b.nome === 'Direito Administrativo');
+  assert.equal(admin.medido, false);
+  assert.match(admin.motivo, /você marcou que está travado/);
+  assert.equal(r.medidas, 1);
+});
+
+test('o nome da matéria casa mesmo com acento e caixa diferentes', () => {
+  assert.equal(chaveMateria('Raciocínio Lógico'), chaveMateria('  raciocinio   LOGICO '));
+  // Sem acento e em minúsculas no caderno; com acento e em caixa alta na
+  // trilha. É assim que a mesma pessoa digita a mesma matéria em dias
+  // diferentes, e as duas ferramentas têm de reconhecer que é a mesma.
+  const c = juntar(abertos('raciocinio logico', 9), abertos('DIREITO ADMINISTRATIVO', 1));
+  const r = computeTrilha(materias(), 200, 25, 0, { caderno: c, hoje: '2026-03-02' });
+
+  const logico = r.blocos.find((b) => b.nome === 'Raciocínio Lógico');
+  assert.equal(logico.medido, true);
+  assert.match(logico.motivo, /9 erros em aberto/);
+  const admin = r.blocos.find((b) => b.nome === 'Direito Administrativo');
+  assert.equal(admin.medido, true);
+  assert.match(admin.motivo, /1 erro em aberto/);
+  assert.equal(r.medidas, 2);
+});
+
+test('matéria com tudo dominado no caderno não é tratada como buraco', () => {
+  let c = abertos('Informática', 3);
+  const ids = c.itens.map((i) => i.id);
+  for (const id of ids) {
+    let dia = '2026-03-02';
+    for (let k = 0; k < ESCADA_REVISAO.length; k++) {
+      c = registrarRevisao(c, id, true, dia);
+      dia = somaDias(dia, 40);
+    }
+  }
+  assert.ok(c.itens.every((i) => i.dominado), 'o caderno deveria estar todo dominado');
+
+  const r = computeTrilha(materias(), 200, 25, 0, { caderno: c, hoje: '2026-09-01' });
+  assert.match(r.blocos.find((b) => b.nome === 'Informática').motivo, /já dominou tudo/);
+  assert.equal(r.revisao, null, 'nada dominado pode voltar para a fila');
+});
+
+test('a revisão vencida abre o dia e sai do tempo do plano', () => {
+  const r = computeTrilha(materias(), 90, 25, 0,
+    { caderno: abertos('Português', 6, '2026-03-01'), hoje: '2026-03-20' });
+
+  assert.ok(r.revisao, 'com fila vencida a revisão precisa existir');
+  assert.equal(r.revisao.pendentes, 6);
+  assert.ok(r.revisao.minutos >= 5 && r.revisao.minutos <= 30);
+  assert.equal(r.blocos.reduce((s, b) => s + b.total, 0) + r.revisao.minutos, r.minutos);
+  assert.ok(r.minutos <= 90, 'o plano não pode passar do tempo que a pessoa tem');
+});
+
+test('revisar nunca engole o único bloco de estudo do dia', () => {
+  const r = computeTrilha(materias(), 20, 25, 0,
+    { caderno: abertos('Português', 10, '2026-03-01'), hoje: '2026-03-20' });
+  assert.equal(r.revisao, null);
+  assert.equal(r.revisaoAdiada, 10, 'a tela precisa poder dizer que a fila ficou para depois');
+  assert.equal(r.minutos, 20);
+});
+
+test('com fila vencida, os cinco minutos de sobra vão para o caderno', () => {
+  const r = computeTrilha(materias(), 90, 25, 0,
+    { caderno: abertos('Português', 4, '2026-03-01'), hoje: '2026-03-20' });
+  assert.match(r.micro.texto, /caderno de erros/);
+  assert.equal(r.micro.nome, 'Português');
+});
+
+test('sem fila vencida, os cinco minutos continuam sendo questão nova', () => {
+  // No próprio dia do registro nada venceu: o primeiro degrau é de um dia.
+  const r = computeTrilha(materias(), 90, 25, 0,
+    { caderno: abertos('Português', 4, '2026-03-01'), hoje: '2026-03-01' });
+  assert.equal(r.revisao, null);
+  assert.match(r.micro.texto, /Responda 3 questões/);
+});
+
+test('o caderno não torna o plano imprevisível: mesma entrada, mesmo plano', () => {
+  const c = juntar(abertos('Informática', 8), abertos('Português', 3));
+  const a = computeTrilha(materias(), 90, 25, 0, { caderno: c, hoje: '2026-03-20' });
+  const b = computeTrilha(materias(), 90, 25, 0, { caderno: c, hoje: '2026-03-20' });
+  assert.deepEqual(a, b);
+});
+
+test('a soma dos blocos continua batendo com o tempo informado, com caderno', () => {
+  const c = juntar(abertos('Informática', 9), abertos('Português', 5));
+  for (const min of [20, 25, 45, 60, 90, 137, 300]) {
+    const r = computeTrilha(materias(), min, 25, 0, { caderno: c, hoje: '2026-03-20' });
+    const soma = r.blocos.reduce((s, b) => s + b.total, 0) + (r.revisao ? r.revisao.minutos : 0);
+    assert.equal(soma, r.minutos, `não fecha em ${min} min`);
+    assert.ok(r.minutos <= min, `passou do tempo em ${min} min`);
+    assert.ok(min - r.minutos < 5, `sobrou tempo demais em ${min} min`);
+    for (const b of r.blocos) assert.ok(b.total >= 20, `bloco curto demais em ${min} min`);
+  }
 });

@@ -662,23 +662,77 @@
   }
 
   /**
+   * Junta o nome digitado na trilha com o nome digitado no caderno. As duas
+   * ferramentas pedem texto livre porque ninguém quer escolher a matéria numa
+   * lista de duzentas — e ninguém digita "Direito Administrativo" igual duas
+   * vezes. Acento e caixa saem fora; o resto é responsabilidade de quem digita.
+   */
+  function chaveMateria(nome) {
+    return String(nome == null ? '' : nome)
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  /**
    * Pura de propósito: é esta conta que decide o que alguém vai fazer hoje.
    *
    * `rotacao` é o que impede a lista de morrer. Sem ela, a matéria mais
    * pesada monopolizaria todo dia e as outras nunca seriam abertas.
    */
-  function computeTrilha(rows, minutos, diasAteProva, rotacao) {
-    var itens = rows.map(function (r) {
-      var questoes = num(r.questoes, 0);
-      var nivel = num(r.seguranca, 2);
-      var conf = SEGURANCA[nivel] || SEGURANCA[2];
+  function computeTrilha(rows, minutos, diasAteProva, rotacao, memoria) {
+    var caderno = memoria && memoria.caderno && memoria.caderno.itens ? memoria.caderno : null;
+    var hoje = (memoria && memoria.hoje) || null;
+
+    var medidas = {};
+    if (caderno) {
+      resumoPorMateria(caderno).forEach(function (m) {
+        medidas[chaveMateria(m.materia)] = m;
+      });
+    }
+
+    var brutos = rows.map(function (r) {
       return {
-        nome: r.nome, questoes: questoes, nivel: nivel,
-        rotulo: conf.rotulo, score: questoes * conf.peso
+        nome: r.nome,
+        questoes: num(r.questoes, 0),
+        declarado: num(r.seguranca, 2),
+        medida: medidas[chaveMateria(r.nome)] || null
       };
     }).filter(function (i) { return i.questoes > 0 && i.nome; });
 
-    if (!itens.length || !(minutos >= MIN_BLOCO)) return null;
+    if (!brutos.length || !(minutos >= MIN_BLOCO)) return null;
+
+    /* Dizer que alguém está "travado" exige um ponto de comparação, e o único
+       honesto é o próprio histórico: a matéria com mais erros em aberto entre
+       as que caem nesta prova vira o topo da escala, e as outras se medem
+       contra ela. Sem isso, qualquer número absoluto seria chute com aparência
+       de dado — cinco erros é muito para quem registrou dez e pouco para quem
+       registrou cem. */
+    var maxAbertos = brutos.reduce(function (m, i) {
+      return i.medida ? Math.max(m, i.medida.abertos) : m;
+    }, 0);
+
+    var itens = brutos.map(function (i) {
+      var peso, nivel, medido = false;
+      if (i.medida) {
+        // Nada em aberto em lugar nenhum não significa "sem medida": significa
+        // que a pessoa dominou o que errou. Cair de volta na autoavaliação aqui
+        // seria jogar fora justamente a prova de que ela melhorou.
+        peso = maxAbertos > 0 ? 1 + 2 * (i.medida.abertos / maxAbertos) : 1;
+        nivel = peso >= 7 / 3 ? 1 : peso >= 5 / 3 ? 2 : 3;
+        medido = true;
+      } else {
+        peso = (SEGURANCA[i.declarado] || SEGURANCA[2]).peso;
+        nivel = i.declarado;
+      }
+      return {
+        nome: i.nome, questoes: i.questoes, nivel: nivel,
+        rotulo: (SEGURANCA[nivel] || SEGURANCA[2]).rotulo,
+        medido: medido,
+        abertos: i.medida ? i.medida.abertos : 0,
+        pior: i.medida ? i.medida.pior : null,
+        score: i.questoes * peso
+      };
+    });
 
     var totalQuestoes = itens.reduce(function (s, i) { return s + i.questoes; }, 0);
     itens.sort(function (a, b) {
@@ -690,15 +744,27 @@
 
     var fase = faseDoEstudo(diasAteProva);
 
+    /* O que já venceu no caderno entra antes de qualquer matéria nova. Uma
+       questão que voltou hoje é a única do dia que já provou ser difícil para
+       esta pessoa — tudo o mais é aposta. Mas a revisão nunca engole o único
+       bloco do dia: quem tem vinte minutos precisa sair daqui tendo estudado,
+       não só conferido o que já errou. */
+    var pendentes = caderno && hoje ? revisoesDoDia(caderno, hoje) : [];
+    var teto = Math.max(0, Math.floor((minutos - MIN_BLOCO) / 5) * 5);
+    var minutosRevisao = pendentes.length
+      ? Math.min(teto, Math.min(30, Math.max(5, Math.ceil(pendentes.length * 2 / 5) * 5)))
+      : 0;
+    var minutosPlano = minutos - minutosRevisao;
+
     // Bloco menor que vinte minutos não vira estudo, vira olhada. Então o
     // número de matérias de hoje é limitado pelo tempo que existe de verdade.
-    var cabem = Math.max(1, Math.min(fila.length, Math.floor(minutos / MIN_BLOCO)));
+    var cabem = Math.max(1, Math.min(fila.length, Math.floor(minutosPlano / MIN_BLOCO)));
     var hoje = fila.slice(0, cabem);
     var espera = fila.slice(cabem).map(function (i) { return i.nome; });
 
     // Reparte em unidades de cinco minutos, pelo método do maior resto: a soma
     // dos blocos bate com o tempo informado, sem sobra inventada.
-    var unidades = Math.floor(minutos / 5);
+    var unidades = Math.floor(minutosPlano / 5);
     var piso = MIN_BLOCO / 5;
     var restante = unidades - hoje.length * piso;
     var somaScore = hoje.reduce(function (s, i) { return s + i.score; }, 0);
@@ -722,23 +788,49 @@
         leitura: total - questoesMin,
         questoes: questoesMin,
         nivel: i.nivel,
+        medido: i.medido,
         motivo: i.questoes + ' das ' + totalQuestoes + ' questões da prova' + (
-          i.nivel === 1 ? ' e você marcou que está travado nela.'
-            : i.nivel === 3 ? ', e você já se sente seguro nela.'
-              : '.')
+          i.medido
+            ? (i.abertos
+              ? ' e você tem ' + i.abertos + (i.abertos === 1 ? ' erro' : ' erros') +
+                ' em aberto nela no caderno' + (i.pior ? ', o pior em ' + i.pior : '') + '.'
+              : ', e no caderno você já dominou tudo o que errou nela.')
+            : i.nivel === 1 ? ' e você marcou que está travado nela.'
+              : i.nivel === 3 ? ', e você já se sente seguro nela.'
+                : '.')
       };
     });
 
     // A pergunta "e se eu só tiver cinco minutos" tem uma resposta só, e ela
     // não é ler: em cinco minutos, testar mostra buraco e ler esconde.
     var alvo = itens[0];
-    var micro = {
-      nome: alvo.nome,
-      texto: 'Responda 3 questões de ' + alvo.nome + ' e confira o gabarito na hora. Não abra a teoria: em cinco minutos, resolver mostra o que falta e ler só dá sensação de progresso.'
-    };
+    var micro = pendentes.length
+      ? {
+        nome: pendentes[0].materia,
+        // Com o caderno cheio, a melhor questão de cinco minutos não é uma
+        // questão nova: é a que já provou que você erra.
+        texto: 'Refaça ' + (pendentes.length === 1 ? 'a questão mais antiga' : 'as ' +
+          Math.min(3, pendentes.length) + ' questões mais antigas') + ' do seu caderno de erros, a começar por ' +
+          pendentes[0].materia + (pendentes[0].topico ? ' · ' + pendentes[0].topico : '') +
+          '. São questões que você já errou uma vez: em cinco minutos, nenhuma outra rende mais.'
+      }
+      : {
+        nome: alvo.nome,
+        texto: 'Responda 3 questões de ' + alvo.nome + ' e confira o gabarito na hora. Não abra a teoria: em cinco minutos, resolver mostra o que falta e ler só dá sensação de progresso.'
+      };
+
+    var revisao = minutosRevisao > 0 ? {
+      minutos: minutosRevisao,
+      pendentes: pendentes.length,
+      // A dois minutos por questão: refazer é reconhecer, não estudar de novo.
+      cabem: Math.min(pendentes.length, Math.max(1, Math.floor(minutosRevisao / 2))),
+      atrasoMaior: pendentes[0].atraso,
+      materias: pendentes.map(function (p) { return p.materia; })
+        .filter(function (m, k, todas) { return todas.indexOf(m) === k; })
+    } : null;
 
     return {
-      minutos: blocos.reduce(function (s, b) { return s + b.total; }, 0),
+      minutos: blocos.reduce(function (s, b) { return s + b.total; }, 0) + minutosRevisao,
       minutosInformados: minutos,
       dias: diasAteProva,
       fase: fase,
@@ -746,6 +838,11 @@
       blocos: blocos,
       espera: espera,
       micro: micro,
+      revisao: revisao,
+      // Quando há revisão vencida mas o dia é curto demais para caber, a tela
+      // precisa dizer isso em vez de deixar a fila envelhecer em silêncio.
+      revisaoAdiada: pendentes.length && !minutosRevisao ? pendentes.length : 0,
+      medidas: itens.filter(function (i) { return i.medido; }).length,
       rotacao: giro
     };
   }
@@ -799,6 +896,25 @@
             : '<strong>' + esc(plural(faltam, 'dia', 'dias')) + ' até a prova.</strong>') +
         '<p>' + esc(r.fase.nota) + '</p></div>';
 
+      /* A revisão do caderno abre o dia e é desenhada diferente de propósito:
+         ela não é mais uma matéria na fila, é a única parte do plano que sai
+         do histórico da pessoa em vez de sair de uma estimativa. */
+      var revisao = r.revisao
+        ? '<li class="trilha-bloco is-revisao">' +
+          '<span class="trilha-bloco-hora">Antes de tudo · ' + r.revisao.minutos + ' min</span>' +
+          '<strong>Revisão do seu caderno de erros</strong>' +
+          '<p class="trilha-bloco-acao">Refaça <b>' + esc(plural(r.revisao.cabem, 'questão', 'questões')) +
+          '</b> da fila de hoje' + (r.revisao.pendentes > r.revisao.cabem
+            ? ' (há ' + r.revisao.pendentes + ' esperando)' : '') + '.</p>' +
+          '<p class="trilha-bloco-motivo">' +
+          (r.revisao.atrasoMaior > 0
+            ? 'A mais antiga espera há ' + esc(plural(r.revisao.atrasoMaior, 'dia', 'dias')) + '. '
+            : '') +
+          'São questões que você já errou: ' + esc(r.revisao.materias.join(', ')) + '.</p>' +
+          '<p class="trilha-bloco-motivo"><a href="/ferramentas/caderno-de-erros">Abrir o caderno de erros</a></p>' +
+          '</li>'
+        : '';
+
       var passos = r.blocos.map(function (b, i) {
         return '<li class="trilha-bloco">' +
           '<span class="trilha-bloco-hora">' + (i + 1) + 'º bloco · ' + b.total + ' min</span>' +
@@ -808,11 +924,26 @@
           '</li>';
       }).join('');
 
+      /* A origem da ordem precisa estar escrita. Um plano que a pessoa não
+         sabe de onde veio ela cumpre uma vez e abandona na terça. */
+      var fonte = r.medidas
+        ? '<p class="trilha-fonte">A ordem de hoje não saiu do que você marcou no formulário: ' +
+          esc(plural(r.medidas, 'matéria foi medida', 'matérias foram medidas')) +
+          ' pelos erros que você registrou no <a href="/ferramentas/caderno-de-erros">caderno</a>.</p>'
+        : '<p class="trilha-fonte">A ordem de hoje saiu do peso de cada matéria na prova e do que você marcou no formulário. ' +
+          'Registrando seus erros no <a href="/ferramentas/caderno-de-erros">caderno de erros</a>, ela passa a sair do que você erra de verdade — e deixa de depender de como você se sente hoje.</p>';
+
       var html = cabecalho +
         '<p class="trilha-total">Plano de hoje: ' + esc(plural(r.minutos, 'minuto', 'minutos')) +
-        ' em ' + esc(plural(r.blocos.length, 'bloco', 'blocos')) + '.</p>' +
-        '<ol class="trilha-lista">' + passos + '</ol>' +
+        ' em ' + esc(plural(r.blocos.length + (r.revisao ? 1 : 0), 'bloco', 'blocos')) + '.</p>' +
+        fonte +
+        '<ol class="trilha-lista">' + revisao + passos + '</ol>' +
         '<div class="trilha-micro"><strong>Se hoje só sobrarem 5 minutos</strong><p>' + esc(r.micro.texto) + '</p></div>' +
+        (r.revisaoAdiada
+          ? '<p class="tool-note">Há ' + esc(plural(r.revisaoAdiada, 'questão vencida', 'questões vencidas')) +
+            ' no seu caderno, mas hoje o tempo mal dá para um bloco de estudo — e revisar não pode ocupar o dia inteiro. ' +
+            'Elas continuam na fila e não vencem duas vezes.</p>'
+          : '') +
         (r.espera.length
           ? '<p class="tool-note">Ficam para os próximos dias: ' + esc(r.espera.join(', ')) +
             '. Amanhã a lista começa por outra matéria — estudar sempre a mesma primeiro é o que faz as outras nunca serem abertas.</p>'
@@ -843,7 +974,9 @@
         var hoje = hojeLocalIso();
         var rotacao = salvo && salvo.dia === hoje ? num(salvo.rotacao, 0) : (salvo ? num(salvo.rotacao, 0) + 1 : 0);
 
-        var r = computeTrilha(rows, minutos, diasAte(provaEl.value), rotacao);
+        // O caderno entra aqui: se existir histórico, ele decide a ordem.
+        var r = computeTrilha(rows, minutos, diasAte(provaEl.value), rotacao,
+          { caderno: load('caderno', null), hoje: hoje });
         if (!r) {
           target.innerHTML = '<p class="tool-note">Informe ao menos uma matéria com número de questões maior que zero e pelo menos 20 minutos de estudo — abaixo disso o bloco vira olhada, não estudo.</p>';
           output.hidden = false;
@@ -1301,7 +1434,8 @@
       registrarErro: registrarErro, registrarRevisao: registrarRevisao,
       revisoesDoDia: revisoesDoDia, diagnosticoErros: diagnosticoErros,
       resumoPorMateria: resumoPorMateria, somaDias: somaDias,
-      ESCADA_REVISAO: ESCADA_REVISAO, MOTIVOS: MOTIVOS
+      ESCADA_REVISAO: ESCADA_REVISAO, MOTIVOS: MOTIVOS,
+      chaveMateria: chaveMateria
     };
     return;
   }

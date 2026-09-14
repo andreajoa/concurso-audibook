@@ -123,6 +123,30 @@ test('toda página pública carrega o mesmo menu de navegação', () => {
   }
 });
 
+/* Uma tabela de seis colunas não cabe num celular de 320px, e isso não é
+   defeito — defeito é ela empurrar a página inteira para o lado, porque aí o
+   dedo arrasta o texto para fora da tela e a pessoa acha que o site quebrou.
+   Medir a largura exige navegador; o que dá para garantir no gate é a causa:
+   toda tabela de entrada dentro de uma caixa que rola sozinha, e essa caixa
+   posicionada, senão o rótulo invisível de "Remover" escapa dela. */
+test('toda tabela das ferramentas rola por dentro, não empurra a página', () => {
+  const ferramentas = require('../content/ferramentas.json');
+  for (const t of ferramentas) {
+    if (!t.appHtml) continue;
+    for (const tabela of t.appHtml.match(/<table[^>]*>/g) || []) {
+      const antes = t.appHtml.slice(0, t.appHtml.indexOf(tabela));
+      assert.ok(/<div class="tool-scroll">\s*$/.test(antes),
+        `${t.slug}: ${tabela} precisa estar dentro de <div class="tool-scroll">`);
+    }
+  }
+  const css = fs.readFileSync(path.join(root, 'public/ferramentas.css'), 'utf8');
+  const regra = css.match(/\.tool-scroll\{([^}]*)\}/);
+  assert.ok(regra, 'a folha precisa da regra .tool-scroll');
+  assert.match(regra[1], /overflow-x:auto/);
+  assert.match(regra[1], /position:relative/,
+    '.tool-scroll sem position:relative deixa o .sr-only absoluto vazar da caixa');
+});
+
 test('no celular todo link do menu é grande o bastante para o dedo', () => {
   /* Medir geometria exige navegador, e o gate roda sem um. O que dá para
      garantir aqui é a causa: sem recuo vertical o link do menu tem a altura
