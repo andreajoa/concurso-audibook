@@ -1,5 +1,4 @@
-.guide-header{max-width:1100px;margin:auto;padding:24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.guide-header>a{font:700 24px Georgia,serif;color:#08284f}.guide-header nav{display:flex;gap:20px;flex-wrap:wrap}.guide{max-width:1000px;margin:20px auto 80px;padding:24px;color:#15304e;line-height:1.8}.guide h1{font:400 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:850px;margin:24px 0}.guide h2{font:400 28px/1.25 Georgia,serif;margin-top:40px}.guide p,.guide li{max-width:780px}.guide a{color:#184c77;text-underline-offset:4px}.eyebrow{letter-spacing:.1em;font-size:12px;color:#85662c}.product-intro{display:grid;grid-template-columns:minmax(200px,360px) 1fr;gap:36px;align-items:center}.product-intro img{width:100%;height:auto;object-fit:contain}.guide .guide-price{font-size:36px;font-weight:bold;margin:16px 0}.guide .guide-button{display:inline-block;background:#08284f;color:white;border-radius:10px;padding:14px 22px;text-decoration:none}.guide a:focus-visible{outline:3px solid #b99754;outline-offset:4px}@media(max-width:650px){.product-intro{grid-template-columns:1fr;gap:12px}.product-intro img{max-width:260px;margin:auto}.guide{padding:20px}.guide-header nav{font-size:14px}}
-.guide-brand{font:700 24px Georgia,serif;color:#08284f;text-decoration:none}
+.guide{max-width:1000px;margin:20px auto 80px;padding:24px;color:#15304e;line-height:1.8}.guide h1{font:400 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:850px;margin:24px 0}.guide h2{font:400 28px/1.25 Georgia,serif;margin-top:40px}.guide p,.guide li{max-width:780px}.guide a{color:#184c77;text-underline-offset:4px}.eyebrow{letter-spacing:.1em;font-size:12px;color:#85662c}.product-intro{display:grid;grid-template-columns:minmax(200px,360px) 1fr;gap:36px;align-items:center}.product-intro img{width:100%;height:auto;object-fit:contain}.guide .guide-price{font-size:36px;font-weight:bold;margin:16px 0}.guide .guide-button{display:inline-block;background:#08284f;color:white;border-radius:10px;padding:14px 22px;text-decoration:none}.guide a:focus-visible{outline:3px solid #b99754;outline-offset:4px}@media(max-width:650px){.product-intro{grid-template-columns:1fr;gap:12px}.product-intro img{max-width:260px;margin:auto}.guide{padding:20px}}
 .crumbs{font-size:13px;color:#5b6e82;margin:8px 0 4px;max-width:780px}
 .crumbs a{color:#5b6e82}
 .crumb-sep{margin:0 6px;color:#a8b4bf}
@@ -48,15 +47,3 @@
    de JavaScript não abre enquanto a página ainda está carregando, e quem passa
    por aqui está procurando a cidade dele agora. No celular o painel não existe:
    o rótulo vira link direto para /concursos, porque não há mouse para passar. */
-.guide-header{position:relative}
-.mega-trigger{position:relative;z-index:2;font-weight:700}
-.mega-panel{position:absolute;left:0;right:0;top:100%;z-index:30;display:none;background:#fff;border:1px solid #e6dece;border-radius:14px;padding:22px 24px;box-shadow:0 26px 44px rgba(8,40,79,.14)}
-.mega:hover .mega-panel,.mega:focus-within .mega-panel{display:block}
-.mega-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
-.mega-uf{display:block;margin-bottom:10px;font:900 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#85662c;text-decoration:none}
-.mega-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.mega-col li a{display:block;margin-left:-8px;padding:6px 8px;border-radius:8px;font-size:15px;color:#08284f;text-decoration:none}
-.mega-col li a:hover{background:#f4f0e6}
-.mega-col li a span{display:block;font-size:11px;letter-spacing:.02em;color:#66717d}
-.mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font-size:12px;color:#66717d}
-@media(max-width:900px){.mega-panel{display:none!important}}

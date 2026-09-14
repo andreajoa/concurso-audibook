@@ -168,13 +168,15 @@ const estados = cn.groupByUf(concursos);
 const estadoPorUf = new Map(estados.map(e => [e.uf, e]));
 const concursosAbertos = concursos.filter(c => c.status === 'inscricoes_abertas');
 
+/* Os destinos do menu principal. A lista é curta de propósito: cada item aqui é
+   uma seção inteira do site, não uma página solta. O que ficou de fora
+   (glossário, guia de escolha de apostila, Baixada Santista) continua a um
+   clique pelo rodapé, que também vai em todas as páginas. */
 const NAV = [
+  ['/apostilas-para-concurso', 'Apostilas'],
   ['/ferramentas', 'Ferramentas grátis'],
-  ['/concursos-baixada-santista', 'Baixada Santista'],
-  ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
   ['/materias', 'Matérias'],
-  ['/apostila-para-concurso-como-escolher', 'Escolher apostila'],
-  ['/glossario-concursos-publicos', 'Glossário'],
+  ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
   ['/perguntas-frequentes', 'Dúvidas'],
   ['/contato', 'Atendimento']
 ];
@@ -210,7 +212,24 @@ const megaHtml = (() => {
     '</div></div>';
 })();
 
-const navHtml = megaHtml + NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('');
+const navHtml = megaHtml +
+  NAV.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('') +
+  '<a class="nav-access" href="/recuperar">Já comprei</a>';
+
+/* Um cabeçalho só, para o site inteiro.
+   Quem cai em /termos por um link do Google não pode ficar preso ali com uma
+   logo apontando para a home como única saída. Este bloco é gerado uma vez e
+   depois carimbado em toda página estática — inclusive nas que não passam pelo
+   renderPage, como a home, o obrigado e as páginas legais. */
+const siteHeader = '<header class="guide-header">' +
+  '<a class="guide-brand" href="/" aria-label="Trilha Aprova — início">' +
+  '<img src="/assets/trilha-aprova-logo.webp?v=20260912" alt="Trilha Aprova" width="138" height="64"></a>' +
+  `<nav aria-label="Navegação do site">${navHtml}</nav></header>`;
+
+/* O estilo do cabeçalho mora num arquivo próprio porque as páginas escritas à
+   mão (termos, obrigado, recuperar) não carregam seo.css. Sem esta folha o menu
+   aparece, mas como uma pilha de links sem forma. */
+const HEADER_CSS_TAG = '<link rel="stylesheet" href="/site-header.css">';
 
 const productLinks = products
   .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
@@ -299,10 +318,11 @@ function renderPage(opts) {
     `<meta name="description" content="${esc(description)}">` +
     seoBlock({ path, title: metaTitle || title, description, image, nodes: graph }) +
     '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css">' +
+    HEADER_CSS_TAG +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
     styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
     '</head><body>' +
-    `<header class="guide-header"><a class="guide-brand" href="/">Trilha Aprova</a><nav aria-label="Navegação do conteúdo">${navHtml}</nav></header>` +
+    siteHeader +
     `<main class="guide">${crumbsHtml(fullTrail)}` +
     (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
     `<h1>${esc(title)}</h1>` +
@@ -1669,8 +1689,8 @@ fs.writeFileSync('public/404.html',
   '<title>Página não encontrada | Trilha Aprova</title>' +
   '<meta name="robots" content="noindex,follow">' +
   '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css"><link rel="stylesheet" href="/seo.css">' +
-  '</head><body><header class="guide-header"><a class="guide-brand" href="/">Trilha Aprova</a>' +
-  `<nav aria-label="Navegação do conteúdo">${navHtml}</nav></header>` +
+  HEADER_CSS_TAG +
+  '</head><body>' + siteHeader +
   '<main class="guide"><h1>Esta página não existe</h1>' +
   '<p class="answer">O endereço que você abriu não corresponde a nenhuma página da Trilha Aprova. Ele pode ter sido digitado incorretamente ou o conteúdo pode ter mudado de lugar.</p>' +
   '<h2>Para onde ir agora</h2><ul>' +
@@ -1696,7 +1716,40 @@ for (const file of fs.readdirSync('public')) {
   footersSynced++;
 }
 
+/* O cabeçalho segue a mesma lógica do rodapé, e pelo mesmo motivo: ninguém
+   entra no site sempre pela home. Quem chega em /termos vindo do Google, ou em
+   /obrigado logo depois de comprar, precisa conseguir ir para qualquer lugar
+   dali — não apenas voltar para o começo.
+   As páginas escritas à mão traziam cada uma o seu próprio header, quase sempre
+   só com a logo e um link de volta para a home. Todos eles são removidos e
+   substituídos por este; onde não havia header nenhum, ele entra logo depois do
+   <body>. */
+const SEM_CABECALHO = new Set([
+  'dashboard.html' // painel interno: não é site público e não deve puxar visita.
+]);
+// Cabeçalhos antigos de cada geração do site. Ficam listados para que o build
+// consiga reconhecê-los e trocá-los, mesmo os que já não são gerados por aqui.
+const CABECALHOS_ANTIGOS = /<header[^>]*class="[^"]*(?:ta-header|legal-header|site-header|store-header)[^"]*"[\s\S]*?<\/header>/g;
+let headersSynced = 0;
+for (const file of fs.readdirSync('public')) {
+  if (!file.endsWith('.html') || SEM_CABECALHO.has(file)) continue;
+  const full = `public/${file}`;
+  const html = fs.readFileSync(full, 'utf8');
+  let novo = html.replace(CABECALHOS_ANTIGOS, '');
+
+  if (!novo.includes(siteHeader)) {
+    novo = novo.replace(/<body([^>]*)>/, (_, attrs) => `<body${attrs}>${siteHeader}`);
+  }
+  // Sem a folha de estilo o menu existe mas não tem forma, então ela entra junto.
+  if (!novo.includes(HEADER_CSS_TAG)) novo = novo.replace('</head>', HEADER_CSS_TAG + '</head>');
+  if (novo === html) continue;
+
+  fs.writeFileSync(full, novo);
+  headersSynced++;
+}
+
 console.log(`SEO: ${urls.length} URLs públicas, ${products.length} páginas de produto, ${cities.length} páginas de cidade, ${guides.length} guias.`);
 console.log(`Rodapé sincronizado a partir de lib/site-footer.html em ${footersSynced} página(s).`);
+console.log(`Cabeçalho de navegação sincronizado em ${headersSynced} página(s).`);
 console.log('GEO: robots.txt com liberação para rastreadores de IA, llms.txt, llms-full.txt e feed.xml gerados.');
 console.log('Arquivos privados e páginas de compra permanecem fora do sitemap e marcados como noindex.');

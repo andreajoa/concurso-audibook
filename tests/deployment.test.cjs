@@ -79,3 +79,38 @@ test('authenticated requests select the correct cron worker', async (t) => {
   assert.deepEqual(editorial.body, { error: 'missing_env', missing: 'ANTHROPIC_API_KEY' });
   assert.equal(calls.length, 1, 'editorial must not execute the marketing worker');
 });
+
+/* Quem chega ao site raramente chega pela home: chega numa página de cidade
+   vinda do Google, ou na de agradecimento logo depois de pagar. De qualquer uma
+   delas precisa dar para ir a qualquer outra. O cabeçalho é carimbado pelo
+   build em todas as páginas — este teste existe para que nenhuma escape. */
+test('toda página pública carrega o mesmo menu de navegação', () => {
+  const publico = path.join(root, 'public');
+  const paginas = [];
+  (function varrer(dir) {
+    for (const entrada of fs.readdirSync(dir, { withFileTypes: true })) {
+      const caminho = path.join(dir, entrada.name);
+      if (entrada.isDirectory()) varrer(caminho);
+      else if (entrada.name.endsWith('.html')) paginas.push(caminho);
+    }
+  })(publico);
+
+  assert.ok(paginas.length > 20, 'esperava dezenas de páginas em public/');
+
+  const destinos = ['/apostilas-para-concurso', '/ferramentas', '/materias', '/concursos', '/contato', '/recuperar'];
+  for (const caminho of paginas) {
+    const nome = path.relative(publico, caminho);
+    // O painel é interno: não é site público e não deve puxar visita.
+    if (nome === 'dashboard.html') continue;
+    const html = fs.readFileSync(caminho, 'utf8');
+
+    assert.equal((html.match(/class="guide-header"/g) || []).length, 1,
+      `${nome} precisa de exatamente um cabeçalho de navegação`);
+    assert.ok(html.includes('/site-header.css'),
+      `${nome} carrega o cabeçalho sem a folha de estilo dele`);
+    for (const destino of destinos) {
+      assert.ok(html.includes(`href="${destino}"`),
+        `${nome} não oferece caminho para ${destino}`);
+    }
+  }
+});

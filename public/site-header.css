@@ -1,0 +1,48 @@
+/* Cabeçalho do site inteiro.
+
+   Vive num arquivo próprio porque o mesmo cabeçalho é carimbado em toda página
+   estática pelo scripts/build-seo.cjs — inclusive nas escritas à mão (termos,
+   obrigado, recuperar), que não carregam seo.css. Quem chega em qualquer página
+   por um link do Google precisa conseguir sair dali para qualquer outra parte
+   do site, e não só voltar para a home. */
+
+/* O cabeçalho é fixo no topo: a saída para outra página tem de estar disponível
+   a qualquer altura da rolagem, não só no começo. Como ele cobre o topo da
+   janela, os links internos (#apostilas, #metodo) precisam parar abaixo dele. */
+html{scroll-padding-top:104px}
+.guide-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1180px;margin:auto;padding:10px 24px;background:rgba(255,253,249,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(8,40,79,.08)}
+.guide-brand{display:flex;align-items:center;flex-shrink:0;font:700 22px Georgia,serif;color:#08284f;text-decoration:none}
+.guide-brand img{width:138px;height:64px;object-fit:contain;mix-blend-mode:multiply}
+.guide-header nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+.guide-header nav a{font:800 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:#08284f;text-decoration:none;white-space:nowrap}
+.guide-header nav a:hover{color:#85662c}
+.guide-header nav a:focus-visible{outline:3px solid #b99754;outline-offset:4px;border-radius:6px}
+.nav-access{padding:9px 14px;border:1px solid #e6dece;border-radius:999px;background:#fff}
+
+/* Menu de concursos: estado -> cidade. Abre no hover e no foco do teclado, sem
+   depender de JavaScript — a página inteira é estática. */
+.mega{position:static}
+.mega-trigger{position:relative;z-index:2}
+.mega-panel{position:absolute;left:0;right:0;top:100%;z-index:30;display:none;background:#fff;border:1px solid #e6dece;border-radius:0 0 14px 14px;padding:22px 24px;box-shadow:0 26px 44px rgba(8,40,79,.14);max-height:70vh;overflow:auto}
+.mega:hover .mega-panel,.mega:focus-within .mega-panel{display:block}
+.mega-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+.mega-uf{display:block;margin-bottom:10px;font:900 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#85662c;text-decoration:none}
+.mega-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.mega-col li a{display:block;margin-left:-8px;padding:6px 8px;border-radius:8px;font:400 15px/1.4 system-ui,-apple-system,sans-serif;color:#08284f;text-decoration:none;white-space:normal}
+.mega-col li a:hover{background:#f4f0e6}
+.mega-col li a span{display:block;font-size:11px;font-weight:400;letter-spacing:.02em;color:#66717d}
+.mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font:400 12px/1.5 system-ui,sans-serif;color:#66717d}
+
+/* No celular o painel de cidades não cabe: o gatilho vira um link comum para
+   /concursos e a barra inteira passa a rolar na horizontal. Nenhum destino
+   fica escondido atrás de um botão — todos continuam alcançáveis. */
+@media(max-width:900px){
+  html{scroll-padding-top:136px}
+  .guide-header{flex-wrap:wrap;gap:8px;padding:8px 16px}
+  .guide-brand img{width:112px;height:52px}
+  .mega-panel{display:none!important}
+  .guide-header nav{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;gap:18px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 0 8px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .guide-header nav::-webkit-scrollbar{display:none}
+  .nav-access{padding:7px 12px}
+}
+@media print{.guide-header{display:none!important}}
