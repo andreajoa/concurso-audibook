@@ -17,7 +17,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts
-      - name: List likely portal image objects in Cloudflare R2
+      - name: List image/archive objects in Cloudflare R2
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -27,14 +27,13 @@ jobs:
           node --input-type=module <<'NODE'
           import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
           const client = new S3Client({region:'auto',endpoint:`https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,credentials:{accessKeyId:process.env.R2_ACCESS_KEY_ID,secretAccessKey:process.env.R2_SECRET_ACCESS_KEY}});
-          const wanted = ['home-sao-paulo','cidade-santos','cidade-guarulhos','cidade-catanduva','noticia-edital','noticia-salarios','noticia-planejamento','noticia-provas','apostilas-audio','cta-futuro','concursos-nacional','noticias-editorial','guias-estudo','sobre-trilha','ferramentas-dashboard','concurso-generico','portal','newsroom'];
-          let token; const matches=[];
+          let token; const all=[];
           do {
             const out=await client.send(new ListObjectsV2Command({Bucket:process.env.R2_BUCKET,ContinuationToken:token,MaxKeys:1000}));
-            for(const o of out.Contents||[]){const k=o.Key||''; if(wanted.some(x=>k.toLowerCase().includes(x))) matches.push({key:k,size:o.Size,lastModified:o.LastModified});}
+            for(const o of out.Contents||[]){const k=o.Key||''; if(/\.(?:webp|png|jpe?g|gif|zip)$/i.test(k)) all.push({key:k,size:o.Size,lastModified:o.LastModified});}
             token=out.IsTruncated?out.NextContinuationToken:undefined;
           } while(token);
-          console.log('R2_MATCHES_BEGIN');
-          console.log(JSON.stringify(matches,null,2));
-          console.log('R2_MATCHES_END');
+          console.log('R2_MEDIA_BEGIN');
+          console.log(JSON.stringify(all,null,2));
+          console.log('R2_MEDIA_END');
           NODE
