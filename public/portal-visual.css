@@ -1,0 +1,309 @@
+/*
+ * Camada visual do portal Trilha Aprova.
+ *
+ * Mantém o texto e os links vindos do build-seo.cjs (inclusive números de vagas
+ * e prazo mais próximo), mas apresenta os três cards como banners editoriais
+ * grandes. Assim o visual pode evoluir sem congelar informações que mudam.
+ */
+
+.promo-band{
+  position:relative;
+  padding:0 0 34px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(8,40,79,.08);
+  background:
+    radial-gradient(circle at 88% 0,rgba(202,166,90,.10),transparent 34rem),
+    linear-gradient(180deg,#fffdf9 0,#f8f2e8 100%);
+}
+
+.promo-band>.shell{width:min(1320px,calc(100% - 36px))}
+
+.promo-purpose{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:13px 18px;
+  text-align:center;
+  font-size:12px;
+  line-height:1.45;
+  letter-spacing:.015em;
+  color:#dbe5ef;
+  background:#08284f;
+  border-radius:0 0 16px 16px;
+  box-shadow:0 10px 26px rgba(8,40,79,.12);
+}
+.promo-purpose strong{color:#f3dda5}
+
+.promo-rail{
+  position:relative;
+  display:grid;
+  min-height:430px;
+  margin-top:20px;
+  border-radius:28px;
+  overflow:hidden;
+  background:#061d39;
+  box-shadow:0 28px 70px rgba(8,40,79,.18);
+  isolation:isolate;
+}
+
+.promo-slide{
+  grid-area:1/1;
+  position:relative;
+  min-height:430px;
+  display:grid;
+  grid-template-columns:64px minmax(0,650px) minmax(260px,1fr);
+  grid-template-rows:auto auto;
+  align-content:center;
+  align-items:start;
+  column-gap:18px;
+  row-gap:26px;
+  padding:58px 56px 56px;
+  border:0;
+  border-radius:0;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:none;
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  z-index:0;
+  background-color:#061d39;
+  background-size:cover;
+  background-position:center;
+  animation:portalBannerFade 24s linear infinite;
+  animation-delay:calc(var(--promo-i) * 8s);
+  will-change:opacity;
+}
+
+.promo-slide:nth-child(1){
+  background-image:
+    linear-gradient(90deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.95) 37%,rgba(4,26,53,.62) 58%,rgba(4,26,53,.04) 100%),
+    url('/assets/portal/banner-concursos.svg');
+}
+.promo-slide:nth-child(2){
+  background-image:
+    linear-gradient(90deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.94) 38%,rgba(4,26,53,.58) 59%,rgba(4,26,53,.03) 100%),
+    url('/assets/portal/banner-trilha.svg');
+}
+.promo-slide:nth-child(3){
+  background-image:
+    linear-gradient(90deg,rgba(4,20,40,.98) 0%,rgba(4,20,40,.93) 38%,rgba(57,30,33,.54) 61%,rgba(57,30,33,.02) 100%),
+    url('/assets/portal/banner-prazo.svg');
+}
+
+.promo-slide:focus-visible{
+  outline:4px solid #e4c982;
+  outline-offset:-6px;
+}
+
+.promo-rail:hover .promo-slide,
+.promo-rail:focus-within .promo-slide{animation-play-state:paused}
+
+.promo-icon{
+  grid-column:1;
+  grid-row:1;
+  width:58px;
+  height:58px;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
+  color:#08284f;
+  background:linear-gradient(145deg,#f8edcf,#caa65a);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.promo-icon svg{width:28px;height:28px}
+
+.promo-text{
+  grid-column:2;
+  grid-row:1;
+  display:block;
+  min-width:0;
+  align-self:center;
+}
+.promo-eyebrow{
+  display:block;
+  margin:0 0 11px;
+  color:#e4c982;
+  font:900 11px/1.2 Arial,sans-serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.promo-slide strong{
+  display:block;
+  max-width:640px;
+  margin:0;
+  color:#fff;
+  font:400 clamp(35px,4.2vw,58px)/.98 Georgia,serif;
+  letter-spacing:-.04em;
+  text-wrap:balance;
+}
+.promo-sub{
+  display:block;
+  max-width:620px;
+  margin-top:18px;
+  color:rgba(238,244,250,.78);
+  font-size:14px;
+  line-height:1.62;
+}
+.promo-cta{
+  grid-column:2;
+  grid-row:2;
+  justify-self:start;
+  display:inline-flex;
+  align-items:center;
+  min-height:48px;
+  padding:0 20px;
+  border-radius:999px;
+  color:#08284f;
+  background:#e4c982;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.015em;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+  transition:transform .2s ease,background .2s ease;
+}
+.promo-cta:after{content:'  →';font-size:17px;margin-left:9px;line-height:1}
+.promo-slide:hover .promo-cta{transform:translateY(-2px);background:#f0d995}
+
+@keyframes portalBannerFade{
+  0%,27%{opacity:1;visibility:visible;z-index:2}
+  34%,100%{opacity:0;visibility:hidden;z-index:0}
+}
+
+/* Os quatro atalhos gratuitos passam a funcionar como cartões visuais de portal,
+   equivalentes às categorias da referência, mas com a identidade Trilha Aprova. */
+.atalhos .atalho-grid{gap:18px}
+.atalho-card{
+  position:relative;
+  min-height:300px;
+  align-content:end;
+  gap:10px;
+  padding:25px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  color:#fff;
+  background-color:#08284f;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 18px 46px rgba(8,40,79,.12);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.atalho-card:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.16) 100%),url('/assets/portal/banner-concursos.svg')}
+.atalho-card:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.12) 100%),url('/assets/portal/banner-trilha.svg')}
+.atalho-card:nth-child(3){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.70) 54%,rgba(4,26,53,.14) 100%),url('/assets/portal/banner-prazo.svg')}
+.atalho-card:nth-child(4){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.10) 100%),url('/assets/portal/banner-trilha.svg');background-position:62% center}
+.atalho-card:hover{transform:translateY(-5px);border-color:rgba(228,201,130,.75);box-shadow:0 26px 58px rgba(8,40,79,.22)}
+.atalho-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  color:#08284f;
+  background:#e4c982;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.atalho-card strong{color:#fff;font:400 26px/1.05 Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+.atalho-card>span:not(.atalho-icon):not(.atalho-cta){color:rgba(237,244,250,.76);font-size:13px;line-height:1.55}
+.atalho-cta{margin-top:4px;color:#f1d990;font-size:12px;font-weight:900}
+.atalho-card:hover .atalho-cta{text-decoration:none;color:#fff}
+
+/* Dá presença de vitrine às capas já existentes no catálogo, sem substituir o
+   conteúdo real de cada produto. */
+.future-shelf{gap:20px}
+.catalog-product-card{
+  border-radius:24px;
+  border-color:rgba(8,40,79,.10);
+  background:linear-gradient(160deg,#fffdf9 0%,#f5eee3 100%);
+  box-shadow:0 16px 42px rgba(8,40,79,.08);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.catalog-product-card:hover{transform:translateY(-5px);border-color:rgba(202,166,90,.6);box-shadow:0 26px 62px rgba(8,40,79,.16)}
+.catalog-product-card .catalog-card-cover{
+  position:relative;
+  margin:14px -2px 10px;
+  border-radius:20px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,255,255,.98) 0 18%,rgba(228,201,130,.28) 19% 44%,transparent 45%),
+    linear-gradient(145deg,#0a315a,#061c36);
+  border:1px solid rgba(255,255,255,.1);
+}
+.catalog-product-card .catalog-card-cover:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 46%);
+  pointer-events:none;
+}
+.catalog-product-card .catalog-card-cover img{position:relative;z-index:1;max-width:92%;filter:drop-shadow(0 22px 28px rgba(0,0,0,.30))}
+
+@media(max-width:980px){
+  .promo-rail,.promo-slide{min-height:390px}
+  .promo-slide{grid-template-columns:54px minmax(0,1fr) minmax(160px,.55fr);padding:46px 38px;column-gap:15px}
+  .promo-slide strong{font-size:clamp(34px,5.4vw,50px)}
+  .promo-sub{font-size:13px}
+}
+
+@media(max-width:820px){
+  .promo-band>.shell{width:min(100% - 24px,1320px)}
+  .promo-purpose{padding:11px 13px;font-size:11px;border-radius:0 0 13px 13px}
+  .promo-rail{
+    display:grid;
+    grid-auto-flow:row;
+    gap:0;
+    min-height:440px;
+    margin-top:14px;
+    border-radius:22px;
+  }
+  .promo-slide{
+    grid-area:1/1;
+    min-height:440px;
+    grid-template-columns:46px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    align-content:end;
+    gap:14px 12px;
+    padding:30px 24px 28px;
+    opacity:0;
+    visibility:hidden;
+    animation:portalBannerFade 24s linear infinite;
+    animation-delay:calc(var(--promo-i) * 8s);
+    background-position:64% center;
+  }
+  .promo-slide:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.24) 100%),url('/assets/portal/banner-concursos.svg')}
+  .promo-slide:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.22) 100%),url('/assets/portal/banner-trilha.svg')}
+  .promo-slide:nth-child(3){background-image:linear-gradient(0deg,rgba(4,20,40,.99) 0%,rgba(4,20,40,.88) 48%,rgba(57,30,33,.20) 100%),url('/assets/portal/banner-prazo.svg')}
+  .promo-icon{grid-column:1;grid-row:1;width:44px;height:44px;border-radius:13px;align-self:start}
+  .promo-icon svg{width:23px;height:23px}
+  .promo-text{grid-column:2;grid-row:1}
+  .promo-eyebrow{font-size:9px;margin-bottom:8px}
+  .promo-slide strong{font-size:clamp(30px,8.6vw,42px);line-height:1}
+  .promo-sub{font-size:12px;line-height:1.5;margin-top:12px}
+  .promo-cta{grid-column:2;grid-row:2;min-height:44px;padding:0 16px;font-size:11px}
+  .atalhos .atalho-grid{grid-template-columns:1fr 1fr}
+  .atalho-card{min-height:275px;padding:22px}
+}
+
+@media(max-width:560px){
+  .promo-rail,.promo-slide{min-height:410px}
+  .promo-slide{padding:25px 19px 24px;grid-template-columns:40px minmax(0,1fr);gap:12px 10px}
+  .promo-icon{width:40px;height:40px}
+  .promo-slide strong{font-size:32px}
+  .promo-sub{max-width:96%}
+  .promo-cta{grid-column:1/-1;justify-self:stretch;justify-content:center;margin-top:4px}
+  .atalhos .atalho-grid{grid-template-columns:1fr}
+  .atalho-card{min-height:260px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .promo-rail{display:grid;gap:12px;background:transparent;box-shadow:none;overflow:visible}
+  .promo-slide{
+    grid-area:auto;
+    min-height:320px;
+    opacity:1;
+    visibility:visible;
+    animation:none;
+    transform:none;
+  }
+  .promo-rail:hover .promo-slide,.promo-rail:focus-within .promo-slide{animation-play-state:initial}
+  .atalho-card,.catalog-product-card,.promo-cta{transition:none;transform:none!important}
+}
