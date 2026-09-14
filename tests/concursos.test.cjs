@@ -207,3 +207,29 @@ test('os atalhos do meio da home também existem em disco', () => {
     assert.ok(fs.existsSync('public' + href + '.html'), `atalho aponta para página inexistente: ${href}`);
   }
 });
+
+// O botão de aviso manda uma origem que o servidor confere contra um formato
+// fechado. Se os dois deixarem de combinar, o pedido de aviso de Guarulhos
+// vira "storefront" em silêncio e a pessoa recebe o e-mail errado — ou nenhum.
+test('a origem que o botão envia é a que o servidor aceita', () => {
+  const fs = require('node:fs');
+  const handler = fs.readFileSync('lib/newsletter-handler.js', 'utf8');
+  const aceito = /const source=(\/\^.+?\/)\.test/.exec(handler);
+  assert.ok(aceito, 'o handler deixou de validar a origem');
+  const regex = new RegExp(aceito[1].slice(1, -1));
+
+  const paginas = [
+    ...fs.readdirSync('public/concursos', { recursive: true })
+  ].filter(f => String(f).endsWith('.html')).map(f => 'public/concursos/' + f);
+  paginas.push('public/concursos.html');
+
+  let encontrados = 0;
+  for (const arquivo of paginas) {
+    if (!fs.existsSync(arquivo)) continue;
+    for (const [, fonte] of fs.readFileSync(arquivo, 'utf8').matchAll(/data-newsletter-fonte="([^"]+)"/g)) {
+      assert.ok(regex.test(fonte), `${arquivo} envia origem que o servidor recusa: ${fonte}`);
+      encontrados++;
+    }
+  }
+  assert.ok(encontrados > 0, 'nenhuma página de concurso oferece o aviso de edital');
+});

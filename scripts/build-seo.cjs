@@ -894,6 +894,22 @@ function alertaPrazo(lista) {
     '</aside>';
 }
 
+/**
+ * Convite para ser avisado quando abrir edital naquele lugar.
+ *
+ * É a única coisa do portal que pede algo em troca, e o que ela pede é o
+ * mínimo: um e-mail, com a promessa escrita do que vai chegar. A origem viaja
+ * junto para que o aviso seja da cidade certa — mandar edital de Guarulhos
+ * para quem pediu Santos é como não mandar nada.
+ */
+function avisoEdital(lugar, fonte) {
+  return '<aside class="aviso-edital">' +
+    `<h2>Quer saber quando abrir concurso em ${esc(lugar)}?</h2>` +
+    `<p>Avisamos por e-mail quando um edital novo entrar nesta página e quando um prazo que já está no ar mudar. Sem custo, e dá para cancelar em um clique. O aviso não substitui o site oficial do órgão: ele serve para você não perder a data.</p>` +
+    `<button type="button" class="aviso-edital-cta" data-newsletter-open data-newsletter-cidade="${esc(lugar)}" data-newsletter-fonte="${esc(fonte)}">Avise-me sobre ${esc(lugar)}</button>` +
+    '</aside>';
+}
+
 /** Ficha do certame. Cada linha só existe se o dado existir na fonte. */
 function concursoCard(c, { heading = 'h3' } = {}) {
   const linhas = [
@@ -1003,6 +1019,7 @@ for (const e of estados) {
     '</ul>' +
     '<h2>Certames de ' + esc(e.ufNome) + '</h2>' +
     doEstado.map(c => concursoCard(c)).join('') +
+    avisoEdital(e.ufNome, 'concursos:' + e.ufSlug) +
     '<p><a href="/concursos">Ver todos os estados</a> · <a href="/ferramentas">Ferramentas gratuitas de estudo</a></p>' +
     disclaimer;
 
@@ -1033,7 +1050,8 @@ for (const e of estados) {
       alertaPrazo(m.concursos) +
       m.concursos.map(c => concursoCard(c, { heading: 'h2' })).join('') +
       '<h2>Como usar esta página</h2>' +
-      '<p>Confirme o prazo e a data na página oficial antes de qualquer coisa: é o documento que vale. Depois transforme o conteúdo programático em lista com o <a href="/ferramentas/edital-verticalizado">checklist do edital</a>, distribua suas horas no <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a> e acompanhe o quanto falta para sua meta na <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>. As três são gratuitas e funcionam dentro do navegador.</p>' +
+      '<p>Confirme o prazo e a data na página oficial antes de qualquer coisa: é o documento que vale. Depois transforme o conteúdo programático em lista com o <a href="/ferramentas/edital-verticalizado">checklist do edital</a>, distribua suas horas no <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a>, abra a <a href="/ferramentas/trilha-do-dia">trilha do dia</a> para saber o que estudar hoje e acompanhe o quanto falta para sua meta na <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>. Todas são gratuitas e funcionam dentro do navegador.</p>' +
+      avisoEdital(m.municipio, 'concursos:' + e.ufSlug + '/' + m.municipioSlug) +
       (outras.length
         ? '<h2>Outras cidades de ' + esc(e.ufNome) + '</h2><ul class="municipio-links">' +
           outras.map(o => `<li><a href="${o.path}">${esc(o.municipio)}</a></li>`).join('') + '</ul>'
