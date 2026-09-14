@@ -8,7 +8,11 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { parseEdital, computeCronograma, computeAcertos, hhmm, computeTrilha, faseDoEstudo } = require('../public/ferramentas.js');
+const {
+  parseEdital, computeCronograma, computeAcertos, hhmm, computeTrilha, faseDoEstudo,
+  registrarErro, registrarRevisao, revisoesDoDia, diagnosticoErros, resumoPorMateria,
+  somaDias, ESCADA_REVISAO
+} = require('../public/ferramentas.js');
 
 /* -------------------------------------------------- edital verticalizado */
 
@@ -293,4 +297,184 @@ test('a resposta de cinco minutos manda resolver, não ler', () => {
   assert.equal(r.micro.nome, 'Direito Administrativo');
   assert.match(r.micro.texto, /Responda 3 questões/);
   assert.match(r.micro.texto, /Não abra a teoria/);
+});
+
+/* -------------------------------------------------- caderno de erros */
+
+/** Registra uma sequência de erros num caderno vazio, todos na mesma data. */
+function caderno(entradas, dia) {
+  return entradas.reduce((c, e) => registrarErro(c, e, dia || '2026-03-01'), null);
+}
+
+const erro = (materia, motivo, topico) => ({ materia, motivo, topico: topico || '' });
+
+test('registrar um erro agenda a primeira revisão para o primeiro degrau', () => {
+  const c = registrarErro(null, erro('Português', 'li-errado', 'Crase'), '2026-03-01');
+  assert.equal(c.itens.length, 1);
+  const i = c.itens[0];
+  assert.equal(i.degrau, 0);
+  assert.equal(i.erros, 1);
+  assert.equal(i.dominado, false);
+  assert.equal(i.proxima, somaDias('2026-03-01', ESCADA_REVISAO[0]));
+});
+
+test('registrar não altera o caderno recebido', () => {
+  const antes = registrarErro(null, erro('Português', 'chutei'), '2026-03-01');
+  const depois = registrarErro(antes, erro('Informática', 'chutei'), '2026-03-02');
+  assert.equal(antes.itens.length, 1);
+  assert.equal(depois.itens.length, 2);
+  assert.notEqual(antes.itens, depois.itens);
+});
+
+test('matéria vazia ou motivo desconhecido não vira registro', () => {
+  assert.equal(registrarErro(null, erro('', 'chutei'), '2026-03-01'), null);
+  assert.equal(registrarErro(null, erro('Português', 'porque-sim'), '2026-03-01'), null);
+});
+
+test('acertar na revisão sobe um degrau e afasta a próxima', () => {
+  let c = registrarErro(null, erro('Português', 'nao-sabia'), '2026-03-01');
+  c = registrarRevisao(c, 1, true, '2026-03-02');
+  assert.equal(c.itens[0].degrau, 1);
+  assert.equal(c.itens[0].proxima, somaDias('2026-03-02', ESCADA_REVISAO[1]));
+  assert.equal(c.itens[0].acertosSeguidos, 1);
+});
+
+test('errar de novo derruba dois degraus, não zera o progresso', () => {
+  let c = registrarErro(null, erro('Português', 'nao-sabia'), '2026-03-01');
+  for (const dia of ['2026-03-02', '2026-03-05', '2026-03-12']) c = registrarRevisao(c, 1, true, dia);
+  assert.equal(c.itens[0].degrau, 3);
+
+  c = registrarRevisao(c, 1, false, '2026-03-28');
+  assert.equal(c.itens[0].degrau, 1, 'três acertos não podem ser apagados por um erro');
+  assert.equal(c.itens[0].erros, 2);
+  assert.equal(c.itens[0].acertosSeguidos, 0);
+  assert.equal(c.itens[0].proxima, somaDias('2026-03-28', ESCADA_REVISAO[1]));
+});
+
+test('errar no primeiro degrau não produz degrau negativo', () => {
+  let c = registrarErro(null, erro('Português', 'chutei'), '2026-03-01');
+  c = registrarRevisao(c, 1, false, '2026-03-02');
+  assert.equal(c.itens[0].degrau, 0);
+  assert.equal(c.itens[0].proxima, somaDias('2026-03-02', ESCADA_REVISAO[0]));
+});
+
+test('passar do último degrau tira a questão da fila em vez de revisá-la para sempre', () => {
+  let c = registrarErro(null, erro('Português', 'nao-sabia'), '2026-03-01');
+  let dia = '2026-03-01';
+  for (let k = 0; k < ESCADA_REVISAO.length; k++) {
+    dia = somaDias(dia, ESCADA_REVISAO[k]);
+    c = registrarRevisao(c, 1, true, dia);
+  }
+  assert.equal(c.itens[0].dominado, true);
+  assert.equal(c.itens[0].proxima, null);
+  assert.deepEqual(revisoesDoDia(c, '2099-01-01'), []);
+});
+
+test('revisar um id inexistente devolve o caderno intacto', () => {
+  const c = registrarErro(null, erro('Português', 'chutei'), '2026-03-01');
+  assert.equal(registrarRevisao(c, 99, true, '2026-03-02'), c);
+});
+
+test('a fila do dia traz o que venceu antes, com o atraso declarado', () => {
+  const c = caderno([erro('Português', 'li-errado'), erro('Informática', 'chutei')], '2026-03-01');
+  assert.deepEqual(revisoesDoDia(c, '2026-03-01'), [], 'antes de vencer, nada aparece');
+
+  const fila = revisoesDoDia(c, '2026-03-05');
+  assert.equal(fila.length, 2);
+  assert.equal(fila[0].atraso, 3, 'venceu em 02/03 e foi aberto em 05/03');
+});
+
+test('a fila prioriza o que está esperando há mais tempo', () => {
+  let c = registrarErro(null, erro('Português', 'li-errado'), '2026-03-01');
+  c = registrarErro(c, erro('Informática', 'chutei'), '2026-03-04');
+  const fila = revisoesDoDia(c, '2026-03-06');
+  assert.equal(fila[0].materia, 'Português');
+  assert.ok(fila[0].atraso > fila[1].atraso);
+});
+
+test('o diagnóstico não declara tendência com amostra pequena', () => {
+  const c = caderno([erro('Português', 'li-errado'), erro('Português', 'li-errado')]);
+  const d = diagnosticoErros(c);
+  assert.equal(d.dominante, null);
+  assert.equal(d.veredito, null);
+  assert.equal(d.faltam, 6, 'precisa dizer quantos faltam para o veredito valer');
+});
+
+test('com amostra suficiente, o diagnóstico aponta o motivo e não a matéria', () => {
+  const entradas = [];
+  for (let k = 0; k < 6; k++) entradas.push(erro('Português', 'li-errado'));
+  for (let k = 0; k < 2; k++) entradas.push(erro('Informática', 'nao-sabia'));
+  entradas.push(erro('Direito Administrativo', 'chutei'));
+
+  const d = diagnosticoErros(caderno(entradas));
+  assert.equal(d.total, 9);
+  assert.equal(d.dominante.id, 'li-errado');
+  assert.equal(d.dominante.percentual, 67);
+  assert.match(d.veredito, /leitura de enunciado/);
+  assert.match(d.receita, /sublinhe/);
+});
+
+test('erros espalhados por motivo não geram veredito inventado', () => {
+  const d = diagnosticoErros(caderno([
+    erro('A', 'li-errado'), erro('B', 'li-errado'),
+    erro('C', 'nao-sabia'), erro('D', 'nao-sabia'),
+    erro('E', 'chutei'), erro('F', 'chutei'),
+    erro('G', 'confundi'), erro('H', 'desatencao'),
+    erro('I', 'desatencao'), erro('J', 'confundi')
+  ]));
+  assert.equal(d.total, 10);
+  assert.equal(d.dominante, null, 'nenhum motivo chega a 35% — não há tendência a declarar');
+});
+
+test('as porcentagens do diagnóstico cobrem todos os erros registrados', () => {
+  const d = diagnosticoErros(caderno([
+    erro('A', 'li-errado'), erro('B', 'nao-sabia'), erro('C', 'chutei'), erro('D', 'li-errado')
+  ]));
+  assert.equal(d.contagem.reduce((s, m) => s + m.quantidade, 0), d.total);
+});
+
+test('o diagnóstico separa as questões que voltaram a ser erradas', () => {
+  let c = registrarErro(null, erro('Português', 'confundi', 'Crase'), '2026-03-01');
+  c = registrarErro(c, erro('Informática', 'chutei'), '2026-03-01');
+  c = registrarRevisao(c, 1, false, '2026-03-02');
+  c = registrarRevisao(c, 1, false, '2026-03-03');
+
+  const d = diagnosticoErros(c);
+  assert.equal(d.teimosos.length, 1);
+  assert.equal(d.teimosos[0].materia, 'Português');
+  assert.equal(d.teimosos[0].erros, 3);
+});
+
+test('o resumo por matéria ordena pelo que ainda está aberto e aponta o pior tópico', () => {
+  const r = resumoPorMateria(caderno([
+    erro('Português', 'li-errado', 'Crase'),
+    erro('Português', 'confundi', 'Crase'),
+    erro('Português', 'chutei', 'Concordância'),
+    erro('Informática', 'nao-sabia', 'Excel')
+  ]));
+
+  assert.equal(r[0].materia, 'Português');
+  assert.equal(r[0].erros, 3);
+  assert.equal(r[0].abertos, 3);
+  assert.equal(r[0].pior, 'Crase');
+  assert.equal(r[1].materia, 'Informática');
+});
+
+test('matéria dominada some da contagem de abertos sem sumir do histórico', () => {
+  let c = registrarErro(null, erro('Informática', 'nao-sabia', 'Excel'), '2026-03-01');
+  let dia = '2026-03-01';
+  for (let k = 0; k < ESCADA_REVISAO.length; k++) {
+    dia = somaDias(dia, ESCADA_REVISAO[k]);
+    c = registrarRevisao(c, 1, true, dia);
+  }
+  const r = resumoPorMateria(c);
+  assert.equal(r[0].abertos, 0);
+  assert.equal(r[0].dominados, 1);
+  assert.equal(r[0].erros, 1);
+});
+
+test('somaDias atravessa mês e ano bissexto sem escorregar', () => {
+  assert.equal(somaDias('2026-01-30', 3), '2026-02-02');
+  assert.equal(somaDias('2028-02-28', 1), '2028-02-29');
+  assert.equal(somaDias('2026-12-31', 1), '2027-01-01');
 });

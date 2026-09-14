@@ -871,6 +871,231 @@
     if (state && state.rows && state.rows.length) markSaved(root, true);
   }
 
+  /* ---------------------------------------------------------------- *
+   * Caderno de erros                                                   *
+   *                                                                    *
+   * As outras ferramentas organizam o que você pretende fazer. Esta    *
+   * guarda o que já aconteceu — e é a única que fica mais útil com o   *
+   * tempo, porque o valor dela é o histórico, não o formulário.        *
+   *                                                                    *
+   * Duas contas sustentam tudo:                                        *
+   *   1. quando a questão errada tem de voltar (repetição espaçada);   *
+   *   2. por que você erra (o motivo, não a matéria).                  *
+   * A segunda é a que muda a rotina de alguém: quem descobre que 60%   *
+   * dos erros são "li errado" para de estudar mais conteúdo e começa a *
+   * treinar leitura de enunciado.                                      *
+   * ---------------------------------------------------------------- */
+
+  /**
+   * Os degraus da revisão, em dias. O intervalo cresce porque o que você
+   * acabou de acertar precisa voltar logo, e o que você já acertou quatro
+   * vezes pode esperar meses sem se perder.
+   */
+  var ESCADA_REVISAO = [1, 3, 7, 16, 35, 75];
+
+  /**
+   * Errar de novo derruba dois degraus, não zera.
+   *
+   * Zerar é a escolha comum e é a errada: quem já acertou três vezes e
+   * escorregou na quarta não voltou ao dia zero, e tratar assim enche a fila
+   * de revisões que a pessoa não precisava fazer — até ela abandonar o
+   * caderno. Dois degraus devolvem a questão para um intervalo curto sem
+   * apagar o que já foi construído.
+   */
+  var QUEDA_POR_ERRO = 2;
+
+  var MOTIVOS = [
+    { id: 'nao-sabia', rotulo: 'Não sabia o conteúdo', curto: 'não sabia',
+      veredito: 'A maior parte dos seus erros é falta de conteúdo mesmo.',
+      receita: 'Aqui estudar mais resolve. Volte à teoria desses tópicos antes de gastar mais questões: resolver sem base vira chute com aparência de treino.' },
+    { id: 'confundi', rotulo: 'Confundi com um conceito parecido', curto: 'confundi',
+      veredito: 'Seus erros são de fronteira: você sabe os dois conceitos, mas troca um pelo outro.',
+      receita: 'Ler de novo não separa o que já está embaralhado. Escreva lado a lado o par que você confunde e a diferença entre eles em uma frase — é a comparação que desfaz o nó, não a releitura.' },
+    { id: 'li-errado', rotulo: 'Li o enunciado errado', curto: 'li errado',
+      veredito: 'Seu problema não é conteúdo: é leitura de enunciado.',
+      receita: 'Estudar mais matéria não muda esse número. Nas próximas questões, sublinhe o que está sendo pedido antes de olhar as alternativas, e marque as palavras que invertem o sentido: exceto, incorreta, não. É treino de leitura, e rende mais rápido que qualquer capítulo.' },
+    { id: 'chutei', rotulo: 'Chutei', curto: 'chutei',
+      veredito: 'Boa parte do que você registra como erro foi chute.',
+      receita: 'Chute não ensina nada porque não deixa rastro. Nas próximas, antes de marcar, anote em uma palavra por que escolheu aquela alternativa — mesmo errando, você passa a ter o que corrigir.' },
+    { id: 'desatencao', rotulo: 'Sabia, mas marquei a alternativa errada', curto: 'desatenção',
+      veredito: 'Você está perdendo questão que já sabia responder.',
+      receita: 'Isso não se resolve estudando: resolve-se no ritmo. Conferir o número da alternativa antes de marcar custa três segundos e devolve pontos que a teoria não devolveria.' }
+  ];
+
+  function motivoPorId(id) {
+    for (var i = 0; i < MOTIVOS.length; i++) if (MOTIVOS[i].id === id) return MOTIVOS[i];
+    return null;
+  }
+
+  /** Soma dias a uma data ISO sem passar pelo fuso local. */
+  function somaDias(iso, dias) {
+    var p = String(iso).split('-');
+    var base = Date.UTC(+p[0], +p[1] - 1, +p[2]);
+    var d = new Date(base + dias * 86400000);
+    var m = d.getUTCMonth() + 1;
+    var dia = d.getUTCDate();
+    return d.getUTCFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (dia < 10 ? '0' + dia : dia);
+  }
+
+  function cadernoVazio() { return { versao: 1, itens: [] }; }
+
+  /**
+   * Registra um erro e agenda a primeira revisão.
+   *
+   * Pura: recebe o caderno e devolve um novo, sem tocar no original. É o que
+   * permite testar a escada de revisão sem navegador e sem relógio.
+   */
+  function registrarErro(caderno, entrada, hoje) {
+    var atual = caderno && caderno.itens ? caderno : cadernoVazio();
+    var materia = String((entrada && entrada.materia) || '').trim();
+    var motivo = motivoPorId(entrada && entrada.motivo);
+    if (!materia || !motivo) return null;
+
+    var maior = atual.itens.reduce(function (m, i) { return Math.max(m, i.id); }, 0);
+    var item = {
+      id: maior + 1,
+      materia: materia,
+      topico: String((entrada && entrada.topico) || '').trim(),
+      motivo: motivo.id,
+      anotacao: String((entrada && entrada.anotacao) || '').trim(),
+      criadoEm: hoje,
+      degrau: 0,
+      proxima: somaDias(hoje, ESCADA_REVISAO[0]),
+      erros: 1,
+      acertosSeguidos: 0,
+      dominado: false
+    };
+    return { versao: 1, itens: atual.itens.concat([item]) };
+  }
+
+  /**
+   * Marca o resultado de uma revisão. Acertou sobe um degrau; errou desce
+   * dois. Quem passa do último degrau sai da fila: já é conteúdo dominado, e
+   * manter na fila só rouba o tempo das questões que ainda machucam.
+   */
+  function registrarRevisao(caderno, id, acertou, hoje) {
+    var atual = caderno && caderno.itens ? caderno : cadernoVazio();
+    var achou = false;
+    var itens = atual.itens.map(function (i) {
+      if (i.id !== id) return i;
+      achou = true;
+      var degrau = acertou ? i.degrau + 1 : Math.max(0, i.degrau - QUEDA_POR_ERRO);
+      var dominado = acertou && degrau >= ESCADA_REVISAO.length;
+      return {
+        id: i.id, materia: i.materia, topico: i.topico, motivo: i.motivo,
+        anotacao: i.anotacao, criadoEm: i.criadoEm,
+        degrau: dominado ? ESCADA_REVISAO.length : degrau,
+        proxima: dominado ? null : somaDias(hoje, ESCADA_REVISAO[Math.min(degrau, ESCADA_REVISAO.length - 1)]),
+        erros: i.erros + (acertou ? 0 : 1),
+        acertosSeguidos: acertou ? i.acertosSeguidos + 1 : 0,
+        dominado: dominado,
+        revisadoEm: hoje
+      };
+    });
+    return achou ? { versao: 1, itens: itens } : atual;
+  }
+
+  /**
+   * O que precisa voltar hoje. Inclui o que venceu antes e ficou para trás —
+   * dois dias sem abrir o caderno não podem fazer a questão sumir da fila.
+   * O atraso vem junto para que a tela possa dizer, sem julgamento, há quanto
+   * tempo aquilo está esperando.
+   */
+  function revisoesDoDia(caderno, hoje) {
+    var atual = caderno && caderno.itens ? caderno : cadernoVazio();
+    return atual.itens
+      .filter(function (i) { return !i.dominado && i.proxima && i.proxima <= hoje; })
+      .map(function (i) {
+        var p = i.proxima.split('-');
+        var h = String(hoje).split('-');
+        var atraso = Math.round((Date.UTC(+h[0], +h[1] - 1, +h[2]) - Date.UTC(+p[0], +p[1] - 1, +p[2])) / 86400000);
+        return {
+          id: i.id, materia: i.materia, topico: i.topico, motivo: i.motivo,
+          anotacao: i.anotacao, degrau: i.degrau, erros: i.erros, atraso: atraso
+        };
+      })
+      .sort(function (a, b) {
+        return b.atraso - a.atraso || b.erros - a.erros ||
+          String(a.materia).localeCompare(String(b.materia), 'pt-BR') || a.id - b.id;
+      });
+  }
+
+  /**
+   * O diagnóstico: por que você erra.
+   *
+   * É a resposta que nenhuma apostila dá, porque depende do seu histórico.
+   * O veredito só aparece com amostra suficiente — declarar tendência com
+   * quatro questões seria adivinhação com cara de dado.
+   */
+  var MINIMO_DIAGNOSTICO = 8;
+  var FATIA_DOMINANTE = 0.35;
+
+  function diagnosticoErros(caderno) {
+    var atual = caderno && caderno.itens ? caderno : cadernoVazio();
+    var total = atual.itens.length;
+
+    var contagem = MOTIVOS.map(function (m) {
+      var q = atual.itens.filter(function (i) { return i.motivo === m.id; }).length;
+      return {
+        id: m.id, rotulo: m.rotulo, curto: m.curto, quantidade: q,
+        percentual: total ? Math.round(q * 100 / total) : 0
+      };
+    }).sort(function (a, b) { return b.quantidade - a.quantidade || a.rotulo.localeCompare(b.rotulo, 'pt-BR'); });
+
+    // Reincidentes: erradas de novo depois de já terem voltado para revisão.
+    // São elas que a pessoa acha que sabe — e são as que derrubam prova.
+    var teimosos = atual.itens
+      .filter(function (i) { return i.erros >= 2 && !i.dominado; })
+      .sort(function (a, b) { return b.erros - a.erros || a.id - b.id; })
+      .map(function (i) { return { id: i.id, materia: i.materia, topico: i.topico, erros: i.erros }; });
+
+    var topo = contagem[0];
+    var maduro = total >= MINIMO_DIAGNOSTICO && topo.quantidade / total >= FATIA_DOMINANTE;
+    var motivo = maduro ? motivoPorId(topo.id) : null;
+
+    return {
+      total: total,
+      dominados: atual.itens.filter(function (i) { return i.dominado; }).length,
+      contagem: contagem,
+      teimosos: teimosos,
+      dominante: maduro ? topo : null,
+      veredito: motivo ? motivo.veredito : null,
+      receita: motivo ? motivo.receita : null,
+      faltam: maduro ? 0 : Math.max(0, MINIMO_DIAGNOSTICO - total)
+    };
+  }
+
+  /**
+   * Erros por matéria. É esta lista que a Trilha do Dia consome para parar de
+   * perguntar "você está travado nesta matéria?" e passar a saber a resposta.
+   */
+  function resumoPorMateria(caderno) {
+    var atual = caderno && caderno.itens ? caderno : cadernoVazio();
+    var mapa = {};
+    atual.itens.forEach(function (i) {
+      var m = mapa[i.materia] || (mapa[i.materia] = {
+        materia: i.materia, erros: 0, abertos: 0, dominados: 0, topicos: {}
+      });
+      m.erros++;
+      if (i.dominado) m.dominados++; else m.abertos++;
+      if (i.topico) m.topicos[i.topico] = (m.topicos[i.topico] || 0) + 1;
+    });
+
+    return Object.keys(mapa).map(function (nome) {
+      var m = mapa[nome];
+      var topicos = Object.keys(m.topicos)
+        .map(function (t) { return { topico: t, erros: m.topicos[t] }; })
+        .sort(function (a, b) { return b.erros - a.erros || a.topico.localeCompare(b.topico, 'pt-BR'); });
+      return {
+        materia: m.materia, erros: m.erros, abertos: m.abertos,
+        dominados: m.dominados, topicos: topicos,
+        pior: topicos.length ? topicos[0].topico : null
+      };
+    }).sort(function (a, b) {
+      return b.abertos - a.abertos || b.erros - a.erros || a.materia.localeCompare(b.materia, 'pt-BR');
+    });
+  }
+
   /* ---------------------------------------------------------------- */
 
   var INIT = { edital: initEdital, cronograma: initCronograma, acertos: initAcertos, trilha: initTrilha };
@@ -880,7 +1105,11 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
       parseEdital: parseEdital, computeCronograma: computeCronograma, computeAcertos: computeAcertos,
-      computeTrilha: computeTrilha, faseDoEstudo: faseDoEstudo, hhmm: hhmm
+      computeTrilha: computeTrilha, faseDoEstudo: faseDoEstudo, hhmm: hhmm,
+      registrarErro: registrarErro, registrarRevisao: registrarRevisao,
+      revisoesDoDia: revisoesDoDia, diagnosticoErros: diagnosticoErros,
+      resumoPorMateria: resumoPorMateria, somaDias: somaDias,
+      ESCADA_REVISAO: ESCADA_REVISAO, MOTIVOS: MOTIVOS
     };
     return;
   }
