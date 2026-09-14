@@ -75,20 +75,25 @@
   will-change:opacity;
 }
 
+/* As três fotos são as mesmas que abrem as páginas internas correspondentes:
+   concursos, ferramentas e cronograma. Isso não é economia de arquivo — é o que
+   faz a home parecer a capa deste portal, e não um banner alugado. Antes daqui
+   passavam os banners portal-hero-*.webp, que traziam a frase desenhada dentro
+   da imagem; o texto ficava duas vezes na tela, uma legível e outra não. */
 .promo-slide:nth-child(1){
   background-image:
     linear-gradient(90deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.95) 37%,rgba(4,26,53,.62) 58%,rgba(4,26,53,.04) 100%),
-    url('/assets/portal/portal-hero-concursos.webp');
+    url('/assets/portal/hero-concursos-desk.webp');
 }
 .promo-slide:nth-child(2){
   background-image:
     linear-gradient(90deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.94) 38%,rgba(4,26,53,.58) 59%,rgba(4,26,53,.03) 100%),
-    url('/assets/portal/portal-hero-ferramentas.webp');
+    url('/assets/portal/hero-ferramentas-desk.webp');
 }
 .promo-slide:nth-child(3){
   background-image:
     linear-gradient(90deg,rgba(4,20,40,.98) 0%,rgba(4,20,40,.93) 38%,rgba(57,30,33,.54) 61%,rgba(57,30,33,.02) 100%),
-    url('/assets/portal/portal-hero-prazos.webp');
+    url('/assets/portal/hero-cronograma-desk.webp');
 }
 
 .promo-slide:focus-visible{
@@ -189,10 +194,20 @@
   box-shadow:0 18px 46px rgba(8,40,79,.12);
   transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
 }
-.atalho-card:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.16) 100%),url('/assets/portal/portal-hero-concursos.webp')}
-.atalho-card:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.12) 100%),url('/assets/portal/portal-hero-ferramentas.webp')}
-.atalho-card:nth-child(3){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.70) 54%,rgba(4,26,53,.14) 100%),url('/assets/portal/portal-hero-prazos.webp')}
-.atalho-card:nth-child(4){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.10) 100%),url('/assets/portal/portal-hero-ferramentas.webp');background-position:62% center}
+/* Um card, uma foto, e a foto é a da página para onde o card leva: o cartão de
+   "Concursos por cidade" mostra a mesma prefeitura que abre /concursos. Os
+   recortes verticais (-mob) são os certos aqui — o card é mais alto que largo.
+   Antes os quatro usavam três banners com frase desenhada dentro, e o quarto
+   repetia o segundo; sob o degradê, sobrava um borrão de letras ilegíveis atrás
+   do título de verdade. */
+.atalho-card:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.16) 100%),url('/assets/portal/hero-concursos-mob.webp')}
+.atalho-card:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.12) 100%),url('/assets/portal/hero-ferramentas-mob.webp')}
+/* O terceiro card fala de método — ler edital, revisar, manter rotina — e por
+   isso recebe a foto das pastas de legislação, e não mais uma vista de cidade.
+   Quatro cards lado a lado com quatro horizontes viram um card só: o assunto
+   precisa aparecer já no enquadramento. */
+.atalho-card:nth-child(3){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.70) 54%,rgba(4,26,53,.14) 100%),url('/assets/portal/hero-edital-mob.webp')}
+.atalho-card:nth-child(4){background-image:linear-gradient(0deg,rgba(4,26,53,.98) 0%,rgba(4,26,53,.72) 54%,rgba(4,26,53,.10) 100%),url('/assets/portal/hero-apostilas-mob.webp')}
 .atalho-card:hover{transform:translateY(-5px);border-color:rgba(228,201,130,.75);box-shadow:0 26px 58px rgba(8,40,79,.22)}
 .atalho-icon{
   width:48px;
@@ -269,9 +284,12 @@
     animation-delay:calc(var(--promo-i) * 8s);
     background-position:64% center;
   }
-  .promo-slide:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.24) 100%),url('/assets/portal/portal-hero-concursos.webp')}
-  .promo-slide:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.22) 100%),url('/assets/portal/portal-hero-ferramentas.webp')}
-  .promo-slide:nth-child(3){background-image:linear-gradient(0deg,rgba(4,20,40,.99) 0%,rgba(4,20,40,.88) 48%,rgba(57,30,33,.20) 100%),url('/assets/portal/portal-hero-prazos.webp')}
+  /* No celular entra o recorte vertical, não o panorâmico reduzido: é outro
+     enquadramento da mesma foto, feito pelo scripts/build-images.py. E o degradê
+     passa a subir de baixo, porque o texto agora está embaixo. */
+  .promo-slide:nth-child(1){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.24) 100%),url('/assets/portal/hero-concursos-mob.webp')}
+  .promo-slide:nth-child(2){background-image:linear-gradient(0deg,rgba(4,26,53,.99) 0%,rgba(4,26,53,.88) 48%,rgba(4,26,53,.22) 100%),url('/assets/portal/hero-ferramentas-mob.webp')}
+  .promo-slide:nth-child(3){background-image:linear-gradient(0deg,rgba(4,20,40,.99) 0%,rgba(4,20,40,.88) 48%,rgba(57,30,33,.20) 100%),url('/assets/portal/hero-cronograma-mob.webp')}
   .promo-icon{grid-column:1;grid-row:1;width:44px;height:44px;border-radius:13px;align-self:start}
   .promo-icon svg{width:23px;height:23px}
   .promo-text{grid-column:2;grid-row:1}

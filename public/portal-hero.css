@@ -1,0 +1,136 @@
+/*
+ * A faixa de abertura que toda página do portal usa.
+ *
+ * Existe para responder a uma pergunta que o visitante faz sem perceber: "ainda
+ * estou no mesmo site?". Quem chega pelo Google cai direto numa página interna,
+ * nunca na home, e até aqui cada família de página abria de um jeito. A faixa é
+ * a mesma em todas — muda só a fotografia e o texto —, então a resposta é sim
+ * antes de ele terminar de ler o título.
+ *
+ * Ela mora dentro do <main>, e não antes dele, porque as travas de SEO medem o
+ * conteúdo de <main>: a contagem de links internos das ferramentas e das
+ * matérias, e a impressão digital que impede duas páginas de cidade de saírem
+ * iguais. Tirar a trilha e a linha de abertura dali mudaria as duas medidas sem
+ * mudar uma vírgula do que o leitor lê.
+ */
+
+.portal-hero{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  align-content:end;
+  /* Sangra até a borda da janela a partir de dentro de um <main> estreito. Os
+     50% são da caixa de conteúdo do .guide, que já desconta o padding — por
+     isso a conta acerta a borda sem precisar saber quanto é o padding. */
+  margin:-20px calc(50% - 50vw) 40px;
+  padding:clamp(72px,11vw,132px) clamp(20px,5vw,40px) clamp(34px,5vw,52px);
+  max-width:100vw;
+  overflow:hidden;
+  background:#061d39;
+  color:#fff;
+}
+
+/* A foto é decorativa: quem carrega o significado é o <h1> logo abaixo. Por isso
+   o alt é vazio — um leitor de tela que anunciasse a foto leria o assunto da
+   página duas vezes. */
+.portal-hero-art{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  display:block;
+}
+.portal-hero-art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+/* O degradê não é enfeite: é o que garante contraste de texto sobre uma foto
+   que muda de página para página. Sem ele, um título branco sobre um céu claro
+   fica ilegível justamente nas fotos mais bonitas. */
+.portal-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(90deg,rgba(4,20,40,.94) 0%,rgba(4,20,40,.82) 42%,rgba(4,20,40,.34) 72%,rgba(4,20,40,.14) 100%),
+    linear-gradient(0deg,rgba(4,20,40,.86) 0%,rgba(4,20,40,.30) 46%,rgba(4,20,40,.28) 100%);
+}
+
+.portal-hero-corpo{
+  width:min(1160px,100%);
+  margin-inline:auto;
+}
+.portal-hero-texto{max-width:780px}
+
+.portal-hero .crumbs,
+.portal-hero .crumbs a{color:rgba(223,233,243,.82)}
+.portal-hero .crumbs{margin:0 0 14px;max-width:none}
+.portal-hero .crumbs a:hover{color:#e4c982}
+.portal-hero .crumb-sep{color:rgba(223,233,243,.45)}
+.portal-hero .crumbs [aria-current]{color:#e4c982}
+
+.portal-hero .eyebrow{
+  display:block;
+  margin:0 0 12px;
+  color:#e4c982;
+  font:900 11px/1.2 Arial,sans-serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+/* O limite em ch, e não em px, é o que mantém a linha legível quando o título é
+   um nome de cargo comprido: a medida acompanha o tamanho da fonte em vez de
+   virar uma coluna estreita demais. */
+.portal-hero h1{
+  margin:0;
+  max-width:min(20ch,780px);
+  color:#fff;
+  font:400 clamp(32px,4.6vw,58px)/1.04 Georgia,serif;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+}
+
+.portal-hero .answer{
+  margin:20px 0 0;
+  padding:0 0 0 16px;
+  max-width:660px;
+  border-left:3px solid rgba(228,201,130,.85);
+  color:rgba(233,240,247,.86);
+  font-size:clamp(15px,1.5vw,18px);
+  line-height:1.66;
+}
+
+/* No celular a faixa deixa de ser panorâmica: o recorte vertical da foto já vem
+   pronto do build-images.py, e o texto passa a ocupar a largura inteira porque
+   não existe "ao lado" numa tela de 360 px. */
+@media(max-width:640px){
+  .portal-hero{
+    margin:-20px -20px 28px;
+    padding:clamp(56px,20vw,92px) 20px 26px;
+  }
+  .portal-hero::after{
+    background:linear-gradient(0deg,rgba(4,20,40,.95) 0%,rgba(4,20,40,.72) 52%,rgba(4,20,40,.34) 100%);
+  }
+  .portal-hero h1{max-width:none;font-size:clamp(28px,8.4vw,40px)}
+  .portal-hero .answer{margin-top:16px;font-size:15px;max-width:none}
+  .portal-hero .crumbs{font-size:12px}
+}
+
+/* Telas muito estreitas (iPhone SE, 320 px) e o padding lateral do .guide cai
+   para 20 px — a margem negativa acompanha, senão sobra uma faixa branca. */
+@media(max-width:650px){
+  .portal-hero{margin-inline:-20px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .portal-hero{transition:none}
+}
+
+@media print{
+  .portal-hero{background:none;color:#000;padding:0;margin:0}
+  .portal-hero-art,.portal-hero::after{display:none}
+  .portal-hero h1,.portal-hero .answer,.portal-hero .crumbs{color:#000}
+}

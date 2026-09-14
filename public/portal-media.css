@@ -1,43 +1,65 @@
 :root{--pm-navy:#08284f;--pm-gold:#d9a21a;--pm-cream:#fffaf0;--pm-line:rgba(8,40,79,.12);--pm-shadow:0 22px 60px rgba(8,40,79,.14)}
 
-/* A mídia do portal nunca pode ampliar o documento horizontalmente. */
-.portal-media-shell,.portal-strip-wrap,.portal-home-showcase,.portal-square-showcase,.guide,.atalhos,.catalog-future,.evidence-section{max-width:100%;overflow-x:clip}
+/* A mídia do portal nunca pode ampliar o documento horizontalmente.
+
+   O .guide saiu desta lista. Ele é a coluna de texto, e a faixa de abertura do
+   portal mora dentro dele sangrando até a borda da janela por margem negativa —
+   com overflow-x:clip aqui, a faixa era recortada na largura da coluna e o
+   título aparecia com as primeiras letras cortadas. A garantia de que a página
+   não rola de lado não se perde: ela é dada no documento inteiro, por
+   html,body{overflow-x:clip} em site-header.css, que é onde ela tem de estar. */
+.portal-media-shell,.portal-strip-wrap,.portal-home-showcase,.portal-square-showcase,.atalhos,.catalog-future,.evidence-section{max-width:100%;overflow-x:clip}
+.guide{max-width:100%}
 .portal-media-shell{width:min(1320px,calc(100% - 32px));margin:34px auto;position:relative}.portal-media-shell.is-tight{margin-block:24px}.portal-media-link{display:block;max-width:100%;text-decoration:none;color:inherit;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,#fffaf1,#fff);box-shadow:var(--pm-shadow);border:1px solid rgba(8,40,79,.08);position:relative;transition:transform .25s ease,box-shadow .25s ease}.portal-media-link picture,.portal-media-link img{display:block;width:100%;max-width:100%}.portal-media-link img{height:auto;object-fit:contain}.portal-media-link:hover{transform:translateY(-2px);box-shadow:0 28px 68px rgba(8,40,79,.18)}
 
-/* HOME — primeiro hero já nasce visível. Os WebP pesam uma fração dos PNGs anteriores. */
-body main>.promo-band{background:transparent!important;border:0!important;padding:0!important;margin:18px auto 42px!important;width:min(1380px,calc(100% - 24px))!important;max-width:calc(100% - 24px)!important;overflow:hidden!important}.promo-band>.shell{width:100%!important;max-width:none!important;padding:0!important}.promo-band .promo-purpose{display:none!important}.promo-band .promo-rail{display:block!important;position:relative!important;aspect-ratio:3/1!important;min-height:0!important;border-radius:28px!important;overflow:hidden!important;background:#e8edf2 url('/assets/portal/portal-hero-concursos.webp') center/cover no-repeat!important;box-shadow:0 30px 80px rgba(8,40,79,.18)!important}.promo-band .promo-slide{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;display:block!important;background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;opacity:0;visibility:hidden;overflow:hidden!important;box-shadow:none!important;animation:pmFade 18s infinite ease-in-out;will-change:opacity}.promo-band .promo-slide>*{opacity:0!important;pointer-events:none!important}.promo-band .promo-slide:nth-child(1){background-image:url('/assets/portal/portal-hero-concursos.webp')!important;animation-delay:0s;opacity:1;visibility:visible}.promo-band .promo-slide:nth-child(2){background-image:url('/assets/portal/portal-hero-ferramentas.webp')!important;animation-delay:6s}.promo-band .promo-slide:nth-child(3){background-image:url('/assets/portal/portal-hero-prazos.webp')!important;animation-delay:12s}@keyframes pmFade{0%,28%{opacity:1;visibility:visible}34%,94%{opacity:0;visibility:hidden}100%{opacity:1;visibility:visible}}
+/* HOME — o que estava aqui apagava a página.
 
-/* HOME — quatro cards, sem carrossel horizontal no celular. */
-.atalhos .atalho-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px!important;overflow:visible!important}.atalhos .atalho-card{width:100%!important;max-width:100%!important;aspect-ratio:1/1!important;min-height:0!important;padding:0!important;overflow:hidden!important;border-radius:22px!important;background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;box-shadow:0 18px 46px rgba(8,40,79,.12)!important;border:1px solid rgba(8,40,79,.08)!important;transition:transform .25s ease,box-shadow .25s ease!important}.atalhos .atalho-card:nth-child(1){background-image:url('/assets/portal/portal-square-concursos.webp')!important}.atalhos .atalho-card:nth-child(2){background-image:url('/assets/portal/portal-square-ferramentas.webp')!important}.atalhos .atalho-card:nth-child(3){background-image:url('/assets/portal/portal-square-prazos.webp')!important}.atalhos .atalho-card:nth-child(4){background-image:url('/assets/portal/portal-square-apostilas.webp')!important}.atalhos .atalho-card>*{opacity:0!important}.atalhos .atalho-card:hover{transform:translateY(-4px)!important;box-shadow:0 26px 58px rgba(8,40,79,.18)!important}
+   Três blocos de !important cobriam a faixa de destaques e os quatro atalhos com
+   imagens de banner e zeravam a opacidade do conteúdo real: `.promo-slide>*` e
+   `.atalho-card>*` ficavam invisíveis. O que sumia não era enfeite — era o texto
+   que o build calcula a cada rodada a partir do catálogo: quantas vagas estão
+   abertas hoje, em quantas cidades, qual é o prazo mais próximo. No lugar dele
+   aparecia uma fotografia com a frase "ENCONTRE CONCURSOS ABERTOS" desenhada
+   dentro, igual em toda visita, de agosto a dezembro.
 
-/* Faixas da home: diferentes entre si. */
-.evidence-section::after,.catalog-future::after{content:"";display:block;width:min(1280px,100%);max-width:100%;aspect-ratio:3/1;margin:48px auto 0;background-position:center;background-repeat:no-repeat;background-size:contain;border-radius:24px;overflow:hidden}.evidence-section::after{background-image:url('/assets/portal/portal-strip-edital.webp')}.catalog-future::after{background-image:url('/assets/portal/portal-strip-materiais.webp')}
+   Trocar informação de hoje por um cartaz de ontem é caro duas vezes: o Google
+   não lê texto dentro de imagem, e quem chega procurando prazo não encontra o
+   prazo. Os overrides saíram; a faixa e os atalhos voltam a ser estilizados por
+   portal-visual.css, que os desenha como texto.
 
-/* Páginas internas. Cada família escolhe uma arte de topo e duas faixas distintas. */
-.guide{--portal-top:url('/assets/portal/portal-hero-prazos.webp');--portal-mid-1:url('/assets/portal/portal-strip-simulados.webp');--portal-mid-2:url('/assets/portal/portal-strip-edital.webp')}
-html[data-portal-path^="/concursos"] .guide,html[data-portal-path*="concursos-publicos"] .guide,html[data-portal-path="/concursos-baixada-santista"] .guide{--portal-top:url('/assets/portal/portal-hero-concursos.webp');--portal-mid-1:url('/assets/portal/portal-strip-alertas.webp');--portal-mid-2:url('/assets/portal/portal-strip-simulados.webp')}
-html[data-portal-path^="/ferramentas"] .guide{--portal-top:url('/assets/portal/portal-hero-ferramentas.webp');--portal-mid-1:url('/assets/portal/portal-strip-edital.webp');--portal-mid-2:url('/assets/portal/portal-strip-simulados.webp')}
-html[data-portal-path^="/apostilas"] .guide,html[data-portal-path="/apostilas-para-concurso"] .guide,html[data-portal-path="/apostila-para-concurso-como-escolher"] .guide{--portal-top:url('/assets/portal/portal-hero-apostilas.webp');--portal-mid-1:url('/assets/portal/portal-strip-materiais.webp');--portal-mid-2:url('/assets/portal/portal-strip-edital.webp')}
+   As artes continuam publicadas e em uso nas duas faixas abaixo. */
 
-/* Quatro páginas editoriais ganham banners transparentes próprios — sem repetição entre elas. */
-html[data-portal-path="/materias"] .guide{--portal-top:url('/assets/portal/portal-top-materias.webp');--portal-mid-1:url('/assets/portal/portal-strip-edital.webp');--portal-mid-2:url('/assets/portal/portal-strip-simulados.webp')}
-html[data-portal-path="/como-estudar-para-concurso-do-zero"] .guide{--portal-top:url('/assets/portal/portal-top-como-estudar.webp');--portal-mid-1:url('/assets/portal/portal-strip-simulados.webp');--portal-mid-2:url('/assets/portal/portal-strip-materiais.webp')}
-html[data-portal-path="/perguntas-frequentes"] .guide{--portal-top:url('/assets/portal/portal-top-duvidas.webp');--portal-mid-1:url('/assets/portal/portal-strip-alertas.webp');--portal-mid-2:url('/assets/portal/portal-strip-materiais.webp')}
-html[data-portal-path="/glossario-concursos-publicos"] .guide{--portal-top:url('/assets/portal/portal-top-glossario.webp');--portal-mid-1:url('/assets/portal/portal-strip-edital.webp');--portal-mid-2:url('/assets/portal/portal-strip-alertas.webp')}
+/* Aqui ficavam mais duas faixas da home, em ::after, com as artes
+   portal-strip-edital e portal-strip-materiais. Saíram pelo mesmo motivo das
+   outras, e por um pior: cada uma trazia um botão desenhado dentro da imagem —
+   "VER ASSUNTOS →", "VER MATERIAIS →". Um botão pintado num ::after não é um
+   botão. Quem clicava ali não ia a lugar nenhum, e a impressão que sobrava era
+   a de um site quebrado. Os caminhos que eles prometiam existem como links de
+   verdade nas seções logo abaixo. */
 
-.guide::before{content:"";display:block;width:min(1280px,100%);max-width:100%;aspect-ratio:3/1;margin:8px auto 34px;background-image:var(--portal-top);background-position:center;background-repeat:no-repeat;background-size:contain;border-radius:24px;overflow:hidden}
-.guide>h2:nth-of-type(2)::after,.guide>h2:nth-of-type(4)::after{content:"";display:block;width:100%;max-width:100%;aspect-ratio:3/1;margin:32px 0 46px;background-position:center;background-repeat:no-repeat;background-size:contain;border-radius:18px;overflow:hidden}
-.guide>h2:nth-of-type(2)::after{background-image:var(--portal-mid-1)}
-.guide>h2:nth-of-type(4)::after{background-image:var(--portal-mid-2)}
+/* Páginas internas: a abertura é a .portal-hero, escrita em HTML.
 
-/* Páginas institucionais/legais e checkout recebem faixas leves, sem forçar hero grande. */
-.legal-main::before{content:"";display:block;width:100%;max-width:100%;aspect-ratio:3/1;margin:0 auto 28px;background:url('/assets/portal/portal-strip-alertas.webp') center/contain no-repeat;border-radius:18px;overflow:hidden}.checkout-layout::after{content:"";grid-column:1/-1;display:block;width:100%;max-width:100%;aspect-ratio:3/1;margin:18px auto 6px;background:url('/assets/portal/portal-strip-materiais.webp') center/contain no-repeat;border-radius:18px;overflow:hidden}
+   Aqui existia outra coisa. Cada família de página recebia, por ::before, um
+   banner 3:1 com o texto desenhado dentro da imagem — "ENCONTRE CONCURSOS
+   ABERTOS", "RECEBA ALERTAS E NÃO PERCA PRAZOS" — e mais dois no meio do texto,
+   presos ao segundo e ao quarto <h2> da página. Três motivos para sair:
+
+   1. Virou o segundo topo. Com a faixa do portal no lugar, toda página abria com
+      dois heróis empilhados, um com o assunto real e outro com um cartaz.
+   2. Texto dentro de imagem não é texto. O Google não lê, o leitor de tela não
+      anuncia e, num telefone de 320 px, a faixa 3:1 encolhe para 107 px de
+      altura: a frase fica com cerca de seis pixels e ninguém consegue ler.
+   3. A posição era um acidente. "O segundo <h2>" é onde o cartaz calhava de
+      cair, não onde ele fazia sentido — mudar um subtítulo mudava a página.
+
+   O que esses banners prometiam agora é dito em texto de verdade: o assunto no
+   <h1> da faixa, o aviso de prazo no .alerta-prazo, a newsletter no rodapé.
+   As artes continuam em public/assets/portal/ — a home ainda usa duas delas. */
 
 /* Classes do loader opcional, mantidas para compatibilidade. */
 .portal-home-showcase{width:min(1380px,calc(100% - 24px));margin:18px auto 42px;position:relative}.portal-home-carousel{position:relative;aspect-ratio:3/1;border-radius:28px;overflow:hidden;background:#071d35;box-shadow:0 30px 80px rgba(8,40,79,.2)}.portal-home-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s ease;display:block}.portal-home-slide:first-child,.portal-home-slide.is-active{opacity:1;visibility:visible;z-index:2}.portal-home-slide picture,.portal-home-slide img{display:block;width:100%;height:100%;max-width:100%}.portal-home-slide img{object-fit:cover}.portal-home-dots{display:flex;justify-content:center;gap:8px;margin-top:13px}.portal-home-dot{width:9px;height:9px;border:0;border-radius:50%;background:#c9ced4;padding:0;cursor:pointer}.portal-home-dot.is-active{background:var(--pm-gold);transform:scale(1.15)}.portal-square-showcase{width:min(1180px,calc(100% - 40px));margin:56px auto 72px}.portal-square-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.portal-square-card{display:block;min-width:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 18px 46px rgba(8,40,79,.11);border:1px solid rgba(8,40,79,.09)}.portal-square-card img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}.portal-strip-wrap{width:min(1280px,calc(100% - 32px));margin:48px auto}.portal-strip-wrap picture,.portal-strip-wrap img{display:block;width:100%;max-width:100%;height:auto}.portal-strip-wrap img{object-fit:contain}
 
 @media(max-width:980px){.atalhos .atalho-grid,.portal-square-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){body main>.promo-band{width:calc(100% - 16px)!important;max-width:calc(100% - 16px)!important;margin:12px auto 30px!important}.promo-band .promo-rail{aspect-ratio:1/1!important;border-radius:20px!important;background-image:url('/assets/portal/portal-square-concursos.webp')!important}.promo-band .promo-slide:nth-child(1){background-image:url('/assets/portal/portal-square-concursos.webp')!important}.promo-band .promo-slide:nth-child(2){background-image:url('/assets/portal/portal-square-ferramentas.webp')!important}.promo-band .promo-slide:nth-child(3){background-image:url('/assets/portal/portal-square-prazos.webp')!important}.atalhos .atalho-grid,.portal-square-grid{grid-template-columns:1fr!important;gap:14px!important;overflow:visible!important}.atalhos .atalho-card{width:100%!important;max-width:100%!important;flex:none!important}.guide::before,.guide>h2:nth-of-type(2)::after,.guide>h2:nth-of-type(4)::after,.legal-main::before,.checkout-layout::after,.evidence-section::after,.catalog-future::after{aspect-ratio:3/1;background-size:contain;border-radius:12px;margin-left:auto;margin-right:auto}.guide::before{margin-top:4px;margin-bottom:24px}.portal-media-shell,.portal-strip-wrap{width:calc(100% - 20px);margin-block:28px}.portal-media-link{border-radius:16px}.portal-square-showcase{width:calc(100% - 24px);margin:38px auto 50px}}
-@media(max-width:430px){.promo-band .promo-rail{border-radius:16px!important}.atalhos .atalho-grid,.portal-square-grid{grid-template-columns:1fr!important}.portal-strip-wrap,.portal-media-shell{width:calc(100% - 16px)}.guide::before,.guide>h2:nth-of-type(2)::after,.guide>h2:nth-of-type(4)::after{border-radius:8px}}
-@supports not (overflow:clip){.portal-media-shell,.portal-strip-wrap,.portal-home-showcase,.portal-square-showcase,.guide,.atalhos,.catalog-future,.evidence-section{overflow-x:hidden}}
-@media(prefers-reduced-motion:reduce){.promo-band .promo-slide{animation:none!important;opacity:0!important;visibility:hidden!important}.promo-band .promo-slide:first-child{opacity:1!important;visibility:visible!important}.atalhos .atalho-card{transition:none!important}}
+@media(max-width:700px){.portal-square-grid{grid-template-columns:1fr!important;gap:14px!important}.portal-media-shell,.portal-strip-wrap{width:calc(100% - 20px);margin-block:28px}.portal-media-link{border-radius:16px}.portal-square-showcase{width:calc(100% - 24px);margin:38px auto 50px}}
+@media(max-width:430px){.portal-square-grid{grid-template-columns:1fr!important}.portal-strip-wrap,.portal-media-shell{width:calc(100% - 16px)}}
+@supports not (overflow:clip){.portal-media-shell,.portal-strip-wrap,.portal-home-showcase,.portal-square-showcase,.atalhos,.catalog-future,.evidence-section{overflow-x:hidden}}

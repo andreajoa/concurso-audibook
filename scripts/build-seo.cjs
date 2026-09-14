@@ -223,8 +223,21 @@ const navHtml = megaHtml +
    renderPage, como a home, o obrigado e as páginas legais. */
 const siteHeader = '<header class="guide-header">' +
   '<a class="guide-brand" href="/" aria-label="Trilha Aprova — início">' +
-  '<img src="/assets/trilha-aprova-logo.webp?v=20260912" alt="Trilha Aprova" width="138" height="64"></a>' +
-  `<nav aria-label="Navegação do site">${navHtml}</nav></header>`;
+  // A barra é escura, então quem aparece aqui é a logo de tinta clara. A versão
+  // azul-marinho continua existindo, e é a que vai para o Google e para o ícone
+  // do aplicativo, onde o fundo é branco.
+  '<img src="/assets/trilha-aprova-logo-claro.webp?v=20260914" alt="Trilha Aprova" width="98" height="80"></a>' +
+  /* O botão de menu do celular.
+     Ele nasce escondido e só aparece quando o site-header.js marca o cabeçalho
+     como "js-menu". A ordem importa: sem JavaScript nada o revela, e o menu
+     continua sendo a lista de links que sempre foi. Um hambúrguer que não abre
+     é pior do que menu nenhum. */
+  '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-do-site">' +
+  '<span class="nav-toggle-riscos" aria-hidden="true"><i></i><i></i><i></i></span>' +
+  '<span class="nav-toggle-texto">Menu</span></button>' +
+  `<nav id="menu-do-site" aria-label="Navegação do site">${navHtml}</nav>` +
+  '<script src="/site-header.js" defer></script>' +
+  '</header>';
 
 /* O estilo do cabeçalho mora num arquivo próprio porque as páginas escritas à
    mão (termos, obrigado, recuperar) não carregam seo.css. Sem esta folha o menu
@@ -260,6 +273,116 @@ const crumbsHtml = trail => `<nav class="crumbs" aria-label="Trilha de navegaç�
 }</nav>`;
 
 const disclaimer = '<p class="page-note">Material independente de estudo, sem vínculo com órgãos públicos ou bancas organizadoras. Não divulgamos vagas, datas ou inscrições abertas e não há garantia de aprovação. Confirme sempre as informações no edital oficial.</p>';
+
+/* ------------------------------------------------------------------ *
+ * Faixa de abertura do portal
+ * ------------------------------------------------------------------ */
+
+/* As cidades do litoral abrem com a foto da orla; as demais, com a praça. Não é
+   decoração: ilustrar São Vicente com uma praça de interior, ou Catanduva com
+   uma praia, é dizer ao leitor que a página não foi feita para a cidade dele. */
+const CIDADES_DO_LITORAL = new Set([
+  'santos', 'guaruja', 'sao-vicente', 'praia-grande', 'cubatao', 'bertioga', 'itanhaem', 'peruibe', 'mongagua'
+]);
+
+/* Caminho -> fotografia. A ordem importa: a primeira regra que casar vence, e as
+   regras específicas vêm antes das genéricas. O fim da lista é o fundo do funil:
+   qualquer página que ninguém tenha previsto ainda abre como parte do portal, em
+   vez de abrir sem faixa nenhuma. */
+function heroSlot(path) {
+  const exatos = {
+    '/concursos': 'concursos',
+    '/concursos/sp': 'concursos-sp',
+    '/concursos-baixada-santista': 'baixada',
+    '/apostilas-para-concurso': 'apostilas',
+    '/apostila-para-concurso-como-escolher': 'apostila-detalhe',
+    '/como-estudar-com-apostila-e-audiobook': 'apostilas',
+    '/como-estudar-para-concurso-do-zero': 'comecar',
+    '/glossario-concursos-publicos': 'edital',
+    '/ferramentas': 'ferramentas',
+    '/ferramentas/edital-verticalizado': 'edital',
+    '/ferramentas/calculadora-de-acertos': 'calculadora',
+    '/ferramentas/cronograma-de-estudos': 'cronograma',
+    '/ferramentas/trilha-do-dia': 'cronograma',
+    '/ferramentas/caderno-de-erros': 'caderno',
+    '/materias': 'materias',
+    '/sobre': 'marca',
+    '/contato': 'atendimento',
+    '/perguntas-frequentes': 'atendimento'
+  };
+  if (exatos[path]) return exatos[path];
+
+  const cidade = path.match(/^\/concursos\/sp\/([a-z0-9-]+)$/);
+  if (cidade) {
+    if (cidade[1] === 'sao-paulo') return 'concursos-sp';
+    return CIDADES_DO_LITORAL.has(cidade[1]) ? 'cidade-litoral' : 'cidade-interior';
+  }
+  const seoLocal = path.match(/^\/concursos-publicos-([a-z0-9-]+)$/);
+  if (seoLocal) return CIDADES_DO_LITORAL.has(seoLocal[1]) ? 'cidade-litoral' : 'cidade-interior';
+
+  if (path.startsWith('/apostilas/')) return 'apostila-detalhe';
+  if (path.startsWith('/materias/')) return 'artigo';
+  if (path.startsWith('/ferramentas/')) return 'ferramentas';
+  if (path.startsWith('/concursos/')) return 'concursos';
+  return 'marca';
+}
+
+/* Três recortes, não um redimensionado pelo navegador. A faixa larga do desktop
+   vira uma tira sem assunto num telefone em pé, então o celular recebe um
+   enquadramento mais alto, feito à parte pelo scripts/build-images.py.
+
+   O alt é vazio de propósito: a fotografia ilustra, quem informa é o <h1> que
+   vem logo abaixo. Um alt descritivo faria o leitor de tela anunciar o assunto
+   da página duas vezes seguidas. */
+function heroArt(slot) {
+  const src = n => `/assets/portal/hero-${slot}-${n}.webp?v=${ASSET_VERSION}`;
+  return '<picture class="portal-hero-art">' +
+    `<source media="(max-width:640px)" srcset="${src('mob')}" width="720" height="560">` +
+    `<source media="(max-width:1024px)" srcset="${src('tab')}" width="1000" height="520">` +
+    `<img src="${src('desk')}" alt="" width="1440" height="540" fetchpriority="high" decoding="async">` +
+    '</picture>';
+}
+
+/* Falhar aqui é barato; descobrir em produção que metade das páginas abriu com
+   um retângulo azul vazio, não. O build para na hora se um recorte sumir. */
+function conferirRecortes() {
+  const faltando = [];
+  for (const slot of new Set(TODOS_OS_SLOTS)) {
+    for (const n of ['desk', 'tab', 'mob']) {
+      const arquivo = `public/assets/portal/hero-${slot}-${n}.webp`;
+      if (!fs.existsSync(arquivo)) faltando.push(arquivo);
+    }
+  }
+  if (faltando.length) {
+    console.error('Recortes ausentes — rode scripts/build-images.py:\n  ' + faltando.join('\n  '));
+    process.exit(1);
+  }
+}
+const TODOS_OS_SLOTS = [
+  'concursos', 'concursos-sp', 'baixada', 'cidade-litoral', 'cidade-interior',
+  'apostilas', 'apostila-detalhe', 'ferramentas', 'edital', 'calculadora',
+  'cronograma', 'caderno', 'materias', 'artigo', 'comecar', 'atendimento', 'marca'
+];
+const ASSET_VERSION = '20260914';
+conferirRecortes();
+
+const HERO_CSS_TAG = '<link rel="stylesheet" href="/portal-hero.css">';
+
+/* A faixa de abertura de toda página do portal.
+
+   Ela não acrescenta texto nenhum: recebe a trilha, o chapéu, o título e a linha
+   de abertura que a página já tinha e os coloca sobre a fotografia. É por isso
+   que trocar o layout inteiro não mexeu numa única trava de SEO — o que o robô
+   lê dentro de <main> continua sendo exatamente o mesmo. */
+function heroHtml({ slot, trail, kicker, title, lead }) {
+  return `<section class="portal-hero">${heroArt(slot)}` +
+    '<div class="portal-hero-corpo"><div class="portal-hero-texto">' +
+    crumbsHtml(trail) +
+    (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
+    `<h1>${esc(title)}</h1>` +
+    (lead ? `<p class="answer">${esc(lead)}</p>` : '') +
+    '</div></div></section>';
+}
 
 /* ------------------------------------------------------------------ *
  * <head> comum
@@ -329,13 +452,16 @@ function renderPage(opts) {
     '<link rel="stylesheet" href="/legal.css"><link rel="stylesheet" href="/site-footer.css">' +
     HEADER_CSS_TAG +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
+    HERO_CSS_TAG +
     styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
     `</head><body data-portal-path="${esc(path)}">` +
     siteHeader +
-    `<main class="guide">${crumbsHtml(fullTrail)}` +
-    (kicker ? `<p class="eyebrow">${esc(kicker)}</p>` : '') +
-    `<h1>${esc(title)}</h1>` +
-    (lead ? `<p class="answer">${esc(lead)}</p>` : '') +
+    /* A abertura fica DENTRO do <main>: as travas de SEO medem o texto de <main>
+       — a impressão digital que separa uma cidade da outra e a contagem de links
+       internos das ferramentas. Pôr a trilha e o título fora mudaria as duas
+       medidas sem mudar nada do que o leitor lê. */
+    '<main class="guide">' +
+    heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead }) +
     keyFactsHtml(keyFacts) +
     body +
     faqHtml(faq) +
@@ -1750,7 +1876,14 @@ const SEM_CABECALHO = new Set([
 ]);
 // Cabeçalhos antigos de cada geração do site. Ficam listados para que o build
 // consiga reconhecê-los e trocá-los, mesmo os que já não são gerados por aqui.
-const CABECALHOS_ANTIGOS = /<header[^>]*class="[^"]*(?:ta-header|legal-header|site-header|store-header)[^"]*"[\s\S]*?<\/header>/g;
+//
+// "guide-header" é o cabeçalho atual, e está nesta lista de propósito: o que a
+// página traz é o cabeçalho de *algum* build anterior, não necessariamente o
+// desta rodada. Arrancar e recarimbar sempre é o que faz uma troca de logo, de
+// link ou de cor chegar às páginas escritas à mão. Enquanto ele não estava
+// listado, mudar o cabeçalho resultava em duas barras empilhadas na mesma
+// página, porque a antiga sobrevivia e a nova entrava logo acima.
+const CABECALHOS_ANTIGOS = /<header[^>]*class="[^"]*(?:guide-header|ta-header|legal-header|site-header|store-header)[^"]*"[\s\S]*?<\/header>/g;
 let headersSynced = 0;
 for (const file of fs.readdirSync('public')) {
   if (!file.endsWith('.html') || SEM_CABECALHO.has(file)) continue;

@@ -20,14 +20,26 @@ img,video{height:auto}
    a qualquer altura da rolagem, não só no começo. Como ele cobre o topo da
    janela, os links internos (#apostilas, #metodo) precisam parar abaixo dele. */
 html{scroll-padding-top:104px}
-.guide-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1180px;width:100%;margin:auto;padding:10px 24px;background:rgba(255,253,249,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(8,40,79,.08)}
-.guide-brand{display:flex;align-items:center;flex-shrink:0;font:700 22px Georgia,serif;color:#08284f;text-decoration:none}
-.guide-brand img{width:138px;height:64px;object-fit:contain;mix-blend-mode:multiply}
+/* A barra é azul-marinho, e não creme, porque ela é a moldura do portal: some
+   a linha entre "cabeçalho" e "página" quando as duas são claras, e era isso
+   que fazia cada seção do site parecer um site diferente. Sendo escura, ela
+   emoldura qualquer conteúdo que venha abaixo — foto, texto ou formulário.
+   A barra ocupa a largura inteira da janela; só o conteúdo dela é centralizado,
+   senão o azul terminaria no meio da tela em monitores largos. */
+.guide-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:28px;width:100%;padding:10px max(24px,calc((100% - 1180px)/2));background:rgba(8,40,79,.94);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid rgba(228,201,130,.24)}
+.guide-brand{display:flex;align-items:center;flex-shrink:0;font:700 22px Georgia,serif;color:#f3ead9;text-decoration:none}
+/* A logo original é azul-marinho sobre transparente: sobre esta barra ela
+   sumiria. Aqui entra a versão de tinta creme, gerada do mesmo desenho pelo
+   scripts/build-images.py. E não há mais mix-blend-mode: aquilo existia para
+   apagar o fundo branco de um arquivo que não tinha transparência de verdade —
+   agora tem, e o truque só escureceria a logo contra o azul. */
+.guide-brand img{width:98px;height:80px;object-fit:contain}
 .guide-header nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}
-.guide-header nav a{font:800 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:#08284f;text-decoration:none;white-space:nowrap}
-.guide-header nav a:hover{color:#85662c}
-.guide-header nav a:focus-visible{outline:3px solid #b99754;outline-offset:4px;border-radius:6px}
-.nav-access{padding:9px 14px;border:1px solid #e6dece;border-radius:999px;background:#fff}
+.guide-header nav a{font:800 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:#dce5ef;text-decoration:none;white-space:nowrap}
+.guide-header nav a:hover{color:#e4c982}
+.guide-header nav a:focus-visible{outline:3px solid #e4c982;outline-offset:4px;border-radius:6px}
+.nav-access{padding:9px 14px;border:1px solid rgba(228,201,130,.55);border-radius:999px;background:transparent;color:#e4c982!important}
+.nav-access:hover{background:rgba(228,201,130,.14)}
 
 /* Menu de concursos: estado -> cidade. Abre no hover e no foco do teclado, sem
    depender de JavaScript — a página inteira é estática. */
@@ -43,12 +55,25 @@ html{scroll-padding-top:104px}
 .mega-col li a span{display:block;font-size:11px;font-weight:400;letter-spacing:.02em;color:#66717d}
 .mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font:400 12px/1.5 system-ui,sans-serif;color:#66717d}
 
-/* No celular não existe trilho horizontal: os itens do menu quebram linha
-   dentro da largura disponível. Assim nenhuma página cria scroll lateral. */
+/* O botão do menu de celular.
+   Nasce fora da tela em qualquer largura e só é revelado pelo site-header.js,
+   dentro da faixa estreita. Um hambúrguer visível que não abre é pior do que
+   menu nenhum, então ele depende do script que o faz funcionar. */
+.nav-toggle{display:none}
+
+/* No celular a lista de links vira uma gaveta atrás de um botão.
+
+   O que havia aqui antes era a mesma lista quebrando em três linhas. Como a
+   barra é fixa, essas três linhas tomavam 188 px do alto da tela em toda
+   página e em toda rolagem — num iPhone SE, um terço da altura útil. E os
+   links ficavam com 11 px para caber, letra que o dedo erra e o olho cansa.
+
+   A gaveta devolve esse espaço: o cabeçalho volta a ter uma linha só, e os
+   links ganham tamanho de leitura e altura de toque de sobra. */
 @media(max-width:900px){
   html{scroll-padding-top:164px}
   .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%;overflow:hidden}
-  .guide-brand img{width:108px;height:50px}
+  .guide-brand img{width:64px;height:52px}
   .mega-panel{display:none!important}
   .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:2px 12px;overflow:visible;padding:2px 0 6px;-webkit-mask-image:none;mask-image:none}
   /* O texto do link tem 15px de altura; sozinho ele é um alvo que o dedo erra.
@@ -60,12 +85,39 @@ html{scroll-padding-top:104px}
      tirando um item do fluxo, o menu cabe em menos linhas, e o cabeçalho fixo
      devolve ao leitor a altura que estava tomando da tela em toda página. */
   .nav-access{position:absolute;top:12px;right:14px;padding:8px 12px}
+
+  /* Daqui para baixo, só quando o script está de pé. */
+  .guide-header.js-menu{flex-wrap:nowrap;align-items:center;justify-content:space-between;overflow:visible;padding:8px 14px}
+  .guide-header.js-menu .nav-toggle{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:9px 15px;border:1px solid rgba(228,201,130,.55);border-radius:999px;background:transparent;color:#e4c982;font:800 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}
+  .guide-header.js-menu .nav-toggle:focus-visible{outline:3px solid #e4c982;outline-offset:3px}
+  .nav-toggle-riscos{display:grid;gap:4px;width:18px}
+  .nav-toggle-riscos i{display:block;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(2){opacity:0}
+  .guide-header.js-menu[data-menu-aberto] .nav-toggle-riscos i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+  /* A gaveta desce por baixo da barra e cobre a largura da janela. Ela tem
+     rolagem própria com altura limitada: num telefone deitado a lista inteira
+     não cabe, e sem isso os últimos itens ficariam inalcançáveis. */
+  .guide-header.js-menu nav{display:none}
+  .guide-header.js-menu[data-menu-aberto] nav{position:absolute;left:0;right:0;top:100%;z-index:40;display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%;max-height:calc(100dvh - 68px);overflow-y:auto;padding:6px 14px 16px;background:#08284f;border-bottom:1px solid rgba(228,201,130,.3);box-shadow:0 24px 48px rgba(3,17,35,.45)}
+  .guide-header.js-menu[data-menu-aberto] nav a{display:block;padding:14px 4px;font-size:16px;line-height:1.3;border-bottom:1px solid rgba(228,201,130,.14)}
+  .guide-header.js-menu[data-menu-aberto] .mega{display:block}
+  .guide-header.js-menu[data-menu-aberto] .nav-access{position:static;margin-top:14px;align-self:flex-start;border-radius:999px;padding:12px 20px;font-size:15px;border-bottom:1px solid rgba(228,201,130,.55)}
+  /* Com a barra de novo em uma linha só, o destino de um link #ancora deixa de
+     precisar de 164px de folga. :has não existe em navegador antigo — lá vale
+     a regra de cima, que só sobra espaço. */
+  html:has(.guide-header.js-menu){scroll-padding-top:82px}
 }
 @media(max-width:520px){
   html{scroll-padding-top:188px}
   .guide-header{padding-inline:12px}
   .guide-header nav{gap:2px 10px}
   .guide-header nav a{font-size:11px;padding:6px 2px}
+  .guide-header.js-menu{padding-inline:12px}
+  .guide-header.js-menu .nav-toggle{padding:9px 13px}
+  .guide-header.js-menu[data-menu-aberto] nav a{font-size:16px;padding:14px 4px}
 }
+@media(prefers-reduced-motion:reduce){.nav-toggle-riscos i{transition:none}}
 @supports not (overflow:clip){html,body{overflow-x:hidden}}
 @media print{.guide-header{display:none!important}}
