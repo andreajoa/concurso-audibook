@@ -8,7 +8,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { parseEdital, computeCronograma, computeAcertos, hhmm } = require('../public/ferramentas.js');
+const { parseEdital, computeCronograma, computeAcertos, hhmm, computeTrilha, faseDoEstudo } = require('../public/ferramentas.js');
 
 /* -------------------------------------------------- edital verticalizado */
 
@@ -189,4 +189,108 @@ test('formata hora de um jeito que cabe numa agenda real', () => {
   assert.equal(hhmm(0.5), '30 min');
   assert.equal(hhmm(1.75), '1h45');
   assert.equal(hhmm(2.1), '2h06');
+});
+
+/* --------------------------------------------------------- trilha do dia */
+
+// A trilha do dia é a ferramenta que responde "o que eu estudo AGORA". Se ela
+// devolver plano diferente a cada clique, ninguém confia nela; se a soma dos
+// blocos não bater com o tempo informado, a pessoa passa do horário.
+const materias = () => [
+  { nome: 'Português', questoes: 20, seguranca: '2' },
+  { nome: 'Direito Administrativo', questoes: 15, seguranca: '1' },
+  { nome: 'Raciocínio Lógico', questoes: 10, seguranca: '2' },
+  { nome: 'Informática', questoes: 10, seguranca: '3' }
+];
+
+test('a soma dos blocos bate com o tempo que a pessoa disse ter', () => {
+  for (const min of [20, 45, 60, 90, 137, 300]) {
+    const r = computeTrilha(materias(), min, 25, 0);
+    const soma = r.blocos.reduce((s, b) => s + b.total, 0);
+    assert.equal(soma, r.minutos, `blocos não somam em ${min} min`);
+    // Só se perde o resto que não fecha cinco minutos — nunca mais que isso.
+    assert.ok(min - soma >= 0 && min - soma < 5, `${min} min virou ${soma}`);
+  }
+});
+
+test('cada bloco tem leitura e questão: nunca só um dos dois', () => {
+  const r = computeTrilha(materias(), 90, 3, 0);
+  for (const b of r.blocos) {
+    assert.ok(b.leitura >= 5, `bloco de ${b.nome} sem leitura`);
+    assert.ok(b.questoes >= 5, `bloco de ${b.nome} sem questões`);
+    assert.equal(b.leitura + b.questoes, b.total);
+  }
+});
+
+test('mesma entrada e mesma rotação devolvem o mesmo plano no mesmo dia', () => {
+  const a = computeTrilha(materias(), 90, 25, 0);
+  const b = computeTrilha(materias(), 90, 25, 0);
+  assert.deepEqual(a.blocos, b.blocos);
+});
+
+test('a rotação troca a matéria que abre o dia, para nenhuma ficar esquecida', () => {
+  const dia0 = computeTrilha(materias(), 90, 25, 0);
+  const dia1 = computeTrilha(materias(), 90, 25, 1);
+  const dia4 = computeTrilha(materias(), 90, 25, 4);
+  assert.notEqual(dia0.blocos[0].nome, dia1.blocos[0].nome);
+  // Quatro matérias, quatro dias: no quinto a fila volta ao começo.
+  assert.equal(dia4.blocos[0].nome, dia0.blocos[0].nome);
+});
+
+test('a matéria que mais pesa e menos domina abre a primeira rodada', () => {
+  const r = computeTrilha(materias(), 90, 25, 0);
+  // Direito Administrativo: 15 questões × peso 3 (travado) = 45, maior score.
+  assert.equal(r.blocos[0].nome, 'Direito Administrativo');
+  assert.match(r.blocos[0].motivo, /travado/);
+});
+
+test('tempo curto reduz o número de matérias em vez de picar o dia', () => {
+  const r = computeTrilha(materias(), 45, 25, 0);
+  assert.equal(r.blocos.length, 2);
+  assert.deepEqual(r.espera.length, 2);
+  for (const b of r.blocos) assert.ok(b.total >= 20, 'bloco abaixo de 20 min');
+});
+
+test('quanto mais perto a prova, maior a fatia de questões', () => {
+  const share = dias => {
+    const r = computeTrilha([{ nome: 'A', questoes: 10, seguranca: '2' }], 100, dias, 0);
+    return r.blocos[0].questoes;
+  };
+  assert.ok(share(3) > share(20));
+  assert.ok(share(20) > share(60));
+  assert.ok(share(60) > share(200));
+});
+
+test('sem data de prova a ferramenta não finge urgência', () => {
+  const r = computeTrilha(materias(), 90, null, 0);
+  assert.equal(r.fase.id, 'sem-data');
+  assert.equal(r.dias, null);
+});
+
+test('data de prova já vencida é dita, não escondida', () => {
+  assert.equal(faseDoEstudo(-1).id, 'passou');
+  assert.equal(faseDoEstudo(0).id, 'vespera');
+  assert.equal(faseDoEstudo(7).id, 'vespera');
+  assert.equal(faseDoEstudo(8).id, 'reta-final');
+  assert.equal(faseDoEstudo(30).id, 'reta-final');
+  assert.equal(faseDoEstudo(31).id, 'consolidacao');
+  assert.equal(faseDoEstudo(90).id, 'consolidacao');
+  assert.equal(faseDoEstudo(91).id, 'base');
+  assert.equal(faseDoEstudo(null).id, 'sem-data');
+});
+
+test('menos de vinte minutos não vira plano de estudo', () => {
+  assert.equal(computeTrilha(materias(), 19, 25, 0), null);
+  assert.equal(computeTrilha(materias(), 0, 25, 0), null);
+  assert.equal(computeTrilha([], 90, 25, 0), null);
+  assert.equal(computeTrilha([{ nome: 'A', questoes: 0, seguranca: '2' }], 90, 25, 0), null);
+  assert.equal(computeTrilha([{ nome: '', questoes: 10, seguranca: '2' }], 90, 25, 0), null);
+});
+
+test('a resposta de cinco minutos manda resolver, não ler', () => {
+  const r = computeTrilha(materias(), 90, 25, 3);
+  // O micro não gira com a rotação: ele sempre aponta a matéria mais crítica.
+  assert.equal(r.micro.nome, 'Direito Administrativo');
+  assert.match(r.micro.texto, /Responda 3 questões/);
+  assert.match(r.micro.texto, /Não abra a teoria/);
 });

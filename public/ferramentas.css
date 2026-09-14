@@ -51,5 +51,20 @@
 .tool-card h3 a:hover{text-decoration:underline}
 .tool-card p{margin:0 0 12px;font-size:15px}
 .tool-card .tool-card-tag{display:inline-block;font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2f7d52;background:#eef7f1;border-radius:999px;padding:4px 10px;margin-bottom:10px}
+.trilha-fase{border:1px solid #e1e7ee;border-left:4px solid #b99754;border-radius:12px;padding:14px 18px;margin:0 0 18px;background:#fffdf7}
+.trilha-fase-tag{display:inline-block;font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#85662c;margin-right:10px}
+.trilha-fase strong{font:600 16px system-ui,sans-serif;color:#08284f}
+.trilha-fase p{margin:6px 0 0;font-size:15px;line-height:1.6;color:#2c4763}
+.trilha-total{font:600 17px system-ui,sans-serif;color:#08284f;margin:0 0 14px}
+.trilha-lista{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.trilha-bloco{border:1px solid #e1e7ee;border-radius:12px;padding:16px 18px;background:#fff}
+.trilha-bloco-hora{display:block;font:600 12px system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#5b6e82;margin-bottom:4px}
+.trilha-bloco>strong{display:block;font:400 20px/1.3 Georgia,serif;color:#08284f}
+.trilha-bloco-acao{margin:8px 0 0;font-size:16px;line-height:1.6;color:#15304e}
+.trilha-bloco-acao b{color:#08284f}
+.trilha-bloco-motivo{margin:4px 0 0;font-size:14px;color:#5b6e82}
+.trilha-micro{margin:20px 0 0;padding:16px 18px;border-radius:12px;background:#eef7f1;border:1px solid #d3e7db}
+.trilha-micro strong{display:block;font:600 14px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#2f7d52;margin-bottom:6px}
+.trilha-micro p{margin:0;font-size:16px;line-height:1.6;color:#1d4733}
 @media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table input[type=number]{max-width:70px}.tool-verdict{font-size:16px}}
 @media print{.guide-header,.site-footer,.tool-actions,.tool-step,.tool-remove,.newsletter-invite{display:none!important}.tool{border:0;padding:0}.tool-output{border-top:0}}

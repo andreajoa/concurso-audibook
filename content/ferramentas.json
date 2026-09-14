@@ -1,5 +1,81 @@
 [
   {
+    "slug": "trilha-do-dia",
+    "tool": "trilha",
+    "title": "Trilha do dia: o que estudar hoje, em blocos de minutos",
+    "metaTitle": "O que estudar hoje: plano do dia grátis",
+    "description": "Diga quanto tempo você tem hoje e o peso de cada matéria no edital. A ferramenta devolve os blocos do dia, com minutos de leitura e de questões.",
+    "keyword": "o que estudar hoje concurso",
+    "lead": "O cronograma resolve a semana. Falta a pergunta que trava a pessoa às oito da noite, cansada, com o edital aberto e três abas de videoaula: o que eu faço agora. Esta ferramenta responde só isso — uma sequência de blocos para hoje, cada um com a matéria, os minutos e a divisão entre ler e resolver questões. Tudo é calculado no seu navegador, sem cadastro e sem enviar nada.",
+    "keyFacts": [
+      [
+        "O que ela responde",
+        "O que estudar hoje, em que ordem e por quantos minutos"
+      ],
+      [
+        "De onde sai a prioridade",
+        "Questões da matéria na prova multiplicadas pelo quanto você se sente travado nela"
+      ],
+      [
+        "O que muda com a data da prova",
+        "Quanto mais perto, maior a fatia de questões e menor a de leitura"
+      ],
+      [
+        "Onde os dados ficam",
+        "No seu navegador. Não sobem para lugar nenhum e não pedem e-mail"
+      ],
+      [
+        "O que ela não faz",
+        "Não escolhe seu concurso, não busca edital e não promete aprovação"
+      ]
+    ],
+    "appHtml": "<div class=\"tool\" data-tool=\"trilha\"><div class=\"tool-step tool-grid\"><label for=\"trilha-prova\"><strong>1. Data da prova</strong><input id=\"trilha-prova\" type=\"date\"><span class=\"tool-hint\">Se o edital ainda não marcou, deixe em branco.</span></label><label for=\"trilha-minutos\"><strong>2. Minutos que você tem hoje</strong><input id=\"trilha-minutos\" type=\"number\" min=\"20\" max=\"600\" step=\"5\" inputmode=\"numeric\" placeholder=\"90\"><span class=\"tool-hint\">O tempo real, não o ideal. Vinte minutos já geram um plano.</span></label></div><div class=\"tool-step\"><strong>3. Suas matérias</strong><span class=\"tool-hint\">Quantas questões cada matéria tem na prova, segundo o quadro do edital, e o quanto você se sente firme nela hoje.</span><table class=\"tool-table\"><thead><tr><th scope=\"col\">Matéria</th><th scope=\"col\">Questões na prova</th><th scope=\"col\">Como você se sente</th><th scope=\"col\"><span class=\"sr-only\">Remover</span></th></tr></thead><tbody data-rows></tbody></table><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"add\">Adicionar matéria</button></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button\" data-action=\"gerar\">Montar a trilha de hoje</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"exemplo\">Ver com um exemplo</button></div><div class=\"tool-output\" data-output hidden><div data-resultado></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"imprimir\">Imprimir ou salvar em PDF</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"limpar\">Começar de novo</button></div></div><p class=\"tool-saved\" data-saved hidden>Suas matérias ficam salvas neste navegador.</p></div>",
+    "sections": [
+      {
+        "h2": "Por que \"estudar mais\" não é um plano",
+        "html": "<p>Quem estuda para concurso raramente sofre por falta de material. Sofre por excesso: PDF baixado, videoaula salva, apostila aberta na página 4 e a sensação de que tudo é importante ao mesmo tempo. Diante disso, a decisão que sobra é a mais confortável — abrir de novo a matéria que você já domina, porque ela dá a sensação boa de fluência.</p><p>Um plano do dia existe para tirar essa decisão do momento de cansaço. Ele é feito antes, com a cabeça fria, e diz três coisas que o material sozinho não diz: qual matéria abrir primeiro, por quantos minutos, e quanto desse tempo é leitura e quanto é questão.</p><p>Se você ainda não transformou o conteúdo programático em lista, comece pelo <a href=\"/ferramentas/edital-verticalizado\">checklist do edital</a>. Ele responde o que existe para estudar; esta página responde o que fazer com o tempo de hoje.</p>"
+      },
+      {
+        "h2": "Como a prioridade é calculada",
+        "html": "<p>A conta é simples de propósito, porque um plano que você não consegue conferir é um plano que você não consegue seguir:</p><ul><li><strong>Peso na prova.</strong> O número de questões que a matéria tem no quadro do edital. Uma matéria com 20 questões não pode receber o mesmo tempo que uma com 5.</li><li><strong>Quanto você está travado.</strong> Travado multiplica por três, mais ou menos por dois, seguro por um. Tempo aplicado onde você já acerta rende pouco.</li><li><strong>O tempo que existe hoje.</strong> O resultado é repartido em blocos de no mínimo vinte minutos, porque abaixo disso não é estudo, é olhada.</li></ul><p>Quando o tempo do dia não cobre todas as matérias, as que ficam de fora aparecem nomeadas embaixo do plano — e no dia seguinte a lista começa por outra. Sem esse rodízio, a matéria mais pesada monopolizaria todos os dias e as outras nunca seriam abertas.</p>"
+      },
+      {
+        "h2": "Por que a data da prova muda o plano",
+        "html": "<p>Ler conteúdo novo e resolver questões não valem a mesma coisa em todo momento da preparação. Com meses pela frente, ainda dá tempo de construir base, e a maior fatia do bloco é leitura. Faltando uma semana, conteúdo novo quase não chega a tempo de virar acerto, e o bloco vira quase todo questão e revisão do que você já viu.</p><p>Por isso a data da prova é um campo e não um detalhe. Informada, ela desloca a proporção dentro de cada bloco. Em branco, o plano fica equilibrado — e a ferramenta diz isso na tela, em vez de fingir que sabe.</p><p>A data oficial está no edital do seu concurso. Se você ainda não sabe qual acompanhar, o <a href=\"/concursos\">portal de concursos por estado e cidade</a> traz banca, prazo e data de prova com o link da página oficial de cada órgão.</p>"
+      },
+      {
+        "h2": "Ler não é estudar: por que todo bloco tem questão",
+        "html": "<p>Nenhum bloco desta ferramenta é só leitura, e isso é proposital. A leitura produz reconhecimento — você olha o texto e ele parece familiar. A prova não pede reconhecimento, pede recuperação: lembrar sem o texto na frente. São coisas diferentes, e é por isso que existe quem leia a apostila inteira e trave na hora da prova.</p><p>Resolver questão logo depois de ler é o jeito mais barato de descobrir a diferença ainda em casa. Erro em treino é informação; erro na prova é vaga. Para saber quantas questões você precisa acertar e onde o esforço rende mais, use a <a href=\"/ferramentas/calculadora-de-acertos\">calculadora de acertos</a>.</p><p>E quando o dia não colabora, existe a resposta de cinco minutos que a ferramenta também devolve: três questões da matéria mais prioritária, com gabarito conferido na hora. Cinco minutos resolvendo mostram um buraco; cinco minutos lendo só dão sensação de progresso.</p>"
+      },
+      {
+        "h2": "Como encaixar a trilha na semana",
+        "html": "<p>As ferramentas foram feitas para serem usadas em sequência, e cada uma responde uma pergunta diferente:</p><ol><li><a href=\"/ferramentas/edital-verticalizado\">Checklist do edital</a> — o que existe para estudar.</li><li><a href=\"/ferramentas/cronograma-de-estudos\">Cronograma por peso</a> — quanto tempo cada matéria recebe na semana.</li><li>Trilha do dia — o que fazer com o tempo de hoje, dentro desse cronograma.</li><li><a href=\"/ferramentas/calculadora-de-acertos\">Calculadora de acertos</a> — quanto falta para a sua meta.</li></ol><p>Se boa parte do seu tempo é deslocamento, veja <a href=\"/como-estudar-com-apostila-e-audiobook\">como combinar apostila e audiobook</a>: o bloco de leitura pode virar escuta sem perder a parte de questões, que é a que não dá para terceirizar.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Meus dados vão para algum servidor?",
+        "a": "Não. O cálculo acontece no seu navegador e as matérias ficam no armazenamento local do aparelho. Se você limpar os dados do navegador ou abrir em outro aparelho, a lista não aparece lá."
+      },
+      {
+        "q": "O plano muda se eu clicar duas vezes no mesmo dia?",
+        "a": "Não. Com os mesmos números, o resultado é o mesmo dentro do mesmo dia. A ordem só gira quando você volta em outro dia de calendário, para que a lista não comece sempre pela mesma matéria."
+      },
+      {
+        "q": "Por que o mínimo é vinte minutos?",
+        "a": "Porque abaixo disso o bloco não chega a virar estudo. Em menos de vinte minutos dá para revisar ou resolver poucas questões, e a ferramenta oferece exatamente isso na resposta de cinco minutos."
+      },
+      {
+        "q": "Preciso preencher o peso de cada matéria como no cronograma?",
+        "a": "Não. Aqui basta o número de questões que a matéria tem na prova e o quanto você se sente firme nela. O peso do edital, quando existe, entra no gerador de cronograma."
+      },
+      {
+        "q": "A ferramenta garante aprovação?",
+        "a": "Não, e nenhuma ferramenta pode garantir. Ela organiza a decisão do dia para que o tempo disponível caia nas matérias que pesam mais e nas que você domina menos. O resultado depende do estudo."
+      }
+    ]
+  },
+  {
     "slug": "edital-verticalizado",
     "tool": "edital",
     "title": "Edital verticalizado: transforme o conteúdo programático em checklist",
@@ -8,11 +84,26 @@
     "keyword": "edital verticalizado",
     "lead": "O anexo de conteúdo programático vem como um bloco de tópicos separados por ponto e vírgula, e é por isso que quase ninguém usa. Esta ferramenta quebra esse bloco em uma lista numerada, um tópico por linha, com caixa para marcar o que já foi estudado. Tudo acontece no seu navegador: nada é enviado para nenhum servidor e nada exige cadastro.",
     "keyFacts": [
-      ["O que ela faz", "Converte o conteúdo programático em checklist marcável"],
-      ["Onde os dados ficam", "No seu navegador, em localStorage. Não subem para lugar nenhum"],
-      ["Precisa de conta", "Não. Nem e-mail"],
-      ["Funciona offline", "Depois do primeiro carregamento, sim"],
-      ["O que ela não faz", "Não busca o edital por você. Você cola o texto do documento oficial"]
+      [
+        "O que ela faz",
+        "Converte o conteúdo programático em checklist marcável"
+      ],
+      [
+        "Onde os dados ficam",
+        "No seu navegador, em localStorage. Não subem para lugar nenhum"
+      ],
+      [
+        "Precisa de conta",
+        "Não. Nem e-mail"
+      ],
+      [
+        "Funciona offline",
+        "Depois do primeiro carregamento, sim"
+      ],
+      [
+        "O que ela não faz",
+        "Não busca o edital por você. Você cola o texto do documento oficial"
+      ]
     ],
     "appHtml": "<div class=\"tool\" data-tool=\"edital\"><div class=\"tool-step\"><label for=\"edital-input\"><strong>1. Cole aqui o conteúdo programático</strong><span class=\"tool-hint\">Copie do PDF oficial do edital. Pode colar o bloco inteiro, com ponto e vírgula e tudo.</span></label><textarea id=\"edital-input\" rows=\"8\" placeholder=\"LÍNGUA PORTUGUESA:&#10;Interpretação de texto; Ortografia; Acentuação gráfica; Concordância verbal e nominal.&#10;&#10;RACIOCÍNIO LÓGICO:&#10;Proposições; Tabelas-verdade; Sequências numéricas.\"></textarea></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button\" data-action=\"gerar\">Gerar checklist</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"exemplo\">Ver com um exemplo</button></div><div class=\"tool-output\" data-output hidden><div class=\"tool-progress\"><div class=\"tool-progress-bar\"><span data-bar></span></div><p data-progress-label>0 de 0 tópicos concluídos</p></div><div data-checklist></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"imprimir\">Imprimir ou salvar em PDF</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"limpar\">Começar de novo</button></div></div><p class=\"tool-saved\" data-saved hidden>Progresso salvo neste navegador.</p></div>",
     "sections": [
@@ -65,11 +156,26 @@
     "keyword": "cronograma de estudos para concurso",
     "lead": "A maior parte dos cronogramas de concurso divide o tempo em partes iguais, e é aí que eles falham: uma disciplina com 20 questões e peso 2 vale oito vezes mais que uma com 5 questões e peso 1, mas recebe o mesmo domingo à tarde. Esta ferramenta distribui suas horas na proporção do que o edital realmente cobra, e mostra a conta que levou a cada número.",
     "keyFacts": [
-      ["Base do cálculo", "Número de questões multiplicado pelo peso de cada disciplina"],
-      ["O que você informa", "Disciplinas, questões, peso e horas disponíveis por semana"],
-      ["O que ela devolve", "Horas por disciplina, por semana, e a ordem de prioridade"],
-      ["Onde os dados ficam", "No seu navegador. Sem cadastro e sem envio"],
-      ["O que ela não faz", "Não promete aprovação nem estima nota de corte"]
+      [
+        "Base do cálculo",
+        "Número de questões multiplicado pelo peso de cada disciplina"
+      ],
+      [
+        "O que você informa",
+        "Disciplinas, questões, peso e horas disponíveis por semana"
+      ],
+      [
+        "O que ela devolve",
+        "Horas por disciplina, por semana, e a ordem de prioridade"
+      ],
+      [
+        "Onde os dados ficam",
+        "No seu navegador. Sem cadastro e sem envio"
+      ],
+      [
+        "O que ela não faz",
+        "Não promete aprovação nem estima nota de corte"
+      ]
     ],
     "appHtml": "<div class=\"tool\" data-tool=\"cronograma\"><div class=\"tool-step\"><strong>1. Disciplinas do seu edital</strong><span class=\"tool-hint\">Copie do quadro de provas: quantas questões cada disciplina tem e qual o peso. Se o edital não usa peso, deixe 1.</span><table class=\"tool-table\"><thead><tr><th scope=\"col\">Disciplina</th><th scope=\"col\">Questões</th><th scope=\"col\">Peso</th><th scope=\"col\"><span class=\"sr-only\">Remover</span></th></tr></thead><tbody data-rows></tbody></table><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"add\">Adicionar disciplina</button></div><div class=\"tool-step tool-grid\"><label for=\"cron-horas\"><strong>2. Horas de estudo por semana</strong><input id=\"cron-horas\" type=\"number\" min=\"1\" max=\"80\" step=\"1\" value=\"10\"></label><label for=\"cron-dias\"><strong>Dias por semana</strong><input id=\"cron-dias\" type=\"number\" min=\"1\" max=\"7\" step=\"1\" value=\"5\"></label><label for=\"cron-revisao\"><strong>% do tempo para revisão</strong><input id=\"cron-revisao\" type=\"number\" min=\"0\" max=\"50\" step=\"5\" value=\"20\"></label></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button\" data-action=\"gerar\">Gerar cronograma</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"exemplo\">Ver com um exemplo</button></div><div class=\"tool-output\" data-output hidden><div data-resultado></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"imprimir\">Imprimir ou salvar em PDF</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"limpar\">Começar de novo</button></div></div><p class=\"tool-saved\" data-saved hidden>Cronograma salvo neste navegador.</p></div>",
     "sections": [
@@ -122,11 +228,26 @@
     "keyword": "calculadora de acertos concurso",
     "lead": "A pergunta que importa antes da prova não é \"quanto eu sei\", é \"quantas questões eu preciso acertar e em quais disciplinas\". Esta calculadora responde isso com a aritmética do seu próprio edital: você informa questões, pesos, notas mínimas e a pontuação-alvo, e ela devolve o número de acertos que falta e a ordem em que cada acerto rende mais pontos.",
     "keyFacts": [
-      ["O que você informa", "Disciplinas, questões, peso, nota mínima e a pontuação-alvo"],
-      ["De onde vem a pontuação-alvo", "De você — do edital, de uma prova anterior ou da sua meta"],
-      ["O que ela devolve", "Acertos necessários no total e por disciplina, e o risco de eliminação"],
-      ["O que ela não faz", "Não publica nem estima nota de corte de concurso nenhum"],
-      ["Onde os dados ficam", "No seu navegador, sem cadastro"]
+      [
+        "O que você informa",
+        "Disciplinas, questões, peso, nota mínima e a pontuação-alvo"
+      ],
+      [
+        "De onde vem a pontuação-alvo",
+        "De você — do edital, de uma prova anterior ou da sua meta"
+      ],
+      [
+        "O que ela devolve",
+        "Acertos necessários no total e por disciplina, e o risco de eliminação"
+      ],
+      [
+        "O que ela não faz",
+        "Não publica nem estima nota de corte de concurso nenhum"
+      ],
+      [
+        "Onde os dados ficam",
+        "No seu navegador, sem cadastro"
+      ]
     ],
     "appHtml": "<div class=\"tool\" data-tool=\"acertos\"><div class=\"tool-step\"><strong>1. Quadro de provas do seu edital</strong><span class=\"tool-hint\">A nota mínima vai em número de acertos. Deixe em branco quando a disciplina não tiver corte próprio.</span><table class=\"tool-table\"><thead><tr><th scope=\"col\">Disciplina</th><th scope=\"col\">Questões</th><th scope=\"col\">Peso</th><th scope=\"col\">Mín.</th><th scope=\"col\">Acertos hoje</th><th scope=\"col\"><span class=\"sr-only\">Remover</span></th></tr></thead><tbody data-rows></tbody></table><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"add\">Adicionar disciplina</button></div><div class=\"tool-step tool-grid\"><label for=\"meta-alvo\"><strong>2. Pontuação que você quer atingir</strong><span class=\"tool-hint\">Use a nota de corte da edição anterior, se você tiver o documento, ou a sua meta.</span><input id=\"meta-alvo\" type=\"number\" min=\"0\" step=\"0.5\" value=\"70\"></label></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button\" data-action=\"gerar\">Calcular</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"exemplo\">Ver com um exemplo</button></div><div class=\"tool-output\" data-output hidden><div data-resultado></div><div class=\"tool-actions\"><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"imprimir\">Imprimir ou salvar em PDF</button><button type=\"button\" class=\"tool-button tool-button-ghost\" data-action=\"limpar\">Começar de novo</button></div></div><p class=\"tool-saved\" data-saved hidden>Simulação salva neste navegador.</p></div>",
     "sections": [

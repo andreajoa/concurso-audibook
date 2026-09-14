@@ -775,9 +775,9 @@ renderPage({
   path: '/ferramentas',
   title: 'Ferramentas gratuitas para quem estuda para concurso',
   metaTitle: 'Ferramentas gratuitas para concurso público',
-  description: 'Checklist do edital, cronograma por peso das disciplinas e calculadora de acertos. Funcionam no navegador, sem cadastro, sem e-mail e sem enviar seus dados.',
+  description: 'Trilha do dia, checklist do edital, cronograma por peso e calculadora de acertos. Funcionam no navegador, sem cadastro e sem enviar seus dados.',
   kicker: 'GRATUITO',
-  lead: 'São três ferramentas que respondem as três perguntas que todo candidato faz no começo: o que estudar, quanto tempo dar para cada matéria e quantas questões é preciso acertar. Funcionam inteiras dentro do navegador — não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho.',
+  lead: 'Quem estuda para concurso raramente sofre por falta de material: sofre por não saber o que abrir hoje. Estas ferramentas respondem as perguntas práticas da rotina — o que estudar agora, o que o edital cobra, quanto tempo dar para cada matéria e quantas questões faltam para a sua meta. Funcionam inteiras dentro do navegador: não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho.',
   keyFacts: [
     ['Quantas ferramentas', String(tools.length)],
     ['Preço', 'Gratuitas, sem cadastro e sem e-mail'],
@@ -795,11 +795,12 @@ renderPage({
     '<h2>Por que elas não pedem cadastro</h2>' +
     '<p>A troca mais comum na internet é ferramenta grátis em troca do seu e-mail. Aqui não existe essa troca, por um motivo prático: o cálculo é simples o bastante para acontecer no seu próprio navegador, e mandar seus dados para um servidor só criaria um risco que não precisa existir. O que você digitar fica no seu aparelho.</p>' +
     '<p>A consequência é que o resultado não te acompanha entre aparelhos. Se você montar o cronograma no computador, ele não aparece no celular. O botão de imprimir resolve isso: ele abre a caixa de impressão do navegador, onde dá para salvar em PDF e guardar onde você quiser.</p>' +
-    '<h2>Como as três se encaixam</h2>' +
+    '<h2>Como elas se encaixam</h2>' +
     '<ol><li><strong>Comece pelo <a href="/ferramentas/edital-verticalizado">checklist do edital</a>.</strong> Ele transforma o conteúdo programático em lista marcável e responde o que estudar.</li>' +
     '<li><strong>Depois use o <a href="/ferramentas/cronograma-de-estudos">cronograma</a>.</strong> Ele distribui suas horas na proporção de questões e peso, e responde quanto tempo dar para cada matéria.</li>' +
-    '<li><strong>Por fim, a <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>.</strong> Ela mostra quantas questões faltam para a sua meta e onde cada acerto rende mais pontos.</li></ol>' +
-    '<p>Os três resultados ficam salvos no mesmo navegador, então dá para voltar amanhã e continuar de onde parou.</p>' +
+    '<li><strong>No dia a dia, abra a <a href="/ferramentas/trilha-do-dia">trilha do dia</a>.</strong> Ela pega o tempo que você tem hoje e devolve blocos com hora marcada, começando pela matéria que mais pesa e que você menos domina.</li>' +
+    '<li><strong>Antes da prova, a <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>.</strong> Ela mostra quantas questões faltam para a sua meta e onde cada acerto rende mais pontos.</li></ol>' +
+    '<p>Os resultados ficam salvos no mesmo navegador, então dá para voltar amanhã e continuar de onde parou.</p>' +
     '<h2>O que nós não calculamos</h2>' +
     '<p>Nenhuma das ferramentas informa nota de corte, data de prova, número de vagas ou chance de aprovação. Nota de corte é resultado de uma edição específica, com concorrência específica, e publicar um número desses sem o documento oficial seria inventar informação que alguém usaria para decidir o que estudar. Quando a calculadora pede uma pontuação-alvo, é você quem informa — do edital, do resultado oficial da edição anterior ou da sua própria meta.</p>' +
     '<h2>Conteúdo para acompanhar as ferramentas</h2><ul>' +
@@ -810,7 +811,7 @@ renderPage({
   faq: [
     { q: 'As ferramentas são realmente gratuitas?', a: 'São. Não há cadastro, não pedimos e-mail e não há versão paga delas. As apostilas em PDF com audiobook são vendidas à parte e não são necessárias para usar nenhuma das ferramentas.' },
     { q: 'Meus dados são enviados para vocês?', a: 'Não. O cálculo acontece dentro do seu navegador e o resultado fica no armazenamento local do aparelho. Nada do que você digitar chega até nós.' },
-    { q: 'Funciona no celular?', a: 'Sim. As três foram feitas para tela pequena e continuam funcionando offline depois do primeiro acesso, porque não dependem de servidor para calcular.' },
+    { q: 'Funciona no celular?', a: 'Sim. Todas foram feitas para tela pequena e continuam funcionando offline depois do primeiro acesso, porque não dependem de servidor para calcular.' },
     { q: 'Vocês informam a nota de corte do meu concurso?', a: 'Não. Nota de corte é resultado de uma edição específica e só o documento oficial do órgão ou da banca vale. A calculadora usa a pontuação que você informar.' },
     { q: 'Preciso instalar alguma coisa?', a: 'Não. Basta abrir a página no navegador. Não há aplicativo, extensão nem download obrigatório.' }
   ],
@@ -1312,10 +1313,10 @@ const promos = [
     'Qual concurso está aberto na sua cidade?',
     `${concursos.length} certames conferidos na página oficial do órgão, ${concursosAbertos.length} com inscrição aberta em ${estados.reduce((n, e) => n + e.municipios.length, 0)} cidades.`,
     'Ver por estado e cidade'],
-  ['/ferramentas/edital-verticalizado', 'lista', 'FERRAMENTA GRATUITA',
-    'O edital é grande. Você precisa de uma lista.',
-    'O checklist transforma o conteúdo programático em itens que dá para marcar. Funciona dentro do navegador, sem cadastro e sem enviar nada.',
-    'Abrir o checklist do edital']
+  ['/ferramentas/trilha-do-dia', 'lista', 'FERRAMENTA GRATUITA',
+    'Você senta para estudar e não sabe o que abrir.',
+    'Diga quanto tempo tem hoje e o peso de cada matéria. A trilha devolve os blocos do dia, começando pelo que mais cai e você menos domina.',
+    'Montar a trilha de hoje']
 ];
 
 /* O terceiro quadro só é um prazo se existir um prazo próximo de verdade.
@@ -1361,8 +1362,8 @@ const atalhosHtml = '<!-- atalhos:start -->' +
   '<div class="atalho-grid">' +
   atalhoCard('/concursos', 'mapa', 'Concursos por cidade',
     `${concursos.length} certames com banca, prazo e data de prova, cada um com o link da página oficial do órgão.`, 'Abrir o portal') +
-  atalhoCard('/ferramentas', 'lista', 'Três ferramentas de estudo',
-    'Checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
+  atalhoCard('/ferramentas', 'lista', `${tools.length === 4 ? 'Quatro' : tools.length} ferramentas de estudo`,
+    'Trilha do dia, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
   atalhoCard('/materias', 'livro', 'Matérias sobre método',
     'Como ler um edital, como revisar e como manter a rotina de quem estuda trabalhando.', 'Ler as matérias') +
   atalhoCard('/como-estudar-com-apostila-e-audiobook', 'fone', 'Estudar ouvindo',

@@ -248,6 +248,12 @@
       var value = row && row[f.key] != null ? row[f.key] : '';
       if (f.type === 'text') {
         html += '<td><input type="text" data-key="' + f.key + '" value="' + esc(value) + '" placeholder="' + esc(f.placeholder || '') + '"></td>';
+      } else if (f.type === 'select') {
+        html += '<td><select data-key="' + f.key + '" aria-label="' + esc(f.label || f.key) + '">' +
+          f.options.map(function (o) {
+            var sel = String(value) === String(o.value) || (value === '' && o.value === f.padrao);
+            return '<option value="' + esc(o.value) + '"' + (sel ? ' selected' : '') + '>' + esc(o.label) + '</option>';
+          }).join('') + '</select></td>';
       } else {
         html += '<td><input type="number" inputmode="numeric" data-key="' + f.key + '" value="' + esc(value) +
           '" min="0" step="' + (f.step || '1') + '"></td>';
@@ -583,14 +589,299 @@
     if (state && state.rows && state.rows.length) markSaved(root, true);
   }
 
+  /* ---------------------------------------------------------------- *
+   * Trilha do dia
+   *
+   * O cronograma responde a semana. Falta a pergunta que trava a pessoa às
+   * oito da noite, cansada, com o edital aberto: o que eu faço AGORA. Esta
+   * ferramenta responde só isso — uma sequência de blocos para hoje, com
+   * minuto e ação definidos, a partir de três coisas que a pessoa sabe: o
+   * peso de cada matéria na prova, o quanto ela se sente travada em cada uma
+   * e quanto tempo ela realmente tem hoje.
+   *
+   * Nada aqui adivinha. A conta é a mesma toda vez, com os mesmos números —
+   * um plano que muda sozinho não dá para seguir nem para conferir.
+   * ---------------------------------------------------------------- */
+
+  var MIN_BLOCO = 20;
+
+  var SEGURANCA = {
+    1: { peso: 3, rotulo: 'travado' },
+    2: { peso: 2, rotulo: 'mais ou menos' },
+    3: { peso: 1, rotulo: 'seguro' }
+  };
+
+  var TRILHA_FIELDS = [
+    { key: 'nome', type: 'text', placeholder: 'Língua Portuguesa' },
+    { key: 'questoes', type: 'number' },
+    {
+      key: 'seguranca', type: 'select', label: 'Como você se sente nesta matéria', padrao: '2',
+      options: [
+        { value: '1', label: 'Travado' },
+        { value: '2', label: 'Mais ou menos' },
+        { value: '3', label: 'Seguro' }
+      ]
+    }
+  ];
+
+  var TRILHA_EXEMPLO = [
+    { nome: 'Língua Portuguesa', questoes: 20, seguranca: '2' },
+    { nome: 'Raciocínio Lógico', questoes: 10, seguranca: '1' },
+    { nome: 'Direito Administrativo', questoes: 15, seguranca: '1' },
+    { nome: 'Informática', questoes: 5, seguranca: '3' }
+  ];
+
+  /**
+   * A distância até a prova muda o que vale a pena fazer hoje.
+   * Faltando uma semana, ler conteúdo novo rende menos que testar o que já
+   * foi visto — por isso a fatia de questões cresce conforme a data chega.
+   */
+  function faseDoEstudo(dias) {
+    if (dias == null) {
+      return { id: 'sem-data', rotulo: 'Sem data de prova', questoes: 0.40,
+        nota: 'Sem a data da prova o plano fica equilibrado entre leitura e questões. Quando o edital marcar a data, informe aqui: ela muda o que vale a pena fazer hoje.' };
+    }
+    if (dias < 0) {
+      return { id: 'passou', rotulo: 'Prova já aplicada', questoes: 0.50,
+        nota: 'A data informada já passou. Se você vai prestar outro concurso, troque a data: a proporção entre leitura e questões depende dela.' };
+    }
+    if (dias <= 7) {
+      return { id: 'vespera', rotulo: 'Véspera', questoes: 0.75,
+        nota: 'Faltando uma semana, conteúdo novo quase não chega a tempo de virar acerto. O plano de hoje é quase todo questão e revisão do que você já viu.' };
+    }
+    if (dias <= 30) {
+      return { id: 'reta-final', rotulo: 'Reta final', questoes: 0.60,
+        nota: 'A menos de um mês, a maior parte do tempo vai para questões: é resolvendo que aparece o que você achava que sabia.' };
+    }
+    if (dias <= 90) {
+      return { id: 'consolidacao', rotulo: 'Consolidação', questoes: 0.45,
+        nota: 'Com um a três meses pela frente, leitura e questões dividem o tempo quase pela metade.' };
+    }
+    return { id: 'base', rotulo: 'Base', questoes: 0.30,
+      nota: 'Com mais de três meses, a maior fatia é de leitura: ainda dá tempo de construir base antes de gastar questão boa.' };
+  }
+
+  /**
+   * Pura de propósito: é esta conta que decide o que alguém vai fazer hoje.
+   *
+   * `rotacao` é o que impede a lista de morrer. Sem ela, a matéria mais
+   * pesada monopolizaria todo dia e as outras nunca seriam abertas.
+   */
+  function computeTrilha(rows, minutos, diasAteProva, rotacao) {
+    var itens = rows.map(function (r) {
+      var questoes = num(r.questoes, 0);
+      var nivel = num(r.seguranca, 2);
+      var conf = SEGURANCA[nivel] || SEGURANCA[2];
+      return {
+        nome: r.nome, questoes: questoes, nivel: nivel,
+        rotulo: conf.rotulo, score: questoes * conf.peso
+      };
+    }).filter(function (i) { return i.questoes > 0 && i.nome; });
+
+    if (!itens.length || !(minutos >= MIN_BLOCO)) return null;
+
+    var totalQuestoes = itens.reduce(function (s, i) { return s + i.questoes; }, 0);
+    itens.sort(function (a, b) {
+      return b.score - a.score || String(a.nome).localeCompare(String(b.nome), 'pt-BR');
+    });
+
+    var giro = ((Math.round(rotacao || 0) % itens.length) + itens.length) % itens.length;
+    var fila = itens.slice(giro).concat(itens.slice(0, giro));
+
+    var fase = faseDoEstudo(diasAteProva);
+
+    // Bloco menor que vinte minutos não vira estudo, vira olhada. Então o
+    // número de matérias de hoje é limitado pelo tempo que existe de verdade.
+    var cabem = Math.max(1, Math.min(fila.length, Math.floor(minutos / MIN_BLOCO)));
+    var hoje = fila.slice(0, cabem);
+    var espera = fila.slice(cabem).map(function (i) { return i.nome; });
+
+    // Reparte em unidades de cinco minutos, pelo método do maior resto: a soma
+    // dos blocos bate com o tempo informado, sem sobra inventada.
+    var unidades = Math.floor(minutos / 5);
+    var piso = MIN_BLOCO / 5;
+    var restante = unidades - hoje.length * piso;
+    var somaScore = hoje.reduce(function (s, i) { return s + i.score; }, 0);
+
+    var ideal = hoje.map(function (i) { return restante * i.score / somaScore; });
+    var extra = ideal.map(Math.floor);
+    var faltam = restante - extra.reduce(function (s, v) { return s + v; }, 0);
+    var ordem = hoje.map(function (_, k) { return k; }).sort(function (a, b) {
+      return (ideal[b] - extra[b]) - (ideal[a] - extra[a]) || hoje[b].score - hoje[a].score || a - b;
+    });
+    for (var k = 0; k < faltam; k++) extra[ordem[k % ordem.length]]++;
+
+    var blocos = hoje.map(function (i, k) {
+      var total = (extra[k] + piso) * 5;
+      var questoesMin = Math.round(total * fase.questoes / 5) * 5;
+      // Nunca só leitura nem só questão: o bloco precisa fechar o ciclo.
+      questoesMin = Math.min(Math.max(questoesMin, 5), total - 5);
+      return {
+        nome: i.nome,
+        total: total,
+        leitura: total - questoesMin,
+        questoes: questoesMin,
+        nivel: i.nivel,
+        motivo: i.questoes + ' das ' + totalQuestoes + ' questões da prova' + (
+          i.nivel === 1 ? ' e você marcou que está travado nela.'
+            : i.nivel === 3 ? ', e você já se sente seguro nela.'
+              : '.')
+      };
+    });
+
+    // A pergunta "e se eu só tiver cinco minutos" tem uma resposta só, e ela
+    // não é ler: em cinco minutos, testar mostra buraco e ler esconde.
+    var alvo = itens[0];
+    var micro = {
+      nome: alvo.nome,
+      texto: 'Responda 3 questões de ' + alvo.nome + ' e confira o gabarito na hora. Não abra a teoria: em cinco minutos, resolver mostra o que falta e ler só dá sensação de progresso.'
+    };
+
+    return {
+      minutos: blocos.reduce(function (s, b) { return s + b.total; }, 0),
+      minutosInformados: minutos,
+      dias: diasAteProva,
+      fase: fase,
+      totalQuestoes: totalQuestoes,
+      blocos: blocos,
+      espera: espera,
+      micro: micro,
+      rotacao: giro
+    };
+  }
+
+  /** Data ISO de hoje no fuso de quem está lendo, sem depender de UTC. */
+  function hojeLocalIso() {
+    var d = new Date();
+    var m = d.getMonth() + 1;
+    var dia = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (dia < 10 ? '0' + dia : dia);
+  }
+
+  function diasAte(iso) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(iso))) return null;
+    var alvo = Date.parse(iso + 'T00:00:00Z');
+    if (isNaN(alvo)) return null;
+    var hoje = hojeLocalIso().split('-');
+    var base = Date.UTC(+hoje[0], +hoje[1] - 1, +hoje[2]);
+    return Math.round((alvo - base) / 86400000);
+  }
+
+  function initTrilha(root) {
+    var tbody = root.querySelector('[data-rows]');
+    var output = root.querySelector('[data-output]');
+    var target = root.querySelector('[data-resultado]');
+    var minutosEl = root.querySelector('#trilha-minutos');
+    var provaEl = root.querySelector('#trilha-prova');
+    var state = load('trilha', null);
+
+    var blank = [
+      { nome: '', questoes: '', seguranca: '2' },
+      { nome: '', questoes: '', seguranca: '2' },
+      { nome: '', questoes: '', seguranca: '2' }
+    ];
+    mountRows(tbody, TRILHA_FIELDS, state && state.rows, blank);
+    if (state) {
+      if (state.minutos) minutosEl.value = state.minutos;
+      if (state.prova) provaEl.value = state.prova;
+    }
+    wireRows(root, tbody, TRILHA_FIELDS);
+
+    function plural(n, um, muitos) { return n + ' ' + (n === 1 ? um : muitos); }
+
+    function render(r) {
+      var faltam = r.dias == null ? null : r.dias;
+      var cabecalho = '<div class="trilha-fase"><span class="trilha-fase-tag">' + esc(r.fase.rotulo) + '</span>' +
+        (faltam == null ? '' : faltam < 0
+          ? '<strong>A data informada já passou.</strong>'
+          : faltam === 0
+            ? '<strong>A prova é hoje.</strong>'
+            : '<strong>' + esc(plural(faltam, 'dia', 'dias')) + ' até a prova.</strong>') +
+        '<p>' + esc(r.fase.nota) + '</p></div>';
+
+      var passos = r.blocos.map(function (b, i) {
+        return '<li class="trilha-bloco">' +
+          '<span class="trilha-bloco-hora">' + (i + 1) + 'º bloco · ' + b.total + ' min</span>' +
+          '<strong>' + esc(b.nome) + '</strong>' +
+          '<p class="trilha-bloco-acao">' + b.leitura + ' min lendo ou revisando · <b>' + b.questoes + ' min resolvendo questões</b></p>' +
+          '<p class="trilha-bloco-motivo">Entrou hoje porque vale ' + esc(b.motivo) + '</p>' +
+          '</li>';
+      }).join('');
+
+      var html = cabecalho +
+        '<p class="trilha-total">Plano de hoje: ' + esc(plural(r.minutos, 'minuto', 'minutos')) +
+        ' em ' + esc(plural(r.blocos.length, 'bloco', 'blocos')) + '.</p>' +
+        '<ol class="trilha-lista">' + passos + '</ol>' +
+        '<div class="trilha-micro"><strong>Se hoje só sobrarem 5 minutos</strong><p>' + esc(r.micro.texto) + '</p></div>' +
+        (r.espera.length
+          ? '<p class="tool-note">Ficam para os próximos dias: ' + esc(r.espera.join(', ')) +
+            '. Amanhã a lista começa por outra matéria — estudar sempre a mesma primeiro é o que faz as outras nunca serem abertas.</p>'
+          : '');
+
+      target.innerHTML = html;
+      output.hidden = false;
+    }
+
+    root.addEventListener('click', function (ev) {
+      var botao = ev.target.closest('[data-action]');
+      if (!botao) return;
+      var action = botao.dataset.action;
+      if (action === 'add') return;
+
+      if (action === 'exemplo') {
+        mountRows(tbody, TRILHA_FIELDS, TRILHA_EXEMPLO, blank);
+        minutosEl.value = 90;
+        action = 'gerar';
+      }
+
+      if (action === 'gerar') {
+        var rows = readRows(tbody, TRILHA_FIELDS);
+        var minutos = num(minutosEl.value, 0);
+        var salvo = load('trilha', null);
+        // A rotação anda uma vez por dia de calendário, não a cada clique:
+        // regerar o plano no mesmo dia tem que devolver o mesmo plano.
+        var hoje = hojeLocalIso();
+        var rotacao = salvo && salvo.dia === hoje ? num(salvo.rotacao, 0) : (salvo ? num(salvo.rotacao, 0) + 1 : 0);
+
+        var r = computeTrilha(rows, minutos, diasAte(provaEl.value), rotacao);
+        if (!r) {
+          target.innerHTML = '<p class="tool-note">Informe ao menos uma matéria com número de questões maior que zero e pelo menos 20 minutos de estudo — abaixo disso o bloco vira olhada, não estudo.</p>';
+          output.hidden = false;
+          return;
+        }
+        render(r);
+        markSaved(root, save('trilha', {
+          rows: rows, minutos: minutos, prova: provaEl.value, dia: hoje, rotacao: rotacao
+        }));
+        output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (action === 'imprimir') window.print();
+
+      if (action === 'limpar') {
+        clear('trilha');
+        mountRows(tbody, TRILHA_FIELDS, null, blank);
+        minutosEl.value = '';
+        provaEl.value = '';
+        output.hidden = true;
+        markSaved(root, false);
+      }
+    });
+
+    if (state && state.rows && state.rows.length) markSaved(root, true);
+  }
+
   /* ---------------------------------------------------------------- */
 
-  var INIT = { edital: initEdital, cronograma: initCronograma, acertos: initAcertos };
+  var INIT = { edital: initEdital, cronograma: initCronograma, acertos: initAcertos, trilha: initTrilha };
 
   // Node não tem DOM. A exportação existe para os testes: a aritmética das
   // ferramentas precisa ser verificável sem abrir navegador.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { parseEdital: parseEdital, computeCronograma: computeCronograma, computeAcertos: computeAcertos, hhmm: hhmm };
+    module.exports = {
+      parseEdital: parseEdital, computeCronograma: computeCronograma, computeAcertos: computeAcertos,
+      computeTrilha: computeTrilha, faseDoEstudo: faseDoEstudo, hhmm: hhmm
+    };
     return;
   }
 
