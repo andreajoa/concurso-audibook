@@ -36,9 +36,9 @@ jobs:
 
           visual = Path('public/portal-visual.css')
           v = visual.read_text()
-          v = v.replace("banner-concursos.svg", "portal-hero-concursos.webp")
-          v = v.replace("banner-trilha.svg", "portal-hero-ferramentas.webp")
-          v = v.replace("banner-prazo.svg", "portal-hero-prazos.webp")
+          v = v.replace('banner-concursos.svg', 'portal-hero-concursos.webp')
+          v = v.replace('banner-trilha.svg', 'portal-hero-ferramentas.webp')
+          v = v.replace('banner-prazo.svg', 'portal-hero-prazos.webp')
           visual.write_text(v)
 
           runtime = Path('public/portal-media.js')
@@ -70,10 +70,7 @@ jobs:
           root = Path('public')
           for f in root.rglob('*.html'):
               rel = f.relative_to(root).as_posix()
-              if rel == 'index.html':
-                  route = '/'
-              else:
-                  route = '/' + rel[:-5]
+              route = '/' if rel == 'index.html' else '/' + rel[:-5]
               text = f.read_text()
               if re.search(r'<body\b[^>]*\bdata-portal-path=', text):
                   continue
@@ -84,16 +81,34 @@ jobs:
       - name: Ensure no old portal PNG references or Base64 images remain
         run: |
           set -euo pipefail
-          if grep -RIl --exclude='*.webp' --exclude='*.png' -E 'data:image|base64,' public scripts; then
-            echo 'Inline/Base64 image reference found' >&2
-            exit 1
-          fi
-          if grep -RIl --exclude='*.webp' --exclude='*.png' -E '/assets/portal/portal-(hero|square|strip)-[^"'"' )]+\.png' public scripts; then
-            echo 'Old portal PNG reference found' >&2
-            exit 1
-          fi
-          rm -f public/assets/portal/*.png
-          test "$(find public/assets/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          bad_inline = []
+          bad_png = []
+          for root in (Path('public'), Path('scripts')):
+              for f in root.rglob('*'):
+                  if not f.is_file() or f.suffix.lower() in {'.webp', '.png', '.jpg', '.jpeg', '.gif', '.zip', '.pdf', '.m4a', '.mp3'}:
+                      continue
+                  try:
+                      text = f.read_text()
+                  except UnicodeDecodeError:
+                      continue
+                  if 'data:image' in text or 'base64,' in text:
+                      bad_inline.append(str(f))
+                  if re.search(r'/assets/portal/portal-(?:hero|square|strip)-[^\s"\')]+\.png', text):
+                      bad_png.append(str(f))
+          if bad_inline:
+              raise SystemExit('Inline/Base64 image reference found: ' + ', '.join(bad_inline))
+          if bad_png:
+              raise SystemExit('Old portal PNG reference found: ' + ', '.join(bad_png))
+
+          for f in Path('public/assets/portal').glob('*.png'):
+              f.unlink()
+          webps = list(Path('public/assets/portal').glob('*.webp'))
+          assert len(webps) == 16, len(webps)
+          PY
       - name: Commit final portal layout
         run: |
           set -euo pipefail
