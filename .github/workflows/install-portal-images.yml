@@ -15,31 +15,29 @@ jobs:
       - name: Download and validate image bundle
         run: |
           set -euo pipefail
-          curl -fL 'https://margareth-5-estrategias.floot.app/_cdn/static/ff0a8943-5fe0-436c-bc5b-d4876df85752-portal-media-assets.zip' -o /tmp/portal.zip
+          curl -fL 'https://margareth-5-estrategias.floot.app/_cdn/static/50491a77-bbd5-4b6a-a9fa-de0908eeb950-portal-webp-assets.zip' -o /tmp/portal.zip
+          echo '5483ddef2ae867eb530e917ab231e538a6719c3fb37bc8398d357991938ce665  /tmp/portal.zip' | sha256sum -c -
+          rm -rf /tmp/portal && mkdir -p /tmp/portal
           unzip -q /tmp/portal.zip -d /tmp/portal
-          test "$(find /tmp/portal/imagem -name '*.png' | wc -l)" -eq 12
-          file /tmp/portal/imagem/*.png | grep -c 'PNG image data' | grep -q '^12$'
-      - name: Copy original PNG binaries
+          test "$(find /tmp/portal/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
+          file /tmp/portal/portal/*.webp | grep -c 'Web/P image' | grep -q '^16$'
+          test "$(file /tmp/portal/portal/portal-hero-*.webp | grep -c '2172x724')" -eq 4
+          test "$(file /tmp/portal/portal/portal-square-*.webp | grep -c '1254x1254')" -eq 4
+          test "$(file /tmp/portal/portal/portal-strip-*.webp /tmp/portal/portal/portal-top-*.webp | grep -c '2171+1x723+1')" -eq 8
+      - name: Copy original WebP binaries
         run: |
           set -euo pipefail
           mkdir -p public/assets/portal
-          cp /tmp/portal/imagem/1.png public/assets/portal/portal-hero-concursos.png
-          cp /tmp/portal/imagem/2.png public/assets/portal/portal-hero-prazos.png
-          cp /tmp/portal/imagem/3.png public/assets/portal/portal-hero-ferramentas.png
-          cp /tmp/portal/imagem/4.png public/assets/portal/portal-hero-apostilas.png
-          cp /tmp/portal/imagem/5.png public/assets/portal/portal-square-prazos.png
-          cp /tmp/portal/imagem/6.png public/assets/portal/portal-square-concursos.png
-          cp /tmp/portal/imagem/7.png public/assets/portal/portal-square-apostilas.png
-          cp /tmp/portal/imagem/8.png public/assets/portal/portal-square-ferramentas.png
-          cp /tmp/portal/imagem/9.png public/assets/portal/portal-strip-alertas.png
-          cp /tmp/portal/imagem/10.png public/assets/portal/portal-strip-simulados.png
-          cp /tmp/portal/imagem/11.png public/assets/portal/portal-strip-edital.png
-          cp /tmp/portal/imagem/12.png public/assets/portal/portal-strip-materiais.png
-          rm -f public/assets/portal/banner-concursos.svg public/assets/portal/banner-prazo.svg public/assets/portal/banner-trilha.svg
+          cp /tmp/portal/portal/*.webp public/assets/portal/
+          (cd /tmp/portal/portal && sha256sum *.webp | sort) > /tmp/source.sha256
+          (cd public/assets/portal && sha256sum *.webp | sort) > /tmp/repo.sha256
+          diff -u /tmp/source.sha256 /tmp/repo.sha256
       - name: Commit images
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/assets/portal
-          git commit -m 'feat: replace portal artwork with validated PNG images'
+          git add public/assets/portal/*.webp
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'perf: add validated responsive portal WebP assets'
           git push origin HEAD:main
