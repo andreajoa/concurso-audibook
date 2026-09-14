@@ -112,9 +112,35 @@ test('toda página pública carrega o mesmo menu de navegação', () => {
     // fica com o ícone de página abandonada.
     assert.ok(html.includes('href="/favicon.svg"'),
       `${nome} não declara o ícone da aba`);
+    // Nenhuma página pode nascer com rolagem lateral: no celular o dedo arrasta
+    // o texto para fora da tela e a pessoa acha que o site quebrou.
+    assert.ok(!/<meta name="viewport"[^>]*(user-scalable=no|maximum-scale=1)/.test(html),
+      `${nome} impede o leitor de ampliar a página`);
     for (const destino of destinos) {
       assert.ok(html.includes(`href="${destino}"`),
         `${nome} não oferece caminho para ${destino}`);
     }
   }
+});
+
+test('no celular todo link do menu é grande o bastante para o dedo', () => {
+  /* Medir geometria exige navegador, e o gate roda sem um. O que dá para
+     garantir aqui é a causa: sem recuo vertical o link do menu tem a altura
+     da própria linha de texto — 14px — e o dedo erra o alvo. A WCAG 2.5.8
+     pede 24px. Este teste protege a regra que produz essa altura. */
+  const css = fs.readFileSync(path.join(root, 'public/site-header.css'), 'utf8');
+  const celular = css.split('@media(max-width:900px)')[1];
+  assert.ok(celular, 'o cabeçalho precisa de um bloco para telas pequenas');
+
+  const regra = celular.match(/\.guide-header nav a\{([^}]*)\}/);
+  assert.ok(regra, 'no celular os links do menu precisam de regra própria');
+
+  const padding = regra[1].match(/padding:(\d+)px/);
+  assert.ok(padding, 'os links do menu no celular precisam de recuo vertical');
+
+  const fonte = Number((regra[1].match(/font-size:(\d+)px/) || [])[1] || 16);
+  const linha = Number((regra[1].match(/line-height:([\d.]+)/) || [])[1] || 1.2);
+  const altura = fonte * linha + Number(padding[1]) * 2;
+  assert.ok(altura >= 24,
+    `o alvo de toque do menu ficaria com ${altura.toFixed(0)}px; a WCAG pede 24px`);
 });

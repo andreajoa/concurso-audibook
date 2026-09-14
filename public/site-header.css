@@ -50,15 +50,22 @@ html{scroll-padding-top:104px}
   .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%;overflow:hidden}
   .guide-brand img{width:108px;height:50px}
   .mega-panel{display:none!important}
-  .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px 12px;overflow:visible;padding:2px 0 8px;-webkit-mask-image:none;mask-image:none}
-  .guide-header nav a{font-size:12px;white-space:normal;line-height:1.25}
-  .nav-access{padding:7px 11px}
+  .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:2px 12px;overflow:visible;padding:2px 0 6px;-webkit-mask-image:none;mask-image:none}
+  /* O texto do link tem 15px de altura; sozinho ele é um alvo que o dedo erra.
+     O recuo vertical leva a área tocável a 25px (WCAG 2.5.8 pede 24) sem
+     alargar nada na horizontal — é por isso que o espaçamento entre linhas
+     encolhe na mesma medida: a altura vem do alvo, não do vão entre eles. */
+  .guide-header nav a{font-size:12px;white-space:normal;line-height:1.25;padding:5px 2px}
+  /* "Já comprei" sai da fila e ocupa o vazio à direita do logo. Não é enfeite:
+     tirando um item do fluxo, o menu cabe em menos linhas, e o cabeçalho fixo
+     devolve ao leitor a altura que estava tomando da tela em toda página. */
+  .nav-access{position:absolute;top:12px;right:14px;padding:8px 12px}
 }
 @media(max-width:520px){
   html{scroll-padding-top:188px}
   .guide-header{padding-inline:12px}
-  .guide-header nav{gap:7px 10px}
-  .guide-header nav a{font-size:11px}
+  .guide-header nav{gap:2px 10px}
+  .guide-header nav a{font-size:11px;padding:6px 2px}
 }
 @supports not (overflow:clip){html,body{overflow-x:hidden}}
 @media print{.guide-header{display:none!important}}
