@@ -1506,6 +1506,15 @@ home = home
   .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(homeDescription)}">`)
   .replace('</head>', seoBlock({ path: '/', title: homeTitle, description: homeDescription, image: COVER, nodes: homeNodes }) + '</head>');
 
+/* Número por extenso no começo de frase. "5 ferramentas que funcionam" abre um
+   parágrafo com algarismo, o que lê mal em texto corrido; acima de dez o extenso
+   é que fica ruim, então volta o algarismo. */
+const EXTENSO = ['zero', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez'];
+const porExtenso = n => {
+  const palavra = EXTENSO[n] || String(n);
+  return palavra.charAt(0).toUpperCase() + palavra.slice(1);
+};
+
 const discovery = '<!-- discovery:start -->' +
   '<section class="section shell seo-discovery">' +
   '<div class="section-heading"><span class="eyebrow">ENCONTRE SUA PRÓXIMA LEITURA</span>' +
@@ -1513,7 +1522,14 @@ const discovery = '<!-- discovery:start -->' +
   '<p>Conheça o conteúdo de cada material antes de comprar. Os arquivos são digitais, com acesso em todo o Brasil.</p></div>' +
   `<ul>${productLinks}</ul>` +
   '<h3>Ferramentas gratuitas, sem cadastro</h3>' +
-  '<p>Três ferramentas que funcionam dentro do navegador e não pedem e-mail: o checklist do edital responde o que estudar, o cronograma responde quanto tempo dar para cada matéria e a calculadora responde quantas questões faltam para a sua meta.</p>' +
+  /* A contagem sai de tools.length, não do teclado. Este parágrafo anunciava
+     "três ferramentas" e listava cinco logo abaixo — o bloco que tenta ganhar
+     confiança dizendo "não pedimos seu e-mail" errava a própria conta na frente
+     do leitor. Derivada da lista, a frase não tem como divergir de novo. */
+  `<p>${porExtenso(tools.length)} ferramentas que funcionam dentro do navegador e não pedem e-mail: ` +
+  'a trilha do dia responde o que estudar agora, o caderno de erros devolve o que você errou antes de esquecer, ' +
+  'o edital verticalizado vira checklist, o cronograma responde quanto tempo dar para cada matéria ' +
+  'e a calculadora responde quantas questões faltam para a sua meta.</p>' +
   `<ul>${tools.map(t => `<li><a href="/ferramentas/${t.slug}">${esc(t.title)}</a></li>`).join('')}</ul>` +
   '<p><a href="/ferramentas">Ver todas as ferramentas gratuitas</a></p>' +
   '<h3>Preparação no litoral de São Paulo</h3>' +
@@ -1792,6 +1808,46 @@ const cartaoNoticia = n =>
 const assuntoLink = (icone, rotulo, href) =>
   `<a href="${esc(href)}"><span aria-hidden="true">${icone}</span><b>${esc(rotulo)}</b></a>`;
 
+const atalhoCard = (href, icone, titulo, texto, cta) =>
+  `<a class="atalho-card" href="${esc(href)}">` +
+  `<span class="atalho-icon" aria-hidden="true">${ICONES[icone]}</span>` +
+  `<strong>${esc(titulo)}</strong><span>${esc(texto)}</span>` +
+  `<span class="atalho-cta">${esc(cta)}</span></a>`;
+
+/* O que o portal oferece, dito de uma vez.
+ *
+ * Este bloco morava a 60% da página, depois da vitrine inteira da apostila.
+ * Quem chegava pelo Google lia a manchete, rolava para dentro da venda de um
+ * material de Santos e ia embora sem descobrir que o site acompanha dezenas de
+ * certames e entrega cinco ferramentas de graça — que é justamente o motivo de
+ * alguém voltar amanhã. Notícia se lê uma vez; ferramenta se usa toda semana.
+ *
+ * Agora ele vem logo depois da manchete, e o texto deixou de ser escrito em
+ * relação à loja ("nem tudo aqui é para comprar", uma frase que só faz sentido
+ * para quem já sabe que existe uma loja). Passou a ser a descrição do serviço,
+ * com os números vindos da base: o visitante sabe o tamanho do que tem pela
+ * frente antes de decidir se fica. A última linha anuncia a apostila logo
+ * abaixo — sem ela, a página trocava de assunto no meio sem avisar. */
+const cidadesCobertas = new Set(concursos.map(c => c.municipio)).size;
+const ondeCobre = estados.length === 1 ? `de ${estados[0].ufNome}` : `de ${estados.length} estados`;
+const atalhosHtml = '<!-- atalhos:start -->' +
+  '<section class="section shell atalhos" aria-label="O que o portal oferece"><div class="section-heading">' +
+  '<span class="eyebrow">O QUE VOCÊ ENCONTRA AQUI</span>' +
+  '<h2>Concursos abertos, prazos e ferramentas — de graça, sem cadastro.</h2>' +
+  `<p>A Trilha Aprova acompanha ${concursos.length} certames em ${cidadesCobertas} cidades ${ondeCobre}: banca, cargo, salário, prazo e o link do edital oficial de cada um. ` +
+  `Junto vão ${tools.length} ferramentas que rodam dentro do seu navegador e não pedem e-mail. ` +
+  'As apostilas com PDF e audiobook ficam logo abaixo, para quem quiser ir além da revisão por conta própria.</p></div>' +
+  '<div class="atalho-grid">' +
+  atalhoCard('/concursos', 'mapa', 'Concursos por cidade',
+    `${concursos.length} certames com banca, prazo e data de prova, cada um com o link da página oficial do órgão.`, 'Abrir o portal') +
+  atalhoCard('/ferramentas', 'lista', `${porExtenso(tools.length)} ferramentas de estudo`,
+    'Trilha do dia, caderno de erros, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
+  atalhoCard('/materias', 'livro', 'Matérias sobre método',
+    'Como ler um edital, como revisar e como manter a rotina de quem estuda trabalhando.', 'Ler as matérias') +
+  atalhoCard('/como-estudar-com-apostila-e-audiobook', 'fone', 'Estudar ouvindo',
+    'Como usar o audiobook no deslocamento sem transformar a escuta em distração.', 'Ver o método') +
+  '</div></section><!-- atalhos:end -->';
+
 /* A manchete.
  *
  * O banner de /assets/portal já é uma peça acabada: traz título, subtítulo,
@@ -1837,6 +1893,12 @@ const bannersHtml = '<!-- banners:start -->' +
     }).join('') + '</section>' : '') +
   '</aside></section>' +
 
+  /* O que o portal oferece entra aqui, e não depois das notícias: a grade de
+     notícias sozinha mede 2.014 px no celular. Deixar a apresentação do serviço
+     abaixo dela empurrava-a para 4.030 px — quase cinco telas de rolagem antes
+     de o visitante descobrir que existem ferramentas gratuitas. */
+  atalhosHtml +
+
   /* Grade de notícias + convite da newsletter. */
   '<section class="portal-news-layout portal-wide">' +
   '<div class="portal-news-main"><div class="portal-section-head"><h2>ÚLTIMAS NOTÍCIAS</h2>' +
@@ -1862,31 +1924,14 @@ const bannersHtml = '<!-- banners:start -->' +
   '</div></section>' +
   '<!-- banners:end -->';
 
-const atalhoCard = (href, icone, titulo, texto, cta) =>
-  `<a class="atalho-card" href="${esc(href)}">` +
-  `<span class="atalho-icon" aria-hidden="true">${ICONES[icone]}</span>` +
-  `<strong>${esc(titulo)}</strong><span>${esc(texto)}</span>` +
-  `<span class="atalho-cta">${esc(cta)}</span></a>`;
 
-const atalhosHtml = '<!-- atalhos:start -->' +
-  '<section class="section shell atalhos" aria-label="Gratuito no site"><div class="section-heading">' +
-  '<span class="eyebrow">GRATUITO, SEM CADASTRO</span>' +
-  '<h2>Nem tudo aqui é para comprar.</h2>' +
-  '<p>A parte do site que mais gente usa não custa nada: saber o que está aberto e decidir o que estudar primeiro.</p></div>' +
-  '<div class="atalho-grid">' +
-  atalhoCard('/concursos', 'mapa', 'Concursos por cidade',
-    `${concursos.length} certames com banca, prazo e data de prova, cada um com o link da página oficial do órgão.`, 'Abrir o portal') +
-  atalhoCard('/ferramentas', 'lista', `${tools.length === 5 ? 'Cinco' : tools.length} ferramentas de estudo`,
-    'Trilha do dia, caderno de erros, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
-  atalhoCard('/materias', 'livro', 'Matérias sobre método',
-    'Como ler um edital, como revisar e como manter a rotina de quem estuda trabalhando.', 'Ler as matérias') +
-  atalhoCard('/como-estudar-com-apostila-e-audiobook', 'fone', 'Estudar ouvindo',
-    'Como usar o audiobook no deslocamento sem transformar a escuta em distração.', 'Ver o método') +
-  '</div></section><!-- atalhos:end -->';
 
-home = home
-  .replace(/<!-- banners:start -->[\s\S]*?<!-- banners:end -->/, bannersHtml)
-  .replace(/<!-- atalhos:start -->[\s\S]*?<!-- atalhos:end -->/, atalhosHtml);
+/* Um replace só, e com função no lugar da string: o conteúdo é escrito a partir
+   da base e carrega "R$", e um "$" numa string de substituição é lido pelo
+   próprio JS como instrução, não como texto. Os atalhos deixaram de ter replace
+   próprio porque agora moram dentro do bloco de banners, logo abaixo da
+   manchete — os marcadores continuam lá para quem for procurá-los. */
+home = home.replace(/<!-- banners:start -->[\s\S]*?<!-- banners:end -->/, () => bannersHtml);
 
 fs.writeFileSync('public/index.html', home);
 

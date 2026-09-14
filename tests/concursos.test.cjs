@@ -258,3 +258,58 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
       'a home some com os certames sem vagas declaradas em vez de dizer que existem');
   }
 });
+
+// A home descrevia o serviço só depois de vender a apostila inteira: o bloco
+// "o que você encontra aqui" vinha a 60% da página, e no celular a 4.030 px —
+// quase cinco telas. Quem chega pelo Google lê a manchete e vai embora sem
+// descobrir que existem ferramentas gratuitas, que é o motivo de voltar amanhã.
+// O que este teste protege não é a posição bonita: é a ordem de leitura.
+test('a home diz o que oferece antes de vender qualquer coisa', () => {
+  const fs = require('node:fs');
+  const home = fs.readFileSync('public/index.html', 'utf8');
+  const main = home.slice(home.indexOf('<main'));
+
+  const oferta = main.indexOf('<!-- atalhos:start -->');
+  const manchete = main.indexOf('portal-lead-layout');
+  const noticias = main.indexOf('portal-news-layout');
+  const venda = main.indexOf('catalog-hero');
+
+  assert.ok(oferta > 0, 'o bloco que diz o que o portal oferece sumiu da home');
+  assert.ok(manchete > 0 && manchete < oferta, 'a oferta precisa vir depois da manchete');
+  assert.ok(oferta < noticias, 'a oferta caiu para depois da grade de notícias');
+  assert.ok(oferta < venda, 'a home começa a vender antes de dizer o que entrega de graça');
+});
+
+// O parágrafo das ferramentas dizia "Três ferramentas" e listava cinco logo
+// abaixo. É o bloco que pede confiança dizendo "não pedimos seu e-mail", e ele
+// errava a conta na frente do leitor. A frase passou a sair de tools.length.
+test('a home conta as ferramentas que ela mesma lista', () => {
+  const fs = require('node:fs');
+  const home = fs.readFileSync('public/index.html', 'utf8');
+  const quantas = fs.readdirSync('public/ferramentas').filter(n => n.endsWith('.html')).length;
+
+  const extenso = ['zero', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez'];
+  const palavra = extenso[quantas] || String(quantas);
+  const capitalizada = palavra.charAt(0).toUpperCase() + palavra.slice(1);
+
+  assert.ok(home.includes(`${capitalizada} ferramentas que funcionam dentro do navegador`),
+    `a home não anuncia as ${quantas} ferramentas que existem em public/ferramentas`);
+  assert.ok(home.includes(`${capitalizada} ferramentas de estudo`),
+    'o cartão de ferramentas discorda da contagem real');
+});
+
+// Em 320 px a grade dá duas colunas de 139 px. Com o título em 26px fixos a
+// palavra "Concursos" ficava mais larga que o próprio cartão. Tamanho fluido
+// não é enfeite aqui: é o que impede o texto de vazar da caixa no aparelho
+// mais estreito que ainda se vende.
+test('o título dos cartões de oferta encolhe junto com a coluna', () => {
+  const fs = require('node:fs');
+  const css = fs.readFileSync('public/portal-visual.css', 'utf8');
+  const regra = /\.atalho-card strong\{([^}]*)\}/.exec(css);
+  assert.ok(regra, 'a regra do título do cartão sumiu');
+
+  const clamp = /clamp\(\s*(\d+)px\s*,[^,]+,\s*(\d+)px\s*\)/.exec(regra[1]);
+  assert.ok(clamp, 'o título do cartão voltou a ter tamanho fixo');
+  assert.ok(Number(clamp[1]) <= 19, `piso de ${clamp[1]}px ainda estoura a coluna de 139px`);
+  assert.ok(Number(clamp[2]) >= 26, 'o teto encolheu o desenho original do desktop');
+});

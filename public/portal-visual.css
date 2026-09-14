@@ -217,7 +217,13 @@
   background:#e4c982;
   box-shadow:0 10px 24px rgba(0,0,0,.18);
 }
-.atalho-card strong{color:#fff;font:400 26px/1.05 Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+/* O título do card mede junto com a coluna em que ele cabe.
+   Em 26px fixos a palavra "Concursos" ficava mais larga que o próprio cartão nos
+   aparelhos estreitos: em 320 px a grade dá duas colunas de 139 px, e três dos
+   quatro títulos transbordavam a caixa. Medido no navegador, não estimado.
+   O clamp resolve sem tocar na grade: 19 px no aparelho mais estreito, 26 px a
+   partir de ~480 px, que é onde a coluna volta a comportar o desenho original. */
+.atalho-card strong{color:#fff;font:400 clamp(19px,5.4vw,26px)/1.08 Georgia,serif;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word}
 .atalho-card>span:not(.atalho-icon):not(.atalho-cta){color:rgba(237,244,250,.76);font-size:13px;line-height:1.55}
 .atalho-cta{margin-top:4px;color:#f1d990;font-size:12px;font-weight:900}
 .atalho-card:hover .atalho-cta{text-decoration:none;color:#fff}
