@@ -1,0 +1,107 @@
+/*
+ * Trava visual para telas estreitas.
+ *
+ * Regra de produto: no mobile nenhuma imagem editorial ou capa pode ser
+ * ampliada com `cover` a ponto de perder conteúdo. Banners horizontais ficam
+ * menores, com respiro quando necessário, mas aparecem inteiros.
+ */
+
+@media (max-width: 760px) {
+  /* Manchete principal da home: respeita o banner 3:1 original por inteiro. */
+  .portal-lead-arte {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  .portal-lead {
+    min-height: 0 !important;
+    background: var(--portal-navy, #06294f) !important;
+  }
+  .portal-lead-copy {
+    padding: 18px 18px 16px !important;
+  }
+
+  /* Cards de notícias: a fotografia inteira fica dentro da moldura. */
+  .portal-news-image {
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f3efe7;
+  }
+
+  /* Heroes das páginas geradas: foto inteira em cima, texto em área sólida. */
+  .portal-hero {
+    display: block !important;
+    padding: 0 20px 26px !important;
+    background: #061d39 !important;
+  }
+  .portal-hero-art {
+    position: relative !important;
+    inset: auto !important;
+    z-index: auto !important;
+    display: block !important;
+    width: calc(100% + 40px) !important;
+    margin: 0 -20px 24px !important;
+    background: #061d39;
+  }
+  .portal-hero-art img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+  .portal-hero::after {
+    display: none !important;
+  }
+
+  /* Compatibilidade com o hero antigo ainda presente em páginas legadas. */
+  .portal-inner-hero {
+    min-height: 0 !important;
+    background-color: #061d39 !important;
+    background-size: cover, contain !important;
+    background-position: center, center top !important;
+    background-repeat: no-repeat, no-repeat !important;
+  }
+
+  /* Banners e cartões fotográficos legados: gradiente cobre; foto contém. */
+  .promo-slide,
+  .atalho-card,
+  .portal-cta {
+    background-size: cover, contain !important;
+    background-position: center, center top !important;
+    background-repeat: no-repeat, no-repeat !important;
+  }
+
+  /* Capas e imagens de produto nunca devem ser cortadas. */
+  .catalog-cover,
+  .catalog-card-cover img,
+  .portal-cover,
+  .cover-wrap img,
+  .product-intro img,
+  .format-object img,
+  .portal-brand img,
+  .guide-brand img,
+  .site-footer img {
+    object-fit: contain !important;
+    object-position: center !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Em telas muito estreitas, o banner continua inteiro; não volta a recortar. */
+  .portal-lead-arte {
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+}
