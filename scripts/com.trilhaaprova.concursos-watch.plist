@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Vigia da base de concursos.
+
+  Roda uma vez por dia, às 7h. O horário não é arbitrário: banca publica
+  prorrogação e retificação de manhã, e quem cuida do site precisa saber antes
+  de o dia começar, não depois.
+
+  Instalar:
+    cp scripts/com.trilhaaprova.concursos-watch.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.trilhaaprova.concursos-watch.plist
+
+  Rodar agora, sem esperar as 7h:
+    launchctl start com.trilhaaprova.concursos-watch
+
+  Desinstalar:
+    launchctl unload ~/Library/LaunchAgents/com.trilhaaprova.concursos-watch.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.trilhaaprova.concursos-watch</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/tmp/concurso-audibook/scripts/concursos-watch.sh</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>10</integer>
+  </dict>
+
+  <!-- Se a máquina estava dormindo às 7h10, roda ao acordar em vez de pular o
+       dia. Uma prorrogação perdida é uma inscrição perdida. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/trilha-concursos-watch.out</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/trilha-concursos-watch.err</string>
+
+  <!-- Máquina de 2 núcleos: o vigia não pode competir com o que o Andre está
+       fazendo na frente da tela. -->
+  <key>Nice</key>
+  <integer>10</integer>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>LowPriorityIO</key>
+  <true/>
+</dict>
+</plist>

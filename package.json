@@ -9,6 +9,8 @@
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:scrollcraft": "node scripts/verify-scrollcraft.mjs",
     "verify:remote": "node scripts/verify-remote.mjs",
+    "check:concursos": "node scripts/check-concursos.mjs",
+    "check:concursos:offline": "node scripts/check-concursos.mjs --offline",
     "test": "node --test tests/*.test.cjs"
   },
   "dependencies": {
