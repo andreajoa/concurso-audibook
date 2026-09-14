@@ -1287,6 +1287,92 @@ home = home
   .replace(/<!-- catalogo:start -->[\s\S]*?<!-- catalogo:end -->/,
     '<!-- catalogo:start -->' + shelf + '<!-- catalogo:end -->');
 
+/* A home abria direto na apostila, como se a primeira pergunta de quem chega
+   fosse "qual comprar". Não é: é "tem concurso aberto perto de mim?". Esta
+   faixa responde isso antes da vitrine, e cada quadro leva a uma página que
+   existe de verdade. Os números saem da base de concursos, não de estimativa —
+   por isso mudam sozinhos quando um edital entra ou um prazo vence. */
+const ICONES = {
+  mapa: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>',
+  lista: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="m3 6 2 2 3.5-3.5M3 13l2 2 3.5-3.5M3 20l2 2 3.5-3.5M12 6h9M12 13h9M12 20h9"/></svg>',
+  relogio: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M12 7.2V12l3.2 2"/></svg>',
+  fone: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.6" y="13.6" width="4.4" height="6.2" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="17" y="13.6" width="4.4" height="6.2" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>',
+  livro: '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M4 4.5h6a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1h6v14h-6a2.5 2.5 0 0 0-2 1 2.5 2.5 0 0 0-2-1H4Z"/><path fill="none" stroke="currentColor" stroke-width="1.7" d="M12 5.5v14"/></svg>'
+};
+
+const promoSlide = (i, href, icone, eyebrow, titulo, texto, cta) =>
+  `<a class="promo-slide" href="${esc(href)}" style="--promo-i:${i}">` +
+  `<span class="promo-icon" aria-hidden="true">${ICONES[icone]}</span>` +
+  `<span class="promo-text"><span class="promo-eyebrow">${esc(eyebrow)}</span>` +
+  `<strong>${esc(titulo)}</strong><span class="promo-sub">${esc(texto)}</span></span>` +
+  `<span class="promo-cta">${esc(cta)}</span></a>`;
+
+const promos = [
+  ['/concursos', 'mapa', 'CONCURSOS ABERTOS',
+    'Qual concurso está aberto na sua cidade?',
+    `${concursos.length} certames conferidos na página oficial do órgão, ${concursosAbertos.length} com inscrição aberta em ${estados.reduce((n, e) => n + e.municipios.length, 0)} cidades.`,
+    'Ver por estado e cidade'],
+  ['/ferramentas/edital-verticalizado', 'lista', 'FERRAMENTA GRATUITA',
+    'O edital é grande. Você precisa de uma lista.',
+    'O checklist transforma o conteúdo programático em itens que dá para marcar. Funciona dentro do navegador, sem cadastro e sem enviar nada.',
+    'Abrir o checklist do edital']
+];
+
+/* O terceiro quadro só é um prazo se existir um prazo próximo de verdade.
+   Quando não existe, ele vira o que o site sempre tem a oferecer. */
+{
+  const abertosComData = concursosAbertos.filter(c => c.inscricaoFim);
+  const proxima = abertosComData.map(c => c.inscricaoFim).sort()[0];
+  const dias = proxima ? cn.daysBetween(BUILD_DATE, proxima) : null;
+  if (dias !== null && dias >= 0 && dias <= 14) {
+    const naData = abertosComData.filter(c => c.inscricaoFim === proxima);
+    const cidades = [...new Set(naData.map(c => c.municipio))];
+    promos.push([
+      cidades.length === 1 ? naData[0].path : '/concursos', 'relogio', 'PRAZO MAIS PRÓXIMO',
+      cn.deadlineNotice({ inscricaoFim: proxima }, BUILD_DATE).text,
+      `${naData.length === 1 ? 'Um certame encerra' : naData.length + ' certames encerram'} a inscrição nesta data${cidades.length === 1 ? ' em ' + cidades[0] : ''}. Confirme na página oficial antes de programar o estudo.`,
+      naData.length === 1 ? 'Ver a ficha' : 'Ver as fichas'
+    ]);
+  } else {
+    promos.push(['/ferramentas/cronograma-de-estudos', 'relogio', 'FERRAMENTA GRATUITA',
+      'Quantas horas dar para cada matéria?',
+      'O cronograma distribui as horas que você realmente tem conforme o peso de cada disciplina na prova.',
+      'Montar meu cronograma']);
+  }
+}
+
+const bannersHtml = '<!-- banners:start -->' +
+  '<section class="promo-band" aria-label="Por onde começar"><div class="shell">' +
+  '<p class="promo-purpose">A Trilha Aprova responde duas perguntas: <strong>qual concurso está aberto perto de você</strong> e <strong>o que estudar primeiro</strong>. O portal de concursos e as ferramentas são gratuitos; as apostilas são vendidas à parte.</p>' +
+  '<div class="promo-rail">' + promos.map((p, i) => promoSlide(i, ...p)).join('') + '</div>' +
+  '</div></section><!-- banners:end -->';
+
+const atalhoCard = (href, icone, titulo, texto, cta) =>
+  `<a class="atalho-card" href="${esc(href)}">` +
+  `<span class="atalho-icon" aria-hidden="true">${ICONES[icone]}</span>` +
+  `<strong>${esc(titulo)}</strong><span>${esc(texto)}</span>` +
+  `<span class="atalho-cta">${esc(cta)}</span></a>`;
+
+const atalhosHtml = '<!-- atalhos:start -->' +
+  '<section class="section shell atalhos" aria-label="Gratuito no site"><div class="section-heading">' +
+  '<span class="eyebrow">GRATUITO, SEM CADASTRO</span>' +
+  '<h2>Nem tudo aqui é para comprar.</h2>' +
+  '<p>A parte do site que mais gente usa não custa nada: saber o que está aberto e decidir o que estudar primeiro.</p></div>' +
+  '<div class="atalho-grid">' +
+  atalhoCard('/concursos', 'mapa', 'Concursos por cidade',
+    `${concursos.length} certames com banca, prazo e data de prova, cada um com o link da página oficial do órgão.`, 'Abrir o portal') +
+  atalhoCard('/ferramentas', 'lista', 'Três ferramentas de estudo',
+    'Checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador e não pedem e-mail.', 'Usar agora') +
+  atalhoCard('/materias', 'livro', 'Matérias sobre método',
+    'Como ler um edital, como revisar e como manter a rotina de quem estuda trabalhando.', 'Ler as matérias') +
+  atalhoCard('/como-estudar-com-apostila-e-audiobook', 'fone', 'Estudar ouvindo',
+    'Como usar o audiobook no deslocamento sem transformar a escuta em distração.', 'Ver o método') +
+  '</div></section><!-- atalhos:end -->';
+
+home = home
+  .replace(/<!-- banners:start -->[\s\S]*?<!-- banners:end -->/, bannersHtml)
+  .replace(/<!-- atalhos:start -->[\s\S]*?<!-- atalhos:end -->/, atalhosHtml);
+
 fs.writeFileSync('public/index.html', home);
 
 addUrl('/', { priority: '1.0', images: products.map(p => p.storefront.cover3d) });

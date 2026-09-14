@@ -178,3 +178,32 @@ test('nenhum certame publicado aponta para apostila inexistente', () => {
     }
   }
 });
+
+// A faixa da home promete três destinos. Um banner que leva a 404 é pior que
+// banner nenhum, então cada href é conferido contra o arquivo em disco.
+test('cada quadro da faixa da home aponta para uma página que existe', () => {
+  const fs = require('node:fs');
+  const home = fs.readFileSync('public/index.html', 'utf8');
+  const banda = /<!-- banners:start -->([\s\S]*?)<!-- banners:end -->/.exec(home);
+  assert.ok(banda, 'a faixa de destaques sumiu da home');
+
+  const hrefs = [...banda[1].matchAll(/class="promo-slide" href="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(hrefs.length, 3, 'a faixa deve ter três quadros');
+  for (const href of hrefs) {
+    assert.ok(href.startsWith('/'), `destino externo na faixa: ${href}`);
+    assert.ok(fs.existsSync('public' + href + '.html'), `quadro aponta para página inexistente: ${href}`);
+  }
+});
+
+test('os atalhos do meio da home também existem em disco', () => {
+  const fs = require('node:fs');
+  const home = fs.readFileSync('public/index.html', 'utf8');
+  const bloco = /<!-- atalhos:start -->([\s\S]*?)<!-- atalhos:end -->/.exec(home);
+  assert.ok(bloco, 'o bloco de atalhos sumiu da home');
+
+  const hrefs = [...bloco[1].matchAll(/class="atalho-card" href="([^"]+)"/g)].map(m => m[1]);
+  assert.ok(hrefs.length >= 3);
+  for (const href of hrefs) {
+    assert.ok(fs.existsSync('public' + href + '.html'), `atalho aponta para página inexistente: ${href}`);
+  }
+});
