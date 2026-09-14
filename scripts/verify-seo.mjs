@@ -258,16 +258,30 @@ ok(`backlog editorial com ${remaining} pauta(s) restante(s) (${Math.floor(remain
 
 // -------------------------------------------------------- ferramentas grátis
 // A promessa da página é forte — "roda no navegador, não pedimos cadastro, nada
-// é enviado". Se alguém acrescentar um fetch ou um campo de e-mail, o texto
-// vira mentira. Estas travas existem para isso, não para estilo.
+// é enviado". A assinatura do caderno abriu a única exceção, e ela é estreita:
+// uma saída de rede, dentro de sincronizar, que não acontece sem chave paga; e
+// um campo de e-mail, na única ferramenta que tem algo a vender. Tudo o que
+// passar disso volta a ser mentira impressa na página, e é o que estas travas
+// continuam impedindo.
 const tools = JSON.parse(read('content/ferramentas.json'));
+const TOOL_COM_ASSINATURA = 'caderno-de-erros';
 
 if (!exists('public/ferramentas.js')) fail('public/ferramentas.js ausente: as ferramentas não funcionariam');
 if (!exists('public/ferramentas.css')) fail('public/ferramentas.css ausente');
 
 const toolJs = read('public/ferramentas.js');
-if (/\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon/.test(toolJs)) {
-  fail('ferramentas.js faz requisição de rede — as páginas prometem que nada é enviado');
+if (/XMLHttpRequest|navigator\.sendBeacon|new Image\s*\(/.test(toolJs)) {
+  fail('ferramentas.js abre canal de rede por fora da sincronização do caderno');
+}
+const saidasDeRede = toolJs.match(/\bfetch\s*\(/g) || [];
+if (saidasDeRede.length > 1) {
+  fail(`ferramentas.js faz ${saidasDeRede.length} requisições — só a sincronização do caderno pode sair para a rede`);
+}
+if (saidasDeRede.length === 1) {
+  const sincronizar = toolJs.slice(toolJs.indexOf('function sincronizar('), toolJs.indexOf('fetch('));
+  if (!/function sincronizar\(/.test(sincronizar) || !/if \(!chave/.test(sincronizar)) {
+    fail('a requisição de ferramentas.js não está atrás do guarda de chave: quem não assina não pode enviar nada');
+  }
 }
 if (!/localStorage/.test(toolJs)) fail('ferramentas.js não persiste nada: o progresso seria perdido a cada visita');
 
@@ -287,14 +301,25 @@ for (const t of tools) {
   if (problems.length) fail(`ferramenta ${t.slug} afirma o que não pode sustentar — ${problems.join('; ')}`);
   if ((main.match(/href="\//g) || []).length < 5) fail(`ferramenta ${t.slug} com poucos links internos`);
 
-  // A isca de e-mail é exatamente o que estas páginas prometem não fazer.
-  if (/type="email"/.test(main)) fail(`ferramenta ${t.slug} pede e-mail, contrariando a promessa da página`);
+  // A isca de e-mail é exatamente o que estas páginas prometem não fazer. O
+  // caderno pede um, mas só no formulário de pagamento — não em troca de usar
+  // a ferramenta, que continua aberta sem informar nada.
+  if (/type="email"/.test(main) && t.slug !== TOOL_COM_ASSINATURA) {
+    fail(`ferramenta ${t.slug} pede e-mail, contrariando a promessa da página`);
+  }
+  if (t.slug === TOOL_COM_ASSINATURA) {
+    const campos = main.match(/type="email"/g) || [];
+    if (campos.length > 1) fail('o caderno só pode ter um campo de e-mail, o do pagamento');
+    if (campos.length && !/data-assinatura-email/.test(main)) {
+      fail('o campo de e-mail do caderno precisa ser o do pagamento, não uma isca de cadastro');
+    }
+  }
 }
 
 const toolSlugs = tools.map((t) => t.slug);
 if (new Set(toolSlugs).size !== toolSlugs.length) fail('duas ferramentas com o mesmo slug');
 if (!exists('public/ferramentas.html')) fail('hub /ferramentas não gerado');
-ok(`${tools.length} ferramenta(s) gratuita(s) sem rede, sem cadastro e com dados estruturados`);
+ok(`${tools.length} ferramenta(s) gratuita(s) sem cadastro, com dados estruturados e sem saída de rede fora da sincronização paga`);
 
 // ------------------------------------------------------------------ IndexNow
 const keyFile = fs.readdirSync(path.join(root, 'public')).find((f) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(f) && f !== 'robots.txt' && !f.startsWith('llms'));

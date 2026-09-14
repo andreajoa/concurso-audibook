@@ -55,6 +55,23 @@ test('a mesma afirmação negada é permitida, porque é o que o site precisa di
   assert.deepEqual(editorial.factualProblems(text), []);
 });
 
+/* O preço da assinatura do caderno passou a aparecer no site, e ele casa com o
+   mesmo padrão que existe para impedir uma matéria de inventar salário. O
+   perdão precisa ser estreito: se ele abrir a porta para "o cargo paga R$ 8 mil
+   por mês", a trava inteira deixa de servir para o que foi feita. */
+test('o preço da nossa assinatura passa, o salário de um cargo não', () => {
+  const nosso = 'A assinatura resolve exatamente isso e nada além disso. Por R$ 19,90 por mês o seu caderno passa a ser guardado fora do aparelho.';
+  assert.deepEqual(editorial.factualProblems(nosso), []);
+
+  for (const claim of [
+    'O cargo de nível médio paga R$ 4.500 por mês na tabela em vigor.',
+    'O plano de carreira prevê R$ 8 mil por mês após a progressão.',
+    'A remuneração mensal chega a R$ 12.400,00 no fim da carreira.'
+  ]) {
+    assert.ok(editorial.factualProblems(claim).length > 0, `deveria reprovar: ${claim}`);
+  }
+});
+
 test('link quebrado, externo ou com .html reprova', () => {
   for (const href of ['/contato.html', 'https://outro-site.com/x', '/rota-que-nao-existe']) {
     const article = good();

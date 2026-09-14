@@ -9,6 +9,7 @@ Disallow: /dashboard
 Disallow: /comprar
 Disallow: /obrigado
 Disallow: /recuperar
+Disallow: /caderno-ativado
 Disallow: /gsc/
 
 User-agent: GPTBot

@@ -11,7 +11,7 @@ const assert = require('node:assert/strict');
 const {
   parseEdital, computeCronograma, computeAcertos, hhmm, computeTrilha, faseDoEstudo,
   registrarErro, registrarRevisao, revisoesDoDia, diagnosticoErros, resumoPorMateria,
-  somaDias, ESCADA_REVISAO, chaveMateria
+  somaDias, ESCADA_REVISAO, chaveMateria, fundirCadernos
 } = require('../public/ferramentas.js');
 
 /* -------------------------------------------------- edital verticalizado */
@@ -501,11 +501,32 @@ test('a tela do caderno tem todos os campos que o código procura', () => {
     assert.ok(html.includes(seletor), `a tela do caderno precisa de ${seletor}`);
   }
 
-  // A ferramenta não pode pedir cadastro nem mandar nada para servidor: é a
-  // promessa impressa em toda a seção de ferramentas gratuitas.
+  // A promessa impressa na seção de ferramentas é "sem cadastro, nada sai do
+  // seu aparelho". A assinatura não a revoga: ela abre uma exceção que a
+  // própria pessoa pediu e pagou. O teste guarda exatamente essa fronteira —
+  // uma única saída para a rede, dentro de sincronizar, e nunca sem chave.
   const js = fs.readFileSync(path.join(raiz, 'public/ferramentas.js'), 'utf8');
-  assert.ok(!/fetch\(|XMLHttpRequest|navigator\.sendBeacon/.test(js),
-    'as ferramentas não podem enviar nada para a rede');
+  assert.ok(!/XMLHttpRequest|navigator\.sendBeacon|new Image\(/.test(js),
+    'nenhuma ferramenta pode abrir um canal de rede por fora do sincronizar');
+  const saidas = js.match(/fetch\(/g) || [];
+  assert.equal(saidas.length, 1, 'a única chamada de rede das ferramentas é a sincronização do caderno');
+
+  const sincronizar = js.slice(js.indexOf('function sincronizar('));
+  const corpo = sincronizar.slice(0, sincronizar.indexOf('\n    }') + 6);
+  assert.match(corpo, /fetch\(/, 'a chamada de rede tem que estar dentro de sincronizar');
+  assert.match(corpo, /if \(!chave/, 'sem chave guardada, sincronizar precisa sair antes de chamar a rede');
+});
+
+test('quem não assina não faz uma requisição sequer', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const js = fs.readFileSync(path.join(__dirname, '..', 'public/ferramentas.js'), 'utf8');
+  // Toda chamada a sincronizar() acontece depois de render(), e o corpo dela
+  // desiste na primeira linha quando não há chave. Se alguém um dia chamar a
+  // rede sem esse guarda, este teste é o que avisa.
+  const antesDoFetch = js.slice(js.indexOf('function sincronizar('), js.indexOf('fetch(\'/api/forms\''));
+  assert.match(antesDoFetch, /if \(!chave \|\| sincronizando\)[\s\S]*return/,
+    'sincronizar precisa devolver cedo quando não há chave');
 });
 
 /* ------------------------------------ a trilha lendo o caderno de erros */
@@ -660,4 +681,103 @@ test('a soma dos blocos continua batendo com o tempo informado, com caderno', ()
     assert.ok(min - r.minutos < 5, `sobrou tempo demais em ${min} min`);
     for (const b of r.blocos) assert.ok(b.total >= 20, `bloco curto demais em ${min} min`);
   }
+});
+
+/* ------------------------------------ o caderno em dois aparelhos ------ */
+
+/*
+ * A assinatura promete que o caderno acompanha a pessoa: ela anota o erro no
+ * celular à noite e encontra a revisão no computador de manhã. Quem faz essa
+ * promessa valer é a fusão, e ela é a parte do sistema onde um engano é
+ * invisível: ninguém percebe uma questão que sumiu da fila, só percebe a
+ * questão errada na prova. Por isso ela é pura e testada aqui.
+ */
+
+const erroBase = (over) => Object.assign({
+  id: 1, materia: 'Português', topico: 'Crase', motivo: 'nao-sabia',
+  anotacao: '', criadoEm: '2026-03-01', degrau: 0,
+  proxima: '2026-03-02', erros: 1, acertosSeguidos: 0, dominado: false
+}, over);
+
+test('o mesmo erro anotado nos dois aparelhos vira um só', () => {
+  const celular = { versao: 1, itens: [erroBase()] };
+  const micro = { versao: 1, itens: [erroBase({ id: 9 })] };
+  const junto = fundirCadernos(celular, micro);
+  assert.equal(junto.itens.length, 1);
+  assert.equal(junto.itens[0].id, 1, 'o id volta a ser um contador contínuo');
+});
+
+test('acento e caixa diferentes não duplicam o erro', () => {
+  const a = { versao: 1, itens: [erroBase({ materia: 'Informática', topico: 'Excel' })] };
+  const b = { versao: 1, itens: [erroBase({ materia: 'informatica', topico: 'EXCEL' })] };
+  assert.equal(fundirCadernos(a, b).itens.length, 1);
+});
+
+test('na dúvida a questão volta para a fila: vence o degrau menor', () => {
+  // No computador ela acertou duas vezes; no celular errou e caiu.
+  const adiantado = { versao: 1, itens: [erroBase({ degrau: 3, proxima: '2026-04-10', acertosSeguidos: 2 })] };
+  const atrasado = { versao: 1, itens: [erroBase({ degrau: 1, proxima: '2026-03-05', erros: 2 })] };
+  const i = fundirCadernos(adiantado, atrasado).itens[0];
+  assert.equal(i.degrau, 1, 'subir o degrau tirava a questão da fila cedo demais');
+  assert.equal(i.proxima, '2026-03-05', 'a revisão mais próxima é a que vale');
+  assert.equal(i.erros, 2, 'errar em qualquer aparelho conta');
+  assert.equal(i.acertosSeguidos, 0, 'a sequência de acertos quebrou em um dos dois');
+});
+
+test('só sai da fila como dominado se os dois aparelhos concordarem', () => {
+  const dominou = { versao: 1, itens: [erroBase({ degrau: 6, proxima: null, dominado: true })] };
+  const nao = { versao: 1, itens: [erroBase({ degrau: 2, proxima: '2026-03-20' })] };
+  const parcial = fundirCadernos(dominou, nao).itens[0];
+  assert.equal(parcial.dominado, false);
+  assert.equal(parcial.proxima, '2026-03-20');
+
+  const ambos = fundirCadernos(dominou, { versao: 1, itens: [erroBase({ degrau: 6, proxima: null, dominado: true })] });
+  assert.equal(ambos.itens[0].dominado, true);
+  assert.equal(ambos.itens[0].proxima, null);
+  assert.equal(ambos.itens[0].degrau, ESCADA_REVISAO.length);
+});
+
+test('erro que só existe num aparelho é erro novo, não erro apagado', () => {
+  const a = { versao: 1, itens: [erroBase()] };
+  const b = { versao: 1, itens: [erroBase({ topico: 'Regência', criadoEm: '2026-03-02' })] };
+  const junto = fundirCadernos(a, b);
+  assert.equal(junto.itens.length, 2);
+  assert.deepEqual(junto.itens.map((i) => i.topico), ['Crase', 'Regência']);
+});
+
+test('a anotação escrita num aparelho sobrevive ao aparelho que não tinha nenhuma', () => {
+  const comNota = { versao: 1, itens: [erroBase({ anotacao: 'Crase antes de palavra masculina não existe' })] };
+  const vazio = { versao: 1, itens: [erroBase()] };
+  assert.match(fundirCadernos(vazio, comNota).itens[0].anotacao, /masculina/);
+  assert.match(fundirCadernos(comNota, vazio).itens[0].anotacao, /masculina/);
+});
+
+test('fundir é estável: a ordem dos aparelhos não muda o resultado', () => {
+  const a = { versao: 1, itens: [erroBase({ id: 1 }), erroBase({ id: 2, criadoEm: '2026-03-05', topico: 'Vírgula' })] };
+  const b = { versao: 1, itens: [erroBase({ id: 1, criadoEm: '2026-03-03', topico: 'Acento' }), erroBase({ id: 2, degrau: 4 })] };
+  assert.deepEqual(fundirCadernos(a, b), fundirCadernos(b, a));
+});
+
+test('fundir de novo não muda mais nada', () => {
+  const a = { versao: 1, itens: [erroBase({ degrau: 2 })] };
+  const b = { versao: 1, itens: [erroBase({ criadoEm: '2026-03-04', topico: 'Acento' })] };
+  const uma = fundirCadernos(a, b);
+  assert.deepEqual(fundirCadernos(uma, uma), uma);
+  assert.deepEqual(fundirCadernos(uma, b), uma);
+});
+
+test('caderno ausente ou lixo não derruba a fusão', () => {
+  const a = { versao: 1, itens: [erroBase()] };
+  assert.deepEqual(fundirCadernos(a, null).itens.length, 1);
+  assert.deepEqual(fundirCadernos(null, null), { versao: 1, itens: [] });
+  assert.deepEqual(fundirCadernos(a, { itens: [{ materia: '' }, null, { criadoEm: '2026-01-01' }] }).itens.length, 1);
+});
+
+test('a fila do dia enxerga o que veio do outro aparelho', () => {
+  const celular = { versao: 1, itens: [erroBase({ materia: 'Informática', topico: 'Excel', proxima: '2026-03-02' })] };
+  const junto = fundirCadernos({ versao: 1, itens: [] }, celular);
+  const fila = revisoesDoDia(junto, '2026-03-10');
+  assert.equal(fila.length, 1);
+  assert.equal(fila[0].materia, 'Informática');
+  assert.equal(fila[0].atraso, 8);
 });

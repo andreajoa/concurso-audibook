@@ -2,12 +2,20 @@ const { verifyPurchase, updateSessionMetadata, baseUrl } = require('../lib/strip
 const { getProduct } = require('../lib/catalog');
 const { sendAccessEmail } = require('../lib/email');
 const { rpc } = require('../lib/crm-rpc');
+const { chaveDaSessao } = require('../lib/assinatura');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Método não permitido.' });
   res.setHeader('Cache-Control','private, no-store, max-age=0');
   try {
     const sessionId = String((req.query && req.query.session_id) || '');
+
+    /* A assinatura responde antes da apostila porque verifyPurchase exige um
+       produto de catálogo e o plano não é um — cairia em paid:false e a pessoa
+       ficaria olhando uma tela que diz que ela não pagou. */
+    const assinatura = await chaveDaSessao(sessionId).catch(error => { console.error('assinatura_status_page', error); return null; });
+    if (assinatura) return res.status(200).json({ paid: true, plano: true, chave: assinatura.chave, email: assinatura.email });
+
     const purchase = await verifyPurchase(sessionId);
     if (!purchase) return res.status(200).json({ paid: false });
     const product = getProduct(purchase.slug);

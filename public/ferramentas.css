@@ -46,6 +46,11 @@
 .tool-path li{margin-bottom:8px}
 .tool-note{max-width:780px;font-size:14px;line-height:1.65;color:#5b6e82;margin:12px 0}
 .tool-saved{font-size:13px;color:#2f7d52;margin:14px 0 0}
+/* O aviso de sincronização diz respeito a outro aparelho, não a este, e por
+   isso não pode usar o verde do "salvo": quem lê os dois juntos precisa ver
+   que são duas garantias diferentes. Ele também nunca some sozinho — se a
+   última tentativa falhou, a pessoa tem que continuar sabendo disso. */
+.tool-sync{font-size:13px;color:#4a5b6d;margin:14px 0 0;padding-left:16px;border-left:3px solid #caa65a}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .tool-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:28px 0;max-width:1000px}
 .tool-card{border:1px solid #e1e7ee;border-radius:14px;padding:22px;background:#fff}
@@ -108,10 +113,25 @@
 .caderno-barra-valor{font:600 13px system-ui,sans-serif;color:#5b6e82;white-space:nowrap}
 .caderno-teimosos{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#fbe9e7;border:1px solid #f0cec7;font-size:15px;line-height:1.6;color:#7d2f22}
 .caderno-teimosos strong{color:#9c3b2c}
+/* A oferta da assinatura fica dentro da ferramenta, e por isso não pode ter
+   cara de anúncio: mesma tipografia, sem cor de promoção, sem borda gritando.
+   O que a separa do resto é só uma linha acima — ela aparece depois que a
+   pessoa já anotou erros, como continuação do que estava fazendo. */
+.tool-assinatura{margin:26px 0 0;padding:22px 0 0;border-top:1px solid #e1e7ee}
+.tool-assinatura h3{font:400 21px/1.3 Georgia,serif;color:#08284f;margin:0 0 10px}
+.tool-assinatura p{max-width:640px;font-size:15px;line-height:1.65;color:#3c4a59;margin:0 0 12px}
+.tool-assinatura form{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin:18px 0 0;max-width:640px}
+.tool-assinatura label{display:block;width:100%;font:600 13px system-ui,sans-serif;color:#5b6e82;margin-bottom:-4px}
+.tool-assinatura input{flex:1 1 240px;min-width:0;font:400 15px system-ui,sans-serif;color:#15304e;border:1px solid #cfd8e3;border-radius:10px;padding:12px 14px;background:#fff}
+.tool-assinatura input:focus-visible{outline:2px solid #08284f;outline-offset:1px}
+.tool-erro{margin:12px 0 0;font-size:14px;line-height:1.6;color:#9c3b2c}
+/* O Stripe desenha dentro de um iframe que precisa da largura inteira; sem a
+   altura mínima a página dá um pulo no instante entre montar e pintar. */
+[data-assinatura-palco]{margin:18px 0 0;min-height:360px}
 /* No celular a tabela é a única coisa larga da página. O .tool-scroll impede
    que ela empurre o site inteiro para o lado — mas uma tabela que rola por
    dentro esconde a coluna do "×", e quem não vê o botão não remove a linha.
    Por isso o recuo e o nowrap do cabeçalho saem: com o título quebrando em
    duas linhas, a tabela cabe sozinha e a barra de rolagem nunca aparece. */
-@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table th{white-space:normal;padding:6px 4px}.tool-table td{padding:6px 4px}.tool-table input[type=number]{max-width:56px}.tool-table input[type=text]{padding:10px 8px}.tool-table select{max-width:104px}.tool-verdict{font-size:16px}.caderno-barras li{grid-template-columns:1fr;gap:4px}.caderno-card-acoes .tool-button{flex:1 1 auto}}
+@media(max-width:650px){.tool{padding:18px}.tool-table{font-size:14px}.tool-table th{white-space:normal;padding:6px 4px}.tool-table td{padding:6px 4px}.tool-table input[type=number]{max-width:56px}.tool-table input[type=text]{padding:10px 8px}.tool-table select{max-width:104px}.tool-verdict{font-size:16px}.caderno-barras li{grid-template-columns:1fr;gap:4px}.caderno-card-acoes .tool-button{flex:1 1 auto}.tool-assinatura form{gap:12px}.tool-assinatura input{flex:1 1 100%}.tool-assinatura .tool-button{width:100%}}
 @media print{.guide-header,.site-footer,.tool-actions,.tool-step,.tool-remove,.newsletter-invite{display:none!important}.tool{border:0;padding:0}.tool-output{border-top:0}}

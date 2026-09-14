@@ -1,8 +1,9 @@
 const crypto = require('crypto');
 const { baseUrl, retrieveCheckoutSession, updateSessionMetadata, isPaidAndNotRefunded, sessionEmail, sessionProduct, request } = require('../lib/stripe');
 const { getProduct } = require('../lib/catalog');
-const { sendAccessEmail, sendAbandonedCheckoutEmail, sendPaymentFailedEmail } = require('../lib/email');
+const { sendAccessEmail, sendCadernoKeyEmail, sendAbandonedCheckoutEmail, sendPaymentFailedEmail } = require('../lib/email');
 const { rpc } = require('../lib/crm-rpc');
+const assinatura = require('../lib/assinatura');
 
 const SITE_ID = 'concurso_audiobook';
 const PROJECT_ID = 'concurso_audiobook';
@@ -60,6 +61,43 @@ module.exports = async (req,res) => {
     const payload=await rawBody(req);
     if (!verifyStripeSignature(payload,req.headers['stripe-signature'],process.env.STRIPE_WEBHOOK_SECRET)) return res.status(400).end('Invalid signature');
     const event=JSON.parse(payload.toString('utf8'));
+
+    /* A assinatura do caderno entra antes da venda de apostila porque as duas
+       chegam no mesmo evento: o que as separa é o product_slug. Sem este
+       desvio, uma assinatura cairia no caminho que procura PDF e audiobook e
+       sairia calada, deixando quem pagou sem a chave. */
+    if (event.type==='checkout.session.completed' && assinatura.ehDoPlano(event.data?.object?.metadata||{})) {
+      const session=await retrieveCheckoutSession(event.data.object.id);
+      const email=sessionEmail(session);
+      const subId=typeof session.subscription==='string'?session.subscription:session.subscription?.id;
+      if (!email || !subId) return res.status(200).json({received:true});
+      const sub=await request(`/subscriptions/${encodeURIComponent(subId)}`,{method:'GET'}).catch(()=>null);
+      const registro=await assinatura.registrarAssinante({
+        email, customer:typeof session.customer==='string'?session.customer:session.customer?.id,
+        subscription:subId, status:assinatura.statusDoStripe(sub),
+        valeAte:assinatura.paraIso(sub?.current_period_end)
+      });
+      if (!registro?.chave) return res.status(500).json({received:true,stored:false});
+      if (!session.metadata?.access_email_sent) {
+        const url=`${baseUrl(req)}/ferramentas/caderno-de-erros?chave=${encodeURIComponent(registro.chave)}`;
+        await sendCadernoKeyEmail({to:email,chave:registro.chave,accessUrl:url});
+        await updateSessionMetadata(session.id,{access_email_sent:event.id});
+      }
+      return res.status(200).json({received:true,subscribed:true});
+    }
+
+    /* Renovou, atrasou, cancelou. Nenhum destes apaga o caderno: só muda se a
+       sincronização está liberada. Quem volta em três meses espera encontrar o
+       que anotou, e um caderno de erros apagado não tem como ser refeito. */
+    if (event.type.startsWith('customer.subscription.')) {
+      const sub=event.data?.object;
+      if (!sub?.id || !assinatura.ehDoPlano(sub.metadata||{})) return res.status(200).json({received:true,ignored:true});
+      const estado=event.type==='customer.subscription.deleted'
+        ? {id:sub.id,status:'canceled',current_period_end:sub.current_period_end}
+        : sub;
+      await assinatura.atualizarStatus(estado).catch(error=>console.error('assinatura_status',error));
+      return res.status(200).json({received:true,subscription:assinatura.statusDoStripe(estado)});
+    }
 
     if (event.type==='checkout.session.completed' || event.type==='checkout.session.async_payment_succeeded') {
       const eventSession=event.data?.object;

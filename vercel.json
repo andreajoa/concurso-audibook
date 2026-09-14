@@ -108,7 +108,7 @@
       ]
     },
     {
-      "source": "/(dashboard|comprar|obrigado|recuperar|acesso|api)(.*)",
+      "source": "/(dashboard|comprar|obrigado|recuperar|acesso|caderno-ativado|api)(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",

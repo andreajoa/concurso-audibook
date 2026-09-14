@@ -168,3 +168,54 @@ test('no celular todo link do menu é grande o bastante para o dedo', () => {
   assert.ok(altura >= 24,
     `o alvo de toque do menu ficaria com ${altura.toFixed(0)}px; a WCAG pede 24px`);
 });
+
+/* A assinatura tem um ponto de falha que não aparece em nenhum teste de
+   unidade: o Stripe devolve a pessoa para uma URL que este repositório precisa
+   servir. Se a página sumir ou o caminho mudar de um lado só, quem acabou de
+   pagar cai num 404 segurando o único acesso que existe. */
+test('a volta do pagamento da assinatura tem para onde ir', () => {
+  const fonte = fs.readFileSync(path.join(root, 'lib/assinatura.js'), 'utf8');
+  const retorno = fonte.match(/return_url:\s*`\$\{origin\}(\/[a-z0-9-]+)/);
+  assert.ok(retorno, 'criarAssinatura precisa declarar um return_url interno');
+
+  const caminho = retorno[1];
+  const arquivo = path.join(root, 'public', caminho.slice(1) + '.html');
+  assert.ok(fs.existsSync(arquivo), `o Stripe devolve para ${caminho} e não há página para servir`);
+
+  const html = fs.readFileSync(arquivo, 'utf8');
+  assert.match(html, /noindex/, 'a página de retorno mostra a chave de acesso e não pode ser indexada');
+  assert.match(html, /\/api\/order-status\?session_id=/,
+    'a página de retorno precisa consultar o pagamento para descobrir a chave');
+  assert.match(html, /\/ferramentas\/caderno-de-erros\?chave=/,
+    'a página de retorno precisa levar a pessoa ao caderno já com a chave');
+
+  const robots = fs.readFileSync(path.join(root, 'public/robots.txt'), 'utf8');
+  assert.ok(robots.includes('Disallow: ' + caminho), `${caminho} precisa sair do robots.txt`);
+
+  const config = require('../vercel.json');
+  const noindex = config.headers.find((h) => /X-Robots-Tag/.test(JSON.stringify(h.headers)));
+  assert.match(noindex.source, new RegExp(caminho.slice(1)),
+    'a página de retorno precisa do X-Robots-Tag junto com as outras páginas privadas');
+});
+
+/* Vender dentro da ferramenta só é aceitável enquanto a ferramenta continuar
+   inteira de graça. Este teste guarda essa fronteira do lado do arquivo: o
+   script da assinatura não pode ser carregado por nenhuma outra ferramenta, e
+   a oferta não pode aparecer para quem ainda não anotou nada. */
+test('a oferta da assinatura vive só no caderno e só depois do primeiro erro', () => {
+  const build = fs.readFileSync(path.join(root, 'scripts/build-seo.cjs'), 'utf8');
+  assert.match(build, /t\.slug === 'caderno-de-erros'\s*\n?\s*\?\s*\['\/ferramentas\.js', '\/assinatura-checkout\.js'\]/,
+    'só o caderno pode carregar o script da assinatura');
+
+  const ferramentas = require('../content/ferramentas.json');
+  for (const t of ferramentas) {
+    if (!t.appHtml) continue;
+    const temOferta = t.appHtml.includes('data-assinatura');
+    assert.equal(temOferta, t.slug === 'caderno-de-erros',
+      `${t.slug}: a oferta da assinatura só pode existir no caderno de erros`);
+  }
+
+  const script = fs.readFileSync(path.join(root, 'public/assinatura-checkout.js'), 'utf8');
+  assert.match(script, /bloco\.hidden = e !== 'com-erros'/,
+    'a oferta precisa aparecer só quando há erros anotados — e some para quem já assina');
+});

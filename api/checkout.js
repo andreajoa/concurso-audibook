@@ -1,6 +1,7 @@
 const { createCheckout } = require('../lib/checkout-hosted');
 const { getSellableProduct } = require('../lib/catalog');
 const { rpc } = require('../lib/crm-rpc');
+const { PLANO, criarAssinatura } = require('../lib/assinatura');
 
 let bundledPublicKey='';
 try { bundledPublicKey = String(require('../lib/payment-public-key') || '').trim(); } catch {}
@@ -37,6 +38,20 @@ module.exports=async(req,res)=>{
     if(!/^pk_(live|test)_/.test(pk)) return res.status(503).json({error:'O ambiente de pagamento está temporariamente indisponível.'});
     const body=await getJsonBody(req);
     const slug=clean(body.slug||'autores-ibam-2026',120);
+
+    /* A assinatura do caderno não passa pelo catálogo de apostilas: não tem
+       PDF, não tem audiobook e não tem data de prova que a faça sair de venda.
+       Ela também não pede WhatsApp — o acesso chega por e-mail e nada mais é
+       necessário para entregar. */
+    if(slug===PLANO.slug){
+      const email=clean(body.email,240).toLowerCase();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({error:'Confira o e-mail: é para ele que vai a chave do seu caderno.'});
+      const analytics=body.analytics&&typeof body.analytics==='object'?body.analytics:{};
+      const assinatura=await criarAssinatura(req,{email,analytics});
+      if(!assinatura.client_secret)throw new Error('Subscription session did not return a client secret.');
+      return res.status(200).json({mode:'embedded',clientSecret:assinatura.client_secret,sessionId:assinatura.id});
+    }
+
     const product=getSellableProduct(slug);
     if(!product)return res.status(400).json({error:'Produto indisponível.'});
     const name=clean(body.name,180);

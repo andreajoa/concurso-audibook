@@ -1129,6 +1129,90 @@
   }
 
   /**
+   * Identidade de um erro entre aparelhos.
+   *
+   * O `id` é um contador por aparelho: o item 7 do celular não é o item 7 do
+   * computador, e usá-lo para casar os dois duplicaria tudo. O que de fato
+   * identifica um erro é o que a pessoa digitou — dia, matéria, tópico e
+   * motivo. Dois registros iguais no mesmo dia são o mesmo erro anotado duas
+   * vezes, e juntá-los é o comportamento certo, não um efeito colateral.
+   */
+  function chaveItem(i) {
+    return [i.criadoEm, chaveMateria(i.materia), chaveMateria(i.topico), i.motivo].join('|');
+  }
+
+  /**
+   * Junta o caderno deste aparelho com o que está no servidor.
+   *
+   * A regra em cada empate é sempre a mesma e vem da assimetria das
+   * consequências: errar para menos custa uma revisão repetida, errar para
+   * mais custa uma questão na prova. Então o degrau menor vence, "dominado" só
+   * vale se os dois lados concordarem, a próxima revisão é a mais próxima e o
+   * número de erros é o maior dos dois. Na dúvida a questão volta para a fila.
+   *
+   * Ninguém apaga item do caderno pela tela, então a união é honesta: item que
+   * existe de um lado só é item novo, nunca item removido do outro.
+   */
+  function fundirCadernos(a, b) {
+    var mapa = {};
+    var ordem = [];
+    [a, b].forEach(function (caderno) {
+      if (!caderno || !Array.isArray(caderno.itens)) return;
+      caderno.itens.forEach(function (i) {
+        if (!i || !i.materia || !i.criadoEm) return;
+        var k = chaveItem(i);
+        var atual = mapa[k];
+        if (!atual) { mapa[k] = i; ordem.push(k); return; }
+        var dominado = Boolean(atual.dominado && i.dominado);
+        var atrasado = num(atual.degrau, 0) <= num(i.degrau, 0) ? atual : i;
+        mapa[k] = {
+          id: Math.min(num(atual.id, 1), num(i.id, 1)),
+          materia: atrasado.materia, topico: atrasado.topico, motivo: atrasado.motivo,
+          // A anotação é texto que a pessoa escreveu: entre ter e não ter,
+          // ter ganha; entre duas, a mais longa costuma ser a revisada.
+          anotacao: String(atual.anotacao || '').length >= String(i.anotacao || '').length
+            ? atual.anotacao : i.anotacao,
+          criadoEm: atrasado.criadoEm,
+          degrau: dominado ? ESCADA_REVISAO.length : Math.min(num(atual.degrau, 0), num(i.degrau, 0)),
+          proxima: dominado ? null : menorData(atual.proxima, i.proxima),
+          erros: Math.max(num(atual.erros, 1), num(i.erros, 1)),
+          acertosSeguidos: Math.min(num(atual.acertosSeguidos, 0), num(i.acertosSeguidos, 0)),
+          dominado: dominado,
+          revisadoEm: maiorData(atual.revisadoEm, i.revisadoEm)
+        };
+      });
+    });
+    // Renumera do zero para que o id volte a ser um contador contínuo: a tela
+    // e a escada de revisão usam o id para achar a linha que foi clicada.
+    var itens = ordem.map(function (k, n) {
+      var i = mapa[k];
+      return {
+        id: n + 1, materia: i.materia, topico: i.topico, motivo: i.motivo,
+        anotacao: i.anotacao, criadoEm: i.criadoEm, degrau: num(i.degrau, 0),
+        proxima: i.proxima || null, erros: num(i.erros, 1),
+        acertosSeguidos: num(i.acertosSeguidos, 0), dominado: Boolean(i.dominado),
+        revisadoEm: i.revisadoEm || undefined
+      };
+    });
+    itens.sort(function (x, y) {
+      return x.criadoEm < y.criadoEm ? -1 : x.criadoEm > y.criadoEm ? 1 : x.id - y.id;
+    });
+    itens.forEach(function (i, n) { i.id = n + 1; });
+    return { versao: 1, itens: itens };
+  }
+
+  function menorData(x, y) {
+    if (!x) return y || null;
+    if (!y) return x;
+    return x < y ? x : y;
+  }
+  function maiorData(x, y) {
+    if (!x) return y || undefined;
+    if (!y) return x;
+    return x > y ? x : y;
+  }
+
+  /**
    * O que precisa voltar hoje. Inclui o que venceu antes e ficou para trás —
    * dois dias sem abrir o caderno não podem fazer a questão sumir da fila.
    * O atraso vem junto para que a tela possa dizer, sem julgamento, há quanto
@@ -1258,6 +1342,72 @@
     }).join('');
 
     var estado = load('caderno', null);
+    var chave = pegarChave();
+    var sincronizando = false;
+    var pendente = false;
+
+    /**
+     * A chave chega pelo link do e-mail e sai da barra de endereço na mesma
+     * hora. Enquanto ela estiver na URL, vai junto em cada Referer, entra no
+     * histórico compartilhado do navegador e aparece em qualquer print que a
+     * pessoa mande para alguém. Guardada aqui, o link só precisa ser aberto
+     * uma vez por aparelho.
+     */
+    function pegarChave() {
+      var daUrl = '';
+      try {
+        daUrl = (new URLSearchParams(location.search).get('chave') || '').trim().toLowerCase();
+      } catch (e) { /* navegador antigo */ }
+      if (/^[a-f0-9]{48}$/.test(daUrl)) {
+        save('chave-caderno', daUrl);
+        try { history.replaceState(null, '', location.pathname); } catch (e) { /* file:// */ }
+        return daUrl;
+      }
+      var guardada = load('chave-caderno', null);
+      return typeof guardada === 'string' && /^[a-f0-9]{48}$/.test(guardada) ? guardada : '';
+    }
+
+    /**
+     * Manda o caderno deste aparelho e recebe de volta o caderno combinado.
+     *
+     * O servidor nunca é a autoridade: o que ele devolve é a fusão do que subiu
+     * com o que já estava lá, e o navegador adota esse resultado. Se a rede
+     * cair, a ferramenta continua inteira — ela sempre funcionou sem servidor,
+     * e a assinatura acrescenta memória, não dependência.
+     */
+    function sincronizar() {
+      if (!chave || sincronizando) { pendente = pendente || Boolean(chave); return; }
+      sincronizando = true;
+      sinal('Sincronizando…');
+      fetch('/api/forms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'caderno', chave: chave, estado: estado || { versao: 1, itens: [] } })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; });
+      }).then(function (res) {
+        if (!res.ok || !res.d.ok) {
+          sinal(res.d.erro || 'Não consegui sincronizar agora. O que você anotou está salvo neste aparelho.');
+          return;
+        }
+        estado = res.d.estado;
+        save('caderno', estado);
+        render();
+        sinal('Caderno sincronizado.');
+      }).catch(function () {
+        sinal('Sem conexão. O caderno segue salvo neste aparelho e sobe na próxima vez.');
+      }).then(function () {
+        sincronizando = false;
+        if (pendente) { pendente = false; sincronizar(); }
+      });
+    }
+
+    function sinal(texto) {
+      var el = root.querySelector('[data-sync]');
+      if (!el) return;
+      el.textContent = texto || '';
+      el.hidden = !texto;
+    }
 
     function aviso(texto) {
       if (!avisoEl) return;
@@ -1342,22 +1492,46 @@
         '<p class="caderno-explica">Em aberto é o que ainda volta para revisão. Dominado é o que você acertou nas seis revisões e saiu da fila.</p></div>';
     }
 
-    function render() {
+    /**
+     * Desenha um caderno na tela. O de demonstração passa por aqui sem ser
+     * salvo: antes, "ver com um exemplo" substituía o caderno de verdade da
+     * pessoa em silêncio — e com a assinatura ligada esse silêncio subiria os
+     * erros inventados para todos os aparelhos dela.
+     */
+    function pintar(caderno, demonstracao) {
       var hoje = hojeLocalIso();
-      var d = diagnosticoErros(estado);
+      var d = diagnosticoErros(caderno);
       if (!d.total) {
         output.hidden = true;
         return;
       }
       target.innerHTML =
+        (demonstracao ? '<p class="caderno-explica">Exemplo para você ver como fica. Nada aqui foi salvo no seu caderno.</p>' : '') +
         '<p class="caderno-placar"><strong>' + esc(plural(d.total, 'erro registrado', 'erros registrados')) + '</strong>' +
         (d.dominados ? ' · ' + d.dominados + ' já dominado' + (d.dominados === 1 ? '' : 's') : '') + '</p>' +
-        filaHtml(revisoesDoDia(estado, hoje)) +
+        filaHtml(revisoesDoDia(caderno, hoje)) +
         diagnosticoHtml(d) +
-        materiasHtml(resumoPorMateria(estado));
+        materiasHtml(resumoPorMateria(caderno));
       output.hidden = false;
-      markSaved(root, save('caderno', estado));
+      if (!demonstracao) markSaved(root, save('caderno', caderno));
     }
+
+    /**
+     * O <html> carrega em que pé está o caderno: sem erro nenhum, com erros
+     * anotados, ou já sincronizado por uma assinatura. É por este atributo que
+     * a oferta da assinatura sabe quando aparecer — e, mais importante, quando
+     * nunca mais aparecer. Um atributo em vez de uma chamada direta porque os
+     * dois scripts carregam em ordem que ninguém controla.
+     */
+    function anunciarEstado(caderno) {
+      var quantos = caderno && Array.isArray(caderno.itens) ? caderno.itens.length : 0;
+      document.documentElement.setAttribute(
+        'data-caderno',
+        chave ? 'assinante' : (quantos ? 'com-erros' : 'vazio')
+      );
+    }
+
+    function render() { pintar(estado, false); anunciarEstado(estado); }
 
     root.addEventListener('click', function (ev) {
       var botao = ev.target.closest('[data-action]');
@@ -1383,21 +1557,23 @@
         // mais ainda. Limpar tudo obrigaria a redigitar a cada erro.
         anotacaoEl.value = '';
         render();
+        sincronizar();
       }
 
       if (action === 'revisar') {
         estado = registrarRevisao(estado, Number(botao.dataset.id), botao.dataset.ok === '1', hojeLocalIso());
         render();
+        sincronizar();
       }
 
       if (action === 'exemplo') {
-        estado = CADERNO_EXEMPLO.reduce(function (c, e, k) {
+        var demo = CADERNO_EXEMPLO.reduce(function (c, e, k) {
           // Espalhados no passado, senão nada estaria vencido e a fila do dia
           // apareceria vazia — justamente a parte que o exemplo precisa mostrar.
           return registrarErro(c, e, somaDias(hojeLocalIso(), -(CADERNO_EXEMPLO.length - k) * 2));
         }, null);
         aviso('');
-        render();
+        pintar(demo, true);
         output.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
@@ -1409,6 +1585,12 @@
         output.hidden = true;
         aviso('');
         markSaved(root, false);
+        anunciarEstado(null);
+        /* A chave fica. "Começar de novo" apaga o caderno deste aparelho, não
+           cancela a assinatura — e como o servidor devolve o que está guardado,
+           a próxima sincronização traz tudo de volta. Dizer isso evita que a
+           pessoa ache que perdeu o histórico. */
+        if (chave) sinal('Caderno limpo neste aparelho. O que está guardado na sua assinatura volta na próxima sincronização.');
       }
     });
 
@@ -1416,6 +1598,9 @@
       render();
       markSaved(root, true);
     }
+    anunciarEstado(estado);
+    // Ao abrir, puxa o que os outros aparelhos anotaram desde a última visita.
+    if (chave) sincronizar();
   }
 
   /* ---------------------------------------------------------------- */
@@ -1435,7 +1620,7 @@
       revisoesDoDia: revisoesDoDia, diagnosticoErros: diagnosticoErros,
       resumoPorMateria: resumoPorMateria, somaDias: somaDias,
       ESCADA_REVISAO: ESCADA_REVISAO, MOTIVOS: MOTIVOS,
-      chaveMateria: chaveMateria
+      chaveMateria: chaveMateria, fundirCadernos: fundirCadernos
     };
     return;
   }

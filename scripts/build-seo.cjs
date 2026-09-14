@@ -795,7 +795,12 @@ for (const t of tools) {
     }],
     trail: [['Ferramentas', '/ferramentas']],
     styles: ['/ferramentas.css'],
-    scripts: ['/ferramentas.js'],
+    /* Só o caderno carrega o script da assinatura. As outras ferramentas são
+       gratuitas para sempre e não têm o que vender — mandar o arquivo para
+       elas seria cobrar peso de página por uma oferta que não existe ali. */
+    scripts: t.slug === 'caderno-de-erros'
+      ? ['/ferramentas.js', '/assinatura-checkout.js']
+      : ['/ferramentas.js'],
     priority: '0.8'
   });
 }
@@ -806,7 +811,7 @@ renderPage({
   metaTitle: 'Ferramentas gratuitas para concurso público',
   description: 'Trilha do dia, caderno de erros, checklist do edital, cronograma por peso e calculadora de acertos. Rodam no navegador, sem cadastro.',
   kicker: 'GRATUITO',
-  lead: 'Quem estuda para concurso raramente sofre por falta de material: sofre por não saber o que abrir hoje. Estas ferramentas respondem as perguntas práticas da rotina — o que estudar agora, o que o edital cobra, quanto tempo dar para cada matéria e quantas questões faltam para a sua meta. Funcionam inteiras dentro do navegador: não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho.',
+  lead: 'Quem estuda para concurso raramente sofre por falta de material: sofre por não saber o que abrir hoje. Estas ferramentas respondem as perguntas práticas da rotina — o que estudar agora, o que o edital cobra, quanto tempo dar para cada matéria e quantas questões faltam para a sua meta. Funcionam inteiras dentro do navegador: não pedimos cadastro, não pedimos e-mail e nada do que você digitar sai do seu aparelho, a não ser que você peça — o caderno de erros tem uma assinatura opcional que guarda suas anotações para você usá-las no celular e no computador.',
   keyFacts: [
     ['Quantas ferramentas', String(tools.length)],
     ['Preço', 'Gratuitas, sem cadastro e sem e-mail'],
@@ -824,6 +829,7 @@ renderPage({
     '<h2>Por que elas não pedem cadastro</h2>' +
     '<p>A troca mais comum na internet é ferramenta grátis em troca do seu e-mail. Aqui não existe essa troca, por um motivo prático: o cálculo é simples o bastante para acontecer no seu próprio navegador, e mandar seus dados para um servidor só criaria um risco que não precisa existir. O que você digitar fica no seu aparelho.</p>' +
     '<p>A consequência é que o resultado não te acompanha entre aparelhos. Se você montar o cronograma no computador, ele não aparece no celular. O botão de imprimir resolve isso: ele abre a caixa de impressão do navegador, onde dá para salvar em PDF e guardar onde você quiser.</p>' +
+    '<p>Há uma exceção, e ela é opcional. O <a href="/ferramentas/caderno-de-erros">caderno de erros</a> é a única ferramenta cujo valor depende de acumular meses de histórico, e histórico preso em um aparelho se perde na primeira troca de celular. Por isso ele tem uma assinatura que guarda o caderno e o repete entre os aparelhos. Continua sendo escolha sua: sem assinar, o caderno funciona inteiro, calcula a fila de revisão igual e não manda nada para lugar nenhum.</p>' +
     '<h2>Como elas se encaixam</h2>' +
     '<ol><li><strong>Comece pelo <a href="/ferramentas/edital-verticalizado">checklist do edital</a>.</strong> Ele transforma o conteúdo programático em lista marcável e responde o que estudar.</li>' +
     '<li><strong>Depois use o <a href="/ferramentas/cronograma-de-estudos">cronograma</a>.</strong> Ele distribui suas horas na proporção de questões e peso, e responde quanto tempo dar para cada matéria.</li>' +
@@ -839,8 +845,8 @@ renderPage({
     '<h2>Apostilas com PDF e audiobook</h2><ul>' + productLinks + '</ul>' +
     disclaimer,
   faq: [
-    { q: 'As ferramentas são realmente gratuitas?', a: 'São. Não há cadastro, não pedimos e-mail e não há versão paga delas. As apostilas em PDF com audiobook são vendidas à parte e não são necessárias para usar nenhuma das ferramentas.' },
-    { q: 'Meus dados são enviados para vocês?', a: 'Não. O cálculo acontece dentro do seu navegador e o resultado fica no armazenamento local do aparelho. Nada do que você digitar chega até nós.' },
+    { q: 'As ferramentas são realmente gratuitas?', a: 'São. Não há cadastro nem pagamento para usar qualquer uma delas, e nenhum recurso de cálculo fica atrás de um preço. O caderno de erros oferece uma assinatura opcional que apenas guarda suas anotações e as repete entre celular e computador; sem ela o caderno funciona igual, só que em um aparelho.' },
+    { q: 'Meus dados são enviados para vocês?', a: 'Não, a menos que você assine a sincronização do caderno de erros. Sem assinatura, o cálculo acontece dentro do seu navegador, o resultado fica no armazenamento local do aparelho e nada do que você digitar chega até nós. Com assinatura, apenas o conteúdo do caderno de erros é enviado, e somente dele.' },
     { q: 'Funciona no celular?', a: 'Sim. Todas foram feitas para tela pequena e continuam funcionando offline depois do primeiro acesso, porque não dependem de servidor para calcular.' },
     { q: 'Vocês informam a nota de corte do meu concurso?', a: 'Não. Nota de corte é resultado de uma edição específica e só o documento oficial do órgão ou da banca vale. A calculadora usa a pontuação que você informar.' },
     { q: 'Preciso instalar alguma coisa?', a: 'Não. Basta abrir a página no navegador. Não há aplicativo, extensão nem download obrigatório.' }
@@ -1482,7 +1488,7 @@ for (const [name, label, priority, description] of legalPages) {
  * Páginas privadas: noindex
  * ------------------------------------------------------------------ */
 
-for (const name of ['dashboard', 'comprar', 'obrigado', 'recuperar']) {
+for (const name of ['dashboard', 'comprar', 'obrigado', 'recuperar', 'caderno-ativado']) {
   const file = 'public/' + name + '.html';
   let h = fs.readFileSync(file, 'utf8')
     .replace(/<meta name="robots"[^>]*>/g, '')
@@ -1580,6 +1586,7 @@ const robots =
   'Disallow: /comprar\n' +
   'Disallow: /obrigado\n' +
   'Disallow: /recuperar\n' +
+  'Disallow: /caderno-ativado\n' +
   'Disallow: /gsc/\n\n' +
   AI_AGENTS.map(a => `User-agent: ${a}\nAllow: /\nDisallow: /api/\nDisallow: /acesso\nDisallow: /dashboard\n`).join('\n') +
   '\n' +
