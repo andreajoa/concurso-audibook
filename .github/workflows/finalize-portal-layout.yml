@@ -1,0 +1,105 @@
+name: Finalize portal layout
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-portal-layout.yml'
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - name: Patch generated-page source and optimize portal references
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          build = Path('scripts/build-seo.cjs')
+          s = build.read_text()
+          old = "    '</head><body>' +\n    siteHeader +\n    `<main class=\"guide\">${crumbsHtml(fullTrail)}` +"
+          new = "    `</head><body data-portal-path=\"${esc(path)}\">` +\n    siteHeader +\n    `<main class=\"guide\">${crumbsHtml(fullTrail)}` +"
+          if old in s:
+              s = s.replace(old, new, 1)
+              build.write_text(s)
+          elif 'body data-portal-path="${esc(path)}"' not in s:
+              raise SystemExit('renderPage body anchor not found')
+
+          visual = Path('public/portal-visual.css')
+          v = visual.read_text()
+          v = v.replace("banner-concursos.svg", "portal-hero-concursos.webp")
+          v = v.replace("banner-trilha.svg", "portal-hero-ferramentas.webp")
+          v = v.replace("banner-prazo.svg", "portal-hero-prazos.webp")
+          visual.write_text(v)
+
+          runtime = Path('public/portal-media.js')
+          r = runtime.read_text()
+          r = re.sub(r'(portal-(?:hero|square|strip)-[a-z0-9-]+)\.png', r'\1.webp', r)
+          runtime.write_text(r)
+
+          index = Path('public/index.html')
+          h = index.read_text()
+          preload = ('<link rel="preload" as="image" href="/assets/portal/portal-hero-concursos.webp" '
+                     'type="image/webp" media="(min-width:701px)" fetchpriority="high">'
+                     '<link rel="preload" as="image" href="/assets/portal/portal-square-concursos.webp" '
+                     'type="image/webp" media="(max-width:700px)" fetchpriority="high">')
+          marker = '<link rel="stylesheet" href="/store.css">'
+          if preload not in h:
+              if marker not in h:
+                  raise SystemExit('home stylesheet anchor not found')
+              h = h.replace(marker, preload + marker, 1)
+              index.write_text(h)
+          PY
+      - name: Rebuild and verify portal
+        run: npm run build
+      - name: Stamp route data on every static HTML page
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('public')
+          for f in root.rglob('*.html'):
+              rel = f.relative_to(root).as_posix()
+              if rel == 'index.html':
+                  route = '/'
+              else:
+                  route = '/' + rel[:-5]
+              text = f.read_text()
+              if re.search(r'<body\b[^>]*\bdata-portal-path=', text):
+                  continue
+              text, n = re.subn(r'<body\b([^>]*)>', lambda m: '<body data-portal-path="' + route + '"' + m.group(1) + '>', text, count=1)
+              if n:
+                  f.write_text(text)
+          PY
+      - name: Ensure no old portal PNG references or Base64 images remain
+        run: |
+          set -euo pipefail
+          if grep -RIl --exclude='*.webp' --exclude='*.png' -E 'data:image|base64,' public scripts; then
+            echo 'Inline/Base64 image reference found' >&2
+            exit 1
+          fi
+          if grep -RIl --exclude='*.webp' --exclude='*.png' -E '/assets/portal/portal-(hero|square|strip)-[^"'"' )]+\.png' public scripts; then
+            echo 'Old portal PNG reference found' >&2
+            exit 1
+          fi
+          rm -f public/assets/portal/*.png
+          test "$(find public/assets/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
+      - name: Commit final portal layout
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/build-seo.cjs public
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'feat: finalize responsive unique portal banners and hero loading'
+          git push origin HEAD:main
