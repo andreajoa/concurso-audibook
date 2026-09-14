@@ -1,3 +1,5 @@
+@import url('/portal-media.css?v=20260914-webp');
+
 /* Cabeçalho do site inteiro.
 
    Vive num arquivo próprio porque o mesmo cabeçalho é carimbado em toda página
@@ -9,16 +11,16 @@
 /* Trava global: a página nunca cria rolagem horizontal. Componentes internos
    podem quebrar linha, reduzir largura ou recortar decoração, mas o documento
    permanece com scroll apenas vertical. */
-html,body{width:100%;max-width:100%;overflow-x:hidden}
+html,body{width:100%;max-width:100%;overflow-x:clip}
 *,*::before,*::after{box-sizing:border-box;min-width:0}
 img,picture,video,canvas,svg{max-width:100%}
-img{height:auto}
+img,video{height:auto}
 
 /* O cabeçalho é fixo no topo: a saída para outra página tem de estar disponível
    a qualquer altura da rolagem, não só no começo. Como ele cobre o topo da
    janela, os links internos (#apostilas, #metodo) precisam parar abaixo dele. */
 html{scroll-padding-top:104px}
-.guide-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1180px;margin:auto;padding:10px 24px;background:rgba(255,253,249,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(8,40,79,.08)}
+.guide-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1180px;width:100%;margin:auto;padding:10px 24px;background:rgba(255,253,249,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(8,40,79,.08)}
 .guide-brand{display:flex;align-items:center;flex-shrink:0;font:700 22px Georgia,serif;color:#08284f;text-decoration:none}
 .guide-brand img{width:138px;height:64px;object-fit:contain;mix-blend-mode:multiply}
 .guide-header nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}
@@ -31,7 +33,7 @@ html{scroll-padding-top:104px}
    depender de JavaScript — a página inteira é estática. */
 .mega{position:static}
 .mega-trigger{position:relative;z-index:2}
-.mega-panel{position:absolute;left:0;right:0;top:100%;z-index:30;display:none;background:#fff;border:1px solid #e6dece;border-radius:0 0 14px 14px;padding:22px 24px;box-shadow:0 26px 44px rgba(8,40,79,.14);max-height:70vh;overflow:auto}
+.mega-panel{position:absolute;left:0;right:0;top:100%;z-index:30;display:none;background:#fff;border:1px solid #e6dece;border-radius:0 0 14px 14px;padding:22px 24px;box-shadow:0 26px 44px rgba(8,40,79,.14);max-height:70vh;overflow-y:auto;overflow-x:hidden}
 .mega:hover .mega-panel,.mega:focus-within .mega-panel{display:block}
 .mega-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
 .mega-uf{display:block;margin-bottom:10px;font:900 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#85662c;text-decoration:none}
@@ -45,7 +47,7 @@ html{scroll-padding-top:104px}
    dentro da largura disponível. Assim nenhuma página cria scroll lateral. */
 @media(max-width:900px){
   html{scroll-padding-top:164px}
-  .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%}
+  .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%;overflow:hidden}
   .guide-brand img{width:108px;height:50px}
   .mega-panel{display:none!important}
   .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px 12px;overflow:visible;padding:2px 0 8px;-webkit-mask-image:none;mask-image:none}
@@ -58,4 +60,5 @@ html{scroll-padding-top:104px}
   .guide-header nav{gap:7px 10px}
   .guide-header nav a{font-size:11px}
 }
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
 @media print{.guide-header{display:none!important}}
