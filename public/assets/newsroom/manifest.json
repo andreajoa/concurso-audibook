@@ -1,0 +1,31 @@
+{
+  "version": "2026-09-14",
+  "source": "user-supplied image pack validated before publish",
+  "assets": {
+    "home-sao-paulo.webp": ["home lead story"],
+    "cidade-santos.webp": ["Santos contest/city pages"],
+    "cidade-guarulhos.webp": ["Guarulhos contest/city pages", "home news card"],
+    "cidade-catanduva.webp": ["Catanduva contest/city pages"],
+    "noticia-edital.webp": ["edital article", "home news card"],
+    "noticia-salarios.webp": ["salary/career news card"],
+    "noticia-planejamento.webp": ["study planning news card"],
+    "noticia-provas.webp": ["exam/simulation news card"],
+    "apostilas-audio.webp": ["apostilas category hero"],
+    "cta-futuro.webp": ["home closing CTA"],
+    "concursos-nacional.webp": ["concursos category hero", "home news card"],
+    "noticias-editorial.webp": ["news/materias category hero", "contact support backdrop"],
+    "guias-estudo.webp": ["study guides hero"],
+    "sobre-trilha.webp": ["about page hero"],
+    "ferramentas-dashboard.webp": ["tools hero", "access/support hero"],
+    "concurso-generico.webp": ["generic contest detail hero"]
+  },
+  "reused_existing_assets": [
+    "/assets/trilha-aprova-logo.webp",
+    "/assets/apostila-autores-cover.svg",
+    "/assets/apostila-agente-de-portaria-3d.webp",
+    "/assets/apostila-inspetor-de-alunos-3d.webp",
+    "/assets/portal/portal-top-duvidas.webp",
+    "/assets/portal/portal-top-glossario.webp"
+  ],
+  "excluded_from_publish": ["11.png", "12.png", "13.png", "14.png", "15.png"]
+}
