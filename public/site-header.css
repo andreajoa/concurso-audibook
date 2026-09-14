@@ -6,6 +6,14 @@
    por um link do Google precisa conseguir sair dali para qualquer outra parte
    do site, e não só voltar para a home. */
 
+/* Trava global: a página nunca cria rolagem horizontal. Componentes internos
+   podem quebrar linha, reduzir largura ou recortar decoração, mas o documento
+   permanece com scroll apenas vertical. */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+img,picture,video,canvas,svg{max-width:100%}
+img{height:auto}
+
 /* O cabeçalho é fixo no topo: a saída para outra página tem de estar disponível
    a qualquer altura da rolagem, não só no começo. Como ele cobre o topo da
    janela, os links internos (#apostilas, #metodo) precisam parar abaixo dele. */
@@ -33,16 +41,21 @@ html{scroll-padding-top:104px}
 .mega-col li a span{display:block;font-size:11px;font-weight:400;letter-spacing:.02em;color:#66717d}
 .mega-foot{margin:18px 0 0;padding-top:14px;border-top:1px solid #efe8da;font:400 12px/1.5 system-ui,sans-serif;color:#66717d}
 
-/* No celular o painel de cidades não cabe: o gatilho vira um link comum para
-   /concursos e a barra inteira passa a rolar na horizontal. Nenhum destino
-   fica escondido atrás de um botão — todos continuam alcançáveis. */
+/* No celular não existe trilho horizontal: os itens do menu quebram linha
+   dentro da largura disponível. Assim nenhuma página cria scroll lateral. */
 @media(max-width:900px){
-  html{scroll-padding-top:136px}
-  .guide-header{flex-wrap:wrap;gap:8px;padding:8px 16px}
-  .guide-brand img{width:112px;height:52px}
+  html{scroll-padding-top:164px}
+  .guide-header{flex-wrap:wrap;align-items:flex-start;gap:8px;padding:8px 14px;width:100%;max-width:100%}
+  .guide-brand img{width:108px;height:50px}
   .mega-panel{display:none!important}
-  .guide-header nav{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;gap:18px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 0 8px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
-  .guide-header nav::-webkit-scrollbar{display:none}
-  .nav-access{padding:7px 12px}
+  .guide-header nav{order:3;width:100%;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px 12px;overflow:visible;padding:2px 0 8px;-webkit-mask-image:none;mask-image:none}
+  .guide-header nav a{font-size:12px;white-space:normal;line-height:1.25}
+  .nav-access{padding:7px 11px}
+}
+@media(max-width:520px){
+  html{scroll-padding-top:188px}
+  .guide-header{padding-inline:12px}
+  .guide-header nav{gap:7px 10px}
+  .guide-header nav a{font-size:11px}
 }
 @media print{.guide-header{display:none!important}}
