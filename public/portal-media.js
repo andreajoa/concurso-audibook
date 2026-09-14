@@ -9,6 +9,9 @@
   const main=document.querySelector('main');
   if(!main||document.documentElement.dataset.portalMediaReady==='1')return;
   document.documentElement.dataset.portalMediaReady='1';
+  if(!document.querySelector('link[data-portal-media-css]')){
+    const css=document.createElement('link');css.rel='stylesheet';css.href='/portal-media.css?v=20260914c';css.dataset.portalMediaCss='1';document.head.appendChild(css);
+  }
   const path=location.pathname||'/';
   const after=(ref,node)=>ref&&ref.parentNode&&ref.parentNode.insertBefore(node,ref.nextSibling);
   function picture(item,alt){
