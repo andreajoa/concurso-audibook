@@ -21,6 +21,9 @@ const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const CDN = 'https://margareth-5-estrategias.floot.app';
 const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';
 const AUTHOR_NAME = 'Margareth Almeida';
+// Perfil oficial. Entra no rodapé e no sameAs para que Google e IAs liguem
+// a marca ao mesmo dono em vez de tratarem site e Instagram como duas coisas.
+const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
 const products = Object.values(catalog).filter(p => p.active);
@@ -56,6 +59,7 @@ const organization = {
   logo: { '@type': 'ImageObject', '@id': ORIGIN + '/#logo', url: ORIGIN + '/assets/trilha-aprova-logo.webp', width: 180, height: 84, caption: 'Trilha Aprova' },
   image: { '@id': ORIGIN + '/#logo' },
   founder: { '@id': ORIGIN + '/#author' },
+  sameAs: [INSTAGRAM_URL],
   knowsLanguage: 'pt-BR',
   knowsAbout: [
     'Concursos públicos no Brasil',
