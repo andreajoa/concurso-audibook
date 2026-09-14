@@ -1,0 +1,52 @@
+/* Portal de concursos. A hierarquia aqui é: estado → cidade → ficha do edital.
+   A faixa de UFs funciona como índice e precisa caber numa linha no desktop e
+   rolar na horizontal no celular sem empurrar o resto da página. */
+
+.uf-strip{display:flex;align-items:center;gap:14px;margin:4px 0 30px;padding:12px 0;border-top:1px solid #e6dece;border-bottom:1px solid #e6dece}
+.uf-strip-label{flex:none;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#66717d}
+.uf-chips{display:flex;flex-wrap:wrap;gap:6px}
+.uf-chip{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:6px 8px;border:1px solid #e0e6ec;border-radius:7px;font:800 12px/1 Arial,sans-serif;letter-spacing:.02em;text-decoration:none;color:#08284f;background:#fff}
+.uf-chip:hover{border-color:#08284f}
+.uf-chip.is-active{background:#08284f;border-color:#08284f;color:#fff}
+.uf-chip.is-empty{color:#aeb6bf;background:#f6f7f9;border-color:#eceff2;cursor:default}
+
+.concurso-card{border:1px solid #e6dece;border-radius:16px;padding:24px;margin:20px 0;background:#fff}
+.concurso-card h2,.concurso-card h3{margin:10px 0 8px;font-family:Georgia,serif;font-weight:400;line-height:1.15;color:#08284f}
+.concurso-card h2{font-size:27px}
+.concurso-card h3{font-size:22px}
+.concurso-resumo{margin:0 0 14px;color:#46586d;line-height:1.6}
+
+.concurso-status{display:inline-block;padding:5px 10px;border-radius:999px;font:900 10px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.concurso-open{background:#e2f3e9;color:#1d6b43}
+.concurso-soon{background:#e6eefb;color:#1f4b93}
+.concurso-exam{background:#fbf0dc;color:#8a6317}
+.concurso-closed{background:#f1f2f4;color:#6a727b}
+
+/* O aviso de prazo é informação, não pressão de venda: por isso nunca pisca,
+   nunca some e só fica vermelho quando faltam sete dias ou menos de verdade. */
+.prazo{margin:0 0 14px;padding:10px 13px;border-radius:9px;font-size:13px;font-weight:700;line-height:1.5}
+.prazo-open{background:#eef5ee;color:#2b5f3f;border-left:3px solid #3f8a5d}
+.prazo-urgent{background:#fdeeec;color:#8d2f24;border-left:3px solid #b8453a}
+.prazo-closed{background:#f2f3f5;color:#65707b;border-left:3px solid #a6aeb7}
+
+.concurso-cargos{font-size:13px;color:#46586d;line-height:1.6}
+.concurso-fontes{font-size:12px;color:#66717d;margin:12px 0 0}
+.concurso-fontes a{color:#08284f;font-weight:700}
+.concurso-captura{color:#8b939c}
+
+.concurso-material{margin-top:16px;padding-top:14px;border-top:1px dashed #e0d8c8}
+.concurso-material p{margin:0 0 6px;font-size:13px}
+.concurso-material ul{margin:0;padding-left:18px;font-size:13px;line-height:1.7}
+
+.municipio-links{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:8px}
+.municipio-links li{padding:11px 14px;border:1px solid #e6dece;border-radius:10px;background:#fff;font-size:14px}
+.municipio-links a{font-weight:800;color:#08284f}
+
+@media(max-width:700px){
+  .uf-strip{display:block}
+  .uf-strip-label{display:block;margin-bottom:9px}
+  .uf-chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .uf-chip{flex:none}
+  .concurso-card{padding:18px}
+  .concurso-card h2{font-size:23px}
+}

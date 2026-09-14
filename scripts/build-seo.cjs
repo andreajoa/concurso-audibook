@@ -16,6 +16,11 @@ const articles = require('../content/articles.json');
 // Ferramentas gratuitas: a página é estática e indexável, o cálculo roda no
 // navegador (public/ferramentas.js). Nenhuma delas depende de backend.
 const tools = require('../content/ferramentas.json');
+// Portal de concursos: esta parte do site não vende nada. Ela responde "o que
+// está aberto perto de mim e até quando dá para se inscrever". As regras e a
+// trava de fonte oficial vivem em lib/concursos.js.
+const concursosRaw = require('../content/concursos.json');
+const cn = require('../lib/concursos.js');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const CDN = 'https://margareth-5-estrategias.floot.app';
@@ -151,6 +156,7 @@ const corpus = [];
  * ------------------------------------------------------------------ */
 
 const NAV = [
+  ['/concursos', 'Concursos abertos'],
   ['/ferramentas', 'Ferramentas grátis'],
   ['/concursos-baixada-santista', 'Baixada Santista'],
   ['/como-estudar-para-concurso-do-zero', 'Como estudar'],
@@ -781,6 +787,207 @@ renderPage({
   styles: ['/ferramentas.css'],
   priority: '0.9'
 });
+
+/* ------------------------------------------------------------------ *
+ * Portal de concursos: estado → município → certame
+ *
+ * Nada aqui é promocional. Quem chega nesta parte do site ainda não decidiu
+ * comprar: quer saber se existe concurso aberto na cidade dele e até quando
+ * dá para se inscrever. A apostila só é citada quando existe material para
+ * um dos cargos daquele edital.
+ * ------------------------------------------------------------------ */
+
+const concursoProblems = concursosRaw.flatMap(cn.problems);
+if (concursoProblems.length) {
+  throw new Error('content/concursos.json tem entrada sem fonte ou com dado inválido:\n  ' + concursoProblems.join('\n  '));
+}
+
+const concursos = concursosRaw.map(c => cn.normalize(c, BUILD_DATE));
+const estados = cn.groupByUf(concursos);
+const estadoPorUf = new Map(estados.map(e => [e.uf, e]));
+const concursosAbertos = concursos.filter(c => c.status === 'inscricoes_abertas');
+
+/** Faixa de UFs, como um índice: o que tem concurso vira link, o resto fica opaco. */
+function ufStrip(activeUf) {
+  const botoes = Object.keys(cn.UF_NOMES).sort().map(uf => {
+    const estado = estadoPorUf.get(uf);
+    const nome = cn.UF_NOMES[uf];
+    if (!estado) return `<span class="uf-chip is-empty" title="Sem concurso mapeado em ${esc(nome)} no momento">${uf}</span>`;
+    const marca = uf === activeUf ? ' is-active' : '';
+    const abertos = estado.abertos ? `${estado.abertos} com inscrição aberta` : 'acompanhamento';
+    return `<a class="uf-chip${marca}" href="/concursos/${uf.toLowerCase()}" title="${esc(nome)} — ${esc(abertos)}">${uf}</a>`;
+  }).join('');
+  return `<nav class="uf-strip" aria-label="Concursos por estado"><span class="uf-strip-label">Região</span><div class="uf-chips">${botoes}</div></nav>`;
+}
+
+/** O aviso de prazo. Vem com data-prazo para o navegador recontar no dia do acesso. */
+function prazoHtml(c) {
+  if (!c.deadline) return '';
+  return `<p class="prazo prazo-${c.deadline.tone}" data-prazo="${esc(c.inscricaoFim)}">${esc(c.deadline.text)}</p>`;
+}
+
+/** Ficha do certame. Cada linha só existe se o dado existir na fonte. */
+function concursoCard(c, { heading = 'h3' } = {}) {
+  const linhas = [
+    ['Órgão', c.orgao],
+    ['Banca', c.banca],
+    ['Edital', c.edital],
+    ['Inscrições', c.inscricaoInicio && c.inscricaoFim ? `${cn.brDate(c.inscricaoInicio)} a ${cn.brDate(c.inscricaoFim)}` : c.inscricaoFim ? `até ${cn.brDate(c.inscricaoFim)}` : null],
+    ['Data da prova', c.dataProva ? cn.brDate(c.dataProva) + (c.dataProvaConfirmada ? '' : ' (prevista, aguarda convocação)') : null],
+    ['Vagas', typeof c.vagas === 'number' ? String(c.vagas) : null],
+    ['Remuneração', typeof c.salarioMin === 'number' ? (typeof c.salarioMax === 'number' && c.salarioMax !== c.salarioMin ? `${brl(Math.round(c.salarioMin * 100))} a ${brl(Math.round(c.salarioMax * 100))}` : brl(Math.round(c.salarioMin * 100))) : null],
+    ['Taxa de inscrição', typeof c.taxaInscricao === 'number' ? brl(Math.round(c.taxaInscricao * 100)) : null],
+    ['Escolaridade', c.escolaridade?.length ? c.escolaridade.join(', ') : null]
+  ].filter(([, v]) => v);
+
+  const materiais = (c.produtos || [])
+    .map(slug => products.find(p => p.slug === slug))
+    .filter(Boolean);
+
+  return '<article class="concurso-card">' +
+    `<span class="concurso-status concurso-${c.statusTone}">${esc(c.statusLabel)}</span>` +
+    `<${heading}>${esc(c.orgao)}${c.edital ? ' — ' + esc(c.edital) : ''}</${heading}>` +
+    `<p class="concurso-resumo">${esc(c.resumo)}</p>` +
+    prazoHtml(c) +
+    keyFactsHtml(linhas) +
+    (c.cargos?.length ? `<p class="concurso-cargos"><strong>Cargos citados:</strong> ${esc(c.cargos.join(' · '))}</p>` : '') +
+    '<p class="concurso-fontes">' +
+    `<a href="${esc(c.sourceUrl)}" rel="external nofollow noopener" target="_blank">Página oficial do órgão</a>` +
+    (c.editalUrl ? ` · <a href="${esc(c.editalUrl)}" rel="external nofollow noopener" target="_blank">Edital em PDF</a>` : '') +
+    ` · <span class="concurso-captura">conferido em ${esc(cn.brDate(c.capturedAt))}</span></p>` +
+    (materiais.length
+      ? '<div class="concurso-material"><p><strong>Material de estudo para cargos deste edital</strong></p><ul>' +
+        materiais.map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — ${esc(p.audience)}</li>`).join('') +
+        '</ul></div>'
+      : '') +
+    '</article>';
+}
+
+const concursoFaq = [
+  { q: 'De onde vêm estas informações?', a: 'De páginas oficiais dos órgãos e das bancas organizadoras. Cada certame traz o link da fonte e a data em que a informação foi conferida. Nada é copiado de portal de notícias sem confirmar no documento oficial.' },
+  { q: 'A Trilha Aprova organiza algum destes concursos?', a: 'Não. A Trilha Aprova é uma editora independente de material de estudo. Não temos vínculo com prefeituras, órgãos públicos ou bancas, não recebemos inscrição e não influenciamos a seleção.' },
+  { q: 'A data da prova pode mudar?', a: 'Pode. Quando a data aparece marcada como prevista, ela consta do edital de abertura mas ainda depende de edital de convocação. Confirme sempre na página oficial antes de programar seu estudo.' },
+  { q: 'Preciso comprar apostila para usar esta parte do site?', a: 'Não. As páginas de concurso e as ferramentas de estudo são gratuitas e não pedem cadastro. As apostilas são vendidas à parte e só aparecem quando existe material para um cargo daquele edital.' }
+];
+
+const listaNode = (url, itens) => ({
+  '@type': 'ItemList',
+  '@id': url + '#lista',
+  name: 'Concursos públicos acompanhados pela Trilha Aprova',
+  numberOfItems: itens.length,
+  itemListElement: itens.map((c, i) => ({
+    '@type': 'ListItem', position: i + 1,
+    name: c.orgao + (c.edital ? ' — ' + c.edital : ''),
+    url: ORIGIN + c.path
+  }))
+});
+
+/* ---- índice nacional ---- */
+{
+  const path = '/concursos';
+  const abertos = concursosAbertos.length;
+  const body =
+    ufStrip(null) +
+    '<h2>O que está mapeado agora</h2>' +
+    `<p>São ${concursos.length} certame(s) em ${estados.length} estado(s), ${abertos ? abertos + ' com inscrição aberta' : 'nenhum com inscrição aberta neste momento'}. Cada ficha traz o link da página oficial e a data em que conferimos.</p>` +
+    estados.map(e =>
+      `<h3><a href="/concursos/${e.ufSlug}">${esc(e.ufNome)}</a></h3><ul class="municipio-links">` +
+      e.municipios.map(m => `<li><a href="${m.path}">${esc(m.municipio)}</a> — ${m.concursos.length} certame(s), ${esc(m.concursos[0].statusLabel.toLowerCase())}</li>`).join('') +
+      '</ul>').join('') +
+    '<h2>Antes de escolher o que estudar</h2>' +
+    '<p>Ler o edital inteiro de uma vez costuma travar mais do que ajudar. O caminho que funciona é transformar o conteúdo programático em lista marcável, distribuir as horas conforme o peso de cada matéria e só então abrir o material.</p>' +
+    '<ul>' +
+    '<li><a href="/ferramentas/edital-verticalizado">Checklist do edital</a> — responde o que estudar.</li>' +
+    '<li><a href="/ferramentas/cronograma-de-estudos">Cronograma por peso</a> — responde quanto tempo dar para cada matéria.</li>' +
+    '<li><a href="/ferramentas/calculadora-de-acertos">Calculadora de acertos</a> — responde quantas questões faltam para a sua meta.</li>' +
+    '<li><a href="/como-estudar-para-concurso-do-zero">Como estudar do zero</a> — para quem nunca prestou concurso.</li>' +
+    '</ul>' +
+    disclaimer;
+
+  renderPage({
+    path,
+    title: 'Concursos públicos por estado e município',
+    metaTitle: 'Concursos públicos abertos por estado e município | Trilha Aprova',
+    description: 'Concursos públicos por estado e município: edital, banca, prazo de inscrição e data de prova, com link da página oficial de cada órgão.',
+    kicker: 'CONCURSOS',
+    lead: 'Escolha o estado, depois a cidade. Cada ficha mostra o que o edital diz — banca, prazo de inscrição e data de prova — com o link da página oficial e a data em que a informação foi conferida.',
+    keyFacts: [['Certames acompanhados', String(concursos.length)], ['Estados', String(estados.length)], ['Com inscrição aberta', String(concursosAbertos.length)]],
+    body,
+    faq: concursoFaq,
+    nodes: [listaNode(ORIGIN + path, concursos)],
+    styles: ['/concursos.css'],
+    scripts: ['/concursos.js'],
+    priority: '0.9'
+  });
+}
+
+/* ---- página de estado ---- */
+for (const e of estados) {
+  const path = '/concursos/' + e.ufSlug;
+  const doEstado = e.municipios.flatMap(m => m.concursos);
+  const body =
+    ufStrip(e.uf) +
+    '<h2>Cidades com certame mapeado em ' + esc(e.ufNome) + '</h2>' +
+    '<ul class="municipio-links">' +
+    e.municipios.map(m => `<li><a href="${m.path}">${esc(m.municipio)}</a> — ${m.concursos.length} certame(s), ${esc(m.concursos[0].statusLabel.toLowerCase())}</li>`).join('') +
+    '</ul>' +
+    '<h2>Certames de ' + esc(e.ufNome) + '</h2>' +
+    doEstado.map(c => concursoCard(c)).join('') +
+    '<p><a href="/concursos">Ver todos os estados</a> · <a href="/ferramentas">Ferramentas gratuitas de estudo</a></p>' +
+    disclaimer;
+
+  renderPage({
+    path,
+    title: 'Concursos públicos em ' + e.ufNome,
+    metaTitle: 'Concursos públicos em ' + e.ufNome + ': editais por município | Trilha Aprova',
+    description: `Concursos públicos em ${e.ufNome} por município: banca, edital, prazo de inscrição e data de prova, com link da página oficial de cada órgão.`,
+    kicker: 'CONCURSOS / ' + e.uf,
+    lead: `Certames de ${e.ufNome} acompanhados pela Trilha Aprova, agrupados por cidade. A informação vem da página oficial de cada órgão e traz a data em que foi conferida.`,
+    keyFacts: [['Cidades', String(e.municipios.length)], ['Certames', String(doEstado.length)], ['Com inscrição aberta', String(e.abertos)]],
+    body,
+    faq: concursoFaq,
+    nodes: [listaNode(ORIGIN + path, doEstado)],
+    trail: [['Concursos', '/concursos']],
+    styles: ['/concursos.css'],
+    scripts: ['/concursos.js'],
+    priority: '0.8'
+  });
+}
+
+/* ---- página de município ---- */
+for (const e of estados) {
+  for (const m of e.municipios) {
+    const outras = e.municipios.filter(o => o.municipioSlug !== m.municipioSlug);
+    const body =
+      ufStrip(e.uf) +
+      m.concursos.map(c => concursoCard(c, { heading: 'h2' })).join('') +
+      '<h2>Como usar esta página</h2>' +
+      '<p>Confirme o prazo e a data na página oficial antes de qualquer coisa: é o documento que vale. Depois transforme o conteúdo programático em lista com o <a href="/ferramentas/edital-verticalizado">checklist do edital</a>, distribua suas horas no <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a> e acompanhe o quanto falta para sua meta na <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>. As três são gratuitas e funcionam dentro do navegador.</p>' +
+      (outras.length
+        ? '<h2>Outras cidades de ' + esc(e.ufNome) + '</h2><ul class="municipio-links">' +
+          outras.map(o => `<li><a href="${o.path}">${esc(o.municipio)}</a></li>`).join('') + '</ul>'
+        : '') +
+      '<p><a href="/concursos/' + e.ufSlug + '">Ver todos os certames de ' + esc(e.ufNome) + '</a> · <a href="/concursos">Trocar de estado</a></p>' +
+      disclaimer;
+
+    renderPage({
+      path: m.path,
+      title: 'Concursos públicos em ' + m.municipio + ' (' + e.uf + ')',
+      metaTitle: 'Concurso público em ' + m.municipio + ' ' + e.uf + ': edital, banca e datas | Trilha Aprova',
+      description: `Concursos públicos em ${m.municipio} (${e.uf}): edital, banca, prazo de inscrição e data de prova, com link da página oficial do órgão.`,
+      kicker: 'CONCURSOS / ' + e.uf + ' / ' + m.municipio.toUpperCase(),
+      lead: `O que os editais de ${m.municipio} dizem hoje: banca, prazo e data de prova. Cada ficha aponta para a página oficial do órgão, que é o documento que vale.`,
+      keyFacts: [['Cidade', m.municipio + ' — ' + e.ufNome], ['Certames', String(m.concursos.length)], ['Conferido em', cn.brDate(m.concursos[0].capturedAt)]],
+      body,
+      faq: concursoFaq,
+      nodes: [listaNode(ORIGIN + m.path, m.concursos)],
+      trail: [['Concursos', '/concursos'], [e.ufNome, '/concursos/' + e.ufSlug]],
+      styles: ['/concursos.css'],
+      scripts: ['/concursos.js'],
+      priority: '0.8'
+    });
+  }
+}
 
 /* ------------------------------------------------------------------ *
  * Páginas por cidade (Baixada Santista)
