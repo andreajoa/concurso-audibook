@@ -47,7 +47,7 @@ jobs:
           set -euo pipefail
           python -m pip install --disable-pip-version-check requests boto3 pymupdf pillow piper-tts
 
-      - name: Reuse verified private media and prepare storefront
+      - name: Reuse verified private media and prepare current storefront
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -58,8 +58,6 @@ jobs:
           s3 = p.r2_client()
           p.PUBLIC_COVER.parent.mkdir(parents=True, exist_ok=True)
 
-          # The paid PDF, owner summary and eight audiobook chapters were already
-          # generated and byte/range verified in the previous publication run.
           keys = [p.PDF_KEY, p.COVER_KEY, p.SUMMARY_KEY]
           keys += [f'{p.AUDIO_PREFIX}/{stem}.mp3' for stem, *_ in p.CHAPTERS]
           for key in keys:
@@ -84,11 +82,22 @@ jobs:
               if image.size != (1122, 1402) or image.mode != 'RGBA':
                   raise RuntimeError(f'Unexpected cover properties: {image.size} {image.mode}')
 
-          p.update_storefront_sources()
-          product = json.loads(Path('products/catalog.json').read_text())[p.SLUG]
-          if not product.get('active') or len(product['assets']['chapters']) != 8:
+          catalog_path = Path('products/catalog.json')
+          catalog = json.loads(catalog_path.read_text())
+          product = p.product_definition()
+          # The current generator uses seoTitle directly; the one-shot publisher
+          # predates that field and called it metaTitle.
+          meta_title = product.pop('metaTitle', 'Professor Adjunto I Santos 2026 + audiobook')
+          product['seoTitle'] = meta_title + ' | Trilha Aprova'
+          catalog[p.SLUG] = product
+          catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
+
+          stored = json.loads(catalog_path.read_text())[p.SLUG]
+          if not stored.get('active') or len(stored['assets']['chapters']) != 8:
               raise RuntimeError('Professor product was not prepared correctly')
-          print('STOREFRONT SOURCES READY: existing private media reused; catalog + binary cover + SEO source prepared', flush=True)
+          if not stored['storefront']['cover3d'].endswith('/assets/apostila-professor-adjunto-i-3d.png'):
+              raise RuntimeError('Professor storefront cover URL is wrong')
+          print('STOREFRONT SOURCES READY: existing private media reused; product added to current catalog with binary cover', flush=True)
           PY
 
       - name: Restore production API before commit
