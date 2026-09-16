@@ -136,6 +136,8 @@ jobs:
           git config user.name 'Trilha Aprova Release Bot'
           git config user.email '100246160+andreajoa@users.noreply.github.com'
           git add api/cover.js products/catalog.json scripts/build-seo.cjs public tests/professor-adjunto-i-product.test.cjs
+          # public/assets/*.png is intentionally ignored globally; this specific validated cover is the exception.
+          git add -f public/assets/apostila-professor-adjunto-i-3d.png
           git diff --cached --check
 
           if git diff --cached --name-only | grep -E '\.(pdf|mp3|m4a|wav)$'; then
@@ -143,11 +145,8 @@ jobs:
             exit 1
           fi
 
-          if ! git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png | grep -q $'^-[[:space:]]+-[[:space:]]+public/assets/apostila-professor-adjunto-i-3d.png$'; then
-            echo 'Cover was not staged as a normal Git binary.' >&2
-            git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png >&2 || true
-            exit 1
-          fi
+          test "$(git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png | awk '{print $1" "$2}')" = '- -'
+          git diff --cached --binary -- public/assets/apostila-professor-adjunto-i-3d.png | grep -q '^GIT binary patch'
 
           if git grep -n -E 'data:image/[^;]+;base64' -- public products scripts tests; then
             echo 'Inline Base64 image found in production sources.' >&2
