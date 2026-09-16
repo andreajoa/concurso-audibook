@@ -23,7 +23,6 @@ const concursosRaw = require('../content/concursos.json');
 const cn = require('../lib/concursos.js');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
-const CDN = 'https://margareth-5-estrategias.floot.app';
 const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';
 const AUTHOR_NAME = 'Margareth Almeida';
 // Perfil oficial. Entra no rodapé e no sameAs para que Google e IAs liguem
@@ -488,8 +487,6 @@ function seoBlock({ path, title, description, image, nodes }) {
     `<meta property="og:description" content="${esc(description)}">` +
     `<meta property="og:url" content="${url}">` +
     `<meta property="og:image" content="${esc(image)}">` +
-    '<meta property="og:image:width" content="1200">' +
-    '<meta property="og:image:height" content="1200">' +
     `<meta property="og:image:alt" content="${esc(title)}">` +
     '<meta name="twitter:card" content="summary_large_image">' +
     `<meta name="twitter:title" content="${esc(title)}">` +
@@ -498,8 +495,6 @@ function seoBlock({ path, title, description, image, nodes }) {
     `<meta name="author" content="${esc(AUTHOR_NAME)}">` +
     '<meta name="geo.region" content="BR-SP">' +
     '<meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">' +
-    `<link rel="preconnect" href="${CDN}" crossorigin>` +
-    `<link rel="dns-prefetch" href="${CDN}">` +
     FAVICON_TAGS +
     '<link rel="manifest" href="/site.webmanifest">' +
     '<link rel="alternate" type="application/rss+xml" title="Trilha Aprova — guias de estudo" href="/feed.xml">' +
@@ -573,10 +568,13 @@ for (const p of products) {
   const url = ORIGIN + path;
   const price = money(p.priceCents);
   const isAutores = p.slug.startsWith('autores');
+  const isRedacao = p.slug.startsWith('redacao');
 
   const fit = isAutores
     ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
-    : 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.';
+    : isRedacao
+      ? 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'
+      : `Esta apostila foi desenvolvida especificamente para ${p.audience}, com conteúdo direcionado a ${p.contest} e à banca ${p.examBoard}. Compare o sumário com o conteúdo programático oficial do cargo antes da compra.`;
 
   const productNode = {
     '@type': 'Product',
@@ -634,7 +632,7 @@ for (const p of products) {
   delete audiobookNode.numberOfPages;
 
   const faq = [
-    { q: `Quanto custa a ${p.shortName}?`, a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },
+    { q: 'Quanto custa esta apostila?', a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },
     { q: 'Como recebo o material depois de pagar?', a: 'A confirmação do pagamento libera automaticamente uma área individual com o PDF e os arquivos de áudio, para leitura, reprodução e download. Não há envio físico.' },
     { q: 'Esta apostila serve para o meu concurso?', a: fit + ' Compare o sumário com o anexo de conteúdo programático do seu edital antes de comprar.' },
     { q: 'Posso pedir reembolso?', a: 'Sim. O Código de Defesa do Consumidor prevê o prazo de 7 dias para o direito de arrependimento em compras pela internet. Basta solicitar pelo canal de atendimento dentro do prazo.' },
