@@ -17,6 +17,7 @@ jobs:
     env:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      SUMMARY_STAGE_KEY: __staging/secretario-summary/35155904414-1.mp3
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,59 +28,21 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - name: Install R2 client
-        run: python3 -m pip install --disable-pip-version-check --quiet boto3
-
-      - name: Create short-lived private staging upload slot
+      - name: Install validation tools
         run: |
           set -euo pipefail
-          mkdir -p /tmp/secretario-upload-slot
-          python3 - <<'PY'
-          import json, os
-          import boto3
-          from botocore.config import Config
+          python3 -m pip install --disable-pip-version-check --quiet boto3
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg imagemagick
 
-          account='dbad4dc0550693a69d5956df7344e001'
-          bucket='apostila'
-          endpoint=f'https://{account}.r2.cloudflarestorage.com'
-          run=os.environ['GITHUB_RUN_ID']
-          attempt=os.environ.get('GITHUB_RUN_ATTEMPT','1')
-          key=f'__staging/secretario-summary/{run}-{attempt}.mp3'
-          s3=boto3.client(
-              's3', endpoint_url=endpoint, region_name='auto',
-              aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],
-              aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],
-              config=Config(signature_version='s3v4'),
-          )
-          url=s3.generate_presigned_url(
-              'put_object',
-              Params={'Bucket':bucket,'Key':key,'ContentType':'audio/mpeg'},
-              ExpiresIn=900,
-          )
-          with open('/tmp/secretario-upload-slot/slot.json','w',encoding='utf-8') as f:
-              json.dump({'url':url,'key':key,'contentType':'audio/mpeg'},f)
-          with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as f:
-              f.write(f'SUMMARY_STAGE_KEY={key}\n')
-          print('Secure staging slot created; URL is carried only by an authenticated workflow artifact.')
-          PY
-
-      - name: Publish upload slot artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: secretario-summary-upload-slot
-          path: /tmp/secretario-upload-slot/slot.json
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Wait for current summary, validate bytes, and replace private R2 summary
+      - name: Validate current summary and replace private R2 summary
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import hashlib, json, os, subprocess, time
+          import hashlib, json, os, subprocess
           from pathlib import Path
           import boto3
           from botocore.config import Config
-          from botocore.exceptions import ClientError
 
           account='dbad4dc0550693a69d5956df7344e001'
           bucket='apostila'
@@ -99,27 +62,14 @@ jobs:
               config=Config(signature_version='s3v4', retries={'max_attempts':5,'mode':'standard'}),
           )
 
-          found=False
-          for _ in range(180):
-              try:
-                  s3.head_object(Bucket=bucket,Key=stage)
-                  found=True
-                  break
-              except ClientError as exc:
-                  code=exc.response.get('ResponseMetadata',{}).get('HTTPStatusCode')
-                  if code not in (403,404):
-                      raise
-              time.sleep(3)
-          if not found:
-              raise RuntimeError('Timed out waiting for the approved current summary upload')
-
+          meta=s3.head_object(Bucket=bucket,Key=stage)
+          if meta['ContentLength'] != 12221995:
+              raise RuntimeError(f'Unexpected staged summary size: {meta["ContentLength"]}')
           target=Path('/tmp/current-secretario-summary.mp3')
           s3.download_file(bucket,stage,str(target))
           digest=hashlib.sha256(target.read_bytes()).hexdigest()
           if digest != expected_sha:
               raise RuntimeError(f'Current summary checksum mismatch: {digest}')
-          if target.stat().st_size != 12221995:
-              raise RuntimeError(f'Unexpected current summary size: {target.stat().st_size}')
 
           probe=subprocess.run([
               'ffprobe','-v','error','-show_entries','format=format_name,duration',
@@ -154,7 +104,8 @@ jobs:
               raise RuntimeError('Final R2 summary byte verification failed')
 
           try:
-              manifest=json.loads(s3.get_object(Bucket=bucket,Key=manifest_key)['Body'].read())
+              raw=s3.get_object(Bucket=bucket,Key=manifest_key)['Body'].read()
+              manifest=json.loads(raw)
           except Exception:
               manifest={'slug':slug,'language':'pt-BR','voice':'pt_BR-cadu-medium','tracks':[]}
           tracks=[t for t in manifest.get('tracks',[]) if t.get('id')!='summary']
@@ -197,18 +148,18 @@ jobs:
           s=path.read_text(encoding='utf-8')
           old="const ORIGIN = 'https://www.concursotrilhaaprova.online';\nconst CDN = 'https://margareth-5-estrategias.floot.app';\nconst SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"
           new="const ORIGIN = 'https://www.concursotrilhaaprova.online';\nconst SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"
-          if old in s:
-              s=s.replace(old,new)
-          old="    `<link rel=\"preconnect\" href=\"${CDN}\" crossorigin>` +\n    `<link rel=\"dns-prefetch\" href=\"${CDN}\">` +\n"
-          s=s.replace(old,'')
-          old="    '<meta property=\"og:image:width\" content=\"1200\">' +\n    '<meta property=\"og:image:height\" content=\"1200\">' +\n"
-          s=s.replace(old,'')
+          s=s.replace(old,new)
+          s=s.replace("    `<link rel=\"preconnect\" href=\"${CDN}\" crossorigin>` +\n    `<link rel=\"dns-prefetch\" href=\"${CDN}\">` +\n",'')
+          s=s.replace("    '<meta property=\"og:image:width\" content=\"1200\">' +\n    '<meta property=\"og:image:height\" content=\"1200\">' +\n",'')
           old="  const isAutores = p.slug.startsWith('autores');\n\n  const fit = isAutores\n    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'\n    : 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.';\n"
           new="  const isAutores = p.slug.startsWith('autores');\n  const isRedacao = p.slug.startsWith('redacao');\n\n  const fit = isAutores\n    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'\n    : isRedacao\n      ? 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'\n      : `Esta apostila foi desenvolvida especificamente para ${p.audience}, com conteúdo direcionado a ${p.contest} e à banca ${p.examBoard}. Compare o sumário com o conteúdo programático oficial do cargo antes da compra.`;\n"
-          if old in s:
-              s=s.replace(old,new)
+          if old not in s:
+              raise RuntimeError('Expected product-fit source block was not found')
+          s=s.replace(old,new)
           old="{ q: `Quanto custa a ${p.shortName}?`, a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },"
           new="{ q: 'Quanto custa esta apostila?', a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },"
+          if old not in s:
+              raise RuntimeError('Expected price FAQ source line was not found')
           s=s.replace(old,new)
           path.write_text(s,encoding='utf-8')
           print('Catalog and product generator corrected.')
@@ -223,7 +174,7 @@ jobs:
           npm run verify:seo
           npm run verify:scrollcraft
           python3 - <<'PY'
-          import json,re,subprocess
+          import re,subprocess
           from pathlib import Path
           page=Path('public/apostilas/secretario-de-unidade-escolar-ibam-santos-2026.html').read_text(encoding='utf-8')
           assert 'Esta apostila trabalha redação para candidatos de ensino fundamental completo' not in page
@@ -269,7 +220,8 @@ jobs:
           body=s3.get_object(Bucket=bucket,Key=catalog['assets']['summary']['key'])['Body']
           h=hashlib.sha256()
           try:
-              for chunk in body.iter_chunks(chunk_size=1024*1024): h.update(chunk)
+              for chunk in body.iter_chunks(chunk_size=1024*1024):
+                  h.update(chunk)
           finally:
               body.close()
           assert h.hexdigest()==expected_summary,h.hexdigest()
