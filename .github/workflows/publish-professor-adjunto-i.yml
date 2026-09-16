@@ -1,0 +1,158 @@
+name: Publish Professor Adjunto I — Santos 2026
+
+on:
+  push:
+    branches:
+      - ops/professor-adjunto-i-santos-2026
+    paths:
+      - .github/workflows/publish-professor-adjunto-i.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-professor-adjunto-i-2026
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - name: Checkout release branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install media and validation dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg file
+          python -m pip install --disable-pip-version-check requests boto3 pymupdf pillow piper-tts
+
+      - name: Publish exact owner files and generate 8 audiobook chapters
+        run: |
+          set -euo pipefail
+          python scripts/publish_professor_adjunto_i.py \
+            --pdf-url 'https://margareth-5-estrategias.floot.app/_cdn/static/c3249806-58c8-494e-8ca8-5149fbe1ba50-professor-adjunto-i-source-staging.pdf' \
+            --cover-url 'https://margareth-5-estrategias.floot.app/_cdn/static/daef102f-8d57-4a20-8385-70386831f3c8-professor-adjunto-i-cover-staging.png' \
+            --summary-url 'https://margareth-5-estrategias.floot.app/_cdn/static/29a07a16-3f66-4a7b-9f30-cbf97af2271e-professor-adjunto-i-summary-staging.mp3'
+
+      - name: Restore temporary API staging change before production commit
+        run: |
+          set -euo pipefail
+          git checkout origin/main -- api/cover.js
+
+      - name: Add permanent product integrity test
+        run: |
+          cat > tests/professor-adjunto-i-product.test.cjs <<'EOF'
+          const test = require('node:test');
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+
+          const slug = 'professor-adjunto-i-ibam-santos-2026';
+          const catalog = require('../products/catalog.json');
+          const product = catalog[slug];
+          const coverPath = 'public/assets/apostila-professor-adjunto-i-3d.png';
+
+          test('Professor Adjunto I is a complete sellable product with isolated private assets', () => {
+            assert.ok(product);
+            assert.equal(product.active, true);
+            assert.equal(product.priceCents, 2499);
+            assert.equal(product.assets.chapters.length, 8);
+            const keys = [product.assets.pdfKey, product.assets.coverKey, product.assets.summary.key,
+              ...product.assets.chapters.map(track => track.key)];
+            assert.equal(keys.length, 11);
+            assert.equal(new Set(keys).size, 11);
+            assert.ok(keys.every(key => key.startsWith(slug + '/')));
+          });
+
+          test('Professor cover is the validated real PNG binary supplied for the product', () => {
+            const bytes = fs.readFileSync(coverPath);
+            assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+            assert.equal(bytes.readUInt32BE(16), 1122);
+            assert.equal(bytes.readUInt32BE(20), 1402);
+            assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),
+              'ffb24a6d1c9a8cc8eda4eaadc37a68a6474e105f07d9790c77bbb416f85da013');
+          });
+
+          test('Professor storefront page uses a normal binary URL, never an inline data URI', () => {
+            const page = fs.readFileSync('public/apostilas/' + slug + '.html', 'utf8');
+            assert.match(page, /Professor Adjunto I/);
+            assert.match(page, /apostila-professor-adjunto-i-3d\.png/);
+            assert.doesNotMatch(page, /data:image\//i);
+            assert.doesNotMatch(page, /Esta apostila trabalha redação para candidatos de ensino fundamental completo/);
+            const title = page.match(/<title>(.*?)<\/title>/s)?.[1] || '';
+            assert.ok(title.length > 20 && title.length <= 60, title);
+          });
+          EOF
+
+      - name: Build, test and audit storefront
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build
+          node --test tests/professor-adjunto-i-product.test.cjs
+          test -f public/apostilas/professor-adjunto-i-ibam-santos-2026.html
+          file public/assets/apostila-professor-adjunto-i-3d.png | tee /tmp/cover-file.txt
+          grep -q 'PNG image data, 1122 x 1402' /tmp/cover-file.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          cover=Path('public/assets/apostila-professor-adjunto-i-3d.png').read_bytes()
+          assert cover[:8] == b'\x89PNG\r\n\x1a\n'
+          assert hashlib.sha256(cover).hexdigest() == 'ffb24a6d1c9a8cc8eda4eaadc37a68a6474e105f07d9790c77bbb416f85da013'
+          catalog=json.loads(Path('products/catalog.json').read_text())
+          p=catalog['professor-adjunto-i-ibam-santos-2026']
+          assert p['active'] is True and len(p['assets']['chapters']) == 8
+          page=Path('public/apostilas/professor-adjunto-i-ibam-santos-2026.html').read_text()
+          assert 'Professor Adjunto I' in page and 'R$ 24,99' in page
+          assert 'data:image/' not in page
+          title=re.search(r'<title>(.*?)</title>',page,re.S).group(1)
+          assert len(title) <= 60, (len(title),title)
+          print('Professor storefront audit OK:', title)
+          PY
+
+      - name: Remove one-shot staging machinery
+        run: |
+          set -euo pipefail
+          git rm -f .github/workflows/publish-professor-adjunto-i.yml scripts/publish_professor_adjunto_i.py
+
+      - name: Commit only production-ready storefront and normal binary cover
+        run: |
+          set -euo pipefail
+          git config user.name 'Trilha Aprova Release Bot'
+          git config user.email '100246160+andreajoa@users.noreply.github.com'
+          git add api/cover.js products/catalog.json scripts/build-seo.cjs public tests/professor-adjunto-i-product.test.cjs
+          git diff --cached --check
+
+          if git diff --cached --name-only | grep -E '\.(pdf|mp3|m4a|wav)$'; then
+            echo 'Paid binary media must never be committed to the public repository.' >&2
+            exit 1
+          fi
+
+          if ! git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png | grep -q $'^-[[:space:]]+-[[:space:]]+public/assets/apostila-professor-adjunto-i-3d.png$'; then
+            echo 'Cover was not staged as a normal Git binary.' >&2
+            git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png >&2 || true
+            exit 1
+          fi
+
+          if git grep -n -E 'data:image/[^;]+;base64' -- public products scripts tests; then
+            echo 'Inline Base64 image found in production sources.' >&2
+            exit 1
+          fi
+
+          git commit -m 'feat: publish Professor Adjunto I Santos 2026 with audiobook'
+          git push origin HEAD:ops/professor-adjunto-i-santos-2026
