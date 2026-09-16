@@ -677,7 +677,7 @@ for (const p of products) {
   renderPage({
     path,
     title: p.shortName + ' com audiobook',
-    metaTitle: p.shortName + ' com audiobook | Trilha Aprova',
+    metaTitle: p.seoTitle || (p.shortName + ' com audiobook | Trilha Aprova'),
     // A descrição do catálogo é a de venda e pode ser longa; a da SERP tem de caber.
     description: p.seoDescription || p.description,
     kicker: `${p.edition} · ${p.category}`,
