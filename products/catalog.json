@@ -572,5 +572,123 @@
         }
       ]
     }
+  },
+  "professor-adjunto-i-ibam-santos-2026": {
+    "slug": "professor-adjunto-i-ibam-santos-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Prefeitura de Santos — Edital nº 79/2026",
+    "examBoard": "IBAM",
+    "category": "Educação",
+    "name": "Professor Adjunto I — Prefeitura de Santos 2026 · curso completo + audiobook",
+    "shortName": "Professor Adjunto I — Santos 2026",
+    "edition": "Santos 2026 — Edição Definitiva",
+    "author": "Margareth Almeida",
+    "audience": "Professor Adjunto I (código 101) — Prefeitura de Santos",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_PROFESSOR_ADJUNTO_I_IBAM_SANTOS_2026",
+    "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final.",
+    "seoDescription": "Apostila de Professor Adjunto I para Santos 2026 (IBAM): teoria do zero, legislação, autores, específicos, dissertativa, 200 questões e audiobook.",
+    "storefront": {
+      "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 79/2026 • BANCA IBAM",
+      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-professor-adjunto-i-3d.png",
+      "cta": "Quero esta apostila + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "132 páginas na edição final para impressão e estudo digital",
+      "Edital nº 79/2026 + Rerratificações nº 83/2026 e nº 90/2026",
+      "Legislação federal e municipal, autores, Educação Infantil, anos iniciais, EJA e inclusão",
+      "Prova dissertativa com modelos, mapas de argumentação e treino guiado",
+      "200 questões ao longo do curso, incluindo três simulados completos",
+      "PDF para leitura online ou download",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "professor-adjunto-i-ibam-santos-2026/images/professor-adjunto-i-capa.png",
+      "pdfKey": "professor-adjunto-i-ibam-santos-2026/docs/professor-adjunto-i-santos-2026.pdf",
+      "pdfDownloadName": "Professor_Adjunto_I_Santos_2026_Edicao_Definitiva.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo da Apostila — A lógica do concurso de Santos 2026",
+        "subtitle": "Visão estratégica da prova e do curso antes dos capítulos completos",
+        "key": "professor-adjunto-i-ibam-santos-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_A_logica_do_concurso_de_Santos_2026.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Revisão final, raio-X e legislação",
+          "subtitle": "Edital, pesos, PNE 2026, legislação federal e municipal de Santos",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/01-revisao-legislacao.mp3",
+          "downloadName": "01-revisao-legislacao.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Parte I — Língua Portuguesa",
+          "subtitle": "Interpretação, coesão, gramática, gêneros e questões guiadas",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+          "downloadName": "02-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Parte II — Conhecimentos Gerais",
+          "subtitle": "Fundamentos, LDB, ECA, BNCC, didática, avaliação, inclusão e gestão",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/03-conhecimentos-gerais.mp3",
+          "downloadName": "03-conhecimentos-gerais.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Parte III — Autores do Edital",
+          "subtitle": "Freire, Libâneo, Hoffmann, Zabala, Perrenoud, Soares, Solé e demais autores",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/04-autores-do-edital.mp3",
+          "downloadName": "04-autores-do-edital.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Parte IV — Conhecimentos Específicos",
+          "subtitle": "Educação Infantil, alfabetização, anos iniciais, EJA, inclusão e prática pedagógica",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/05-conhecimentos-especificos.mp3",
+          "downloadName": "05-conhecimentos-especificos.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Partes V e VI — Dissertativa + 80 questões",
+          "subtitle": "Argumentação pedagógica, modelos, treino e banco temático comentado",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/06-dissertativa-banco-questoes.mp3",
+          "downloadName": "06-dissertativa-banco-questoes.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Parte VII — Três simulados completos",
+          "subtitle": "120 questões no formato da prova, com gabaritos comentados",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/07-tres-simulados.mp3",
+          "downloadName": "07-tres-simulados.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Parte VIII — Revisão final e caderno de erros",
+          "subtitle": "30 ideias automáticas, mapa de autores, estratégia de revisão e fontes",
+          "key": "professor-adjunto-i-ibam-santos-2026/audio/pt-br-v1/08-revisao-final-caderno-erros.mp3",
+          "downloadName": "08-revisao-final-caderno-erros.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2026-11-29",
+      "confirmed": false,
+      "source": "Edital nº 79/2026 — Prefeitura de Santos (banca IBAM)",
+      "sourceUrl": "https://www.santos.sp.gov.br/?q=servico/concursos-publicos",
+      "note": "Data prevista no material conforme o edital; confirmar a convocação oficial antes da prova."
+    },
+    "seoTitle": "Professor Adjunto I Santos 2026 + audiobook | Trilha Aprova"
   }
 }
