@@ -17,7 +17,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 45
     env:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -29,27 +29,69 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Sync current production main
+        run: |
+          set -euo pipefail
+          git config user.name 'Trilha Aprova Release Bot'
+          git config user.email '100246160+andreajoa@users.noreply.github.com'
+          git fetch origin main
+          git merge --no-edit origin/main
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install media and validation dependencies
+      - name: Install validation dependencies
         run: |
           set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg file
           python -m pip install --disable-pip-version-check requests boto3 pymupdf pillow piper-tts
 
-      - name: Publish exact owner files and generate 8 audiobook chapters
+      - name: Reuse verified private media and prepare storefront
         run: |
           set -euo pipefail
-          python scripts/publish_professor_adjunto_i.py \
-            --pdf-url 'https://margareth-5-estrategias.floot.app/_cdn/static/c3249806-58c8-494e-8ca8-5149fbe1ba50-professor-adjunto-i-source-staging.pdf' \
-            --cover-url 'https://margareth-5-estrategias.floot.app/_cdn/static/daef102f-8d57-4a20-8385-70386831f3c8-professor-adjunto-i-cover-staging.png' \
-            --summary-url 'https://margareth-5-estrategias.floot.app/_cdn/static/29a07a16-3f66-4a7b-9f30-cbf97af2271e-professor-adjunto-i-summary-staging.mp3'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import scripts.publish_professor_adjunto_i as p
 
-      - name: Restore temporary API staging change before production commit
+          s3 = p.r2_client()
+          p.PUBLIC_COVER.parent.mkdir(parents=True, exist_ok=True)
+
+          # The paid PDF, owner summary and eight audiobook chapters were already
+          # generated and byte/range verified in the previous publication run.
+          keys = [p.PDF_KEY, p.COVER_KEY, p.SUMMARY_KEY]
+          keys += [f'{p.AUDIO_PREFIX}/{stem}.mp3' for stem, *_ in p.CHAPTERS]
+          for key in keys:
+              info = s3.head_object(Bucket=p.BUCKET, Key=key)
+              if int(info.get('ContentLength') or 0) <= 0:
+                  raise RuntimeError(f'Private asset missing or empty: {key}')
+              print(f'PRIVATE ASSET OK {key}: {info["ContentLength"]} bytes', flush=True)
+
+          if p.remote_sha(s3, p.PDF_KEY) != p.PDF_SHA:
+              raise RuntimeError('Private Professor PDF differs from validated source')
+          if p.remote_sha(s3, p.COVER_KEY) != p.COVER_SHA:
+              raise RuntimeError('Private Professor cover differs from validated source')
+          if p.remote_sha(s3, p.SUMMARY_KEY) != p.SUMMARY_SHA:
+              raise RuntimeError('Private Professor summary differs from validated source')
+
+          s3.download_file(p.BUCKET, p.COVER_KEY, str(p.PUBLIC_COVER))
+          if p.sha256(p.PUBLIC_COVER) != p.COVER_SHA:
+              raise RuntimeError('Public cover copy changed bytes')
+          with p.Image.open(p.PUBLIC_COVER) as image:
+              image.verify()
+          with p.Image.open(p.PUBLIC_COVER) as image:
+              if image.size != (1122, 1402) or image.mode != 'RGBA':
+                  raise RuntimeError(f'Unexpected cover properties: {image.size} {image.mode}')
+
+          p.update_storefront_sources()
+          product = json.loads(Path('products/catalog.json').read_text())[p.SLUG]
+          if not product.get('active') or len(product['assets']['chapters']) != 8:
+              raise RuntimeError('Professor product was not prepared correctly')
+          print('STOREFRONT SOURCES READY: existing private media reused; catalog + binary cover + SEO source prepared', flush=True)
+          PY
+
+      - name: Restore production API before commit
         run: |
           set -euo pipefail
           git checkout origin/main -- api/cover.js
@@ -99,27 +141,26 @@ jobs:
           });
           EOF
 
-      - name: Build, test and audit storefront
+      - name: Build test and audit storefront
         run: |
           set -euo pipefail
           npm ci
           npm run build
           node --test tests/professor-adjunto-i-product.test.cjs
           test -f public/apostilas/professor-adjunto-i-ibam-santos-2026.html
-          file public/assets/apostila-professor-adjunto-i-3d.png | tee /tmp/cover-file.txt
-          grep -q 'PNG image data, 1122 x 1402' /tmp/cover-file.txt
           python3 - <<'PY'
           from pathlib import Path
           import hashlib, json, re
           cover=Path('public/assets/apostila-professor-adjunto-i-3d.png').read_bytes()
           assert cover[:8] == b'\x89PNG\r\n\x1a\n'
+          assert len(cover) == 2226830
           assert hashlib.sha256(cover).hexdigest() == 'ffb24a6d1c9a8cc8eda4eaadc37a68a6474e105f07d9790c77bbb416f85da013'
           catalog=json.loads(Path('products/catalog.json').read_text())
           p=catalog['professor-adjunto-i-ibam-santos-2026']
           assert p['active'] is True and len(p['assets']['chapters']) == 8
           page=Path('public/apostilas/professor-adjunto-i-ibam-santos-2026.html').read_text()
           assert 'Professor Adjunto I' in page and 'R$ 24,99' in page
-          assert 'data:image/' not in page
+          assert 'data:image/' not in page and ';base64,' not in page
           title=re.search(r'<title>(.*?)</title>',page,re.S).group(1)
           assert len(title) <= 60, (len(title),title)
           print('Professor storefront audit OK:', title)
@@ -130,13 +171,12 @@ jobs:
           set -euo pipefail
           git rm -f .github/workflows/publish-professor-adjunto-i.yml scripts/publish_professor_adjunto_i.py
 
-      - name: Commit only production-ready storefront and normal binary cover
+      - name: Commit production-ready storefront and normal binary cover
         run: |
           set -euo pipefail
           git config user.name 'Trilha Aprova Release Bot'
           git config user.email '100246160+andreajoa@users.noreply.github.com'
           git add api/cover.js products/catalog.json scripts/build-seo.cjs public tests/professor-adjunto-i-product.test.cjs
-          # public/assets/*.png is intentionally ignored globally; this specific validated cover is the exception.
           git add -f public/assets/apostila-professor-adjunto-i-3d.png
           git diff --cached --check
 
@@ -146,7 +186,8 @@ jobs:
           fi
 
           test "$(git diff --cached --numstat -- public/assets/apostila-professor-adjunto-i-3d.png | awk '{print $1" "$2}')" = '- -'
-          git diff --cached --binary -- public/assets/apostila-professor-adjunto-i-3d.png | grep -q '^GIT binary patch'
+          git diff --cached --binary -- public/assets/apostila-professor-adjunto-i-3d.png > /tmp/professor-cover.patch
+          grep -q '^GIT binary patch' /tmp/professor-cover.patch
 
           if git grep -n -E 'data:image/[^;]+;base64' -- public products scripts tests; then
             echo 'Inline Base64 image found in production sources.' >&2
