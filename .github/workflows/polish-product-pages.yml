@@ -23,57 +23,31 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - name: Correct product-fit FAQ and remove obsolete Floot resource hints
+      - name: Correct product FAQ and remove obsolete Floot resource hints
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           p=Path('scripts/build-seo.cjs')
           s=p.read_text()
-
-          old="""const ORIGIN = 'https://www.concursotrilhaaprova.online';
-const CDN = 'https://margareth-5-estrategias.floot.app';
-const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"""
-          new="""const ORIGIN = 'https://www.concursotrilhaaprova.online';
-const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"""
+          old="const ORIGIN = 'https://www.concursotrilhaaprova.online';\nconst CDN = 'https://margareth-5-estrategias.floot.app';\nconst SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"
+          new="const ORIGIN = 'https://www.concursotrilhaaprova.online';\nconst SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';"
           assert s.count(old)==1, 'Legacy CDN declaration not found exactly once'
           s=s.replace(old,new)
-
-          old="""    `<link rel=\"preconnect\" href=\"${CDN}\" crossorigin>` +
-    `<link rel=\"dns-prefetch\" href=\"${CDN}\">` +
-"""
+          old="    `<link rel=\"preconnect\" href=\"${CDN}\" crossorigin>` +\n    `<link rel=\"dns-prefetch\" href=\"${CDN}\">` +\n"
           assert s.count(old)==1, 'Legacy CDN preconnect block not found exactly once'
           s=s.replace(old,'')
-
-          old="""    '<meta property=\"og:image:width\" content=\"1200\">' +
-    '<meta property=\"og:image:height\" content=\"1200\">' +
-"""
+          old="    '<meta property=\"og:image:width\" content=\"1200\">' +\n    '<meta property=\"og:image:height\" content=\"1200\">' +\n"
           assert s.count(old)==1, 'Hard-coded OG dimensions block not found exactly once'
           s=s.replace(old,'')
-
-          old="""  const isAutores = p.slug.startsWith('autores');
-
-  const fit = isAutores
-    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
-    : 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.';
-"""
-          new="""  const isAutores = p.slug.startsWith('autores');
-  const isRedacao = p.slug.startsWith('redacao');
-
-  const fit = isAutores
-    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
-    : isRedacao
-      ? 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'
-      : `Esta apostila foi desenvolvida especificamente para ${p.audience}, com conteúdo direcionado a ${p.contest} e à banca ${p.examBoard}. Compare o sumário com o conteúdo programático oficial do cargo antes da compra.`;
-"""
+          old="  const isAutores = p.slug.startsWith('autores');\n\n  const fit = isAutores\n    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'\n    : 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.';\n"
+          new="  const isAutores = p.slug.startsWith('autores');\n  const isRedacao = p.slug.startsWith('redacao');\n\n  const fit = isAutores\n    ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'\n    : isRedacao\n      ? 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'\n      : `Esta apostila foi desenvolvida especificamente para ${p.audience}, com conteúdo direcionado a ${p.contest} e à banca ${p.examBoard}. Compare o sumário com o conteúdo programático oficial do cargo antes da compra.`;\n"
           assert s.count(old)==1, 'Legacy product-fit decision block not found exactly once'
           s=s.replace(old,new)
-
           old="{ q: `Quanto custa a ${p.shortName}?`, a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },"
           new="{ q: 'Quanto custa esta apostila?', a: `${brl(p.priceCents)} em pagamento único, sem assinatura. O valor inclui o PDF completo, o resumo em áudio e os ${p.assets.chapters.length} capítulos do audiobook.` },"
           assert s.count(old)==1, 'Price FAQ line not found exactly once'
           s=s.replace(old,new)
-
           p.write_text(s)
           print('Product SEO generator polished.')
           PY
