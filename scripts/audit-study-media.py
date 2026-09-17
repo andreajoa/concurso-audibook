@@ -13,6 +13,26 @@ from botocore.config import Config
 from pypdf import PdfReader
 
 
+PRODUCT_EXPECTATIONS = {
+    'autores-ibam-2026': {
+        'pages': 34,
+        'topics': ['autores', 'ibam', 'gabarito'],
+    },
+    'redacao-nivel-fundamental-2026': {
+        'pages': 19,
+        'topics': ['redação', 'dissertação', 'gabarito'],
+    },
+    'secretario-de-unidade-escolar-ibam-santos-2026': {
+        'pages': 84,
+        'topics': ['secretário', 'ibam', 'língua portuguesa', 'raciocínio lógico', 'eca', 'simulado'],
+    },
+    'professor-adjunto-i-ibam-santos-2026': {
+        'pages': 132,
+        'topics': ['professor adjunto i', 'ibam', 'língua portuguesa', 'educação infantil', 'simulado'],
+    },
+}
+
+
 def require(condition, message):
     if not condition:
         raise RuntimeError(message)
@@ -42,11 +62,14 @@ def main():
             s3.download_file(bucket, assets['pdfKey'], str(pdf))
             pages = [page.extract_text() or '' for page in PdfReader(pdf).pages]
             source = santos_sources.get(slug)
-            # The supplied Santos editions have an image-only first page.
+            expectation = PRODUCT_EXPECTATIONS.get(slug)
+            require(source or expectation, f'{slug}: missing media audit expectations')
+
+            # Supplied Santos editions for portaria/inspetor have an image-only first page.
             readable_pages = pages[1:] if source else pages
             require(all(p.strip() for p in readable_pages), f'{slug}: unreadable PDF content pages')
-            expected = source['pageCount'] if source else (19 if slug == 'redacao-nivel-fundamental-2026' else 34)
-            require(len(pages) == expected, f'{slug}: unexpected PDF page count')
+            expected = source['pageCount'] if source else expectation['pages']
+            require(len(pages) == expected, f'{slug}: unexpected PDF page count: {len(pages)} != {expected}')
             body = '\n'.join(pages).lower()
             if source:
                 topics = ['agente de portaria' if slug.startswith('agente-') else 'inspetor de alunos', 'ibam', 'gabarito']
@@ -55,8 +78,9 @@ def main():
                 s3.download_file(bucket, assets['coverKey'], str(cover))
                 require(hashlib.sha256(cover.read_bytes()).hexdigest() == source['coverSha256'], f'{slug}: cover differs from supplied source')
             else:
-                topics = ['redação', 'dissertação', 'gabarito'] if expected == 19 else ['autores', 'ibam', 'gabarito']
+                topics = expectation['topics']
             require(all(word in body for word in topics), f'{slug}: PDF subject does not match product')
+
             manifest = None
             santos_tracks = {}
             if source:
@@ -70,7 +94,7 @@ def main():
                 require(ranges == source['chapters'], f'{slug}: manifest chapter pages differ from source')
                 covered = [page for first, last in ranges for page in range(first, last + 1)]
                 require(covered == list(range(2, expected + 1)), f'{slug}: missing, repeated or unordered source pages')
-            if expected == 19:
+            if slug == 'redacao-nivel-fundamental-2026':
                 manifest = json.loads(s3.get_object(Bucket=bucket,
                     Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(manifest['pdfKey'] == assets['pdfKey'], 'Redacao manifest: wrong PDF')
@@ -79,6 +103,7 @@ def main():
                     'Redacao manifest: chapter mapping mismatch')
                 covered = [p for c in manifest['chapters'] for p in range(c['pages'][0], c['pages'][1]+1)]
                 require(covered == list(range(1, 20)), 'Redacao: missing, repeated or unordered source pages')
+
             durations = []
             for index, track in enumerate(tracks):
                 media = work / 'track.mp3'
