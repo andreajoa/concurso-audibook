@@ -1,4 +1,5 @@
 name: Finalize portal layout
+# brand rebuild trigger: Trilha Aprova-only public authorship
 on:
   push:
     paths:
