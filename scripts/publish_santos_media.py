@@ -24,7 +24,7 @@ def clean(text):
     lines = []
     for line in text.splitlines():
         line = line.strip()
-        if not line or line.startswith('@neuromargarethapoio'):
+        if not line or line.startswith('@trilhaaprova.concursos'):
             continue
         if 'IBAM' in line and 'SANTOS 2026' in line and '•' in line:
             continue
