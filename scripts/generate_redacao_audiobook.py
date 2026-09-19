@@ -57,7 +57,7 @@ def chapter_texts(pages: list[str]) -> list[str]:
     for number, (_, title, first, last) in enumerate(CHAPTERS, start=1):
         body = clean("\n\n".join(pages[first - 1:last]))
         opening = (
-            f"Sala de Estudos Margareth Almeida. Capítulo {number}: {title}. "
+            f"Sala de Estudos Trilha Aprova. Capítulo {number}: {title}. "
             "Este áudio está em português brasileiro. Acompanhe com atenção e use a velocidade do player para revisar.\n\n"
         )
         texts.append(opening + body + "\n\nFim deste capítulo.")
@@ -89,7 +89,7 @@ def main() -> None:
         manifest = {
             "slug": PRODUCT_SLUG,
             "title": "Redação para Concursos - Ensino Fundamental Completo",
-            "author": "Margareth Almeida",
+            "author": "Trilha Aprova",
             "language": "pt-BR",
             "voice": base.VOICE_NAME,
             "pdfKey": PDF_KEY,
