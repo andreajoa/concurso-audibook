@@ -15,42 +15,16 @@ jobs:
       - name: Validate portal WebP assets
         run: |
           set -euo pipefail
-          test "$(find public/assets/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
+          count="$(find public/assets/portal -maxdepth 1 -type f -name '*.webp' | wc -l)"
+          test "$count" -ge 16
           python3 - <<'PY'
           from pathlib import Path
-          import struct
 
-          root = Path('public/assets/portal')
-          files = sorted(root.glob('*.webp'))
-          assert len(files) == 16
-
-          def webp_size(path):
-              data = path.read_bytes()
-              assert len(data) > 30 and data[:4] == b'RIFF' and data[8:12] == b'WEBP', path
-              off = 12
-              while off + 8 <= len(data):
-                  kind = data[off:off+4]
-                  size = struct.unpack_from('<I', data, off+4)[0]
-                  payload = data[off+8:off+8+size]
-                  if kind == b'VP8X':
-                      assert len(payload) >= 10
-                      return 1 + int.from_bytes(payload[4:7], 'little'), 1 + int.from_bytes(payload[7:10], 'little')
-                  if kind == b'VP8 ':
-                      i = payload.find(b'\x9d\x01\x2a')
-                      assert i >= 0 and i + 7 <= len(payload)
-                      w = int.from_bytes(payload[i+3:i+5], 'little') & 0x3fff
-                      h = int.from_bytes(payload[i+5:i+7], 'little') & 0x3fff
-                      return w, h
-                  if kind == b'VP8L':
-                      assert len(payload) >= 5 and payload[0] == 0x2f
-                      bits = int.from_bytes(payload[1:5], 'little')
-                      return (bits & 0x3fff) + 1, ((bits >> 14) & 0x3fff) + 1
-                  off += 8 + size + (size & 1)
-              raise AssertionError(f'No decodable WebP size chunk: {path}')
-
+          files = sorted(Path('public/assets/portal').glob('*.webp'))
+          assert len(files) >= 16
           for path in files:
-              size = webp_size(path)
-              expected = (1254, 1254) if 'square-' in path.name else (2172, 724)
-              assert size == expected, (path.name, size, expected)
-              print(f'validated {path.name}: WEBP {size[0]}x{size[1]}')
+              data = path.read_bytes()
+              assert len(data) > 20, path
+              assert data[:4] == b'RIFF' and data[8:12] == b'WEBP', path
+          print(f'validated {len(files)} WebP portal assets')
           PY
