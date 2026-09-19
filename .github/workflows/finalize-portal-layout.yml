@@ -1,5 +1,5 @@
 name: Rebuild public pages
-# brand rebuild v2
+# brand rebuild v4
 on:
   workflow_dispatch:
   push:
@@ -24,11 +24,11 @@ jobs:
       - name: Verify personal-name references are gone
         run: |
           set -euo pipefail
-          n1="$(printf '\\115\\141\\162\\147\\141\\162\\145\\164\\150')"
-          n2="$(printf '\\115\\141\\162\\147\\141\\162\\145\\164\\145')"
-          n3="$(printf '\\101\\154\\155\\145\\151\\144\\141')"
-          n4="$(printf '\\156\\145\\165\\162\\157\\155\\141\\162\\147\\141\\162\\145\\164\\150')"
-          matches="$(grep -RniE --exclude-dir=.git --binary-files=without-match "$n1|$n2|$n3|$n4" . || true)"
+          n1="$(printf '%s' 'TWFyZ2FyZXRo' | base64 -d)"
+          n2="$(printf '%s' 'TWFyZ2FyZXRl' | base64 -d)"
+          n3="$(printf '%s' 'QWxtZWlkYQ==' | base64 -d)"
+          n4="$(printf '%s' 'bmV1cm9tYXJnYXJldGg=' | base64 -d)"
+          matches="$(grep -RlaEi --exclude-dir=.git "$n1|$n2|$n3|$n4" . || true)"
           if [ -n "$matches" ]; then
             printf '%s\n' "$matches"
             exit 1
