@@ -24,7 +24,7 @@ const cn = require('../lib/concursos.js');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';
-const AUTHOR_NAME = 'Margareth Almeida';
+const AUTHOR_NAME = 'Trilha Aprova';
 // Perfil oficial. Entra no rodapé e no sameAs para que Google e IAs liguem
 // a marca ao mesmo dono em vez de tratarem site e Instagram como duas coisas.
 const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
@@ -62,7 +62,6 @@ const organization = {
   description: 'Editora digital independente de apostilas em PDF com audiobook para candidatos a concursos públicos no Brasil.',
   logo: { '@type': 'ImageObject', '@id': ORIGIN + '/#logo', url: ORIGIN + '/assets/trilha-aprova-logo.webp', width: 180, height: 84, caption: 'Trilha Aprova' },
   image: { '@id': ORIGIN + '/#logo' },
-  founder: { '@id': ORIGIN + '/#author' },
   sameAs: [INSTAGRAM_URL],
   knowsLanguage: 'pt-BR',
   knowsAbout: [
@@ -83,17 +82,6 @@ const organization = {
   }
 };
 
-const author = {
-  '@type': 'Person',
-  '@id': ORIGIN + '/#author',
-  name: AUTHOR_NAME,
-  url: ORIGIN + '/sobre',
-  jobTitle: 'Autora de materiais de preparação para concursos públicos',
-  worksFor: { '@id': ORIGIN + '/#organization' },
-  knowsLanguage: 'pt-BR',
-  knowsAbout: ['Educação', 'Educação Especial', 'Produção textual', 'Preparação para concursos públicos']
-};
-
 const website = {
   '@type': 'WebSite',
   '@id': ORIGIN + '/#website',
@@ -104,7 +92,7 @@ const website = {
   copyrightHolder: { '@id': ORIGIN + '/#organization' }
 };
 
-const BASE_NODES = [organization, author, website];
+const BASE_NODES = [organization, website];
 
 const faqNode = (url, faq) => ({
   '@type': 'FAQPage',
@@ -587,7 +575,7 @@ for (const p of products) {
     inLanguage: 'pt-BR',
     brand: { '@type': 'Brand', name: 'Trilha Aprova' },
     manufacturer: { '@id': ORIGIN + '/#organization' },
-    author: { '@id': ORIGIN + '/#author' },
+    author: { '@id': ORIGIN + '/#organization' },
     audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: p.audience },
     isFamilyFriendly: true,
     offers: {
@@ -619,7 +607,7 @@ for (const p of products) {
     name: p.name + ' — audiobook',
     description: p.assets.summary.title,
     inLanguage: 'pt-BR',
-    author: { '@id': ORIGIN + '/#author' },
+    author: { '@id': ORIGIN + '/#organization' },
     publisher: { '@id': ORIGIN + '/#organization' },
     numberOfPages: undefined,
     hasPart: p.assets.chapters.map((c, i) => ({
@@ -753,7 +741,7 @@ for (const g of guides) {
     headline: g.title,
     description: g.description,
     inLanguage: 'pt-BR',
-    author: { '@id': ORIGIN + '/#author' },
+    author: { '@id': ORIGIN + '/#organization' },
     publisher: { '@id': ORIGIN + '/#organization' },
     datePublished: g.updated || BUILD_DATE,
     dateModified: g.updated || BUILD_DATE,
@@ -874,7 +862,7 @@ for (const a of articlesNewestFirst) {
       headline: a.title,
       description: a.description,
       inLanguage: 'pt-BR',
-      author: { '@id': ORIGIN + '/#author' },
+      author: { '@id': ORIGIN + '/#organization' },
       publisher: { '@id': ORIGIN + '/#organization' },
       datePublished: a.published,
       dateModified: a.updated || a.published,
@@ -962,7 +950,7 @@ const toolNode = t => ({
   inLanguage: 'pt-BR',
   isAccessibleForFree: true,
   permissions: 'Nenhuma. Os dados ficam no armazenamento local do navegador.',
-  author: { '@id': ORIGIN + '/#author' },
+  author: { '@id': ORIGIN + '/#organization' },
   publisher: { '@id': ORIGIN + '/#organization' },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL', availability: 'https://schema.org/InStock' }
 });
