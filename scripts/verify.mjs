@@ -10,7 +10,7 @@ const buy=fs.readFileSync(path.join(root,'public/comprar.html'),'utf8');
 const normalized=html.toLowerCase();
 for(const marker of ['r$ 49,99','r$ 24,99','pagamento único','pagamento','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
 if(!/<del[^>]*>R\$ 49,99<\/del>/i.test(html))fail('reference price must be crossed out with del');
-if(!html.includes('https://margareth-5-estrategias.floot.app/_cdn/static/123c766e-ba0d-46cd-b78f-6e14845fc369-trilha-aprova-santos-cover.png'))fail('storefront missing uploaded Santos 3D product cover');
+if(!html.includes('https://www.concursotrilhaaprova.online/assets/apostila-autores-3d.webp'))fail('storefront missing uploaded Santos 3D product cover');
 if(!html.includes('/assets/trilha-aprova-logo.webp'))fail('storefront missing Trilha Aprova logo');
 if(/materials\.json|\/app\.js|pub-[a-z0-9]+\.r2\.dev/i.test(html))fail('sales home exposes legacy/public library assets');
 if(/\bstripe\b/i.test(html)||/\bstripe\b/i.test(buy))fail('payment provider name must not appear in customer-facing HTML');
