@@ -197,7 +197,7 @@ def prepare_for_speech(text: str, chapter_number: int) -> str:
     text = re.sub(r"\bBNCC\b", "B N C C", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     opening = (
-        f"Sala de Estudos Margareth Almeida. Capítulo {chapter_number}: {title}. "
+        f"Sala de Estudos Trilha Aprova. Capítulo {chapter_number}: {title}. "
         "Este áudio está em português brasileiro. Acompanhe com atenção e use a velocidade do player para revisar.\n\n"
     )
     return opening + text.strip() + "\n\nFim deste capítulo."
@@ -344,7 +344,7 @@ def main() -> None:
 
         manifest = {
             "title": "Quem disse o quê? - Apostila de Autores - Banca IBAM",
-            "author": "Margareth Almeida",
+            "author": "Trilha Aprova",
             "language": "pt-BR",
             "voice": VOICE_NAME,
             "publicBase": PUBLIC_BASE,
