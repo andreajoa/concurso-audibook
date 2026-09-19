@@ -1,30 +1,26 @@
-name: Install portal images
+name: Verify portal images
 on:
+  workflow_dispatch:
   push:
     paths:
+      - 'public/assets/portal/**'
       - '.github/workflows/install-portal-images.yml'
 permissions:
-  contents: write
+  contents: read
 jobs:
-  install:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Download and validate image bundle
+      - name: Validate portal WebP assets
         run: |
           set -euo pipefail
-          curl -fL 'https://margareth-5-estrategias.floot.app/_cdn/static/50491a77-bbd5-4b6a-a9fa-de0908eeb950-portal-webp-assets.zip' -o /tmp/portal.zip
-          echo '5483ddef2ae867eb530e917ab231e538a6719c3fb37bc8398d357991938ce665  /tmp/portal.zip' | sha256sum -c -
-          rm -rf /tmp/portal && mkdir -p /tmp/portal
-          unzip -q /tmp/portal.zip -d /tmp/portal
-          test "$(find /tmp/portal/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
+          test "$(find public/assets/portal -maxdepth 1 -type f -name '*.webp' | wc -l)" -eq 16
           python3 - <<'PY'
           from pathlib import Path
           import struct
 
-          root = Path('/tmp/portal/portal')
+          root = Path('public/assets/portal')
           files = sorted(root.glob('*.webp'))
           assert len(files) == 16
 
@@ -56,22 +52,5 @@ jobs:
               size = webp_size(path)
               expected = (1254, 1254) if 'square-' in path.name else (2172, 724)
               assert size == expected, (path.name, size, expected)
-              print(f'validated {path.name}: WEBP {size[0]}x{size[1]} {path.stat().st_size} bytes')
+              print(f'validated {path.name}: WEBP {size[0]}x{size[1]}')
           PY
-      - name: Copy original WebP binaries
-        run: |
-          set -euo pipefail
-          mkdir -p public/assets/portal
-          cp /tmp/portal/portal/*.webp public/assets/portal/
-          (cd /tmp/portal/portal && sha256sum *.webp | sort) > /tmp/source.sha256
-          (cd public/assets/portal && sha256sum *.webp | sort) > /tmp/repo.sha256
-          diff -u /tmp/source.sha256 /tmp/repo.sha256
-      - name: Commit images
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/assets/portal/*.webp
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'perf: add validated responsive portal WebP assets'
-          git push origin HEAD:main
