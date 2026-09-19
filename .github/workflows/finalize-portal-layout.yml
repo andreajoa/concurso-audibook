@@ -1,5 +1,5 @@
 name: Rebuild public pages
-# brand rebuild v4
+# brand rebuild v5
 on:
   workflow_dispatch:
   push:
