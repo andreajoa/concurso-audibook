@@ -55,6 +55,14 @@ test('a mesma afirmação negada é permitida, porque é o que o site precisa di
   assert.deepEqual(editorial.factualProblems(text), []);
 });
 
+test('ano de uma edição pré-edital não é número de edital oficial', () => {
+  for(const title of ['SME-SP PEIF — Pré-edital 2026','Edição PRÉ-EDITAL 2026','Material pre-edital 2026']){
+    assert.deepEqual(editorial.factualProblems(title),[]);
+  }
+  assert.ok(editorial.factualProblems('Edição pré-edital 2026. O edital nº 79 define as regras.').some(p=>p.includes('número de edital')));
+  assert.ok(editorial.factualProblems('O edital 2026 está publicado.').some(p=>p.includes('número de edital')));
+});
+
 /* O preço da assinatura do caderno passou a aparecer no site, e ele casa com o
    mesmo padrão que existe para impedir uma matéria de inventar salário. O
    perdão precisa ser estreito: se ele abrir a porta para "o cargo paga R$ 8 mil

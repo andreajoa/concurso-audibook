@@ -1,6 +1,6 @@
 # SME-SP PEIF — pré-edital 2026
 
-Produto: `sme-sp-peif-pre-edital-2026`. Preço autorizado pelo proprietário: o mesmo da coleção, R$ 24,99 (referência R$ 49,99). O produto fica inativo até a conclusão da geração e da auditoria dos arquivos privados.
+Produto: `sme-sp-peif-pre-edital-2026`. Preço autorizado pelo proprietário: o mesmo da coleção, R$ 24,99 (referência R$ 49,99). A ativação foi preparada somente após a conclusão da geração e da auditoria dos arquivos privados.
 
 ## PDF e identidade editorial
 
@@ -26,6 +26,10 @@ O M4A fornecido tem 19min54s e é identificado como resumo complementar “Por q
 
 A entrega usa o fluxo existente: Checkout Stripe com o slug exato, confirmação de pagamento e área `/acesso` com URLs privadas temporárias. O cadastro não libera compra enquanto `active` for falso.
 
-A investigação do ambiente identificou um problema pré-existente: a produção informa `readiness.webhook:false`. A liberação ao retornar do pagamento funciona, mas o e-mail automático independente do retorno exige configurar o endpoint e sua assinatura. Esse ajuste deve ser validado antes de afirmar que o envio automático de e-mail foi concluído.
+A investigação identificou um problema pré-existente: a produção informava `readiness.webhook:false`. Foi cadastrado um endpoint dedicado à Trilha Aprova na conta CoreUnit, depois de o proprietário entrar no painel. Endpoint: `we_1UMcbwG3HxcyUpFWQsyBGNCm`, em `https://www.concursotrilhaaprova.online/api/stripe-webhook`, com `checkout.session.completed`, `checkout.session.async_payment_succeeded` e `charge.refunded`. Os endpoints das outras lojas não foram alterados. A assinatura foi gravada como variável sensível de produção na Vercel, sem ser publicada no código ou nesta documentação. A nova publicação aplica essa configuração.
 
-Validação local inicial: 164 testes Node, build completo, verificações de acesso, SEO e layout aprovados; seis testes Python de integridade das fontes aprovados. Geração real, auditoria R2, ativação e publicação serão registradas conforme concluídas.
+Validação local: 165 testes Node, build completo, verificações de acesso, SEO e layout aprovados; nove testes Python de integridade aprovados. A prévia foi conferida no navegador em desktop e celular: capa carregada, preço correto, oito capítulos e nenhum transbordamento horizontal em 390 px.
+
+Geração e auditoria reais concluídas em [GitHub Actions](https://github.com/andreajoa/concurso-audibook/actions/runs/37161913643): PDF de 220 páginas, capa plana, resumo fornecido e oito capítulos íntegros, com hashes, texto de origem, duração, decodificação integral e streaming privado conferidos. Duração: 10h03min01s de audiobook; resumo de 19min54s; conjunto de 10h22min55s. O arquivo original permanece intacto. A revisão é [PR #13](https://github.com/andreajoa/concurso-audibook/pull/13).
+
+A correção de uma falha real do Piper nos campos de anotações remove linhas de sublinhados da entrada de voz, mantendo todos os caracteres de letras e números; um teste exige essa preservação. Áudios já válidos foram reaproveitados sem substituição.

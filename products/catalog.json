@@ -693,7 +693,7 @@
   },
   "sme-sp-peif-pre-edital-2026": {
     "slug": "sme-sp-peif-pre-edital-2026",
-    "active": false,
+    "active": true,
     "brand": "Trilha Aprova",
     "contest": "SME-SP — Professor de Educação Infantil e Ensino Fundamental I",
     "examBoard": "Conforme futuro edital",

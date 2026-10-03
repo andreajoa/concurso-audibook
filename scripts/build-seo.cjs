@@ -633,7 +633,7 @@ for (const p of products) {
     ['Preço', `${brl(p.priceCents)} — pagamento único, sem assinatura`],
     ['Formatos', `PDF + resumo em áudio + ${p.assets.chapters.length} capítulos de audiobook`],
     ['Indicado para', p.audience],
-    ['Concurso de referência', `${p.contest} · Banca ${p.examBoard} · ${p.edition}`],
+    ['Concurso de referência', p.preEdital ? `${p.contest} · ${p.edition} · Banca a confirmar no futuro edital` : `${p.contest} · Banca ${p.examBoard} · ${p.edition}`],
     ['Autoria', AUTHOR_NAME],
     ['Entrega', 'Digital e imediata após a confirmação do pagamento, em todo o Brasil']
   ];
@@ -671,7 +671,9 @@ for (const p of products) {
     // A descrição do catálogo é a de venda e pode ser longa; a da SERP tem de caber.
     description: p.seoDescription || p.description,
     kicker: `${p.edition} · ${p.category}`,
-    lead: `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
+    lead: p.preEdital
+      ? `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`
+      : `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
     keyFacts,
     body,
     faq,
