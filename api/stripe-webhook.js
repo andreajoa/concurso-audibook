@@ -111,7 +111,7 @@ module.exports = async (req,res) => {
       if (analytics) await rpc('crm_track_event',{payload:analytics}).catch(()=>null);
       if (!session.metadata?.access_email_sent) {
         const accessUrl=`${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
-        await sendAccessEmail({to:email,productName:product.name,accessUrl});
+        await sendAccessEmail({to:email,productName:product.name,accessUrl,idempotencyKey:`purchase-access-${session.id}`});
         await updateSessionMetadata(session.id,{access_email_sent:event.id});
       }
       return res.status(200).json({received:true,paid:true});

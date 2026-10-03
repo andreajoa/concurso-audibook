@@ -558,7 +558,9 @@ for (const p of products) {
   const isAutores = p.slug.startsWith('autores');
   const isRedacao = p.slug.startsWith('redacao');
 
-  const fit = isAutores
+  const fit = p.preEdital
+    ? 'Esta é uma edição pré-edital para SME-SP PEIF 2026, organizada com referências históricas. Não representa o programa oficial de um futuro edital. Confira as regras, disciplinas e atualizações publicadas pela SME-SP antes da compra.'
+    : isAutores
     ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
     : isRedacao
       ? 'Esta apostila trabalha redação para candidatos de ensino fundamental completo. O gênero textual e os critérios cobrados variam conforme o edital; não é uma apostila específica de todas as disciplinas de um cargo.'
@@ -631,7 +633,7 @@ for (const p of products) {
     ['Preço', `${brl(p.priceCents)} — pagamento único, sem assinatura`],
     ['Formatos', `PDF + resumo em áudio + ${p.assets.chapters.length} capítulos de audiobook`],
     ['Indicado para', p.audience],
-    ['Concurso de referência', `${p.contest} · Banca ${p.examBoard} · ${p.edition}`],
+    ['Concurso de referência', p.preEdital ? `${p.contest} · ${p.edition} · Banca a confirmar no futuro edital` : `${p.contest} · Banca ${p.examBoard} · ${p.edition}`],
     ['Autoria', AUTHOR_NAME],
     ['Entrega', 'Digital e imediata após a confirmação do pagamento, em todo o Brasil']
   ];
@@ -652,7 +654,9 @@ for (const p of products) {
     `<h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p>` +
     '<h2>Como recebo os arquivos?</h2>' +
     '<p>Após a confirmação do pagamento, sua área individual libera o PDF e os áudios desta apostila para leitura, reprodução e download. <a href="/entrega-e-acesso">Veja como funciona o acesso</a>.</p>' +
-    (isAutores
+    (p.preEdital
+      ? '<h2>Preparação para SME-SP PEIF</h2><p>O material reúne fundamentos pedagógicos, legislação, Currículo da Cidade, Educação Infantil, alfabetização, inclusão e preparação para a prova prática. A edição pré-edital deve ser confrontada com o futuro programa oficial.</p>'
+      : isAutores
       ? '<h2>Quem estuda na Baixada Santista</h2><p>Esta apostila nasceu do edital de Santos, mas o conteúdo de autores é o mesmo cobrado em muitos concursos municipais de educação. Veja os guias por cidade:</p><ul class="city-links">' + cityLinks + '</ul>'
       : '<h2>Onde a redação costuma ser cobrada</h2><p>Cargos de nível fundamental completo frequentemente incluem prova de produção textual. Veja os guias por cidade da Baixada Santista:</p><ul class="city-links">' + cityLinks + '</ul>') +
     '<h2>Continue sua preparação</h2>' +
@@ -667,7 +671,9 @@ for (const p of products) {
     // A descrição do catálogo é a de venda e pode ser longa; a da SERP tem de caber.
     description: p.seoDescription || p.description,
     kicker: `${p.edition} · ${p.category}`,
-    lead: `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
+    lead: p.preEdital
+      ? `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`
+      : `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
     keyFacts,
     body,
     faq,
