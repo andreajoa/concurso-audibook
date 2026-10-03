@@ -1,0 +1,53 @@
+{
+  "slug": "sme-sp-peif-pre-edital-2026",
+  "pdfFile": "curso-sme-sp-peif-pre-edital-2026-padronizado.pdf",
+  "pdfSha256": "1582365aa12d2b434e956e7d8cdffad5d43e645f5795820b6c75c62e54309b44",
+  "pageCount": 220,
+  "coverFile": "capa-pdf-padronizada.png",
+  "coverSha256": "b62d547d45d035c957609e44918af86c3520c9577bae839370698541f3153213",
+  "summaryFile": "resumo-original.m4a",
+  "summarySourceSha256": "9f2ae62062ad512a6da2af85894d5637af837d8cf9a94c525a799c14f6ac12ae",
+  "summaryDurationSeconds": 1194.132608,
+  "chapters": [
+    [
+      1,
+      36
+    ],
+    [
+      37,
+      72
+    ],
+    [
+      73,
+      96
+    ],
+    [
+      97,
+      130
+    ],
+    [
+      131,
+      160
+    ],
+    [
+      161,
+      186
+    ],
+    [
+      187,
+      203
+    ],
+    [
+      204,
+      220
+    ]
+  ],
+  "topics": [
+    "sme-sp",
+    "peif",
+    "pré-edital",
+    "currículo da cidade",
+    "gabarito"
+  ],
+  "originalPdfSha256": "fe3cc142ac8db53b3cd5cde938fa3bdf41a0e00f8cb44178ddd8edb8162e27ab"
+}

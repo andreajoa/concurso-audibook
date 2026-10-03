@@ -14,6 +14,10 @@ from pypdf import PdfReader
 
 
 PRODUCT_EXPECTATIONS = {
+    'sme-sp-peif-pre-edital-2026': {
+        'pages': 220,
+        'topics': ['sme-sp', 'peif', 'pré-edital', 'currículo da cidade', 'gabarito'],
+    },
     'autores-ibam-2026': {
         'pages': 34,
         'topics': ['autores', 'ibam', 'gabarito'],
@@ -41,6 +45,7 @@ def require(condition, message):
 def main():
     catalog = json.loads(Path('products/catalog.json').read_text())
     santos_sources = json.loads(Path('products/santos-media-sources.json').read_text())
+    peif_source = json.loads(Path('products/sme-sp-peif-source.json').read_text())
     bucket = os.environ.get('R2_BUCKET', 'apostila')
     account = os.environ['R2_ACCOUNT_ID']
     s3 = boto3.client('s3', endpoint_url=f'https://{account}.r2.cloudflarestorage.com',
@@ -62,6 +67,7 @@ def main():
             s3.download_file(bucket, assets['pdfKey'], str(pdf))
             pages = [page.extract_text() or '' for page in PdfReader(pdf).pages]
             source = santos_sources.get(slug)
+            peif = peif_source if slug == peif_source['slug'] else None
             expectation = PRODUCT_EXPECTATIONS.get(slug)
             require(source or expectation, f'{slug}: missing media audit expectations')
 
@@ -83,6 +89,22 @@ def main():
 
             manifest = None
             santos_tracks = {}
+            if peif:
+                require(hashlib.sha256(pdf.read_bytes()).hexdigest() == peif['pdfSha256'], f'{slug}: standardized PDF checksum mismatch')
+                cover = work / 'cover.png'
+                s3.download_file(bucket, assets['coverKey'], str(cover))
+                require(hashlib.sha256(cover.read_bytes()).hexdigest() == peif['coverSha256'], f'{slug}: standardized cover checksum mismatch')
+                record = json.loads(s3.get_object(Bucket=bucket, Key=f'{slug}/audio/manifest.json')['Body'].read())
+                require(record['slug'] == slug and record['pdfSha256'] == peif['pdfSha256'], f'{slug}: manifest source mismatch')
+                require(record['summary']['originalSha256'] == peif['summarySourceSha256'], f'{slug}: supplied summary source mismatch')
+                completed = [record['summary'], *record['chapters']]
+                santos_tracks = {track['key']: track for track in completed}
+                require(len(completed) == 9 and set(santos_tracks) == {track['key'] for track in tracks}, f'{slug}: manifest track mapping mismatch')
+                require(all(santos_tracks[track['key']]['id'] == track['id'] for track in tracks), f'{slug}: manifest track IDs differ from catalog')
+                ranges = [santos_tracks[chapter['key']]['pages'] for chapter in assets['chapters']]
+                require(ranges == peif['chapters'], f'{slug}: manifest chapter pages differ from PDF')
+                covered = [page for first, last in ranges for page in range(first, last + 1)]
+                require(covered == list(range(1, expected + 1)), f'{slug}: missing, repeated or unordered source pages')
             if source:
                 record = json.loads(s3.get_object(Bucket=bucket, Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(record['slug'] == slug and record['pdfSha256'] == source['pdfSha256'], f'{slug}: manifest source mismatch')
@@ -109,7 +131,7 @@ def main():
                 media = work / 'track.mp3'
                 s3.download_file(bucket, track['key'], str(media))
                 digest = hashlib.sha256(media.read_bytes()).hexdigest()
-                if source:
+                if source or peif:
                     require(digest == santos_tracks[track['key']]['sha256'], f'{slug}/{track["id"]}: audio differs from completion manifest')
                 require(digest not in fingerprints, f'{slug}/{track["id"]}: duplicate audio content')
                 fingerprints[digest] = (slug, track['id'])
@@ -119,7 +141,7 @@ def main():
                 info = json.loads(probe.stdout)
                 seconds = float(info['format']['duration'])
                 require(seconds > 10, f'{slug}/{track["id"]}: audio too short')
-                if source:
+                if source or peif:
                     require(abs(seconds - santos_tracks[track['key']]['durationSeconds']) < 0.1,
                         f'{slug}/{track["id"]}: duration differs from completion manifest')
                 require(any(s.get('codec_name') == 'mp3' for s in info['streams']),

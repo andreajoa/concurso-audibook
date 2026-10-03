@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {catalog}=require('../lib/catalog');
+const {catalog,getSellableProduct}=require('../lib/catalog');
 const {validateProductAssets,signedProductAssets}=require('../lib/r2');
 const {verifyPurchase}=require('../lib/stripe');
 const {createCheckout}=require('../lib/checkout-hosted');
@@ -25,6 +25,13 @@ test('each product owns exactly its PDF, cover, summary and eight chapter files'
 test('checkout creates and delivery validates the selected product, site and payment',async()=>{
   try{
     for(const product of Object.values(catalog)){
+      if(!getSellableProduct(product.slug)){
+        let fetched=false;
+        global.fetch=async()=>{fetched=true;throw new Error('Unexpected Stripe request');};
+        await assert.rejects(createCheckout({headers:{host:'test.local'}},product.slug,{email:'test@example.com',embedded:true}),/Produto indisponível/);
+        assert.equal(fetched,false,'unavailable products must not reach Stripe');
+        continue;
+      }
       let sent;
       global.fetch=async(url,init)=>{sent=new URLSearchParams(init.body);return{ok:true,json:async()=>({id:'cs_test_only'})};};
       await createCheckout({headers:{host:'test.local'}},product.slug,{email:'test@example.com',embedded:true});

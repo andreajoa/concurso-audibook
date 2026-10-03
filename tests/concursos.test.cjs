@@ -248,7 +248,11 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
   const anunciado = /([\d.]+) vagas com inscrição aberta agora/.exec(home);
   assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
 
-  const abertos = dataset.map(c => cn.normalize(c, '2026-09-14')).filter(c => c.status === 'inscricoes_abertas');
+  const structured = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .flatMap(match => { const value = JSON.parse(match[1]); return value['@graph'] || [value]; });
+  const buildDate = structured.find(node => node['@type'] === 'WebPage')?.dateModified;
+  assert.match(buildDate || '', /^\d{4}-\d{2}-\d{2}$/, 'a home precisa declarar a data da própria atualização');
+  const abertos = dataset.map(c => cn.normalize(c, buildDate)).filter(c => c.status === 'inscricoes_abertas');
   const soma = abertos.reduce((s, c) => s + (c.vagas || 0), 0);
   assert.equal(Number(anunciado[1].replace(/\./g, '')), soma);
 

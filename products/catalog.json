@@ -690,5 +690,119 @@
       "note": "Data prevista no material conforme o edital; confirmar a convocação oficial antes da prova."
     },
     "seoTitle": "Professor Adjunto I Santos 2026 + audiobook | Trilha Aprova"
+  },
+  "sme-sp-peif-pre-edital-2026": {
+    "slug": "sme-sp-peif-pre-edital-2026",
+    "active": false,
+    "brand": "Trilha Aprova",
+    "contest": "SME-SP — Professor de Educação Infantil e Ensino Fundamental I",
+    "examBoard": "Conforme futuro edital",
+    "category": "Educação",
+    "name": "Curso Preparatório Completo no Papel — SME-SP 2026 PEIF · Pré-edital + audiobook",
+    "shortName": "SME-SP PEIF — Pré-edital 2026",
+    "edition": "Pré-edital · 01/10/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor de Educação Infantil e Ensino Fundamental I — PEIF, SME-SP",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_SME_SP_PEIF_PRE_EDITAL_2026",
+    "description": "Curso preparatório completo no papel para PEIF da SME-SP: 220 páginas, 89 aulas e 14 módulos, com teoria explicada, legislação, Currículo da Cidade, autores, Educação Infantil, alfabetização, inclusão, discursiva, prova prática e simulado. Edição pré-edital de 01/10/2026, com referências históricas identificadas e conteúdo sujeito às regras do futuro edital.",
+    "seoTitle": "SME-SP PEIF pré-edital 2026 + audiobook | Trilha Aprova",
+    "seoDescription": "Curso PEIF SME-SP pré-edital: 220 páginas, 89 aulas, 14 módulos, questões e simulado. PDF, resumo em áudio e audiobook por R$ 24,99.",
+    "preEdital": true,
+    "storefront": {
+      "badge": "SME-SP 2026 • PEIF • EDIÇÃO PRÉ-EDITAL",
+      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-sme-sp-peif-3d.png",
+      "cta": "Quero este curso + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "220 páginas do PDF original fornecido",
+      "89 aulas em 14 módulos, com teoria e aplicação pedagógica",
+      "Legislação, Currículo da Cidade, autores e componentes dos anos iniciais",
+      "Questões de recuperação ativa, 18 estudos de caso e 12 pontos de prova prática",
+      "Simulado final com 60 questões autorais e gabarito comentado",
+      "Edição pré-edital: referências históricas não equivalem às regras finais de 2026",
+      "PDF completo para leitura online ou download",
+      "Resumo complementar fornecido + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "sme-sp-peif-pre-edital-2026/images/curso-sme-sp-peif-capa.png",
+      "pdfKey": "sme-sp-peif-pre-edital-2026/docs/curso-sme-sp-peif-pre-edital-2026.pdf",
+      "pdfDownloadName": "Curso_Preparatorio_SME_SP_2026_PEIF_PRE_EDITAL.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo complementar — Por que grifar textos engana seu cérebro",
+        "subtitle": "Áudio fornecido para revisar estratégias de estudo",
+        "key": "sme-sp-peif-pre-edital-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Por_que_grifar_textos_engana_seu_cerebro.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Panorama do concurso, Português e tecnologia",
+          "subtitle": "Apresentação, método de estudo e módulos 0, 1 e 2",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/01-panorama-portugues-tecnologia.mp3",
+          "downloadName": "01-panorama-portugues-tecnologia.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Legislação educacional e Currículo da Cidade",
+          "subtitle": "Constituição, LDB, ECA, inclusão e políticas curriculares da SME-SP",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/02-legislacao-curriculo-cidade.mp3",
+          "downloadName": "02-legislacao-curriculo-cidade.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Fundamentos da Educação e autores",
+          "subtitle": "Referências pedagógicas e aplicação das ideias dos autores",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/03-fundamentos-autores.mp3",
+          "downloadName": "03-fundamentos-autores.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Educação Infantil e alfabetização",
+          "subtitle": "Infância, práticas pedagógicas, leitura e escrita nos anos iniciais",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/04-educacao-infantil-alfabetizacao.mp3",
+          "downloadName": "04-educacao-infantil-alfabetizacao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Matemática, Ciências, Geografia e História",
+          "subtitle": "Ensino dos componentes dos anos iniciais e situações de aprendizagem",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/05-matematica-ciencias-humanas-naturais.mp3",
+          "downloadName": "05-matematica-ciencias-humanas-naturais.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Inclusão, discursiva e prova prática",
+          "subtitle": "Diversidade, proteção e preparação para as etapas práticas",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/06-inclusao-discursiva-prova-pratica.mp3",
+          "downloadName": "06-inclusao-discursiva-prova-pratica.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Estudos de caso e pontos de prova prática",
+          "subtitle": "18 treinos discursivos, 12 pontos de treino e rubrica de autoavaliação",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/07-casos-pontos-prova-pratica.mp3",
+          "downloadName": "07-casos-pontos-prova-pratica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Simulado, gabarito e revisão final",
+          "subtitle": "60 questões autorais, comentários, mapa de erros, bibliografia e anotações",
+          "key": "sme-sp-peif-pre-edital-2026/audio/pt-br-v1/08-simulado-gabarito-fontes.mp3",
+          "downloadName": "08-simulado-gabarito-fontes.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }
