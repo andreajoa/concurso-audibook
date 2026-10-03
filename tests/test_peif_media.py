@@ -70,6 +70,20 @@ class PeifSourceCoverageTests(unittest.TestCase):
         text = 'Conteúdo da aula preservado.\nTRILHA APROVA CONCURSOS SME-SP PEIF - Edição pré-edital 2026\nTRILHA APROVA CONCURSOS SME-SP PEIF - PRÉ-EDITAL 2026 202 / 220'
         self.assertEqual(media.clean(text), 'Conteúdo da aula preservado.')
 
+    def test_notes_writing_lines_do_not_become_empty_piper_audio(self):
+        source = 'Anotações: registre suas dúvidas.\n' + '_' * 2331 + '\nFim deste capítulo.'
+        submitted = []
+        def chunker(text):
+            submitted.append(text)
+            return text.splitlines()
+        chunks = media.speech_chunks(source, chunker)
+        self.assertEqual(chunks, ['Anotações: registre suas dúvidas.', 'Fim deste capítulo.'])
+        self.assertNotIn('_', submitted[0])
+
+    def test_speech_chunking_cannot_drop_answers_or_numbers(self):
+        with self.assertRaisesRegex(RuntimeError, 'lost source letters or numbers'):
+            media.speech_chunks('E) resposta 42', lambda text: ['resposta'])
+
 
 if __name__ == '__main__':
     unittest.main()

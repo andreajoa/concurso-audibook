@@ -76,6 +76,17 @@ def audio_details(file):
     return round(seconds, 3)
 
 
+def speech_chunks(text, chunker):
+    # Writing lines on the notes pages have no phonemes. Piper returns no audio
+    # for an underscore-only chunk; never submit those as speech.
+    spoken = re.sub(r'_{3,}', ' ', text)
+    chunks = [chunk for chunk in chunker(spoken) if re.search(r'[^\W_]', chunk)]
+    letters = lambda value: ''.join(re.findall(r'[^\W_]', value))
+    require(letters(text) == letters(' '.join(chunks)), 'Speech chunking lost source letters or numbers')
+    require(bool(chunks), 'No narratable source content')
+    return chunks
+
+
 class Store:
     def __init__(self):
         import generate_audiobook as base
@@ -183,7 +194,7 @@ def publish_chapter(number):
             store.range(track['key'], mp3.read_bytes()[:32])
         else:
             voice = PiperVoice.load(str(base.ensure_voice(work)))
-            chunks = base.chunk_text(track['text'])
+            chunks = speech_chunks(track['text'], base.chunk_text)
             parts = []
             for index, chunk in enumerate(chunks):
                 wav = work / f'{index:04d}.wav'
