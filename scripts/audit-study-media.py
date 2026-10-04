@@ -32,6 +32,8 @@ PRODUCT_EXPECTATIONS = {
     },
     'professor-adjunto-i-ibam-santos-2026': {
         'pages': 132,
+        # The supplied paperback ends with a blank verso, verified in both PDF readers.
+        'blankPages': [132],
         'topics': ['professor adjunto i', 'ibam', 'língua portuguesa', 'educação infantil', 'simulado'],
     },
 }
@@ -73,6 +75,10 @@ def main():
 
             # Supplied Santos editions for portaria/inspetor have an image-only first page.
             readable_pages = pages[1:] if source else pages
+            if expectation and expectation.get('blankPages'):
+                allowed_blank = set(expectation['blankPages'])
+                require(all(not pages[n - 1].strip() for n in allowed_blank), f'{slug}: expected blank verso changed')
+                readable_pages = [text for n, text in enumerate(pages, 1) if n not in allowed_blank]
             require(all(p.strip() for p in readable_pages), f'{slug}: unreadable PDF content pages')
             expected = source['pageCount'] if source else expectation['pages']
             require(len(pages) == expected, f'{slug}: unexpected PDF page count: {len(pages)} != {expected}')

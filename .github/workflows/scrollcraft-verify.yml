@@ -33,8 +33,8 @@ jobs:
         shell: bash
         run: |
           for i in {1..30}; do
-            HTML="$(curl -fsSL --max-time 12 https://concurso-audibook.vercel.app/ || true)"
-            if echo "$HTML" | grep -q 'data-trail-map' && echo "$HTML" | grep -q 'apostila-santos-ibam-3d.webp?v=bf874874'; then
+            HTML="$(curl -fsSL --max-time 12 https://www.concursotrilhaaprova.online/ || true)"
+            if echo "$HTML" | grep -q 'data-trail-map' && echo "$HTML" | grep -q 'sme-sp-peif-pre-edital-2026'; then
               echo "Production storefront is current"
               exit 0
             fi
@@ -49,6 +49,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Run Scroll Craft visual pass
         run: node scripts/scrollcraft-visual.mjs
+        env:
+          SCROLLCRAFT_URL: https://www.concursotrilhaaprova.online
       - uses: actions/upload-artifact@v4
         if: always()
         with:

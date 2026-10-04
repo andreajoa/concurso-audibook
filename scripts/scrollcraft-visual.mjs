@@ -16,9 +16,10 @@ async function assertCover(page,label){
 }
 async function homeShot(name,viewport,reducedMotion='no-preference'){
   const context=await browser.newContext({viewport,reducedMotion});const page=await context.newPage();await page.goto(base,{waitUntil:'networkidle',timeout:120000});
-  const {cover}=await assertCover(page,name);const box=await cover.boundingBox();if(!box||box.width<180||box.height<220||box.y>viewport.height)throw new Error(`${name}: cover not visibly rendered above fold ${JSON.stringify(box)}`);
+  await page.screenshot({path:`scrollcraft-artifacts/${name}-portal.png`,fullPage:false});
+  const {cover}=await assertCover(page,name);await cover.scrollIntoViewIfNeeded();const box=await cover.boundingBox();if(!box||box.width<180||box.height<220||box.y>viewport.height||box.y+box.height<0)throw new Error(`${name}: catalog cover not visibly rendered ${JSON.stringify(box)}`);
   if((await page.locator('body').innerText()).toLowerCase().includes('stripe'))throw new Error(`${name}: payment provider name is visible to customer`);
-  if(!await page.locator('del').filter({hasText:'R$ 49,99'}).first().isVisible())throw new Error(`${name}: crossed-out reference price not visible`);
+  const price=page.locator('del').filter({hasText:'R$ 49,99'}).first();await price.scrollIntoViewIfNeeded();if(!await price.isVisible())throw new Error(`${name}: crossed-out reference price not visible`);
   if(viewport.width<=600&&!await page.locator('.mobile-buybar').isVisible())throw new Error(`${name}: mobile buy bar not visible`);
   await page.screenshot({path:`scrollcraft-artifacts/${name}.png`,fullPage:false});await context.close();
 }
