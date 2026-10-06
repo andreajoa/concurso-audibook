@@ -6,7 +6,7 @@ Produto: `detran-sp-agente-de-transito-2026`. Preço autorizado pelo proprietár
 
 O original fornecido tem 49 páginas (A4), edição revisada de 01/10/2026, corte legal até 08/09/2026; SHA-256 `049e7faa…19f8eb`. A padronização segue o método de `standardize_peif_pdf.py`: `scripts/standardize_detran_pdf.py` preserva o original, substitui a capa e os elementos correntes (cabeçalho/rodapé "TRILHA APROVA CONCURSOS", numeração `n / 49`) e ajusta a paleta para azul-marinho, cobre e verde-azulado. As 48 páginas internas mantêm fontes, tabelas, questões e gabarito; uma comparação de tokens por página antes e depois da gravação exige texto idêntico. Hash da cópia padronizada e da capa plana em `products/detran-sp-2026-source.json`.
 
-O mockup público `public/assets/apostila-detran-sp-agente-de-transito-3d.png` foi desenhado em código (Remotion), no padrão das capas 3D da coleção, com o logo real da marca e ilustração sem texto.
+O mockup público `public/assets/apostila-detran-sp-agente-de-transito-3d-v2.png` foi desenhado em código (Remotion), no padrão das capas 3D da coleção, com o logo real da marca e ilustração sem texto.
 
 ## Audiobook e resumo
 
