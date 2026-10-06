@@ -14,6 +14,10 @@ from pypdf import PdfReader
 
 
 PRODUCT_EXPECTATIONS = {
+    'detran-sp-agente-de-transito-2026': {
+        'pages': 49,
+        'topics': ['detran-sp', 'agente estadual de trânsito', 'instituto avalia', 'contran', 'gabarito'],
+    },
     'sme-sp-peif-pre-edital-2026': {
         'pages': 220,
         'topics': ['sme-sp', 'peif', 'pré-edital', 'currículo da cidade', 'gabarito'],

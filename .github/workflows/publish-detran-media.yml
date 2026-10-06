@@ -1,0 +1,109 @@
+name: Publish private DETRAN-SP study media
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/detran-sp-2026]
+    paths:
+      - 'ops/detran-sp-2026.sources.enc'
+      - 'products/detran-sp-2026-source.json'
+      - 'scripts/publish_detran_media.py'
+      - '.github/workflows/publish-detran-media.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-detran-media
+  cancel-in-progress: false
+
+env:
+  R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+  R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check boto3 pypdf requests pymupdf cryptography
+      - name: Authenticate and decrypt private sources
+        env:
+          DETRAN_MEDIA_SOURCE_KEY: ${{ secrets.DETRAN_MEDIA_SOURCE_KEY }}
+        run: |
+          python - <<'PY'
+          import io, json, os, zipfile
+          from pathlib import Path
+          from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+          encrypted = Path('ops/detran-sp-2026.sources.enc').read_bytes()
+          clear = AESGCM(bytes.fromhex(os.environ['DETRAN_MEDIA_SOURCE_KEY'])).decrypt(encrypted[:12], encrypted[12:], b'trilha-aprova:detran-sp-2026:v1')
+          spec = json.loads(Path('products/detran-sp-2026-source.json').read_text())
+          expected = {spec[key] for key in ['pdfFile', 'coverFile', 'summaryFile']}
+          destination = Path(os.environ['RUNNER_TEMP']) / 'detran-private-sources'
+          destination.mkdir(mode=0o700, exist_ok=True)
+          with zipfile.ZipFile(io.BytesIO(clear)) as bundle:
+              assert set(bundle.namelist()) == expected, 'Unexpected source bundle entries'
+              for name in expected:
+                  assert Path(name).name == name, 'Unsafe source filename'
+                  (destination / name).write_bytes(bundle.read(name))
+          print('Authenticated private sources ready; no cleartext artifacts are published.')
+          PY
+      - name: Validate and upload original PDF, cover and supplied summary
+        run: |
+          python scripts/publish_detran_media.py validate --source-dir "$RUNNER_TEMP/detran-private-sources"
+          python -u scripts/publish_detran_media.py sources --source-dir "$RUNNER_TEMP/detran-private-sources"
+      - name: Remove decrypted sources
+        if: always()
+        run: |
+          python - <<'PY'
+          import os, shutil
+          from pathlib import Path
+          shutil.rmtree(Path(os.environ['RUNNER_TEMP']) / 'detran-private-sources', ignore_errors=True)
+          PY
+
+  chapters:
+    needs: sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        chapter: [1, 2, 3, 4, 5, 6, 7, 8]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check boto3 pypdf requests pymupdf piper-tts==1.4.2
+      - name: Generate and audit chapter
+        run: python -u scripts/publish_detran_media.py chapter --chapter '${{ matrix.chapter }}'
+
+  finalize:
+    needs: chapters
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install verification tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check boto3 pypdf requests pymupdf
+      - name: Verify all private delivery files and publish completion record
+        run: python -u scripts/publish_detran_media.py finalize
