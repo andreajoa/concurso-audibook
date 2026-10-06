@@ -1,0 +1,14 @@
+{
+  "slug": "detran-sp-agente-de-transito-2026",
+  "pdfFile": "curso-detran-sp-2026-agente-de-transito-padronizado.pdf",
+  "pdfSha256": "9c4fed1ac5f81aacd85094d407a39697b6485c977886c3490440b706deaf3a3d",
+  "pageCount": 49,
+  "coverFile": "capa-pdf-padronizada.png",
+  "coverSha256": "606a3db56fb5ceedf1d12292c85ef5120b358c074a4ad48717d79505af36f1be",
+  "summaryFile": "resumo-original.m4a",
+  "summarySourceSha256": "d3c4cbd4f1bf6e7c685d0ed4f23e0a4d661fe743ad5e3315e20d4480d44665b9",
+  "summaryDurationSeconds": 1767.758367,
+  "chapters": [[1, 7], [8, 12], [13, 19], [20, 24], [25, 30], [31, 35], [36, 45], [46, 49]],
+  "topics": ["detran-sp", "agente de trânsito", "instituto avalia", "ctb", "contran", "gabarito"],
+  "originalPdfSha256": "049e7faa5dc11cdd64ef1e63eb3346ce59fcba1d4503e782f87bdf91de19f8eb"
+}

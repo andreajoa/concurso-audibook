@@ -804,5 +804,125 @@
       ]
     },
     "exam": null
+  },
+  "detran-sp-agente-de-transito-2026": {
+    "slug": "detran-sp-agente-de-transito-2026",
+    "active": false,
+    "brand": "Trilha Aprova",
+    "contest": "DETRAN-SP — Agente Estadual de Trânsito (Edital nº 1/2026)",
+    "examBoard": "Instituto Avalia",
+    "category": "Concursos públicos",
+    "name": "Curso Preparatório Completo no Papel — DETRAN-SP 2026 Agente Estadual de Trânsito · PDF + audiobook",
+    "shortName": "Agente de Trânsito — DETRAN-SP 2026",
+    "edition": "Pós-edital · revisada em 01/10/2026",
+    "author": "Trilha Aprova",
+    "audience": "Agente Estadual de Trânsito (código 401) — DETRAN-SP",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_DETRAN_SP_AGENTE_DE_TRANSITO_2026",
+    "description": "Curso preparatório completo no papel para Agente Estadual de Trânsito do DETRAN-SP (Edital nº 1/2026, Instituto Avalia): 9 aulas explicadas, leitura estratégica da banca, CTB, as 20 Resoluções CONTRAN e a legislação paulista do edital, redação de 10 pontos, plano pós-edital de 30 dias e simulado de 60 questões com gabarito comentado. Corte legal: alterações até 08/09/2026.",
+    "seoTitle": "Apostila DETRAN-SP 2026 Agente de Trânsito + audiobook | Trilha Aprova",
+    "seoDescription": "Curso DETRAN-SP 2026 Agente Estadual de Trânsito (Instituto Avalia): 9 aulas, CTB, 20 Resoluções CONTRAN, redação e simulado de 60 questões. PDF + audiobook por R$ 24,99.",
+    "storefront": {
+      "badge": "DETRAN-SP 2026 • AGENTE ESTADUAL DE TRÂNSITO • INSTITUTO AVALIA",
+      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-detran-sp-agente-de-transito-3d.png",
+      "cta": "Quero este curso + audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "49 páginas do curso completo, na ordem do edital",
+      "Raio-X da prova: CTB + CONTRAN + legislação estadual somam 60% da objetiva",
+      "Leitura estratégica do Instituto Avalia e corte legal até 08/09/2026",
+      "As 20 Resoluções CONTRAN e as 10 normas paulistas listadas no edital",
+      "Redação de 10 pontos: estrutura segura em 4 parágrafos e modelo comentado",
+      "Plano pós-edital de 30 dias",
+      "Simulado final com 60 questões autorais e gabarito comentado",
+      "PDF completo para leitura online ou download",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "detran-sp-agente-de-transito-2026/images/curso-detran-sp-agente-de-transito-capa.png",
+      "pdfKey": "detran-sp-agente-de-transito-2026/docs/curso-detran-sp-2026-agente-de-transito.pdf",
+      "pdfDownloadName": "Curso_Preparatorio_DETRAN_SP_2026_Agente_Estadual_de_Transito.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio — Tudo sobre o concurso do DETRAN-SP",
+        "subtitle": "Panorama do cargo, da prova e da estratégia de estudo",
+        "key": "detran-sp-agente-de-transito-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Tudo_sobre_o_concurso_do_DETRAN_SP.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Apresentação, raio-X da prova e a banca",
+          "subtitle": "Ficha do concurso, pesos por área, Instituto Avalia e nota técnica de corte legal",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/01-apresentacao-raio-x-banca.mp3",
+          "downloadName": "01-apresentacao-raio-x-banca.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa e Matemática/RLM",
+          "subtitle": "Interpretação, gramática, reescrita, porcentagem, juros, lógica e tabela-verdade",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/02-portugues-matematica.mp3",
+          "downloadName": "02-portugues-matematica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Informática, Direito Constitucional e Administrativo",
+          "subtitle": "Windows, Office, internet, segurança, princípios, poderes e atos administrativos",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/03-informatica-constitucional-administrativo.mp3",
+          "downloadName": "03-informatica-constitucional-administrativo.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Código de Trânsito Brasileiro",
+          "subtitle": "O núcleo da objetiva: 17 questões, competências, infrações, penalidades e crimes",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/04-codigo-de-transito-brasileiro.mp3",
+          "downloadName": "04-codigo-de-transito-brasileiro.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "As 20 Resoluções CONTRAN do edital",
+          "subtitle": "Cada norma, o que ela regula e como pode virar questão",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/05-resolucoes-contran.mp3",
+          "downloadName": "05-resolucoes-contran.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Legislação paulista e Redação",
+          "subtitle": "As 10 normas estaduais do edital e a redação de 10 pontos em 4 parágrafos",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/06-legislacao-estadual-redacao.mp3",
+          "downloadName": "06-legislacao-estadual-redacao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Plano de 30 dias e simulado final",
+          "subtitle": "Rota pós-edital e 60 questões na distribuição do edital",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/07-plano-30-dias-simulado.mp3",
+          "downloadName": "07-plano-30-dias-simulado.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Gabarito comentado e revisão final",
+          "subtitle": "Correção, diagnóstico, o que não pode faltar e fontes oficiais",
+          "key": "detran-sp-agente-de-transito-2026/audio/pt-br-v1/08-gabarito-revisao-final.mp3",
+          "downloadName": "08-gabarito-revisao-final.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2026-11-01",
+      "confirmed": false,
+      "source": "Edital DETRAN-SP nº 1/2026 (Instituto Avalia)",
+      "sourceUrl": "https://www.detran.sp.gov.br",
+      "note": "Data prevista no edital de abertura, sujeita a confirmação em edital de convocação."
+    }
   }
 }
