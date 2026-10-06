@@ -807,7 +807,7 @@
   },
   "detran-sp-agente-de-transito-2026": {
     "slug": "detran-sp-agente-de-transito-2026",
-    "active": false,
+    "active": true,
     "brand": "Trilha Aprova",
     "contest": "DETRAN-SP — Agente Estadual de Trânsito (Edital nº 1/2026)",
     "examBoard": "Instituto Avalia",
