@@ -9,14 +9,23 @@
   const titulo=dialog.querySelector('#newsletter-title'),texto=titulo.nextElementSibling,tag=dialog.querySelector('.newsletter-tag'),envia=form.querySelector('.newsletter-submit'),consente=dialog.querySelector('.newsletter-consent span');
   const padrao={tag:tag.textContent,titulo:titulo.innerHTML,texto:texto.textContent,envia:envia.textContent,consente:consente.textContent};
   let origem='storefront';
-  const open=(cidade,fonte)=>{
+  const open=(cidade,fonte,jaAberto=false)=>{
     origem=fonte||'storefront';
-    if(cidade){tag.textContent='AVISO DE EDITAL';titulo.textContent='Quando abrir concurso em '+cidade+', você fica sabendo.';texto.textContent='Avisamos por e-mail quando um edital novo entrar na página de '+cidade+' — e quando um prazo que já está no ar mudar. Confira sempre no site oficial do órgão antes de se inscrever.';envia.textContent='Quero ser avisado sobre '+cidade+' →';consente.textContent='Quero receber avisos de edital e novidades da Trilha Aprova por e-mail. Posso cancelar a qualquer momento.';}
-    else{tag.textContent=padrao.tag;titulo.innerHTML=padrao.titulo;texto.textContent=padrao.texto;envia.textContent=padrao.envia;consente.textContent=padrao.consente;}
+    if(cidade){
+      tag.textContent=jaAberto?'INSCRIÇÕES ABERTAS • ATUALIZAÇÕES':'AVISO DE EDITAL';
+      titulo.textContent=jaAberto
+        ? 'Já há concursos com inscrições abertas em '+cidade+'.'
+        : 'Quando abrir concurso em '+cidade+', você fica sabendo.';
+      texto.textContent=jaAberto
+        ? 'Consulte os editais e prazos na página oficial da banca. Cadastre seu e-mail para receber avisos de outros editais e eventuais mudanças de prazo em '+cidade+'.'
+        : 'Avisamos por e-mail quando um edital novo entrar na página de '+cidade+' e quando um prazo mudar. Confira sempre o site oficial do órgão antes de se inscrever.';
+      envia.textContent=jaAberto?'Quero receber atualizações de '+cidade+' →':'Quero ser avisado sobre '+cidade+' →';
+      consente.textContent='Quero receber avisos de edital e novidades da Trilha Aprova por e-mail. Posso cancelar a qualquer momento.';
+    }else{tag.textContent=padrao.tag;titulo.innerHTML=padrao.titulo;texto.textContent=padrao.texto;envia.textContent=padrao.envia;consente.textContent=padrao.consente;}
     if(!dialog.open)dialog.showModal();
   };
   dialog.querySelector('.newsletter-close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>save({dismissedAt:Date.now()}));dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
-  document.querySelectorAll('[data-newsletter-open]').forEach(button=>button.addEventListener('click',()=>open(button.dataset.newsletterCidade,button.dataset.newsletterFonte)));
+  document.querySelectorAll('[data-newsletter-open]').forEach(button=>button.addEventListener('click',()=>open(button.dataset.newsletterCidade,button.dataset.newsletterFonte,button.dataset.newsletterAberto==='true')));
   if(!preference.subscribed&&Date.now()-Number(preference.dismissedAt||0)>7*86400000)setTimeout(()=>{if(!document.hidden&&!document.querySelector('dialog[open],.cookie-banner:not([hidden])'))open();},25000);
   form.onsubmit=async e=>{e.preventDefault();if(!form.reportValidity())return;const submit=form.querySelector('button');submit.disabled=true;message.textContent='Registrando sua preferência…';try{const response=await fetch('/api/forms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'newsletter',email:form.email.value,consent:form.consent.checked,website:form.website.value,source:origem}),signal:AbortSignal.timeout(20000)});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'Tente novamente em instantes.');save({subscribed:true});form.innerHTML='<div class="newsletter-success" role="status"><b>Obrigada pelo interesse!</b><p>Sua solicitação foi registrada. Se você já cancelou os e-mails anteriormente, essa preferência será respeitada.</p></div>';}
   catch(error){message.textContent=error.name==='TimeoutError'?'A conexão demorou. Tente novamente.':error.message;submit.disabled=false;}};
