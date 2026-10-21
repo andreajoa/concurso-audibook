@@ -1,7 +1,7 @@
 {
   "autores-ibam-2026": {
     "slug": "autores-ibam-2026",
-    "active": true,
+    "active": false,
     "brand": "Trilha Aprova",
     "contest": "Concurso Prefeitura de Santos",
     "examBoard": "IBAM",
@@ -105,7 +105,12 @@
         }
       ]
     },
-    "exam": null
+    "exam": null,
+    "withdrawal": {
+      "date": "2026-10-21",
+      "reason": "Retirado da vitrine de vendas por solicitação da proprietária para substituir o destaque da apostila de Santos pelo novo material de Matão. Manter entrega das compras anteriores.",
+      "preserveExistingAccess": true
+    }
   },
   "redacao-nivel-fundamental-2026": {
     "slug": "redacao-nivel-fundamental-2026",
