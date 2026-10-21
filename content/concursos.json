@@ -655,11 +655,11 @@
     "status": "inscricoes_abertas",
     "inscricaoInicio": "2026-09-26",
     "inscricaoFim": "2026-10-29",
-    "dataProva": null,
+    "dataProva": "2026-12-06",
     "dataProvaConfirmada": false,
     "vagas": 44,
-    "salarioMin": null,
-    "salarioMax": null,
+    "salarioMin": 2377.65,
+    "salarioMax": 17433.24,
     "escolaridade": [
       "fundamental",
       "medio",
@@ -677,9 +677,9 @@
     ],
     "taxaInscricao": null,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/204/",
-    "editalUrl": null,
+    "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/204/anexos/3d35a29b-63ba-43f8-b47a-5b8fc568ed99.pdf",
     "produtos": [],
-    "resumo": "Concurso com 44 vagas anunciadas pela banca; destaque para 10 vagas de Assistente Administrativo (ensino médio), além de cargos de saúde e especialidades médicas. Inscrições até 29/10/2026.",
+    "resumo": "Concurso municipal com 44 vagas no quadro da banca, incluindo 10 vagas de Agente de Gestão Pública — Assistente Administrativo (ensino médio, R$ 2.588,00, taxa R$ 76,50). Inscrições até 29/10/2026; prova objetiva prevista para 06/12/2026, sujeita a confirmação pelo IBAM.",
     "capturedAt": "2026-10-21"
   },
   {
