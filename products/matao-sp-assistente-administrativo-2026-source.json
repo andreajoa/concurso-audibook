@@ -1,0 +1,64 @@
+{
+  "slug": "matao-sp-assistente-administrativo-2026",
+  "editorialStatus": "PREVIA_EDITORIAL_NAO_COMERCIALIZAR",
+  "active": false,
+  "sourceDate": "2026-10-21",
+  "contest": "Prefeitura Municipal de Matão/SP - Concurso Público 01/2026",
+  "board": "IBAM",
+  "examDate": "2026-12-06",
+  "officialUrl": "https://www.ibamsp-concursos.org.br/informacoes/204/",
+  "priceCents": 2499,
+  "compareAtCents": 4999,
+  "currency": "brl",
+  "files": {
+    "pdfPreview": {
+      "name": "Trilha_Aprova_Matao_Assistente_Administrativo_2026_PREVIA(3).pdf",
+      "sha256": "04f1957c0e0e30727fce1e8e265fc3bf156f370d853d75cf916aa9d05699b21b",
+      "pageCount": 16,
+      "usableForPaidDelivery": false
+    },
+    "cover3D": {
+      "name": "Assistente Administrativo_ Trilha Aprova(1).png",
+      "sha256": "1fa35f85f52239467612a1de46d893ffd86c64cc241de21dee2e41f56558f8ba",
+      "width": 1122,
+      "height": 1402
+    },
+    "summaryOriginal": {
+      "name": "resumo(1).m4a",
+      "sha256": "97a35858c651d942402bef98b9ae2c242906ca94b1315d2df75a69140344815a",
+      "durationSeconds": 1218.258141
+    },
+    "summaryMP3": {
+      "name": "Trilha_Aprova_Matao_Resumo_Audio_PTBR.mp3",
+      "sha256": "a479f3730e5af9caf6d2707b177443a4d8cba7b6b02b5f2f9d86e37201621bb8",
+      "durationSeconds": 1218.299,
+      "encoding": "MP3 128 kbps 44.1 kHz stereo"
+    }
+  },
+  "storagePlan": {
+    "privateR2Bucket": "apostila",
+    "prefix": "matao-sp-assistente-administrativo-2026/",
+    "pdfKey": "matao-sp-assistente-administrativo-2026/docs/apostila-matao-sp-assistente-administrativo-2026.pdf",
+    "coverKey": "matao-sp-assistente-administrativo-2026/images/capa.png",
+    "summaryKey": "matao-sp-assistente-administrativo-2026/audio/resumo.mp3",
+    "chaptersPrefix": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/",
+    "public3D": "public/assets/apostila-matao-assistente-administrativo-3d.png"
+  },
+  "audiobookPlan": {
+    "language": "pt-BR",
+    "currentPipeline": "scripts/generate_audiobook.py",
+    "voice": "pt_BR-cadu-medium",
+    "requiredChapters": 8,
+    "generatedChapters": 0
+  },
+  "saleReadiness": {
+    "ready": false,
+    "reasons": [
+      "PDF afirma que e uma previa, nao comercializar",
+      "Faltam teoria completa, 120 questoes adicionais e segundo simulado",
+      "Faltam oito capitulos de audiobook pt-BR",
+      "Arquivos ainda nao foram enviados ao R2 privado"
+    ]
+  },
+  "instructions": "Manifesto de origem e preparacao; nao inserir no catalogo ativo nem anunciar entrega ate passar pelas verificacoes do projeto. Nenhum arquivo privado e armazenado no GitHub."
+}
