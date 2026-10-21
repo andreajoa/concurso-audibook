@@ -89,9 +89,13 @@ test('status declarado como aberto é rebaixado quando o prazo já passou', () =
   assert.equal(cn.effectiveStatus({ ...base, inscricaoFim: '2026-10-01' }, '2026-09-13'), 'inscricoes_abertas');
 });
 
-test('prova que já aconteceu encerra o certame', () => {
+test('prova realizada não significa que o concurso foi homologado ou encerrado', () => {
   assert.equal(
     cn.effectiveStatus({ status: 'prova_marcada', dataProva: '2026-09-12' }, '2026-09-13'),
+    'prova_realizada'
+  );
+  assert.equal(
+    cn.effectiveStatus({ status: 'encerrado', dataProva: '2026-09-12' }, '2026-09-13'),
     'encerrado'
   );
 });
