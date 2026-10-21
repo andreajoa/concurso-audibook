@@ -1149,12 +1149,54 @@ function alertaPrazo(lista) {
  * junto para que o aviso seja da cidade certa — mandar edital de Guarulhos
  * para quem pediu Santos é como não mandar nada.
  */
-function avisoEdital(lugar, fonte) {
+function avisoEdital(lugar, fonte, certames = []) {
+  const abertos = certames.filter(c => c.status === 'inscricoes_abertas');
+  const comPrazo = abertos.filter(c => c.inscricaoFim).sort((a, b) => a.inscricaoFim.localeCompare(b.inscricaoFim));
+  const dias = comPrazo.length ? cn.daysBetween(BUILD_DATE, comPrazo[0].inscricaoFim) : null;
+  const prazo = comPrazo.length && dias !== null && dias >= 0
+    ? ' O próximo prazo cadastrado é ' + cn.brDate(comPrazo[0].inscricaoFim) + '.'
+    : '';
+  const aberto = abertos.length > 0;
   return '<aside class="aviso-edital">' +
-    `<h2>Quer saber quando abrir concurso em ${esc(lugar)}?</h2>` +
-    `<p>Avisamos por e-mail quando um edital novo entrar nesta página e quando um prazo que já está no ar mudar. Sem custo, e dá para cancelar em um clique. O aviso não substitui o site oficial do órgão: ele serve para você não perder a data.</p>` +
-    `<button type="button" class="aviso-edital-cta" data-newsletter-open data-newsletter-cidade="${esc(lugar)}" data-newsletter-fonte="${esc(fonte)}">Avise-me sobre ${esc(lugar)}</button>` +
+    (aberto
+      ? `<h2>Já há concursos com inscrições abertas em ${esc(lugar)}.</h2>` +
+        `<p>Confira os editais acima e os prazos oficiais antes de se inscrever.${esc(prazo)} Você também pode receber avisos quando surgirem outros concursos ou houver atualizações nesta página.</p>`
+      : `<h2>Quer saber quando abrir concurso em ${esc(lugar)}?</h2>` +
+        '<p>Receba por e-mail avisos de novos editais e mudanças de prazo. Consulte sempre a página oficial do órgão antes de se inscrever.</p>') +
+    `<button type="button" class="aviso-edital-cta" data-newsletter-open data-newsletter-cidade="${esc(lugar)}" data-newsletter-fonte="${esc(fonte)}" data-newsletter-aberto="${aberto ? 'true' : 'false'}">${aberto ? 'Receber atualizações de ' : 'Avise-me sobre '}${esc(lugar)}</button>` +
     '</aside>';
+}
+
+/**
+ * Uma seleção aberta não transforma uma prévia em produto entregável.
+ * O botão de compra somente é gerado para o slug ativo no catálogo:
+ * a API de checkout confere o mesmo flag antes de abrir cobrança.
+ */
+function apostilaMunicipio(m) {
+  if (m.uf !== 'SP' || m.municipioSlug !== 'matao') return '';
+  const slug = 'matao-sp-assistente-administrativo-2026';
+  const p = catalog[slug];
+  const disponivel = p?.active === true && p?.assets?.chapters?.length === 8;
+  const capa = disponivel
+    ? p.storefront.cover3d
+    : '/assets/apostila-matao-assistente-administrativo-em-preparacao.svg';
+  const valor = p?.priceCents === 2499 ? p.priceCents : 2499;
+  const cta = disponivel
+    ? `<a class="apostila-matao-cta" href="/comprar?produto=${esc(slug)}">Comprar apostila por ${brl(valor)}</a>`
+    : `<button class="apostila-matao-cta" type="button" disabled aria-disabled="true">Comprar apostila por ${brl(valor)} (em preparação)</button>`;
+  return '<section class="apostila-matao" aria-labelledby="apostila-matao-titulo">' +
+    `<img class="apostila-matao-capa" src="${esc(capa)}" width="240" height="300" loading="lazy" decoding="async" alt="Capa da apostila de Assistente Administrativo Matão 2026${disponivel ? '' : ', edição em preparação'}">` +
+    '<div class="apostila-matao-info">' +
+    `<span class="apostila-matao-etiqueta">${disponivel ? 'APOSTILA DISPONÍVEL' : 'APOSTILA EM PREPARAÇÃO'}</span>` +
+    '<h2 id="apostila-matao-titulo">Apostila Assistente Administrativo de Matão 2026</h2>' +
+    '<p>Edital 01/2026, banca IBAM. Preparação para as 40 questões da prova, com ênfase em conhecimentos específicos.</p>' +
+    (disponivel
+      ? '<p>PDF completo, áudio-resumo e audiobook em oito capítulos, com acesso após o pagamento.</p>'
+      : '<p>A prévia editorial possui 16 páginas. O PDF definitivo e os oito capítulos de audiobook em português brasileiro ainda não estão prontos para venda.</p>') +
+    `<p class="apostila-matao-valor"><del>R$ 49,99</del> <strong>${brl(valor)}</strong> ${disponivel ? '' : '<small>preço previsto</small>'}</p>` +
+    cta +
+    (disponivel ? '' : '<p class="apostila-matao-nota">Compra indisponível até a validação dos arquivos. <a href="/#apostilas">Ver apresentação da apostila</a>.</p>') +
+    '</div></section>';
 }
 
 /** Ficha do certame. Cada linha só existe se o dado existir na fonte. */
@@ -1272,7 +1314,7 @@ for (const e of estados) {
     '</ul>' +
     '<h2>Certames de ' + esc(e.ufNome) + '</h2>' +
     doEstado.map(c => concursoCard(c)).join('') +
-    avisoEdital(e.ufNome, 'concursos:' + e.ufSlug) +
+    avisoEdital(e.ufNome, 'concursos:' + e.ufSlug, doEstado) +
     '<p><a href="/concursos">Ver todos os estados</a> · <a href="/ferramentas">Ferramentas gratuitas de estudo</a></p>' +
     disclaimer;
 
@@ -1304,7 +1346,8 @@ for (const e of estados) {
       m.concursos.map(c => concursoCard(c, { heading: 'h2' })).join('') +
       '<h2>Como usar esta página</h2>' +
       '<p>Confirme o prazo e a data na página oficial antes de qualquer coisa: é o documento que vale. Depois transforme o conteúdo programático em lista com o <a href="/ferramentas/edital-verticalizado">checklist do edital</a>, distribua suas horas no <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a>, abra a <a href="/ferramentas/trilha-do-dia">trilha do dia</a> para saber o que estudar hoje e acompanhe o quanto falta para sua meta na <a href="/ferramentas/calculadora-de-acertos">calculadora de acertos</a>. Todas são gratuitas e funcionam dentro do navegador.</p>' +
-      avisoEdital(m.municipio, 'concursos:' + e.ufSlug + '/' + m.municipioSlug) +
+      apostilaMunicipio(m) +
+      avisoEdital(m.municipio, 'concursos:' + e.ufSlug + '/' + m.municipioSlug, m.concursos) +
       (outras.length
         ? '<h2>Outras cidades de ' + esc(e.ufNome) + '</h2><ul class="municipio-links">' +
           outras.map(o => `<li><a href="${o.path}">${esc(o.municipio)}</a></li>`).join('') + '</ul>'
