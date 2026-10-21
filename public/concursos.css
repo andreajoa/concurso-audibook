@@ -62,3 +62,22 @@
 .aviso-edital-cta{font:600 15px system-ui,sans-serif;color:#fff;background:#08284f;border:0;border-radius:999px;padding:12px 22px;cursor:pointer}
 .aviso-edital-cta:hover{background:#0d3a6d}
 .aviso-edital-cta:focus-visible{outline:3px solid #b99754;outline-offset:2px}
+
+/* Apostila associada ao concurso. O CTA só se torna link depois de ativar
+   o produto completo no catálogo e validar a entrega no R2. */
+.apostila-matao{display:grid;grid-template-columns:minmax(140px,220px) minmax(0,1fr);align-items:center;gap:24px;margin:28px 0;padding:24px;border:1px solid #ddd8cc;border-radius:18px;background:linear-gradient(145deg,#fffefa,#f5f8fb)}
+.apostila-matao-capa{width:100%;height:auto;max-height:300px;object-fit:contain;filter:drop-shadow(0 9px 13px rgba(5,26,46,.14))}
+.apostila-matao-info{min-width:0}
+.apostila-matao-etiqueta{display:inline-block;margin:0 0 10px;font:800 11px/1.4 system-ui,sans-serif;letter-spacing:.09em;color:#a65422;text-transform:uppercase}
+.apostila-matao-info h2{font:400 clamp(23px,3vw,31px)/1.2 Georgia,serif;color:#08284f;margin:0 0 12px}
+.apostila-matao-info p{font-size:15px;line-height:1.6;color:#314b65;margin:0 0 13px}
+.apostila-matao-valor{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.apostila-matao-valor del{color:#697788}
+.apostila-matao-valor strong{font-size:26px;color:#08284f}
+.apostila-matao-valor small{font-size:13px;color:#a65422}
+.apostila-matao-cta{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;border:0;background:#08284f;color:white;font:700 15px/1.4 system-ui,sans-serif;text-decoration:none;text-align:center;max-width:100%}
+a.apostila-matao-cta:hover{background:#125180;color:#fff}
+.apostila-matao-cta:focus-visible{outline:3px solid #b99754;outline-offset:3px}
+.apostila-matao-cta:disabled{opacity:.65;cursor:not-allowed}
+.apostila-matao-info .apostila-matao-nota{font-size:13px;margin:12px 0 0}
+@media(max-width:700px){.apostila-matao{grid-template-columns:1fr;padding:20px;gap:12px}.apostila-matao-capa{max-width:175px;justify-self:center;max-height:228px}.apostila-matao-cta{width:100%}}
