@@ -31,6 +31,14 @@ const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
 const products = Object.values(catalog).filter(p => p.active);
+
+// Páginas geradas de produtos fora de venda não podem continuar publicadas
+// apenas porque seus HTMLs antigos permanecem versionados no repositório.
+// A entrega paga usa o catálogo completo e permanece preservada.
+for (const product of Object.values(catalog).filter(p => p.active === false)) {
+  const stalePage = 'public/apostilas/' + product.slug + '.html';
+  if (fs.existsSync(stalePage)) fs.unlinkSync(stalePage);
+}
 const footer = fs.readFileSync('lib/site-footer.html', 'utf8');
 const COVER = products[0].storefront.cover3d;
 
