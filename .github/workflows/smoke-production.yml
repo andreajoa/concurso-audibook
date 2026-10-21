@@ -104,7 +104,7 @@ jobs:
           const qa=`qa-${Date.now()}@example.com`;
           const checkout=await fetch(base+'/api/checkout',{
             method:'POST',headers:{'content-type':'application/json'},
-            body:JSON.stringify({slug:'autores-ibam-2026',name:'Teste QA Trilha Aprova',email:qa,whatsapp:'11999999999',marketingConsent:false,embedded:true,analytics:{visitorId:'qa-smoke-visitor',sessionId:`qa-smoke-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}})
+            body:JSON.stringify({slug:'redacao-nivel-fundamental-2026',name:'Teste QA Trilha Aprova',email:qa,whatsapp:'11999999999',marketingConsent:false,embedded:true,analytics:{visitorId:'qa-smoke-visitor',sessionId:`qa-smoke-${Date.now()}`,source:'qa',medium:'automation',campaign:'production-smoke'}})
           });
           const text=await checkout.text();let data={};try{data=JSON.parse(text)}catch{}
           if(!checkout.ok) fail(`checkout HTTP ${checkout.status}: ${text.slice(0,500)}`);
