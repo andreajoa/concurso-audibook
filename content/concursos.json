@@ -6,15 +6,18 @@
     "uf": "SP",
     "banca": "IBAM",
     "edital": "Edital nº 73/2026",
-    "status": "prova_marcada",
+    "status": "prova_realizada",
     "inscricaoInicio": "2026-07-22",
     "inscricaoFim": "2026-08-20",
     "dataProva": "2026-10-11",
-    "dataProvaConfirmada": false,
+    "dataProvaConfirmada": true,
     "vagas": 93,
     "salarioMin": 2191.01,
     "salarioMax": 4834.1,
-    "escolaridade": ["fundamental", "medio"],
+    "escolaridade": [
+      "fundamental",
+      "medio"
+    ],
     "cargos": [
       "Agente de Portaria",
       "Inspetor de Alunos",
@@ -39,8 +42,8 @@
       "inspetor-de-alunos-ibam-santos-2026",
       "redacao-nivel-fundamental-2026"
     ],
-    "resumo": "Concurso para 14 cargos de nível fundamental e médio, entre eles Agente de Portaria e Inspetor de Alunos. As inscrições terminaram em 20/08/2026 e o certame segue na fase posterior à inscrição. A taxa foi de R$ 54,30 para nível fundamental e R$ 67,90 para nível médio.",
-    "capturedAt": "2026-09-14"
+    "resumo": "Concurso para cargos de nível fundamental e médio. As provas objetivas ocorreram em 11/10/2026 e a banca IBAM já publicou o resultado. O certame continua em andamento nas etapas posteriores à prova.",
+    "capturedAt": "2026-10-21"
   },
   {
     "id": "sp-santos-prefeitura-71-2026",
@@ -57,8 +60,12 @@
     "vagas": 50,
     "salarioMin": 3782.98,
     "salarioMax": 3782.98,
-    "escolaridade": ["medio"],
-    "cargos": ["Oficial de Administração"],
+    "escolaridade": [
+      "medio"
+    ],
+    "cargos": [
+      "Oficial de Administração"
+    ],
     "taxaInscricao": 67.9,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/176/",
     "editalUrl": null,
@@ -81,8 +88,12 @@
     "vagas": 4,
     "salarioMin": 9406.49,
     "salarioMax": 9406.49,
-    "escolaridade": ["superior"],
-    "cargos": ["Advogado"],
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Advogado"
+    ],
     "taxaInscricao": 92,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/174/",
     "editalUrl": null,
@@ -105,7 +116,9 @@
     "vagas": null,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["superior"],
+    "escolaridade": [
+      "superior"
+    ],
     "cargos": [
       "Administrador",
       "Arquiteto",
@@ -148,8 +161,12 @@
     "vagas": 200,
     "salarioMin": 2445.06,
     "salarioMax": 2445.06,
-    "escolaridade": ["medio"],
-    "cargos": ["Guarda Civil Municipal — Grau A, Categoria 1, 3ª Classe do Nível I"],
+    "escolaridade": [
+      "medio"
+    ],
+    "cargos": [
+      "Guarda Civil Municipal — Grau A, Categoria 1, 3ª Classe do Nível I"
+    ],
     "taxaInscricao": 89,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/197/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/197/anexos/fcca0faf-a472-4459-bb88-d074e3dde6eb.pdf",
@@ -172,8 +189,14 @@
     "vagas": 10,
     "salarioMin": 2754.83,
     "salarioMax": 3456.7,
-    "escolaridade": ["medio"],
-    "cargos": ["Atendente SUS", "Condutor de Veículos de Urgência", "Técnico em Farmácia"],
+    "escolaridade": [
+      "medio"
+    ],
+    "cargos": [
+      "Atendente SUS",
+      "Condutor de Veículos de Urgência",
+      "Técnico em Farmácia"
+    ],
     "taxaInscricao": 71.5,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/192/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/192/anexos/254c0afa-2fd4-402f-adb0-dbe3299074f9.pdf",
@@ -196,8 +219,12 @@
     "vagas": 8,
     "salarioMin": 4297.75,
     "salarioMax": 4297.75,
-    "escolaridade": ["superior"],
-    "cargos": ["Bibliotecário"],
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Bibliotecário"
+    ],
     "taxaInscricao": 120,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/193/",
     "editalUrl": null,
@@ -220,8 +247,12 @@
     "vagas": 3,
     "salarioMin": 1999.69,
     "salarioMax": 1999.69,
-    "escolaridade": ["fundamental"],
-    "cargos": ["Ferreiro/Armador"],
+    "escolaridade": [
+      "fundamental"
+    ],
+    "cargos": [
+      "Ferreiro/Armador"
+    ],
     "taxaInscricao": 57,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/194/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/194/anexos/6429fdd5-c8f3-4661-a24e-55115dfc70f5.pdf",
@@ -244,8 +275,12 @@
     "vagas": 1,
     "salarioMin": 3867.82,
     "salarioMax": 3867.82,
-    "escolaridade": ["superior"],
-    "cargos": ["Fonoaudiólogo"],
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Fonoaudiólogo"
+    ],
     "taxaInscricao": 120,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/191/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/191/anexos/5239e0fb-eb2e-4193-a152-530f336bf19c.pdf",
@@ -268,8 +303,12 @@
     "vagas": 100,
     "salarioMin": 3823.39,
     "salarioMax": 3823.39,
-    "escolaridade": ["medio"],
-    "cargos": ["Guarda Civil Municipal — 3ª Classe"],
+    "escolaridade": [
+      "medio"
+    ],
+    "cargos": [
+      "Guarda Civil Municipal — 3ª Classe"
+    ],
     "taxaInscricao": 74,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/198/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/198/anexos/fa0f3265-18de-4a1b-ac87-85c793e5b22d.pdf",
@@ -292,7 +331,10 @@
     "vagas": 218,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["medio", "superior"],
+    "escolaridade": [
+      "medio",
+      "superior"
+    ],
     "cargos": [
       "Agente da Política de Assistência Social",
       "Agente de Atividade Cultural",
@@ -329,8 +371,14 @@
     "vagas": 34,
     "salarioMin": 4651.51,
     "salarioMax": 9940,
-    "escolaridade": ["superior"],
-    "cargos": ["Analista de Conformidade", "Analista de TI — Administrador de Redes", "Analista de TI — Banco de Dados"],
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Analista de Conformidade",
+      "Analista de TI — Administrador de Redes",
+      "Analista de TI — Banco de Dados"
+    ],
     "taxaInscricao": 72.3,
     "sourceUrl": "https://www.avancasp.org.br/informacoes/251/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/301/concursos/251/anexos/efe61c61-d019-4e6e-aa15-91530d3c07cc.pdf",
@@ -353,8 +401,12 @@
     "vagas": 66,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["medio"],
-    "cargos": ["Profissional de Apoio Escolar"],
+    "escolaridade": [
+      "medio"
+    ],
+    "cargos": [
+      "Profissional de Apoio Escolar"
+    ],
     "taxaInscricao": 76.5,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/196/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/196/anexos/47099b19-c153-49e5-bb78-848e4eff4f17.pdf",
@@ -377,8 +429,16 @@
     "vagas": null,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["superior"],
-    "cargos": ["Professor Berçarista", "Professor I", "Professor Recreacionista", "Professor II — Arte", "Professor II — Ciências"],
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Professor Berçarista",
+      "Professor I",
+      "Professor Recreacionista",
+      "Professor II — Arte",
+      "Professor II — Ciências"
+    ],
     "taxaInscricao": null,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/195/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/195/anexos/5d604bfb-6e44-4a5d-aebe-1b34a70b7781.pdf",
@@ -401,7 +461,10 @@
     "vagas": 55,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["medio", "superior"],
+    "escolaridade": [
+      "medio",
+      "superior"
+    ],
     "cargos": [
       "Agente de Apoio Escolar",
       "Orientador Pedagógico",
@@ -434,7 +497,11 @@
     "vagas": 9,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["fundamental", "medio", "superior"],
+    "escolaridade": [
+      "fundamental",
+      "medio",
+      "superior"
+    ],
     "cargos": [
       "Agente de Fiscalização Ambiental",
       "Agente de Trânsito",
@@ -469,7 +536,10 @@
     "vagas": 20,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["medio", "superior"],
+    "escolaridade": [
+      "medio",
+      "superior"
+    ],
     "cargos": [
       "Agente Sanitário",
       "Assistente Social",
@@ -528,8 +598,16 @@
     "vagas": null,
     "salarioMin": null,
     "salarioMax": null,
-    "escolaridade": ["fundamental", "medio", "superior"],
-    "cargos": ["Merendeira", "Técnico de Enfermagem do Trabalho", "Terapeuta Ocupacional"],
+    "escolaridade": [
+      "fundamental",
+      "medio",
+      "superior"
+    ],
+    "cargos": [
+      "Merendeira",
+      "Técnico de Enfermagem do Trabalho",
+      "Terapeuta Ocupacional"
+    ],
     "taxaInscricao": null,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/187/",
     "editalUrl": "https://anexos-r2.selecao.net.br/uploads/810/concursos/187/anexos/f49a8921-7105-43bb-815c-1d7fedf4ef3c.pdf",
@@ -552,13 +630,123 @@
     "vagas": 18,
     "salarioMin": 3098,
     "salarioMax": 3098,
-    "escolaridade": ["fundamental"],
-    "cargos": ["Inspetor de Alunos"],
+    "escolaridade": [
+      "fundamental"
+    ],
+    "cargos": [
+      "Inspetor de Alunos"
+    ],
     "taxaInscricao": 61,
     "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/114/",
     "editalUrl": null,
-    "produtos": ["redacao-nivel-fundamental-2026"],
+    "produtos": [
+      "redacao-nivel-fundamental-2026"
+    ],
     "resumo": "Concurso para 18 vagas de Inspetor de Alunos, nível fundamental completo, com vencimento de R$ 3.098,00. A banca registra o certame como homologado.",
     "capturedAt": "2026-09-14"
+  },
+  {
+    "id": "sp-matao-prefeitura-cp-01-2026",
+    "orgao": "Prefeitura Municipal de Matão",
+    "municipio": "Matão",
+    "uf": "SP",
+    "banca": "IBAM",
+    "edital": "Concurso Público nº 01/2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-09-26",
+    "inscricaoFim": "2026-10-29",
+    "dataProva": null,
+    "dataProvaConfirmada": false,
+    "vagas": 44,
+    "salarioMin": null,
+    "salarioMax": null,
+    "escolaridade": [
+      "fundamental",
+      "medio",
+      "superior"
+    ],
+    "cargos": [
+      "Agente de Gestão Pública — Assistente Administrativo",
+      "Auxiliar em Saúde Bucal",
+      "Fonoaudiólogo",
+      "Farmacêutico",
+      "Fisioterapeuta",
+      "Terapeuta Ocupacional",
+      "Cirurgião Dentista",
+      "Médicos (diversas especialidades)"
+    ],
+    "taxaInscricao": null,
+    "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/204/",
+    "editalUrl": null,
+    "produtos": [],
+    "resumo": "Concurso com 44 vagas anunciadas pela banca; destaque para 10 vagas de Assistente Administrativo (ensino médio), além de cargos de saúde e especialidades médicas. Inscrições até 29/10/2026.",
+    "capturedAt": "2026-10-21"
+  },
+  {
+    "id": "sp-matao-prefeitura-cp-02-2026",
+    "orgao": "Prefeitura Municipal de Matão",
+    "municipio": "Matão",
+    "uf": "SP",
+    "banca": "IBAM",
+    "edital": "Concurso Público nº 02/2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-10-17",
+    "inscricaoFim": "2026-11-18",
+    "dataProva": null,
+    "dataProvaConfirmada": false,
+    "vagas": 28,
+    "salarioMin": null,
+    "salarioMax": null,
+    "escolaridade": [
+      "fundamental",
+      "medio",
+      "superior"
+    ],
+    "cargos": [
+      "Agente de Fiscalização Pública",
+      "Agente de Infraestrutura",
+      "Agente de Mobilidade Urbana — Fiscal de Trânsito",
+      "Analista de Compras e Licitações",
+      "Educador Social",
+      "Bibliotecário",
+      "Procurador Jurídico"
+    ],
+    "taxaInscricao": null,
+    "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/208/",
+    "editalUrl": null,
+    "produtos": [],
+    "resumo": "Concurso com 28 vagas anunciadas pela banca, incluindo fiscalização, serviços de infraestrutura, trânsito e funções de nível superior. Inscrições até 18/11/2026.",
+    "capturedAt": "2026-10-21"
+  },
+  {
+    "id": "sp-matao-prefeitura-ps-01-2026",
+    "orgao": "Prefeitura Municipal de Matão",
+    "municipio": "Matão",
+    "uf": "SP",
+    "banca": "IBAM",
+    "edital": "Processo Seletivo nº 01/2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-09-26",
+    "inscricaoFim": "2026-10-29",
+    "dataProva": null,
+    "dataProvaConfirmada": false,
+    "vagas": null,
+    "salarioMin": null,
+    "salarioMax": null,
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Professor I Temporário — Educação Infantil",
+      "Professor I Temporário — Anos Iniciais",
+      "Professor de Educação Especial Temporário — Deficiências Auditiva, Intelectual e Visual",
+      "Professor III Temporário — diversas disciplinas"
+    ],
+    "taxaInscricao": 97,
+    "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/203/",
+    "editalUrl": null,
+    "produtos": [],
+    "resumo": "Processo seletivo para cadastro de reserva de docentes temporários de diversas áreas, incluindo educação infantil, anos iniciais e educação especial. Inscrições até 29/10/2026; não há número de vagas definido na página da banca.",
+    "capturedAt": "2026-10-21"
   }
 ]
