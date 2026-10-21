@@ -1482,7 +1482,7 @@ const homeFaq = [
 ];
 
 const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Trilha Aprova: apostilas em PDF com audiobook para concursos. Nova edição Assistente Administrativo Matão 2026 em preparação. Confira os materiais já disponíveis.';
+const homeDescription = 'Apostilas em PDF e audiobook para concursos. Assistente Administrativo Matão 2026 em preparação. Veja os materiais disponíveis na Trilha Aprova.';
 const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-em-preparacao.svg';
 
 const homeNodes = [
