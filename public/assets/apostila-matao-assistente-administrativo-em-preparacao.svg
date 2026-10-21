@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+<title id="title">Prévia visual da Apostila Assistente Administrativo Matão 2026</title>
+<desc id="desc">Livro tridimensional branco e azul-marinho com detalhes cobre, identidade Trilha Aprova, edição em elaboração. Não comercializar.</desc>
+<defs>
+<linearGradient id="sp" x1="0" x2="1"><stop stop-color="#d4cabe"/><stop offset=".24" stop-color="#fffdf6"/><stop offset=".66" stop-color="#c8bdb0"/><stop offset="1" stop-color="#827c78"/></linearGradient>
+<linearGradient id="front" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffefb"/><stop offset=".7" stop-color="#faf7f1"/><stop offset="1" stop-color="#eae7e2"/></linearGradient>
+<linearGradient id="base" x1="0" x2=".7" y1="1" y2="0"><stop stop-color="#031f36"/><stop offset="1" stop-color="#06406c"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="165%" height="175%"><feGaussianBlur stdDeviation="18"/></filter>
+<clipPath id="frontclip"><path d="M154 34L725 72Q746 74 746 101V905Q741 931 716 930L154 942Z"/></clipPath>
+</defs>
+<ellipse cx="411" cy="945" rx="322" ry="30" fill="#09192b" opacity=".24" filter="url(#shadow)"/>
+<path d="M64 93Q63 60 91 44L154 34V942L88 916Q64 909 64 884Z" fill="url(#sp)" stroke="#c4bbae" stroke-width="2"/>
+<path d="M154 34L725 72Q746 74 746 101V905Q741 931 716 930L154 942Z" fill="url(#front)" stroke="#c8c1b7" stroke-width="2"/>
+<g clip-path="url(#frontclip)">
+<path d="M154 753C340 890 497 787 747 672V976H145Z" fill="url(#base)"/>
+<path d="M154 755C340 892 497 789 747 674" fill="none" stroke="#c7782d" stroke-width="9"/>
+<path d="M588 650L750 528V758L590 818Z" fill="#e5e9e8"/>
+<path d="M575 659L752 548" stroke="#cf8b4a" stroke-width="3"/>
+<g fill="#c3d2d5"><path d="M609 645v94h33V622Z"/><path d="M653 613v102h38V584Z"/><path d="M702 565v134h35V544Z"/></g>
+<path d="M597 734h147v22H597Z" fill="#37516a"/><path d="M596 759h149v12H596Z" fill="#cfaf8e"/>
+<path d="M561 789l177-53 7 13-186 58z" fill="#715943" opacity=".7"/>
+</g>
+<g text-anchor="middle" fill="#082742">
+<path d="M414 108q-29-14-55-4v50q26-10 55 5 26-15 55-5v-50q-27-10-55 4Z" fill="#082e4b"/>
+<path d="M413 111v50M354 154q29-13 59 7 30-20 61-7" stroke="#fff" stroke-width="5" fill="none"/>
+<path d="M429 116l18-37 12 4-7-19-21 12 11 1-16 34" fill="#bc6925"/>
+<text x="415" y="205" font-size="43" font-family="Georgia,serif" font-weight="700">Trilha Aprova</text>
+<path d="M252 219h94m155 0h94" stroke="#bc6925" stroke-width="3"/>
+<text x="415" y="254" font-size="22" fill="#b95c23" letter-spacing="3.5" font-family="Arial,sans-serif" font-weight="bold">CURSO PREPARATÓRIO NO PAPEL</text>
+<text x="415" y="347" font-size="76" font-family="Georgia,serif" font-weight="700">ASSISTENTE</text>
+<text x="415" y="421" font-size="66" font-family="Georgia,serif" font-weight="700">ADMINISTRATIVO</text>
+<text x="415" y="472" font-size="35" fill="#b85c1a" font-family="Arial,sans-serif" font-weight="bold">PREFEITURA DE MATÃO · SP</text>
+<text x="415" y="505" font-size="21" font-family="Arial,sans-serif">Concurso Público nº 01/2026 · IBAM</text>
+<rect x="273" y="531" width="286" height="47" rx="13" fill="#fff4e4" stroke="#c1773c" stroke-width="2"/>
+<text x="416" y="562" font-size="22" fill="#a3481d" font-family="Arial,sans-serif" font-weight="700">EM ELABORAÇÃO</text>
+<text x="415" y="619" font-size="26" font-family="Arial,sans-serif" font-weight="700">40 QUESTÕES · 100 PONTOS</text>
+<text x="415" y="656" font-size="19" font-family="Arial,sans-serif">Prova prevista para 06/12/2026</text>
+<text x="415" y="710" font-size="20" font-family="Arial,sans-serif" fill="#ad551e" font-weight="700">PRÉVIA EDITORIAL</text>
+<text x="415" y="742" font-size="18" font-family="Arial,sans-serif">PDF e audiobook integral em preparação</text>
+<text x="415" y="855" font-size="25" fill="#fff" font-family="Georgia,serif" letter-spacing="3">ESTUDE HOJE.</text>
+<text x="415" y="889" font-size="25" fill="#fff" font-family="Georgia,serif" letter-spacing="3">CONQUISTE AMANHÃ.</text>
+</g>
+<path d="M94 92q23-10 42 3v37q-17-8-42-2Z" fill="#082e4b"/>
+<path d="M115 88l17-32 9 4-4-12-15 9 7 2-13 25" fill="#b95c23"/>
+<text x="111" y="300" transform="rotate(90 111 300)" fill="#082e4b" font-family="Georgia,serif" font-size="35" font-weight="bold">ASSISTENTE ADMINISTRATIVO</text>
+<path d="M65 770L154 821V941L65 889Z" fill="#03283f"/>
+<path d="M65 766L154 815" stroke="#c7782d" stroke-width="6"/>
+</svg>
