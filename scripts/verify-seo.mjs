@@ -321,6 +321,31 @@ if (new Set(toolSlugs).size !== toolSlugs.length) fail('duas ferramentas com o m
 if (!exists('public/ferramentas.html')) fail('hub /ferramentas não gerado');
 ok(`${tools.length} ferramenta(s) gratuita(s) sem cadastro, com dados estruturados e sem saída de rede fora da sincronização paga`);
 
+// ---------------------------------------- Matão: concurso aberto e venda segura
+const paginaMatao = 'public/concursos/sp/matao.html';
+const catMatao = JSON.parse(read('products/catalog.json'))['matao-sp-assistente-administrativo-2026'];
+if (!exists(paginaMatao)) {
+  fail('página de Matão não foi gerada');
+} else {
+  const html = read(paginaMatao);
+  if (!html.includes('Já há concursos com inscrições abertas em Matão.')) {
+    fail('Matão com inscrições abertas precisa exibir o aviso correto');
+  }
+  if (html.includes('Quer saber quando abrir concurso em Matão?')) {
+    fail('Matão ainda pergunta quando abrir concurso apesar das inscrições abertas');
+  }
+  if (!html.includes('apostila-matao')) fail('Matão sem apresentação da nova apostila');
+  if (!html.includes('R$ 24,99')) fail('Matão sem preço da nova apostila');
+  const temCheckout = html.includes('href="/comprar?produto=matao-sp-assistente-administrativo-2026"');
+  if (catMatao?.active === true) {
+    if (!temCheckout) fail('produto de Matão ativo sem link de compra na página do concurso');
+  } else {
+    if (temCheckout) fail('Matão indisponível com checkout liberado indevidamente');
+    if (!html.includes('disabled aria-disabled="true"')) fail('Matão indisponível sem sinalização do botão de compra');
+  }
+  ok('Matão com inscrições abertas, apostila e checkout sincronizado com catálogo');
+}
+
 // ------------------------------------------------------------------ IndexNow
 const keyFile = fs.readdirSync(path.join(root, 'public')).find((f) => /^[A-Za-z0-9-]{8,128}\.txt$/.test(f) && f !== 'robots.txt' && !f.startsWith('llms'));
 if (!keyFile) {
