@@ -1,0 +1,65 @@
+name: Publish Matão private media from approved draft release
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: "sources uploads PDF and cover, finalize uploads checked MP3 files"
+        required: true
+        type: choice
+        options: [sources, finalize]
+        default: sources
+  push:
+    branches: [main]
+    paths:
+      - "products/matao-2026-final-media.json"
+      - "scripts/publish_matao_release.py"
+      - ".github/workflows/publish-matao-release.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-matao-draft-media
+  cancel-in-progress: false
+
+jobs:
+  private-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      STAGE: ${{ inputs.stage || 'sources' }}
+      GH_TOKEN: ${{ github.token }}
+      MATAO_RELEASE_ASSETS: /tmp/matao-release
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+    steps:
+      - name: Checkout only source code, no paid materials
+        uses: actions/checkout@v4
+
+      - name: Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install media auditor and codecs
+        run: |
+          python -m pip install --disable-pip-version-check pypdf boto3 requests
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+
+      - name: Download authorized draft release contents privately
+        run: |
+          mkdir -p "$MATAO_RELEASE_ASSETS"
+          gh release download staging-matao-2026-10-21 -R andreajoa/concurso-audibook --dir "$MATAO_RELEASE_ASSETS"
+          test -s "$MATAO_RELEASE_ASSETS/Trilha_Aprova_Matao_Assistente_Administrativo_2026_COMPLETA.pdf"
+          test -s "$MATAO_RELEASE_ASSETS/capa-original.png"
+          test -s "$MATAO_RELEASE_ASSETS/audios_textos.json"
+
+      - name: Upload and verify private R2 media
+        run: python -u scripts/publish_matao_release.py "$STAGE"
+
+      - name: Confirm no paid assets entered the public Git tree
+        run: |
+          test ! -f public/assets/Trilha_Aprova_Matao_Assistente_Administrativo_2026_COMPLETA.pdf
+          test ! -f public/assets/audios_textos.json

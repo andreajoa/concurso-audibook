@@ -1,0 +1,24 @@
+{
+  "slug": "matao-sp-assistente-administrativo-2026",
+  "sourceDate": "2026-10-21",
+  "pdfPages": 49,
+  "simulados": 2,
+  "trainingQuestions": 80,
+  "simulado1Questions": 40,
+  "simulado2Questions": 40,
+  "voice": "Luciana (macOS pt_BR)",
+  "files": {
+    "pdf": {
+      "name": "Trilha_Aprova_Matao_Assistente_Administrativo_2026_COMPLETA.pdf",
+      "sha256": "b493e6317a6531a999c8a7c5bc43f8136eb8bbcccafd5ab6618c92ea9c91b1ad"
+    },
+    "cover": {
+      "name": "capa-original.png",
+      "sha256": "1fa35f85f52239467612a1de46d893ffd86c64cc241de21dee2e41f56558f8ba"
+    },
+    "script": {
+      "name": "audios_textos.json",
+      "sha256": "9e940b4d8f69d66fe6207f64eb368a61df15e47620094d7636e62daf64057d6f"
+    }
+  }
+}
