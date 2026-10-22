@@ -1179,7 +1179,7 @@ function apostilaMunicipio(m) {
   const disponivel = p?.active === true && p?.assets?.chapters?.length === 8;
   const capa = disponivel
     ? p.storefront.cover3d
-    : '/assets/apostila-matao-assistente-administrativo-em-preparacao.svg';
+    : '/assets/apostila-matao-assistente-administrativo-3d.png';
   const valor = p?.priceCents === 2499 ? p.priceCents : 2499;
   const cta = disponivel
     ? `<a class="apostila-matao-cta" href="/comprar?produto=${esc(slug)}">Comprar apostila por ${brl(valor)}</a>`
