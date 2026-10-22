@@ -14,6 +14,10 @@ from pypdf import PdfReader
 
 
 PRODUCT_EXPECTATIONS = {
+    'matao-sp-assistente-administrativo-2026': {
+        'pages': 49,
+        'topics': ['assistente administrativo', 'matão', 'ibam', 'gabarito', 'simulado'],
+    },
     'detran-sp-agente-de-transito-2026': {
         'pages': 49,
         'topics': ['detran-sp', 'agente estadual de trânsito', 'instituto avalia', 'contran', 'gabarito'],
@@ -126,6 +130,26 @@ def main():
                 require(ranges == source['chapters'], f'{slug}: manifest chapter pages differ from source')
                 covered = [page for first, last in ranges for page in range(first, last + 1)]
                 require(covered == list(range(2, expected + 1)), f'{slug}: missing, repeated or unordered source pages')
+            if slug == 'matao-sp-assistente-administrativo-2026':
+                metadata = json.loads(Path('products/matao-2026-final-media.json').read_text())
+                require(hashlib.sha256(pdf.read_bytes()).hexdigest() == metadata['files']['pdf']['sha256'],
+                    'Matão: complete PDF differs from the audited publication')
+                cover = work / 'cover-original.png'
+                s3.download_file(bucket, assets['coverKey'], str(cover))
+                require(hashlib.sha256(cover.read_bytes()).hexdigest() == metadata['files']['cover']['sha256'],
+                    'Matão: original user cover checksum mismatch')
+                completion = json.loads(s3.get_object(
+                    Bucket=bucket, Key=f'{slug}/audio/manifest.json')['Body'].read())
+                require(completion.get('readyForCheckout') is True, 'Matão: delivery release not finalized')
+                require(completion.get('pdfSha256') == metadata['files']['pdf']['sha256'],
+                    'Matão: completion manifest PDF mismatch')
+                require(completion.get('pages') == 49 and completion.get('questions') == 160 and completion.get('chapters') == 8,
+                    'Matão: completion manifest curriculum mismatch')
+                require(completion.get('language') == 'pt-BR',
+                    'Matão: expected audiobook in Brazilian Portuguese')
+                require(completion.get('summary') == assets['summary']['key']
+                    and completion.get('chapterKeys') == [ch['key'] for ch in assets['chapters']],
+                    'Matão: source manifest does not match buyer playback and download keys')
             if slug == 'redacao-nivel-fundamental-2026':
                 manifest = json.loads(s3.get_object(Bucket=bucket,
                     Key=f'{slug}/audio/manifest.json')['Body'].read())
@@ -143,6 +167,10 @@ def main():
                 digest = hashlib.sha256(media.read_bytes()).hexdigest()
                 if source or peif:
                     require(digest == santos_tracks[track['key']]['sha256'], f'{slug}/{track["id"]}: audio differs from completion manifest')
+                if slug == 'matao-sp-assistente-administrativo-2026':
+                    actual = s3.head_object(Bucket=bucket, Key=track['key'])
+                    require(actual.get('Metadata', {}).get('sha256') == digest,
+                        f'{slug}/{track["id"]}: recording checksum differs from private upload')
                 require(digest not in fingerprints, f'{slug}/{track["id"]}: duplicate audio content')
                 fingerprints[digest] = (slug, track['id'])
                 probe = subprocess.run(['ffprobe', '-v', 'error', '-show_entries',
