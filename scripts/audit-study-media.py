@@ -141,8 +141,9 @@ def main():
                 completion = json.loads(s3.get_object(
                     Bucket=bucket, Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(completion.get('readyForCheckout') is True, 'Matão: delivery release not finalized')
-                require(completion.get('pdfSha256') == metadata['files']['pdf']['sha256'],
-                    'Matão: completion manifest PDF mismatch')
+                require(completion.get('PDF') == assets['pdfKey']
+                    and completion.get('cover') == assets['coverKey'],
+                    'Matão: completion manifest delivery keys mismatch')
                 require(completion.get('pages') == 49 and completion.get('questions') == 160 and completion.get('chapters') == 8,
                     'Matão: completion manifest curriculum mismatch')
                 require(completion.get('language') == 'pt-BR',
