@@ -1518,15 +1518,15 @@ renderPage({
  * ------------------------------------------------------------------ */
 
 const homeFaq = [
-  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, por ${brl(products[0].priceCents)} cada. A nova edição de Matão ainda está em preparação e sem botão de compra.` },
+  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, por ${brl(products[0].priceCents)} cada. A edição completa de Matão já está disponível para compra.` },
   { q: 'O material garante aprovação?', a: 'Nenhum material sério pode prometer aprovação sozinho. A proposta da Trilha Aprova é reduzir dispersão, melhorar a qualidade da revisão e ajudar você a chegar à prova mais preparado para reconhecer o conteúdo cobrado.' },
   { q: 'Posso baixar o PDF e os áudios?', a: 'Sim. Após a confirmação do pagamento, os formatos incluídos podem ser usados online e baixados na sua área de acesso.' },
   { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
 ];
 
 const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Apostilas em PDF e audiobook para concursos. Assistente Administrativo Matão 2026 em preparação. Veja os materiais disponíveis na Trilha Aprova.';
-const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-em-preparacao.svg';
+const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 24,99.';
+const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-3d.png';
 
 const homeNodes = [
   webPageNode(ORIGIN + '/', { title: homeTitle, description: homeDescription, image: HOME_FEATURE_IMAGE, updated: BUILD_DATE, hasFaq: true, hasBreadcrumb: false }),
