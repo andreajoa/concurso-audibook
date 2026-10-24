@@ -11,16 +11,16 @@ require.cache[stripePath] = { id: stripePath, filename: stripePath, loaded: true
 const { createCheckout } = require('../lib/checkout-hosted');
 const req = { headers: { host: 'www.concursotrilhaaprova.online' } };
 
-test('card only while Pix is not enabled on the Stripe account', async () => {
-  delete process.env.STRIPE_PIX_ENABLED;
+test('card only when STRIPE_PIX_ENABLED=false', async () => {
+  process.env.STRIPE_PIX_ENABLED = 'false';
   await createCheckout(req, 'redacao-nivel-fundamental-2026', { embedded: true });
   const params = sent.at(-1);
   assert.equal(params['payment_method_types[0]'], 'card');
   assert.equal(params['payment_method_types[1]'], undefined);
 });
 
-test('Pix joins the checkout when STRIPE_PIX_ENABLED=true, expiring with the session', async () => {
-  process.env.STRIPE_PIX_ENABLED = 'true';
+test('Pix joins the checkout by default, expiring with the session', async () => {
+  delete process.env.STRIPE_PIX_ENABLED;
   await createCheckout(req, 'redacao-nivel-fundamental-2026', { embedded: true });
   const params = sent.at(-1);
   assert.equal(params['payment_method_types[0]'], 'card');
