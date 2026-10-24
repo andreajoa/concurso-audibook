@@ -26,5 +26,6 @@ test('Pix joins the checkout by default, expiring with the session', async () =>
   assert.equal(params['payment_method_types[0]'], 'card');
   assert.equal(params['payment_method_types[1]'], 'pix');
   assert.equal(params['payment_method_options[pix][expires_after_seconds]'], '3600');
+  assert.equal(params['adaptive_pricing[enabled]'], 'false', 'Pix needs the checkout to stay in BRL');
   delete process.env.STRIPE_PIX_ENABLED;
 });
