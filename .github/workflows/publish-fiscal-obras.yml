@@ -30,7 +30,9 @@ jobs:
       - name: Download assets from owner-controlled draft release
         run: |
           mkdir -p "$STAGING"
-          gh release download fiscal-obras-matao-2026-private-assets -R andreajoa/concurso-audibook --pattern 'fiscal-obras-media.zip' --dir "$STAGING"
+          gh api -H 'Accept: application/octet-stream' repos/andreajoa/concurso-audibook/releases/assets/689709050 > "$STAGING/fiscal-obras-media.zip"
+          file "$STAGING/fiscal-obras-media.zip"
+          test "$(stat -c%s "$STAGING/fiscal-obras-media.zip")" -eq 126840052
           unzip -q "$STAGING/fiscal-obras-media.zip" -d "$STAGING"
           test "$(find "$STAGING" -maxdepth 1 -type f | wc -l)" -eq 12
       - name: Upload and verify all media privately
