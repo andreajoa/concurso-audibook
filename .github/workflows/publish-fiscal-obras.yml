@@ -1,8 +1,11 @@
 name: Publish Fiscal de Obras Matão private R2 media
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-fiscal-obras.yml']
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: publish-fiscal-obras-matao-private
   cancel-in-progress: false
