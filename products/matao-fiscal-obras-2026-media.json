@@ -1,0 +1,98 @@
+{
+  "slug": "matao-sp-fiscal-de-obras-ed02-2026",
+  "pdfPages": 49,
+  "questions": 160,
+  "language": "pt-BR",
+  "chapters": 8,
+  "releaseTag": "fiscal-obras-matao-2026-private-assets",
+  "files": [
+    {
+      "file": "apostila.pdf",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/docs/apostila-matao-fiscal-de-obras-ed02-2026.pdf",
+      "sha256": "e6afc3c9d5e2216b97862d4f25af6393c7d81f3e4b578c6de5aa2de79430b395",
+      "bytes": 286117,
+      "contentType": "application/pdf",
+      "durationSeconds": null
+    },
+    {
+      "file": "capa.png",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/images/capa.png",
+      "sha256": "93f3d098d8960bd7b2fb605ca253fe2f0a0b157c4ace09fa5900779282e0f001",
+      "bytes": 66421,
+      "contentType": "image/png",
+      "durationSeconds": null
+    },
+    {
+      "file": "resumo.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/resumo.mp3",
+      "sha256": "c38a1f9da4b8356dedbc76606c31dd4d709f0a66fa53aee4c81dfd64c395e81b",
+      "bytes": 21930037,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1370.56
+    },
+    {
+      "file": "01-portugues-e-prova.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/01-portugues-e-prova.mp3",
+      "sha256": "38c4dd7fa6d9af933f4d699320ec0c7caef8807c8e27630a3de54906d06e4bbd",
+      "bytes": 10724458,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 670.2
+    },
+    {
+      "file": "02-matematica-logica.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/02-matematica-logica.mp3",
+      "sha256": "fbe96585513fa2299dbd79ee046a7a20071dc52be8788096a9059e7cf64c77f6",
+      "bytes": 12541745,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 783.79
+    },
+    {
+      "file": "03-informatica.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/03-informatica.mp3",
+      "sha256": "4cdfee7e13e3721ca1b44afc7efb4ed6ca49515cb218b4255660429434b307a3",
+      "bytes": 7949209,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 496.75
+    },
+    {
+      "file": "04-projetos-construcao.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/04-projetos-construcao.mp3",
+      "sha256": "9deb499626d62b4248bd72c77a6cd0ea8574a1bb15324c640b0931929d3eac72",
+      "bytes": 9998463,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 624.83
+    },
+    {
+      "file": "05-fiscalizacao-drenagem-relatorios.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/05-fiscalizacao-drenagem-relatorios.mp3",
+      "sha256": "c65e726bd944af8410727007416558a807f3300190fe06c009d91b0228fa15ef",
+      "bytes": 9729715,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 608.04
+    },
+    {
+      "file": "06-legislacao-riscos.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/06-legislacao-riscos.mp3",
+      "sha256": "22604499161bae876c655fd1904ea34b11ae7a583bc5c957662357006c9d8350",
+      "bytes": 18314597,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1144.58
+    },
+    {
+      "file": "07-simulado-1.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/07-simulado-1.mp3",
+      "sha256": "0192359eac3701525c71f804c9df47df24e99c0d7f0142c62d5474932bd198df",
+      "bytes": 17629562,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1101.79
+    },
+    {
+      "file": "08-simulado-2.mp3",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/08-simulado-2.mp3",
+      "sha256": "74ab3aeb2263c521434f091ef4c8ff3eca13c88ec502728faba457290feaac29",
+      "bytes": 17668432,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1104.2
+    }
+  ]
+}
