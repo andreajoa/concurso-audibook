@@ -53,11 +53,4 @@
     });
   });
 
-  const panels=[...document.querySelectorAll('[data-expand-panel]')];
-  function openPanel(panel){panels.forEach(item=>item.classList.toggle('is-open',item===panel))}
-  panels.forEach(panel=>{
-    panel.addEventListener('click',()=>openPanel(panel));
-    panel.addEventListener('mouseenter',()=>{if(innerWidth>640)openPanel(panel)});
-    panel.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openPanel(panel)}});
-  });
 })();
