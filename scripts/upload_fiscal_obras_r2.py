@@ -8,7 +8,7 @@ from publish_fiscal_obras_media import META,validate
 base=Path(sys.argv[1])
 rows=validate(base)
 account=os.environ['R2_ACCOUNT_ID']
-client=boto3.client('s3',endpoint_url='https://'+account+'.r2.cloudflarestorage.com',region_name='auto')
+client=boto3.client('s3',endpoint_url='https://'+account+'.r2.cloudflarestorage.com',region_name='auto',aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'])
 bucket='apostila'
 client.head_bucket(Bucket=bucket)
 for row in rows:
