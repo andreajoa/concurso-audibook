@@ -5,7 +5,7 @@ from pathlib import Path
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
 META=json.loads((ROOT/'products/matao-fiscal-obras-2026-media.json').read_text())
-PRODUCT=json.loads((ROOT/'products/catalog.json').read_text())[META['slug']]
+PRODUCT=json.loads((ROOT/'products/matao-fiscal-obras-2026-product-staged.json').read_text())
 def checksum(path):
  h=hashlib.sha256()
  with path.open('rb') as f:
