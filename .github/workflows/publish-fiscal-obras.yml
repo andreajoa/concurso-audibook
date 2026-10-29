@@ -30,8 +30,9 @@ jobs:
       - name: Download assets from owner-controlled draft release
         run: |
           mkdir -p "$STAGING"
-          gh release download fiscal-obras-matao-2026-private-assets -R andreajoa/concurso-audibook --dir "$STAGING"
-          test "$(find "$STAGING" -maxdepth 1 -type f | wc -l)" -eq 11
+          gh release download fiscal-obras-matao-2026-private-assets -R andreajoa/concurso-audibook --pattern 'fiscal-obras-media.zip' --dir "$STAGING"
+          unzip -q "$STAGING/fiscal-obras-media.zip" -d "$STAGING"
+          test "$(find "$STAGING" -maxdepth 1 -type f | wc -l)" -eq 12
       - name: Upload and verify all media privately
         run: python -u scripts/upload_fiscal_obras_r2.py "$STAGING"
       - name: Assert no paid files in public Git tree
