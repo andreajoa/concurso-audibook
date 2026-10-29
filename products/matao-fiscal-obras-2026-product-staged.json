@@ -1,0 +1,106 @@
+{
+  "slug": "matao-sp-fiscal-de-obras-ed02-2026",
+  "active": false,
+  "brand": "Trilha Aprova",
+  "contest": "Prefeitura de Matão - Concurso Público 02/2026",
+  "examBoard": "IBAM",
+  "category": "Concursos públicos",
+  "name": "Fiscal de Obras - Prefeitura de Matão 2026 + audiobook",
+  "shortName": "Fiscal de Obras - Matão 2026",
+  "edition": "Pós-edital, retificação 23/10/2026, edição revisada em 29/10/2026",
+  "author": "Trilha Aprova",
+  "audience": "Agente de Fiscalização Pública, Fiscal de Obras, código 204, Matão/SP",
+  "currency": "brl",
+  "priceCents": 2499,
+  "compareAtCents": 4999,
+  "stripePriceEnv": "STRIPE_PRICE_MATAO_FISCAL_OBRAS_2026",
+  "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 49 páginas, teoria, 80 exercícios, dois simulados de 40 questões, gabaritos comentados, oito capítulos de audiobook e resumo narrado.",
+  "proofPoints": [
+    "Apostila digital A4 com 49 páginas",
+    "22 unidades de teoria e exemplos",
+    "160 questões, incluindo dois simulados",
+    "Gabaritos comentados",
+    "Audiobook em 8 capítulos, português brasileiro",
+    "Resumo em áudio do autor"
+  ],
+  "assets": {
+    "coverKey": "matao-sp-fiscal-de-obras-ed02-2026/images/capa.png",
+    "pdfKey": "matao-sp-fiscal-de-obras-ed02-2026/docs/apostila-matao-fiscal-de-obras-ed02-2026.pdf",
+    "pdfDownloadName": "Trilha_Aprova_Matao_Fiscal_de_Obras_2026.pdf",
+    "summary": {
+      "id": "summary",
+      "title": "Resumo em áudio - Fiscal de Obras Matão 2026",
+      "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/resumo.mp3",
+      "downloadName": "Resumo_Fiscal_Obras_Matao_2026.mp3"
+    },
+    "chapters": [
+      {
+        "id": "c1",
+        "title": "Língua Portuguesa e Raio-X da Prova",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/01-portugues-e-prova.mp3",
+        "downloadName": "01-portugues-e-prova.mp3"
+      },
+      {
+        "id": "c2",
+        "title": "Matemática e Raciocínio Lógico",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/02-matematica-logica.mp3",
+        "downloadName": "02-matematica-logica.mp3"
+      },
+      {
+        "id": "c3",
+        "title": "Noções de Informática",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/03-informatica.mp3",
+        "downloadName": "03-informatica.mp3"
+      },
+      {
+        "id": "c4",
+        "title": "Projetos e Construção",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/04-projetos-construcao.mp3",
+        "downloadName": "04-projetos-construcao.mp3"
+      },
+      {
+        "id": "c5",
+        "title": "Fiscalização, Drenagem e Relatórios",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/05-fiscalizacao-drenagem-relatorios.mp3",
+        "downloadName": "05-fiscalizacao-drenagem-relatorios.mp3"
+      },
+      {
+        "id": "c6",
+        "title": "Legislação, Acessibilidade e Riscos",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/06-legislacao-riscos.mp3",
+        "downloadName": "06-legislacao-riscos.mp3"
+      },
+      {
+        "id": "c7",
+        "title": "Simulado 1 e Gabarito",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/07-simulado-1.mp3",
+        "downloadName": "07-simulado-1.mp3"
+      },
+      {
+        "id": "c8",
+        "title": "Simulado 2 e Gabarito",
+        "key": "matao-sp-fiscal-de-obras-ed02-2026/audio/pt-br-v1/08-simulado-2.mp3",
+        "downloadName": "08-simulado-2.mp3"
+      }
+    ]
+  },
+  "exam": {
+    "date": "2027-01-24",
+    "confirmed": false,
+    "source": "IBAM, concurso público Matão 02/2026",
+    "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/208/"
+  },
+  "seoTitle": "Fiscal de Obras Matão 2026 | Apostila PDF e audiobook | Trilha Aprova",
+  "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 49 páginas, 160 questões, 2 simulados, gabaritos e audiobook em português brasileiro.",
+  "storefront": {
+    "badge": "MATÃO 2026 • FISCAL DE OBRAS • IBAM",
+    "cover3d": "/assets/apostila-matao-fiscal-obras-3d.png",
+    "cta": "Comprar apostila com audiobook"
+  },
+  "funnel": {
+    "orderBump": [],
+    "upsell": [],
+    "crossSell": [],
+    "downsell": []
+  }
+}
