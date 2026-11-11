@@ -1,0 +1,99 @@
+{
+  "slug": "tjsp-escrevente-tecnico-judiciario-2026",
+  "pdfPages": 550,
+  "questions": 70,
+  "language": "pt-BR",
+  "chapters": 8,
+  "voice": "piper pt_BR-cadu-medium",
+  "releaseTag": "tjsp-escrevente-2026-private-assets",
+  "files": [
+    {
+      "file": "apostila.pdf",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/docs/apostila-tjsp-escrevente-2026.pdf",
+      "sha256": "e611864174a2159442a3845fde40ea426108a1783b10cfd0ebdc886ffa35528b",
+      "bytes": 2524166,
+      "contentType": "application/pdf",
+      "durationSeconds": null
+    },
+    {
+      "file": "capa.png",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/images/capa.png",
+      "sha256": "5b76f37eb64d08284f7028356658d2ddfa13691579676c8b88b46e82c7820a62",
+      "bytes": 1832548,
+      "contentType": "image/png",
+      "durationSeconds": null
+    },
+    {
+      "file": "resumo.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/resumo.mp3",
+      "sha256": "eda5ac25e73a2e9282383fbb570e5516208d6c969daeed9580489820b6c14bdc",
+      "bytes": 16096163,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1005.93
+    },
+    {
+      "file": "01-apresentacao-e-mapa-de-preparacao.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+      "sha256": "5d6bfbd7a7c2f3bf6567efd84a03317c89a7ef3e4225f9d41a52e5f1d5518d47",
+      "bytes": 7451420,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 465.65
+    },
+    {
+      "file": "02-lingua-portuguesa.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+      "sha256": "b8c8fc8f707203adf7dbe32df1126c70e6289bae298ccc3ae556a00e3d0ca900",
+      "bytes": 16784866,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1048.98
+    },
+    {
+      "file": "03-matematica-raciocinio-logico-informatica.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/03-matematica-raciocinio-logico-informatica.mp3",
+      "sha256": "e93c9bb90328ae190fb01b2e136d872e6917d23926a4313bd3fc74179508fdf7",
+      "bytes": 25711639,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1606.91
+    },
+    {
+      "file": "04-constitucional-penal-processo-penal.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/04-constitucional-penal-processo-penal.mp3",
+      "sha256": "3fb1fac0704dc4afff23018c42b2200a9ccadb043718a64895b258d74f1a05d5",
+      "bytes": 25603387,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1600.13
+    },
+    {
+      "file": "05-processo-civil-administrativo-legislacao-interna.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/05-processo-civil-administrativo-legislacao-interna.mp3",
+      "sha256": "a25cd5d098faf68dc4a30269d3c22173b1ea191655dd6d6621286f1caa2a0154",
+      "bytes": 26329382,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1645.52
+    },
+    {
+      "file": "06-inclusao-atualidades-redacao.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/06-inclusao-atualidades-redacao.mp3",
+      "sha256": "d0d258ece09713ab3bf3259f1a69171d6e476508e290137cb993978f25a5025c",
+      "bytes": 21055155,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1315.89
+    },
+    {
+      "file": "07-oficina-juridica-rotina-tjsp.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/07-oficina-juridica-rotina-tjsp.mp3",
+      "sha256": "9c2f084c110c0642188237d54e571f70d566e4f362bcaedfb55dc721f8bfe5ba",
+      "bytes": 45046431,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2815.33
+    },
+    {
+      "file": "08-simulado-gabarito-revisao.mp3",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/08-simulado-gabarito-revisao.mp3",
+      "sha256": "603dfbc6783478770d601164a82fb7f06578dc4381a0ef98374f17a84d42b6c2",
+      "bytes": 56370199,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 3523.07
+    }
+  ]
+}

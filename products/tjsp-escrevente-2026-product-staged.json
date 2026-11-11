@@ -1,0 +1,106 @@
+{
+  "slug": "tjsp-escrevente-tecnico-judiciario-2026",
+  "active": false,
+  "brand": "Trilha Aprova",
+  "contest": "Tribunal de Justiça de São Paulo - Edital 02/2026",
+  "examBoard": "VUNESP",
+  "category": "Concursos públicos",
+  "name": "Escrevente Técnico Judiciário - TJ-SP 2026 + audiobook",
+  "shortName": "Escrevente TJ-SP 2026",
+  "edition": "Pós-edital 02/2026, fechamento em 05/11/2026",
+  "author": "Trilha Aprova",
+  "audience": "Escrevente Técnico Judiciário, 2ª à 10ª Região Administrativa Judiciária, TJ-SP",
+  "currency": "brl",
+  "priceCents": 2499,
+  "compareAtCents": 4999,
+  "stripePriceEnv": "STRIPE_PRICE_TJSP_ESCREVENTE_2026",
+  "description": "Apostila digital para Escrevente Técnico Judiciário do TJ-SP, edital 02/2026, banca VUNESP. PDF único de 550 páginas: 86 páginas de teoria, oficina jurídica, redação, simulado de 70 questões e gabarito comentado, mais 464 páginas de legislação oficial do edital para consulta. Oito capítulos de audiobook e resumo narrado.",
+  "proofPoints": [
+    "PDF único com 550 páginas",
+    "86 páginas de teoria, exercícios e redação",
+    "Simulado autoral de 70 questões com gabarito comentado",
+    "Caderno de legislação do edital: CF, CP, CPP, CPC, estatuto, Regimento e Normas da Corregedoria",
+    "Audiobook em 8 capítulos, português brasileiro",
+    "Resumo em áudio do autor"
+  ],
+  "assets": {
+    "coverKey": "tjsp-escrevente-tecnico-judiciario-2026/images/capa.png",
+    "pdfKey": "tjsp-escrevente-tecnico-judiciario-2026/docs/apostila-tjsp-escrevente-2026.pdf",
+    "pdfDownloadName": "Trilha_Aprova_TJSP_Escrevente_2026.pdf",
+    "summary": {
+      "id": "summary",
+      "title": "Resumo em áudio - Escrevente TJ-SP 2026",
+      "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/resumo.mp3",
+      "downloadName": "Resumo_Escrevente_TJSP_2026.mp3"
+    },
+    "chapters": [
+      {
+        "id": "c1",
+        "title": "Apresentação e mapa de preparação",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+        "downloadName": "01-apresentacao-e-mapa-de-preparacao.mp3"
+      },
+      {
+        "id": "c2",
+        "title": "Língua Portuguesa",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+        "downloadName": "02-lingua-portuguesa.mp3"
+      },
+      {
+        "id": "c3",
+        "title": "Matemática, Raciocínio Lógico e Informática",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/03-matematica-raciocinio-logico-informatica.mp3",
+        "downloadName": "03-matematica-raciocinio-logico-informatica.mp3"
+      },
+      {
+        "id": "c4",
+        "title": "Direito Constitucional, Penal e Processo Penal",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/04-constitucional-penal-processo-penal.mp3",
+        "downloadName": "04-constitucional-penal-processo-penal.mp3"
+      },
+      {
+        "id": "c5",
+        "title": "Processo Civil, Administrativo e Legislação interna",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/05-processo-civil-administrativo-legislacao-interna.mp3",
+        "downloadName": "05-processo-civil-administrativo-legislacao-interna.mp3"
+      },
+      {
+        "id": "c6",
+        "title": "Inclusão, Atualidades e Redação",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/06-inclusao-atualidades-redacao.mp3",
+        "downloadName": "06-inclusao-atualidades-redacao.mp3"
+      },
+      {
+        "id": "c7",
+        "title": "Oficina jurídica e rotina do TJ-SP",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/07-oficina-juridica-rotina-tjsp.mp3",
+        "downloadName": "07-oficina-juridica-rotina-tjsp.mp3"
+      },
+      {
+        "id": "c8",
+        "title": "Simulado de 70 questões, gabarito e revisão",
+        "key": "tjsp-escrevente-tecnico-judiciario-2026/audio/pt-br-v1/08-simulado-gabarito-revisao.mp3",
+        "downloadName": "08-simulado-gabarito-revisao.mp3"
+      }
+    ]
+  },
+  "exam": {
+    "date": "2027-03-14",
+    "confirmed": false,
+    "source": "VUNESP, Edital 02/2026 TJSP — prova objetiva e redação previstas",
+    "sourceUrl": "https://www.vunesp.com.br/TJSP2607"
+  },
+  "seoTitle": "Apostila Escrevente TJ-SP 2026 | PDF e audiobook | Trilha Aprova",
+  "seoDescription": "Concurso Escrevente Técnico Judiciário TJ-SP 2026, VUNESP edital 02/2026: apostila com teoria, simulado de 70 questões comentadas, legislação do edital e audiobook em português brasileiro.",
+  "storefront": {
+    "badge": "TJ-SP 2026 • ESCREVENTE • VUNESP",
+    "cover3d": "/assets/apostila-tjsp-escrevente-3d.png",
+    "cta": "Comprar apostila com audiobook"
+  },
+  "funnel": {
+    "orderBump": [],
+    "upsell": [],
+    "crossSell": [],
+    "downsell": []
+  }
+}
