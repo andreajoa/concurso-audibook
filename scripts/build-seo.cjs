@@ -2136,7 +2136,7 @@ const llms =
   `por ${brl(products[0].priceCents)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
   `Autoria: ${AUTHOR_NAME}. Atendimento: ${SUPPORT_EMAIL}. Idioma: português do Brasil.\n` +
   'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos, não divulga vagas, datas ou inscrições abertas e não promete aprovação.\n' +
-  'Foco regional de conteúdo: Baixada Santista, litoral de São Paulo (Santos, São Vicente, Guarujá, Praia Grande e Cubatão). Venda e entrega: todo o Brasil.\n\n' +
+  'Cobertura: apostilas para concursos com edital publicado em diferentes estados (São Paulo e outros), sempre conferidas pelo edital do cargo; guias regionais para a Baixada Santista. Venda e entrega: todo o Brasil.\n\n' +
   '## Apostilas\n\n' +
   products.map(p => `- [${p.shortName}](${ORIGIN}/apostilas/${p.slug}): ${p.description} Preço: ${brl(p.priceCents)}, pagamento único. Público: ${p.audience}. Referência: ${p.contest}, banca ${p.examBoard}, ${p.edition}.`).join('\n') +
   `\n- [Catálogo completo](${ORIGIN}/apostilas-para-concurso): todas as apostilas disponíveis com PDF e audiobook.\n\n` +

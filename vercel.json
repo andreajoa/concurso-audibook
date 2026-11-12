@@ -116,5 +116,32 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/apostilas/autores-ibam-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
+    },
+    {
+      "source": "/apostilas/agente-de-portaria-ibam-santos-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
+    },
+    {
+      "source": "/apostilas/inspetor-de-alunos-ibam-santos-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
+    },
+    {
+      "source": "/apostilas/secretario-de-unidade-escolar-ibam-santos-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
+    },
+    {
+      "source": "/apostilas/detran-sp-agente-de-transito-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
+    }
   ]
 }
