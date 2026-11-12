@@ -57,6 +57,11 @@ PRODUCT_EXPECTATIONS = {
         'pages': 246,
         'topics': ['banestes', 'técnico bancário', 'fundação carlos chagas', 'gabarito', 'simulado'],
     },
+    'ibge-recenseador-censo-agro-2026': {
+        # 74 pages of study content plus 76 pages with the official IBGE technical document and edital annexes.
+        'pages': 150,
+        'topics': ['ibge', 'recenseador', 'cesgranrio', 'gabarito', 'simulado'],
+    },
     'professor-adjunto-i-ibam-santos-2026': {
         'pages': 132,
         # The supplied paperback ends with a blank verso, verified in both PDF readers.

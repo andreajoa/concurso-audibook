@@ -1,0 +1,99 @@
+{
+  "slug": "ibge-recenseador-censo-agro-2026",
+  "pdfPages": 150,
+  "questions": 120,
+  "language": "pt-BR",
+  "chapters": 8,
+  "voice": "piper pt_BR-cadu-medium",
+  "releaseTag": "ibge-recenseador-2026-private-assets",
+  "files": [
+    {
+      "file": "apostila.pdf",
+      "key": "ibge-recenseador-censo-agro-2026/docs/apostila-ibge-recenseador-2026.pdf",
+      "sha256": "48d7df16dfe97b6d2acf1b769799cfe076244ea7b003a7e00ddfea38bfbf90e2",
+      "bytes": 11181060,
+      "contentType": "application/pdf",
+      "durationSeconds": null
+    },
+    {
+      "file": "capa.png",
+      "key": "ibge-recenseador-censo-agro-2026/images/capa.png",
+      "sha256": "36830827119eb232eda04442d42229bc4d2894b0725d91ed30894225c5078cde",
+      "bytes": 1752808,
+      "contentType": "image/png",
+      "durationSeconds": null
+    },
+    {
+      "file": "resumo.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/resumo.mp3",
+      "sha256": "e34202a0ed8d03ea642aeb37ea14f778bbb9038207f07eb33c3d5ba261e87b10",
+      "bytes": 15713312,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 982.018
+    },
+    {
+      "file": "01-apresentacao-e-mapa-de-preparacao.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+      "sha256": "a15d510d7ffcf8a0f60a1af219b1a2b1a954103e0d101c0e9e5c832ddc8674a6",
+      "bytes": 7123322,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 445.15
+    },
+    {
+      "file": "02-lingua-portuguesa.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+      "sha256": "0a6411825ff1e68b09cec74a7e60da775dad8f6471f177f5b28bf7af600f46b8",
+      "bytes": 19334417,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1208.332
+    },
+    {
+      "file": "03-matematica.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/03-matematica.mp3",
+      "sha256": "5d10cab46be19c1c3764c2108fb5536f6a1980dd67558105744dc8ed4702909c",
+      "bytes": 15490865,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 968.121
+    },
+    {
+      "file": "04-ibge-censo-agro-e-estrutura-censitaria.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/04-ibge-censo-agro-e-estrutura-censitaria.mp3",
+      "sha256": "852dd0bd8f2a217a39c0f20ee0fdf3c89dbbdd3561ca21e12ebad5be7637dec2",
+      "bytes": 14934143,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 933.314
+    },
+    {
+      "file": "05-instrumentos-e-navegacao-em-campo.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/05-instrumentos-e-navegacao-em-campo.mp3",
+      "sha256": "bc7b55e5879b0564b12bc2ab7414cf5c2a73a38796a7a58c6517052c1e9eb96e",
+      "bytes": 9262437,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 578.827
+    },
+    {
+      "file": "06-territorio-e-setores-censitarios.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/06-territorio-e-setores-censitarios.mp3",
+      "sha256": "c5350c6af25c2d84aeab78350546112767b3b95e9f3f35ddd8283f40968635f6",
+      "bytes": 10519240,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 657.38
+    },
+    {
+      "file": "07-endereco-coordenadas-e-estabelecimento.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/07-endereco-coordenadas-e-estabelecimento.mp3",
+      "sha256": "bcf502ff8cc430ce6ac07c7bce34247746d4bcc1c817197e8674d9176eaed96b",
+      "bytes": 19812145,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1238.181
+    },
+    {
+      "file": "08-simulados-comentados.mp3",
+      "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+      "sha256": "a768ba0bcdca576f5ec053a61dda0080ae2b86f594cd46da5d22c3b56cf66907",
+      "bytes": 50791279,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 3174.377
+    }
+  ]
+}
