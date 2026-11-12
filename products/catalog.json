@@ -1363,5 +1363,112 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "banestes-tecnico-bancario-2026": {
+    "slug": "banestes-tecnico-bancario-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Banco do Estado do Espírito Santo (Banestes) - Edital 01/2026",
+    "examBoard": "Fundação Carlos Chagas (FCC)",
+    "category": "Concursos públicos",
+    "name": "Técnico Bancário - Banestes 2026 + audiobook",
+    "shortName": "Técnico Bancário Banestes 2026",
+    "edition": "Pós-edital 01/2026 com retificação (inscrições até 23/11/2026), fechamento em 12/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Técnico Bancário (nível médio) do Banco do Estado do Espírito Santo - Banestes, cadastro de reserva",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_BANESTES_TECNICO_BANCARIO_2026",
+    "description": "Apostila digital para Técnico Bancário do Banestes (Banco do Estado do Espírito Santo), edital 01/2026, banca FCC. PDF único de 246 páginas: 101 páginas com teoria de todo o conteúdo programático (Conhecimentos Bancários e Securitários, Vendas e Negociação, Matemática Financeira, Estatística, Português, Raciocínio Lógico, Atualidades, Ética/Compliance/ESG, LGPD e Informática) e dois simulados de 70 questões com gabarito comentado, mais 145 páginas com o Guia de Conduta Ética do Banestes e a legislação (Lei 4.595, Lei 9.613, Anticorrupção, LGPD, Lei 12.865 e Resolução CMN 4.966). Oito capítulos de audiobook e resumo narrado.",
+    "proofPoints": [
+      "PDF único com 246 páginas",
+      "101 páginas de teoria e simulados",
+      "Dois simulados de 70 questões no formato FCC (5 alternativas) com gabarito comentado",
+      "Conhecimentos Bancários, Vendas e Negociação e Matemática Financeira com exemplos resolvidos",
+      "Guia de Conduta Ética do Banestes e Resolução CMN 4.966/2021",
+      "Audiobook em 8 capítulos, português brasileiro",
+      "Resumo em áudio do autor"
+    ],
+    "assets": {
+      "coverKey": "banestes-tecnico-bancario-2026/images/capa.png",
+      "pdfKey": "banestes-tecnico-bancario-2026/docs/apostila-banestes-tecnico-bancario-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Banestes_Tecnico_Bancario_2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Técnico Bancário Banestes 2026",
+        "key": "banestes-tecnico-bancario-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Tecnico_Bancario_Banestes_2026.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Mapa de preparação e Língua Portuguesa",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/01-apresentacao-e-lingua-portuguesa.mp3",
+          "downloadName": "01-apresentacao-e-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Matemática e Raciocínio Lógico e Quantitativo",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/02-matematica-e-raciocinio-logico.mp3",
+          "downloadName": "02-matematica-e-raciocinio-logico.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Atualidades do mercado financeiro; ética, compliance e ESG",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/03-atualidades-etica-compliance-esg.mp3",
+          "downloadName": "03-atualidades-etica-compliance-esg.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Conhecimentos bancários, parte 1: sistema financeiro, instituições e produtos",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/04-conhecimentos-bancarios-1.mp3",
+          "downloadName": "04-conhecimentos-bancarios-1.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Conhecimentos bancários, parte 2: prevenção, seguros, previdência e regulação",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/05-conhecimentos-bancarios-2.mp3",
+          "downloadName": "05-conhecimentos-bancarios-2.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Vendas, negociação e atendimento",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/06-vendas-negociacao-atendimento.mp3",
+          "downloadName": "06-vendas-negociacao-atendimento.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Matemática financeira, estatística e informática",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/07-matfin-estatistica-informatica.mp3",
+          "downloadName": "07-matfin-estatistica-informatica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Dois simulados comentados",
+          "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+          "downloadName": "08-simulados-comentados.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-24",
+      "confirmed": false,
+      "source": "FCC, Edital 01/2026 Banestes (retificado pelo Edital 03/2026) — inscrições até 23/11/2026, prova objetiva prevista para 24/01/2027",
+      "sourceUrl": "https://www.concursosfcc.com.br/"
+    },
+    "seoTitle": "Apostila Técnico Bancário Banestes 2026 (FCC) | Trilha Aprova",
+    "seoDescription": "Apostila Técnico Bancário Banestes 2026 (FCC): conhecimentos bancários, vendas, matemática financeira, 2 simulados de 70 questões e audiobook.",
+    "storefront": {
+      "badge": "BANESTES 2026 • TÉCNICO BANCÁRIO • FCC",
+      "cover3d": "/assets/apostila-banestes-tecnico-bancario-3d.png",
+      "cta": "Comprar apostila com audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
