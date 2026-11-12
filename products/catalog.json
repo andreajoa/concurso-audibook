@@ -1470,5 +1470,112 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "ibge-recenseador-censo-agro-2026": {
+    "slug": "ibge-recenseador-censo-agro-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "IBGE - Processo Seletivo Simplificado Edital 03/2026 - Recenseador do 12º Censo Agropecuário, Florestal e Aquícola",
+    "examBoard": "Fundação Cesgranrio",
+    "category": "Concursos públicos",
+    "name": "Recenseador IBGE - Censo Agro 2027 + audiobook",
+    "shortName": "Recenseador IBGE Censo Agro 2027",
+    "edition": "Pós-edital 03/2026 (inscrições até 25/11/2026), fechamento em 12/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil",
+    "currency": "brl",
+    "priceCents": 2499,
+    "compareAtCents": 4999,
+    "stripePriceEnv": "STRIPE_PRICE_IBGE_RECENSEADOR_2026",
+    "description": "Apostila digital para Recenseador do IBGE (12º Censo Agropecuário, Florestal e Aquícola), edital 03/2026, banca Cesgranrio. PDF único de 150 páginas: 74 páginas com teoria de todo o conteúdo programático (Língua Portuguesa, Matemática e Conhecimentos Técnicos do Censo Agro explicados em linguagem simples) e dois simulados de 60 questões com gabarito comentado, mais 76 páginas com o documento técnico oficial do IBGE que é a base de metade da prova e os anexos do edital. Oito capítulos de audiobook e resumo narrado.",
+    "proofPoints": [
+      "PDF único com 150 páginas",
+      "74 páginas de teoria e simulados",
+      "Dois simulados de 60 questões no formato Cesgranrio (5 alternativas) com gabarito comentado",
+      "Conhecimentos Técnicos do Censo Agro explicados capítulo a capítulo",
+      "Documento técnico oficial do IBGE na íntegra",
+      "Audiobook em 8 capítulos, português brasileiro",
+      "Resumo em áudio do autor"
+    ],
+    "assets": {
+      "coverKey": "ibge-recenseador-censo-agro-2026/images/capa.png",
+      "pdfKey": "ibge-recenseador-censo-agro-2026/docs/apostila-ibge-recenseador-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_IBGE_Recenseador_2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Recenseador IBGE 2026",
+        "key": "ibge-recenseador-censo-agro-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Recenseador_IBGE_2026.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Apresentação e mapa de preparação",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+          "downloadName": "01-apresentacao-e-mapa-de-preparacao.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+          "downloadName": "02-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "O IBGE, o Censo Agro e a estrutura censitária",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/04-ibge-censo-agro-e-estrutura-censitaria.mp3",
+          "downloadName": "04-ibge-censo-agro-e-estrutura-censitaria.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Instrumentos de trabalho e navegação em campo",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/05-instrumentos-e-navegacao-em-campo.mp3",
+          "downloadName": "05-instrumentos-e-navegacao-em-campo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Divisão do território e setores censitários",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/06-territorio-e-setores-censitarios.mp3",
+          "downloadName": "06-territorio-e-setores-censitarios.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Endereço, coordenadas e estabelecimento agropecuário",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/07-endereco-coordenadas-e-estabelecimento.mp3",
+          "downloadName": "07-endereco-coordenadas-e-estabelecimento.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Dois simulados comentados",
+          "key": "ibge-recenseador-censo-agro-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+          "downloadName": "08-simulados-comentados.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-31",
+      "confirmed": false,
+      "source": "Fundação Cesgranrio, Edital 03/2026 IBGE Recenseador — inscrições até 25/11/2026, prova objetiva prevista para 31/01/2027",
+      "sourceUrl": "https://www.cesgranrio.org.br/concurso/ibge-2026/"
+    },
+    "seoTitle": "Apostila Recenseador IBGE 2026 Censo Agro | Trilha Aprova",
+    "seoDescription": "Apostila Recenseador IBGE 2026 (Cesgranrio): conhecimentos técnicos do Censo Agro, português, matemática, 2 simulados de 60 questões e audiobook.",
+    "storefront": {
+      "badge": "IBGE 2026 • RECENSEADOR • CENSO AGRO • CESGRANRIO",
+      "cover3d": "/assets/apostila-ibge-recenseador-3d.png",
+      "cta": "Comprar apostila com audiobook"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
