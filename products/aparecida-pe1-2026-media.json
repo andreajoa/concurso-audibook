@@ -1,0 +1,99 @@
+{
+  "slug": "aparecida-de-goiania-pe1-pedagogia-2026",
+  "pdfPages": 324,
+  "questions": 100,
+  "language": "pt-BR",
+  "chapters": 8,
+  "voice": "piper pt_BR-cadu-medium",
+  "releaseTag": "aparecida-pe1-pedagogia-2026-private-assets",
+  "files": [
+    {
+      "file": "apostila.pdf",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/docs/apostila-aparecida-pe1-pedagogia-2026.pdf",
+      "sha256": "8528ba41b395ff57e4f1b0e8abf73d53541cfb206145bb1afa7ff9d8e01325a7",
+      "bytes": 1975726,
+      "contentType": "application/pdf",
+      "durationSeconds": null
+    },
+    {
+      "file": "capa.png",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/images/capa.png",
+      "sha256": "45f70dcad5460aa6afd3252ef08587e1a48eee6ae75970d41a4ab783ee2094bd",
+      "bytes": 1747072,
+      "contentType": "image/png",
+      "durationSeconds": null
+    },
+    {
+      "file": "resumo.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/resumo.mp3",
+      "sha256": "87400fafc549aa90761e4258e5dfa905bdb17bf9e55c450241451db3493315b3",
+      "bytes": 16088221,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1005.447
+    },
+    {
+      "file": "01-apresentacao-e-mapa-de-preparacao.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+      "sha256": "a36fa7d42dc6a0e595007d5a575e187dd9f8c0065a66f22ab2253ae9df159991",
+      "bytes": 8724524,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 545.228
+    },
+    {
+      "file": "02-lingua-portuguesa.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+      "sha256": "0e134bc3836cd3c055cfa62e8e15778360bbaea7d31c7d228c39804d6aff17bb",
+      "bytes": 26158855,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1634.871
+    },
+    {
+      "file": "03-logica-goias-e-aparecida.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/03-logica-goias-e-aparecida.mp3",
+      "sha256": "fb59e2997089d6a3cddf1cab3232908ae5aa282cb29d5d3f494f231c64bc5e21",
+      "bytes": 34306969,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2144.131
+    },
+    {
+      "file": "04-constituicao-e-ldb.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/04-constituicao-e-ldb.mp3",
+      "sha256": "38feea4bd723677197a217c35931cca0f48f1e525da66cdd87267e28de50df21",
+      "bytes": 22889996,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1430.57
+    },
+    {
+      "file": "05-eca-pne-e-bncc.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/05-eca-pne-e-bncc.mp3",
+      "sha256": "084cd238e9669a881e26e90c1b50d320c10f5c050e412e706321c7d03a8ef4b2",
+      "bytes": 28942045,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1808.811
+    },
+    {
+      "file": "06-aprendizagem-curriculo-e-inclusao.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/06-aprendizagem-curriculo-e-inclusao.mp3",
+      "sha256": "8c314daef0f6c76533cc949bfc3b93bca8be2871d2f4b836191016de731e4c45",
+      "bytes": 23556223,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1472.203
+    },
+    {
+      "file": "07-alfabetizacao-pratica-lei-organica-redacao.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/07-alfabetizacao-pratica-lei-organica-redacao.mp3",
+      "sha256": "68785e845a032c8e73dfba3b43310c2100d60e58a3977cdce35f89a5e82c24e6",
+      "bytes": 33589333,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2099.258
+    },
+    {
+      "file": "08-simulados-comentados.mp3",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+      "sha256": "4de6ef37913fb1c4c578cf2359b5be78c8fbf1f1cb897575971ae7ca2f2dede2",
+      "bytes": 45562610,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2847.591
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "slug": "aparecida-de-goiania-pe1-pedagogia-2026",
+  "active": true,
+  "brand": "Trilha Aprova",
+  "contest": "Prefeitura de Aparecida de Goiânia - Secretaria Municipal de Educação - Edital 01/2026",
+  "examBoard": "Instituto Verbena/UFG",
+  "category": "Concursos públicos",
+  "name": "PE-I Pedagogia - Aparecida de Goiânia 2026 + audiobook",
+  "shortName": "PE-I Pedagogia Aparecida 2026",
+  "edition": "Pós-edital 01/2026 (consolidado pelo Complementar 01/2026), fechamento em 12/11/2026",
+  "author": "Trilha Aprova",
+  "audience": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO",
+  "currency": "brl",
+  "priceCents": 2499,
+  "compareAtCents": 4999,
+  "stripePriceEnv": "STRIPE_PRICE_APARECIDA_PE1_PEDAGOGIA_2026",
+  "description": "Apostila digital para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. PDF único de 324 páginas: 91 páginas com teoria de todo o conteúdo programático, redação dissertativa e dois simulados de 50 questões com gabarito comentado, mais 233 páginas de legislação oficial (CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica). Oito capítulos de audiobook e resumo narrado.",
+  "proofPoints": [
+    "PDF único com 324 páginas",
+    "91 páginas de teoria, redação e simulados",
+    "Dois simulados de 50 questões no formato da prova (4 alternativas) com gabarito comentado",
+    "Novo PNE (Lei 15.388/2026), BNCC, LDB, ECA, LBI e Lei Orgânica de Aparecida",
+    "Goiás e Aparecida de Goiânia com dados oficiais do IBGE",
+    "Audiobook em 8 capítulos, português brasileiro",
+    "Resumo em áudio do autor"
+  ],
+  "assets": {
+    "coverKey": "aparecida-de-goiania-pe1-pedagogia-2026/images/capa.png",
+    "pdfKey": "aparecida-de-goiania-pe1-pedagogia-2026/docs/apostila-aparecida-pe1-pedagogia-2026.pdf",
+    "pdfDownloadName": "Trilha_Aprova_Aparecida_PE1_Pedagogia_2026.pdf",
+    "summary": {
+      "id": "summary",
+      "title": "Resumo em áudio - PE-I Pedagogia Aparecida 2026",
+      "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/resumo.mp3",
+      "downloadName": "Resumo_PE1_Pedagogia_Aparecida_2026.mp3"
+    },
+    "chapters": [
+      {
+        "id": "c1",
+        "title": "Apresentação e mapa de preparação",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/01-apresentacao-e-mapa-de-preparacao.mp3",
+        "downloadName": "01-apresentacao-e-mapa-de-preparacao.mp3"
+      },
+      {
+        "id": "c2",
+        "title": "Língua Portuguesa",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/02-lingua-portuguesa.mp3",
+        "downloadName": "02-lingua-portuguesa.mp3"
+      },
+      {
+        "id": "c3",
+        "title": "Raciocínio Lógico, Goiás e Aparecida de Goiânia",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/03-logica-goias-e-aparecida.mp3",
+        "downloadName": "03-logica-goias-e-aparecida.mp3"
+      },
+      {
+        "id": "c4",
+        "title": "O direito à educação na Constituição e na LDB",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/04-constituicao-e-ldb.mp3",
+        "downloadName": "04-constituicao-e-ldb.mp3"
+      },
+      {
+        "id": "c5",
+        "title": "ECA, novo PNE e BNCC",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/05-eca-pne-e-bncc.mp3",
+        "downloadName": "05-eca-pne-e-bncc.mp3"
+      },
+      {
+        "id": "c6",
+        "title": "Desenvolvimento e aprendizagem, currículo e inclusão",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/06-aprendizagem-curriculo-e-inclusao.mp3",
+        "downloadName": "06-aprendizagem-curriculo-e-inclusao.mp3"
+      },
+      {
+        "id": "c7",
+        "title": "Alfabetização, prática pedagógica, Lei Orgânica e redação",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/07-alfabetizacao-pratica-lei-organica-redacao.mp3",
+        "downloadName": "07-alfabetizacao-pratica-lei-organica-redacao.mp3"
+      },
+      {
+        "id": "c8",
+        "title": "Dois simulados comentados",
+        "key": "aparecida-de-goiania-pe1-pedagogia-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+        "downloadName": "08-simulados-comentados.mp3"
+      }
+    ]
+  },
+  "exam": {
+    "date": "2027-01-31",
+    "confirmed": false,
+    "source": "Instituto Verbena/UFG, Edital 01/2026 Aparecida de Goiânia (Educação) — inscrições até 09/12/2026, prova objetiva e redação previstas para 31/01/2027",
+    "sourceUrl": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/"
+  },
+  "seoTitle": "Apostila PE-I Pedagogia Aparecida de Goiânia 2026 | Trilha Aprova",
+  "seoDescription": "Apostila PE-I Pedagogia Aparecida de Goiânia 2026 (Instituto Verbena/UFG): teoria do edital, 2 simulados comentados, legislação e audiobook.",
+  "storefront": {
+    "badge": "APARECIDA DE GOIÂNIA 2026 • PE-I PEDAGOGIA • VERBENA/UFG",
+    "cover3d": "/assets/apostila-aparecida-pe1-pedagogia-3d.png",
+    "cta": "Comprar apostila com audiobook"
+  },
+  "funnel": {
+    "orderBump": [],
+    "upsell": [],
+    "crossSell": [],
+    "downsell": []
+  }
+}

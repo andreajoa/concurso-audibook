@@ -47,6 +47,11 @@ PRODUCT_EXPECTATIONS = {
         'pages': 550,
         'topics': ['escrevente técnico judiciário', 'tjsp', 'vunesp', 'gabarito', 'simulado'],
     },
+    'aparecida-de-goiania-pe1-pedagogia-2026': {
+        # 91 pages of study content plus 233 pages of official legislation.
+        'pages': 324,
+        'topics': ['aparecida de goiânia', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
+    },
     'professor-adjunto-i-ibam-santos-2026': {
         'pages': 132,
         # The supplied paperback ends with a blank verso, verified in both PDF readers.
