@@ -2,7 +2,7 @@ name: Publish Aparecida PE-I Pedagogia 2026 private R2 media
 on:
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: publish-aparecida-pe1-private
   cancel-in-progress: false
