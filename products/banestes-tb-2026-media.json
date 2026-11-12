@@ -1,0 +1,99 @@
+{
+  "slug": "banestes-tecnico-bancario-2026",
+  "pdfPages": 246,
+  "questions": 140,
+  "language": "pt-BR",
+  "chapters": 8,
+  "voice": "piper pt_BR-cadu-medium",
+  "releaseTag": "banestes-tecnico-bancario-2026-private-assets",
+  "files": [
+    {
+      "file": "apostila.pdf",
+      "key": "banestes-tecnico-bancario-2026/docs/apostila-banestes-tecnico-bancario-2026.pdf",
+      "sha256": "82db68bb27d8bb5e872ccd1ba53710fd3d3f0b99838755e9059922b4493a1e9e",
+      "bytes": 9661022,
+      "contentType": "application/pdf",
+      "durationSeconds": null
+    },
+    {
+      "file": "capa.png",
+      "key": "banestes-tecnico-bancario-2026/images/capa.png",
+      "sha256": "0a82bb5c9966ae36a306d878576605de4598b3208905faeac49763914abf1dac",
+      "bytes": 1758775,
+      "contentType": "image/png",
+      "durationSeconds": null
+    },
+    {
+      "file": "resumo.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/resumo.mp3",
+      "sha256": "6c2887db179d7f88dda2547e075c7256b42575d3bc3e6491ea107a24df863d5f",
+      "bytes": 26872404,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1679.453
+    },
+    {
+      "file": "01-apresentacao-e-lingua-portuguesa.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/01-apresentacao-e-lingua-portuguesa.mp3",
+      "sha256": "b43d32ce7510778b4f58ae865ed0c3cd7f2ed00881e8c8ce672c695d32b444f5",
+      "bytes": 32403165,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2025.128
+    },
+    {
+      "file": "02-matematica-e-raciocinio-logico.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/02-matematica-e-raciocinio-logico.mp3",
+      "sha256": "5ed3c42b985aadda74e05206bccb0397e2f948e37fc4286d52b75ae473825c20",
+      "bytes": 11195916,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 699.687
+    },
+    {
+      "file": "03-atualidades-etica-compliance-esg.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/03-atualidades-etica-compliance-esg.mp3",
+      "sha256": "001a0b670843030ae2ed4b46f7d7bd4527db72d57c696c5b793bd1c7c6087bbd",
+      "bytes": 28570479,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1785.591
+    },
+    {
+      "file": "04-conhecimentos-bancarios-1.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/04-conhecimentos-bancarios-1.mp3",
+      "sha256": "143ec13a2f3a7b2d46fd01c95708ed9ae406eca5a1b171eeeb5318bce8cf2920",
+      "bytes": 19340687,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1208.715
+    },
+    {
+      "file": "05-conhecimentos-bancarios-2.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/05-conhecimentos-bancarios-2.mp3",
+      "sha256": "c8c206ccd0f1f9b6b979270d24d1755fdf7d1510e7a26f387db8279b8859763a",
+      "bytes": 20453712,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1278.282
+    },
+    {
+      "file": "06-vendas-negociacao-atendimento.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/06-vendas-negociacao-atendimento.mp3",
+      "sha256": "2fcbeab340baeff3ccca36bd5157d2c92bfd59c6f914896c72976229ceff1925",
+      "bytes": 18620543,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 1163.714
+    },
+    {
+      "file": "07-matfin-estatistica-informatica.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/07-matfin-estatistica-informatica.mp3",
+      "sha256": "facf81d984f671b78c8c56dc1a35c883671af04d4e375d05c2d45460dc38bb80",
+      "bytes": 39660191,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 2478.684
+    },
+    {
+      "file": "08-simulados-comentados.mp3",
+      "key": "banestes-tecnico-bancario-2026/audio/pt-br-v1/08-simulados-comentados.mp3",
+      "sha256": "db82b17e2267acf11f690460cba4374c99300a2a9fb1f8f85b096d04c5372cd5",
+      "bytes": 68819949,
+      "contentType": "audio/mpeg",
+      "durationSeconds": 4301.183
+    }
+  ]
+}

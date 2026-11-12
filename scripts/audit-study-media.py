@@ -52,6 +52,11 @@ PRODUCT_EXPECTATIONS = {
         'pages': 324,
         'topics': ['aparecida de goiânia', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
     },
+    'banestes-tecnico-bancario-2026': {
+        # 101 pages of study content plus 145 pages of the Banestes ethics guide and legislation.
+        'pages': 246,
+        'topics': ['banestes', 'técnico bancário', 'fundação carlos chagas', 'gabarito', 'simulado'],
+    },
     'professor-adjunto-i-ibam-santos-2026': {
         'pages': 132,
         # The supplied paperback ends with a blank verso, verified in both PDF readers.
