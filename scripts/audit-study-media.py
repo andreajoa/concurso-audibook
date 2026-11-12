@@ -38,6 +38,15 @@ PRODUCT_EXPECTATIONS = {
         'pages': 84,
         'topics': ['secretário', 'ibam', 'língua portuguesa', 'raciocínio lógico', 'eca', 'simulado'],
     },
+    'matao-sp-fiscal-de-obras-ed02-2026': {
+        'pages': 49,
+        'topics': ['fiscal de obras', 'matão', 'ibam', 'gabarito', 'simulado'],
+    },
+    'tjsp-escrevente-tecnico-judiciario-2026': {
+        # 86 pages of study content plus 464 pages of official edital legislation.
+        'pages': 550,
+        'topics': ['escrevente técnico judiciário', 'tjsp', 'vunesp', 'gabarito', 'simulado'],
+    },
     'professor-adjunto-i-ibam-santos-2026': {
         'pages': 132,
         # The supplied paperback ends with a blank verso, verified in both PDF readers.
