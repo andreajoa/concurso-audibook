@@ -734,6 +734,17 @@ for (const p of products) {
     `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a>` +
     '<p class="combo-pack-note">Pagamento seguro. Assim que o pagamento é confirmado, a sua área de acesso com o PDF e os áudios é liberada e o link chega no seu e-mail.</p></section>' +
+    (() => {
+      // Cross-sell: mesma área (e mesma cidade primeiro) + Redação, que cai em quase todo concurso.
+      const area = sf.area, cid = sf.concurso && sf.concurso.local;
+      const rel = products.filter(o => o.slug !== p.slug && o.storefront.area === area)
+        .sort((x, y) => ((y.storefront.concurso || {}).local === cid) - ((x.storefront.concurso || {}).local === cid)).slice(0, 2);
+      const red = products.find(o => o.slug.startsWith('redacao') && o.slug !== p.slug);
+      const list = [...rel, ...(red ? [red] : [])].slice(0, 3);
+      return list.length ? '<section class="combo-section combo-cross"><h2>Quem estuda para este concurso também leva</h2>' +
+        '<p class="combo-lead">Aproveite a viagem para a prova: concursos da mesma área costumam cobrar conteúdos parecidos.</p>' +
+        `<div class="ac-grid">${list.map(o => apostilaCard(o)).join('')}</div></section>` : '';
+    })() +
     '<p class="combo-more"><a href="/apostilas-para-concurso">Ver todas as apostilas da Trilha Aprova</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
     disclaimer +
     `<div class="combo-sticky" role="region" aria-label="Comprar"><span><b>${brl(p.priceCents)}</b> · ${esc(p.shortName)}</span><a href="${buyUrl}">Comprar agora</a></div>`;
@@ -753,8 +764,8 @@ for (const p of products) {
     faq,
     customHero: hero,
     mainClass: 'combo-page',
-    styles: ['/apostila-combo.css'],
-    scripts: ['/apostila-combo.js'],
+    styles: ['/apostila-combo.css', '/apostila-cards.css'],
+    scripts: ['/apostila-combo.js', '/apostila-cards.js'],
     nodes: [productNode, audiobookNode],
     trail: [['Apostilas', '/apostilas-para-concurso']],
     image: p.storefront.cover3d,

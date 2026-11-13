@@ -164,7 +164,8 @@
         "url": null,
         "paginas": 19,
         "questoes": 15
-      }
+      },
+      "area": "redacao"
     },
     "funnel": {
       "orderBump": [],
@@ -662,7 +663,8 @@
         "url": "https://www.ibam-concursos.org.br",
         "paginas": 132,
         "questoes": 200
-      }
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
@@ -813,7 +815,8 @@
         "url": null,
         "paginas": 220,
         "questoes": 60
-      }
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
@@ -1078,7 +1081,8 @@
         "url": "https://www.ibam-concursos.org.br",
         "paginas": 49,
         "questoes": 160
-      }
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1300,7 +1304,8 @@
         "url": "https://www.ibam-concursos.org.br",
         "paginas": 49,
         "questoes": 160
-      }
+      },
+      "area": "tecnico"
     },
     "funnel": {
       "orderBump": [],
@@ -1438,7 +1443,8 @@
         "url": "https://www.vunesp.com.br",
         "paginas": 550,
         "questoes": 70
-      }
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1583,7 +1589,8 @@
         "url": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/",
         "paginas": 324,
         "questoes": 100
-      }
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
@@ -1722,7 +1729,8 @@
         "url": "https://www.concursosfcc.com.br",
         "paginas": 246,
         "questoes": 140
-      }
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1861,7 +1869,8 @@
         "url": "https://www.cesgranrio.org.br",
         "paginas": 150,
         "questoes": 120
-      }
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
