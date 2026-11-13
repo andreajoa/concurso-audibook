@@ -72,8 +72,16 @@
 .combo-sticky a{flex:none;background:#caa65a;color:#08284f!important;font:800 15px/1 system-ui;padding:13px 18px;border-radius:10px;text-decoration:none!important}
 @media(max-width:860px){
  .combo-hero-inner{grid-template-columns:1fr;gap:10px}
- .combo-visual{height:330px;order:-1}
+ .combo-visual{height:330px}
  .combo-book{width:min(150px,36%)} .combo-book strong{font-size:16px}
  .combo-buy{width:100%;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){.combo-buy,.combo-sticky,.faq-item summary:after{transition:none}}
+/* legendas numeradas das 3 capas (padrão: 1 Simulados · 2 Apostila Completa · 3 terceiro caderno) */
+.combo-labels{list-style:none;counter-reset:cl;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.combo-labels li{counter-increment:cl;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 10px 10px 40px;position:relative;font:400 12px/1.35 system-ui,sans-serif;color:#d4dfec}
+.combo-labels li:before{content:counter(cl);position:absolute;left:10px;top:10px;width:22px;height:22px;border-radius:50%;background:#caa65a;color:#08284f;font:800 12px/22px system-ui;text-align:center}
+.combo-labels li:nth-child(2){border-color:#caa65a;background:rgba(202,166,90,.15)}
+.combo-labels strong{display:block;color:#fff;font-size:13px;margin-bottom:2px}
+.combo-card-main{border:2px solid #caa65a}
+@media(max-width:860px){.combo-visual-wrap{order:-1}.combo-labels{grid-template-columns:1fr}}

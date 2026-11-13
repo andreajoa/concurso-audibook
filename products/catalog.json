@@ -138,16 +138,16 @@
       "shortTag": "Redação · Nível Fundamental",
       "combo": [
         {
-          "titulo": "Teoria da redação",
-          "detalhe": "Como o texto é avaliado e como organizar"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria da redação e como ela é corrigida"
         },
         {
-          "titulo": "Modelos comentados",
+          "titulo": "Caderno de Exercícios",
+          "detalhe": "Exercícios com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno de Modelos",
           "detalhe": "Redações-modelo explicadas passo a passo"
-        },
-        {
-          "titulo": "Exercícios com gabarito",
-          "detalhe": "Treino guiado para praticar"
         }
       ]
     },
@@ -620,16 +620,16 @@
       "shortTag": "Santos · Professor Adjunto I",
       "combo": [
         {
-          "titulo": "Teoria, autores e legislação",
-          "detalhe": "PNE 2026, diretrizes e legislação de Santos"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria, autores e legislação de Santos"
         },
         {
-          "titulo": "Questões comentadas",
+          "titulo": "Caderno de Simulados",
           "detalhe": "Questões e simulado com gabarito comentado"
         },
         {
-          "titulo": "Revisão final",
-          "detalhe": "O que foi conferido e mapa do edital"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Revisão final e mapa do edital"
         }
       ],
       "subheadline": "Professor Adjunto I (código 101) — Prefeitura de Santos · Banca IBAM · Prova prevista para 29/11/2026"
@@ -757,16 +757,16 @@
       "shortTag": "SME-SP · PEIF",
       "combo": [
         {
-          "titulo": "Fundamentos e legislação",
-          "detalhe": "Currículo da Cidade, autores e legislação"
+          "titulo": "Apostila Completa",
+          "detalhe": "Fundamentos, Currículo da Cidade e legislação"
         },
         {
-          "titulo": "Simulado comentado",
-          "detalhe": "Simulado e estudos de caso com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "Simulado e estudos de caso com gabarito comentado"
         },
         {
-          "titulo": "Roteiros e revisão final",
-          "detalhe": "Roteiros de estudo e revisão"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiros de estudo e revisão final"
         }
       ]
     },
@@ -1006,16 +1006,16 @@
       "shortTag": "Matão · Assistente Adm.",
       "combo": [
         {
-          "titulo": "Teoria e legislação",
-          "detalhe": "Conteúdo do edital e legislação aplicada"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria do edital e legislação aplicada"
         },
         {
-          "titulo": "Simulados comentados",
-          "detalhe": "Questões com gabarito comentado"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "Simulados com gabarito comentado"
         },
         {
-          "titulo": "Roteiro de estudo",
-          "detalhe": "Passo a passo da primeira leitura à revisão"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiro da primeira leitura à revisão"
         }
       ],
       "subheadline": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP · Banca IBAM · Prova prevista para 06/12/2026"
@@ -1213,16 +1213,16 @@
       "shortTag": "Matão · Fiscal de Obras",
       "combo": [
         {
-          "titulo": "Teoria do edital",
-          "detalhe": "22 unidades: português, matemática, informática e obras"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria das 22 unidades do edital"
         },
         {
-          "titulo": "Simulados comentados",
-          "detalhe": "2 simulados de 40 questões com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 questões com gabarito comentado"
         },
         {
-          "titulo": "Revisão final",
-          "detalhe": "Revisão e fontes oficiais"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Revisão final e fontes oficiais"
         }
       ],
       "subheadline": "Agente de Fiscalização Pública, Fiscal de Obras, código 204, Matão/SP · Banca IBAM · Prova prevista para 24/01/2027"
@@ -1336,15 +1336,15 @@
       "shortTag": "TJ-SP · Escrevente",
       "combo": [
         {
-          "titulo": "Teoria do edital",
-          "detalhe": "Português, matemática, informática e direito + redação"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital + redação"
         },
         {
-          "titulo": "Simulado comentado",
-          "detalhe": "Questões no estilo da banca com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "Simulado no estilo da banca com gabarito comentado"
         },
         {
-          "titulo": "Legislação compilada",
+          "titulo": "Caderno de Legislação",
           "detalhe": "Leis cobradas no edital para consulta"
         }
       ],
@@ -1459,15 +1459,15 @@
       "shortTag": "Aparecida de Goiânia · PE-I",
       "combo": [
         {
-          "titulo": "Teoria do edital",
-          "detalhe": "Conteúdo programático completo + redação"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital + redação"
         },
         {
-          "titulo": "Simulados comentados",
-          "detalhe": "2 simulados de 50 questões com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 questões com gabarito comentado"
         },
         {
-          "titulo": "Legislação compilada",
+          "titulo": "Caderno de Legislação",
           "detalhe": "CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica"
         }
       ],
@@ -1589,16 +1589,16 @@
       "shortTag": "Banestes · Técnico Bancário",
       "combo": [
         {
-          "titulo": "Teoria do edital",
-          "detalhe": "Conhecimentos bancários, vendas, matemática financeira e mais"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital"
         },
         {
-          "titulo": "Simulados comentados",
-          "detalhe": "2 simulados de 70 questões com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 70 questões com gabarito comentado"
         },
         {
-          "titulo": "Roteiro de revisão",
-          "detalhe": "Correspondência com o edital para a reta final"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiro de revisão ligado ao edital"
         }
       ],
       "subheadline": "Técnico Bancário (nível médio) do Banco do Estado do Espírito Santo - Banestes, cadastro de reserva · Banca Fundação Carlos Chagas (FCC) · Prova prevista para 24/01/2027"
@@ -1713,16 +1713,16 @@
       "shortTag": "IBGE · Recenseador",
       "combo": [
         {
-          "titulo": "Teoria do edital",
-          "detalhe": "Português, matemática e conhecimentos técnicos do Censo"
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital"
         },
         {
-          "titulo": "Simulados comentados",
-          "detalhe": "2 simulados de 60 questões com gabarito"
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 60 questões com gabarito comentado"
         },
         {
-          "titulo": "Roteiro de revisão",
-          "detalhe": "Correspondência com o edital para a reta final"
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiro de revisão ligado ao edital"
         }
       ],
       "subheadline": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil · Banca Fundação Cesgranrio · Prova prevista para 31/01/2027"

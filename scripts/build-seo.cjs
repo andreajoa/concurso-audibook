@@ -661,12 +661,15 @@ for (const p of products) {
     { titulo: 'Simulados comentados', detalhe: 'Questões no formato da banca com gabarito' },
     { titulo: 'Revisão final', detalhe: 'Roteiro para a reta final da prova' }
   ];
+  // Ordem padrão, da esquerda para a direita: 1 = Caderno de Simulados, 2 = Apostila Completa (capa real), 3 = terceiro caderno.
+  const ordered = [combo[1], combo[0], combo[2]];
   const book = (c, cls) => `<div class="combo-book ${cls}" aria-hidden="true"><span class="combo-book-brand">TRILHA APROVA</span>` +
     `<span class="combo-book-contest">${esc(sf.shortTag || p.shortName)}</span><strong>${esc(c.titulo)}</strong><span class="combo-book-foot">${esc(c.detalhe)}</span></div>`;
   const visual = '<div class="combo-visual">' + book(combo[1], 'combo-book-left') +
     `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
     book(combo[2], 'combo-book-right') +
-    `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>`;
+    `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>` +
+    `<ol class="combo-labels">${ordered.map(c => `<li><strong>${esc(c.titulo)}</strong><span>${esc(c.detalhe)}</span></li>`).join('')}</ol>`;
   const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
   const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
     `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
@@ -676,14 +679,14 @@ for (const p of products) {
     `<div class="combo-price-row"><div><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
     (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
-    '</div>' + visual + '</div></section>' +
+    '</div><div class="combo-visual-wrap">' + visual + '</div></div></section>' +
     (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
 
   const body =
     '<section class="combo-section"><h2>O que você leva por ' + brl(p.priceCents) + '</h2>' +
-    '<p class="combo-lead">Três cadernos de estudo organizados no PDF completo, mais o audiobook e o resumo narrado para estudar quando não dá para ler.</p>' +
+    '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>' +
     '<div class="combo-grid">' +
-    combo.map((c, i) => `<article class="combo-card"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
+    ordered.map((c, i) => `<article class="combo-card${i === 1 ? ' combo-card-main' : ''}"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
     `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
     '<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Resumo em áudio</h3><p>Revisão narrada para a véspera da prova.</p></article>' +
     '</div></section>' +
@@ -697,7 +700,7 @@ for (const p of products) {
     `<section class="combo-section"><h2>Audiobook: os ${nCap} capítulos</h2><ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong>${c.subtitle ? `<p>${esc(c.subtitle)}</p>` : ''}</li>`).join('')}</ol></section>` +
     `<section class="combo-section"><h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p></section>` +
     '<section class="combo-pack"><h2>O pacote completo</h2><ul class="combo-list">' +
-    combo.map(c => `<li>${esc(c.titulo)}</li>`).join('') +
+    ordered.map((c, i) => `<li><strong>${i + 1}. ${esc(c.titulo)}</strong> — ${esc(c.detalhe)}</li>`).join('') +
     `<li>Audiobook em ${nCap} capítulos</li><li>Resumo em áudio</li><li>Acesso imediato após o pagamento, com download</li><li>7 dias para arrependimento, conforme o Código de Defesa do Consumidor</li></ul>` +
     `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a>` +
