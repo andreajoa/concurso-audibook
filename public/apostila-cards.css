@@ -95,3 +95,4 @@
 .ac-vitrine .ac-car-btn{background:#caa65a;color:#08284f}
 .ac-vitrine .ac-car-prev{left:0}.ac-vitrine .ac-car-next{right:0}
 @media(max-width:600px){.ac-vitrine .ac-car-track{gap:22px;padding:10px 4px 14px;scroll-padding:0 16px}.ac-vitrine .ac-car-item{flex-basis:126px}.ac-vitrine .ac-car-item img{height:168px}.ac-vitrine-t{justify-content:center;text-align:center}}
+.ac-car-track{cursor:grab}
