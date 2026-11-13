@@ -1592,17 +1592,17 @@
     "category": "Concursos públicos",
     "name": "PE-I Pedagogia - Aparecida de Goiânia 2026 + audiobook",
     "shortName": "PE-I Pedagogia Aparecida 2026",
-    "edition": "Pós-edital 01/2026 (consolidado pelo Complementar 01/2026), fechamento em 12/11/2026",
+    "edition": "Pós-edital 01/2026 (consolidado pelo Complementar 01/2026), edição 2.0 de 13/11/2026",
     "author": "Trilha Aprova",
     "audience": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO",
     "currency": "brl",
     "priceCents": 3390,
     "stripePriceEnv": "STRIPE_PRICE_APARECIDA_PE1_PEDAGOGIA_2026",
-    "description": "Apostila digital para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. PDF único de 324 páginas: 91 páginas com teoria de todo o conteúdo programático, redação dissertativa e dois simulados de 50 questões com gabarito comentado, mais 233 páginas de legislação oficial (CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica). Oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. PDF único de 527 páginas com 899 questões comentadas: 294 páginas com teoria de todo o conteúdo programático, redação dissertativa, dois simulados de 50 questões e um banco de 799 questões comentadas por tema, mais 233 páginas de legislação oficial (CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica). Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "PDF único com 324 páginas",
-      "91 páginas de teoria, redação e simulados",
-      "Dois simulados de 50 questões no formato da prova (4 alternativas) com gabarito comentado",
+      "PDF único com 527 páginas",
+      "899 questões autorais comentadas",
+      "Banco de 799 questões por tema + 2 simulados de 50 questões no formato da prova",
       "Novo PNE (Lei 15.388/2026), BNCC, LDB, ECA, LBI e Lei Orgânica de Aparecida",
       "Goiás e Aparecida de Goiânia com dados oficiais do IBGE",
       "Audiobook em 8 capítulos, português brasileiro",
@@ -1690,7 +1690,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "2 simulados de 50 questões com gabarito comentado"
+          "detalhe": "899 questões comentadas: banco por tema + 2 simulados"
         },
         {
           "titulo": "Caderno de Legislação",
@@ -1699,7 +1699,7 @@
       ],
       "bullets": [
         "Teoria de todo o edital do Instituto Verbena/UFG, com redação",
-        "2 simulados de 50 questões com gabarito comentado",
+        "899 questões comentadas: banco de 799 por tema + 2 simulados de 50",
         "Legislação completa: CF, LDB, ECA, novo PNE, BNCC, LBI e Lei Orgânica",
         "Audiobook em 8 capítulos + resumo narrado"
       ],
@@ -1717,8 +1717,8 @@
         "inscricoes": "09/11 a 09/12/2026",
         "requisito": "Licenciatura em Pedagogia",
         "url": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/",
-        "paginas": 324,
-        "questoes": 100
+        "paginas": 527,
+        "questoes": 899
       },
       "area": "educacao"
     },
