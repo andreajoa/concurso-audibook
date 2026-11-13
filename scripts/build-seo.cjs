@@ -665,9 +665,13 @@ for (const p of products) {
   const ordered = [combo[1], combo[0], combo[2]];
   const book = (c, cls) => `<div class="combo-book ${cls}" aria-hidden="true"><span class="combo-book-brand">TRILHA APROVA</span>` +
     `<span class="combo-book-contest">${esc(sf.shortTag || p.shortName)}</span><strong>${esc(c.titulo)}</strong><span class="combo-book-foot">${esc(c.detalhe)}</span></div>`;
-  const visual = '<div class="combo-visual">' + book(combo[1], 'combo-book-left') +
+  // Capas laterais: imagens 3D no mesmo molde da capa principal (storefront.comboCovers); sem elas, cadernos desenhados.
+  const sideCover = (src, c, cls) => `<img class="combo-side ${cls}" src="${esc(src)}" alt="Capa do ${esc(c.titulo)} — ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">`;
+  const covers = sf.comboCovers && sf.comboCovers.length === 2 ? sf.comboCovers : null;
+  const visual = `<div class="combo-visual${covers ? ' combo-visual-3d' : ''}">` +
+    (covers ? sideCover(covers[0], combo[1], 'combo-side-left') : book(combo[1], 'combo-book-left')) +
     `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
-    book(combo[2], 'combo-book-right') +
+    (covers ? sideCover(covers[1], combo[2], 'combo-side-right') : book(combo[2], 'combo-book-right')) +
     `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>` +
     `<ol class="combo-labels">${ordered.map(c => `<li><strong>${esc(c.titulo)}</strong><span>${esc(c.detalhe)}</span></li>`).join('')}</ol>`;
   const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));

@@ -1477,7 +1477,11 @@
         "Legislação completa: CF, LDB, ECA, novo PNE, BNCC, LBI e Lei Orgânica",
         "Audiobook em 8 capítulos + resumo narrado"
       ],
-      "subheadline": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO · Banca Instituto Verbena/UFG · Prova prevista para 31/01/2027"
+      "subheadline": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO · Banca Instituto Verbena/UFG · Prova prevista para 31/01/2027",
+      "comboCovers": [
+        "/assets/apostila-aparecida-pe1-simulados-3d.png",
+        "/assets/apostila-aparecida-pe1-legislacao-3d.png"
+      ]
     },
     "funnel": {
       "orderBump": [],
