@@ -690,11 +690,11 @@ for (const p of products) {
   const book = (c, cls) => `<div class="combo-book ${cls}" aria-hidden="true"><span class="combo-book-brand">TRILHA APROVA</span>` +
     `<span class="combo-book-contest">${esc(sf.shortTag || p.shortName)}</span><strong>${esc(c.titulo)}</strong><span class="combo-book-foot">${esc(c.detalhe)}</span></div>`;
   // Capas laterais: imagens 3D no mesmo molde da capa principal (storefront.comboCovers); sem elas, cadernos desenhados.
-  const sideCover = (src, c, cls) => `<img class="combo-side ${cls}" src="${esc(src)}" alt="Capa do ${esc(c.titulo)} — ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">`;
+  const sideCover = (src, c, cls) => `<img class="combo-side ${cls}" src="${esc(src)}" alt="Capa do ${esc(c.titulo)} — ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async" tabindex="0" role="button" data-capa-titulo="${esc(c.titulo)}" data-capa-detalhe="${esc(c.detalhe)}">`;
   const covers = sf.comboCovers && sf.comboCovers.length === 2 ? sf.comboCovers : null;
   const visual = `<div class="combo-visual${covers ? ' combo-visual-3d' : ''}">` +
     (covers ? sideCover(covers[0], combo[1], 'combo-side-left') : book(combo[1], 'combo-book-left')) +
-    `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
+    `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async" tabindex="0" role="button" data-capa-titulo="${esc(combo[0].titulo)}" data-capa-detalhe="${esc(combo[0].detalhe + '. ' + p.proofPoints.slice(0, 2).join('. '))}">` +
     (covers ? sideCover(covers[1], combo[2], 'combo-side-right') : book(combo[2], 'combo-book-right')) +
     `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>` +
     `<ol class="combo-labels">${ordered.map(c => `<li><strong>${esc(c.titulo)}</strong><span>${esc(c.detalhe)}</span></li>`).join('')}</ol>`;
@@ -1676,7 +1676,7 @@ home = home.replace('</main>', discovery);
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
 const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
-  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"><span>${esc((p.storefront.concurso && p.storefront.concurso.cargo) || p.shortName)}</span><b>${brl(p.priceCents)}</b></a>`).join('') +
+  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"><span>${esc((p.storefront.concurso && p.storefront.concurso.cargo) || p.shortName)}</span><b>${brl(p.priceCents)}</b><em class="ac-car-cta">Ver apostila →</em></a>`).join('') +
   '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
 const shelf = carousel + '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 

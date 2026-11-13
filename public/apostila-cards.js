@@ -34,3 +34,18 @@
     c.querySelector('.ac-car-next').addEventListener('click', function () { step(1); });
   });
 })();
+// carrossel automático: avança sozinho, para com o mouse em cima ou com o foco dentro
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.ac-car-track').forEach(function (t) {
+    var paused = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) { t.parentNode.addEventListener(ev, function () { paused = true; }, { passive: true }); });
+    ['mouseleave', 'focusout'].forEach(function (ev) { t.parentNode.addEventListener(ev, function () { paused = false; }); });
+    setInterval(function () {
+      if (paused || document.hidden) return;
+      var item = t.querySelector('.ac-car-item'); var w = item ? item.getBoundingClientRect().width + 18 : 200;
+      if (t.scrollLeft + t.clientWidth >= t.scrollWidth - 4) t.scrollTo({ left: 0, behavior: 'smooth' });
+      else t.scrollBy({ left: w, behavior: 'smooth' });
+    }, 3000);
+  });
+})();

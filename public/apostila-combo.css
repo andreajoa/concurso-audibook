@@ -108,3 +108,11 @@
 .combo-perks span:last-child{background:#b3261e;color:#fff}
 .combo-perks-dark{justify-content:center}
 .combo-price-label{display:block;color:#f1d79c;font:700 13px/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.combo-pop{border:0;border-radius:16px;padding:22px 24px;max-width:420px;width:90vw;box-shadow:0 30px 70px rgba(0,0,0,.4);font-family:system-ui,sans-serif}
+.combo-pop::backdrop{background:rgba(6,20,40,.6)}
+.combo-pop h3{font:400 24px/1.2 Georgia,serif;color:#08284f;margin:0 0 8px}
+.combo-pop p{color:#334861;line-height:1.55;margin:0 0 16px}
+.combo-pop div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.combo-pop .combo-buy{padding:14px 18px;font-size:15px}
+.combo-pop button{background:#fff;border:1.5px solid #d3dae3;border-radius:10px;padding:12px 16px;font:700 14px system-ui;cursor:pointer}
+.combo-visual-3d>img:focus-visible{outline:3px solid #caa65a;outline-offset:4px}

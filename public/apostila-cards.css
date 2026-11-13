@@ -75,3 +75,5 @@
 .ac-comprar span,.ac-comprar{letter-spacing:.01em}
 .ac-espiar{border-color:#caa65a}
 .ac-espiar:hover{background:#fbf3e2;border-color:#9a7428}
+.ac-car-cta{font-style:normal;margin-top:2px;background:#08284f;color:#fff;border-radius:999px;padding:7px 12px;font:800 12px/1 system-ui}
+.ac-car-item:hover .ac-car-cta{background:#caa65a;color:#08284f}

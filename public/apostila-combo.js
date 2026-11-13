@@ -16,3 +16,22 @@
   window.addEventListener('scroll', update, { passive: true });
   update();
 })();
+// clicar numa das 3 capas mostra um resumo do caderno
+(function () {
+  var pop;
+  function show(el) {
+    if (!pop) {
+      pop = document.createElement('dialog'); pop.className = 'combo-pop';
+      pop.innerHTML = '<h3></h3><p></p><div><a class="combo-buy" href="#">Quero o combo completo</a><button type="button">Fechar</button></div>';
+      document.body.appendChild(pop);
+      pop.querySelector('button').onclick = function () { pop.close(); };
+      pop.addEventListener('click', function (e) { if (e.target === pop) pop.close(); });
+      var buy = document.querySelector('.combo-buy'); if (buy) pop.querySelector('a').href = buy.getAttribute('href');
+    }
+    pop.querySelector('h3').textContent = el.getAttribute('data-capa-titulo');
+    pop.querySelector('p').textContent = el.getAttribute('data-capa-detalhe') + ' — incluído no combo, junto com o audiobook grátis.';
+    if (pop.showModal) pop.showModal();
+  }
+  document.addEventListener('click', function (e) { var el = e.target.closest && e.target.closest('[data-capa-titulo]'); if (el) show(el); });
+  document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('[data-capa-titulo]')) { e.preventDefault(); show(e.target); } });
+})();
