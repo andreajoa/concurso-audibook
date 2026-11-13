@@ -1176,7 +1176,7 @@
     "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
     "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 470 páginas e 891 questões comentadas.",
     "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
-    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 49 páginas, 160 questões, simulados e audiobook completo em português brasileiro.",
+    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 470 páginas, 891 questões comentadas, simulados e audiobook em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
       "cover3d": "/assets/capa-matao-sp-assistente-administrativo-2026-completa-3d.webp",
@@ -1323,11 +1323,11 @@
     "currency": "brl",
     "priceCents": 2499,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_FISCAL_OBRAS_2026",
-    "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 49 páginas, teoria, 80 exercícios, dois simulados de 40 questões, gabaritos comentados, oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 444 páginas na edição ampliada: teoria, 895 questões comentadas (banco de 735 por tema, 80 exercícios e dois simulados de 40), caderno normativo, oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "Apostila digital A4 com 49 páginas",
+      "Apostila digital A4 com 444 páginas na edição ampliada",
       "22 unidades de teoria e exemplos",
-      "160 questões, incluindo dois simulados",
+      "895 questões comentadas: banco de 735 por tema + 80 exercícios e dois simulados de 40 itens", "Caderno normativo: Lei Orgânica de Matão, Estatuto da Cidade, Lei 6.766, Defesa Civil, LAI e Lei de Licitações",
       "Gabaritos comentados",
       "Audiobook em 8 capítulos, português brasileiro",
       "Resumo em áudio do autor"
@@ -1400,7 +1400,7 @@
       "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/208/"
     },
     "seoTitle": "Fiscal de Obras Matão 2026 | Apostila PDF e audiobook | Trilha Aprova",
-    "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 49 páginas, 160 questões, 2 simulados, gabaritos e audiobook em português brasileiro.",
+    "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 444 páginas, 895 questões comentadas, simulados e audiobook em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • FISCAL DE OBRAS • IBAM",
       "cover3d": "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-completa-3d.webp",
@@ -1414,7 +1414,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "160 questões, incluindo 2 simulados de 40, com gabarito comentado"
+          "detalhe": "895 questões comentadas, com 2 simulados de 40 itens"
         },
         {
           "titulo": "Caderno de Revisão",
@@ -1435,8 +1435,8 @@
         "inscricoes": "até 18/11/2026",
         "requisito": "Ensino médio + curso técnico, registro e CNH A/B",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 49,
-        "questoes": 160
+        "paginas": 444,
+        "questoes": 895
       },
       "area": "tecnico"
     },
