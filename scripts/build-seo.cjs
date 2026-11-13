@@ -755,7 +755,8 @@ for (const p of products) {
       const rel = products.filter(o => o.slug !== p.slug && o.storefront.area === area)
         .sort((x, y) => ((y.storefront.concurso || {}).local === cid) - ((x.storefront.concurso || {}).local === cid)).slice(0, 2);
       const red = products.find(o => o.slug.startsWith('redacao') && o.slug !== p.slug);
-      const list = [...rel, ...(red ? [red] : [])].slice(0, 3);
+      // sem repetir o mesmo card (no curso de Redação, a apostila de Redação é da mesma área e também é o 'red')
+      const list = [...rel, ...(red ? [red] : [])].filter((o, i, a) => a.findIndex(x => x.slug === o.slug) === i).slice(0, 3);
       return list.length ? '<section class="combo-section combo-cross"><h2>Quem estuda para este concurso também leva</h2>' +
         '<p class="combo-lead">Aproveite a viagem para a prova: concursos da mesma área costumam cobrar conteúdos parecidos.</p>' +
         `<div class="ac-grid">${list.map(o => apostilaCard(o)).join('')}</div></section>` : '';
@@ -2166,9 +2167,21 @@ const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="ca
     `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
   '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
 home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
-const simHomeHtml = simulados.length ? '<!-- simulados:start --><section class="sim-home shell" id="simulados" aria-labelledby="sim-titulo">' +
-  '<h2 id="sim-titulo">Simulados avulsos</h2><p class="ac-cargos-lead">Treine no formato da prova: 5 simulados completos com gabarito comentado. Abra a amostra grátis antes de comprar.</p>' +
-  `<div class="sim-grid">${simulados.map(simuladoCard).join('')}</div></section><!-- simulados:end -->` : '';
+/* Faixa "Novidade: simulados" na home (13/11/2026, modelo enviado pelo André, na paleta Trilha Aprova). */
+const simHomeHtml = simulados.length ? (() => {
+  const s = simulados[0], min = Math.min(...simulados.map(x => x.priceCents));
+  const banca = s.examBoard || '';
+  const fan = [1, 2, 3, 4, 5].map(n => `<span class="simb-sheet simb-s${n}"><b>0${n}</b></span>`).join('') +
+    `<span class="simb-front"><small>SIMULADO</small><strong>${esc(banca).replace('/', '/<wbr>')}</strong><em>50 questões</em></span>` +
+    '<span class="simb-card"><b>CARTÃO-RESPOSTA</b><i>PROVA 01</i>' + ['B', 'D', 'A', 'C', 'B'].map((g, i) => `<span><u>0${i + 1}</u>${'ABCD'.split('').map(l => `<i class="${l === g ? 'on' : ''}">${l}</i>`).join('')}</span>`).join('') + '</span>';
+  return '<!-- simulados:start --><section class="simb shell" id="simulados" aria-labelledby="simb-titulo">' +
+    `<div class="simb-vis" aria-hidden="true"><div class="simb-fan">${fan}</div></div>` +
+    '<div class="simb-txt"><span class="simb-new">NOVO</span><h2 id="simb-titulo">Novidade: simulados para treinar antes da prova.</h2>' +
+    '<ul><li>5 provas completas e inéditas</li><li>No formato da banca</li><li>Com o tempo oficial da prova</li><li>Cartão-resposta para marcar</li><li>Gabarito comentado</li><li>Feito para o seu cargo</li></ul></div>' +
+    `<div class="simb-cta"><p>a partir de <b>${brl(min)}</b></p><a class="simb-btn" href="/simulados/${s.slug}">📋 Ver simulados</a>` +
+    `<a class="simb-amostra" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">📋 Ver amostra grátis</a></div>` +
+    '</section><!-- simulados:end -->';
+})() : '';
 home = home.replace(/<!-- simulados:start -->[\s\S]*?<!-- simulados:end -->/, '');
 /* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
 const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +
