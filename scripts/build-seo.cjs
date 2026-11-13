@@ -689,8 +689,8 @@ for (const p of products) {
     '</div></section>' +
     (hasSample || hasAudioSample ? '<section class="combo-section combo-sample" id="amostra"><h2>Experimente antes de comprar</h2>' +
       '<p>Selecionamos as partes mais fortes da apostila: capa, sumário, páginas de teoria com dicas e quadros e um trecho dos simulados.</p><div class="combo-sample-row">' +
-      (hasSample ? `<a class="combo-sample-pdf" href="${sampleBase}.pdf" target="_blank" rel="noopener">Ler a amostra em PDF</a>` : '') +
-      (hasAudioSample ? `<div class="combo-sample-audio"><span>Ouça 1 minuto e meio do audiobook</span><audio controls preload="none" src="${sampleBase}.mp3"></audio></div>` : '') +
+      (hasSample ? `<a class="combo-sample-pdf" href="${sampleBase}.pdf?v=${ASSET_VERSION}" target="_blank" rel="noopener">Ler a amostra em PDF</a>` : '') +
+      (hasAudioSample ? `<div class="combo-sample-audio"><span>Ouça 1 minuto e meio do audiobook</span><audio controls preload="none" src="${sampleBase}.mp3?v=${ASSET_VERSION}"></audio></div>` : '') +
       '</div></section>' : '') +
     `<section class="combo-section"><h2>Conteúdo da apostila</h2><ul class="combo-list">${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
     `<p class="combo-desc">${esc(p.description)}</p></section>` +
