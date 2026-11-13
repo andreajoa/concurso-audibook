@@ -125,7 +125,7 @@
     "author": "Trilha Aprova",
     "audience": "Candidatos a cargos de Ensino Fundamental Completo",
     "currency": "brl",
-    "priceCents": 4599,
+    "priceCents": 2499,
     "stripePriceEnv": "STRIPE_PRICE_REDACAO_NIVEL_FUNDAMENTAL_2026",
     "description": "Método prático para entender o comando da prova, organizar as ideias e produzir textos claros, corretos e adequados ao gênero solicitado, com teoria simples, modelos, exercícios e gabarito.",
     "seoDescription": "Método prático de redação para concurso de nível fundamental: entender o comando, organizar ideias e escrever com clareza, com modelos e gabarito.",
@@ -268,7 +268,7 @@
     "author": "Trilha Aprova",
     "audience": "Candidatos a concursos públicos de nível médio e superior com prova de redação dissertativa, carta, relatório ou questões discursivas",
     "currency": "brl",
-    "priceCents": 9900,
+    "priceCents": 4599,
     "description": "Curso completo de redação para concursos públicos: 16 módulos do comando da prova à revisão final, com tese, planejamento, introdução, parágrafo argumentativo, coesão, conclusão com proposta, os 15 erros gramaticais que mais tiram pontos, carta, relatório e ofício, repertório por área, oficina de reescrita, 8 redações-modelo comentadas e 30 temas para treinar. PDF de 47 páginas, audiobook em 8 capítulos com resumo narrado e Correção de Redação Trilha Aprova: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita para baixar (60 correções incluídas).",
     "proofPoints": [
       "16 módulos do comando da prova à revisão final",
@@ -379,7 +379,19 @@
         "Correção Trilha Aprova: envie a foto e receba nota por critério, erros corrigidos, dicas e versão reescrita",
         "Audiobook em 8 capítulos + resumo narrado"
       ],
-      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções da Trilha Aprova incluídas"
+      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções da Trilha Aprova incluídas",
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Redação para concursos",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": 47,
+        "questoes": 33
+      }
     },
     "seoTitle": "Curso de Redação para Concursos com Correção | Trilha Aprova",
     "seoDescription": "Curso de redação para concursos: 16 módulos, 8 redações-modelo, audiobook e correção Trilha Aprova que dá nota, erros e versão reescrita. R$ 99."
