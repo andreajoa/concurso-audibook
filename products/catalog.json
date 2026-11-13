@@ -152,7 +152,19 @@
       "comboCovers": [
         "/assets/capa-redacao-nivel-fundamental-2026-simulados-3d.webp",
         "/assets/capa-redacao-nivel-fundamental-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Redação · nível fundamental",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": 19,
+        "questoes": 15
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -638,7 +650,19 @@
       "comboCovers": [
         "/assets/capa-professor-adjunto-i-ibam-santos-2026-simulados-3d.webp",
         "/assets/capa-professor-adjunto-i-ibam-santos-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Santos/SP",
+        "cargo": "Professor Adjunto I",
+        "salario": "até R$ 3.770,59",
+        "vagas": "216 (Prof. Adjunto I e II)",
+        "taxa": "R$ 92,00",
+        "inscricoes": "encerradas",
+        "requisito": "Licenciatura",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 132,
+        "questoes": 200
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -777,7 +801,19 @@
       "comboCovers": [
         "/assets/capa-sme-sp-peif-pre-edital-2026-simulados-3d.webp",
         "/assets/capa-sme-sp-peif-pre-edital-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "São Paulo/SP",
+        "cargo": "Professor PEIF (SME-SP)",
+        "salario": "R$ 5.333,00 (piso 30h)",
+        "vagas": "Pré-edital",
+        "taxa": null,
+        "inscricoes": "edital ainda não publicado",
+        "requisito": "Licenciatura em Pedagogia",
+        "url": null,
+        "paginas": 220,
+        "questoes": 60
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1030,7 +1066,19 @@
       "comboCovers": [
         "/assets/capa-matao-sp-assistente-administrativo-2026-simulados-3d.webp",
         "/assets/capa-matao-sp-assistente-administrativo-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Matão/SP",
+        "cargo": "Assistente Administrativo",
+        "salario": "R$ 2.588,00",
+        "vagas": "10",
+        "taxa": "R$ 76,50",
+        "inscricoes": "encerradas",
+        "requisito": "Ensino médio",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 49,
+        "questoes": 160
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1240,7 +1288,19 @@
       "comboCovers": [
         "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-simulados-3d.webp",
         "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Matão/SP",
+        "cargo": "Fiscal de Obras",
+        "salario": "R$ 3.337,48",
+        "vagas": "1",
+        "taxa": null,
+        "inscricoes": "até 18/11/2026",
+        "requisito": "Ensino médio + curso técnico, registro e CNH A/B",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 49,
+        "questoes": 160
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1366,7 +1426,19 @@
       "comboCovers": [
         "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-simulados-3d.webp",
         "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Tribunal de Justiça de SP",
+        "cargo": "Escrevente Técnico Judiciário",
+        "salario": "R$ 6.345,94",
+        "vagas": "Cadastro reserva",
+        "taxa": "R$ 81,00",
+        "inscricoes": "28/10 a 10/12/2026",
+        "requisito": "Ensino médio",
+        "url": "https://www.vunesp.com.br",
+        "paginas": 550,
+        "questoes": 70
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1499,7 +1571,19 @@
       "comboCovers": [
         "/assets/capa-aparecida-de-goiania-pe1-pedagogia-2026-simulados-3d.webp",
         "/assets/capa-aparecida-de-goiania-pe1-pedagogia-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Aparecida de Goiânia/GO",
+        "cargo": "PE-I Pedagogia",
+        "salario": "R$ 4.508,28",
+        "vagas": "1.056",
+        "taxa": null,
+        "inscricoes": "09/11 a 09/12/2026",
+        "requisito": "Licenciatura em Pedagogia",
+        "url": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/",
+        "paginas": 324,
+        "questoes": 100
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1626,7 +1710,19 @@
       "comboCovers": [
         "/assets/capa-banestes-tecnico-bancario-2026-simulados-3d.webp",
         "/assets/capa-banestes-tecnico-bancario-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "Banestes/ES",
+        "cargo": "Técnico Bancário",
+        "salario": "R$ 4.552,43",
+        "vagas": "916 (cadastro reserva)",
+        "taxa": "R$ 67,00",
+        "inscricoes": "19/10 a 17/11/2026",
+        "requisito": "Ensino médio",
+        "url": "https://www.concursosfcc.com.br",
+        "paginas": 246,
+        "questoes": 140
+      }
     },
     "funnel": {
       "orderBump": [],
@@ -1753,7 +1849,19 @@
       "comboCovers": [
         "/assets/capa-ibge-recenseador-censo-agro-2026-simulados-3d.webp",
         "/assets/capa-ibge-recenseador-censo-agro-2026-terceiro-3d.webp"
-      ]
+      ],
+      "concurso": {
+        "local": "IBGE · todo o Brasil",
+        "cargo": "Recenseador (Censo Agro)",
+        "salario": "até R$ 4.370,00",
+        "vagas": "27.279",
+        "taxa": "R$ 70,00",
+        "inscricoes": "06 a 25/11/2026",
+        "requisito": "Ensino fundamental",
+        "url": "https://www.cesgranrio.org.br",
+        "paginas": 150,
+        "questoes": 120
+      }
     },
     "funnel": {
       "orderBump": [],

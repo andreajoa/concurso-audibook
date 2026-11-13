@@ -1,0 +1,68 @@
+/* Cartões de apostila (catálogo e página inicial) */
+.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;margin:22px 0 36px}
+.ac-card{background:#fff;border:1px solid #e3e8ee;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s;font-family:system-ui,-apple-system,sans-serif}
+.ac-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(8,40,79,.14);border-color:#caa65a}
+.ac-cover{display:flex;justify-content:center;align-items:flex-end;height:230px;background:radial-gradient(240px 140px at 50% 60%,#f5ecd9 0,#fbf8f1 70%);padding:14px 10px 0}
+.ac-cover img{height:216px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.25));transition:transform .25s}
+.ac-card:hover .ac-cover img{transform:translateY(-6px) scale(1.04)}
+.ac-body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ac-local{align-self:flex-start;background:#eef2f7;color:#334861;border-radius:999px;padding:5px 11px;font:700 11px/1.2 system-ui;letter-spacing:.05em;text-transform:uppercase}
+.ac-body h3{margin:0;font:700 18px/1.25 system-ui,sans-serif;color:#0b2342}
+.ac-body h3 a{color:inherit;text-decoration:none}
+.ac-body h3 a:hover{text-decoration:underline}
+.ac-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ac-tile{border:1px solid #e6ebf1;border-radius:10px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.ac-tile strong{font:800 15px/1.2 system-ui;color:#0b2342;overflow-wrap:anywhere}
+.ac-tile small{font:700 10px/1.2 system-ui;color:#7a8696;text-transform:uppercase;letter-spacing:.06em}
+.ac-money strong{color:#1d7a46}
+.ac-divider{margin:2px 0 -2px;text-align:center;border-top:1px solid #e6ebf1;line-height:0}
+.ac-divider span{background:#fff;padding:0 8px;font:800 10px/1 system-ui;color:#b08a3c;letter-spacing:.08em;text-transform:uppercase;position:relative;top:0}
+.ac-buy{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:6px}
+.ac-buy ul{list-style:none;margin:0;padding:0;font:800 10px/1.6 system-ui;color:#1d7a46;text-transform:uppercase;letter-spacing:.03em}
+.ac-buy li:before{content:"✓ "}
+.ac-price{font:900 30px/1 system-ui;color:#0b2342;letter-spacing:-.02em;white-space:nowrap}
+.ac-actions{display:grid;grid-template-columns:1fr 1.6fr;gap:10px}
+.ac-espiar,.ac-comprar{display:flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 10px;font:800 14px/1 system-ui;text-decoration:none!important;cursor:pointer;transition:transform .15s,background .15s}
+.ac-espiar{background:#fff;color:#0b2342!important;border:1.5px solid #d3dae3}
+.ac-espiar:hover{border-color:#0b2342}
+.ac-comprar{background:#1d7a46;color:#fff!important;border:0;box-shadow:0 8px 18px rgba(29,122,70,.3)}
+.ac-comprar:hover{background:#17663a;transform:translateY(-1px)}
+.ac-espiar:focus-visible,.ac-comprar:focus-visible{outline:3px solid #caa65a;outline-offset:2px}
+/* pop-up da amostra */
+.ac-modal{border:0;border-radius:16px;padding:0;width:min(920px,94vw);max-height:92vh;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.ac-modal::backdrop{background:rgba(6,20,40,.7)}
+.ac-modal header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#08284f;color:#fff;font:700 15px/1.3 system-ui}
+.ac-modal header div{display:flex;gap:8px}
+.ac-modal header a,.ac-modal header button{background:#caa65a;color:#08284f;border:0;border-radius:8px;padding:8px 12px;font:800 13px/1 system-ui;text-decoration:none;cursor:pointer}
+.ac-modal header button{background:#fff}
+.ac-modal iframe{display:block;width:100%;height:min(78vh,900px);border:0;background:#525659}
+@media(max-width:600px){.ac-grid{grid-template-columns:1fr}.ac-price{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.ac-card,.ac-cover img,.ac-comprar{transition:none}}
+/* carrossel de capas */
+.ac-carousel{position:relative;margin:10px 0 26px}
+.ac-car-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px 4px 16px;scrollbar-width:thin}
+.ac-car-item{flex:0 0 180px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none!important;color:#0b2342;border-radius:14px;padding:10px 8px;background:#fff;border:1px solid #e3e8ee;transition:transform .2s,box-shadow .2s}
+.ac-car-item:hover{transform:translateY(-5px);box-shadow:0 14px 26px rgba(8,40,79,.15)}
+.ac-car-item img{height:200px;width:auto;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.25))}
+.ac-car-item span{font:700 13px/1.25 system-ui;text-align:center}
+.ac-car-item b{font:900 16px/1 system-ui;color:#1d7a46}
+.ac-car-btn{position:absolute;top:42%;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:#08284f;color:#fff;font:700 26px/40px system-ui;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.ac-car-prev{left:-10px}.ac-car-next{right:-10px}
+@media(max-width:600px){.ac-car-btn{display:none}.ac-car-item{flex-basis:150px}.ac-car-item img{height:170px}}
+/* Cargos, Vagas e Remunerações */
+.ac-cargos{margin:34px auto;font-family:system-ui,-apple-system,sans-serif}
+.ac-cargos h2{font:400 clamp(26px,3.4vw,38px)/1.15 Georgia,serif;color:#08284f;margin:0 0 6px;padding-bottom:10px;border-bottom:3px solid #caa65a;display:inline-block}
+.ac-cargos-lead{color:#4a5b6e;margin:10px 0 16px}
+.ac-table-wrap{overflow-x:auto;border:1px solid #e3e8ee;border-radius:14px;background:#fff}
+.ac-table{width:100%;border-collapse:collapse;font-size:14px;min-width:860px}
+.ac-table th{background:#f5f7fa;text-align:left;padding:14px 16px;font:800 12px/1.2 system-ui;letter-spacing:.06em;text-transform:uppercase;color:#0b2342}
+.ac-table td{padding:14px 16px;border-top:1px solid #eef1f5;color:#334861;vertical-align:middle}
+.ac-table tr:hover td{background:#fbf8f1}
+.ac-table td a{color:#0b2342;text-decoration:none}
+.ac-table td small{display:block;color:#7a8696;font-size:12px;margin-top:2px}
+.ac-sal{font-weight:800;color:#1d7a46!important;white-space:nowrap}
+.ac-btns{white-space:nowrap}
+.ac-btns a{display:inline-block;margin:2px 4px 2px 0;padding:8px 12px;border-radius:999px;font:800 12px/1 system-ui;text-decoration:none!important}
+.ac-ler{background:#08284f;color:#fff!important}
+.ac-insc{background:#fff;color:#08284f!important;border:1.5px solid #caa65a}
+.ac-cargos-note{font-size:12px;color:#7a8696;margin-top:10px}

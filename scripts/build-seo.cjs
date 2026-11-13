@@ -329,6 +329,29 @@ const productLinks = products
   .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
   .join('');
 
+/* Cartão de apostila padrão (13/11/2026): capa clicável, local, cargo, salário, vagas, páginas, questões,
+   destaques do combo, preço direto e botões Espiar (amostra em pop-up) e Comprar. */
+const fmtInt = n => Number(n).toLocaleString('pt-BR');
+const apostilaCard = (p, opts = {}) => {
+  const k = (p.storefront && p.storefront.concurso) || {};
+  const page = `/apostilas/${p.slug}`;
+  const sample = fs.existsSync(`public/amostras/${p.slug}.pdf`) ? `/amostras/${p.slug}.pdf` : '';
+  const tile = (icon, val, lab, cls = '') => `<div class="ac-tile${cls}"><strong><span aria-hidden="true">${icon}</span> ${esc(val)}</strong><small>${esc(lab)}</small></div>`;
+  return `<article class="ac-card">` +
+    `<a class="ac-cover" href="${page}" aria-label="Ver a apostila ${esc(p.shortName)}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="240" height="300" loading="${opts.eager ? 'eager' : 'lazy'}" decoding="async"></a>` +
+    '<div class="ac-body">' +
+    `<span class="ac-local">${esc(k.local || p.category || '')}</span>` +
+    `<h3><a href="${page}">${esc(k.cargo || p.shortName)}</a></h3>` +
+    (k.salario || k.vagas ? `<div class="ac-row">${k.salario ? tile('💰', k.salario, 'salário', ' ac-money') : ''}${k.vagas ? tile('👥', k.vagas, 'vagas') : ''}</div>` : '') +
+    '<p class="ac-divider"><span>📘 Apostila</span></p>' +
+    `<div class="ac-row">${tile('📄', fmtInt(k.paginas || 0), 'páginas')}${tile('❓', fmtInt(k.questoes || 0), 'questões')}</div>` +
+    `<div class="ac-buy"><ul><li>3 apostilas pelo preço de 1</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
+    '<div class="ac-actions">' +
+    (sample ? `<button type="button" class="ac-espiar" data-espiar="${sample}" data-titulo="${esc(p.shortName)}">👁 Espiar</button>` : `<a class="ac-espiar" href="${page}">👁 Espiar</a>`) +
+    `<a class="ac-comprar" href="/comprar?produto=${p.slug}">⚡ Comprar</a></div>` +
+    '</div></article>';
+};
+
 const cityLinks = cities
   .map(c => `<li><a href="/${c.slug}">Concursos públicos em ${esc(c.city)}</a></li>`)
   .join('');
@@ -760,13 +783,13 @@ renderPage({
   ],
   body:
     '<h2>Materiais disponíveis</h2>' +
-    '<div class="product-grid">' +
-    products.map(p => `<article class="product-card"><img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="240" height="300" loading="lazy" decoding="async"><div><h3><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a></h3><p>${esc(p.description)}</p><p><strong>${brl(p.priceCents)}</strong> · ${esc(p.audience)}</p></div></article>`).join('') +
-    '</div>' +
+    '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>' +
     '<h2>O que vem em cada apostila</h2><ul><li>PDF completo para ler online ou baixar.</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook dividido em capítulos por assunto.</li><li>Questões com gabarito comentado.</li><li>Acesso individual recuperável pelo e-mail da compra.</li></ul>' +
     '<h2>Como escolher entre elas</h2><p>A escolha depende do cargo do seu edital, não do preço. Se o cargo é de professor com conteúdo pedagógico, comece pela apostila de autores. Se o cargo é de nível fundamental com prova de redação, comece pela apostila de redação. Em caso de dúvida, leia o guia sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa</a>.</p>' +
     '<h2>Preparação por região</h2><ul class="city-links">' + cityLinks + '</ul>' +
     disclaimer,
+  styles: ['/apostila-cards.css'],
+  scripts: ['/apostila-cards.js'],
   faq: [
     { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
     { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
@@ -1641,22 +1664,10 @@ home = home.replace('</main>', discovery);
 
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
-const shelf = products.map((p, i) => {
-  // "72 páginas • 120 questões" sai dos pontos de prova, que saem do material.
-  const medidas = p.proofPoints
-    .map(point => /^(\d[\d.,]*\s+\S+)/.exec(point)?.[1])
-    .filter(Boolean).slice(0, 2);
-  const meta = [...medidas, 'PDF + audiobook'].join(' • ');
-  return '<article class="future-card active spotlight-card catalog-product-card">' +
-    '<small>APOSTILA ' + String(i + 1).padStart(2, '0') + ' • DISPONÍVEL</small>' +
-    '<div class="catalog-card-cover"><img src="' + esc(p.storefront.cover3d) +
-      '" alt="Capa da ' + esc(p.shortName) + '" width="240" height="230" loading="lazy" decoding="async"></div>' +
-    '<span class="catalog-card-badge">' + esc(p.storefront.badge) + '</span>' +
-    '<div class="catalog-card-name">' + esc(p.shortName) + '</div>' +
-    '<div class="catalog-card-meta">' + esc(meta) + '</div>' +
-    '<div class="catalog-card-price">' + (p.compareAtCents ? '<del>' + brl(p.compareAtCents) + '</del>' : '') + '<strong>' + brl(p.priceCents) + '</strong></div>' +
-    '<a class="catalog-card-buy" href="/apostilas/' + esc(p.slug) + '">Ver esta apostila</a></article>';
-}).join('');
+const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
+  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"><span>${esc((p.storefront.concurso && p.storefront.concurso.cargo) || p.shortName)}</span><b>${brl(p.priceCents)}</b></a>`).join('') +
+  '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
+const shelf = carousel + '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 
 home = home
   .replace(/<!-- catalogo:intro:start -->[\s\S]*?<!-- catalogo:intro:end -->/,
@@ -2023,6 +2034,23 @@ const bannersHtml = '<!-- banners:start -->' +
    próprio porque agora moram dentro do bloco de banners, logo abaixo da
    manchete — os marcadores continuam lá para quem for procurá-los. */
 home = home.replace(/<!-- banners:start -->[\s\S]*?<!-- banners:end -->/, () => bannersHtml);
+
+/* Cargos, Vagas e Remunerações (13/11/2026): salário, vagas, taxa e prazo de cada concurso com apostila,
+   com "Ler mais" (página da apostila) e "Fazer inscrição" (site oficial da banca, abre fora do site). */
+const comDados = products.filter(p => p.storefront.concurso && p.storefront.concurso.salario);
+const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="cargos-e-salarios" aria-labelledby="cargos-titulo">' +
+  '<h2 id="cargos-titulo">Cargos, Vagas e Remunerações</h2>' +
+  '<p class="ac-cargos-lead">Os concursos que têm apostila na Trilha Aprova. Confira salário, vagas, taxa e prazo, e confirme sempre no edital oficial.</p>' +
+  '<div class="ac-table-wrap"><table class="ac-table"><thead><tr><th>Cargo</th><th>Vagas</th><th>Remuneração</th><th>Inscrições</th><th>Taxa</th><th>Requisito</th><th></th></tr></thead><tbody>' +
+  comDados.map(p => { const k = p.storefront.concurso; return '<tr>' +
+    `<td><a href="/apostilas/${p.slug}"><strong>${esc(k.cargo)}</strong></a><small>${esc(k.local)}${p.examBoard ? ' · ' + esc(p.examBoard) : ''}</small></td>` +
+    `<td>${esc(k.vagas || '—')}</td><td class="ac-sal">${esc(k.salario)}</td><td>${esc(k.inscricoes || '—')}</td><td>${esc(k.taxa || 'ver edital')}</td><td>${esc(k.requisito || '—')}</td>` +
+    `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
+  '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
+home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
+home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml);
+if (!home.includes('/apostila-cards.css')) home = home.replace('</head>', '<link rel="stylesheet" href="/apostila-cards.css"></head>');
+if (!home.includes('/apostila-cards.js')) home = home.replace('</body>', '<script src="/apostila-cards.js" defer></script></body>');
 
 fs.writeFileSync('public/index.html', home);
 
