@@ -125,7 +125,7 @@
     "author": "Trilha Aprova",
     "audience": "Candidatos a cargos de Ensino Fundamental Completo",
     "currency": "brl",
-    "priceCents": 2499,
+    "priceCents": 4599,
     "stripePriceEnv": "STRIPE_PRICE_REDACAO_NIVEL_FUNDAMENTAL_2026",
     "description": "Método prático para entender o comando da prova, organizar as ideias e produzir textos claros, corretos e adequados ao gênero solicitado, com teoria simples, modelos, exercícios e gabarito.",
     "seoDescription": "Método prático de redação para concurso de nível fundamental: entender o comando, organizar ideias e escrever com clareza, com modelos e gabarito.",
