@@ -133,7 +133,23 @@
     "storefront": {
       "badge": "REDAÇÃO PARA CONCURSOS • ENSINO FUNDAMENTAL COMPLETO",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-redacao-3d.webp",
-      "cta": "Quero esta apostila + audiobook"
+      "cta": "Quero esta apostila + audiobook",
+      "headline": "Perca o medo da redação: teoria, modelos e audiobook para quem faz prova de nível fundamental",
+      "shortTag": "Redação · Nível Fundamental",
+      "combo": [
+        {
+          "titulo": "Teoria da redação",
+          "detalhe": "Como o texto é avaliado e como organizar"
+        },
+        {
+          "titulo": "Modelos comentados",
+          "detalhe": "Redações-modelo explicadas passo a passo"
+        },
+        {
+          "titulo": "Exercícios com gabarito",
+          "detalhe": "Treino guiado para praticar"
+        }
+      ]
     },
     "funnel": {
       "orderBump": [],
@@ -599,7 +615,24 @@
     "storefront": {
       "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 79/2026 • BANCA IBAM",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-professor-adjunto-i-3d.png",
-      "cta": "Quero esta apostila + audiobook"
+      "cta": "Quero esta apostila + audiobook",
+      "headline": "Professor Adjunto I Santos 2026: leia, ouça e treine com o combo feito para a banca IBAM",
+      "shortTag": "Santos · Professor Adjunto I",
+      "combo": [
+        {
+          "titulo": "Teoria, autores e legislação",
+          "detalhe": "PNE 2026, diretrizes e legislação de Santos"
+        },
+        {
+          "titulo": "Questões comentadas",
+          "detalhe": "Questões e simulado com gabarito comentado"
+        },
+        {
+          "titulo": "Revisão final",
+          "detalhe": "O que foi conferido e mapa do edital"
+        }
+      ],
+      "subheadline": "Professor Adjunto I (código 101) — Prefeitura de Santos · Banca IBAM · Prova prevista para 29/11/2026"
     },
     "funnel": {
       "orderBump": [],
@@ -719,7 +752,23 @@
     "storefront": {
       "badge": "SME-SP 2026 • PEIF • EDIÇÃO PRÉ-EDITAL",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-sme-sp-peif-3d.png",
-      "cta": "Quero este curso + audiobook"
+      "cta": "Quero este curso + audiobook",
+      "headline": "Comece antes do edital: o combo PEIF SME-SP para ler, ouvir e treinar",
+      "shortTag": "SME-SP · PEIF",
+      "combo": [
+        {
+          "titulo": "Fundamentos e legislação",
+          "detalhe": "Currículo da Cidade, autores e legislação"
+        },
+        {
+          "titulo": "Simulado comentado",
+          "detalhe": "Simulado e estudos de caso com gabarito"
+        },
+        {
+          "titulo": "Roteiros e revisão final",
+          "detalhe": "Roteiros de estudo e revisão"
+        }
+      ]
     },
     "funnel": {
       "orderBump": [],
@@ -952,7 +1001,24 @@
     "storefront": {
       "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-matao-assistente-administrativo-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Assistente Administrativo Matão 2026: teoria, simulados e audiobook num combo só",
+      "shortTag": "Matão · Assistente Adm.",
+      "combo": [
+        {
+          "titulo": "Teoria e legislação",
+          "detalhe": "Conteúdo do edital e legislação aplicada"
+        },
+        {
+          "titulo": "Simulados comentados",
+          "detalhe": "Questões com gabarito comentado"
+        },
+        {
+          "titulo": "Roteiro de estudo",
+          "detalhe": "Passo a passo da primeira leitura à revisão"
+        }
+      ],
+      "subheadline": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP · Banca IBAM · Prova prevista para 06/12/2026"
     },
     "funnel": {
       "orderBump": [],
@@ -1142,7 +1208,24 @@
     "storefront": {
       "badge": "MATÃO 2026 • FISCAL DE OBRAS • IBAM",
       "cover3d": "/assets/apostila-matao-fiscal-obras-transparente-20261029.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Fiscal de Obras Matão 2026: estude lendo, ouvindo e resolvendo simulados com o combo completo",
+      "shortTag": "Matão · Fiscal de Obras",
+      "combo": [
+        {
+          "titulo": "Teoria do edital",
+          "detalhe": "22 unidades: português, matemática, informática e obras"
+        },
+        {
+          "titulo": "Simulados comentados",
+          "detalhe": "2 simulados de 40 questões com gabarito"
+        },
+        {
+          "titulo": "Revisão final",
+          "detalhe": "Revisão e fontes oficiais"
+        }
+      ],
+      "subheadline": "Agente de Fiscalização Pública, Fiscal de Obras, código 204, Matão/SP · Banca IBAM · Prova prevista para 24/01/2027"
     },
     "funnel": {
       "orderBump": [],
@@ -1248,7 +1331,24 @@
     "storefront": {
       "badge": "TJ-SP 2026 • ESCREVENTE • VUNESP",
       "cover3d": "/assets/apostila-tjsp-escrevente-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Escrevente TJ-SP 2026: estude até no trânsito com o combo de PDF, legislação e audiobook",
+      "shortTag": "TJ-SP · Escrevente",
+      "combo": [
+        {
+          "titulo": "Teoria do edital",
+          "detalhe": "Português, matemática, informática e direito + redação"
+        },
+        {
+          "titulo": "Simulado comentado",
+          "detalhe": "Questões no estilo da banca com gabarito"
+        },
+        {
+          "titulo": "Legislação compilada",
+          "detalhe": "Leis cobradas no edital para consulta"
+        }
+      ],
+      "subheadline": "Escrevente Técnico Judiciário, 2ª à 10ª Região Administrativa Judiciária, TJ-SP · Banca VUNESP · Prova prevista para 14/03/2027"
     },
     "funnel": {
       "orderBump": [],
@@ -1270,8 +1370,7 @@
     "author": "Trilha Aprova",
     "audience": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 3499,
     "stripePriceEnv": "STRIPE_PRICE_APARECIDA_PE1_PEDAGOGIA_2026",
     "description": "Apostila digital para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. PDF único de 324 páginas: 91 páginas com teoria de todo o conteúdo programático, redação dissertativa e dois simulados de 50 questões com gabarito comentado, mais 233 páginas de legislação oficial (CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica). Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1355,7 +1454,30 @@
     "storefront": {
       "badge": "APARECIDA DE GOIÂNIA 2026 • PE-I PEDAGOGIA • VERBENA/UFG",
       "cover3d": "/assets/apostila-aparecida-pe1-pedagogia-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Estude até no ônibus: a apostila de PE-I Pedagogia Aparecida que você também ouve",
+      "shortTag": "Aparecida de Goiânia · PE-I",
+      "combo": [
+        {
+          "titulo": "Teoria do edital",
+          "detalhe": "Conteúdo programático completo + redação"
+        },
+        {
+          "titulo": "Simulados comentados",
+          "detalhe": "2 simulados de 50 questões com gabarito"
+        },
+        {
+          "titulo": "Legislação compilada",
+          "detalhe": "CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica"
+        }
+      ],
+      "bullets": [
+        "Teoria de todo o edital do Instituto Verbena/UFG, com redação",
+        "2 simulados de 50 questões com gabarito comentado",
+        "Legislação completa: CF, LDB, ECA, novo PNE, BNCC, LBI e Lei Orgânica",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "subheadline": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO · Banca Instituto Verbena/UFG · Prova prevista para 31/01/2027"
     },
     "funnel": {
       "orderBump": [],
@@ -1462,7 +1584,24 @@
     "storefront": {
       "badge": "BANESTES 2026 • TÉCNICO BANCÁRIO • FCC",
       "cover3d": "/assets/apostila-banestes-tecnico-bancario-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Técnico Bancário Banestes 2026: teoria, 2 simulados de 70 questões e audiobook num combo só",
+      "shortTag": "Banestes · Técnico Bancário",
+      "combo": [
+        {
+          "titulo": "Teoria do edital",
+          "detalhe": "Conhecimentos bancários, vendas, matemática financeira e mais"
+        },
+        {
+          "titulo": "Simulados comentados",
+          "detalhe": "2 simulados de 70 questões com gabarito"
+        },
+        {
+          "titulo": "Roteiro de revisão",
+          "detalhe": "Correspondência com o edital para a reta final"
+        }
+      ],
+      "subheadline": "Técnico Bancário (nível médio) do Banco do Estado do Espírito Santo - Banestes, cadastro de reserva · Banca Fundação Carlos Chagas (FCC) · Prova prevista para 24/01/2027"
     },
     "funnel": {
       "orderBump": [],
@@ -1569,7 +1708,24 @@
     "storefront": {
       "badge": "IBGE 2026 • RECENSEADOR • CENSO AGRO • CESGRANRIO",
       "cover3d": "/assets/apostila-ibge-recenseador-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Recenseador IBGE Censo Agro: teoria, 2 simulados de 60 questões e audiobook para estudar em qualquer lugar",
+      "shortTag": "IBGE · Recenseador",
+      "combo": [
+        {
+          "titulo": "Teoria do edital",
+          "detalhe": "Português, matemática e conhecimentos técnicos do Censo"
+        },
+        {
+          "titulo": "Simulados comentados",
+          "detalhe": "2 simulados de 60 questões com gabarito"
+        },
+        {
+          "titulo": "Roteiro de revisão",
+          "detalhe": "Correspondência com o edital para a reta final"
+        }
+      ],
+      "subheadline": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil · Banca Fundação Cesgranrio · Prova prevista para 31/01/2027"
     },
     "funnel": {
       "orderBump": [],

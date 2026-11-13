@@ -47,3 +47,4 @@
    de JavaScript não abre enquanto a página ainda está carregando, e quem passa
    por aqui está procurando a cidade dele agora. No celular o painel não existe:
    o rótulo vira link direto para /concursos, porque não há mouse para passar. */
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary h3{margin:0}.faq-item summary:after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:#08284f;color:#fff;font:700 17px/26px system-ui,sans-serif;text-align:center}.faq-item[open] summary:after{content:"–"}.faq-item[open] summary{margin-bottom:8px}
