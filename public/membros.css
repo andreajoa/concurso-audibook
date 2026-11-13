@@ -1,0 +1,10 @@
+.membro-box{background:#08284f;color:#fff;border-radius:18px;padding:24px;margin:10px 0 30px;font-family:system-ui,sans-serif}
+.membro-box h2{color:#fff;margin:0 0 12px}
+.membro-box form{display:grid;gap:12px;max-width:520px}
+.membro-box label{display:grid;gap:6px;font-weight:700;font-size:14px}
+.membro-box input[name=name],.membro-box input[name=email]{padding:13px 14px;border-radius:10px;border:0;font:inherit;font-weight:400;color:#0b2342}
+.membro-consent{display:flex!important;gap:10px;align-items:flex-start;font-weight:400!important;color:#d4dfec}
+.membro-consent input{width:18px;height:18px;margin-top:2px;accent-color:#caa65a}
+.membro-box button{background:#caa65a;color:#08284f;border:0;border-radius:12px;padding:16px;font:800 16px/1 system-ui;cursor:pointer}
+.membro-msg{min-height:1.2em;color:#f1d79c;font-weight:700;margin:0}
+.membro-ok{background:#caa65a;color:#08284f;border-radius:12px;padding:14px;font-weight:700}

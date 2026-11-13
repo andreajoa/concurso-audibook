@@ -43,3 +43,15 @@ edit?.addEventListener('click',reset);getConfig().catch(()=>null);
   const btn=form.querySelector('button[type="submit"]');form.insertBefore(box,btn);
   const st=document.createElement('style');st.textContent='.order-bump{display:flex;gap:12px;align-items:center;border:2px dashed #caa65a;background:#fffaf0;border-radius:12px;padding:12px;margin:10px 0 14px;cursor:pointer}.order-bump input{width:22px;height:22px;flex:none;accent-color:#08284f}.order-bump img{flex:none;object-fit:contain}.order-bump b{display:block;color:#08284f;font-size:15px}.order-bump small{display:block;color:#5c4419;font-size:12.5px;line-height:1.4;margin-top:3px}';document.head.appendChild(st);
 }catch(e){}})();
+/* Clube: se este navegador é de um membro confirmado, mostra o desconto (o valor é aplicado no servidor). */
+(function(){try{
+  const form=document.getElementById('checkout-form');if(!form)return;
+  fetch('/api/checkout?op=membro',{cache:'no-store'}).then(r=>r.json()).then(d=>{
+    const box=document.createElement('p');box.className='member-note';
+    if(d.member){box.innerHTML='<b>Clube Trilha Aprova:</b> '+d.percent+'% de desconto aplicado no pagamento para '+d.email+'.';
+      const em=form.elements.email;if(em&&!em.value)em.value=d.email;}
+    else{box.innerHTML='Membros do clube têm <b>15% de desconto</b> na 1ª compra. <a href="/membros" target="_blank" rel="noopener">Cadastre-se grátis</a>.';}
+    form.insertBefore(box,form.firstChild);
+    const st=document.createElement('style');st.textContent='.member-note{background:#08284f;color:#fff;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:0 0 12px}.member-note a{color:#f1d79c}';document.head.appendChild(st);
+  }).catch(()=>{});
+}catch(e){}})();

@@ -710,6 +710,7 @@ for (const p of products) {
     `<div class="combo-price-row"><div><span class="combo-price-label">3 apostilas + audiobook por</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
     (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
+    '<a class="combo-member-link" href="/membros">Membros do Clube Trilha Aprova têm 15% de desconto na 1ª compra →</a>' +
     '</div><div class="combo-visual-wrap">' + visual + '</div></div></section>' +
     (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
 
@@ -775,6 +776,37 @@ for (const p of products) {
     images: [p.storefront.cover3d]
   });
 }
+
+/* Clube Trilha Aprova (13/11/2026): cadastro grátis, 15% na 1ª compra e 10% nas seguintes. */
+renderPage({
+  path: '/membros',
+  title: 'Clube Trilha Aprova: 15% de desconto na primeira apostila',
+  metaTitle: 'Clube Trilha Aprova — 15% de desconto na 1ª apostila | Trilha Aprova',
+  description: 'Cadastre-se grátis no Clube Trilha Aprova: 15% de desconto na primeira apostila, 10% nas compras seguintes e aviso de cada apostila nova por e-mail.',
+  kicker: 'CLUBE TRILHA APROVA · GRÁTIS',
+  lead: 'Cadastre-se grátis e ganhe 15% de desconto na primeira apostila e 10% em todas as compras seguintes. Você também recebe por e-mail cada apostila nova assim que sai um edital.',
+  keyFacts: [['1ª compra', '15% de desconto'], ['Compras seguintes', '10% de desconto'], ['Novidades', 'Apostila nova por e-mail'], ['Custo', 'Grátis']],
+  body:
+    '<section class="membro-box" id="cadastro"><h2>Entre para o clube</h2>' +
+    '<p class="membro-ok" hidden>Pronto! Seu desconto de membro está ativo neste aparelho. Ele aparece sozinho no checkout quando você compra com o mesmo e-mail.</p>' +
+    '<form id="membro-form" novalidate><label>Nome<input name="name" autocomplete="name" required placeholder="Seu nome"></label>' +
+    '<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com"></label>' +
+    '<label class="membro-consent"><input name="consent" type="checkbox" required> Quero receber por e-mail as novidades e as apostilas novas da Trilha Aprova. Posso cancelar quando quiser.</label>' +
+    '<input name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">' +
+    '<button type="submit">Quero meu desconto de 15%</button><p class="membro-msg" role="status"></p></form></section>' +
+    '<h2>Como funciona</h2><ol><li>Você se cadastra aqui com nome e e-mail.</li><li>Confirma pelo link que chega no seu e-mail.</li><li>Na compra, com o mesmo e-mail e neste aparelho, o desconto entra sozinho: 15% na primeira apostila e 10% nas seguintes.</li></ol>' +
+    `<div class="ac-grid">${products.slice(0, 3).map(p => apostilaCard(p)).join('')}</div>` +
+    disclaimer,
+  faq: [
+    { q: 'O clube é pago?', a: 'Não. O cadastro é grátis e você pode sair quando quiser pelo link de descadastro nos e-mails.' },
+    { q: 'O desconto vale para qualquer apostila?', a: 'Sim: 15% na primeira compra e 10% em todas as compras seguintes, em qualquer apostila do catálogo.' },
+    { q: 'Por que o desconto não apareceu?', a: 'Ele aparece quando você confirma o cadastro pelo link do e-mail e compra com o mesmo e-mail, no mesmo aparelho em que confirmou.' }
+  ],
+  styles: ['/apostila-cards.css', '/membros.css'],
+  scripts: ['/apostila-cards.js', '/membros.js'],
+  trail: [['Apostilas', '/apostilas-para-concurso']],
+  priority: '0.7'
+});
 
 /* ------------------------------------------------------------------ *
  * Hub do catálogo

@@ -116,3 +116,4 @@
 .combo-pop .combo-buy{padding:14px 18px;font-size:15px}
 .combo-pop button{background:#fff;border:1.5px solid #d3dae3;border-radius:10px;padding:12px 16px;font:700 14px system-ui;cursor:pointer}
 .combo-visual-3d>img:focus-visible{outline:3px solid #caa65a;outline-offset:4px}
+.combo-member-link{display:block;margin-top:8px;color:#d4dfec!important;font-size:14px;text-decoration:underline}
