@@ -755,7 +755,7 @@
     "currency": "brl",
     "priceCents": 3690,
     "stripePriceEnv": "STRIPE_PRICE_PROFESSOR_ADJUNTO_I_IBAM_SANTOS_2026",
-    "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final.",
+    "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final. Edição ampliada com 531 páginas e 900 questões comentadas: banco de 700 questões por tema e caderno normativo com a legislação federal oficial.",
     "seoDescription": "Apostila de Professor Adjunto I para Santos 2026 (IBAM): teoria do zero, legislação, autores, específicos, dissertativa, 200 questões e audiobook.",
     "storefront": {
       "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 79/2026 • BANCA IBAM",
@@ -770,7 +770,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "200 questões, incluindo 3 simulados completos comentados"
+          "detalhe": "900 questões comentadas, com 3 simulados completos"
         },
         {
           "titulo": "Caderno de Revisão",
@@ -791,8 +791,8 @@
         "inscricoes": "encerradas",
         "requisito": "Licenciatura",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 132,
-        "questoes": 200
+        "paginas": 531,
+        "questoes": 900
       },
       "area": "educacao"
     },
@@ -803,11 +803,12 @@
       "downsell": []
     },
     "proofPoints": [
-      "132 páginas na edição final para impressão e estudo digital",
+      "531 páginas na edição ampliada para impressão e estudo digital",
       "Edital nº 79/2026 + Rerratificações nº 83/2026 e nº 90/2026",
       "Legislação federal e municipal, autores, Educação Infantil, anos iniciais, EJA e inclusão",
       "Prova dissertativa com modelos, mapas de argumentação e treino guiado",
-      "200 questões ao longo do curso, incluindo três simulados completos",
+      "900 questões comentadas: banco de 700 por tema + 200 do curso, com três simulados completos",
+      "Caderno normativo: CF (educação), LDB, ECA, PNE 2026 e LBI em texto oficial",
       "PDF para leitura online ou download",
       "Resumo em áudio + audiobook completo em 8 capítulos",
       "Pagamento único — sem assinatura"
