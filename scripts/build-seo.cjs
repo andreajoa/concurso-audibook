@@ -30,13 +30,16 @@ const AUTHOR_NAME = 'Trilha Aprova';
 const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
-const products = Object.values(catalog).filter(p => p.active);
+const products = Object.values(catalog).filter(p => p.active && p.kind !== 'simulados');
+// Cadernos de simulados avulsos (13/11/2026): produto só em PDF, com página própria em /simulados/<slug>.
+const simulados = Object.values(catalog).filter(p => p.active && p.kind === 'simulados');
+const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
 
 // Páginas geradas de produtos fora de venda não podem continuar publicadas
 // apenas porque seus HTMLs antigos permanecem versionados no repositório.
 // A entrega paga usa o catálogo completo e permanece preservada.
 for (const product of Object.values(catalog).filter(p => p.active === false)) {
-  const stalePage = 'public/apostilas/' + product.slug + '.html';
+  const stalePage = 'public/' + (product.kind === 'simulados' ? 'simulados/' : 'apostilas/') + product.slug + '.html';
   if (fs.existsSync(stalePage)) fs.unlinkSync(stalePage);
 }
 const footer = fs.readFileSync('lib/site-footer.html', 'utf8');
@@ -328,6 +331,31 @@ const productLinks = products
   .map(p => `<li><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a> — PDF, resumo em áudio e ${p.assets.chapters.length} capítulos. ${esc(p.audience)}.</li>`)
   .join('');
 
+/* Cartão de apostila padrão (13/11/2026): capa clicável, local, cargo, salário, vagas, páginas, questões,
+   destaques do combo, preço direto e botões Espiar (amostra em pop-up) e Comprar. */
+// Versão no endereço (?v=hash do conteúdo): o CDN guarda CSS/JS por horas; sem isso a mudança demora a aparecer.
+const assetVer = href => { try { const f = 'public' + href.split('?')[0]; return href.split('?')[0] + '?v=' + require('crypto').createHash('sha1').update(fs.readFileSync(f)).digest('hex').slice(0, 10); } catch { return href; } };
+const fmtInt = n => Number(n).toLocaleString('pt-BR');
+const apostilaCard = (p, opts = {}) => {
+  const k = (p.storefront && p.storefront.concurso) || {};
+  const page = `/apostilas/${p.slug}`;
+  const sample = fs.existsSync(`public/amostras/${p.slug}.pdf`) ? `/amostras/${p.slug}.pdf` : '';
+  const tile = (icon, val, lab, cls = '') => `<div class="ac-tile${cls}"><strong><span aria-hidden="true">${icon}</span> ${esc(val)}</strong><small>${esc(lab)}</small></div>`;
+  return `<article class="ac-card">` +
+    `<a class="ac-cover" href="${page}" aria-label="Ver a apostila ${esc(p.shortName)}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="240" height="300" loading="${opts.eager ? 'eager' : 'lazy'}" decoding="async"></a>` +
+    '<div class="ac-body">' +
+    `<span class="ac-local">${esc(k.local || p.category || '')}</span>` +
+    `<h3><a href="${page}">${esc(k.cargo || p.shortName)}</a></h3>` +
+    (k.salario || k.vagas ? `<div class="ac-row">${k.salario ? tile('💰', k.salario, 'salário', ' ac-money') : ''}${k.vagas ? tile('👥', k.vagas, 'vagas') : ''}</div>` : '') +
+    '<p class="ac-divider"><span>📘 Apostila</span></p>' +
+    `<div class="ac-row">${tile('📄', fmtInt(k.paginas || 0), 'páginas')}${tile('❓', fmtInt(k.questoes || 0), 'questões')}</div>` +
+    `<div class="ac-buy"><ul><li>3 apostilas pelo preço de 1</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
+    '<div class="ac-actions">' +
+    (sample ? `<button type="button" class="ac-espiar" data-espiar="${sample}" data-titulo="${esc(p.shortName)}">👁 Espiar</button>` : `<a class="ac-espiar" href="${page}">👁 Espiar</a>`) +
+    `<a class="ac-comprar" href="/comprar?produto=${p.slug}">⚡ Comprar</a></div>` +
+    '</div></article>';
+};
+
 const cityLinks = cities
   .map(c => `<li><a href="/${c.slug}">Concursos públicos em ${esc(c.city)}</a></li>`)
   .join('');
@@ -336,7 +364,7 @@ const keyFactsHtml = facts => !facts || !facts.length ? '' :
   `<dl class="key-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
 
 const faqHtml = faq => !faq || !faq.length ? '' :
-  `<section class="faq-block"><h2>Perguntas frequentes</h2>${faq.map(f => `<div class="faq-item"><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join('')}</section>`;
+  `<section class="faq-block"><h2>Perguntas frequentes</h2>${faq.map((f, i) => `<details class="faq-item"${i === 0 ? ' open' : ''}><summary><h3>${esc(f.q)}</h3></summary><p>${esc(f.a)}</p></details>`).join('')}</section>`;
 
 const crumbsHtml = trail => `<nav class="crumbs" aria-label="Trilha de navegação">${
   trail.map((t, i) => i === trail.length - 1
@@ -528,7 +556,7 @@ function renderPage(opts) {
     HEADER_CSS_TAG +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
     HERO_CSS_TAG +
-    styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
+    styles.map(href => `<link rel="stylesheet" href="${esc(assetVer(href))}">`).join('') +
     `</head><body class="portal-news-ui portal-inner-page" data-portal-path="${esc(path)}">` +
     siteHeader +
     /* A faixa sai do <main> e o conteúdo vira o cartão branco abaixo dela, como
@@ -536,15 +564,15 @@ function renderPage(opts) {
        As travas de SEO que medem <main> continuam de pé — a impressão digital
        que separa uma cidade da outra passa a ser o corpo da página, que é
        justamente a parte que nunca se repete entre duas cidades. */
-    heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead }) +
-    '<main class="guide portal-content-surface">' +
+    (opts.customHero ? opts.customHero(crumbsHtml(fullTrail)) : heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead })) +
+    `<main class="guide portal-content-surface${opts.mainClass ? ' ' + esc(opts.mainClass) : ''}">` +
     keyFactsHtml(keyFacts) +
     body +
     faqHtml(faq) +
     `<p class="updated">Página atualizada em ${esc(updated)}. Autoria: ${esc(AUTHOR_NAME)}.</p>` +
     '</main>' + footer +
     '<script src="/newsletter.js" defer></script><script src="/cookie-consent.js" defer></script><script src="/analytics-crm.js" defer></script>' +
-    scripts.map(src => `<script src="${esc(src)}" defer></script>`).join('') +
+    scripts.map(src => `<script src="${esc(assetVer(src))}" defer></script>`).join('') +
     '</body></html>';
 
   const dir = 'public' + path.substring(0, path.lastIndexOf('/'));
@@ -646,31 +674,92 @@ for (const p of products) {
     ['Entrega', 'Digital e imediata após a confirmação do pagamento, em todo o Brasil']
   ];
 
+  /* Página de venda padrão (13/11/2026): combo de 3 cadernos + audiobook, preço direto, amostra,
+     contagem até a prova e barra fixa de compra. Os textos de venda ficam em p.storefront. */
+  const sf = p.storefront || {};
+  const nCap = p.assets.chapters.length;
+  const buyUrl = `/comprar?produto=${p.slug}`;
+  const sampleBase = `/amostras/${p.slug}`;
+  const hasSample = fs.existsSync(`public${sampleBase}.pdf`);
+  const hasAudioSample = fs.existsSync(`public${sampleBase}.mp3`);
+  const examIso = p.exam && p.exam.date ? p.exam.date : '';
+  const examBr = examIso ? examIso.split('-').reverse().join('/') : '';
+  const combo = (sf.combo && sf.combo.length === 3) ? sf.combo : [
+    { titulo: 'Teoria do edital', detalhe: 'Todo o conteúdo programático explicado' },
+    { titulo: 'Simulados comentados', detalhe: 'Questões no formato da banca com gabarito' },
+    { titulo: 'Revisão final', detalhe: 'Roteiro para a reta final da prova' }
+  ];
+  // Ordem padrão, da esquerda para a direita: 1 = Caderno de Simulados, 2 = Apostila Completa (capa real), 3 = terceiro caderno.
+  const ordered = [combo[1], combo[0], combo[2]];
+  const book = (c, cls) => `<div class="combo-book ${cls}" aria-hidden="true"><span class="combo-book-brand">TRILHA APROVA</span>` +
+    `<span class="combo-book-contest">${esc(sf.shortTag || p.shortName)}</span><strong>${esc(c.titulo)}</strong><span class="combo-book-foot">${esc(c.detalhe)}</span></div>`;
+  // Capas laterais: imagens 3D no mesmo molde da capa principal (storefront.comboCovers); sem elas, cadernos desenhados.
+  const sideCover = (src, c, cls) => `<img class="combo-side ${cls}" src="${esc(src)}" alt="Capa do ${esc(c.titulo)} — ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async" tabindex="0" role="button" data-capa-titulo="${esc(c.titulo)}" data-capa-detalhe="${esc(c.detalhe)}">`;
+  const covers = sf.comboCovers && sf.comboCovers.length === 2 ? sf.comboCovers : null;
+  const visual = `<div class="combo-visual${covers ? ' combo-visual-3d' : ''}">` +
+    (covers ? sideCover(covers[0], combo[1], 'combo-side-left') : book(combo[1], 'combo-book-left')) +
+    `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async" tabindex="0" role="button" data-capa-titulo="${esc(combo[0].titulo)}" data-capa-detalhe="${esc(combo[0].detalhe + '. ' + p.proofPoints.slice(0, 2).join('. '))}">` +
+    (covers ? sideCover(covers[1], combo[2], 'combo-side-right') : book(combo[2], 'combo-book-right')) +
+    `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>` +
+    `<ol class="combo-labels">${ordered.map(c => `<li><strong>${esc(c.titulo)}</strong><span>${esc(c.detalhe)}</span></li>`).join('')}</ol>`;
+  const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
+  const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
+    `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
+    '<p class="combo-perks"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p>' +
+    `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
+    `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
+    `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
+    `<div class="combo-price-row"><div><span class="combo-price-label">3 apostilas + audiobook por</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
+    `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
+    (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
+    '<a class="combo-member-link" href="/membros">Membros do Clube Trilha Aprova têm 15% de desconto na 1ª compra →</a>' +
+    '</div><div class="combo-visual-wrap">' + visual + '</div></div></section>' +
+    (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
+
   const body =
-    '<div class="product-intro">' +
-    `<img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
-    `<div><p>${esc(p.description)}</p>` +
-    `<p><strong>Para quem:</strong> ${esc(p.audience)}.</p>` +
-    `<p>Autoria: ${esc(p.author)}.</p>` +
-    `<p class="guide-price">${brl(p.priceCents)}</p>` +
-    '<p>Pagamento único. Material digital em português, disponível online em todo o Brasil.</p>' +
-    `<a class="guide-button" href="/comprar?produto=${p.slug}">Comprar PDF + audiobook</a></div></div>` +
-    `<h2>O que está incluído</h2><ul>${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-    '<h2>Resumo em áudio e capítulos</h2>' +
-    `<p>${esc(p.assets.summary.title)}. O resumo é uma revisão complementar; os capítulos organizam o estudo por assunto.</p>` +
-    `<ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong><p>${esc(c.subtitle)}</p></li>`).join('')}</ol>` +
-    `<h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p>` +
-    '<h2>Como recebo os arquivos?</h2>' +
-    '<p>Após a confirmação do pagamento, sua área individual libera o PDF e os áudios desta apostila para leitura, reprodução e download. <a href="/entrega-e-acesso">Veja como funciona o acesso</a>.</p>' +
-    (p.preEdital
-      ? '<h2>Preparação para SME-SP PEIF</h2><p>O material reúne fundamentos pedagógicos, legislação, Currículo da Cidade, Educação Infantil, alfabetização, inclusão e preparação para a prova prática. A edição pré-edital deve ser confrontada com o futuro programa oficial.</p>'
-      : isAutores
-      ? '<h2>Quem estuda na Baixada Santista</h2><p>Esta apostila nasceu do edital de Santos, mas o conteúdo de autores é o mesmo cobrado em muitos concursos municipais de educação. Veja os guias por cidade:</p><ul class="city-links">' + cityLinks + '</ul>'
-      : '<h2>Onde a redação costuma ser cobrada</h2><p>Cargos de nível fundamental completo frequentemente incluem prova de produção textual. Veja os guias por cidade da Baixada Santista:</p><ul class="city-links">' + cityLinks + '</ul>') +
-    '<h2>Continue sua preparação</h2>' +
-    `<ul>${productLinks}</ul>` +
-    '<p><a href="/apostila-para-concurso-como-escolher">Como escolher a apostila certa para o seu edital</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
-    disclaimer;
+    '<section class="combo-section"><h2>3 apostilas pelo preço de 1 + audiobook grátis</h2>' +
+    '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>' +
+    '<div class="combo-grid">' +
+    ordered.map((c, i) => `<article class="combo-card${i === 1 ? ' combo-card-main' : ''}"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
+    `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
+    '<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Resumo em áudio</h3><p>Revisão narrada para a véspera da prova.</p></article>' +
+    '</div></section>' +
+    (hasSample || hasAudioSample ? '<section class="combo-section combo-sample" id="amostra"><h2>Experimente antes de comprar</h2>' +
+      '<p>Selecionamos as partes mais fortes da apostila: capa, sumário, páginas de teoria com dicas e quadros e um trecho dos simulados.</p><div class="combo-sample-row">' +
+      (hasSample ? `<a class="combo-sample-pdf" href="${sampleBase}.pdf?v=${ASSET_VERSION}" target="_blank" rel="noopener">Ler a amostra em PDF</a>` : '') +
+      (hasAudioSample ? `<div class="combo-sample-audio"><span>Ouça 1 minuto e meio do audiobook</span><audio controls preload="none" src="${sampleBase}.mp3?v=${ASSET_VERSION}"></audio></div>` : '') +
+      '</div></section>' : '') +
+    `<section class="combo-section"><h2>Conteúdo da apostila</h2><ul class="combo-list">${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
+    `<p class="combo-desc">${esc(p.description)}</p></section>` +
+    `<section class="combo-section"><h2>Audiobook: os ${nCap} capítulos</h2><ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong>${c.subtitle ? `<p>${esc(c.subtitle)}</p>` : ''}</li>`).join('')}</ol></section>` +
+    `<section class="combo-section"><h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p></section>` +
+    '<section class="combo-pack"><p class="combo-perks combo-perks-dark"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p><h2>O pacote completo</h2><ul class="combo-list">' +
+    ordered.map((c, i) => `<li><strong>${i + 1}. ${esc(c.titulo)}</strong> — ${esc(c.detalhe)}</li>`).join('') +
+    `<li>Audiobook em ${nCap} capítulos</li><li>Resumo em áudio</li><li>Acesso imediato após o pagamento, com download</li><li>7 dias para arrependimento, conforme o Código de Defesa do Consumidor</li></ul>` +
+    `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +
+    `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a>` +
+    '<p class="combo-pack-note">Pagamento seguro. Assim que o pagamento é confirmado, a sua área de acesso com o PDF e os áudios é liberada e o link chega no seu e-mail.</p></section>' +
+    (() => {
+      const sim = simulados.find(s => s.storefront.apostila === p.slug);
+      return sim ? '<section class="combo-section sim-cross"><h2>Quer treinar mais antes da prova?</h2>' +
+        `<div class="sim-cross-in"><a href="/simulados/${sim.slug}"><img src="${esc(sim.storefront.cover3d)}" alt="Capa do caderno de simulados" width="150" height="188" loading="lazy" decoding="async"></a>` +
+        `<div><p><b>${esc(sim.storefront.provas)} simulados extras, ${esc(sim.storefront.questoes)} questões inéditas</b>, diferentes das que vêm na apostila, no formato da prova e com gabarito comentado.</p>` +
+        `<p class="sim-cross-price">${brl(sim.priceCents)}</p><div class="sim-cross-btns"><a class="ac-comprar" href="/comprar?produto=${sim.slug}">Comprar simulados</a><a class="ac-espiar" href="${esc(sim.storefront.sample)}" data-espiar="${esc(sim.storefront.sample)}" data-titulo="${esc(sim.shortName)}">Ver amostra</a></div></div></div></section>` : '';
+    })() +
+    (() => {
+      // Cross-sell: mesma área (e mesma cidade primeiro) + Redação, que cai em quase todo concurso.
+      const area = sf.area, cid = sf.concurso && sf.concurso.local;
+      const rel = products.filter(o => o.slug !== p.slug && o.storefront.area === area)
+        .sort((x, y) => ((y.storefront.concurso || {}).local === cid) - ((x.storefront.concurso || {}).local === cid)).slice(0, 2);
+      const red = products.find(o => o.slug.startsWith('redacao') && o.slug !== p.slug);
+      const list = [...rel, ...(red ? [red] : [])].slice(0, 3);
+      return list.length ? '<section class="combo-section combo-cross"><h2>Quem estuda para este concurso também leva</h2>' +
+        '<p class="combo-lead">Aproveite a viagem para a prova: concursos da mesma área costumam cobrar conteúdos parecidos.</p>' +
+        `<div class="ac-grid">${list.map(o => apostilaCard(o)).join('')}</div></section>` : '';
+    })() +
+    '<p class="combo-more"><a href="/apostilas-para-concurso">Ver todas as apostilas da Trilha Aprova</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
+    disclaimer +
+    `<div class="combo-sticky" role="region" aria-label="Comprar"><span><b>${brl(p.priceCents)}</b> · ${esc(p.shortName)}</span><a href="${buyUrl}">Comprar agora</a></div>`;
 
   renderPage({
     path,
@@ -682,14 +771,110 @@ for (const p of products) {
     lead: p.preEdital
       ? `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`
       : `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
-    keyFacts,
+    keyFacts: [],
     body,
     faq,
+    customHero: hero,
+    mainClass: 'combo-page',
+    styles: ['/apostila-combo.css', '/apostila-cards.css'],
+    scripts: ['/apostila-combo.js', '/apostila-cards.js'],
     nodes: [productNode, audiobookNode],
     trail: [['Apostilas', '/apostilas-para-concurso']],
     image: p.storefront.cover3d,
     priority: '0.9',
     images: [p.storefront.cover3d]
+  });
+}
+
+/* Clube Trilha Aprova (13/11/2026): cadastro grátis, 15% na 1ª compra e 10% nas seguintes. */
+renderPage({
+  path: '/membros',
+  title: 'Clube Trilha Aprova: 15% de desconto na primeira apostila',
+  metaTitle: 'Clube Trilha Aprova — 15% de desconto na 1ª apostila | Trilha Aprova',
+  description: 'Cadastre-se grátis no Clube Trilha Aprova: 15% de desconto na primeira apostila, 10% nas compras seguintes e aviso de cada apostila nova por e-mail.',
+  kicker: 'CLUBE TRILHA APROVA · GRÁTIS',
+  lead: 'Cadastre-se grátis e ganhe 15% de desconto na primeira apostila e 10% em todas as compras seguintes. Você também recebe por e-mail cada apostila nova assim que sai um edital.',
+  keyFacts: [['1ª compra', '15% de desconto'], ['Compras seguintes', '10% de desconto'], ['Novidades', 'Apostila nova por e-mail'], ['Custo', 'Grátis']],
+  body:
+    '<section class="membro-box" id="cadastro"><h2>Entre para o clube</h2>' +
+    '<p class="membro-ok" hidden>Pronto! Seu desconto de membro está ativo neste aparelho. Ele aparece sozinho no checkout quando você compra com o mesmo e-mail.</p>' +
+    '<form id="membro-form" novalidate><label>Nome<input name="name" autocomplete="name" required placeholder="Seu nome"></label>' +
+    '<label>E-mail<input name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com"></label>' +
+    '<label class="membro-consent"><input name="consent" type="checkbox" required> Quero receber por e-mail as novidades e as apostilas novas da Trilha Aprova. Posso cancelar quando quiser.</label>' +
+    '<input name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">' +
+    '<button type="submit">Quero meu desconto de 15%</button><p class="membro-msg" role="status"></p></form></section>' +
+    '<h2>Como funciona</h2><ol><li>Você se cadastra aqui com nome e e-mail.</li><li>Confirma pelo link que chega no seu e-mail.</li><li>Na compra, com o mesmo e-mail e neste aparelho, o desconto entra sozinho: 15% na primeira apostila e 10% nas seguintes.</li></ol>' +
+    `<div class="ac-grid">${products.slice(0, 3).map(p => apostilaCard(p)).join('')}</div>` +
+    disclaimer,
+  faq: [
+    { q: 'O clube é pago?', a: 'Não. O cadastro é grátis e você pode sair quando quiser pelo link de descadastro nos e-mails.' },
+    { q: 'O desconto vale para qualquer apostila?', a: 'Sim: 15% na primeira compra e 10% em todas as compras seguintes, em qualquer apostila do catálogo.' },
+    { q: 'Por que o desconto não apareceu?', a: 'Ele aparece quando você confirma o cadastro pelo link do e-mail e compra com o mesmo e-mail, no mesmo aparelho em que confirmou.' }
+  ],
+  styles: ['/apostila-cards.css', '/membros.css'],
+  scripts: ['/apostila-cards.js', '/membros.js'],
+  trail: [['Apostilas', '/apostilas-para-concurso']],
+  priority: '0.7'
+});
+
+/* Simulados avulsos (13/11/2026, pedido do André): 5 simulados por R$ 15,99, amostra de 10 páginas
+   com marca d'água em pop-up (com download) e entrega pela mesma área de acesso. */
+function simuladoCard(s) {
+  const ap = catalog[s.storefront.apostila] || {};
+  const k = (ap.storefront && ap.storefront.concurso) || {};
+  const page = '/simulados/' + s.slug;
+  return `<article class="sim-card"><a class="sim-cover" href="${page}" aria-label="Ver ${esc(s.shortName)}"><img src="${esc(s.storefront.cover3d)}" alt="Capa do caderno ${esc(s.shortName)}" width="200" height="250" loading="lazy" decoding="async"></a>` +
+    `<div class="sim-body"><span class="ac-local">${esc(k.local || '')}${s.examBoard ? ' · ' + esc(s.examBoard) : ''}</span>` +
+    `<h3><a href="${page}">${esc(s.storefront.provas)} Simulados · ${esc(k.cargo || s.shortName)}</a></h3>` +
+    `<div class="sim-tiles"><div><strong>${esc(s.storefront.provas)}</strong><small>provas</small></div><div><strong>${esc(s.storefront.questoes)}</strong><small>questões</small></div><div><strong>${esc(s.storefront.paginas)}</strong><small>páginas</small></div></div>` +
+    `<ul class="sim-list"><li>Formato da prova, 4 alternativas</li><li>Gabarito comentado</li><li>Questões inéditas</li></ul>` +
+    `<div class="sim-buy"><span class="ac-price">${brl(s.priceCents)}</span><div class="sim-btns"><a class="ac-espiar" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">👁 Ver amostra</a><a class="ac-comprar" href="/comprar?produto=${s.slug}">⚡ Comprar</a></div></div></div></article>`;
+}
+
+for (const s of simulados) {
+  const path = '/simulados/' + s.slug;
+  const url = ORIGIN + path;
+  const ap = catalog[s.storefront.apostila] || {};
+  const k = (ap.storefront && ap.storefront.concurso) || {};
+  const comp = [['Língua Portuguesa', 10, 3], ['Raciocínio Lógico-Matemático', 5, 1], ['Realidade de Goiás e de Aparecida de Goiânia', 5, 1], ['Conhecimentos Específicos', 30, 2]];
+  const productNode = {
+    '@type': 'Product', '@id': url + '#product', name: s.name, description: s.description, image: [s.storefront.cover3d],
+    sku: s.slug, category: s.category, inLanguage: 'pt-BR', brand: { '@type': 'Brand', name: 'Trilha Aprova' },
+    offers: { '@type': 'Offer', '@id': url + '#offer', url, price: money(s.priceCents), priceCurrency: 'BRL', availability: 'https://schema.org/InStock', seller: { '@id': ORIGIN + '/#organization' } }
+  };
+  renderPage({
+    path,
+    title: `${s.storefront.provas} simulados ${k.cargo || ''} ${k.local ? '— ' + k.local.replace('/GO', '') : ''} 2026`.replace(/\s+/g, ' ').trim(),
+    metaTitle: `5 Simulados PE-I Pedagogia Aparecida de Goiânia 2026 (250 questões) | Trilha Aprova`,
+    description: `5 simulados completos para PE-I Pedagogia de Aparecida de Goiânia (Verbena/UFG): 250 questões inéditas com gabarito comentado, por ${brl(s.priceCents)}. Veja a amostra grátis.`,
+    kicker: 'SIMULADOS AVULSOS · ' + (s.examBoard || ''),
+    lead: `Treine no formato da prova: ${s.storefront.provas} simulados completos de 50 questões, na mesma distribuição e com os mesmos pesos do edital, com cartão-resposta e comentário de cada questão. São ${s.storefront.questoes} questões inéditas, diferentes das que vêm na apostila.`,
+    keyFacts: [['Simulados', s.storefront.provas + ' provas completas'], ['Questões', s.storefront.questoes + ' inéditas'], ['Formato', '4 alternativas · pesos do edital'], ['Preço', brl(s.priceCents)]],
+    body:
+      `<section class="sim-hero"><a href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}"><img src="${esc(s.storefront.cover3d)}" alt="Capa do caderno ${esc(s.shortName)}" width="300" height="375" loading="eager" decoding="async"></a>` +
+      `<div><p class="sim-hero-price">${brl(s.priceCents)}<small>pagamento único · PDF liberado na hora</small></p>` +
+      `<a class="ac-comprar sim-hero-buy" href="/comprar?produto=${s.slug}">⚡ Comprar os ${s.storefront.provas} simulados</a>` +
+      `<a class="ac-espiar sim-hero-sample" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">👁 Ver amostra grátis (10 páginas)</a>` +
+      `<ul class="sim-list">${s.proofPoints.map(x => '<li>' + esc(x) + '</li>').join('')}</ul></div></section>` +
+      '<h2>Como é cada simulado</h2><table class="ac-table sim-table"><thead><tr><th>Área</th><th>Questões</th><th>Peso</th><th>Pontos</th></tr></thead><tbody>' +
+      comp.map(([a, q, w]) => `<tr><td>${esc(a)}</td><td>${q}</td><td>${w}</td><td>${q * w}</td></tr>`).join('') +
+      '<tr><td><b>Total</b></td><td><b>50</b></td><td></td><td><b>100</b></td></tr></tbody></table>' +
+      '<p>A nota mínima na prova objetiva é 50 pontos. Cada simulado traz capa, cartão-resposta, as 50 questões separadas por área, gabarito rápido e a resolução comentada de cada questão, explicando por que a alternativa certa está certa.</p>' +
+      (ap.slug ? `<h2>Para estudar a teoria</h2><p>Os simulados treinam a prova. A teoria de todo o edital, a redação, a legislação e o audiobook estão na <a href="/apostilas/${ap.slug}">apostila ${esc(ap.shortName)}</a>, que já traz outros 2 simulados — as ${s.storefront.questoes} questões deste caderno são diferentes das da apostila.</p>` : '') +
+      disclaimer,
+    faq: [
+      { q: 'Como recebo os simulados?', a: 'Assim que o pagamento é confirmado, o PDF é liberado na sua área de acesso e o link chega no seu e-mail. Você pode ler on-line ou baixar.' },
+      { q: 'As questões são as mesmas da apostila?', a: `Não. São ${s.storefront.questoes} questões inéditas, escritas a partir do conteúdo programático do edital e conferidas na legislação vigente, diferentes dos 2 simulados que acompanham a apostila.` },
+      { q: 'Os simulados são da banca?', a: 'Não. É material independente da Trilha Aprova, sem vínculo com a Prefeitura ou com o Instituto Verbena/UFG. As questões seguem o formato, a distribuição e os pesos previstos no edital.' },
+      { q: 'Posso ver antes de comprar?', a: 'Sim. A amostra grátis tem 10 páginas do Simulado 01, com questões, cartão-resposta e resoluções comentadas, e pode ser baixada em PDF.' }
+    ],
+    nodes: [productNode],
+    styles: ['/apostila-cards.css'],
+    scripts: ['/apostila-cards.js'],
+    trail: [['Apostilas', '/apostilas-para-concurso']],
+    image: s.storefront.cover3d,
+    images: [s.storefront.cover3d],
+    priority: '0.8'
   });
 }
 
@@ -701,28 +886,28 @@ renderPage({
   path: '/apostilas-para-concurso',
   title: 'Apostilas para concurso com audiobook',
   metaTitle: 'Apostilas para concurso público com audiobook | Trilha Aprova',
-  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Pagamento único de R$ 24,99 por apostila e acesso imediato em todo o Brasil.',
+  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Combos de 3 apostilas + audiobook grátis, a partir de R$ 19,90, com acesso imediato.',
   kicker: 'CATÁLOGO',
-  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, por ${brl(products[0].priceCents)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
+  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
   keyFacts: [
     ['Apostilas disponíveis', String(products.length)],
-    ['Preço por apostila', `${brl(products[0].priceCents)} — pagamento único`],
+    ['Preço por apostila', `a partir de ${brl(MIN_PRICE)} — pagamento único`],
     ['Formatos incluídos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
     ['Entrega', 'Digital e imediata, válida em todo o Brasil'],
     ['Autoria', AUTHOR_NAME]
   ],
   body:
     '<h2>Materiais disponíveis</h2>' +
-    '<div class="product-grid">' +
-    products.map(p => `<article class="product-card"><img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="240" height="300" loading="lazy" decoding="async"><div><h3><a href="/apostilas/${p.slug}">${esc(p.shortName)}</a></h3><p>${esc(p.description)}</p><p><strong>${brl(p.priceCents)}</strong> · ${esc(p.audience)}</p></div></article>`).join('') +
-    '</div>' +
+    '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>' +
     '<h2>O que vem em cada apostila</h2><ul><li>PDF completo para ler online ou baixar.</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook dividido em capítulos por assunto.</li><li>Questões com gabarito comentado.</li><li>Acesso individual recuperável pelo e-mail da compra.</li></ul>' +
     '<h2>Como escolher entre elas</h2><p>A escolha depende do cargo do seu edital, não do preço. Se o cargo é de professor com conteúdo pedagógico, comece pela apostila de autores. Se o cargo é de nível fundamental com prova de redação, comece pela apostila de redação. Em caso de dúvida, leia o guia sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa</a>.</p>' +
     '<h2>Preparação por região</h2><ul class="city-links">' + cityLinks + '</ul>' +
     disclaimer,
+  styles: ['/apostila-cards.css'],
+  scripts: ['/apostila-cards.js'],
   faq: [
     { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
-    { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única de ${brl(products[0].priceCents)}, sem mensalidade e sem renovação automática.` },
+    { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
     { q: 'Recebo em quanto tempo?', a: 'Imediatamente. Assim que o pagamento é confirmado, a área individual com o PDF e os áudios é liberada automaticamente.' },
     { q: 'Vocês entregam em todo o Brasil?', a: 'Sim. Como a entrega é totalmente digital, o material fica disponível para qualquer cidade do país, sem frete e sem prazo de envio.' }
   ],
@@ -1180,7 +1365,7 @@ function apostilaMunicipio(m) {
   const capa = disponivel
     ? p.storefront.cover3d
     : '/assets/apostila-matao-assistente-administrativo-3d.png';
-  const valor = p?.priceCents === 2499 ? p.priceCents : 2499;
+  const valor = p?.priceCents || 2499;
   const cta = disponivel
     ? `<a class="apostila-matao-cta" href="/comprar?produto=${esc(slug)}">Comprar apostila por ${brl(valor)}</a>`
     : `<button class="apostila-matao-cta" type="button" disabled aria-disabled="true">Comprar apostila por ${brl(valor)} (em preparação)</button>`;
@@ -1193,7 +1378,7 @@ function apostilaMunicipio(m) {
     (disponivel
       ? '<p>PDF completo, áudio-resumo e audiobook em oito capítulos, com acesso após o pagamento.</p>'
       : '<p>A prévia editorial possui 16 páginas. O PDF definitivo e os oito capítulos de audiobook em português brasileiro ainda não estão prontos para venda.</p>') +
-    `<p class="apostila-matao-valor"><del>R$ 49,99</del> <strong>${brl(valor)}</strong> ${disponivel ? '' : '<small>preço previsto</small>'}</p>` +
+    `<p class="apostila-matao-valor"><strong>${brl(valor)}</strong> ${disponivel ? '' : '<small>preço previsto</small>'}</p>` +
     cta +
     (disponivel ? '' : '<p class="apostila-matao-nota">Compra indisponível até a validação dos arquivos. <a href="/#apostilas">Ver apresentação da apostila</a>.</p>') +
     '</div></section>';
@@ -1474,7 +1659,7 @@ renderPage({
 
 const hubFaq = [
   { q: 'O que é a Trilha Aprova?', a: 'Uma editora digital independente que publica apostilas para concursos públicos em PDF acompanhadas de audiobook, com entrega digital imediata para todo o Brasil e pagamento único por material.' },
-  { q: 'Quanto custa uma apostila?', a: `${brl(products[0].priceCents)} por apostila, em pagamento único. Não há assinatura, mensalidade nem renovação automática.` },
+  { q: 'Quanto custa uma apostila?', a: `A partir de ${brl(MIN_PRICE)} por apostila (o preço de cada uma está na página dela), em pagamento único. Não há assinatura, mensalidade nem renovação automática.` },
   { q: 'O que vem junto com a apostila?', a: 'O PDF completo, um resumo em áudio e o audiobook dividido em oito capítulos, além das questões com gabarito comentado descritas na página de cada material.' },
   { q: 'Como recebo o material?', a: 'A confirmação do pagamento libera automaticamente uma área individual com os arquivos para leitura, reprodução e download. Não há envio físico nem prazo de entrega.' },
   { q: 'Perdi o link de acesso. E agora?', a: 'Use a opção de recuperar minha compra informando o mesmo e-mail utilizado no pagamento. O acesso é reenviado para esse endereço.' },
@@ -1491,9 +1676,9 @@ renderPage({
   metaTitle: 'Perguntas frequentes | Trilha Aprova',
   description: 'Respostas diretas sobre preço, formato, entrega, reembolso e uso das apostilas da Trilha Aprova, e dúvidas de quem começa a estudar para concurso.',
   kicker: 'CENTRAL DE DÚVIDAS',
-  lead: `As apostilas da Trilha Aprova custam ${brl(products[0].priceCents)} cada, em pagamento único, e incluem PDF, resumo em áudio e audiobook em oito capítulos. A entrega é digital e imediata após a confirmação do pagamento, válida em todo o Brasil. Abaixo estão as dúvidas mais frequentes sobre compra, acesso e método de estudo.`,
+  lead: `As apostilas da Trilha Aprova custam a partir de ${brl(MIN_PRICE)} cada, em pagamento único, e incluem PDF, resumo em áudio e audiobook em oito capítulos. A entrega é digital e imediata após a confirmação do pagamento, válida em todo o Brasil. Abaixo estão as dúvidas mais frequentes sobre compra, acesso e método de estudo.`,
   keyFacts: [
-    ['Preço por apostila', `${brl(products[0].priceCents)}, pagamento único`],
+    ['Preço por apostila', `a partir de ${brl(MIN_PRICE)}, pagamento único`],
     ['Formatos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
     ['Prazo de entrega', 'Imediato, após a confirmação do pagamento'],
     ['Direito de arrependimento', '7 dias, conforme o Código de Defesa do Consumidor'],
@@ -1518,14 +1703,14 @@ renderPage({
  * ------------------------------------------------------------------ */
 
 const homeFaq = [
-  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, por ${brl(products[0].priceCents)} cada. A edição completa de Matão já está disponível para compra.` },
+  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, a partir de ${brl(MIN_PRICE)} cada. A edição completa de Matão já está disponível para compra.` },
   { q: 'O material garante aprovação?', a: 'Nenhum material sério pode prometer aprovação sozinho. A proposta da Trilha Aprova é reduzir dispersão, melhorar a qualidade da revisão e ajudar você a chegar à prova mais preparado para reconhecer o conteúdo cobrado.' },
   { q: 'Posso baixar o PDF e os áudios?', a: 'Sim. Após a confirmação do pagamento, os formatos incluídos podem ser usados online e baixados na sua área de acesso.' },
   { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
 ];
 
 const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 24,99.';
+const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 29,90.';
 const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-3d.png';
 
 const homeNodes = [
@@ -1594,22 +1779,10 @@ home = home.replace('</main>', discovery);
 
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
-const shelf = products.map((p, i) => {
-  // "72 páginas • 120 questões" sai dos pontos de prova, que saem do material.
-  const medidas = p.proofPoints
-    .map(point => /^(\d[\d.,]*\s+\S+)/.exec(point)?.[1])
-    .filter(Boolean).slice(0, 2);
-  const meta = [...medidas, 'PDF + audiobook'].join(' • ');
-  return '<article class="future-card active spotlight-card catalog-product-card">' +
-    '<small>APOSTILA ' + String(i + 1).padStart(2, '0') + ' • DISPONÍVEL</small>' +
-    '<div class="catalog-card-cover"><img src="' + esc(p.storefront.cover3d) +
-      '" alt="Capa da ' + esc(p.shortName) + '" width="240" height="230" loading="lazy" decoding="async"></div>' +
-    '<span class="catalog-card-badge">' + esc(p.storefront.badge) + '</span>' +
-    '<div class="catalog-card-name">' + esc(p.shortName) + '</div>' +
-    '<div class="catalog-card-meta">' + esc(meta) + '</div>' +
-    '<div class="catalog-card-price"><del>' + brl(p.compareAtCents) + '</del><strong>' + brl(p.priceCents) + '</strong></div>' +
-    '<a class="catalog-card-buy" href="/apostilas/' + esc(p.slug) + '">Ver esta apostila</a></article>';
-}).join('');
+const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
+  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="eager" decoding="async"></a>`).join('') +
+  '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
+const shelf = '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 
 home = home
   .replace(/<!-- catalogo:intro:start -->[\s\S]*?<!-- catalogo:intro:end -->/,
@@ -1977,6 +2150,32 @@ const bannersHtml = '<!-- banners:start -->' +
    manchete — os marcadores continuam lá para quem for procurá-los. */
 home = home.replace(/<!-- banners:start -->[\s\S]*?<!-- banners:end -->/, () => bannersHtml);
 
+/* Cargos, Vagas e Remunerações (13/11/2026): salário, vagas, taxa e prazo de cada concurso com apostila,
+   com "Ler mais" (página da apostila) e "Fazer inscrição" (site oficial da banca, abre fora do site). */
+const comDados = products.filter(p => p.storefront.concurso && p.storefront.concurso.salario);
+const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="cargos-e-salarios" aria-labelledby="cargos-titulo">' +
+  '<h2 id="cargos-titulo">Cargos, Vagas e Remunerações</h2>' +
+  '<p class="ac-cargos-lead">Os concursos que têm apostila na Trilha Aprova. Confira salário, vagas, taxa e prazo, e confirme sempre no edital oficial.</p>' +
+  '<div class="ac-table-wrap"><table class="ac-table"><thead><tr><th>Cargo</th><th>Vagas</th><th>Remuneração</th><th>Inscrições</th><th>Taxa</th><th>Requisito</th><th></th></tr></thead><tbody>' +
+  comDados.map(p => { const k = p.storefront.concurso; return '<tr>' +
+    `<td><a href="/apostilas/${p.slug}"><strong>${esc(k.cargo)}</strong></a><small>${esc(k.local)}${p.examBoard ? ' · ' + esc(p.examBoard) : ''}</small></td>` +
+    `<td>${esc(k.vagas || '—')}</td><td class="ac-sal">${esc(k.salario)}</td><td>${esc(k.inscricoes || '—')}</td><td>${esc(k.taxa || 'ver edital')}</td><td>${esc(k.requisito || '—')}</td>` +
+    `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
+  '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
+home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
+const simHomeHtml = simulados.length ? '<!-- simulados:start --><section class="sim-home shell" id="simulados" aria-labelledby="sim-titulo">' +
+  '<h2 id="sim-titulo">Simulados avulsos</h2><p class="ac-cargos-lead">Treine no formato da prova: 5 simulados completos com gabarito comentado. Abra a amostra grátis antes de comprar.</p>' +
+  `<div class="sim-grid">${simulados.map(simuladoCard).join('')}</div></section><!-- simulados:end -->` : '';
+home = home.replace(/<!-- simulados:start -->[\s\S]*?<!-- simulados:end -->/, '');
+/* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
+const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +
+  '<p class="ac-vitrine-t"><b>Apostilas disponíveis</b><span>3 apostilas pelo preço de 1 + audiobook grátis</span></p>' + carousel + '</div></section><!-- vitrine-capas:end -->';
+home = home.replace(/<!-- vitrine-capas:start -->[\s\S]*?<!-- vitrine-capas:end -->/, '');
+home = home.replace('<!-- banners:start -->', vitrineHtml + '<!-- banners:start -->');
+home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml + simHomeHtml);
+home = home.replace(/<link rel="stylesheet" href="\/apostila-cards\.css[^"]*">/g, '').replace(/<script src="\/apostila-cards\.js[^"]*" defer><\/script>/g, '');
+home = home.replace('</head>', `<link rel="stylesheet" href="${assetVer('/apostila-cards.css')}"></head>`).replace('</body>', `<script src="${assetVer('/apostila-cards.js')}" defer></script></body>`);
+
 fs.writeFileSync('public/index.html', home);
 
 addUrl('/', { priority: '1.0', images: products.map(p => p.storefront.cover3d) });
@@ -2063,15 +2262,16 @@ function checkoutCover(product) {
   return url.startsWith(ORIGIN) ? url.slice(ORIGIN.length) : url;
 }
 
-const checkoutProducts = Object.fromEntries(products.map(p => [p.slug, {
+const checkoutProducts = Object.fromEntries([...products, ...simulados].map(p => [p.slug, {
   badge: p.storefront.badge,
   nome: p.shortName,
   descricao: p.description,
   publico: p.audience,
   capa: checkoutCover(p),
-  alt: 'Capa da apostila ' + p.shortName,
+  alt: (p.kind === 'simulados' ? 'Capa do caderno ' : 'Capa da apostila ') + p.shortName,
   preco: brl(p.priceCents),
   de: p.compareAtCents ? brl(p.compareAtCents) : '',
+  bump: p.kind === 'simulados' || p.slug === 'redacao-nivel-fundamental-2026' || !catalog['redacao-nivel-fundamental-2026']?.active ? null : { nome: catalog['redacao-nivel-fundamental-2026'].shortName, preco: brl(1490), cheio: brl(catalog['redacao-nivel-fundamental-2026'].priceCents), capa: catalog['redacao-nivel-fundamental-2026'].storefront.cover3d },
   centavos: p.priceCents,
   beneficios: p.proofPoints.slice(0, 4).map(benefit)
 }]));
@@ -2133,7 +2333,7 @@ fs.writeFileSync('public/robots.txt', robots);
 const llms =
   '# Trilha Aprova\n\n' +
   '> Editora digital independente de apostilas para concursos públicos no Brasil. Cada apostila reúne PDF, resumo em áudio e audiobook em capítulos, ' +
-  `por ${brl(products[0].priceCents)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
+  `a partir de ${brl(MIN_PRICE)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
   `Autoria: ${AUTHOR_NAME}. Atendimento: ${SUPPORT_EMAIL}. Idioma: português do Brasil.\n` +
   'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos, não divulga vagas, datas ou inscrições abertas e não promete aprovação.\n' +
   'Cobertura: apostilas para concursos com edital publicado em diferentes estados (São Paulo, Goiás, Espírito Santo e outros) e seleções nacionais como o IBGE, sempre conferidas pelo edital do cargo; guias regionais para a Baixada Santista. Venda e entrega: todo o Brasil.\n\n' +

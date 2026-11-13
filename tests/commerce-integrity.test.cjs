@@ -7,13 +7,14 @@ const {createCheckout}=require('../lib/checkout-hosted');
 process.env.STRIPE_SECRET_KEY='test-only-not-a-real-key';
 process.env.R2_ACCESS_KEY_ID='test-only';process.env.R2_SECRET_ACCESS_KEY='test-only';
 const originalFetch=global.fetch;
-test('each product owns exactly its PDF, cover, summary and eight chapter files',async()=>{
+test('each product owns exactly its PDF, cover, summary and eight chapter files (simulados: PDF and cover)',async()=>{
   const allKeys=new Set();
   for(const product of Object.values(catalog)){
     validateProductAssets(product);
     const signed=await signedProductAssets(product);
-    assert.equal(signed.tracks.length,9);
-    assert.equal(signed.tracks[0].id,'summary');
+    // caderno de simulados avulso é só PDF (sem áudio); as apostilas têm resumo + 8 capítulos
+    if(product.kind==='simulados'){assert.equal(signed.tracks.length,0);}
+    else{assert.equal(signed.tracks.length,9);assert.equal(signed.tracks[0].id,'summary');}
     for(const url of [signed.pdf,signed.cover,...signed.tracks.map(t=>t.streamUrl)]){
       const path=decodeURIComponent(new URL(url).pathname);assert.ok(path.includes('/'+product.slug+'/'));
       assert.ok(!allKeys.has(path));allKeys.add(path);

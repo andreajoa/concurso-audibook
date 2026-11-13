@@ -126,14 +126,46 @@
     "audience": "Candidatos a cargos de Ensino Fundamental Completo",
     "currency": "brl",
     "priceCents": 2499,
-    "compareAtCents": 4999,
     "stripePriceEnv": "STRIPE_PRICE_REDACAO_NIVEL_FUNDAMENTAL_2026",
     "description": "Método prático para entender o comando da prova, organizar as ideias e produzir textos claros, corretos e adequados ao gênero solicitado, com teoria simples, modelos, exercícios e gabarito.",
     "seoDescription": "Método prático de redação para concurso de nível fundamental: entender o comando, organizar ideias e escrever com clareza, com modelos e gabarito.",
     "storefront": {
       "badge": "REDAÇÃO PARA CONCURSOS • ENSINO FUNDAMENTAL COMPLETO",
-      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-redacao-3d.webp",
-      "cta": "Quero esta apostila + audiobook"
+      "cover3d": "/assets/capa-redacao-nivel-fundamental-2026-completa-3d.webp",
+      "cta": "Quero esta apostila + audiobook",
+      "headline": "Perca o medo da redação: teoria, modelos e audiobook para quem faz prova de nível fundamental",
+      "shortTag": "Redação · Nível Fundamental",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria da redação e como ela é corrigida"
+        },
+        {
+          "titulo": "Caderno de Exercícios",
+          "detalhe": "10 questões de fixação + 5 propostas de produção textual"
+        },
+        {
+          "titulo": "Caderno de Modelos",
+          "detalhe": "Redações-modelo explicadas passo a passo"
+        }
+      ],
+      "comboCovers": [
+        "/assets/capa-redacao-nivel-fundamental-2026-simulados-3d.webp",
+        "/assets/capa-redacao-nivel-fundamental-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Redação · nível fundamental",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": 19,
+        "questoes": 15
+      },
+      "area": "redacao"
     },
     "funnel": {
       "orderBump": [],
@@ -591,15 +623,48 @@
     "author": "Trilha Aprova",
     "audience": "Professor Adjunto I (código 101) — Prefeitura de Santos",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 3690,
     "stripePriceEnv": "STRIPE_PRICE_PROFESSOR_ADJUNTO_I_IBAM_SANTOS_2026",
     "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final.",
     "seoDescription": "Apostila de Professor Adjunto I para Santos 2026 (IBAM): teoria do zero, legislação, autores, específicos, dissertativa, 200 questões e audiobook.",
     "storefront": {
       "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 79/2026 • BANCA IBAM",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-professor-adjunto-i-3d.png",
-      "cta": "Quero esta apostila + audiobook"
+      "cta": "Quero esta apostila + audiobook",
+      "headline": "Professor Adjunto I Santos 2026: leia, ouça e treine com o combo feito para a banca IBAM",
+      "shortTag": "Santos · Professor Adjunto I",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria, autores e legislação de Santos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "200 questões, incluindo 3 simulados completos comentados"
+        },
+        {
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Revisão final e mapa do edital"
+        }
+      ],
+      "subheadline": "Professor Adjunto I (código 101) — Prefeitura de Santos · Banca IBAM · Prova prevista para 29/11/2026",
+      "comboCovers": [
+        "/assets/capa-professor-adjunto-i-ibam-santos-2026-simulados-3d.webp",
+        "/assets/capa-professor-adjunto-i-ibam-santos-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Santos/SP",
+        "cargo": "Professor Adjunto I",
+        "salario": "R$ 3.770,59",
+        "vagas": "216",
+        "taxa": "R$ 92,00",
+        "inscricoes": "encerradas",
+        "requisito": "Licenciatura",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 132,
+        "questoes": 200
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
@@ -709,8 +774,7 @@
     "author": "Trilha Aprova",
     "audience": "Professor de Educação Infantil e Ensino Fundamental I — PEIF, SME-SP",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 2790,
     "stripePriceEnv": "STRIPE_PRICE_SME_SP_PEIF_PRE_EDITAL_2026",
     "description": "Curso preparatório completo no papel para PEIF da SME-SP: 220 páginas, 89 aulas e 14 módulos, com teoria explicada, legislação, Currículo da Cidade, autores, Educação Infantil, alfabetização, inclusão, discursiva, prova prática e simulado. Edição pré-edital de 01/10/2026, com referências históricas identificadas e conteúdo sujeito às regras do futuro edital.",
     "seoTitle": "SME-SP PEIF pré-edital 2026 + audiobook | Trilha Aprova",
@@ -719,7 +783,40 @@
     "storefront": {
       "badge": "SME-SP 2026 • PEIF • EDIÇÃO PRÉ-EDITAL",
       "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-sme-sp-peif-3d.png",
-      "cta": "Quero este curso + audiobook"
+      "cta": "Quero este curso + audiobook",
+      "headline": "Comece antes do edital: o combo PEIF SME-SP para ler, ouvir e treinar",
+      "shortTag": "SME-SP · PEIF",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Fundamentos, Currículo da Cidade e legislação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "Simulado de 60 questões + 18 estudos de caso comentados"
+        },
+        {
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiros de estudo e revisão final"
+        }
+      ],
+      "comboCovers": [
+        "/assets/capa-sme-sp-peif-pre-edital-2026-simulados-3d.webp",
+        "/assets/capa-sme-sp-peif-pre-edital-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "São Paulo/SP",
+        "cargo": "Professor PEIF (SME-SP)",
+        "salario": "R$ 5.333,00",
+        "vagas": "Pré-edital",
+        "taxa": null,
+        "inscricoes": "edital ainda não publicado",
+        "requisito": "Licenciatura em Pedagogia",
+        "url": null,
+        "paginas": 220,
+        "questoes": 60
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
@@ -943,16 +1040,49 @@
     "author": "Trilha Aprova",
     "audience": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 2990,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
     "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro.",
     "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
     "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 49 páginas, 160 questões, simulados e audiobook completo em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
-      "cover3d": "https://www.concursotrilhaaprova.online/assets/apostila-matao-assistente-administrativo-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cover3d": "/assets/capa-matao-sp-assistente-administrativo-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Assistente Administrativo Matão 2026: teoria, simulados e audiobook num combo só",
+      "shortTag": "Matão · Assistente Adm.",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria do edital e legislação aplicada"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 questões + 80 exercícios comentados"
+        },
+        {
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiro da primeira leitura à revisão"
+        }
+      ],
+      "subheadline": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP · Banca IBAM · Prova prevista para 06/12/2026",
+      "comboCovers": [
+        "/assets/capa-matao-sp-assistente-administrativo-2026-simulados-3d.webp",
+        "/assets/capa-matao-sp-assistente-administrativo-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Matão/SP",
+        "cargo": "Assistente Administrativo",
+        "salario": "R$ 2.588,00",
+        "vagas": "10",
+        "taxa": "R$ 76,50",
+        "inscricoes": "encerradas",
+        "requisito": "Ensino médio",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 49,
+        "questoes": 160
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1059,7 +1189,6 @@
     "audience": "Agente de Fiscalização Pública, Fiscal de Obras, código 204, Matão/SP",
     "currency": "brl",
     "priceCents": 2499,
-    "compareAtCents": 4999,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_FISCAL_OBRAS_2026",
     "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 49 páginas, teoria, 80 exercícios, dois simulados de 40 questões, gabaritos comentados, oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1141,8 +1270,42 @@
     "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 49 páginas, 160 questões, 2 simulados, gabaritos e audiobook em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • FISCAL DE OBRAS • IBAM",
-      "cover3d": "/assets/apostila-matao-fiscal-obras-transparente-20261029.png",
-      "cta": "Comprar apostila com audiobook"
+      "cover3d": "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Fiscal de Obras Matão 2026: estude lendo, ouvindo e resolvendo simulados com o combo completo",
+      "shortTag": "Matão · Fiscal de Obras",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria das 22 unidades do edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "160 questões, incluindo 2 simulados de 40, com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Revisão final e fontes oficiais"
+        }
+      ],
+      "subheadline": "Agente de Fiscalização Pública, Fiscal de Obras, código 204, Matão/SP · Banca IBAM · Prova prevista para 24/01/2027",
+      "comboCovers": [
+        "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-simulados-3d.webp",
+        "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Matão/SP",
+        "cargo": "Fiscal de Obras",
+        "salario": "R$ 3.337,48",
+        "vagas": "1",
+        "taxa": null,
+        "inscricoes": "até 18/11/2026",
+        "requisito": "Ensino médio + curso técnico, registro e CNH A/B",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 49,
+        "questoes": 160
+      },
+      "area": "tecnico"
     },
     "funnel": {
       "orderBump": [],
@@ -1164,8 +1327,7 @@
     "author": "Trilha Aprova",
     "audience": "Escrevente Técnico Judiciário, 2ª à 10ª Região Administrativa Judiciária, TJ-SP",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 1990,
     "stripePriceEnv": "STRIPE_PRICE_TJSP_ESCREVENTE_2026",
     "description": "Apostila digital para Escrevente Técnico Judiciário do TJ-SP, edital 02/2026, banca VUNESP. PDF único de 550 páginas: 86 páginas de teoria, oficina jurídica, redação, simulado de 70 questões e gabarito comentado, mais 464 páginas de legislação oficial do edital para consulta. Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1247,8 +1409,42 @@
     "seoDescription": "Apostila Escrevente TJ-SP 2026 (VUNESP, edital 02/2026): teoria, simulado de 70 questões comentadas, legislação do edital e audiobook.",
     "storefront": {
       "badge": "TJ-SP 2026 • ESCREVENTE • VUNESP",
-      "cover3d": "/assets/apostila-tjsp-escrevente-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cover3d": "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Escrevente TJ-SP 2026: estude até no trânsito com o combo de PDF, legislação e audiobook",
+      "shortTag": "TJ-SP · Escrevente",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital + redação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "Simulado de 70 questões no estilo VUNESP com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "CF, CP, CPP, CPC, Estatuto, Regimento e Normas da Corregedoria"
+        }
+      ],
+      "subheadline": "Escrevente Técnico Judiciário, 2ª à 10ª Região Administrativa Judiciária, TJ-SP · Banca VUNESP · Prova prevista para 14/03/2027",
+      "comboCovers": [
+        "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-simulados-3d.webp",
+        "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Tribunal de Justiça de SP",
+        "cargo": "Escrevente Técnico Judiciário",
+        "salario": "R$ 6.345,94",
+        "vagas": "Reserva",
+        "taxa": "R$ 81,00",
+        "inscricoes": "28/10 a 10/12/2026",
+        "requisito": "Ensino médio",
+        "url": "https://www.vunesp.com.br",
+        "paginas": 550,
+        "questoes": 70
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1270,8 +1466,7 @@
     "author": "Trilha Aprova",
     "audience": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 3390,
     "stripePriceEnv": "STRIPE_PRICE_APARECIDA_PE1_PEDAGOGIA_2026",
     "description": "Apostila digital para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. PDF único de 324 páginas: 91 páginas com teoria de todo o conteúdo programático, redação dissertativa e dois simulados de 50 questões com gabarito comentado, mais 233 páginas de legislação oficial (CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica). Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1355,13 +1550,99 @@
     "storefront": {
       "badge": "APARECIDA DE GOIÂNIA 2026 • PE-I PEDAGOGIA • VERBENA/UFG",
       "cover3d": "/assets/apostila-aparecida-pe1-pedagogia-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Estude até no ônibus: a apostila de PE-I Pedagogia Aparecida que você também ouve",
+      "shortTag": "Aparecida de Goiânia · PE-I",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital + redação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 questões com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "CF, LDB, ECA, PNE 2026, LBI e Lei Orgânica"
+        }
+      ],
+      "bullets": [
+        "Teoria de todo o edital do Instituto Verbena/UFG, com redação",
+        "2 simulados de 50 questões com gabarito comentado",
+        "Legislação completa: CF, LDB, ECA, novo PNE, BNCC, LBI e Lei Orgânica",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "subheadline": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO · Banca Instituto Verbena/UFG · Prova prevista para 31/01/2027",
+      "comboCovers": [
+        "/assets/capa-aparecida-de-goiania-pe1-pedagogia-2026-simulados-3d.webp",
+        "/assets/capa-aparecida-de-goiania-pe1-pedagogia-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Aparecida de Goiânia/GO",
+        "cargo": "PE-I Pedagogia",
+        "salario": "R$ 4.508,28",
+        "vagas": "1.056",
+        "taxa": null,
+        "inscricoes": "09/11 a 09/12/2026",
+        "requisito": "Licenciatura em Pedagogia",
+        "url": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/",
+        "paginas": 324,
+        "questoes": 100
+      },
+      "area": "educacao"
     },
     "funnel": {
       "orderBump": [],
       "upsell": [],
       "crossSell": [],
       "downsell": []
+    }
+  },
+  "simulados-aparecida-de-goiania-pe1-pedagogia-2026": {
+    "slug": "simulados-aparecida-de-goiania-pe1-pedagogia-2026",
+    "active": true,
+    "kind": "simulados",
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de Aparecida de Goiânia - Secretaria Municipal de Educação - Edital 01/2026",
+    "examBoard": "Instituto Verbena/UFG",
+    "category": "Concursos públicos",
+    "name": "5 Simulados PE-I Pedagogia - Aparecida de Goiânia 2026",
+    "shortName": "5 Simulados PE-I Pedagogia Aparecida",
+    "edition": "Edital 01/2026 (consolidado pelo Complementar 01/2026), fechamento em 13/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Profissional da Educação I (PE-I) - Pedagogia, Secretaria Municipal de Educação de Aparecida de Goiânia/GO",
+    "currency": "brl",
+    "priceCents": 1599,
+    "description": "Caderno com 5 simulados completos para Profissional da Educação I (PE-I) - Pedagogia da Prefeitura de Aparecida de Goiânia/GO, edital 01/2026, banca Instituto Verbena/UFG. São 250 questões inéditas de quatro alternativas, na mesma distribuição e com os mesmos pesos da prova objetiva (10 de Português, 5 de Raciocínio Lógico, 5 de Goiás e Aparecida e 30 de Conhecimentos Específicos), com cartão-resposta, gabarito rápido e comentário de cada questão. PDF de 73 páginas. As questões não repetem as da apostila.",
+    "proofPoints": [
+      "5 simulados completos de 50 questões",
+      "250 questões inéditas, diferentes das da apostila",
+      "Mesma distribuição e pesos da prova Verbena/UFG",
+      "Cartão-resposta, gabarito rápido e comentário de cada questão",
+      "LDB, ECA, BNCC, novo PNE (Lei 15.388/2026), LBI, didática e Goiás",
+      "PDF de 73 páginas, liberado na hora"
+    ],
+    "exam": {
+      "date": "2027-01-31",
+      "confirmed": false,
+      "source": "Instituto Verbena/UFG, Edital 01/2026 Aparecida de Goiânia (Educação) — inscrições até 09/12/2026, prova objetiva e redação previstas para 31/01/2027",
+      "sourceUrl": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-aparecida-de-goiania-educacao/"
+    },
+    "assets": {
+      "coverKey": "simulados-aparecida-de-goiania-pe1-pedagogia-2026/images/capa.webp",
+      "pdfKey": "simulados-aparecida-de-goiania-pe1-pedagogia-2026/docs/simulados-aparecida-pe1-pedagogia-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_5_Simulados_PE1_Pedagogia_Aparecida_2026.pdf"
+    },
+    "storefront": {
+      "badge": "APARECIDA DE GOIÂNIA 2026 • PE-I PEDAGOGIA • 5 SIMULADOS",
+      "cover3d": "/assets/capa-aparecida-de-goiania-pe1-pedagogia-2026-simulados-3d.webp",
+      "area": "educacao",
+      "sample": "/amostras/simulados-aparecida-de-goiania-pe1-pedagogia-2026.pdf",
+      "apostila": "aparecida-de-goiania-pe1-pedagogia-2026",
+      "questoes": 250,
+      "provas": 5,
+      "paginas": 73
     }
   },
   "banestes-tecnico-bancario-2026": {
@@ -1377,8 +1658,7 @@
     "author": "Trilha Aprova",
     "audience": "Técnico Bancário (nível médio) do Banco do Estado do Espírito Santo - Banestes, cadastro de reserva",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 4090,
     "stripePriceEnv": "STRIPE_PRICE_BANESTES_TECNICO_BANCARIO_2026",
     "description": "Apostila digital para Técnico Bancário do Banestes (Banco do Estado do Espírito Santo), edital 01/2026, banca FCC. PDF único de 246 páginas: 101 páginas com teoria de todo o conteúdo programático (Conhecimentos Bancários e Securitários, Vendas e Negociação, Matemática Financeira, Estatística, Português, Raciocínio Lógico, Atualidades, Ética/Compliance/ESG, LGPD e Informática) e dois simulados de 70 questões com gabarito comentado, mais 145 páginas com o Guia de Conduta Ética do Banestes e a legislação (Lei 4.595, Lei 9.613, Anticorrupção, LGPD, Lei 12.865 e Resolução CMN 4.966). Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1462,7 +1742,41 @@
     "storefront": {
       "badge": "BANESTES 2026 • TÉCNICO BANCÁRIO • FCC",
       "cover3d": "/assets/apostila-banestes-tecnico-bancario-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Técnico Bancário Banestes 2026: teoria, 2 simulados de 70 questões e audiobook num combo só",
+      "shortTag": "Banestes · Técnico Bancário",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 70 questões com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno de Normas",
+          "detalhe": "Guia de Conduta Ética do Banestes e Resolução CMN 4.966/2021"
+        }
+      ],
+      "subheadline": "Técnico Bancário (nível médio) do Banco do Estado do Espírito Santo - Banestes, cadastro de reserva · Banca Fundação Carlos Chagas (FCC) · Prova prevista para 24/01/2027",
+      "comboCovers": [
+        "/assets/capa-banestes-tecnico-bancario-2026-simulados-3d.webp",
+        "/assets/capa-banestes-tecnico-bancario-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Banestes/ES",
+        "cargo": "Técnico Bancário",
+        "salario": "R$ 4.552,43",
+        "vagas": "916 CR",
+        "taxa": "R$ 67,00",
+        "inscricoes": "19/10 a 17/11/2026",
+        "requisito": "Ensino médio",
+        "url": "https://www.concursosfcc.com.br",
+        "paginas": 246,
+        "questoes": 140
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],
@@ -1484,8 +1798,7 @@
     "author": "Trilha Aprova",
     "audience": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil",
     "currency": "brl",
-    "priceCents": 2499,
-    "compareAtCents": 4999,
+    "priceCents": 3490,
     "stripePriceEnv": "STRIPE_PRICE_IBGE_RECENSEADOR_2026",
     "description": "Apostila digital para Recenseador do IBGE (12º Censo Agropecuário, Florestal e Aquícola), edital 03/2026, banca Cesgranrio. PDF único de 150 páginas: 74 páginas com teoria de todo o conteúdo programático (Língua Portuguesa, Matemática e Conhecimentos Técnicos do Censo Agro explicados em linguagem simples) e dois simulados de 60 questões com gabarito comentado, mais 76 páginas com o documento técnico oficial do IBGE que é a base de metade da prova e os anexos do edital. Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
@@ -1569,7 +1882,41 @@
     "storefront": {
       "badge": "IBGE 2026 • RECENSEADOR • CENSO AGRO • CESGRANRIO",
       "cover3d": "/assets/apostila-ibge-recenseador-3d.png",
-      "cta": "Comprar apostila com audiobook"
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Recenseador IBGE Censo Agro: teoria, 2 simulados de 60 questões e audiobook para estudar em qualquer lugar",
+      "shortTag": "IBGE · Recenseador",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 60 questões com gabarito comentado"
+        },
+        {
+          "titulo": "Caderno Técnico",
+          "detalhe": "Documento técnico oficial do IBGE na íntegra"
+        }
+      ],
+      "subheadline": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil · Banca Fundação Cesgranrio · Prova prevista para 31/01/2027",
+      "comboCovers": [
+        "/assets/capa-ibge-recenseador-censo-agro-2026-simulados-3d.webp",
+        "/assets/capa-ibge-recenseador-censo-agro-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "IBGE · todo o Brasil",
+        "cargo": "Recenseador (Censo Agro)",
+        "salario": "R$ 4.370,00",
+        "vagas": "27.279",
+        "taxa": "R$ 70,00",
+        "inscricoes": "06 a 25/11/2026",
+        "requisito": "Ensino fundamental",
+        "url": "https://www.cesgranrio.org.br",
+        "paginas": 150,
+        "questoes": 120
+      },
+      "area": "administrativo"
     },
     "funnel": {
       "orderBump": [],

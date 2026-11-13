@@ -8,8 +8,9 @@ if(fs.existsSync(path.join(root,'public/materials.json')))fail('public/materials
 const html=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
 const buy=fs.readFileSync(path.join(root,'public/comprar.html'),'utf8');
 const normalized=html.toLowerCase();
-for(const marker of ['r$ 49,99','r$ 24,99','pagamento único','pagamento','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
-if(!/<del[^>]*>R\$ 49,99<\/del>/i.test(html))fail('reference price must be crossed out with del');
+for(const marker of ['pagamento único','pagamento','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
+// 13/11/2026: preço direto, sem preço de referência riscado (pedido do André).
+if(/<del[^>]*>R\$/i.test(html))fail('home must show the direct price, without a crossed-out reference price');
 if(!html.includes('/assets/apostila-matao-assistente-administrativo-3d.png'))fail('storefront missing Matão feature cover');
 if(html.includes('data-sc-object="autores-ibam-2026"'))fail('discontinued Santos product is still the home feature');
 if(!html.includes('href="/comprar?produto=matao-sp-assistente-administrativo-2026"'))fail('Matão disponível deve ter checkout de compra na home');
