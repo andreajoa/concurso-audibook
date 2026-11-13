@@ -1174,7 +1174,7 @@
     "currency": "brl",
     "priceCents": 2990,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
-    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro.",
+    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 470 páginas e 891 questões comentadas.",
     "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
     "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 49 páginas, 160 questões, simulados e audiobook completo em português brasileiro.",
     "storefront": {
@@ -1190,7 +1190,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "2 simulados de 40 questões + 80 exercícios comentados"
+          "detalhe": "891 questões comentadas, com 2 simulados de 40 itens"
         },
         {
           "titulo": "Caderno de Revisão",
@@ -1211,8 +1211,8 @@
         "inscricoes": "encerradas",
         "requisito": "Ensino médio",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 49,
-        "questoes": 160
+        "paginas": 470,
+        "questoes": 891
       },
       "area": "administrativo"
     },
@@ -1223,12 +1223,13 @@
       "downsell": []
     },
     "proofPoints": [
-      "49 páginas de conteúdo para o cargo 101, Assistente Administrativo",
-      "160 questões autorais comentadas, com 80 exercícios e dois simulados de 40 itens",
+      "470 páginas na edição ampliada para o cargo 101, Assistente Administrativo",
+      "891 questões autorais comentadas: banco de 731 por tema + 80 exercícios e dois simulados de 40 itens",
+      "Caderno normativo: Lei Orgânica de Matão, LAI, LGPD, Improbidade, Arquivos, LRF e Lei de Licitações",
       "8 capítulos de audiobook narrados em português brasileiro",
       "1 resumo em áudio para revisão de véspera",
       "PDF para leitura e download após pagamento",
-      "Pagamento único de R$ 24,99 e recuperação de acesso pelo e-mail da compra"
+      "Pagamento único e recuperação de acesso pelo e-mail da compra"
     ],
     "assets": {
       "coverKey": "matao-sp-assistente-administrativo-2026/images/capa.png",
