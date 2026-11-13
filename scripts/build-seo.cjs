@@ -1676,7 +1676,7 @@ home = home.replace('</main>', discovery);
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
 const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
-  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"><span>${esc((p.storefront.concurso && p.storefront.concurso.cargo) || p.shortName)}</span><b>${brl(p.priceCents)}</b><em class="ac-car-cta">Ver apostila →</em></a>`).join('') +
+  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"></a>`).join('') +
   '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
 const shelf = carousel + '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 
@@ -2158,6 +2158,7 @@ const checkoutProducts = Object.fromEntries(products.map(p => [p.slug, {
   alt: 'Capa da apostila ' + p.shortName,
   preco: brl(p.priceCents),
   de: p.compareAtCents ? brl(p.compareAtCents) : '',
+  bump: p.slug === 'redacao-nivel-fundamental-2026' || !catalog['redacao-nivel-fundamental-2026']?.active ? null : { nome: catalog['redacao-nivel-fundamental-2026'].shortName, preco: brl(1490), cheio: brl(catalog['redacao-nivel-fundamental-2026'].priceCents), capa: catalog['redacao-nivel-fundamental-2026'].storefront.cover3d },
   centavos: p.priceCents,
   beneficios: p.proofPoints.slice(0, 4).map(benefit)
 }]));

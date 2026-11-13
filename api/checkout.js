@@ -16,6 +16,8 @@ const clean=(value,max)=>String(value||'').trim().slice(0,max);
 const publishableKey=()=>String(process.env.STRIPE_PUBLISHABLE_KEY||process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY||bundledPublicKey||'').trim();
 
 module.exports=async(req,res)=>{
+  // Upsell/downsell pós-compra (lib/upsell-handler) dividem esta função: o plano antigo tinha limite de 12 funções.
+  if((req.query||{}).op==='upsell')return require('../lib/upsell-handler')(req,res);
   res.setHeader('Cache-Control','private, no-store, max-age=0');
   const pk=publishableKey();
   if(req.method==='GET'){
@@ -67,7 +69,7 @@ module.exports=async(req,res)=>{
       return res.status(400).json({error:'Confira nome, e-mail e telefone.'});
     }
     await rpc('crm_upsert_lead',{payload:{email,name,whatsapp,product_slug:slug,marketing_consent:marketingConsent,visitor_id:clean(analytics.visitorId,120),session_id:clean(analytics.sessionId,120)}}).catch(error=>console.error('crm_upsert_lead',error));
-    const session=await createCheckout(req,slug,{email,analytics,marketingConsent,embedded:true});
+    const session=await createCheckout(req,slug,{email,analytics,marketingConsent,embedded:true,bump:body.bump===true});
     await rpc('crm_mark_checkout',{payload:{email,name,whatsapp,product_slug:slug,marketing_consent:marketingConsent,visitor_id:clean(analytics.visitorId,120),session_id:clean(analytics.sessionId,120),source:clean(analytics.source,120),medium:clean(analytics.medium,80),campaign:clean(analytics.campaign,240),stripe_session_id:session.id,amount_total_cents:product.priceCents,currency:product.currency}}).catch(error=>console.error('crm_mark_checkout',error));
     if(!session.client_secret)throw new Error('Embedded payment session did not return a client secret.');
     return res.status(200).json({mode:'embedded',clientSecret:session.client_secret,sessionId:session.id});

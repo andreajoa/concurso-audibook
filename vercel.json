@@ -20,6 +20,10 @@
     {
       "source": "/acesso.html",
       "destination": "/api/access-page"
+    },
+    {
+      "source": "/api/upsell",
+      "destination": "/api/checkout?op=upsell"
     }
   ],
   "functions": {

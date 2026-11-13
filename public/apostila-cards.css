@@ -77,3 +77,7 @@
 .ac-espiar:hover{background:#fbf3e2;border-color:#9a7428}
 .ac-car-cta{font-style:normal;margin-top:2px;background:#08284f;color:#fff;border-radius:999px;padding:7px 12px;font:800 12px/1 system-ui}
 .ac-car-item:hover .ac-car-cta{background:#caa65a;color:#08284f}
+/* carrossel: só as capas */
+.ac-car-item{background:none;border:0;padding:6px 4px;flex-basis:170px}
+.ac-car-item:hover{box-shadow:none}
+.ac-car-item img{height:220px}
