@@ -262,19 +262,19 @@
     "contest": "Concursos públicos com prova de redação ou discursiva",
     "examBoard": "Todas as bancas",
     "category": "Concursos públicos",
-    "name": "Curso de Redação para Concursos + audiobook + Corretor com IA",
+    "name": "Curso de Redação para Concursos + audiobook + Correção Trilha Aprova",
     "shortName": "Curso de Redação para Concursos",
     "edition": "Edição 2026/2027, fechamento em 13/11/2026",
     "author": "Trilha Aprova",
     "audience": "Candidatos a concursos públicos de nível médio e superior com prova de redação dissertativa, carta, relatório ou questões discursivas",
     "currency": "brl",
     "priceCents": 9900,
-    "description": "Curso completo de redação para concursos públicos: 16 módulos do comando da prova à revisão final, com tese, planejamento, introdução, parágrafo argumentativo, coesão, conclusão com proposta, os 15 erros gramaticais que mais tiram pontos, carta, relatório e ofício, repertório por área, oficina de reescrita, 8 redações-modelo comentadas e 30 temas para treinar. PDF de 47 páginas, audiobook em 8 capítulos com resumo narrado e Corretor de Redação com IA: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita para baixar (60 correções incluídas).",
+    "description": "Curso completo de redação para concursos públicos: 16 módulos do comando da prova à revisão final, com tese, planejamento, introdução, parágrafo argumentativo, coesão, conclusão com proposta, os 15 erros gramaticais que mais tiram pontos, carta, relatório e ofício, repertório por área, oficina de reescrita, 8 redações-modelo comentadas e 30 temas para treinar. PDF de 47 páginas, audiobook em 8 capítulos com resumo narrado e Correção de Redação Trilha Aprova: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita para baixar (60 correções incluídas).",
     "proofPoints": [
       "16 módulos do comando da prova à revisão final",
       "8 redações-modelo comentadas e 30 temas para treinar",
-      "Corretor de Redação com IA: foto da redação → nota, erros, dicas e versão reescrita",
-      "60 correções com IA incluídas",
+      "Correção de Redação Trilha Aprova: foto da redação → nota, erros, dicas e versão reescrita",
+      "60 correções da Trilha Aprova incluídas",
       "Audiobook em 8 capítulos + resumo narrado",
       "Carta, relatório, ofício e questões discursivas",
       "PDF de 47 páginas, liberado na hora"
@@ -349,10 +349,10 @@
       ]
     },
     "storefront": {
-      "badge": "CURSO DE REDAÇÃO • TODAS AS BANCAS • CORRETOR COM IA",
+      "badge": "CURSO DE REDAÇÃO • TODAS AS BANCAS • CORREÇÃO TRILHA APROVA",
       "cover3d": "/assets/capa-curso-redacao-concursos-2026-completa-3d.webp",
       "cta": "Quero o curso com corretor",
-      "headline": "Escreva a redação que a banca quer ler — e receba a correção da IA em 1 minuto",
+      "headline": "Escreva a redação que a banca quer ler — e receba a correção da Trilha Aprova em 1 minuto",
       "shortTag": "Redação · todas as bancas",
       "area": "redacao",
       "combo": [
@@ -365,7 +365,7 @@
           "detalhe": "8 redações-modelo comentadas e 30 temas para treinar"
         },
         {
-          "titulo": "Corretor com IA",
+          "titulo": "Correção Trilha Aprova",
           "detalhe": "Foto da redação → nota, erros, dicas e versão reescrita"
         }
       ],
@@ -376,13 +376,13 @@
       "bullets": [
         "Método passo a passo: comando, tese, planejamento, introdução, argumentação, coesão e conclusão",
         "8 redações-modelo comentadas, oficina de reescrita e 30 temas com textos de apoio",
-        "Corretor com IA: envie a foto e receba nota por critério, erros corrigidos, dicas e versão reescrita",
+        "Correção Trilha Aprova: envie a foto e receba nota por critério, erros corrigidos, dicas e versão reescrita",
         "Audiobook em 8 capítulos + resumo narrado"
       ],
-      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções com IA incluídas"
+      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções da Trilha Aprova incluídas"
     },
-    "seoTitle": "Curso de Redação para Concursos com Corretor IA | Trilha Aprova",
-    "seoDescription": "Curso de redação para concursos: 16 módulos, 8 redações-modelo, audiobook e corretor com IA que dá nota, erros e versão reescrita. R$ 99."
+    "seoTitle": "Curso de Redação para Concursos com Correção | Trilha Aprova",
+    "seoDescription": "Curso de redação para concursos: 16 módulos, 8 redações-modelo, audiobook e correção Trilha Aprova que dá nota, erros e versão reescrita. R$ 99."
   },
   "agente-de-portaria-ibam-santos-2026": {
     "slug": "agente-de-portaria-ibam-santos-2026",

@@ -349,7 +349,7 @@ const apostilaCard = (p, opts = {}) => {
     (k.salario || k.vagas ? `<div class="ac-row">${k.salario ? tile('💰', k.salario, 'salário', ' ac-money') : ''}${k.vagas ? tile('👥', k.vagas, 'vagas') : ''}</div>` : '') +
     '<p class="ac-divider"><span>📘 Apostila</span></p>' +
     `<div class="ac-row">${tile('📄', fmtInt(k.paginas || 0), 'páginas')}${tile('❓', fmtInt(k.questoes || 0), 'questões')}</div>` +
-    `<div class="ac-buy"><ul><li>${p.kind === 'curso' ? 'Curso + corretor com IA' : '3 apostilas pelo preço de 1'}</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
+    `<div class="ac-buy"><ul><li>${p.kind === 'curso' ? 'Curso + correção de redação' : '3 apostilas pelo preço de 1'}</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
     '<div class="ac-actions">' +
     (sample ? `<button type="button" class="ac-espiar" data-espiar="${sample}" data-titulo="${esc(p.shortName)}">👁 Espiar</button>` : `<a class="ac-espiar" href="${page}">👁 Espiar</a>`) +
     `<a class="ac-comprar" href="/comprar?produto=${p.slug}">⚡ Comprar</a></div>` +
@@ -595,7 +595,7 @@ for (const p of products) {
   const isRedacao = p.slug.startsWith('redacao');
 
   const fit = p.kind === 'curso'
-    ? 'Este curso serve para concursos públicos de nível médio e superior com prova de redação ou questões discursivas, de qualquer banca. O tipo de texto, o número de linhas e os critérios de correção estão no edital do seu concurso, que sempre prevalece. A nota do Corretor com IA é uma estimativa para treino.'
+    ? 'Este curso serve para concursos públicos de nível médio e superior com prova de redação ou questões discursivas, de qualquer banca. O tipo de texto, o número de linhas e os critérios de correção estão no edital do seu concurso, que sempre prevalece. A nota da Correção Trilha Aprova é uma estimativa para treino.'
     : p.preEdital
     ? 'Esta é uma edição pré-edital para SME-SP PEIF 2026, organizada com referências históricas. Não representa o programa oficial de um futuro edital. Confira as regras, disciplinas e atualizações publicadas pela SME-SP antes da compra.'
     : isAutores
@@ -681,7 +681,7 @@ for (const p of products) {
   const sf = p.storefront || {};
   const nCap = p.assets.chapters.length;
   const buyUrl = `/comprar?produto=${p.slug}`;
-  const PERK = p.kind === 'curso' ? 'Curso + Corretor com IA' : '3 apostilas pelo preço de 1';
+  const PERK = p.kind === 'curso' ? 'Curso + Correção Trilha Aprova' : '3 apostilas pelo preço de 1';
   const sampleBase = `/amostras/${p.slug}`;
   const hasSample = fs.existsSync(`public${sampleBase}.pdf`);
   const hasAudioSample = fs.existsSync(`public${sampleBase}.mp3`);
@@ -712,7 +712,7 @@ for (const p of products) {
     `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
     `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
     `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-    `<div class="combo-price-row"><div><span class="combo-price-label">${p.kind === 'curso' ? 'Curso + corretor IA + audiobook por' : '3 apostilas + audiobook por'}</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
+    `<div class="combo-price-row"><div><span class="combo-price-label">${p.kind === 'curso' ? 'Curso + correção + audiobook por' : '3 apostilas + audiobook por'}</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
     (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
     '<a class="combo-member-link" href="/membros">Membros do Clube Trilha Aprova têm 15% de desconto na 1ª compra →</a>' +
@@ -720,8 +720,8 @@ for (const p of products) {
     (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
 
   const body =
-    `<section class="combo-section"><h2>${p.kind === 'curso' ? 'Curso, modelos e corretor com IA + audiobook grátis' : '3 apostilas pelo preço de 1 + audiobook grátis'}</h2>` +
-    (p.kind === 'curso' ? '<p class="combo-lead">O curso e os modelos vêm no PDF completo; o Corretor com IA abre na sua área de acesso. De bônus, o audiobook e o resumo em áudio.</p>' : '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>') +
+    `<section class="combo-section"><h2>${p.kind === 'curso' ? 'Curso, modelos e correção Trilha Aprova + audiobook grátis' : '3 apostilas pelo preço de 1 + audiobook grátis'}</h2>` +
+    (p.kind === 'curso' ? '<p class="combo-lead">O curso e os modelos vêm no PDF completo; a Correção Trilha Aprova abre na sua área de acesso. De bônus, o audiobook e o resumo em áudio.</p>' : '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>') +
     '<div class="combo-grid">' +
     ordered.map((c, i) => `<article class="combo-card${i === 1 ? ' combo-card-main' : ''}"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
     `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
@@ -755,7 +755,8 @@ for (const p of products) {
       const rel = products.filter(o => o.slug !== p.slug && o.storefront.area === area)
         .sort((x, y) => ((y.storefront.concurso || {}).local === cid) - ((x.storefront.concurso || {}).local === cid)).slice(0, 2);
       const red = products.find(o => o.slug.startsWith('redacao') && o.slug !== p.slug);
-      const list = [...rel, ...(red ? [red] : [])].slice(0, 3);
+      // sem repetir o mesmo card (no curso de Redação, a apostila de Redação é da mesma área e também é o 'red')
+      const list = [...rel, ...(red ? [red] : [])].filter((o, i, a) => a.findIndex(x => x.slug === o.slug) === i).slice(0, 3);
       return list.length ? '<section class="combo-section combo-cross"><h2>Quem estuda para este concurso também leva</h2>' +
         '<p class="combo-lead">Aproveite a viagem para a prova: concursos da mesma área costumam cobrar conteúdos parecidos.</p>' +
         `<div class="ac-grid">${list.map(o => apostilaCard(o)).join('')}</div></section>` : '';
@@ -2166,9 +2167,21 @@ const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="ca
     `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
   '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
 home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
-const simHomeHtml = simulados.length ? '<!-- simulados:start --><section class="sim-home shell" id="simulados" aria-labelledby="sim-titulo">' +
-  '<h2 id="sim-titulo">Simulados avulsos</h2><p class="ac-cargos-lead">Treine no formato da prova: 5 simulados completos com gabarito comentado. Abra a amostra grátis antes de comprar.</p>' +
-  `<div class="sim-grid">${simulados.map(simuladoCard).join('')}</div></section><!-- simulados:end -->` : '';
+/* Faixa "Novidade: simulados" na home (13/11/2026, modelo enviado pelo André, na paleta Trilha Aprova). */
+const simHomeHtml = simulados.length ? (() => {
+  const s = simulados[0], min = Math.min(...simulados.map(x => x.priceCents));
+  const banca = s.examBoard || '';
+  const fan = [1, 2, 3, 4, 5].map(n => `<span class="simb-sheet simb-s${n}"><b>0${n}</b></span>`).join('') +
+    `<span class="simb-front"><small>SIMULADO</small><strong>${esc(banca).replace('/', '/<wbr>')}</strong><em>50 questões</em></span>` +
+    '<span class="simb-card"><b>CARTÃO-RESPOSTA</b><i>PROVA 01</i>' + ['B', 'D', 'A', 'C', 'B'].map((g, i) => `<span><u>0${i + 1}</u>${'ABCD'.split('').map(l => `<i class="${l === g ? 'on' : ''}">${l}</i>`).join('')}</span>`).join('') + '</span>';
+  return '<!-- simulados:start --><section class="simb shell" id="simulados" aria-labelledby="simb-titulo">' +
+    `<div class="simb-vis" aria-hidden="true"><div class="simb-fan">${fan}</div></div>` +
+    '<div class="simb-txt"><span class="simb-new">NOVO</span><h2 id="simb-titulo">Novidade: simulados para treinar antes da prova.</h2>' +
+    '<ul><li>5 provas completas e inéditas</li><li>No formato da banca</li><li>Com o tempo oficial da prova</li><li>Cartão-resposta para marcar</li><li>Gabarito comentado</li><li>Feito para o seu cargo</li></ul></div>' +
+    `<div class="simb-cta"><p>a partir de <b>${brl(min)}</b></p><a class="simb-btn" href="/simulados/${s.slug}">📋 Ver simulados</a>` +
+    `<a class="simb-amostra" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">📋 Ver amostra grátis</a></div>` +
+    '</section><!-- simulados:end -->';
+})() : '';
 home = home.replace(/<!-- simulados:start -->[\s\S]*?<!-- simulados:end -->/, '');
 /* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
 const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +

@@ -1,4 +1,4 @@
-// Corretor de Redação com IA — envia foto/arquivo/texto para /api/corretor e mostra a correção.
+// Correção de Redação Trilha Aprova — envia foto/arquivo/texto para /api/corretor e mostra a correção.
 (function () {
   var qs = new URLSearchParams(location.search);
   var sid = qs.get('session_id') || '';
@@ -17,7 +17,7 @@
   });
 
   function erro(t) { msg.className = 'cr-msg err'; msg.textContent = t; }
-  // Foto: reduz para no máximo 2000 px e JPEG ~0,85 (leve para enviar pelo celular, legível para a IA).
+  // Foto: reduz para no máximo 2000 px e JPEG ~0,85 (leve para enviar pelo celular, legível na correção).
   function prepararImagem(f) {
     return new Promise(function (ok, no) {
       var url = URL.createObjectURL(f), img = new Image();
