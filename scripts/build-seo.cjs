@@ -331,6 +331,8 @@ const productLinks = products
 
 /* Cartão de apostila padrão (13/11/2026): capa clicável, local, cargo, salário, vagas, páginas, questões,
    destaques do combo, preço direto e botões Espiar (amostra em pop-up) e Comprar. */
+// Versão no endereço (?v=hash do conteúdo): o CDN guarda CSS/JS por horas; sem isso a mudança demora a aparecer.
+const assetVer = href => { try { const f = 'public' + href.split('?')[0]; return href.split('?')[0] + '?v=' + require('crypto').createHash('sha1').update(fs.readFileSync(f)).digest('hex').slice(0, 10); } catch { return href; } };
 const fmtInt = n => Number(n).toLocaleString('pt-BR');
 const apostilaCard = (p, opts = {}) => {
   const k = (p.storefront && p.storefront.concurso) || {};
@@ -552,7 +554,7 @@ function renderPage(opts) {
     HEADER_CSS_TAG +
     '<link rel="stylesheet" href="/newsletter.css"><link rel="stylesheet" href="/seo.css">' +
     HERO_CSS_TAG +
-    styles.map(href => `<link rel="stylesheet" href="${esc(href)}">`).join('') +
+    styles.map(href => `<link rel="stylesheet" href="${esc(assetVer(href))}">`).join('') +
     `</head><body class="portal-news-ui portal-inner-page" data-portal-path="${esc(path)}">` +
     siteHeader +
     /* A faixa sai do <main> e o conteúdo vira o cartão branco abaixo dela, como
@@ -568,7 +570,7 @@ function renderPage(opts) {
     `<p class="updated">Página atualizada em ${esc(updated)}. Autoria: ${esc(AUTHOR_NAME)}.</p>` +
     '</main>' + footer +
     '<script src="/newsletter.js" defer></script><script src="/cookie-consent.js" defer></script><script src="/analytics-crm.js" defer></script>' +
-    scripts.map(src => `<script src="${esc(src)}" defer></script>`).join('') +
+    scripts.map(src => `<script src="${esc(assetVer(src))}" defer></script>`).join('') +
     '</body></html>';
 
   const dir = 'public' + path.substring(0, path.lastIndexOf('/'));
@@ -2065,8 +2067,8 @@ const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" ari
 home = home.replace(/<!-- vitrine-capas:start -->[\s\S]*?<!-- vitrine-capas:end -->/, '');
 home = home.replace('<!-- banners:start -->', vitrineHtml + '<!-- banners:start -->');
 home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml);
-if (!home.includes('/apostila-cards.css')) home = home.replace('</head>', '<link rel="stylesheet" href="/apostila-cards.css"></head>');
-if (!home.includes('/apostila-cards.js')) home = home.replace('</body>', '<script src="/apostila-cards.js" defer></script></body>');
+home = home.replace(/<link rel="stylesheet" href="\/apostila-cards\.css[^"]*">/g, '').replace(/<script src="\/apostila-cards\.js[^"]*" defer><\/script>/g, '');
+home = home.replace('</head>', `<link rel="stylesheet" href="${assetVer('/apostila-cards.css')}"></head>`).replace('</body>', `<script src="${assetVer('/apostila-cards.js')}" defer></script></body>`);
 
 fs.writeFileSync('public/index.html', home);
 
