@@ -336,7 +336,7 @@ const keyFactsHtml = facts => !facts || !facts.length ? '' :
   `<dl class="key-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
 
 const faqHtml = faq => !faq || !faq.length ? '' :
-  `<section class="faq-block"><h2>Perguntas frequentes</h2>${faq.map(f => `<div class="faq-item"><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join('')}</section>`;
+  `<section class="faq-block"><h2>Perguntas frequentes</h2>${faq.map((f, i) => `<details class="faq-item"${i === 0 ? ' open' : ''}><summary><h3>${esc(f.q)}</h3></summary><p>${esc(f.a)}</p></details>`).join('')}</section>`;
 
 const crumbsHtml = trail => `<nav class="crumbs" aria-label="Trilha de navegação">${
   trail.map((t, i) => i === trail.length - 1
@@ -536,8 +536,8 @@ function renderPage(opts) {
        As travas de SEO que medem <main> continuam de pé — a impressão digital
        que separa uma cidade da outra passa a ser o corpo da página, que é
        justamente a parte que nunca se repete entre duas cidades. */
-    heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead }) +
-    '<main class="guide portal-content-surface">' +
+    (opts.customHero ? opts.customHero(crumbsHtml(fullTrail)) : heroHtml({ slot: opts.hero || heroSlot(path), trail: fullTrail, kicker, title, lead })) +
+    `<main class="guide portal-content-surface${opts.mainClass ? ' ' + esc(opts.mainClass) : ''}">` +
     keyFactsHtml(keyFacts) +
     body +
     faqHtml(faq) +
@@ -646,31 +646,65 @@ for (const p of products) {
     ['Entrega', 'Digital e imediata após a confirmação do pagamento, em todo o Brasil']
   ];
 
+  /* Página de venda padrão (13/11/2026): combo de 3 cadernos + audiobook, preço direto, amostra,
+     contagem até a prova e barra fixa de compra. Os textos de venda ficam em p.storefront. */
+  const sf = p.storefront || {};
+  const nCap = p.assets.chapters.length;
+  const buyUrl = `/comprar?produto=${p.slug}`;
+  const sampleBase = `/amostras/${p.slug}`;
+  const hasSample = fs.existsSync(`public${sampleBase}.pdf`);
+  const hasAudioSample = fs.existsSync(`public${sampleBase}.mp3`);
+  const examIso = p.exam && p.exam.date ? p.exam.date : '';
+  const examBr = examIso ? examIso.split('-').reverse().join('/') : '';
+  const combo = (sf.combo && sf.combo.length === 3) ? sf.combo : [
+    { titulo: 'Teoria do edital', detalhe: 'Todo o conteúdo programático explicado' },
+    { titulo: 'Simulados comentados', detalhe: 'Questões no formato da banca com gabarito' },
+    { titulo: 'Revisão final', detalhe: 'Roteiro para a reta final da prova' }
+  ];
+  const book = (c, cls) => `<div class="combo-book ${cls}" aria-hidden="true"><span class="combo-book-brand">TRILHA APROVA</span>` +
+    `<span class="combo-book-contest">${esc(sf.shortTag || p.shortName)}</span><strong>${esc(c.titulo)}</strong><span class="combo-book-foot">${esc(c.detalhe)}</span></div>`;
+  const visual = '<div class="combo-visual">' + book(combo[1], 'combo-book-left') +
+    `<img class="combo-cover" src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
+    book(combo[2], 'combo-book-right') +
+    `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>`;
+  const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
+  const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
+    `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
+    `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
+    `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
+    `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
+    `<div class="combo-price-row"><div><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
+    `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
+    (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
+    '</div>' + visual + '</div></section>' +
+    (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
+
   const body =
-    '<div class="product-intro">' +
-    `<img src="${esc(p.storefront.cover3d)}" alt="Capa de ${esc(p.shortName)}" width="360" height="450" loading="eager" decoding="async">` +
-    `<div><p>${esc(p.description)}</p>` +
-    `<p><strong>Para quem:</strong> ${esc(p.audience)}.</p>` +
-    `<p>Autoria: ${esc(p.author)}.</p>` +
-    `<p class="guide-price">${brl(p.priceCents)}</p>` +
-    '<p>Pagamento único. Material digital em português, disponível online em todo o Brasil.</p>' +
-    `<a class="guide-button" href="/comprar?produto=${p.slug}">Comprar PDF + audiobook</a></div></div>` +
-    `<h2>O que está incluído</h2><ul>${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-    '<h2>Resumo em áudio e capítulos</h2>' +
-    `<p>${esc(p.assets.summary.title)}. O resumo é uma revisão complementar; os capítulos organizam o estudo por assunto.</p>` +
-    `<ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong><p>${esc(c.subtitle)}</p></li>`).join('')}</ol>` +
-    `<h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p>` +
-    '<h2>Como recebo os arquivos?</h2>' +
-    '<p>Após a confirmação do pagamento, sua área individual libera o PDF e os áudios desta apostila para leitura, reprodução e download. <a href="/entrega-e-acesso">Veja como funciona o acesso</a>.</p>' +
-    (p.preEdital
-      ? '<h2>Preparação para SME-SP PEIF</h2><p>O material reúne fundamentos pedagógicos, legislação, Currículo da Cidade, Educação Infantil, alfabetização, inclusão e preparação para a prova prática. A edição pré-edital deve ser confrontada com o futuro programa oficial.</p>'
-      : isAutores
-      ? '<h2>Quem estuda na Baixada Santista</h2><p>Esta apostila nasceu do edital de Santos, mas o conteúdo de autores é o mesmo cobrado em muitos concursos municipais de educação. Veja os guias por cidade:</p><ul class="city-links">' + cityLinks + '</ul>'
-      : '<h2>Onde a redação costuma ser cobrada</h2><p>Cargos de nível fundamental completo frequentemente incluem prova de produção textual. Veja os guias por cidade da Baixada Santista:</p><ul class="city-links">' + cityLinks + '</ul>') +
-    '<h2>Continue sua preparação</h2>' +
-    `<ul>${productLinks}</ul>` +
-    '<p><a href="/apostila-para-concurso-como-escolher">Como escolher a apostila certa para o seu edital</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
-    disclaimer;
+    '<section class="combo-section"><h2>O que você leva por ' + brl(p.priceCents) + '</h2>' +
+    '<p class="combo-lead">Três cadernos de estudo organizados no PDF completo, mais o audiobook e o resumo narrado para estudar quando não dá para ler.</p>' +
+    '<div class="combo-grid">' +
+    combo.map((c, i) => `<article class="combo-card"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
+    `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
+    '<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Resumo em áudio</h3><p>Revisão narrada para a véspera da prova.</p></article>' +
+    '</div></section>' +
+    (hasSample || hasAudioSample ? '<section class="combo-section combo-sample" id="amostra"><h2>Experimente antes de comprar</h2>' +
+      '<p>Selecionamos as partes mais fortes da apostila: capa, sumário, páginas de teoria com dicas e quadros e um trecho dos simulados.</p><div class="combo-sample-row">' +
+      (hasSample ? `<a class="combo-sample-pdf" href="${sampleBase}.pdf" target="_blank" rel="noopener">Ler a amostra em PDF</a>` : '') +
+      (hasAudioSample ? `<div class="combo-sample-audio"><span>Ouça 1 minuto e meio do audiobook</span><audio controls preload="none" src="${sampleBase}.mp3"></audio></div>` : '') +
+      '</div></section>' : '') +
+    `<section class="combo-section"><h2>Conteúdo da apostila</h2><ul class="combo-list">${p.proofPoints.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
+    `<p class="combo-desc">${esc(p.description)}</p></section>` +
+    `<section class="combo-section"><h2>Audiobook: os ${nCap} capítulos</h2><ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong>${c.subtitle ? `<p>${esc(c.subtitle)}</p>` : ''}</li>`).join('')}</ol></section>` +
+    `<section class="combo-section"><h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p></section>` +
+    '<section class="combo-pack"><h2>O pacote completo</h2><ul class="combo-list">' +
+    combo.map(c => `<li>${esc(c.titulo)}</li>`).join('') +
+    `<li>Audiobook em ${nCap} capítulos</li><li>Resumo em áudio</li><li>Acesso imediato após o pagamento, com download</li><li>7 dias para arrependimento, conforme o Código de Defesa do Consumidor</li></ul>` +
+    `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +
+    `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a>` +
+    '<p class="combo-pack-note">Pagamento seguro. Assim que o pagamento é confirmado, a sua área de acesso com o PDF e os áudios é liberada e o link chega no seu e-mail.</p></section>' +
+    '<p class="combo-more"><a href="/apostilas-para-concurso">Ver todas as apostilas da Trilha Aprova</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
+    disclaimer +
+    `<div class="combo-sticky" role="region" aria-label="Comprar"><span><b>${brl(p.priceCents)}</b> · ${esc(p.shortName)}</span><a href="${buyUrl}">Comprar agora</a></div>`;
 
   renderPage({
     path,
@@ -682,9 +716,13 @@ for (const p of products) {
     lead: p.preEdital
       ? `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`
       : `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
-    keyFacts,
+    keyFacts: [],
     body,
     faq,
+    customHero: hero,
+    mainClass: 'combo-page',
+    styles: ['/apostila-combo.css'],
+    scripts: ['/apostila-combo.js'],
     nodes: [productNode, audiobookNode],
     trail: [['Apostilas', '/apostilas-para-concurso']],
     image: p.storefront.cover3d,
@@ -1607,7 +1645,7 @@ const shelf = products.map((p, i) => {
     '<span class="catalog-card-badge">' + esc(p.storefront.badge) + '</span>' +
     '<div class="catalog-card-name">' + esc(p.shortName) + '</div>' +
     '<div class="catalog-card-meta">' + esc(meta) + '</div>' +
-    '<div class="catalog-card-price"><del>' + brl(p.compareAtCents) + '</del><strong>' + brl(p.priceCents) + '</strong></div>' +
+    '<div class="catalog-card-price">' + (p.compareAtCents ? '<del>' + brl(p.compareAtCents) + '</del>' : '') + '<strong>' + brl(p.priceCents) + '</strong></div>' +
     '<a class="catalog-card-buy" href="/apostilas/' + esc(p.slug) + '">Ver esta apostila</a></article>';
 }).join('');
 

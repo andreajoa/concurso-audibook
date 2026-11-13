@@ -1,0 +1,79 @@
+/* Página de venda padrão das apostilas (combo de 3 cadernos + audiobook). */
+.combo-hero{background:radial-gradient(1200px 500px at 85% 20%,#173f72 0,#08284f 55%,#061d3a 100%);color:#fff;padding:28px 16px 56px}
+.combo-hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
+.combo-hero .crumbs,.combo-hero .crumbs a{color:#c9d6e6;font-size:13px}
+.combo-kicker{display:inline-block;margin:14px 0 10px;padding:6px 12px;border-radius:999px;background:rgba(202,166,90,.16);color:#f1d79c;font:700 12px/1.3 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.combo-hero h1{font:400 clamp(30px,4.4vw,50px)/1.1 Georgia,serif;margin:6px 0 14px;color:#fff}
+.combo-sub{color:#d4dfec;font-size:16px;margin:0 0 18px;max-width:620px}
+.combo-checks{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:8px}
+.combo-checks li{position:relative;padding-left:30px;color:#eef3f9;font-size:16px;line-height:1.45}
+.combo-checks li:before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:#caa65a;color:#08284f;font:800 13px/20px system-ui;text-align:center}
+.combo-price-row{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.combo-price{display:block;font:800 clamp(38px,5vw,52px)/1 system-ui,sans-serif;color:#fff;letter-spacing:-.02em}
+.combo-price-note{display:block;color:#c9d6e6;font-size:14px;margin-top:4px}
+.combo-buy{display:inline-block;background:#caa65a;color:#08284f!important;font:800 17px/1 system-ui,sans-serif;padding:18px 26px;border-radius:12px;text-decoration:none!important;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:transform .15s,box-shadow .15s}
+.combo-buy:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.combo-buy:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.combo-sample-link{display:inline-block;margin-top:14px;color:#f1d79c!important;font-weight:600}
+/* três cadernos + capa real */
+.combo-visual{position:relative;height:440px;display:flex;align-items:center;justify-content:center}
+.combo-cover{position:relative;z-index:3;width:min(270px,50%);height:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
+.combo-book{position:absolute;z-index:2;width:min(190px,38%);aspect-ratio:3/4.1;border-radius:6px 12px 12px 6px;padding:16px 14px;display:flex;flex-direction:column;gap:6px;color:#fff;box-shadow:inset 9px 0 0 rgba(0,0,0,.22),0 18px 30px rgba(0,0,0,.4);font-family:system-ui,sans-serif}
+.combo-book strong{font:400 21px/1.15 Georgia,serif;margin-top:auto}
+.combo-book-brand{font:800 10px/1 system-ui;letter-spacing:.14em;color:#f1d79c}
+.combo-book-contest{font-size:11px;opacity:.85}
+.combo-book-foot{font-size:11px;line-height:1.35;opacity:.9;border-top:1px solid rgba(255,255,255,.25);padding-top:8px}
+.combo-book-left{left:-2%;transform:rotate(-10deg) translateY(14px);background:linear-gradient(160deg,#1f5a96,#0d3563)}
+.combo-book-right{right:-2%;transform:rotate(10deg) translateY(14px);background:linear-gradient(160deg,#8a6a2c,#5c4419)}
+.combo-audio-badge{position:absolute;z-index:4;bottom:18px;right:8%;background:#fff;color:#08284f;border-radius:999px;padding:10px 16px;font:600 13px/1.2 system-ui;box-shadow:0 10px 24px rgba(0,0,0,.3);display:flex;flex-direction:column;align-items:center}
+.combo-audio-badge b{font-size:15px;color:#b3261e}
+.combo-countdown{background:#caa65a;color:#08284f;text-align:center;padding:12px 16px;font:500 15px/1.4 system-ui,sans-serif}
+.combo-days{font-weight:800}
+/* corpo */
+.combo-page{max-width:1000px}
+.combo-section{margin:34px 0}
+.combo-section h2,.combo-pack h2{margin-top:0}
+.combo-lead{color:#4a5b6e}
+.combo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:16px}
+.combo-card{background:#fffdfa;border:1px solid #e6dece;border-radius:14px;padding:18px;position:relative}
+.combo-card h3{font:600 18px/1.3 Georgia,serif;color:#08284f;margin:10px 0 6px}
+.combo-card p{margin:0;font-size:14px;line-height:1.5;color:#4a5b6e}
+.combo-num{display:inline-flex;width:30px;height:30px;border-radius:50%;background:#08284f;color:#fff;font:800 14px/30px system-ui;justify-content:center}
+.combo-card-bonus{background:#08284f;border-color:#08284f}
+.combo-card-bonus h3{color:#f1d79c}.combo-card-bonus p{color:#d4dfec}.combo-card-bonus .combo-num{background:#caa65a;color:#08284f}
+.combo-sample{background:#f4f7fb;border-radius:16px;padding:22px}
+.combo-sample-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.combo-sample-pdf{display:inline-block;background:#08284f;color:#fff!important;padding:14px 20px;border-radius:10px;text-decoration:none!important;font-weight:700}
+.combo-sample-audio{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#4a5b6e}
+.combo-sample-audio audio{max-width:100%;width:320px}
+.combo-list{list-style:none;padding:0;display:grid;gap:8px}
+.combo-list li{position:relative;padding-left:28px}
+.combo-list li:before{content:"✓";position:absolute;left:0;color:#1d7a46;font-weight:800}
+.combo-desc{color:#4a5b6e;font-size:15px}
+.combo-pack{border:2px solid #caa65a;border-radius:18px;padding:26px;margin:40px 0;background:#fffdfa;text-align:center}
+.combo-pack .combo-list{max-width:520px;margin:12px auto 18px;text-align:left}
+.combo-pack-price{font:800 46px/1 system-ui,sans-serif;color:#08284f;margin:8px 0 16px}
+.combo-pack-price small{display:block;font:500 14px/1.4 system-ui;color:#677585;margin-top:6px}
+.combo-pack-note{font-size:14px;color:#677585;max-width:560px;margin:14px auto 0}
+.combo-more{font-size:15px}
+/* FAQ em sanfona */
+.faq-item{border-top:1px solid #e1e7ee;padding:0}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary h3{margin:0}
+.faq-item summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:#08284f;color:#fff;font:700 18px/28px system-ui;text-align:center;transition:transform .2s}
+.faq-item[open] summary:after{content:"–"}
+.faq-item p{padding:0 0 16px}
+/* barra fixa */
+.combo-sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:#08284f;color:#fff;box-shadow:0 -6px 20px rgba(0,0,0,.2);transform:translateY(110%);transition:transform .25s}
+.combo-sticky.is-on{transform:none}
+.combo-sticky span{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.combo-sticky b{color:#f1d79c;font-size:17px}
+.combo-sticky a{flex:none;background:#caa65a;color:#08284f!important;font:800 15px/1 system-ui;padding:13px 18px;border-radius:10px;text-decoration:none!important}
+@media(max-width:860px){
+ .combo-hero-inner{grid-template-columns:1fr;gap:10px}
+ .combo-visual{height:330px;order:-1}
+ .combo-book{width:min(150px,36%)} .combo-book strong{font-size:16px}
+ .combo-buy{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){.combo-buy,.combo-sticky,.faq-item summary:after{transition:none}}
