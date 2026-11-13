@@ -755,7 +755,7 @@
     "currency": "brl",
     "priceCents": 3690,
     "stripePriceEnv": "STRIPE_PRICE_PROFESSOR_ADJUNTO_I_IBAM_SANTOS_2026",
-    "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final. Edição ampliada com 531 páginas e 900 questões comentadas: banco de 700 questões por tema e caderno normativo com a legislação federal oficial.",
+    "description": "Curso preparatório completo para Professor Adjunto I da Prefeitura de Santos 2026, banca IBAM, com legislação federal e municipal, Língua Portuguesa, conhecimentos gerais, autores do edital, Educação Infantil, anos iniciais, EJA, inclusão, prova dissertativa, questões comentadas, três simulados e revisão final. Edição ampliada com 530 páginas e 900 questões comentadas: banco de 700 questões por tema e caderno normativo com a legislação federal oficial.",
     "seoDescription": "Apostila de Professor Adjunto I para Santos 2026 (IBAM): teoria do zero, legislação, autores, específicos, dissertativa, 200 questões e audiobook.",
     "storefront": {
       "badge": "CONCURSO PREFEITURA DE SANTOS • EDITAL 79/2026 • BANCA IBAM",
@@ -791,7 +791,7 @@
         "inscricoes": "encerradas",
         "requisito": "Licenciatura",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 531,
+        "paginas": 530,
         "questoes": 900
       },
       "area": "educacao"
@@ -803,7 +803,7 @@
       "downsell": []
     },
     "proofPoints": [
-      "531 páginas na edição ampliada para impressão e estudo digital",
+      "530 páginas na edição ampliada para impressão e estudo digital",
       "Edital nº 79/2026 + Rerratificações nº 83/2026 e nº 90/2026",
       "Legislação federal e municipal, autores, Educação Infantil, anos iniciais, EJA e inclusão",
       "Prova dissertativa com modelos, mapas de argumentação e treino guiado",
@@ -907,7 +907,7 @@
     "currency": "brl",
     "priceCents": 2790,
     "stripePriceEnv": "STRIPE_PRICE_SME_SP_PEIF_PRE_EDITAL_2026",
-    "description": "Curso preparatório completo no papel para PEIF da SME-SP: 220 páginas, 89 aulas e 14 módulos, com teoria explicada, legislação, Currículo da Cidade, autores, Educação Infantil, alfabetização, inclusão, discursiva, prova prática e simulado. Edição pré-edital de 01/10/2026, com referências históricas identificadas e conteúdo sujeito às regras do futuro edital. Edição ampliada com 650 páginas e 894 questões comentadas.",
+    "description": "Curso preparatório completo no papel para PEIF da SME-SP: 220 páginas, 89 aulas e 14 módulos, com teoria explicada, legislação, Currículo da Cidade, autores, Educação Infantil, alfabetização, inclusão, discursiva, prova prática e simulado. Edição pré-edital de 01/10/2026, com referências históricas identificadas e conteúdo sujeito às regras do futuro edital. Edição ampliada com 649 páginas e 894 questões comentadas.",
     "seoTitle": "SME-SP PEIF pré-edital 2026 + audiobook | Trilha Aprova",
     "seoDescription": "Curso PEIF SME-SP pré-edital: 220 páginas, 89 aulas, 14 módulos, questões e simulado. PDF, resumo em áudio e audiobook por R$ 24,99.",
     "preEdital": true,
@@ -944,7 +944,7 @@
         "inscricoes": "edital ainda não publicado",
         "requisito": "Licenciatura em Pedagogia",
         "url": null,
-        "paginas": 650,
+        "paginas": 649,
         "questoes": 894
       },
       "area": "educacao"
@@ -956,7 +956,7 @@
       "downsell": []
     },
     "proofPoints": [
-      "650 páginas na edição ampliada",
+      "649 páginas na edição ampliada",
       "89 aulas em 14 módulos, com teoria e aplicação pedagógica",
       "Legislação, Currículo da Cidade, autores e componentes dos anos iniciais",
       "Questões de recuperação ativa, 18 estudos de caso e 12 pontos de prova prática",
@@ -1174,9 +1174,9 @@
     "currency": "brl",
     "priceCents": 2990,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
-    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 470 páginas e 891 questões comentadas.",
+    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 469 páginas e 891 questões comentadas.",
     "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
-    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 470 páginas, 891 questões comentadas, simulados e audiobook em português brasileiro.",
+    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 469 páginas, 891 questões comentadas, simulados e audiobook em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
       "cover3d": "/assets/capa-matao-sp-assistente-administrativo-2026-completa-3d.webp",
@@ -1211,7 +1211,7 @@
         "inscricoes": "encerradas",
         "requisito": "Ensino médio",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 470,
+        "paginas": 469,
         "questoes": 891
       },
       "area": "administrativo"
@@ -1223,7 +1223,7 @@
       "downsell": []
     },
     "proofPoints": [
-      "470 páginas na edição ampliada para o cargo 101, Assistente Administrativo",
+      "469 páginas na edição ampliada para o cargo 101, Assistente Administrativo",
       "891 questões autorais comentadas: banco de 731 por tema + 80 exercícios e dois simulados de 40 itens",
       "Caderno normativo: Lei Orgânica de Matão, LAI, LGPD, Improbidade, Arquivos, LRF e Lei de Licitações",
       "8 capítulos de audiobook narrados em português brasileiro",
@@ -1323,9 +1323,9 @@
     "currency": "brl",
     "priceCents": 2499,
     "stripePriceEnv": "STRIPE_PRICE_MATAO_FISCAL_OBRAS_2026",
-    "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 444 páginas na edição ampliada: teoria, 895 questões comentadas (banco de 735 por tema, 80 exercícios e dois simulados de 40), caderno normativo, oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Fiscal de Obras, Matão/SP, edital 02/2026. PDF A4 de 443 páginas na edição ampliada: teoria, 895 questões comentadas (banco de 735 por tema, 80 exercícios e dois simulados de 40), caderno normativo, oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "Apostila digital A4 com 444 páginas na edição ampliada",
+      "Apostila digital A4 com 443 páginas na edição ampliada",
       "22 unidades de teoria e exemplos",
       "895 questões comentadas: banco de 735 por tema + 80 exercícios e dois simulados de 40 itens", "Caderno normativo: Lei Orgânica de Matão, Estatuto da Cidade, Lei 6.766, Defesa Civil, LAI e Lei de Licitações",
       "Gabaritos comentados",
@@ -1400,7 +1400,7 @@
       "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/208/"
     },
     "seoTitle": "Fiscal de Obras Matão 2026 | Apostila PDF e audiobook | Trilha Aprova",
-    "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 444 páginas, 895 questões comentadas, simulados e audiobook em português brasileiro.",
+    "seoDescription": "Concurso Fiscal de Obras Matão 2026, IBAM edital 02/2026: apostila A4 com 443 páginas, 895 questões comentadas, simulados e audiobook em português brasileiro.",
     "storefront": {
       "badge": "MATÃO 2026 • FISCAL DE OBRAS • IBAM",
       "cover3d": "/assets/capa-matao-sp-fiscal-de-obras-ed02-2026-completa-3d.webp",
@@ -1435,7 +1435,7 @@
         "inscricoes": "até 18/11/2026",
         "requisito": "Ensino médio + curso técnico, registro e CNH A/B",
         "url": "https://www.ibam-concursos.org.br",
-        "paginas": 444,
+        "paginas": 443,
         "questoes": 895
       },
       "area": "tecnico"
