@@ -31,6 +31,7 @@ const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
 const products = Object.values(catalog).filter(p => p.active);
+const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
 
 // Páginas geradas de produtos fora de venda não podem continuar publicadas
 // apenas porque seus HTMLs antigos permanecem versionados no repositório.
@@ -677,17 +678,18 @@ for (const p of products) {
   const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
   const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
     `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
+    '<p class="combo-perks"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p>' +
     `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
     `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
     `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-    `<div class="combo-price-row"><div><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
+    `<div class="combo-price-row"><div><span class="combo-price-label">3 apostilas + audiobook por</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
     (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
     '</div><div class="combo-visual-wrap">' + visual + '</div></div></section>' +
     (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
 
   const body =
-    '<section class="combo-section"><h2>O que você leva por ' + brl(p.priceCents) + '</h2>' +
+    '<section class="combo-section"><h2>3 apostilas pelo preço de 1 + audiobook grátis</h2>' +
     '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>' +
     '<div class="combo-grid">' +
     ordered.map((c, i) => `<article class="combo-card${i === 1 ? ' combo-card-main' : ''}"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
@@ -703,7 +705,7 @@ for (const p of products) {
     `<p class="combo-desc">${esc(p.description)}</p></section>` +
     `<section class="combo-section"><h2>Audiobook: os ${nCap} capítulos</h2><ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong>${c.subtitle ? `<p>${esc(c.subtitle)}</p>` : ''}</li>`).join('')}</ol></section>` +
     `<section class="combo-section"><h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p></section>` +
-    '<section class="combo-pack"><h2>O pacote completo</h2><ul class="combo-list">' +
+    '<section class="combo-pack"><p class="combo-perks combo-perks-dark"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p><h2>O pacote completo</h2><ul class="combo-list">' +
     ordered.map((c, i) => `<li><strong>${i + 1}. ${esc(c.titulo)}</strong> — ${esc(c.detalhe)}</li>`).join('') +
     `<li>Audiobook em ${nCap} capítulos</li><li>Resumo em áudio</li><li>Acesso imediato após o pagamento, com download</li><li>7 dias para arrependimento, conforme o Código de Defesa do Consumidor</li></ul>` +
     `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +
@@ -746,12 +748,12 @@ renderPage({
   path: '/apostilas-para-concurso',
   title: 'Apostilas para concurso com audiobook',
   metaTitle: 'Apostilas para concurso público com audiobook | Trilha Aprova',
-  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Pagamento único de R$ 24,99 por apostila e acesso imediato em todo o Brasil.',
+  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Combos de 3 apostilas + audiobook grátis, a partir de R$ 19,90, com acesso imediato.',
   kicker: 'CATÁLOGO',
-  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, por ${brl(products[0].priceCents)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
+  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
   keyFacts: [
     ['Apostilas disponíveis', String(products.length)],
-    ['Preço por apostila', `${brl(products[0].priceCents)} — pagamento único`],
+    ['Preço por apostila', `a partir de ${brl(MIN_PRICE)} — pagamento único`],
     ['Formatos incluídos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
     ['Entrega', 'Digital e imediata, válida em todo o Brasil'],
     ['Autoria', AUTHOR_NAME]
@@ -767,7 +769,7 @@ renderPage({
     disclaimer,
   faq: [
     { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
-    { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única de ${brl(products[0].priceCents)}, sem mensalidade e sem renovação automática.` },
+    { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
     { q: 'Recebo em quanto tempo?', a: 'Imediatamente. Assim que o pagamento é confirmado, a área individual com o PDF e os áudios é liberada automaticamente.' },
     { q: 'Vocês entregam em todo o Brasil?', a: 'Sim. Como a entrega é totalmente digital, o material fica disponível para qualquer cidade do país, sem frete e sem prazo de envio.' }
   ],
@@ -1225,7 +1227,7 @@ function apostilaMunicipio(m) {
   const capa = disponivel
     ? p.storefront.cover3d
     : '/assets/apostila-matao-assistente-administrativo-3d.png';
-  const valor = p?.priceCents === 2499 ? p.priceCents : 2499;
+  const valor = p?.priceCents || 2499;
   const cta = disponivel
     ? `<a class="apostila-matao-cta" href="/comprar?produto=${esc(slug)}">Comprar apostila por ${brl(valor)}</a>`
     : `<button class="apostila-matao-cta" type="button" disabled aria-disabled="true">Comprar apostila por ${brl(valor)} (em preparação)</button>`;
@@ -1238,7 +1240,7 @@ function apostilaMunicipio(m) {
     (disponivel
       ? '<p>PDF completo, áudio-resumo e audiobook em oito capítulos, com acesso após o pagamento.</p>'
       : '<p>A prévia editorial possui 16 páginas. O PDF definitivo e os oito capítulos de audiobook em português brasileiro ainda não estão prontos para venda.</p>') +
-    `<p class="apostila-matao-valor"><del>R$ 49,99</del> <strong>${brl(valor)}</strong> ${disponivel ? '' : '<small>preço previsto</small>'}</p>` +
+    `<p class="apostila-matao-valor"><strong>${brl(valor)}</strong> ${disponivel ? '' : '<small>preço previsto</small>'}</p>` +
     cta +
     (disponivel ? '' : '<p class="apostila-matao-nota">Compra indisponível até a validação dos arquivos. <a href="/#apostilas">Ver apresentação da apostila</a>.</p>') +
     '</div></section>';
@@ -1519,7 +1521,7 @@ renderPage({
 
 const hubFaq = [
   { q: 'O que é a Trilha Aprova?', a: 'Uma editora digital independente que publica apostilas para concursos públicos em PDF acompanhadas de audiobook, com entrega digital imediata para todo o Brasil e pagamento único por material.' },
-  { q: 'Quanto custa uma apostila?', a: `${brl(products[0].priceCents)} por apostila, em pagamento único. Não há assinatura, mensalidade nem renovação automática.` },
+  { q: 'Quanto custa uma apostila?', a: `A partir de ${brl(MIN_PRICE)} por apostila (o preço de cada uma está na página dela), em pagamento único. Não há assinatura, mensalidade nem renovação automática.` },
   { q: 'O que vem junto com a apostila?', a: 'O PDF completo, um resumo em áudio e o audiobook dividido em oito capítulos, além das questões com gabarito comentado descritas na página de cada material.' },
   { q: 'Como recebo o material?', a: 'A confirmação do pagamento libera automaticamente uma área individual com os arquivos para leitura, reprodução e download. Não há envio físico nem prazo de entrega.' },
   { q: 'Perdi o link de acesso. E agora?', a: 'Use a opção de recuperar minha compra informando o mesmo e-mail utilizado no pagamento. O acesso é reenviado para esse endereço.' },
@@ -1536,9 +1538,9 @@ renderPage({
   metaTitle: 'Perguntas frequentes | Trilha Aprova',
   description: 'Respostas diretas sobre preço, formato, entrega, reembolso e uso das apostilas da Trilha Aprova, e dúvidas de quem começa a estudar para concurso.',
   kicker: 'CENTRAL DE DÚVIDAS',
-  lead: `As apostilas da Trilha Aprova custam ${brl(products[0].priceCents)} cada, em pagamento único, e incluem PDF, resumo em áudio e audiobook em oito capítulos. A entrega é digital e imediata após a confirmação do pagamento, válida em todo o Brasil. Abaixo estão as dúvidas mais frequentes sobre compra, acesso e método de estudo.`,
+  lead: `As apostilas da Trilha Aprova custam a partir de ${brl(MIN_PRICE)} cada, em pagamento único, e incluem PDF, resumo em áudio e audiobook em oito capítulos. A entrega é digital e imediata após a confirmação do pagamento, válida em todo o Brasil. Abaixo estão as dúvidas mais frequentes sobre compra, acesso e método de estudo.`,
   keyFacts: [
-    ['Preço por apostila', `${brl(products[0].priceCents)}, pagamento único`],
+    ['Preço por apostila', `a partir de ${brl(MIN_PRICE)}, pagamento único`],
     ['Formatos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
     ['Prazo de entrega', 'Imediato, após a confirmação do pagamento'],
     ['Direito de arrependimento', '7 dias, conforme o Código de Defesa do Consumidor'],
@@ -1563,14 +1565,14 @@ renderPage({
  * ------------------------------------------------------------------ */
 
 const homeFaq = [
-  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, por ${brl(products[0].priceCents)} cada. A edição completa de Matão já está disponível para compra.` },
+  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, a partir de ${brl(MIN_PRICE)} cada. A edição completa de Matão já está disponível para compra.` },
   { q: 'O material garante aprovação?', a: 'Nenhum material sério pode prometer aprovação sozinho. A proposta da Trilha Aprova é reduzir dispersão, melhorar a qualidade da revisão e ajudar você a chegar à prova mais preparado para reconhecer o conteúdo cobrado.' },
   { q: 'Posso baixar o PDF e os áudios?', a: 'Sim. Após a confirmação do pagamento, os formatos incluídos podem ser usados online e baixados na sua área de acesso.' },
   { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
 ];
 
 const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 24,99.';
+const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 29,90.';
 const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-3d.png';
 
 const homeNodes = [
@@ -2178,7 +2180,7 @@ fs.writeFileSync('public/robots.txt', robots);
 const llms =
   '# Trilha Aprova\n\n' +
   '> Editora digital independente de apostilas para concursos públicos no Brasil. Cada apostila reúne PDF, resumo em áudio e audiobook em capítulos, ' +
-  `por ${brl(products[0].priceCents)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
+  `a partir de ${brl(MIN_PRICE)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
   `Autoria: ${AUTHOR_NAME}. Atendimento: ${SUPPORT_EMAIL}. Idioma: português do Brasil.\n` +
   'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos, não divulga vagas, datas ou inscrições abertas e não promete aprovação.\n' +
   'Cobertura: apostilas para concursos com edital publicado em diferentes estados (São Paulo, Goiás, Espírito Santo e outros) e seleções nacionais como o IBGE, sempre conferidas pelo edital do cargo; guias regionais para a Baixada Santista. Venda e entrega: todo o Brasil.\n\n' +

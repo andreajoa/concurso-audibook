@@ -11,7 +11,7 @@ const coverPath = 'public/assets/apostila-professor-adjunto-i-3d.png';
 test('Professor Adjunto I is a complete sellable product with isolated private assets', () => {
   assert.ok(product);
   assert.equal(product.active, true);
-  assert.equal(product.priceCents, 2499);
+  assert.ok(Number.isInteger(product.priceCents) && product.priceCents >= 990, 'preço definido pela pesquisa de concorrentes');
   assert.equal(product.assets.chapters.length, 8);
   const keys = [product.assets.pdfKey, product.assets.coverKey, product.assets.summary.key,
     ...product.assets.chapters.map(track => track.key)];

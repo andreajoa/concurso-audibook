@@ -335,7 +335,7 @@ if (!exists(paginaMatao)) {
     fail('Matão ainda pergunta quando abrir concurso apesar das inscrições abertas');
   }
   if (!html.includes('apostila-matao')) fail('Matão sem apresentação da nova apostila');
-  if (!html.includes('R$ 24,99')) fail('Matão sem preço da nova apostila');
+  if (!/R\$ \d+,\d{2}/.test(html)) fail('Matão sem preço da nova apostila');
   const temCheckout = html.includes('href="/comprar?produto=matao-sp-assistente-administrativo-2026"');
   if (catMatao?.active === true) {
     if (!temCheckout) fail('produto de Matão ativo sem link de compra na página do concurso');

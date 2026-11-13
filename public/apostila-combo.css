@@ -101,3 +101,10 @@
 @media(max-width:860px){.combo-visual-wrap{order:-1}.combo-labels{grid-template-columns:1fr}.combo-visual.combo-visual-3d{gap:6px}}
 @media(hover:none){.combo-visual-3d>img:active{transform:translateY(-6px) scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.combo-visual-3d>img{transition:none}}
+/* destaque das vantagens */
+.combo-perks{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.combo-perks span{display:inline-block;padding:8px 14px;border-radius:10px;font:800 15px/1.2 system-ui,sans-serif;letter-spacing:.01em}
+.combo-perks span:first-child{background:#caa65a;color:#08284f}
+.combo-perks span:last-child{background:#b3261e;color:#fff}
+.combo-perks-dark{justify-content:center}
+.combo-price-label{display:block;color:#f1d79c;font:700 13px/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
