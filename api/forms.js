@@ -5,8 +5,11 @@ const caderno=require('../lib/caderno-sync');
    ocupadas: multiplexar por `kind` é o que mantém o site dentro do orçamento
    sem transformar cada formulário novo numa decisão de infraestrutura. */
 const membro=require('../lib/member');
+const corretor=require('../lib/corretor-handler');
 module.exports=(req,res)=>{
   // Clube de membros: o link do e-mail de confirmação chega aqui por GET.
+  // Corretor de Redação com IA (bônus do curso): /api/corretor é reescrito para cá.
+  if((req.query||{}).op==='corretor')return corretor(req,res);
   if(req.method==='GET'&&(req.query||{}).membro)return membro.confirm(req,res,String(req.query.membro));
   if(req.method!=='POST'){res.setHeader('Allow','POST');return res.status(405).json({error:'Método não permitido.'});}
   if(req.body?.kind==='membro'){const proto=req.headers['x-forwarded-proto']||'https',host=String(req.headers['x-forwarded-host']||req.headers.host).split(',')[0].trim();return membro.signup(req,res,req.body,(process.env.APP_BASE_URL||`${proto}://${host}`).replace(/\/$/,'')).catch(e=>{console.error('membro',e);res.status(503).json({error:'Não conseguimos registrar agora. Tente novamente em instantes.'})});}

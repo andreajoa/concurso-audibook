@@ -349,7 +349,7 @@ const apostilaCard = (p, opts = {}) => {
     (k.salario || k.vagas ? `<div class="ac-row">${k.salario ? tile('💰', k.salario, 'salário', ' ac-money') : ''}${k.vagas ? tile('👥', k.vagas, 'vagas') : ''}</div>` : '') +
     '<p class="ac-divider"><span>📘 Apostila</span></p>' +
     `<div class="ac-row">${tile('📄', fmtInt(k.paginas || 0), 'páginas')}${tile('❓', fmtInt(k.questoes || 0), 'questões')}</div>` +
-    `<div class="ac-buy"><ul><li>3 apostilas pelo preço de 1</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
+    `<div class="ac-buy"><ul><li>${p.kind === 'curso' ? 'Curso + corretor com IA' : '3 apostilas pelo preço de 1'}</li><li>+ Audiobook grátis</li><li>Acesso imediato</li></ul><span class="ac-price">${brl(p.priceCents)}</span></div>` +
     '<div class="ac-actions">' +
     (sample ? `<button type="button" class="ac-espiar" data-espiar="${sample}" data-titulo="${esc(p.shortName)}">👁 Espiar</button>` : `<a class="ac-espiar" href="${page}">👁 Espiar</a>`) +
     `<a class="ac-comprar" href="/comprar?produto=${p.slug}">⚡ Comprar</a></div>` +
@@ -594,7 +594,9 @@ for (const p of products) {
   const isAutores = p.slug.startsWith('autores');
   const isRedacao = p.slug.startsWith('redacao');
 
-  const fit = p.preEdital
+  const fit = p.kind === 'curso'
+    ? 'Este curso serve para concursos públicos de nível médio e superior com prova de redação ou questões discursivas, de qualquer banca. O tipo de texto, o número de linhas e os critérios de correção estão no edital do seu concurso, que sempre prevalece. A nota do Corretor com IA é uma estimativa para treino.'
+    : p.preEdital
     ? 'Esta é uma edição pré-edital para SME-SP PEIF 2026, organizada com referências históricas. Não representa o programa oficial de um futuro edital. Confira as regras, disciplinas e atualizações publicadas pela SME-SP antes da compra.'
     : isAutores
     ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
@@ -679,6 +681,7 @@ for (const p of products) {
   const sf = p.storefront || {};
   const nCap = p.assets.chapters.length;
   const buyUrl = `/comprar?produto=${p.slug}`;
+  const PERK = p.kind === 'curso' ? 'Curso + Corretor com IA' : '3 apostilas pelo preço de 1';
   const sampleBase = `/amostras/${p.slug}`;
   const hasSample = fs.existsSync(`public${sampleBase}.pdf`);
   const hasAudioSample = fs.existsSync(`public${sampleBase}.mp3`);
@@ -705,11 +708,11 @@ for (const p of products) {
   const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
   const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
     `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
-    '<p class="combo-perks"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p>' +
+    `<p class="combo-perks"><span>${PERK}</span><span>+ Audiobook GRÁTIS</span></p>` +
     `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
     `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
     `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
-    `<div class="combo-price-row"><div><span class="combo-price-label">3 apostilas + audiobook por</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
+    `<div class="combo-price-row"><div><span class="combo-price-label">${p.kind === 'curso' ? 'Curso + corretor IA + audiobook por' : '3 apostilas + audiobook por'}</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a></div>` +
     (hasSample ? `<a class="combo-sample-link" href="#amostra">Ver amostra grátis antes de comprar</a>` : '') +
     '<a class="combo-member-link" href="/membros">Membros do Clube Trilha Aprova têm 15% de desconto na 1ª compra →</a>' +
@@ -717,8 +720,8 @@ for (const p of products) {
     (examIso ? `<div class="combo-countdown" data-exam="${esc(examIso)}"><strong>Prova prevista para ${esc(examBr)}</strong> <span class="combo-days"></span> · comece hoje e chegue revisado.</div>` : '');
 
   const body =
-    '<section class="combo-section"><h2>3 apostilas pelo preço de 1 + audiobook grátis</h2>' +
-    '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>' +
+    `<section class="combo-section"><h2>${p.kind === 'curso' ? 'Curso, modelos e corretor com IA + audiobook grátis' : '3 apostilas pelo preço de 1 + audiobook grátis'}</h2>` +
+    (p.kind === 'curso' ? '<p class="combo-lead">O curso e os modelos vêm no PDF completo; o Corretor com IA abre na sua área de acesso. De bônus, o audiobook e o resumo em áudio.</p>' : '<p class="combo-lead">São 3 materiais de estudo, mais o audiobook e o resumo em áudio de bônus. Os 3 materiais vêm organizados dentro do PDF completo.</p>') +
     '<div class="combo-grid">' +
     ordered.map((c, i) => `<article class="combo-card${i === 1 ? ' combo-card-main' : ''}"><span class="combo-num">${i + 1}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.detalhe)}</p></article>`).join('') +
     `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
@@ -733,7 +736,7 @@ for (const p of products) {
     `<p class="combo-desc">${esc(p.description)}</p></section>` +
     `<section class="combo-section"><h2>Audiobook: os ${nCap} capítulos</h2><ol class="chapter-list">${p.assets.chapters.map(c => `<li><strong>${esc(c.title)}</strong>${c.subtitle ? `<p>${esc(c.subtitle)}</p>` : ''}</li>`).join('')}</ol></section>` +
     `<section class="combo-section"><h2>Este material serve para o meu concurso?</h2><p>${esc(fit)} Confira o conteúdo programático e as retificações no site oficial antes de comprar.</p></section>` +
-    '<section class="combo-pack"><p class="combo-perks combo-perks-dark"><span>3 apostilas pelo preço de 1</span><span>+ Audiobook GRÁTIS</span></p><h2>O pacote completo</h2><ul class="combo-list">' +
+    `<section class="combo-pack"><p class="combo-perks combo-perks-dark"><span>${PERK}</span><span>+ Audiobook GRÁTIS</span></p><h2>O pacote completo</h2><ul class="combo-list">` +
     ordered.map((c, i) => `<li><strong>${i + 1}. ${esc(c.titulo)}</strong> — ${esc(c.detalhe)}</li>`).join('') +
     `<li>Audiobook em ${nCap} capítulos</li><li>Resumo em áudio</li><li>Acesso imediato após o pagamento, com download</li><li>7 dias para arrependimento, conforme o Código de Defesa do Consumidor</li></ul>` +
     `<p class="combo-pack-price">${brl(p.priceCents)}<small>pagamento único, sem assinatura</small></p>` +

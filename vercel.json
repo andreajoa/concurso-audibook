@@ -24,6 +24,10 @@
     {
       "source": "/api/upsell",
       "destination": "/api/checkout?op=upsell"
+    },
+    {
+      "source": "/api/corretor",
+      "destination": "/api/forms?op=corretor"
     }
   ],
   "functions": {
