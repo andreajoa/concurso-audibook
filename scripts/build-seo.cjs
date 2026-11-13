@@ -30,14 +30,16 @@ const AUTHOR_NAME = 'Trilha Aprova';
 const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
-const products = Object.values(catalog).filter(p => p.active);
+const products = Object.values(catalog).filter(p => p.active && p.kind !== 'simulados');
+// Cadernos de simulados avulsos (13/11/2026): produto só em PDF, com página própria em /simulados/<slug>.
+const simulados = Object.values(catalog).filter(p => p.active && p.kind === 'simulados');
 const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
 
 // Páginas geradas de produtos fora de venda não podem continuar publicadas
 // apenas porque seus HTMLs antigos permanecem versionados no repositório.
 // A entrega paga usa o catálogo completo e permanece preservada.
 for (const product of Object.values(catalog).filter(p => p.active === false)) {
-  const stalePage = 'public/apostilas/' + product.slug + '.html';
+  const stalePage = 'public/' + (product.kind === 'simulados' ? 'simulados/' : 'apostilas/') + product.slug + '.html';
   if (fs.existsSync(stalePage)) fs.unlinkSync(stalePage);
 }
 const footer = fs.readFileSync('lib/site-footer.html', 'utf8');
@@ -738,6 +740,13 @@ for (const p of products) {
     `<a class="combo-buy" href="${buyUrl}">Quero o combo completo</a>` +
     '<p class="combo-pack-note">Pagamento seguro. Assim que o pagamento é confirmado, a sua área de acesso com o PDF e os áudios é liberada e o link chega no seu e-mail.</p></section>' +
     (() => {
+      const sim = simulados.find(s => s.storefront.apostila === p.slug);
+      return sim ? '<section class="combo-section sim-cross"><h2>Quer treinar mais antes da prova?</h2>' +
+        `<div class="sim-cross-in"><a href="/simulados/${sim.slug}"><img src="${esc(sim.storefront.cover3d)}" alt="Capa do caderno de simulados" width="150" height="188" loading="lazy" decoding="async"></a>` +
+        `<div><p><b>${esc(sim.storefront.provas)} simulados extras, ${esc(sim.storefront.questoes)} questões inéditas</b>, diferentes das que vêm na apostila, no formato da prova e com gabarito comentado.</p>` +
+        `<p class="sim-cross-price">${brl(sim.priceCents)}</p><div class="sim-cross-btns"><a class="ac-comprar" href="/comprar?produto=${sim.slug}">Comprar simulados</a><a class="ac-espiar" href="${esc(sim.storefront.sample)}" data-espiar="${esc(sim.storefront.sample)}" data-titulo="${esc(sim.shortName)}">Ver amostra</a></div></div></div></section>` : '';
+    })() +
+    (() => {
       // Cross-sell: mesma área (e mesma cidade primeiro) + Redação, que cai em quase todo concurso.
       const area = sf.area, cid = sf.concurso && sf.concurso.local;
       const rel = products.filter(o => o.slug !== p.slug && o.storefront.area === area)
@@ -807,6 +816,67 @@ renderPage({
   trail: [['Apostilas', '/apostilas-para-concurso']],
   priority: '0.7'
 });
+
+/* Simulados avulsos (13/11/2026, pedido do André): 5 simulados por R$ 15,99, amostra de 10 páginas
+   com marca d'água em pop-up (com download) e entrega pela mesma área de acesso. */
+function simuladoCard(s) {
+  const ap = catalog[s.storefront.apostila] || {};
+  const k = (ap.storefront && ap.storefront.concurso) || {};
+  const page = '/simulados/' + s.slug;
+  return `<article class="sim-card"><a class="sim-cover" href="${page}" aria-label="Ver ${esc(s.shortName)}"><img src="${esc(s.storefront.cover3d)}" alt="Capa do caderno ${esc(s.shortName)}" width="200" height="250" loading="lazy" decoding="async"></a>` +
+    `<div class="sim-body"><span class="ac-local">${esc(k.local || '')}${s.examBoard ? ' · ' + esc(s.examBoard) : ''}</span>` +
+    `<h3><a href="${page}">${esc(s.storefront.provas)} Simulados · ${esc(k.cargo || s.shortName)}</a></h3>` +
+    `<div class="sim-tiles"><div><strong>${esc(s.storefront.provas)}</strong><small>provas</small></div><div><strong>${esc(s.storefront.questoes)}</strong><small>questões</small></div><div><strong>${esc(s.storefront.paginas)}</strong><small>páginas</small></div></div>` +
+    `<ul class="sim-list"><li>Formato da prova, 4 alternativas</li><li>Gabarito comentado</li><li>Questões inéditas</li></ul>` +
+    `<div class="sim-buy"><span class="ac-price">${brl(s.priceCents)}</span><div class="sim-btns"><a class="ac-espiar" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">👁 Ver amostra</a><a class="ac-comprar" href="/comprar?produto=${s.slug}">⚡ Comprar</a></div></div></div></article>`;
+}
+
+for (const s of simulados) {
+  const path = '/simulados/' + s.slug;
+  const url = ORIGIN + path;
+  const ap = catalog[s.storefront.apostila] || {};
+  const k = (ap.storefront && ap.storefront.concurso) || {};
+  const comp = [['Língua Portuguesa', 10, 3], ['Raciocínio Lógico-Matemático', 5, 1], ['Realidade de Goiás e de Aparecida de Goiânia', 5, 1], ['Conhecimentos Específicos', 30, 2]];
+  const productNode = {
+    '@type': 'Product', '@id': url + '#product', name: s.name, description: s.description, image: [s.storefront.cover3d],
+    sku: s.slug, category: s.category, inLanguage: 'pt-BR', brand: { '@type': 'Brand', name: 'Trilha Aprova' },
+    offers: { '@type': 'Offer', '@id': url + '#offer', url, price: money(s.priceCents), priceCurrency: 'BRL', availability: 'https://schema.org/InStock', seller: { '@id': ORIGIN + '/#organization' } }
+  };
+  renderPage({
+    path,
+    title: `${s.storefront.provas} simulados ${k.cargo || ''} ${k.local ? '— ' + k.local.replace('/GO', '') : ''} 2026`.replace(/\s+/g, ' ').trim(),
+    metaTitle: `5 Simulados PE-I Pedagogia Aparecida de Goiânia 2026 (250 questões) | Trilha Aprova`,
+    description: `5 simulados completos para PE-I Pedagogia de Aparecida de Goiânia (Verbena/UFG): 250 questões inéditas com gabarito comentado, por ${brl(s.priceCents)}. Veja a amostra grátis.`,
+    kicker: 'SIMULADOS AVULSOS · ' + (s.examBoard || ''),
+    lead: `Treine no formato da prova: ${s.storefront.provas} simulados completos de 50 questões, na mesma distribuição e com os mesmos pesos do edital, com cartão-resposta e comentário de cada questão. São ${s.storefront.questoes} questões inéditas, diferentes das que vêm na apostila.`,
+    keyFacts: [['Simulados', s.storefront.provas + ' provas completas'], ['Questões', s.storefront.questoes + ' inéditas'], ['Formato', '4 alternativas · pesos do edital'], ['Preço', brl(s.priceCents)]],
+    body:
+      `<section class="sim-hero"><a href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}"><img src="${esc(s.storefront.cover3d)}" alt="Capa do caderno ${esc(s.shortName)}" width="300" height="375" loading="eager" decoding="async"></a>` +
+      `<div><p class="sim-hero-price">${brl(s.priceCents)}<small>pagamento único · PDF liberado na hora</small></p>` +
+      `<a class="ac-comprar sim-hero-buy" href="/comprar?produto=${s.slug}">⚡ Comprar os ${s.storefront.provas} simulados</a>` +
+      `<a class="ac-espiar sim-hero-sample" href="${esc(s.storefront.sample)}" data-espiar="${esc(s.storefront.sample)}" data-titulo="${esc(s.shortName)}">👁 Ver amostra grátis (10 páginas)</a>` +
+      `<ul class="sim-list">${s.proofPoints.map(x => '<li>' + esc(x) + '</li>').join('')}</ul></div></section>` +
+      '<h2>Como é cada simulado</h2><table class="ac-table sim-table"><thead><tr><th>Área</th><th>Questões</th><th>Peso</th><th>Pontos</th></tr></thead><tbody>' +
+      comp.map(([a, q, w]) => `<tr><td>${esc(a)}</td><td>${q}</td><td>${w}</td><td>${q * w}</td></tr>`).join('') +
+      '<tr><td><b>Total</b></td><td><b>50</b></td><td></td><td><b>100</b></td></tr></tbody></table>' +
+      '<p>A nota mínima na prova objetiva é 50 pontos. Cada simulado traz capa, cartão-resposta, as 50 questões separadas por área, gabarito rápido e a resolução comentada de cada questão, explicando por que a alternativa certa está certa.</p>' +
+      (ap.slug ? `<h2>Para estudar a teoria</h2><p>Os simulados treinam a prova. A teoria de todo o edital, a redação, a legislação e o audiobook estão na <a href="/apostilas/${ap.slug}">apostila ${esc(ap.shortName)}</a>, que já traz outros 2 simulados — as ${s.storefront.questoes} questões deste caderno são diferentes das da apostila.</p>` : '') +
+      disclaimer,
+    faq: [
+      { q: 'Como recebo os simulados?', a: 'Assim que o pagamento é confirmado, o PDF é liberado na sua área de acesso e o link chega no seu e-mail. Você pode ler on-line ou baixar.' },
+      { q: 'As questões são as mesmas da apostila?', a: `Não. São ${s.storefront.questoes} questões inéditas, escritas a partir do conteúdo programático do edital e conferidas na legislação vigente, diferentes dos 2 simulados que acompanham a apostila.` },
+      { q: 'Os simulados são da banca?', a: 'Não. É material independente da Trilha Aprova, sem vínculo com a Prefeitura ou com o Instituto Verbena/UFG. As questões seguem o formato, a distribuição e os pesos previstos no edital.' },
+      { q: 'Posso ver antes de comprar?', a: 'Sim. A amostra grátis tem 10 páginas do Simulado 01, com questões, cartão-resposta e resoluções comentadas, e pode ser baixada em PDF.' }
+    ],
+    nodes: [productNode],
+    styles: ['/apostila-cards.css'],
+    scripts: ['/apostila-cards.js'],
+    trail: [['Apostilas', '/apostilas-para-concurso']],
+    image: s.storefront.cover3d,
+    images: [s.storefront.cover3d],
+    priority: '0.8'
+  });
+}
 
 /* ------------------------------------------------------------------ *
  * Hub do catálogo
@@ -2093,12 +2163,16 @@ const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="ca
     `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
   '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
 home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
+const simHomeHtml = simulados.length ? '<!-- simulados:start --><section class="sim-home shell" id="simulados" aria-labelledby="sim-titulo">' +
+  '<h2 id="sim-titulo">Simulados avulsos</h2><p class="ac-cargos-lead">Treine no formato da prova: 5 simulados completos com gabarito comentado. Abra a amostra grátis antes de comprar.</p>' +
+  `<div class="sim-grid">${simulados.map(simuladoCard).join('')}</div></section><!-- simulados:end -->` : '';
+home = home.replace(/<!-- simulados:start -->[\s\S]*?<!-- simulados:end -->/, '');
 /* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
 const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +
   '<p class="ac-vitrine-t"><b>Apostilas disponíveis</b><span>3 apostilas pelo preço de 1 + audiobook grátis</span></p>' + carousel + '</div></section><!-- vitrine-capas:end -->';
 home = home.replace(/<!-- vitrine-capas:start -->[\s\S]*?<!-- vitrine-capas:end -->/, '');
 home = home.replace('<!-- banners:start -->', vitrineHtml + '<!-- banners:start -->');
-home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml);
+home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml + simHomeHtml);
 home = home.replace(/<link rel="stylesheet" href="\/apostila-cards\.css[^"]*">/g, '').replace(/<script src="\/apostila-cards\.js[^"]*" defer><\/script>/g, '');
 home = home.replace('</head>', `<link rel="stylesheet" href="${assetVer('/apostila-cards.css')}"></head>`).replace('</body>', `<script src="${assetVer('/apostila-cards.js')}" defer></script></body>`);
 
@@ -2188,16 +2262,16 @@ function checkoutCover(product) {
   return url.startsWith(ORIGIN) ? url.slice(ORIGIN.length) : url;
 }
 
-const checkoutProducts = Object.fromEntries(products.map(p => [p.slug, {
+const checkoutProducts = Object.fromEntries([...products, ...simulados].map(p => [p.slug, {
   badge: p.storefront.badge,
   nome: p.shortName,
   descricao: p.description,
   publico: p.audience,
   capa: checkoutCover(p),
-  alt: 'Capa da apostila ' + p.shortName,
+  alt: (p.kind === 'simulados' ? 'Capa do caderno ' : 'Capa da apostila ') + p.shortName,
   preco: brl(p.priceCents),
   de: p.compareAtCents ? brl(p.compareAtCents) : '',
-  bump: p.slug === 'redacao-nivel-fundamental-2026' || !catalog['redacao-nivel-fundamental-2026']?.active ? null : { nome: catalog['redacao-nivel-fundamental-2026'].shortName, preco: brl(1490), cheio: brl(catalog['redacao-nivel-fundamental-2026'].priceCents), capa: catalog['redacao-nivel-fundamental-2026'].storefront.cover3d },
+  bump: p.kind === 'simulados' || p.slug === 'redacao-nivel-fundamental-2026' || !catalog['redacao-nivel-fundamental-2026']?.active ? null : { nome: catalog['redacao-nivel-fundamental-2026'].shortName, preco: brl(1490), cheio: brl(catalog['redacao-nivel-fundamental-2026'].priceCents), capa: catalog['redacao-nivel-fundamental-2026'].storefront.cover3d },
   centavos: p.priceCents,
   beneficios: p.proofPoints.slice(0, 4).map(benefit)
 }]));

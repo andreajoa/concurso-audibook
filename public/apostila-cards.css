@@ -109,3 +109,36 @@
 @media(max-width:560px){.ac-grid{grid-template-columns:1fr}.ac-cover{height:210px}.ac-cover img{height:196px}}
 .ac-tile strong{white-space:normal;overflow:visible;text-overflow:clip;font-size:13.5px;letter-spacing:-.01em;line-height:1.25}
 .ac-tile strong span{font-size:12px}
+/* Simulados avulsos (home, página do caderno e bloco na página da apostila) */
+.sim-home{margin:34px auto;font-family:system-ui,-apple-system,sans-serif}
+.sim-home h2{font:400 clamp(26px,3.4vw,38px)/1.15 Georgia,serif;color:#08284f;margin:0 0 6px;padding-bottom:10px;border-bottom:3px solid #caa65a;display:inline-block}
+.sim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:22px;margin-top:16px}
+.sim-card{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;background:#fff;border:1px solid #e6dece;border-radius:16px;padding:16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.sim-card:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(8,40,79,.14);border-color:#caa65a}
+.sim-cover{display:flex;align-items:center;justify-content:center;background:radial-gradient(180px 120px at 50% 60%,#f5ecd9 0,#fbf8f1 70%);border-radius:12px}
+.sim-cover img{width:100%;max-width:160px;height:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.25))}
+.sim-body{display:flex;flex-direction:column;gap:10px;min-width:0}
+.sim-body h3{margin:0;font:700 18px/1.25 system-ui,sans-serif;color:#0b2342}
+.sim-body h3 a{color:inherit;text-decoration:none}
+.sim-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sim-tiles div{border:1px solid #ece5d6;background:#fffdfa;border-radius:10px;padding:8px 4px;text-align:center}
+.sim-tiles strong{display:block;font:800 18px/1.1 system-ui;color:#0b2342}
+.sim-tiles small{font:700 10px/1.2 system-ui;color:#7a8696;text-transform:uppercase;letter-spacing:.06em}
+.sim-list{list-style:none;margin:0;padding:0;font:700 12.5px/1.7 system-ui;color:#08284f}
+.sim-list li:before{content:"✓ ";color:#caa65a}
+.sim-buy{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+.sim-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sim-btns a{padding:11px 16px}
+.sim-hero{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;margin:8px 0 26px}
+.sim-hero img{width:100%;height:auto;filter:drop-shadow(0 16px 20px rgba(0,0,0,.28));transition:transform .25s}
+.sim-hero a:hover img{transform:translateY(-6px) scale(1.02)}
+.sim-hero-price{font:900 44px/1 system-ui;color:#08284f;margin:0 0 14px}
+.sim-hero-price small{display:block;font:600 13px/1.4 system-ui;color:#66717e;margin-top:6px}
+.sim-hero-buy,.sim-hero-sample{display:flex!important;margin:0 0 10px;padding:15px 18px!important;font-size:16px!important;max-width:360px}
+.sim-table{min-width:0;margin:10px 0 14px}
+.sim-cross-in{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center}
+.sim-cross-in img{width:100%;height:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.25))}
+.sim-cross-price{font:900 30px/1 system-ui;color:#08284f;margin:6px 0 12px}
+.sim-cross-btns{display:flex;gap:10px;flex-wrap:wrap}
+.sim-cross-btns a{padding:12px 18px}
+@media(max-width:600px){.sim-card{grid-template-columns:1fr}.sim-cover img{max-width:150px}.sim-hero{grid-template-columns:1fr}.sim-hero img{max-width:240px;margin:auto;display:block}.sim-cross-in{grid-template-columns:1fr}.sim-cross-in img{max-width:150px;margin:auto;display:block}.sim-hero-buy,.sim-hero-sample{max-width:none}}
