@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Corretor de Redação com IA | Trilha Aprova</title>
+<link rel="stylesheet" href="/store.css">
+<link rel="stylesheet" href="/trilha.css">
+<link rel="stylesheet" href="/site-footer.css">
+<link rel="stylesheet" href="/corretor.css">
+<link rel="stylesheet" href="/portal-news.css"><link rel="stylesheet" href="/site-header.css"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.svg"></head>
+<body class="portal-news-ui portal"><header class="portal-site-header"><div class="portal-utility"><div class="portal-wide"><span data-data-de-hoje>Sexta-feira, 13 de novembro de 2026</span><span class="portal-utility-motto">Seu guia diário para conquistar a aprovação</span><nav aria-label="Links institucionais"><a href="/sobre">Sobre</a><a href="/contato">Contato</a><a href="https://www.instagram.com/trilhaaprova.concursos/" target="_blank" rel="noopener">Instagram</a></nav></div></div><div class="portal-masthead"><div class="portal-wide portal-masthead-grid"><a class="portal-brand" href="/" aria-label="Trilha Aprova — início"><img src="/assets/trilha-aprova-logo.webp?v=20260914" alt="Trilha Aprova" width="218" height="96"></a><form class="portal-search" role="search" action="/concursos" method="get" aria-label="Buscar no portal"><input type="search" name="q" placeholder="Busque por concurso, órgão, cargo ou assunto..." aria-label="Buscar no portal"><button type="submit" aria-label="Buscar">⌕</button></form><a class="portal-login" href="/recuperar"><span aria-hidden="true">◉</span><strong>Entrar</strong><small>Minha conta</small></a><a class="portal-approve" href="/apostilas-para-concurso">Quero ser aprovado <span>→</span></a></div></div><nav class="portal-primary" aria-label="Navegação principal"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-do-site"><span class="nav-toggle-riscos" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-texto">Menu</span></button><div class="portal-wide" id="menu-do-site"><a class="portal-home-link" href="/" aria-label="Início">⌂</a><a href="/concursos">Concursos Abertos</a><a href="/materias">Notícias</a><a href="/materias/como-ler-um-edital-de-concurso-sem-perder-nada-importante">Editais</a><a href="/concursos">Salários</a><a href="/ferramentas">Ferramentas</a><a href="/apostilas-para-concurso">Apostilas</a><a href="/como-estudar-para-concurso-do-zero">Guias de Estudo</a><a href="/perguntas-frequentes">Dúvidas</a><a href="/contato">Atendimento</a></div></nav><div class="portal-breaking"><div class="portal-wide"><strong>⚡ &nbsp;ÚLTIMAS NOTÍCIAS</strong><div class="portal-breaking-track"><span>28 vagas somadas nos certames com inscrição aberta</span><i>•</i><span>Matão: inscrições até 18/11/2026</span><i>•</i><span>Matão tem prova prevista para 06/12/2026</span></div><a href="/concursos">Ver todas →</a></div></div><script src="/site-header.js" defer></script></header>
+<header class="portal-header"><div class="shell"><a href="/" class="ta-brand"><img src="/assets/trilha-aprova-logo.webp" alt="Trilha Aprova" style="width:112px;height:54px;object-fit:contain"></a><a class="button-link alt" id="voltar-area" style="padding:8px 11px" href="/recuperar.html">Minha área</a></div></header>
+<main class="portal-main shell cr">
+  <section class="cr-head">
+    <span class="eyebrow">CURSO DE REDAÇÃO · BÔNUS</span>
+    <h1>Corretor de Redação com IA</h1>
+    <p>Envie a foto da sua redação escrita à mão, um PDF ou cole o texto. Em menos de um minuto você recebe a nota por critério, os erros com a correção, dicas e uma versão reescrita para baixar.</p>
+  </section>
+
+  <section class="cr-card" id="form-card">
+    <form id="cr-form" novalidate>
+      <div class="cr-row">
+        <label>Tema da redação<input name="tema" maxlength="400" placeholder="Ex.: Os desafios da inclusão escolar no Brasil"></label>
+        <label>Banca (opcional)<input name="banca" maxlength="80" placeholder="Ex.: Instituto Verbena/UFG"></label>
+      </div>
+      <label>Tipo de texto
+        <select name="genero"><option>Dissertativo-argumentativo</option><option>Dissertativo-expositivo</option><option>Carta argumentativa</option><option>Texto de opinião</option><option>Relatório / ofício</option><option>Narrativo / relato</option></select>
+      </label>
+      <div class="cr-tabs" role="tablist">
+        <button type="button" class="on" data-modo="foto" role="tab">📷 Foto ou arquivo</button>
+        <button type="button" data-modo="texto" role="tab">⌨ Colar texto</button>
+      </div>
+      <div class="cr-modo" data-painel="foto">
+        <label class="cr-drop" id="cr-drop">
+          <input type="file" id="cr-file" accept="image/*,application/pdf,text/plain" capture="environment">
+          <span id="cr-drop-txt"><b>Toque para tirar a foto ou escolher o arquivo</b><small>JPG, PNG, PDF ou TXT · folha inteira, boa luz, sem sombra</small></span>
+          <img id="cr-prev" alt="" hidden>
+        </label>
+      </div>
+      <div class="cr-modo" data-painel="texto" hidden>
+        <textarea name="texto" rows="14" placeholder="Cole aqui a sua redação (mínimo de 40 palavras)"></textarea>
+      </div>
+      <button class="button-link cr-go" type="submit">Corrigir minha redação</button>
+      <p class="cr-msg" role="status"></p>
+      <p class="legal-note">A nota é uma estimativa para treino, baseada em critérios usados pelas bancas. Quem corrige a prova oficial é a banca, com a grade do edital.</p>
+    </form>
+  </section>
+
+  <section id="cr-out" hidden>
+    <div class="cr-card cr-nota">
+      <div class="cr-total"><b id="o-total">0</b><small>/ 100</small></div>
+      <div><h2>Resultado</h2><p id="o-resumo"></p><p class="cr-restam" id="o-restam"></p></div>
+    </div>
+    <div class="cr-card"><h2>Nota por critério</h2><div id="o-criterios" class="cr-crit"></div></div>
+    <div class="cr-card" id="o-fortes-card"><h2>Pontos fortes</h2><ul id="o-fortes"></ul></div>
+    <div class="cr-card"><h2>Erros e como corrigir</h2><div id="o-erros"></div></div>
+    <div class="cr-card"><h2>Dicas para o próximo texto</h2><ol id="o-dicas"></ol></div>
+    <div class="cr-grid2">
+      <div class="cr-card"><h2>Seu texto (transcrição)</h2><div id="o-trans" class="cr-texto"></div></div>
+      <div class="cr-card cr-best"><h2>Versão reescrita</h2><div id="o-rees" class="cr-texto"></div>
+        <div class="cr-dl"><button type="button" class="button-link" id="dl-doc">↓ Baixar correção (Word)</button><button type="button" class="button-link alt" id="dl-txt">↓ Baixar versão reescrita (.txt)</button><button type="button" class="button-link alt" id="dl-print">🖨 Imprimir / PDF</button></div>
+      </div>
+    </div>
+    <p style="text-align:center"><button type="button" class="button-link alt" id="nova">Corrigir outra redação</button></p>
+  </section>
+</main>
+<script src="/corretor.js" defer></script>
+</body>
+</html>

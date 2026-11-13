@@ -254,6 +254,136 @@
     },
     "exam": null
   },
+  "curso-redacao-concursos-2026": {
+    "slug": "curso-redacao-concursos-2026",
+    "active": true,
+    "kind": "curso",
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos com prova de redação ou discursiva",
+    "examBoard": "Todas as bancas",
+    "category": "Concursos públicos",
+    "name": "Curso de Redação para Concursos + audiobook + Corretor com IA",
+    "shortName": "Curso de Redação para Concursos",
+    "edition": "Edição 2026/2027, fechamento em 13/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos públicos de nível médio e superior com prova de redação dissertativa, carta, relatório ou questões discursivas",
+    "currency": "brl",
+    "priceCents": 9900,
+    "description": "Curso completo de redação para concursos públicos: 16 módulos do comando da prova à revisão final, com tese, planejamento, introdução, parágrafo argumentativo, coesão, conclusão com proposta, os 15 erros gramaticais que mais tiram pontos, carta, relatório e ofício, repertório por área, oficina de reescrita, 8 redações-modelo comentadas e 30 temas para treinar. PDF de 47 páginas, audiobook em 8 capítulos com resumo narrado e Corretor de Redação com IA: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita para baixar (60 correções incluídas).",
+    "proofPoints": [
+      "16 módulos do comando da prova à revisão final",
+      "8 redações-modelo comentadas e 30 temas para treinar",
+      "Corretor de Redação com IA: foto da redação → nota, erros, dicas e versão reescrita",
+      "60 correções com IA incluídas",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Carta, relatório, ofício e questões discursivas",
+      "PDF de 47 páginas, liberado na hora"
+    ],
+    "assets": {
+      "coverKey": "curso-redacao-concursos-2026/images/capa.webp",
+      "pdfKey": "curso-redacao-concursos-2026/docs/curso-redacao-concursos-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Curso_de_Redacao_para_Concursos.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo do curso em áudio",
+        "key": "curso-redacao-concursos-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Curso_de_Redacao.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como a banca corrige e como ler o comando",
+          "subtitle": "Módulos 1 e 2",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/01-correcao-e-comando.mp3",
+          "downloadName": "01-correcao-e-comando.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "A tese e o planejamento em 10 minutos",
+          "subtitle": "Módulos 3 e 4",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/02-tese-e-planejamento.mp3",
+          "downloadName": "02-tese-e-planejamento.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Introdução e parágrafo argumentativo",
+          "subtitle": "Módulos 5 e 6",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/03-introducao-e-desenvolvimento.mp3",
+          "downloadName": "03-introducao-e-desenvolvimento.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Coesão e conclusão com proposta",
+          "subtitle": "Módulos 7 e 8",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/04-coesao-e-conclusao.mp3",
+          "downloadName": "04-coesao-e-conclusao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Norma-padrão e outros gêneros",
+          "subtitle": "Módulos 9 e 10",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/05-norma-padrao-e-generos.mp3",
+          "downloadName": "05-norma-padrao-e-generos.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Redações-modelo, revisão e plano de 4 semanas",
+          "subtitle": "Módulos 11 e 12",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/06-modelos-e-revisao.mp3",
+          "downloadName": "06-modelos-e-revisao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Repertório por área e oficina de reescrita",
+          "subtitle": "Módulos 13 e 14",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/07-repertorio-e-reescrita.mp3",
+          "downloadName": "07-repertorio-e-reescrita.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Mais redações-modelo e caderno de propostas",
+          "subtitle": "Módulos 15 e 16",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/08-modelos-variados-e-propostas.mp3",
+          "downloadName": "08-modelos-variados-e-propostas.mp3"
+        }
+      ]
+    },
+    "storefront": {
+      "badge": "CURSO DE REDAÇÃO • TODAS AS BANCAS • CORRETOR COM IA",
+      "cover3d": "/assets/capa-curso-redacao-concursos-2026-completa-3d.webp",
+      "cta": "Quero o curso com corretor",
+      "headline": "Escreva a redação que a banca quer ler — e receba a correção da IA em 1 minuto",
+      "shortTag": "Redação · todas as bancas",
+      "area": "redacao",
+      "combo": [
+        {
+          "titulo": "Curso Completo",
+          "detalhe": "16 módulos do comando da prova à revisão final"
+        },
+        {
+          "titulo": "Caderno de Modelos",
+          "detalhe": "8 redações-modelo comentadas e 30 temas para treinar"
+        },
+        {
+          "titulo": "Corretor com IA",
+          "detalhe": "Foto da redação → nota, erros, dicas e versão reescrita"
+        }
+      ],
+      "comboCovers": [
+        "/assets/capa-curso-redacao-concursos-2026-simulados-3d.webp",
+        "/assets/capa-curso-redacao-concursos-2026-terceiro-3d.webp"
+      ],
+      "bullets": [
+        "Método passo a passo: comando, tese, planejamento, introdução, argumentação, coesão e conclusão",
+        "8 redações-modelo comentadas, oficina de reescrita e 30 temas com textos de apoio",
+        "Corretor com IA: envie a foto e receba nota por critério, erros corrigidos, dicas e versão reescrita",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções com IA incluídas"
+    },
+    "seoTitle": "Curso de Redação para Concursos com Corretor IA | Trilha Aprova",
+    "seoDescription": "Curso de redação para concursos: 16 módulos, 8 redações-modelo, audiobook e corretor com IA que dá nota, erros e versão reescrita. R$ 99."
+  },
   "agente-de-portaria-ibam-santos-2026": {
     "slug": "agente-de-portaria-ibam-santos-2026",
     "active": false,
