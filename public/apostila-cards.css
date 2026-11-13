@@ -81,3 +81,17 @@
 .ac-car-item{background:none;border:0;padding:6px 4px;flex-basis:170px}
 .ac-car-item:hover{box-shadow:none}
 .ac-car-item img{height:220px}
+/* faixa de capas no topo da home */
+.ac-vitrine{background:radial-gradient(900px 300px at 50% 0,#173f72 0,#08284f 60%,#061d3a 100%);padding:18px 0 8px;margin:0 0 18px}
+.ac-vitrine-in{max-width:1240px;margin:0 auto;padding:0 16px}
+.ac-vitrine-t{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin:0 0 4px;color:#fff;font-family:system-ui,sans-serif}
+.ac-vitrine-t b{font:400 clamp(20px,2.4vw,28px)/1.2 Georgia,serif}
+.ac-vitrine-t span{color:#f1d79c;font:800 13px/1.2 system-ui;letter-spacing:.04em;text-transform:uppercase}
+.ac-vitrine .ac-carousel{margin:0}
+.ac-vitrine .ac-car-track{gap:34px;padding:14px 8px 18px}
+.ac-vitrine .ac-car-item{flex:0 0 168px;padding:0;background:none;border:0}
+.ac-vitrine .ac-car-item img{height:220px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.5))}
+.ac-vitrine .ac-car-item:hover{transform:translateY(-8px) scale(1.04)}
+.ac-vitrine .ac-car-btn{background:#caa65a;color:#08284f}
+.ac-vitrine .ac-car-prev{left:0}.ac-vitrine .ac-car-next{right:0}
+@media(max-width:600px){.ac-vitrine .ac-car-track{gap:22px;padding:10px 4px 14px;scroll-padding:0 16px}.ac-vitrine .ac-car-item{flex-basis:126px}.ac-vitrine .ac-car-item img{height:168px}.ac-vitrine-t{justify-content:center;text-align:center}}

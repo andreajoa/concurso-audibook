@@ -1676,9 +1676,9 @@ home = home.replace('</main>', discovery);
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
 const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
-  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="lazy" decoding="async"></a>`).join('') +
+  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="eager" decoding="async"></a>`).join('') +
   '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
-const shelf = carousel + '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
+const shelf = '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 
 home = home
   .replace(/<!-- catalogo:intro:start -->[\s\S]*?<!-- catalogo:intro:end -->/,
@@ -2059,6 +2059,11 @@ const cargosHtml = '<!-- cargos:start --><section class="ac-cargos shell" id="ca
     `<td class="ac-btns"><a class="ac-ler" href="/apostilas/${p.slug}">Ler mais</a>${k.url && !/encerrad/i.test(k.inscricoes || '') ? `<a class="ac-insc" href="${esc(k.url)}" target="_blank" rel="noopener nofollow">Fazer inscrição ↗</a>` : ''}</td></tr>`; }).join('') +
   '</tbody></table></div><p class="ac-cargos-note">Dados conferidos em sites de notícias e editais em ' + esc(BUILD_DATE) + '. Valores e datas podem mudar com retificações: o edital oficial é sempre a referência.</p></section><!-- cargos:end -->';
 home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
+/* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
+const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +
+  '<p class="ac-vitrine-t"><b>Apostilas disponíveis</b><span>3 apostilas pelo preço de 1 + audiobook grátis</span></p>' + carousel + '</div></section><!-- vitrine-capas:end -->';
+home = home.replace(/<!-- vitrine-capas:start -->[\s\S]*?<!-- vitrine-capas:end -->/, '');
+home = home.replace('<!-- banners:start -->', vitrineHtml + '<!-- banners:start -->');
 home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml);
 if (!home.includes('/apostila-cards.css')) home = home.replace('</head>', '<link rel="stylesheet" href="/apostila-cards.css"></head>');
 if (!home.includes('/apostila-cards.js')) home = home.replace('</body>', '<script src="/apostila-cards.js" defer></script></body>');
