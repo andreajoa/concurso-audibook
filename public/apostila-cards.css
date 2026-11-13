@@ -96,3 +96,16 @@
 .ac-vitrine .ac-car-prev{left:0}.ac-vitrine .ac-car-next{right:0}
 @media(max-width:600px){.ac-vitrine .ac-car-track{gap:22px;padding:10px 4px 14px;scroll-padding:0 16px}.ac-vitrine .ac-car-item{flex-basis:126px}.ac-vitrine .ac-car-item img{height:168px}.ac-vitrine-t{justify-content:center;text-align:center}}
 .ac-car-track{cursor:grab}
+/* grade ocupa a largura toda dentro da seção da home (que tem 2 colunas) e fica responsiva */
+.future-shelf>.ac-grid{grid-column:1/-1}
+.future-shelf:has(>.ac-grid){display:block}
+.ac-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.ac-tile strong{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ac-tile{min-width:0}
+.ac-body h3{font-size:17px}
+.ac-buy{flex-wrap:wrap}
+.ac-buy ul{flex:1 1 140px}
+@media(max-width:900px){.ac-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media(max-width:560px){.ac-grid{grid-template-columns:1fr}.ac-cover{height:210px}.ac-cover img{height:196px}}
+.ac-tile strong{white-space:normal;overflow:visible;text-overflow:clip;font-size:13.5px;letter-spacing:-.01em;line-height:1.25}
+.ac-tile strong span{font-size:12px}
