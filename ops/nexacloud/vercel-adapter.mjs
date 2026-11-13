@@ -6,7 +6,7 @@ import {pathToFileURL} from 'node:url';
 const ROOT=process.cwd(),PORT=Number(process.env.PORT||3000);
 let cfg={};try{cfg=JSON.parse(fs.readFileSync(path.join(ROOT,'vercel.json'),'utf8'));}catch{}
 const STATIC=fs.existsSync(path.join(ROOT,cfg.outputDirectory||'public'))?path.join(ROOT,cfg.outputDirectory||'public'):ROOT;
-const TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.gif':'image/gif','.webp':'image/webp','.avif':'image/avif','.ico':'image/x-icon','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.woff2':'font/woff2','.woff':'font/woff','.pdf':'application/pdf','.mp4':'video/mp4','.webmanifest':'application/manifest+json'};
+const TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.gif':'image/gif','.webp':'image/webp','.avif':'image/avif','.ico':'image/x-icon','.txt':'text/plain; charset=utf-8','.xml':'application/xml; charset=utf-8','.woff2':'font/woff2','.woff':'font/woff','.pdf':'application/pdf','.mp4':'video/mp4','.mp3':'audio/mpeg','.m4a':'audio/mp4','.webmanifest':'application/manifest+json'};
 
 // @vercel/functions waitUntil: keep the promise alive and log its failure (the process is long-lived here).
 globalThis[Symbol.for('@vercel/request-context')]={get:()=>({waitUntil:p=>Promise.resolve(p).catch(e=>console.error('waitUntil',e)),headers:{}})};
