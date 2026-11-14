@@ -8,8 +8,9 @@ if(!accessKeyId||!secretAccessKey){console.error('FAIL missing R2 credentials');
 const s3=new S3Client({region:'auto',endpoint:`https://${accountId}.r2.cloudflarestorage.com`,credentials:{accessKeyId,secretAccessKey}});
 let failed=false;const fail=m=>{console.error('FAIL '+m);failed=true},ok=m=>console.log('OK   '+m);
 for(const [slug,p] of Object.entries(catalog)){
- const items=[p.assets.coverKey,p.assets.pdfKey,p.assets.summary.key,...(p.assets.chapters||[]).map(x=>x.key)];
+ const items=[p.assets.coverKey,p.assets.pdfKey,p.assets.summary?.key,...(p.assets.chapters||[]).map(x=>x.key)].filter(Boolean);
  for(const key of items){try{const h=await s3.send(new HeadObjectCommand({Bucket:bucket,Key:key}));if(!Number(h.ContentLength||0))fail(`${slug} ${key} empty`);else ok(`${slug} ${key} • ${h.ContentLength} bytes`)}catch(e){fail(`${slug} ${key} unavailable`)}}
+ if(!p.assets.summary){ok(`${slug} sem áudio (produto só PDF)`);continue}
  try{const g=await s3.send(new GetObjectCommand({Bucket:bucket,Key:p.assets.summary.key,Range:'bytes=0-31'}));const bytes=await g.Body.transformToByteArray();if(bytes.length!==32)fail(`${slug} audio range failed`);else ok(`${slug} authenticated audio range delivery`)}catch(e){fail(`${slug} authenticated audio range failed`)}
 }
 if(failed)process.exit(1);console.log('\nAuthenticated R2 verification passed.');
