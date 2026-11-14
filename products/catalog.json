@@ -1339,7 +1339,8 @@
     "proofPoints": [
       "Apostila digital A4 com 443 páginas na edição ampliada",
       "22 unidades de teoria e exemplos",
-      "895 questões comentadas: banco de 735 por tema + 80 exercícios e dois simulados de 40 itens", "Caderno normativo: Lei Orgânica de Matão, Estatuto da Cidade, Lei 6.766, Defesa Civil, LAI e Lei de Licitações",
+      "895 questões comentadas: banco de 735 por tema + 80 exercícios e dois simulados de 40 itens",
+      "Caderno normativo: Lei Orgânica de Matão, Estatuto da Cidade, Lei 6.766, Defesa Civil, LAI e Lei de Licitações",
       "Gabaritos comentados",
       "Audiobook em 8 capítulos, português brasileiro",
       "Resumo em áudio do autor"
@@ -1468,24 +1469,25 @@
     "category": "Concursos públicos",
     "name": "Escrevente Técnico Judiciário - TJ-SP 2026 + audiobook",
     "shortName": "Escrevente TJ-SP 2026",
-    "edition": "Pós-edital 02/2026, fechamento em 05/11/2026",
+    "edition": "Edição 2.0 pós-edital 02/2026, revisada em 14/11/2026",
     "author": "Trilha Aprova",
     "audience": "Escrevente Técnico Judiciário, 2ª à 10ª Região Administrativa Judiciária, TJ-SP",
     "currency": "brl",
     "priceCents": 1990,
     "stripePriceEnv": "STRIPE_PRICE_TJSP_ESCREVENTE_2026",
-    "description": "Apostila digital para Escrevente Técnico Judiciário do TJ-SP, edital 02/2026, banca VUNESP. PDF único de 550 páginas: 86 páginas de teoria, oficina jurídica, redação, simulado de 70 questões e gabarito comentado, mais 464 páginas de legislação oficial do edital para consulta. Oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Escrevente Técnico Judiciário do TJ-SP, edital 02/2026, banca VUNESP. PDF único de 1.060 páginas: teoria, oficina jurídica, redação, simulado de 70 questões e banco de fixação com mais 1.454 questões, todas com gabarito comentado (1.524 no total), mais 464 páginas de legislação oficial do edital para consulta. Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "PDF único com 550 páginas",
-      "86 páginas de teoria, exercícios e redação",
-      "Simulado autoral de 70 questões com gabarito comentado",
+      "PDF único com 1.060 páginas",
+      "1.524 questões com gabarito comentado",
+      "Banco por matéria: legislação (484), Português (307), Matemática (332), Raciocínio Lógico (188) e Informática (143)",
+      "Simulado autoral de 70 questões no estilo VUNESP",
       "Caderno de legislação do edital: CF, CP, CPP, CPC, estatuto, Regimento e Normas da Corregedoria",
       "Audiobook em 8 capítulos, português brasileiro",
       "Resumo em áudio do autor"
     ],
     "assets": {
       "coverKey": "tjsp-escrevente-tecnico-judiciario-2026/images/capa.png",
-      "pdfKey": "tjsp-escrevente-tecnico-judiciario-2026/docs/apostila-tjsp-escrevente-2026.pdf",
+      "pdfKey": "tjsp-escrevente-tecnico-judiciario-2026/docs/apostila-tjsp-escrevente-2026-v2.pdf",
       "pdfDownloadName": "Trilha_Aprova_TJSP_Escrevente_2026.pdf",
       "summary": {
         "id": "summary",
@@ -1551,7 +1553,7 @@
       "sourceUrl": "https://www.vunesp.com.br/TJSP2607"
     },
     "seoTitle": "Apostila Escrevente TJ-SP 2026 | PDF e audiobook | Trilha Aprova",
-    "seoDescription": "Apostila Escrevente TJ-SP 2026 (VUNESP, edital 02/2026): teoria, simulado de 70 questões comentadas, legislação do edital e audiobook.",
+    "seoDescription": "Apostila Escrevente TJ-SP 2026 (VUNESP): 1.060 páginas, 1.524 questões comentadas, legislação do edital e audiobook.",
     "storefront": {
       "badge": "TJ-SP 2026 • ESCREVENTE • VUNESP",
       "cover3d": "/assets/capa-tjsp-escrevente-tecnico-judiciario-2026-completa-3d.webp",
@@ -1565,7 +1567,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "Simulado de 70 questões no estilo VUNESP com gabarito comentado"
+          "detalhe": "Simulado de 70 questões + banco de 1.454 questões de fixação, todas com gabarito comentado"
         },
         {
           "titulo": "Caderno de Legislação",
@@ -1586,8 +1588,8 @@
         "inscricoes": "28/10 a 10/12/2026",
         "requisito": "Ensino médio",
         "url": "https://www.vunesp.com.br",
-        "paginas": 550,
-        "questoes": 70
+        "paginas": 1060,
+        "questoes": 1524
       },
       "area": "administrativo"
     },
@@ -1939,17 +1941,18 @@
     "category": "Concursos públicos",
     "name": "Recenseador IBGE - Censo Agro 2027 + audiobook",
     "shortName": "Recenseador IBGE Censo Agro 2027",
-    "edition": "Pós-edital 03/2026 (inscrições até 25/11/2026), fechamento em 12/11/2026",
+    "edition": "Edição 2.0 pós-edital 03/2026 (inscrições até 25/11/2026), revisada em 14/11/2026",
     "author": "Trilha Aprova",
     "audience": "Recenseador (ensino fundamental) do 12º Censo Agropecuário, Florestal e Aquícola do IBGE, 27.279 vagas temporárias em todo o Brasil",
     "currency": "brl",
     "priceCents": 3490,
     "stripePriceEnv": "STRIPE_PRICE_IBGE_RECENSEADOR_2026",
-    "description": "Apostila digital para Recenseador do IBGE (12º Censo Agropecuário, Florestal e Aquícola), edital 03/2026, banca Cesgranrio. PDF único de 150 páginas: 74 páginas com teoria de todo o conteúdo programático (Língua Portuguesa, Matemática e Conhecimentos Técnicos do Censo Agro explicados em linguagem simples) e dois simulados de 60 questões com gabarito comentado, mais 76 páginas com o documento técnico oficial do IBGE que é a base de metade da prova e os anexos do edital. Oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Recenseador do IBGE (12º Censo Agropecuário, Florestal e Aquícola), edital 03/2026, banca Cesgranrio. PDF único de 600 páginas: teoria de todo o conteúdo programático (Língua Portuguesa, Matemática e Conhecimentos Técnicos do Censo Agro em linguagem simples), dois simulados de 60 questões e um banco de fixação com mais 1.454 questões, todas com gabarito comentado (1.574 no total), mais 76 páginas com o documento técnico oficial do IBGE e os anexos do edital. Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "PDF único com 150 páginas",
-      "74 páginas de teoria e simulados",
-      "Dois simulados de 60 questões no formato Cesgranrio (5 alternativas) com gabarito comentado",
+      "PDF único com 600 páginas",
+      "1.574 questões no formato Cesgranrio (5 alternativas) com gabarito comentado",
+      "Banco por disciplina: Português (577), Matemática (717) e Conhecimentos Técnicos (160)",
+      "Dois simulados completos de 60 questões",
       "Conhecimentos Técnicos do Censo Agro explicados capítulo a capítulo",
       "Documento técnico oficial do IBGE na íntegra",
       "Audiobook em 8 capítulos, português brasileiro",
@@ -1957,7 +1960,7 @@
     ],
     "assets": {
       "coverKey": "ibge-recenseador-censo-agro-2026/images/capa.png",
-      "pdfKey": "ibge-recenseador-censo-agro-2026/docs/apostila-ibge-recenseador-2026.pdf",
+      "pdfKey": "ibge-recenseador-censo-agro-2026/docs/apostila-ibge-recenseador-2026-v2.pdf",
       "pdfDownloadName": "Trilha_Aprova_IBGE_Recenseador_2026.pdf",
       "summary": {
         "id": "summary",
@@ -2023,7 +2026,7 @@
       "sourceUrl": "https://www.cesgranrio.org.br/concurso/ibge-2026/"
     },
     "seoTitle": "Apostila Recenseador IBGE 2026 Censo Agro | Trilha Aprova",
-    "seoDescription": "Apostila Recenseador IBGE 2026 (Cesgranrio): conhecimentos técnicos do Censo Agro, português, matemática, 2 simulados de 60 questões e audiobook.",
+    "seoDescription": "Apostila Recenseador IBGE 2026 (Cesgranrio): 600 páginas, 1.574 questões comentadas, técnicos do Censo Agro e audiobook.",
     "storefront": {
       "badge": "IBGE 2026 • RECENSEADOR • CENSO AGRO • CESGRANRIO",
       "cover3d": "/assets/apostila-ibge-recenseador-3d.png",
@@ -2037,7 +2040,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "2 simulados de 60 questões com gabarito comentado"
+          "detalhe": "2 simulados de 60 questões + banco de 1.454 questões, todas com gabarito comentado"
         },
         {
           "titulo": "Caderno Técnico",
@@ -2058,8 +2061,8 @@
         "inscricoes": "06 a 25/11/2026",
         "requisito": "Ensino fundamental",
         "url": "https://www.cesgranrio.org.br",
-        "paginas": 150,
-        "questoes": 120
+        "paginas": 600,
+        "questoes": 1574
       },
       "area": "administrativo"
     },
