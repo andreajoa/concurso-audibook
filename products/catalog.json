@@ -1805,10 +1805,10 @@
     "currency": "brl",
     "priceCents": 4090,
     "stripePriceEnv": "STRIPE_PRICE_BANESTES_TECNICO_BANCARIO_2026",
-    "description": "Apostila digital para Técnico Bancário do Banestes (Banco do Estado do Espírito Santo), edital 01/2026, banca FCC. PDF único de 246 páginas: 101 páginas com teoria de todo o conteúdo programático (Conhecimentos Bancários e Securitários, Vendas e Negociação, Matemática Financeira, Estatística, Português, Raciocínio Lógico, Atualidades, Ética/Compliance/ESG, LGPD e Informática) e dois simulados de 70 questões com gabarito comentado, mais 145 páginas com o Guia de Conduta Ética do Banestes e a legislação (Lei 4.595, Lei 9.613, Anticorrupção, LGPD, Lei 12.865 e Resolução CMN 4.966). Oito capítulos de audiobook e resumo narrado.",
+    "description": "Apostila digital para Técnico Bancário do Banestes (Banco do Estado do Espírito Santo), edital 01/2026, banca FCC. PDF único de 595 páginas na edição ampliada, com 1.510 questões comentadas: 101 páginas com teoria de todo o conteúdo programático (Conhecimentos Bancários e Securitários, Vendas e Negociação, Matemática Financeira, Estatística, Português, Raciocínio Lógico, Atualidades, Ética/Compliance/ESG, LGPD e Informática) e dois simulados de 70 questões com gabarito comentado, mais 145 páginas com o Guia de Conduta Ética do Banestes e a legislação (Lei 4.595, Lei 9.613, Anticorrupção, LGPD, Lei 12.865 e Resolução CMN 4.966) e um banco de 1.370 questões comentadas por tema, a maioria no formato FCC de cinco alternativas. Oito capítulos de audiobook e resumo narrado.",
     "proofPoints": [
-      "PDF único com 246 páginas",
-      "101 páginas de teoria e simulados",
+      "PDF único com 595 páginas na edição ampliada",
+      "1.510 questões comentadas: banco de 1.370 por tema + 2 simulados de 70",
       "Dois simulados de 70 questões no formato FCC (5 alternativas) com gabarito comentado",
       "Conhecimentos Bancários, Vendas e Negociação e Matemática Financeira com exemplos resolvidos",
       "Guia de Conduta Ética do Banestes e Resolução CMN 4.966/2021",
@@ -1883,7 +1883,7 @@
       "sourceUrl": "https://www.concursosfcc.com.br/"
     },
     "seoTitle": "Apostila Técnico Bancário Banestes 2026 (FCC) | Trilha Aprova",
-    "seoDescription": "Apostila Técnico Bancário Banestes 2026 (FCC): conhecimentos bancários, vendas, matemática financeira, 2 simulados de 70 questões e audiobook.",
+    "seoDescription": "Apostila Técnico Bancário Banestes 2026 (FCC): 595 páginas, 1.510 questões comentadas, simulados e audiobook em português brasileiro.",
     "storefront": {
       "badge": "BANESTES 2026 • TÉCNICO BANCÁRIO • FCC",
       "cover3d": "/assets/apostila-banestes-tecnico-bancario-3d.png",
@@ -1897,7 +1897,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "2 simulados de 70 questões com gabarito comentado"
+          "detalhe": "1.510 questões comentadas, com 2 simulados de 70 no formato FCC"
         },
         {
           "titulo": "Caderno de Normas",
@@ -1918,8 +1918,8 @@
         "inscricoes": "19/10 a 17/11/2026",
         "requisito": "Ensino médio",
         "url": "https://www.concursosfcc.com.br",
-        "paginas": 246,
-        "questoes": 140
+        "paginas": 595,
+        "questoes": 1510
       },
       "area": "administrativo"
     },
