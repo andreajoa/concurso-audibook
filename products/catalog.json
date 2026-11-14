@@ -921,7 +921,7 @@
     "stripePriceEnv": "STRIPE_PRICE_SME_SP_PEIF_PRE_EDITAL_2026",
     "description": "Curso preparatório completo no papel para PEIF da SME-SP: 220 páginas, 89 aulas e 14 módulos, com teoria explicada, legislação, Currículo da Cidade, autores, Educação Infantil, alfabetização, inclusão, discursiva, prova prática e simulado. Edição pré-edital de 01/10/2026, com referências históricas identificadas e conteúdo sujeito às regras do futuro edital. Edição ampliada com 649 páginas e 894 questões comentadas.",
     "seoTitle": "SME-SP PEIF pré-edital 2026 + audiobook | Trilha Aprova",
-    "seoDescription": "Curso PEIF SME-SP pré-edital: 220 páginas, 89 aulas, 14 módulos, questões e simulado. PDF, resumo em áudio e audiobook por R$ 24,99.",
+    "seoDescription": "Curso PEIF SME-SP pré-edital: 770 páginas, 89 aulas, 1.507 questões comentadas, simulado, resumo em áudio e audiobook.",
     "preEdital": true,
     "storefront": {
       "badge": "SME-SP 2026 • PEIF • EDIÇÃO PRÉ-EDITAL",
@@ -936,7 +936,7 @@
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "894 questões comentadas + 18 estudos de caso"
+          "detalhe": "1.507 questões comentadas + 18 estudos de caso"
         },
         {
           "titulo": "Caderno de Revisão",
@@ -956,8 +956,8 @@
         "inscricoes": "edital ainda não publicado",
         "requisito": "Licenciatura em Pedagogia",
         "url": null,
-        "paginas": 649,
-        "questoes": 894
+        "paginas": 770,
+        "questoes": 1507
       },
       "area": "educacao"
     },
@@ -968,11 +968,11 @@
       "downsell": []
     },
     "proofPoints": [
-      "649 páginas na edição ampliada",
+      "770 páginas na edição ampliada",
       "89 aulas em 14 módulos, com teoria e aplicação pedagógica",
       "Legislação, Currículo da Cidade, autores e componentes dos anos iniciais",
       "Questões de recuperação ativa, 18 estudos de caso e 12 pontos de prova prática",
-      "894 questões autorais comentadas: banco de 834 por tema + simulado final de 60",
+      "1.507 questões autorais comentadas: banco de 1.447 por tema + simulado final de 60",
       "Caderno normativo: CF (educação), LDB, ECA, PNE 2026 e LBI em texto oficial",
       "Edição pré-edital: referências históricas não equivalem às regras finais de 2026",
       "PDF completo para leitura online ou download",
