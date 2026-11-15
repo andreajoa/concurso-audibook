@@ -2544,6 +2544,20 @@ for (const file of fs.readdirSync('public')) {
   headersSynced++;
 }
 
+// Capas versionadas pelo conteúdo (?v=hash): a CDN guarda /assets por horas; sem isso uma capa nova só aparecia
+// depois que o cache expirava. Vale para todas as páginas HTML publicadas (idempotente: troca o ?v= antigo).
+let capasVersionadas = 0;
+(function versionarCapas(dir) {
+  for (const nome of fs.readdirSync(dir, { withFileTypes: true })) {
+    const f = require('node:path').join(dir, nome.name);
+    if (nome.isDirectory()) { if (!['amostras', 'assets', 'node_modules'].includes(nome.name)) versionarCapas(f); continue; }
+    if (!nome.name.endsWith('.html')) continue;
+    const antes = fs.readFileSync(f, 'utf8');
+    const depois = antes.replace(/(\/assets\/capa-[a-z0-9-]+\.(?:webp|png|jpg))(?:\?v=[0-9a-f]{10})?/g, (m, href) => assetVer(href));
+    if (depois !== antes) { fs.writeFileSync(f, depois); capasVersionadas++; }
+  }
+})('public');
+console.log(`Capas versionadas pelo conteúdo em ${capasVersionadas} página(s).`);
 console.log(`SEO: ${urls.length} URLs públicas, ${products.length} páginas de produto, ${cities.length} páginas de cidade, ${guides.length} guias.`);
 console.log(`Rodapé sincronizado a partir de lib/site-footer.html em ${footersSynced} página(s).`);
 console.log(`Cabeçalho de navegação sincronizado em ${headersSynced} página(s).`);
