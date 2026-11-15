@@ -146,6 +146,8 @@
 .simb{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr) 250px;align-items:stretch;background:#fff;border:1px solid #e6dece;border-radius:18px;overflow:hidden;margin:34px auto;padding:0!important;font-family:system-ui,-apple-system,sans-serif;box-shadow:0 14px 34px rgba(8,40,79,.08)}
 .simb-vis{background:radial-gradient(260px 200px at 45% 55%,#f5ecd9 0,#fbf8f1 75%);border-right:1px solid #ece5d6;display:flex;align-items:center;justify-content:center;min-height:310px;overflow:hidden}
 .simb-fan{position:relative;width:260px;height:270px}
+.simb-capa{display:block;width:230px;max-width:100%;height:auto;filter:drop-shadow(0 16px 22px rgba(8,40,79,.22));transition:transform .2s}.simb-vis a:hover .simb-capa{transform:translateY(-3px) rotate(-1deg)}
+@media(max-width:640px){.simb-capa{width:190px}}
 .simb-sheet,.simb-front{position:absolute;left:24px;top:26px;width:150px;height:196px;box-sizing:border-box;border-radius:6px;box-shadow:0 8px 18px rgba(0,0,0,.18)}
 .simb-sheet b{position:absolute;top:-14px;right:10px;padding:5px 9px;border-radius:5px 5px 0 0;font:800 13px/1 system-ui;color:#fff;background:inherit}
 .simb-s1{background:#0f3a6e;transform:rotate(-10deg) translate(-6px,4px)}.simb-s2{background:#173f72;transform:rotate(-5deg) translate(22px,-6px)}.simb-s3{background:#9a7428;transform:rotate(0) translate(50px,-12px)}.simb-s4{background:#caa65a;transform:rotate(5deg) translate(78px,-14px)}.simb-s4 b{color:#08284f}.simb-s5{background:#5c4419;transform:rotate(10deg) translate(104px,-10px)}

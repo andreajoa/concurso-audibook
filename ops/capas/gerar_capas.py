@@ -140,9 +140,21 @@ SPEC = {
    terceiro=('MODELOS', ['60 textos-modelo comentados: redações, respostas e documentos', 'banco de 80 temas com planejamento pronto', 'ofício, requerimento, relatório, ata e parecer'])),
 }
 
+# Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
+AVULSO = {
+ 'simulados-aparecida-de-goiania-pe1-pedagogia-2026': dict(t1='5 SIMULADOS', t2='PE-I', cobre='PREFEITURA DE APARECIDA DE GOIÂNIA • 2026',
+   caixa='CADERNO DE SIMULADOS — INSTITUTO VERBENA/UFG',
+   linhas=['5 provas completas e inéditas • 50 questões cada • 250 questões', 'distribuição e pesos do edital • cartão-resposta para marcar', 'gabarito rápido e resolução comentada de cada questão'],
+   lomb='SIMULADOS • PE-I', lomb3=['APARECIDA', 'DE GOIÂNIA', 'PE-I • 2026']),
+}
+
 def main(slugs):
     out = ROOT / 'public/assets'
     for slug in slugs:
+        if slug in AVULSO:
+            a = AVULSO[slug]
+            gerar(a['t1'], a['t2'], a['cobre'], a['caixa'], a['linhas'], a['lomb'], a['lomb3'], out / f'capa-{slug}-3d.png')
+            continue
         s = SPEC[slug]
         if s['completa']:
             t1, t2, ln = s['completa']
@@ -153,4 +165,4 @@ def main(slugs):
         gerar(t3, s['sigla'], s['cobre'], f'CADERNO DE {t3} — ' + s['ed'], ln3, f'{t3} • ' + s['sigla'], s['lomb'], out / f'capa-{slug}-terceiro-3d.png')
 
 if __name__ == '__main__':
-    main(sys.argv[1:] or list(SPEC))
+    main(sys.argv[1:] or list(SPEC) + list(AVULSO))

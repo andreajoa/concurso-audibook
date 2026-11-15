@@ -2176,12 +2176,8 @@ home = home.replace(/<!-- cargos:start -->[\s\S]*?<!-- cargos:end -->/, '');
 /* Faixa "Novidade: simulados" na home (13/11/2026, modelo enviado pelo André, na paleta Trilha Aprova). */
 const simHomeHtml = simulados.length ? (() => {
   const s = simulados[0], min = Math.min(...simulados.map(x => x.priceCents));
-  const banca = s.examBoard || '';
-  const fan = [1, 2, 3, 4, 5].map(n => `<span class="simb-sheet simb-s${n}"><b>0${n}</b></span>`).join('') +
-    `<span class="simb-front"><small>SIMULADO</small><strong>${esc(banca).replace('/', '/<wbr>')}</strong><em>50 questões</em></span>` +
-    '<span class="simb-card"><b>CARTÃO-RESPOSTA</b><i>PROVA 01</i>' + ['B', 'D', 'A', 'C', 'B'].map((g, i) => `<span><u>0${i + 1}</u>${'ABCD'.split('').map(l => `<i class="${l === g ? 'on' : ''}">${l}</i>`).join('')}</span>`).join('') + '</span>';
   return '<!-- simulados:start --><section class="simb shell" id="simulados" aria-labelledby="simb-titulo">' +
-    `<div class="simb-vis" aria-hidden="true"><div class="simb-fan">${fan}</div></div>` +
+    `<div class="simb-vis"><a href="/simulados/${s.slug}" aria-label="Ver ${esc(s.shortName)}"><img class="simb-capa" src="${esc(assetVer(s.storefront.cover3d))}" alt="Capa do caderno ${esc(s.shortName)}" width="640" height="800" loading="lazy" decoding="async"></a></div>` +
     '<div class="simb-txt"><span class="simb-new">NOVO</span><h2 id="simb-titulo">Novidade: simulados para treinar antes da prova.</h2>' +
     '<ul><li>5 provas completas e inéditas</li><li>No formato da banca</li><li>Com o tempo oficial da prova</li><li>Cartão-resposta para marcar</li><li>Gabarito comentado</li><li>Feito para o seu cargo</li></ul></div>' +
     `<div class="simb-cta"><p>a partir de <b>${brl(min)}</b></p><a class="simb-btn" href="/simulados/${s.slug}">📋 Ver simulados</a>` +
