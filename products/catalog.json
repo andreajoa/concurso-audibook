@@ -121,13 +121,13 @@
     "category": "Língua Portuguesa",
     "name": "Redação para Concursos — Ensino Fundamental Completo",
     "shortName": "Redação — Ensino Fundamental Completo",
-    "edition": "2026",
+    "edition": "Edição 3.0 (2026), atualizada em 15/11/2026",
     "author": "Trilha Aprova",
     "audience": "Candidatos a cargos de Ensino Fundamental Completo",
     "currency": "brl",
     "priceCents": 2499,
     "stripePriceEnv": "STRIPE_PRICE_REDACAO_NIVEL_FUNDAMENTAL_2026",
-    "description": "Método prático para entender o comando da prova, organizar as ideias e produzir textos claros, corretos e adequados ao gênero solicitado, com teoria simples, modelos, exercícios e gabarito.",
+    "description": "Apostila completa de redação para concursos de nível fundamental: 19 módulos em 325 páginas, do comando da prova à revisão final. Método em 5 passos, parágrafo e conectivos, frase clara, dissertação, narração, relato, descrição, carta, e-mail, bilhete, aviso, requerimento e declaração, os 20 erros que mais tiram pontos e 20 propostas comentadas com redação-modelo. Parte de português para escrever bem: ortografia, acentuação, pontuação, palavras que confundem, concordância, vocabulário e interpretação. 500 questões com gabarito comentado, organizadas no fim de cada módulo, e folhas pautadas para treinar.",
     "seoDescription": "Método prático de redação para concurso de nível fundamental: entender o comando, organizar ideias e escrever com clareza, com modelos e gabarito.",
     "storefront": {
       "badge": "REDAÇÃO PARA CONCURSOS • ENSINO FUNDAMENTAL COMPLETO",
@@ -138,15 +138,15 @@
       "combo": [
         {
           "titulo": "Apostila Completa",
-          "detalhe": "Teoria da redação e como ela é corrigida"
+          "detalhe": "19 módulos · 325 páginas: redação e o português que ela exige"
         },
         {
           "titulo": "Caderno de Exercícios",
-          "detalhe": "10 questões de fixação + 5 propostas de produção textual"
+          "detalhe": "500 questões com gabarito comentado, módulo a módulo"
         },
         {
           "titulo": "Caderno de Modelos",
-          "detalhe": "Redações-modelo explicadas passo a passo"
+          "detalhe": "20 propostas comentadas com redação-modelo + folhas pautadas"
         }
       ],
       "comboCovers": [
@@ -162,8 +162,8 @@
         "inscricoes": null,
         "requisito": null,
         "url": null,
-        "paginas": 19,
-        "questoes": 15
+        "paginas": 325,
+        "questoes": 500
       },
       "area": "redacao"
     },
@@ -174,17 +174,17 @@
       "downsell": []
     },
     "proofPoints": [
-      "19 páginas de conteúdo prático e direto",
-      "Método para dissertação, argumentação, narração/relato, carta, e-mail e textos funcionais",
-      "10 questões de fixação + 5 propostas de produção textual",
-      "Gabarito comentado, modelos de resposta e checklist de revisão",
-      "PDF para leitura online ou download",
+      "325 páginas em 19 módulos, com leitura confortável",
+      "500 questões com gabarito comentado, no fim de cada módulo",
+      "Dissertação, narração, relato, descrição, carta, e-mail, bilhete, aviso, requerimento e declaração",
+      "20 propostas comentadas com redação-modelo + folhas pautadas",
+      "Ortografia, acentuação, pontuação, concordância e interpretação para a prova objetiva",
       "Resumo em áudio + audiobook completo em 8 capítulos",
       "Pagamento único — sem assinatura"
     ],
     "assets": {
       "coverKey": "redacao-nivel-fundamental-2026/images/redacao-nivel-fundamental-2026-capa.png",
-      "pdfKey": "redacao-nivel-fundamental-2026/docs/redacao-ensino-fundamental-completo-2026.pdf",
+      "pdfKey": "redacao-nivel-fundamental-2026/docs/redacao-ensino-fundamental-completo-2026-v3.pdf",
       "pdfDownloadName": "redacao-ensino-fundamental-completo-2026.pdf",
       "summary": {
         "id": "summary",
