@@ -44,6 +44,8 @@ for (const product of Object.values(catalog).filter(p => p.active === false)) {
 }
 const footer = fs.readFileSync('lib/site-footer.html', 'utf8');
 const COVER = products[0].storefront.cover3d;
+const socialImageFor = product => ORIGIN + '/assets/social/' + product.slug + '.jpg';
+const absoluteImageUrl = image => new URL(String(image), ORIGIN + '/').href;
 
 const verification = process.env.GOOGLE_SITE_VERIFICATION || 'WBWn3z5Lp6fkNKGivLwE5zUfi6LWK94BWs6NcQl2puY';
 if (!/^[A-Za-z0-9_-]{10,200}$/.test(verification)) throw new Error('Invalid Search Console verification token');
@@ -133,7 +135,7 @@ const webPageNode = (url, { title, description, image, updated, published, hasFa
     about: { '@id': ORIGIN + '/#organization' },
     datePublished: published || updated,
     dateModified: updated,
-    primaryImageOfPage: { '@type': 'ImageObject', url: image },
+    primaryImageOfPage: { '@type': 'ImageObject', url: absoluteImageUrl(image) },
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.answer', '.key-facts'] }
   };
   if (hasBreadcrumb) node.breadcrumb = { '@id': url + '#breadcrumb' };
@@ -497,6 +499,8 @@ function heroHtml({ slot, trail, kicker, title, lead }) {
 
 function seoBlock({ path, title, description, image, nodes }) {
   const url = ORIGIN + path;
+  const socialImage = absoluteImageUrl(image);
+  const sizedPreview = socialImage.startsWith(ORIGIN + '/assets/social/');
   return '<!-- seo:start -->' +
     `<meta name="google-site-verification" content="${verification}">` +
     `<link rel="canonical" href="${url}">` +
@@ -510,12 +514,14 @@ function seoBlock({ path, title, description, image, nodes }) {
     `<meta property="og:title" content="${esc(title)}">` +
     `<meta property="og:description" content="${esc(description)}">` +
     `<meta property="og:url" content="${url}">` +
-    `<meta property="og:image" content="${esc(image)}">` +
+    `<meta property="og:image" content="${esc(socialImage)}">` +
+    `<meta property="og:image:secure_url" content="${esc(socialImage)}">` +
+    (sizedPreview ? '<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' : '') +
     `<meta property="og:image:alt" content="${esc(title)}">` +
     '<meta name="twitter:card" content="summary_large_image">' +
     `<meta name="twitter:title" content="${esc(title)}">` +
     `<meta name="twitter:description" content="${esc(description)}">` +
-    `<meta name="twitter:image" content="${esc(image)}">` +
+    `<meta name="twitter:image" content="${esc(socialImage)}">` +
     `<meta name="author" content="${esc(AUTHOR_NAME)}">` +
     '<meta name="geo.region" content="BR-SP">' +
     '<meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">' +
@@ -784,7 +790,7 @@ for (const p of products) {
     scripts: ['/apostila-combo.js', '/apostila-cards.js'],
     nodes: [productNode, audiobookNode],
     trail: [['Apostilas', '/apostilas-para-concurso']],
-    image: p.storefront.cover3d,
+    image: socialImageFor(p),
     priority: '0.9',
     images: [p.storefront.cover3d]
   });
@@ -1714,8 +1720,8 @@ const homeFaq = [
 ];
 
 const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Apostila de Matão 2026 para Assistente Administrativo, banca IBAM: PDF com 49 páginas, 160 questões e audiobook em português brasileiro por R$ 29,90.';
-const HOME_FEATURE_IMAGE = ORIGIN + '/assets/apostila-matao-assistente-administrativo-3d.png';
+const homeDescription = 'Apostilas digitais para concursos públicos, com materiais organizados, questões comentadas e audiobooks para estudar e revisar com a Trilha Aprova.';
+const HOME_FEATURE_IMAGE = ORIGIN + '/assets/social/trilha-aprova.jpg';
 
 const homeNodes = [
   webPageNode(ORIGIN + '/', { title: homeTitle, description: homeDescription, image: HOME_FEATURE_IMAGE, updated: BUILD_DATE, hasFaq: true, hasBreadcrumb: false }),
