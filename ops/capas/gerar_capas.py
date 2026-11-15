@@ -134,6 +134,10 @@ SPEC = {
    completa=('REDAÇÃO', 'NÍVEL FUNDAMENTAL', ['dissertação, argumentação, narração e relato', 'carta, e-mail e textos funcionais', 'checklist de revisão • como a banca corrige']),
    simulados=['10 questões de fixação + 5 propostas de produção', 'gabarito comentado e modelos de resposta', 'treino guiado para escrever na prova'],
    terceiro=('MODELOS', ['redações-modelo explicadas passo a passo', 'estrutura de introdução, desenvolvimento e conclusão', 'erros comuns que tiram ponto'])),
+ 'curso-redacao-concursos-2026': dict(sim_t1='SIMULADOS', sigla='REDAÇÃO', cobre='CONCURSOS PÚBLICOS • TODAS AS BANCAS • 2026/2027', ed='2026/2027', lomb=['CURSO DE', 'REDAÇÃO', '2026/2027'],
+   completa=('CURSO DE', 'REDAÇÃO', ['22 módulos + 10 anexos • 728 páginas • 1.616 questões comentadas', 'tese, planejamento, coesão, conclusão e a gramática que derruba nota', 'redação por banca: Cebraspe, FGV, Vunesp, FCC, Cesgranrio, IBFC e Ibam']),
+   simulados=['30 propostas inéditas no formato das bancas', 'grade de autocorreção e 3 correções comentadas', '75 questões discursivas por área de cargo'],
+   terceiro=('MODELOS', ['60 textos-modelo comentados: redações, respostas e documentos', 'banco de 80 temas com planejamento pronto', 'ofício, requerimento, relatório, ata e parecer'])),
 }
 
 def main(slugs):

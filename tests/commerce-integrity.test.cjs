@@ -14,6 +14,7 @@ test('each product owns exactly its PDF, cover, summary and eight chapter files 
     const signed=await signedProductAssets(product);
     // caderno de simulados avulso é só PDF (sem áudio); as apostilas têm resumo + 8 capítulos
     if(product.kind==='simulados'){assert.equal(signed.tracks.length,0);}
+    else if(product.kind==='curso'){assert.equal(signed.tracks.length,1+product.assets.chapters.length);assert.ok(signed.tracks.length>=9);assert.equal(signed.tracks[0].id,'summary');}
     else{assert.equal(signed.tracks.length,9);assert.equal(signed.tracks[0].id,'summary');}
     for(const url of [signed.pdf,signed.cover,...signed.tracks.map(t=>t.streamUrl)]){
       const path=decodeURIComponent(new URL(url).pathname);assert.ok(path.includes('/'+product.slug+'/'));
@@ -22,6 +23,8 @@ test('each product owns exactly its PDF, cover, summary and eight chapter files 
   }
   const mixed=structuredClone(catalog['redacao-nivel-fundamental-2026']);mixed.assets.pdfKey=catalog['autores-ibam-2026'].assets.pdfKey;
   assert.throws(()=>validateProductAssets(mixed),/purchased product/);
+  const curso=structuredClone(catalog['curso-redacao-concursos-2026']);curso.assets.chapters[3].key=catalog['redacao-nivel-fundamental-2026'].assets.chapters[0].key;
+  assert.throws(()=>validateProductAssets(curso),/purchased product/);
 });
 test('checkout creates and delivery validates the selected product, site and payment',async()=>{
   try{

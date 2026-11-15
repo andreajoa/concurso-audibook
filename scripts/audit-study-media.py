@@ -95,8 +95,11 @@ def main():
                 continue
             assets = product['assets']
             tracks = [assets['summary'], *assets['chapters']]
-            require(len(tracks) == 9, f'{slug}: expected summary and eight chapters')
-            require(len({t['key'] for t in tracks}) == 9, f'{slug}: repeated audio keys')
+            if product.get('kind') == 'curso':  # curso em aulas: resumo + pelo menos 8 aulas
+                require(len(tracks) >= 9, f'{slug}: expected summary and at least eight lessons')
+            else:
+                require(len(tracks) == 9, f'{slug}: expected summary and eight chapters')
+            require(len({t['key'] for t in tracks}) == len(tracks), f'{slug}: repeated audio keys')
             pdf = work / 'source.pdf'
             s3.download_file(bucket, assets['pdfKey'], str(pdf))
             pages = [page.extract_text() or '' for page in PdfReader(pdf).pages]
