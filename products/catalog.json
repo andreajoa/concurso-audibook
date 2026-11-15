@@ -264,87 +264,187 @@
     "category": "Concursos públicos",
     "name": "Curso de Redação para Concursos + audiobook + Correção Trilha Aprova",
     "shortName": "Curso de Redação para Concursos",
-    "edition": "Edição 2026/2027, fechamento em 13/11/2026",
+    "edition": "Edição 2026/2027, atualizada em 15/11/2026",
     "author": "Trilha Aprova",
     "audience": "Candidatos a concursos públicos de nível médio e superior com prova de redação dissertativa, carta, relatório ou questões discursivas",
     "currency": "brl",
     "priceCents": 4599,
-    "description": "Curso completo de redação para concursos públicos: 16 módulos do comando da prova à revisão final, com tese, planejamento, introdução, parágrafo argumentativo, coesão, conclusão com proposta, os 15 erros gramaticais que mais tiram pontos, carta, relatório e ofício, repertório por área, oficina de reescrita, 8 redações-modelo comentadas e 30 temas para treinar. PDF de 47 páginas, audiobook em 8 capítulos com resumo narrado e Correção de Redação Trilha Aprova: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita para baixar (60 correções incluídas).",
+    "description": "Curso completo de redação para concursos públicos: 22 módulos e 10 anexos em 728 páginas, do comando da prova à revisão de véspera. Tese, planejamento em 10 minutos, introdução, parágrafo argumentativo, coesão, coerência, conclusão com proposta de intervenção e a gramática que mais derruba nota. Carta, ofício, requerimento, relatório, resumo, resenha, parecer e questões discursivas. Redação por banca (Cebraspe, FGV, Vunesp, FCC, Cesgranrio, IBFC e Ibam). 1.616 questões com gabarito comentado, 75 questões discursivas, 60 textos-modelo comentados, 80 temas com planejamento pronto e 30 simulados com grade de autocorreção. Curso em áudio com 23 aulas (4h22 no total) e Correção de Redação Trilha Aprova: envie a foto da sua redação e receba nota por critério, erros com correção, dicas e versão reescrita (60 correções incluídas).",
     "proofPoints": [
-      "16 módulos do comando da prova à revisão final",
-      "8 redações-modelo comentadas e 30 temas para treinar",
-      "Correção de Redação Trilha Aprova: foto da redação → nota, erros, dicas e versão reescrita",
-      "60 correções da Trilha Aprova incluídas",
-      "Audiobook em 8 capítulos + resumo narrado",
-      "Carta, relatório, ofício e questões discursivas",
-      "PDF de 47 páginas, liberado na hora"
+      "22 módulos + 10 anexos em 728 páginas",
+      "1.616 questões com gabarito comentado + 75 discursivas",
+      "60 textos-modelo comentados e 80 temas com planejamento pronto",
+      "30 simulados com grade de autocorreção",
+      "Redação por banca: Cebraspe, FGV, Vunesp, FCC, Cesgranrio, IBFC e Ibam",
+      "Curso em áudio: 23 aulas (4h22)",
+      "Correção de Redação Trilha Aprova: 60 correções incluídas",
+      "PDF liberado na hora, com leitura confortável"
     ],
     "assets": {
       "coverKey": "curso-redacao-concursos-2026/images/capa.webp",
-      "pdfKey": "curso-redacao-concursos-2026/docs/curso-redacao-concursos-2026.pdf",
+      "pdfKey": "curso-redacao-concursos-2026/docs/curso-redacao-concursos-2026-v3.pdf",
       "pdfDownloadName": "Trilha_Aprova_Curso_de_Redacao_para_Concursos.pdf",
       "summary": {
         "id": "summary",
-        "title": "Resumo do curso em áudio",
-        "key": "curso-redacao-concursos-2026/audio/resumo.mp3",
-        "downloadName": "Resumo_Curso_de_Redacao.mp3"
+        "title": "Revisão de véspera: o curso inteiro em uma aula",
+        "subtitle": "Aula 22 · 9 min",
+        "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-22-revisao-de-vespera.mp3",
+        "downloadName": "Curso_Redacao_Aula_22_revisao-de-vespera.mp3"
       },
       "chapters": [
         {
-          "id": "c1",
-          "title": "Como a banca corrige e como ler o comando",
-          "subtitle": "Módulos 1 e 2",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/01-correcao-e-comando.mp3",
-          "downloadName": "01-correcao-e-comando.mp3"
+          "id": "aula00",
+          "title": "Boas-vindas e como usar o curso",
+          "subtitle": "Aula 0 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-00-boas-vindas.mp3",
+          "downloadName": "Curso_Redacao_Aula_00_boas-vindas.mp3"
         },
         {
-          "id": "c2",
-          "title": "A tese e o planejamento em 10 minutos",
-          "subtitle": "Módulos 3 e 4",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/02-tese-e-planejamento.mp3",
-          "downloadName": "02-tese-e-planejamento.mp3"
+          "id": "aula01",
+          "title": "Como a banca corrige",
+          "subtitle": "Aula 1 · 13 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-01-como-a-banca-corrige.mp3",
+          "downloadName": "Curso_Redacao_Aula_01_como-a-banca-corrige.mp3"
         },
         {
-          "id": "c3",
-          "title": "Introdução e parágrafo argumentativo",
-          "subtitle": "Módulos 5 e 6",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/03-introducao-e-desenvolvimento.mp3",
-          "downloadName": "03-introducao-e-desenvolvimento.mp3"
+          "id": "aula02",
+          "title": "Ler a proposta: comando, gênero, tema e recorte",
+          "subtitle": "Aula 2 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-02-ler-a-proposta.mp3",
+          "downloadName": "Curso_Redacao_Aula_02_ler-a-proposta.mp3"
         },
         {
-          "id": "c4",
-          "title": "Coesão e conclusão com proposta",
-          "subtitle": "Módulos 7 e 8",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/04-coesao-e-conclusao.mp3",
-          "downloadName": "04-coesao-e-conclusao.mp3"
+          "id": "aula03",
+          "title": "Planejamento em 10 minutos",
+          "subtitle": "Aula 3 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-03-planejamento.mp3",
+          "downloadName": "Curso_Redacao_Aula_03_planejamento.mp3"
         },
         {
-          "id": "c5",
-          "title": "Norma-padrão e outros gêneros",
-          "subtitle": "Módulos 9 e 10",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/05-norma-padrao-e-generos.mp3",
-          "downloadName": "05-norma-padrao-e-generos.mp3"
+          "id": "aula04",
+          "title": "O parágrafo: tópico frasal, desenvolvimento e fecho",
+          "subtitle": "Aula 4 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-04-paragrafo.mp3",
+          "downloadName": "Curso_Redacao_Aula_04_paragrafo.mp3"
         },
         {
-          "id": "c6",
-          "title": "Redações-modelo, revisão e plano de 4 semanas",
-          "subtitle": "Módulos 11 e 12",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/06-modelos-e-revisao.mp3",
-          "downloadName": "06-modelos-e-revisao.mp3"
+          "id": "aula05",
+          "title": "Dissertação expositiva",
+          "subtitle": "Aula 5 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-05-dissertacao-expositiva.mp3",
+          "downloadName": "Curso_Redacao_Aula_05_dissertacao-expositiva.mp3"
         },
         {
-          "id": "c7",
-          "title": "Repertório por área e oficina de reescrita",
-          "subtitle": "Módulos 13 e 14",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/07-repertorio-e-reescrita.mp3",
-          "downloadName": "07-repertorio-e-reescrita.mp3"
+          "id": "aula06",
+          "title": "Dissertação argumentativa: tese, argumentos e contra-argumento",
+          "subtitle": "Aula 6 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-06-dissertacao-argumentativa.mp3",
+          "downloadName": "Curso_Redacao_Aula_06_dissertacao-argumentativa.mp3"
         },
         {
-          "id": "c8",
-          "title": "Mais redações-modelo e caderno de propostas",
-          "subtitle": "Módulos 15 e 16",
-          "key": "curso-redacao-concursos-2026/audio/pt-br-v1/08-modelos-variados-e-propostas.mp3",
-          "downloadName": "08-modelos-variados-e-propostas.mp3"
+          "id": "aula07",
+          "title": "Introdução: oito modelos que funcionam",
+          "subtitle": "Aula 7 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-07-introducao.mp3",
+          "downloadName": "Curso_Redacao_Aula_07_introducao.mp3"
+        },
+        {
+          "id": "aula08",
+          "title": "Conclusão e proposta de intervenção",
+          "subtitle": "Aula 8 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-08-conclusao-proposta.mp3",
+          "downloadName": "Curso_Redacao_Aula_08_conclusao-proposta.mp3"
+        },
+        {
+          "id": "aula09",
+          "title": "Coesão: conectivos e retomadas sem erro",
+          "subtitle": "Aula 9 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-09-coesao.mp3",
+          "downloadName": "Curso_Redacao_Aula_09_coesao.mp3"
+        },
+        {
+          "id": "aula10",
+          "title": "Coerência, progressão e repertório",
+          "subtitle": "Aula 10 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-10-coerencia-repertorio.mp3",
+          "downloadName": "Curso_Redacao_Aula_10_coerencia-repertorio.mp3"
+        },
+        {
+          "id": "aula11",
+          "title": "Narração e relato",
+          "subtitle": "Aula 11 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-11-narracao-relato.mp3",
+          "downloadName": "Curso_Redacao_Aula_11_narracao-relato.mp3"
+        },
+        {
+          "id": "aula12",
+          "title": "Carta, e-mail e redação oficial",
+          "subtitle": "Aula 12 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-12-carta-redacao-oficial.mp3",
+          "downloadName": "Curso_Redacao_Aula_12_carta-redacao-oficial.mp3"
+        },
+        {
+          "id": "aula13",
+          "title": "Resumo, resenha, parecer e estudo de caso",
+          "subtitle": "Aula 13 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-13-generos-tecnicos.mp3",
+          "downloadName": "Curso_Redacao_Aula_13_generos-tecnicos.mp3"
+        },
+        {
+          "id": "aula14",
+          "title": "Gramática que derruba nota I: acentuação, ortografia e hífen",
+          "subtitle": "Aula 14 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-14-acentuacao-ortografia-hifen.mp3",
+          "downloadName": "Curso_Redacao_Aula_14_acentuacao-ortografia-hifen.mp3"
+        },
+        {
+          "id": "aula15",
+          "title": "Gramática que derruba nota II: pontuação e vírgula",
+          "subtitle": "Aula 15 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-15-pontuacao-virgula.mp3",
+          "downloadName": "Curso_Redacao_Aula_15_pontuacao-virgula.mp3"
+        },
+        {
+          "id": "aula16",
+          "title": "Gramática que derruba nota III: concordância, regência e crase",
+          "subtitle": "Aula 16 · 12 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-16-concordancia-regencia-crase.mp3",
+          "downloadName": "Curso_Redacao_Aula_16_concordancia-regencia-crase.mp3"
+        },
+        {
+          "id": "aula17",
+          "title": "Gramática que derruba nota IV: colocação, paralelismo e ambiguidade",
+          "subtitle": "Aula 17 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-17-colocacao-paralelismo-ambiguidade.mp3",
+          "downloadName": "Curso_Redacao_Aula_17_colocacao-paralelismo-ambiguidade.mp3"
+        },
+        {
+          "id": "aula18",
+          "title": "Clareza, concisão, impessoalidade e nível de linguagem",
+          "subtitle": "Aula 18 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-18-clareza-concisao.mp3",
+          "downloadName": "Curso_Redacao_Aula_18_clareza-concisao.mp3"
+        },
+        {
+          "id": "aula19",
+          "title": "Clínica de redação: erros frequentes e reescrita",
+          "subtitle": "Aula 19 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-19-clinica-de-redacao.mp3",
+          "downloadName": "Curso_Redacao_Aula_19_clinica-de-redacao.mp3"
+        },
+        {
+          "id": "aula20",
+          "title": "Redação por banca: Cebraspe, FGV, Vunesp, FCC, Cesgranrio, IBFC e Ibam",
+          "subtitle": "Aula 20 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-20-redacao-por-banca.mp3",
+          "downloadName": "Curso_Redacao_Aula_20_redacao-por-banca.mp3"
+        },
+        {
+          "id": "aula21",
+          "title": "Treino final: 40 propostas com textos-modelo",
+          "subtitle": "Aula 21 · 11 min",
+          "key": "curso-redacao-concursos-2026/audio/pt-br-v2/aula-21-treino-final.mp3",
+          "downloadName": "Curso_Redacao_Aula_21_treino-final.mp3"
         }
       ]
     },
@@ -358,15 +458,15 @@
       "combo": [
         {
           "titulo": "Curso Completo",
-          "detalhe": "16 módulos do comando da prova à revisão final"
+          "detalhe": "22 módulos + 10 anexos · 728 páginas · 1.616 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "30 propostas inéditas, grade de autocorreção e 75 discursivas"
         },
         {
           "titulo": "Caderno de Modelos",
-          "detalhe": "8 redações-modelo comentadas e 30 temas para treinar"
-        },
-        {
-          "titulo": "Correção Trilha Aprova",
-          "detalhe": "Foto da redação → nota, erros, dicas e versão reescrita"
+          "detalhe": "60 textos-modelo comentados e 80 temas com planejamento pronto"
         }
       ],
       "comboCovers": [
@@ -375,11 +475,11 @@
       ],
       "bullets": [
         "Método passo a passo: comando, tese, planejamento, introdução, argumentação, coesão e conclusão",
-        "8 redações-modelo comentadas, oficina de reescrita e 30 temas com textos de apoio",
-        "Correção Trilha Aprova: envie a foto e receba nota por critério, erros corrigidos, dicas e versão reescrita",
-        "Audiobook em 8 capítulos + resumo narrado"
+        "1.616 questões com gabarito comentado, 75 discursivas e 30 simulados com grade de autocorreção",
+        "60 textos-modelo comentados, 80 temas com planejamento e redação por banca",
+        "Curso em áudio com 23 aulas (4h22) + Correção Trilha Aprova com 60 correções"
       ],
-      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, relatório, ofício e discursivas · 60 correções da Trilha Aprova incluídas",
+      "subheadline": "Para concursos de nível médio e superior · dissertação, carta, ofício, relatório e discursivas · 23 aulas em áudio · 60 correções da Trilha Aprova incluídas",
       "concurso": {
         "local": "Vários concursos",
         "cargo": "Redação para concursos",
@@ -389,12 +489,12 @@
         "inscricoes": null,
         "requisito": null,
         "url": null,
-        "paginas": 47,
-        "questoes": 33
+        "paginas": 728,
+        "questoes": 1616
       }
     },
     "seoTitle": "Curso de Redação para Concursos com Correção | Trilha Aprova",
-    "seoDescription": "Curso de redação para concursos: 16 módulos, 8 redações-modelo, audiobook e correção Trilha Aprova que dá nota, erros e versão reescrita. R$ 99."
+    "seoDescription": "Curso de redação para concursos: 728 páginas, 1.616 questões comentadas, 60 textos-modelo, 30 simulados, 23 aulas em áudio e Correção Trilha Aprova."
   },
   "agente-de-portaria-ibam-santos-2026": {
     "slug": "agente-de-portaria-ibam-santos-2026",
