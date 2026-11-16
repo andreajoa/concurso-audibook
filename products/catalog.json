@@ -189,66 +189,66 @@
       "summary": {
         "id": "summary",
         "title": "Resumo da Apostila — Como gabaritar a redação de nível fundamental",
-        "subtitle": "Revisão em áudio para entender o método antes de aprofundar os capítulos",
-        "key": "redacao-nivel-fundamental-2026/audio/resumo.mp3",
+        "subtitle": "O essencial de cada módulo da edição 3.0 em uma única faixa",
+        "key": "redacao-nivel-fundamental-2026/audio/resumo-v3.mp3",
         "downloadName": "Resumo_Como_gabaritar_a_redacao_de_nivel_fundamental.mp3"
       },
       "chapters": [
         {
           "id": "c1",
-          "title": "Antes de escrever + Método universal",
-          "subtitle": "Comando da prova, planejamento e estrutura de começo, meio e fim",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/01-antes-de-escrever-metodo-universal.mp3",
-          "downloadName": "01-antes-de-escrever-metodo-universal.mp3"
+          "title": "O comando da prova e o método em 5 passos",
+          "subtitle": "Como ler a proposta, planejar e organizar começo, meio e fim",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/01-comando-e-metodo.mp3",
+          "downloadName": "01-comando-e-metodo.mp3"
         },
         {
           "id": "c2",
-          "title": "Construção do texto + Dissertação expositiva",
-          "subtitle": "Parágrafos, conectivos, clareza e estrutura expositiva",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/02-construcao-dissertacao-expositiva.mp3",
-          "downloadName": "02-construcao-dissertacao-expositiva.mp3"
+          "title": "Parágrafo, conectivos e frase clara",
+          "subtitle": "Tópico frasal, ligação entre ideias e frases sem ambiguidade",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/02-paragrafo-e-frase.mp3",
+          "downloadName": "02-paragrafo-e-frase.mp3"
         },
         {
           "id": "c3",
-          "title": "Dissertação argumentativa + Narração e relato",
-          "subtitle": "Como defender uma posição e como organizar acontecimentos",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/03-argumentacao-narracao-relato.mp3",
-          "downloadName": "03-argumentacao-narracao-relato.mp3"
+          "title": "Dissertação, narração, relato e descrição",
+          "subtitle": "Expor, argumentar, contar um fato e descrever com precisão",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/03-dissertacao-narracao-descricao.mp3",
+          "downloadName": "03-dissertacao-narracao-descricao.mp3"
         },
         {
           "id": "c4",
-          "title": "Carta, e-mail, textos funcionais + Gramática",
-          "subtitle": "Gêneros práticos, pontuação, concordância e dúvidas frequentes",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/04-textos-funcionais-gramatica.mp3",
-          "downloadName": "04-textos-funcionais-gramatica.mp3"
+          "title": "Carta, e-mail, bilhete, aviso, requerimento e declaração",
+          "subtitle": "A estrutura e a linguagem de cada texto prático",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/04-carta-email-e-textos-funcionais.mp3",
+          "downloadName": "04-carta-email-e-textos-funcionais.mp3"
         },
         {
           "id": "c5",
-          "title": "Coesão, clareza e planejamento",
-          "subtitle": "Como evitar repetição, manter o tema e transformar rascunho em texto",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/05-coesao-clareza-planejamento.mp3",
-          "downloadName": "05-coesao-clareza-planejamento.mp3"
+          "title": "Os erros que mais tiram pontos e as propostas comentadas",
+          "subtitle": "Como revisar e como foram resolvidas as propostas-modelo",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/05-revisao-e-propostas-comentadas.mp3",
+          "downloadName": "05-revisao-e-propostas-comentadas.mp3"
         },
         {
           "id": "c6",
-          "title": "Erros frequentes + Questões de fixação",
-          "subtitle": "O que mais derruba a qualidade da redação e treino de reconhecimento",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/06-erros-frequentes-exercicios.mp3",
-          "downloadName": "06-erros-frequentes-exercicios.mp3"
+          "title": "Ortografia e acentuação",
+          "subtitle": "As regras que mais caem e as palavras que mais confundem",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/06-ortografia-e-acentuacao.mp3",
+          "downloadName": "06-ortografia-e-acentuacao.mp3"
         },
         {
           "id": "c7",
-          "title": "Treino prático — Produção textual",
-          "subtitle": "Dissertação, argumentação, relato, e-mail formal e aviso",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/07-treino-pratico.mp3",
-          "downloadName": "07-treino-pratico.mp3"
+          "title": "Pontuação e palavras que confundem",
+          "subtitle": "Vírgula, ponto, dois-pontos e pares como mas/mais, a/há",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/07-pontuacao-e-palavras-que-confundem.mp3",
+          "downloadName": "07-pontuacao-e-palavras-que-confundem.mp3"
         },
         {
           "id": "c8",
-          "title": "Gabarito, modelos de resposta + revisão final",
-          "subtitle": "Correção comentada, respostas-modelo e checklist de prova",
-          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v1/08-gabarito-modelos-revisao.mp3",
-          "downloadName": "08-gabarito-modelos-revisao.mp3"
+          "title": "Concordância, verbos, vocabulário e interpretação",
+          "subtitle": "Concordância, tempos verbais, sentido das palavras e leitura de texto",
+          "key": "redacao-nivel-fundamental-2026/audio/pt-br-v3/08-concordancia-vocabulario-interpretacao.mp3",
+          "downloadName": "08-concordancia-vocabulario-interpretacao.mp3"
         }
       ]
     },
