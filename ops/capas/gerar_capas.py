@@ -138,6 +138,10 @@ SPEC = {
    completa=('CURSO DE', 'REDAÇÃO', ['22 módulos + 10 anexos • 728 páginas • 1.616 questões comentadas', 'tese, planejamento, coesão, conclusão e a gramática que derruba nota', 'redação por banca: Cebraspe, FGV, Vunesp, FCC, Cesgranrio, IBFC e Ibam']),
    simulados=['30 propostas inéditas no formato das bancas', 'grade de autocorreção e 3 correções comentadas', '75 questões discursivas por área de cargo'],
    terceiro=('MODELOS', ['60 textos-modelo comentados: redações, respostas e documentos', 'banco de 80 temas com planejamento pronto', 'ofício, requerimento, relatório, ata e parecer'])),
+ 'aparecida-de-goiania-agente-educativo-2026': dict(sim_t1='SIMULADOS', sigla='AGENTE EDUCATIVO', cobre='PREFEITURA DE APARECIDA DE GOIÂNIA • 2026', ed='EDITAL Nº 01/2026', lomb=['APARECIDA', 'DE GOIÂNIA', 'AGENTE • 2026'],
+   completa=('AGENTE', 'EDUCATIVO', ['Instituto Verbena/UFG • 651 páginas • 1.512 questões comentadas', 'Português • Raciocínio Lógico • Goiás e Aparecida • Conhecimentos Específicos', 'ética e sigilo • LDB • ECA • rotinas • primeiros socorros • inclusão']),
+   simulados=['2 simulados de 40 questões • 4 alternativas • formato da prova', 'mesma distribuição e pesos do edital • tabela para calcular a nota', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['LDB (arts. 2º a 7º e 29 a 31) • ECA aplicado à escola', 'Estatuto da Pessoa com Deficiência (arts. 3º e 27 a 30)', 'Lei Orgânica de Aparecida: educação e servidores públicos'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
