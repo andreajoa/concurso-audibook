@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { baseUrl, retrieveCheckoutSession, updateSessionMetadata, isPaidAndNotRefunded, sessionEmail, sessionProduct, request } = require('../lib/stripe');
 const { getProduct } = require('../lib/catalog');
-const { sendAccessEmail, sendCadernoKeyEmail, sendAbandonedCheckoutEmail, sendPaymentFailedEmail } = require('../lib/email');
+const { sendAccessEmail, sendCadernoKeyEmail, sendPaymentFailedEmail, sendRecoveryEmail } = require('../lib/email');
 const { rpc } = require('../lib/crm-rpc');
 const assinatura = require('../lib/assinatura');
 
@@ -103,6 +103,16 @@ module.exports = async (req,res) => {
       const eventSession=event.data?.object;
       if (!eventSession?.id || !belongs(eventSession.metadata||{})) return res.status(200).json({received:true,ignored:true});
       const session=await retrieveCheckoutSession(eventSession.id);
+      // 17/11/2026: Pix gerado e ainda não pago — manda o copia e cola na hora (transacional, a pessoa iniciou o pagamento).
+      if (event.type==='checkout.session.completed' && session.payment_status==='unpaid') {
+        const product=getProduct(sessionProduct(session)),email=sessionEmail(session),piId=typeof session.payment_intent==='string'?session.payment_intent:session.payment_intent?.id;
+        if (product&&email&&piId) {
+          const pi=await request(`/payment_intents/${encodeURIComponent(piId)}`,{method:'GET'}).catch(()=>null);
+          const qr=pi?.next_action?.pix_display_qr_code;
+          if (qr) await sendRecoveryEmail({to:email,step:'pix',product,origin:baseUrl(req),ctaUrl:`${baseUrl(req)}/comprar.html?produto=${encodeURIComponent(product.slug)}&utm_source=email&utm_medium=transactional&utm_campaign=pix_pending`,pix:{code:qr.data,url:qr.hosted_instructions_url,expiresAt:qr.expires_at},idempotencyKey:`pix-pending-${session.id}`}).catch(error=>console.error('pix_email',error));
+        }
+        return res.status(200).json({received:true,pixPending:true});
+      }
       if (!isPaidAndNotRefunded(session)) return res.status(200).json({received:true});
       const slug=sessionProduct(session),product=getProduct(slug),email=sessionEmail(session);
       if (!product || !email) return res.status(200).json({received:true});
@@ -126,9 +136,21 @@ module.exports = async (req,res) => {
       await rpc('crm_lead_abandoned',{p_session:session.id}).catch(()=>null);
       if (session.metadata?.marketing_consent==='true') {
         const product=getProduct(session.metadata.product_slug),email=session.customer_details?.email||session.customer_email;
-        if (product&&email) await sendAbandonedCheckoutEmail({to:email,productName:product.name,returnUrl:`${baseUrl(req)}/comprar.html?produto=${encodeURIComponent(product.slug)}&utm_source=email&utm_medium=automation&utm_campaign=checkout_abandonment`}).catch(error=>console.error('abandon_email',error));
+        // 17/11/2026: 1º passo da sequência por apostila; o link nativo da Stripe recria o mesmo checkout (vale 30 dias).
+        const ctaUrl=session.after_expiration?.recovery?.url||`${baseUrl(req)}/comprar.html?produto=${encodeURIComponent(product?.slug||'')}&utm_source=email&utm_medium=automation&utm_campaign=recovery_r1`;
+        if (product&&email) await sendRecoveryEmail({to:email,step:'r1',product,origin:baseUrl(req),ctaUrl,idempotencyKey:`recovery-r1-${session.id}`}).catch(error=>console.error('abandon_email',error));
       }
       return res.status(200).json({received:true,expired:true});
+    }
+
+    if (event.type==='checkout.session.async_payment_failed') {
+      const session=event.data?.object;
+      if (!session?.id || !belongs(session.metadata||{})) return res.status(200).json({received:true,ignored:true});
+      if (session.metadata?.marketing_consent==='true') {
+        const product=getProduct(session.metadata.product_slug),email=session.customer_details?.email||session.customer_email;
+        if (product&&email) await sendRecoveryEmail({to:email,step:'r1',product,origin:baseUrl(req),ctaUrl:`${baseUrl(req)}/comprar.html?produto=${encodeURIComponent(product.slug)}&utm_source=email&utm_medium=automation&utm_campaign=pix_expired`,idempotencyKey:`recovery-pixexp-${session.id}`}).catch(error=>console.error('pix_expired_email',error));
+      }
+      return res.status(200).json({received:true,pixExpired:true});
     }
 
     if (event.type==='payment_intent.payment_failed') {
