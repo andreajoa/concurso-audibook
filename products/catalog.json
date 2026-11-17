@@ -2317,5 +2317,150 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "pm-sp-aluno-soldado-2027": {
+    "slug": "pm-sp-aluno-soldado-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Polícia Militar do Estado de São Paulo - Aluno-Soldado PM - Edital DP-4/321/26",
+    "examBoard": "Fundação VUNESP",
+    "category": "Concursos públicos",
+    "name": "Soldado PM-SP 2027 (Aluno-Soldado) + audiobook",
+    "shortName": "Soldado PM-SP 2027",
+    "edition": "Pós-edital DP-4/321/26 (publicado em 05/11/2026), edição de 17/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Aluno-Soldado PM (ensino médio), Polícia Militar do Estado de São Paulo",
+    "currency": "brl",
+    "priceCents": 2990,
+    "stripePriceEnv": "STRIPE_PRICE_PM_SP_SOLDADO_2027",
+    "description": "Apostila digital para Aluno-Soldado da Polícia Militar do Estado de São Paulo, edital DP-4/321/26, banca Fundação VUNESP. PDF único de 882 páginas com 1.530 questões comentadas de 5 alternativas, no padrão VUNESP: Língua Portuguesa, Matemática, Conhecimentos Gerais (História, Geografia e Atualidades), Noções de Informática e Noções de Administração Pública, item a item do Anexo B. Capítulo completo de redação com os critérios oficiais, dois simulados de 60 questões na ordem da prova, legislação na íntegra (CF, Constituição Paulista, LAI e Decreto 68.155/2023), oito capítulos de audiobook e resumo narrado.",
+    "proofPoints": [
+      "PDF único com 882 páginas",
+      "1.530 questões comentadas, 5 alternativas como na VUNESP",
+      "2 simulados de 60 questões na ordem e proporção da prova",
+      "Redação: os 4 critérios oficiais, as 11 causas de nota zero e redações-modelo",
+      "Legislação na íntegra: CF, Constituição Paulista, LAI e Decreto 68.155/2023",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "pm-sp-aluno-soldado-2027/images/capa.png",
+      "pdfKey": "pm-sp-aluno-soldado-2027/docs/apostila-pm-sp-aluno-soldado-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Soldado_PM-SP_2027.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Soldado PM-SP 2027",
+        "key": "pm-sp-aluno-soldado-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Soldado_PM-SP_2027.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Mapa da prova e leitura de textos",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/01-mapa-e-leitura.mp3",
+          "downloadName": "01-mapa-e-leitura.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Português: pontuação, classes, concordância, regência e crase",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática: números, porcentagem, equações e geometria",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "História Geral e História do Brasil",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/04-historia.mp3",
+          "downloadName": "04-historia.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Geografia e Atualidades",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/05-geografia-atualidades.mp3",
+          "downloadName": "05-geografia-atualidades.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Noções Básicas de Informática",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/06-informatica.mp3",
+          "downloadName": "06-informatica.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Noções de Administração Pública: Constituição Federal, Constituição Paulista e LAI",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/07-administracao-publica.mp3",
+          "downloadName": "07-administracao-publica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "A redação da VUNESP",
+          "key": "pm-sp-aluno-soldado-2027/audio/pt-br-v1/08-redacao-vunesp.mp3",
+          "downloadName": "08-redacao-vunesp.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-28",
+      "confirmed": false,
+      "source": "Edital DP-4/321/26 (PM-SP/VUNESP): inscrições de 09/11 a 22/12/2026; exames de conhecimentos com data prevista para 28/02/2027, à tarde",
+      "sourceUrl": "https://concursos.policiamilitar.sp.gov.br/concursos/edital-dp-4-321-26-concurso-para-aluno-soldado-pm/"
+    },
+    "seoTitle": "Apostila Soldado PM-SP 2027 VUNESP | Trilha Aprova",
+    "seoDescription": "Apostila Soldado PM-SP 2027 (VUNESP, edital DP-4/321/26): 882 páginas, 1.530 questões comentadas, 2 simulados, redação, legislação e audiobook.",
+    "storefront": {
+      "badge": "PM-SP 2027 • ALUNO-SOLDADO • VUNESP",
+      "cover3d": "/assets/capa-pm-sp-aluno-soldado-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "2.000 vagas para Soldado PM-SP: a apostila completa do edital que você também ouve",
+      "shortTag": "PM-SP · Aluno-Soldado",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Português, Matemática, Gerais, Informática, Administração Pública e Redação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.530 questões comentadas + 2 simulados de 60"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "CF, Constituição Paulista, LAI e Decreto 68.155/2023"
+        }
+      ],
+      "bullets": [
+        "Todo o Anexo B do edital DP-4/321/26, item a item, no padrão da VUNESP",
+        "1.530 questões comentadas com 5 alternativas + 2 simulados de 60 na ordem da prova",
+        "Redação explicada pelos critérios oficiais do edital, com redações-modelo e 12 temas",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "subheadline": "Aluno-Soldado PM (ensino médio) · Polícia Militar do Estado de São Paulo · Banca Fundação VUNESP · Prova prevista para 28/02/2027",
+      "comboCovers": [
+        "/assets/capa-pm-sp-aluno-soldado-2027-simulados-3d.webp",
+        "/assets/capa-pm-sp-aluno-soldado-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "São Paulo/SP",
+        "cargo": "Aluno-Soldado PM",
+        "salario": "R$ 5.482,51",
+        "vagas": "2.000",
+        "taxa": "R$ 110,00",
+        "inscricoes": "09/11 a 22/12/2026",
+        "requisito": "Ensino médio completo",
+        "url": "https://concursos.policiamilitar.sp.gov.br/concursos/edital-dp-4-321-26-concurso-para-aluno-soldado-pm/",
+        "paginas": 882,
+        "questoes": 1530
+      },
+      "area": "seguranca"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

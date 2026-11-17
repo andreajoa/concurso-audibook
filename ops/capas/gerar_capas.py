@@ -142,6 +142,10 @@ SPEC = {
    completa=('AGENTE', 'EDUCATIVO', ['Instituto Verbena/UFG • 651 páginas • 1.512 questões comentadas', 'Português • Raciocínio Lógico • Goiás e Aparecida • Conhecimentos Específicos', 'ética e sigilo • LDB • ECA • rotinas • primeiros socorros • inclusão']),
    simulados=['2 simulados de 40 questões • 4 alternativas • formato da prova', 'mesma distribuição e pesos do edital • tabela para calcular a nota', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['LDB (arts. 2º a 7º e 29 a 31) • ECA aplicado à escola', 'Estatuto da Pessoa com Deficiência (arts. 3º e 27 a 30)', 'Lei Orgânica de Aparecida: educação e servidores públicos'])),
+ 'pm-sp-aluno-soldado-2027': dict(sim_t1='SIMULADOS', sigla='ALUNO-SOLDADO PM', cobre='POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • 2027', ed='EDITAL DP-4/321/26', lomb=['PM-SP', 'SOLDADO', 'VUNESP • 2027'],
+   completa=('SOLDADO', 'PM-SP', ['Fundação VUNESP • 882 páginas • 1.530 questões comentadas', 'Português • Matemática • Conhecimentos Gerais • Informática', 'Administração Pública • Redação VUNESP • legislação na íntegra']),
+   simulados=['2 simulados de 60 questões • 5 alternativas • formato da prova', 'Português 20 • Matemática 15 • Gerais 15 • Informática 5 • Adm. 5', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Constituição Federal: arts. 5º, 14 a 16, 37, 38, 42 e 144', 'Constituição Paulista: Executivo, Justiça Militar, servidores e PM', 'Lei de Acesso à Informação e Decreto estadual nº 68.155/2023'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
