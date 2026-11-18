@@ -150,6 +150,10 @@ SPEC = {
    completa=('PORTUGUÊS', 'COMPLETO', ['751 páginas • 1.526 questões comentadas • estilo das bancas', 'interpretação • coesão • semântica • ortografia • morfologia • sintaxe', 'pontuação • concordância • regência • crase • colocação • redação oficial']),
    simulados=['3 simulados de 40 questões: VUNESP, FGV e Cebraspe', 'múltipla escolha e itens de Certo ou Errado', 'gabarito comentado questão a questão'],
    terceiro=('REDAÇÃO OFICIAL', ['Manual de Redação da Presidência da República (3ª ed.)', 'padrão ofício • pronomes de tratamento • fechos', 'correio eletrônico • requerimento • atestado'])),
+ 'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
+   completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
+   simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
+   terceiro=('LEGISLAÇÃO', ['LDB (Lei nº 9.394/1996) na íntegra, redação vigente', 'Constituição, arts. 205 a 214 • ECA: educação e Conselho Tutelar', 'Lei Brasileira de Inclusão • Lei do Bullying (13.185/2015)'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
