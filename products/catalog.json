@@ -2603,5 +2603,146 @@
       ]
     },
     "exam": null
+  },
+  "conhecimentos-pedagogicos-professor": {
+    "slug": "conhecimentos-pedagogicos-professor",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos de professor e pedagogo",
+    "examBoard": "Conforme edital",
+    "category": "Conhecimentos Pedagógicos",
+    "name": "Conhecimentos Pedagógicos para Professor + audiobook",
+    "shortName": "Conhecimentos Pedagógicos para Professor",
+    "edition": "Edição 2026/2027, com LDB, ECA e Constituição na redação vigente e o novo PNE (Lei nº 15.388/2026), atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a professor (educação infantil, anos iniciais, anos finais e ensino médio), pedagogo, coordenador e diretor",
+    "currency": "brl",
+    "priceCents": 1990,
+    "stripePriceEnv": "STRIPE_PRICE_CONHECIMENTOS_PEDAGOGICOS_PROFESSOR",
+    "description": "Apostila de Conhecimentos Pedagógicos para qualquer concurso de professor: 16 módulos em 706 páginas, com a legislação na redação vigente. LDB, ECA e Constituição (arts. 205 a 214), novo PNE (Lei nº 15.388/2026), Fundeb e Sistema Nacional de Educação, BNCC, Piaget, Vygotsky, Wallon, Ausubel e Freire, didática, avaliação, alfabetização e letramento, educação inclusiva (LBI e AEE), gestão democrática, tendências pedagógicas, educação infantil (DCNEI), bullying e cultura de paz e estudos de caso. 1.519 questões comentadas, incluindo itens de Certo ou Errado, 2 simulados de 40 questões, leis na íntegra no anexo, audiobook em 8 capítulos e resumo narrado.",
+    "seoTitle": "Conhecimentos Pedagógicos para Professor | Trilha Aprova",
+    "seoDescription": "Apostila de conhecimentos pedagógicos para concurso de professor: 706 páginas, 1.519 questões comentadas, LDB, ECA, BNCC, novo PNE e audiobook.",
+    "storefront": {
+      "badge": "CONCURSO DE PROFESSOR • PEDAGOGO • TODAS AS REDES",
+      "cover3d": "/assets/capa-conhecimentos-pedagogicos-professor-completa-3d.webp",
+      "cta": "Quero os Conhecimentos Pedagógicos + audiobook",
+      "headline": "O bloco que cai em todo concurso de professor, com a lei atualizada, 1.519 questões comentadas e audiobook",
+      "shortTag": "Pedagogia · Concursos de professor",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "16 módulos · 706 páginas: da LDB aos estudos de caso"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.519 questões comentadas + 2 simulados"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "LDB, CF, ECA, LBI e Lei do Bullying na íntegra"
+        }
+      ],
+      "subheadline": "Para professor de educação infantil, anos iniciais, anos finais e ensino médio, pedagogo, coordenador e diretor · Lei na redação vigente · Sem data de validade",
+      "comboCovers": [
+        "/assets/capa-conhecimentos-pedagogicos-professor-simulados-3d.webp",
+        "/assets/capa-conhecimentos-pedagogicos-professor-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Professor e pedagogo · todas as redes",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": 706,
+        "questoes": 1519
+      },
+      "bullets": [
+        "Todo o bloco de Conhecimentos Pedagógicos dos editais de professor e pedagogo",
+        "LDB, ECA e Constituição na redação vigente e o novo PNE (Lei nº 15.388/2026)",
+        "1.519 questões comentadas, com 4 ou 5 alternativas e itens de Certo ou Errado",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "706 páginas em 16 módulos, com leitura confortável",
+      "1.519 questões comentadas no estilo das bancas de concursos de professor",
+      "Itens de Certo ou Errado no estilo Cebraspe",
+      "2 simulados de 40 questões com gabarito comentado",
+      "LDB, Constituição, ECA, LBI e Lei do Bullying conferidas no Planalto (nov./2026)",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "conhecimentos-pedagogicos-professor/images/capa.png",
+      "pdfKey": "conhecimentos-pedagogicos-professor/docs/apostila-conhecimentos-pedagogicos-professor.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Conhecimentos_Pedagogicos_Professor.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Conhecimentos Pedagógicos",
+        "key": "conhecimentos-pedagogicos-professor/audio/resumo.mp3",
+        "downloadName": "Resumo_Conhecimentos_Pedagogicos.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar o material e a Lei de Diretrizes e Bases",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/01-ldb.mp3",
+          "downloadName": "01-ldb.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "ECA, bullying e convivência escolar",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/02-eca-e-convivencia.mp3",
+          "downloadName": "02-eca-e-convivencia.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Constituição, novo PNE, financiamento, gestão e tendências pedagógicas",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/03-constituicao-pne-gestao.mp3",
+          "downloadName": "03-constituicao-pne-gestao.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "BNCC, currículo e educação infantil",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/04-bncc-e-educacao-infantil.mp3",
+          "downloadName": "04-bncc-e-educacao-infantil.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Teorias do desenvolvimento e da aprendizagem",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/05-teorias-da-aprendizagem.mp3",
+          "downloadName": "05-teorias-da-aprendizagem.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Didática, planejamento e avaliação",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/06-didatica-e-avaliacao.mp3",
+          "downloadName": "06-didatica-e-avaliacao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Alfabetização, letramento e educação inclusiva",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/07-alfabetizacao-e-inclusao.mp3",
+          "downloadName": "07-alfabetizacao-e-inclusao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Situações-problema do cotidiano escolar",
+          "key": "conhecimentos-pedagogicos-professor/audio/pt-br-v1/08-situacoes-problema.mp3",
+          "downloadName": "08-situacoes-problema.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }
