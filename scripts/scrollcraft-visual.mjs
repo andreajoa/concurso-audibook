@@ -19,7 +19,8 @@ async function homeShot(name,viewport,reducedMotion='no-preference'){
   await page.screenshot({path:`scrollcraft-artifacts/${name}-portal.png`,fullPage:false});
   const {cover}=await assertCover(page,name);await cover.scrollIntoViewIfNeeded();const box=await cover.boundingBox();if(!box||box.width<180||box.height<220||box.y>viewport.height||box.y+box.height<0)throw new Error(`${name}: catalog cover not visibly rendered ${JSON.stringify(box)}`);
   if((await page.locator('body').innerText()).toLowerCase().includes('stripe'))throw new Error(`${name}: payment provider name is visible to customer`);
-  const price=page.locator('del').filter({hasText:'R$ 49,99'}).first();await price.scrollIntoViewIfNeeded();if(!await price.isVisible())throw new Error(`${name}: crossed-out reference price not visible`);
+  // Regra de preço do André (13/11/2026): preço direto, sem "de/por" riscado.
+  if(await page.locator('del').filter({hasText:'R$'}).count())throw new Error(`${name}: crossed-out "de/por" price found (rule: direct price only)`);
   if(viewport.width<=600&&!await page.locator('.mobile-buybar').isVisible())throw new Error(`${name}: mobile buy bar not visible`);
   await page.screenshot({path:`scrollcraft-artifacts/${name}.png`,fullPage:false});await context.close();
 }

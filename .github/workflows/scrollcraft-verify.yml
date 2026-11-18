@@ -38,7 +38,7 @@ jobs:
               echo "Production storefront is current"
               exit 0
             fi
-            echo "Waiting for Vercel production deployment ($i/30)"
+            echo "Waiting for NexaCloud production deployment ($i/30)"
             sleep 5
           done
           echo "Production storefront did not update in time"
