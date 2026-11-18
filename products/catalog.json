@@ -1991,6 +1991,146 @@
       "downsell": []
     }
   },
+  "tce-go-tecnico-controle-externo-2027": {
+    "slug": "tce-go-tecnico-controle-externo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Tribunal de Contas do Estado de Goiás - Edital 01/2026",
+    "examBoard": "FCC",
+    "category": "Concursos públicos",
+    "name": "Técnico de Controle Externo (Técnico Administrativo) - TCE-GO + audiobook",
+    "shortName": "TCE-GO Técnico de Controle Externo",
+    "edition": "Edição 2026/2027, pós-edital 01/2026, atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Técnico de Controle Externo, Especialidade Técnico Administrativo, TCE-GO",
+    "currency": "brl",
+    "priceCents": 5390,
+    "stripePriceEnv": "STRIPE_PRICE_TCE_GO_TECNICO_CONTROLE_EXTERNO_2027",
+    "description": "Apostila digital para Técnico de Controle Externo, Especialidade Técnico Administrativo, do Tribunal de Contas do Estado de Goiás (Edital 01/2026, banca FCC, prova em 17/01/2027). PDF de 1.234 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática e Raciocínio Lógico, Legislação Institucional (CF, Constituição de Goiás, Lei Orgânica e Regimento do TCE-GO, Lei 15.122/2005, Estatuto dos servidores de Goiás), Direito Administrativo e Constitucional, Licitações (Lei 14.133/2021), Controle Externo e auditoria (NBASP), AFO, Lei 4.320 e LRF, Contabilidade Pública (NBC TSP e MCASP), Administração Pública e Geral, Estratégia, Comportamento Organizacional, Gestão de Pessoas e Redação FCC. 2.010 questões comentadas, com letra da lei montada do texto oficial e vigente de Goiás, 2 simulados de 70 questões no formato da prova e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 1.234 páginas, todo o edital do Técnico Administrativo",
+      "2.010 questões com gabarito comentado",
+      "Leis de Goiás no texto oficial vigente (Casa Civil)",
+      "2 simulados de 70 questões no formato FCC (25 gerais + 45 específicas)",
+      "Controle Externo, AFO/LRF e Contabilidade Pública explicados do zero",
+      "Redação FCC com os critérios de correção do edital",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "tce-go-tecnico-controle-externo-2027/images/capa.png",
+      "pdfKey": "tce-go-tecnico-controle-externo-2027/docs/apostila-tce-go-tecnico-controle-externo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_TCE-GO_Tecnico_Controle_Externo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - TCE-GO Técnico de Controle Externo",
+        "key": "tce-go-tecnico-controle-externo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_TCE-GO.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova, controle externo na CF e Lei Orgânica do TCE-GO",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/01-prova-e-lei-organica.mp3",
+          "downloadName": "01-prova-e-lei-organica.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Regimento, carreira e Estatuto dos servidores de Goiás",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/02-carreira-e-estatuto.mp3",
+          "downloadName": "02-carreira-e-estatuto.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Controle externo e auditoria governamental",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/03-controle-externo.mp3",
+          "downloadName": "03-controle-externo.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Administração financeira e orçamentária e LRF",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/04-afo-e-lrf.mp3",
+          "downloadName": "04-afo-e-lrf.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Contabilidade aplicada ao setor público",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/05-contabilidade-publica.mp3",
+          "downloadName": "05-contabilidade-publica.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Administração pública, estratégia e gestão de pessoas",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/06-administracao.mp3",
+          "downloadName": "06-administracao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Direito Administrativo e licitações",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/07-direito-e-licitacoes.mp3",
+          "downloadName": "07-direito-e-licitacoes.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Redação da FCC e simulados",
+          "key": "tce-go-tecnico-controle-externo-2027/audio/pt-br-v1/08-redacao-fcc.mp3",
+          "downloadName": "08-redacao-fcc.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-17",
+      "confirmed": false,
+      "source": "FCC, Edital 01/2026 TCE-GO (Técnico de Controle Externo) — inscrições encerradas em 06/11/2026, provas objetivas e discursivas previstas para 17/01/2027 (item 8.1.1)",
+      "sourceUrl": "https://www.concursosfcc.com.br/"
+    },
+    "seoTitle": "Apostila TCE-GO Técnico de Controle Externo | Trilha Aprova",
+    "seoDescription": "Apostila TCE-GO 2026 Técnico Administrativo (FCC): 1.234 páginas, 2.010 questões comentadas, 2 simulados de 70 e audiobook.",
+    "storefront": {
+      "badge": "TCE-GO 2026 • TÉCNICO DE CONTROLE EXTERNO • FCC",
+      "cover3d": "/assets/capa-tce-go-tecnico-controle-externo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "TCE-GO: R$ 11,8 mil com nível médio. Todo o edital do Técnico Administrativo, com leis de Goiás vigentes e audiobook",
+      "shortTag": "TCE-GO · Técnico de Controle Externo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.234 páginas: todo o edital + Redação FCC"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 70 + 1.870 questões de fixação comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Constituição de Goiás, Lei Orgânica, Regimento, Lei 15.122 e Estatuto"
+        }
+      ],
+      "subheadline": "Técnico de Controle Externo, Especialidade Técnico Administrativo · Banca FCC · Prova prevista para 17/01/2027",
+      "comboCovers": [
+        "/assets/capa-tce-go-tecnico-controle-externo-2027-simulados-3d.webp",
+        "/assets/capa-tce-go-tecnico-controle-externo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Tribunal de Contas do Estado de Goiás (Goiânia)",
+        "cargo": "Técnico de Controle Externo — Técnico Administrativo",
+        "salario": "R$ 11.862,19",
+        "vagas": "6",
+        "taxa": "R$ 100,00",
+        "inscricoes": "encerradas em 06/11/2026",
+        "requisito": "Ensino médio",
+        "url": "https://www.concursosfcc.com.br",
+        "paginas": 1234,
+        "questoes": 2010
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "simulados-aparecida-de-goiania-pe1-pedagogia-2026": {
     "slug": "simulados-aparecida-de-goiania-pe1-pedagogia-2026",
     "active": true,

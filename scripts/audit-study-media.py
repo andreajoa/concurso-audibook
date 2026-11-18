@@ -99,6 +99,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 60,
         'topics': ['plano de estudos', 'ciclo', 'revisão', 'simulado'],
     },
+    'tce-go-tecnico-controle-externo-2027': {
+        'pages': 1234,
+        'topics': ['tce-go', 'controle externo', 'fcc', 'gabarito', 'simulado'],
+    },
     'informatica-para-concursos': {
         'pages': 616,
         'topics': ['informática', 'excel', 'gabarito', 'simulado'],
