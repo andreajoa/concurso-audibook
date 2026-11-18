@@ -36,6 +36,8 @@ PRODUCT_EXPECTATIONS = {
     'matao-sp-assistente-administrativo-2026': {
         # 469 páginas de estudo + anexo de legislação na íntegra (Leis 8.159 e 14.133).
         'pages': 595,
+        # Páginas 349–407: reprodução oficial digitalizada (imagem, sem camada de texto).
+        'imagePages': list(range(349, 408)),
         'topics': ['assistente administrativo', 'matão', 'ibam', 'gabarito', 'simulado'],
     },
     'matao-sp-fiscal-de-obras-ed02-2026': {
@@ -147,6 +149,10 @@ def main():
                 allowed_blank = set(expectation['blankPages'])
                 require(all(not pages[n - 1].strip() for n in allowed_blank), f'{slug}: expected blank verso changed')
                 readable_pages = [text for n, text in enumerate(pages, 1) if n not in allowed_blank]
+            if expectation and expectation.get('imagePages'):
+                image_pages = set(expectation['imagePages'])
+                require(all(not pages[n - 1].strip() for n in image_pages), f'{slug}: expected image-only pages changed')
+                readable_pages = [text for n, text in enumerate(pages, 1) if n not in image_pages and n not in set(expectation.get('blankPages', []))]
             require(all(p.strip() for p in readable_pages), f'{slug}: unreadable PDF content pages')
             expected = source['pageCount'] if source else expectation['pages']
             require(len(pages) == expected, f'{slug}: unexpected PDF page count: {len(pages)} != {expected}')
