@@ -2744,5 +2744,146 @@
       ]
     },
     "exam": null
+  },
+  "matematica-raciocinio-logico-concursos": {
+    "slug": "matematica-raciocinio-logico-concursos",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Matemática e Raciocínio Lógico",
+    "name": "Matemática e Raciocínio Lógico para Concursos + audiobook",
+    "shortName": "Matemática e Raciocínio Lógico para Concursos",
+    "edition": "Edição 2026/2027, atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 2790,
+    "stripePriceEnv": "STRIPE_PRICE_MATEMATICA_RACIOCINIO_LOGICO_CONCURSOS",
+    "description": "Apostila completa de Matemática e Raciocínio Lógico para qualquer concurso: 15 módulos em 643 páginas, com teoria direta e exemplos resolvidos passo a passo. Operações e frações, MMC e MDC, razão, proporção e regra de três, porcentagem, juros simples e compostos, sistema de medidas, equações e sistemas, funções, PA e PG, geometria plana e espacial, estatística, probabilidade, análise combinatória, lógica proposicional, argumentação, quantificadores, conjuntos e sequências lógicas. 1.592 questões comentadas, incluindo itens de Certo ou Errado, 2 simulados de 40 questões, audiobook em 8 capítulos e resumo narrado.",
+    "seoTitle": "Apostila de Matemática e RLM para Concursos | Trilha Aprova",
+    "seoDescription": "Matemática e raciocínio lógico para concursos: 643 páginas, 1.592 questões comentadas, 2 simulados, exemplos resolvidos e audiobook.",
+    "storefront": {
+      "badge": "MATEMÁTICA E RLM • TODOS OS NÍVEIS • TODAS AS BANCAS",
+      "cover3d": "/assets/capa-matematica-raciocinio-logico-concursos-completa-3d.webp",
+      "cta": "Quero a Matemática e RLM + audiobook",
+      "headline": "A matéria que derruba candidatos, explicada passo a passo, com 1.592 questões comentadas e audiobook",
+      "shortTag": "Matemática e RLM · Todos os concursos",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "15 módulos · 643 páginas: das frações à lógica"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.592 questões comentadas + 2 simulados"
+        },
+        {
+          "titulo": "Caderno de Raciocínio Lógico",
+          "detalhe": "conectivos, negações, argumentos e sequências"
+        }
+      ],
+      "subheadline": "Para concursos de nível fundamental, médio e superior · Estilo VUNESP, FCC, FGV e Cebraspe · Sem data de validade",
+      "comboCovers": [
+        "/assets/capa-matematica-raciocinio-logico-concursos-simulados-3d.webp",
+        "/assets/capa-matematica-raciocinio-logico-concursos-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Matemática e RLM · todos os níveis",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": "643",
+        "questoes": 1592
+      },
+      "bullets": [
+        "Todo o programa de Matemática, Matemática Financeira e Raciocínio Lógico dos editais",
+        "Teoria direta com exemplos resolvidos passo a passo",
+        "1.592 questões comentadas, com 4 ou 5 alternativas e itens de Certo ou Errado",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "643 páginas em 15 módulos, com leitura confortável",
+      "1.592 questões comentadas com a conta feita passo a passo",
+      "Itens de Certo ou Errado no estilo Cebraspe",
+      "2 simulados de 40 questões com gabarito comentado",
+      "Lógica proposicional, argumentação e sequências para provas de RLM",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "matematica-raciocinio-logico-concursos/images/capa.png",
+      "pdfKey": "matematica-raciocinio-logico-concursos/docs/apostila-matematica-raciocinio-logico-concursos.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Matematica_Raciocinio_Logico_Concursos.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Matemática e Raciocínio Lógico",
+        "key": "matematica-raciocinio-logico-concursos/audio/resumo.mp3",
+        "downloadName": "Resumo_Matematica_Raciocinio_Logico.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar o material, números e operações",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/01-numeros-e-operacoes.mp3",
+          "downloadName": "01-numeros-e-operacoes.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "MMC, MDC, razão, proporção e regra de três",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/02-mmc-mdc-e-proporcao.mp3",
+          "downloadName": "02-mmc-mdc-e-proporcao.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Porcentagem e matemática financeira",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/03-porcentagem-e-juros.mp3",
+          "downloadName": "03-porcentagem-e-juros.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Sistema de medidas, equações e sistemas",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/04-medidas-e-equacoes.mp3",
+          "downloadName": "04-medidas-e-equacoes.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Funções, progressões e geometria",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/05-funcoes-progressoes-geometria.mp3",
+          "downloadName": "05-funcoes-progressoes-geometria.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Estatística, probabilidade e análise combinatória",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/06-estatistica-probabilidade-contagem.mp3",
+          "downloadName": "06-estatistica-probabilidade-contagem.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Lógica proposicional, argumentação e conjuntos",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/07-logica-e-argumentacao.mp3",
+          "downloadName": "07-logica-e-argumentacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Sequências, calendário, verdades e mentiras",
+          "key": "matematica-raciocinio-logico-concursos/audio/pt-br-v1/08-raciocinio-logico.mp3",
+          "downloadName": "08-raciocinio-logico.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }
