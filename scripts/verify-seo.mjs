@@ -328,16 +328,16 @@ if (!exists(paginaMatao)) {
   fail('página de Matão não foi gerada');
 } else {
   const html = read(paginaMatao);
-  if (!html.includes('Já há concursos com inscrições abertas em Matão.')) {
-    fail('Matão com inscrições abertas precisa exibir o aviso correto');
-  }
-  if (html.includes('Quer saber quando abrir concurso em Matão?')) {
-    fail('Matão ainda pergunta quando abrir concurso apesar das inscrições abertas');
-  }
+  // As inscrições mudam com a data (o site é refeito todo dia): a página mostra um aviso ou o outro, nunca os dois.
+  const avisoAberto = html.includes('Já há concursos com inscrições abertas em Matão.');
+  const avisoFechado = html.includes('Quer saber quando abrir concurso em Matão?');
+  if (avisoAberto === avisoFechado) fail('Matão precisa exibir exatamente um aviso de inscrições (aberto ou fechado)');
   if (!html.includes('apostila-matao')) fail('Matão sem apresentação da nova apostila');
   if (!/R\$ \d+,\d{2}/.test(html)) fail('Matão sem preço da nova apostila');
   const temCheckout = html.includes('href="/comprar?produto=matao-sp-assistente-administrativo-2026"');
-  if (catMatao?.active === true) {
+  const { createRequire } = await import('node:module');
+  const { sellable } = createRequire(import.meta.url)('../lib/exam-watch.js');
+  if (catMatao?.active === true && sellable(catMatao, process.env.SITE_UPDATED ? new Date(process.env.SITE_UPDATED + 'T12:00:00Z') : new Date())) {
     if (!temCheckout) fail('produto de Matão ativo sem link de compra na página do concurso');
   } else {
     if (temCheckout) fail('Matão indisponível com checkout liberado indevidamente');
