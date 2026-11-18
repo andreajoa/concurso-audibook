@@ -31,7 +31,8 @@ PRODUCT_EXPECTATIONS = {
         'topics': ['autores', 'ibam', 'gabarito'],
     },
     'redacao-nivel-fundamental-2026': {
-        'pages': 19,
+        # Edição 3.0 (15/11/2026): 325 páginas e audiobook pt-br-v3; o manifesto antigo descreve só a v1 de 19 páginas.
+        'pages': 325,
         'topics': ['redação', 'dissertação', 'gabarito'],
     },
     'secretario-de-unidade-escolar-ibam-santos-2026': {
@@ -178,7 +179,7 @@ def main():
                 require(completion.get('summary') == assets['summary']['key']
                     and completion.get('chapterKeys') == [ch['key'] for ch in assets['chapters']],
                     'Matão: source manifest does not match buyer playback and download keys')
-            if slug == 'redacao-nivel-fundamental-2026':
+            if slug == 'redacao-nivel-fundamental-2026' and not assets['pdfKey'].endswith('-v3.pdf'):
                 manifest = json.loads(s3.get_object(Bucket=bucket,
                     Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(manifest['pdfKey'] == assets['pdfKey'], 'Redacao manifest: wrong PDF')
