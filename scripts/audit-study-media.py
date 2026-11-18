@@ -90,6 +90,15 @@ PRODUCT_EXPECTATIONS = {
         'pages': 806,
         'topics': ['direito constitucional', 'administrativo', 'gabarito', 'simulado'],
     },
+    'cadernos-questoes-por-banca': {
+        'pages': 792,
+        'topics': ['vunesp', 'fgv', 'cebraspe', 'gabarito', 'simulado'],
+    },
+    'kit-base-plano-de-estudos': {
+        # PDF próprio do kit = Plano de Estudos (60 págs); as páginas anunciadas somam as 4 apostilas incluídas.
+        'pages': 60,
+        'topics': ['plano de estudos', 'ciclo', 'revisão', 'simulado'],
+    },
     'informatica-para-concursos': {
         'pages': 616,
         'topics': ['informática', 'excel', 'gabarito', 'simulado'],
@@ -168,7 +177,7 @@ def main():
             expected = source['pageCount'] if source else expectation['pages']
             require(len(pages) == expected, f'{slug}: unexpected PDF page count: {len(pages)} != {expected}')
             announced = (product.get('storefront') or {}).get('concurso', {}).get('paginas')
-            if announced:
+            if announced and not product.get('includes'):
                 require(int(str(announced).replace('.', '')) == len(pages), f'{slug}: storefront announces {announced} pages but PDF has {len(pages)}')
             body = '\n'.join(pages).lower()
             if source:
