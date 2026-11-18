@@ -2885,5 +2885,146 @@
       ]
     },
     "exam": null
+  },
+  "informatica-para-concursos": {
+    "slug": "informatica-para-concursos",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Informática",
+    "name": "Informática para Concursos + audiobook",
+    "shortName": "Informática para Concursos",
+    "edition": "Edição 2026/2027, atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 2790,
+    "stripePriceEnv": "STRIPE_PRICE_INFORMATICA_PARA_CONCURSOS",
+    "description": "Apostila completa de Noções de Informática para qualquer concurso: 13 módulos em 616 páginas, com teoria direta, tabelas de revisão e as pegadinhas das bancas. Hardware e software, Windows 10 e 11, Linux, Word e LibreOffice Writer, Excel e LibreOffice Calc, PowerPoint e Impress, redes e internet, protocolos, navegadores, busca e e-mail, segurança da informação (malware, golpes, backup e criptografia), computação em nuvem e colaboração, LGPD e inteligência artificial. 1.949 questões comentadas, incluindo itens de Certo ou Errado, 2 simulados de 40 questões, audiobook em 8 capítulos e resumo narrado.",
+    "seoTitle": "Apostila de Informática para Concursos | Trilha Aprova",
+    "seoDescription": "Informática para concursos: 616 páginas, 1.949 questões comentadas, 2 simulados, Windows, Excel, redes, segurança, LGPD e audiobook.",
+    "storefront": {
+      "badge": "INFORMÁTICA • TODOS OS NÍVEIS • TODAS AS BANCAS",
+      "cover3d": "/assets/capa-informatica-para-concursos-completa-3d.webp",
+      "cta": "Quero a Informática + audiobook",
+      "headline": "Atalhos, fórmulas, redes e segurança do jeito que a banca cobra, com 1.949 questões comentadas e audiobook",
+      "shortTag": "Informática · Todos os concursos",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "13 módulos · 616 páginas: do hardware à LGPD"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.949 questões comentadas + 2 simulados"
+        },
+        {
+          "titulo": "Caderno de Segurança",
+          "detalhe": "malware, golpes, backup e criptografia"
+        }
+      ],
+      "subheadline": "Para concursos de nível fundamental, médio e superior · Estilo VUNESP, FCC, FGV e Cebraspe · Windows 11 e Microsoft 365",
+      "comboCovers": [
+        "/assets/capa-informatica-para-concursos-simulados-3d.webp",
+        "/assets/capa-informatica-para-concursos-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Informática · todos os níveis",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": "616",
+        "questoes": 1949
+      },
+      "bullets": [
+        "Todo o programa de Noções de Informática dos editais atuais",
+        "Atalhos do Word em português, do Writer, do Windows e dos navegadores em tabelas lado a lado",
+        "1.949 questões comentadas, com 4 ou 5 alternativas e itens de Certo ou Errado",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "616 páginas em 13 módulos, com leitura confortável",
+      "1.949 questões comentadas, com a regra que vale para outras questões",
+      "Itens de Certo ou Errado no estilo Cebraspe",
+      "2 simulados de 40 questões com gabarito comentado",
+      "Excel com referências, funções e erros resolvidos passo a passo",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "informatica-para-concursos/images/capa.png",
+      "pdfKey": "informatica-para-concursos/docs/apostila-informatica-para-concursos.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Informatica_para_Concursos.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Informática para Concursos",
+        "key": "informatica-para-concursos/audio/resumo.mp3",
+        "downloadName": "Resumo_Informatica_Concursos.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar o material, hardware e software",
+          "key": "informatica-para-concursos/audio/pt-br-v1/01-hardware-e-software.mp3",
+          "downloadName": "01-hardware-e-software.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Windows 10 e 11",
+          "key": "informatica-para-concursos/audio/pt-br-v1/02-windows.mp3",
+          "downloadName": "02-windows.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Linux",
+          "key": "informatica-para-concursos/audio/pt-br-v1/03-linux.mp3",
+          "downloadName": "03-linux.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Editores de texto: Word e Writer",
+          "key": "informatica-para-concursos/audio/pt-br-v1/04-word-e-writer.mp3",
+          "downloadName": "04-word-e-writer.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Planilhas e apresentações",
+          "key": "informatica-para-concursos/audio/pt-br-v1/05-planilhas-e-apresentacoes.mp3",
+          "downloadName": "05-planilhas-e-apresentacoes.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Redes, internet, navegadores e e-mail",
+          "key": "informatica-para-concursos/audio/pt-br-v1/06-redes-navegadores-email.mp3",
+          "downloadName": "06-redes-navegadores-email.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Segurança da informação",
+          "key": "informatica-para-concursos/audio/pt-br-v1/07-seguranca-da-informacao.mp3",
+          "downloadName": "07-seguranca-da-informacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Nuvem, LGPD e inteligência artificial",
+          "key": "informatica-para-concursos/audio/pt-br-v1/08-nuvem-lgpd-e-ia.mp3",
+          "downloadName": "08-nuvem-lgpd-e-ia.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }
