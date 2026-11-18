@@ -6,7 +6,7 @@ const audit = fs.readFileSync('scripts/audit-study-media.py', 'utf8');
 
 test('auditoria conhece os produtos Santos 2026 publicados', () => {
   assert.match(audit, /'secretario-de-unidade-escolar-ibam-santos-2026'\s*:\s*\{[\s\S]*?'pages'\s*:\s*84/);
-  assert.match(audit, /'professor-adjunto-i-ibam-santos-2026'\s*:\s*\{[\s\S]*?'pages'\s*:\s*132/);
+  assert.match(audit, /'professor-adjunto-i-ibam-santos-2026'\s*:\s*\{[\s\S]*?'pages'\s*:\s*650/);
 });
 
 test('produto ativo sem expectativa explicita falha a auditoria', () => {
