@@ -2006,9 +2006,9 @@
     "currency": "brl",
     "priceCents": 5390,
     "stripePriceEnv": "STRIPE_PRICE_TCE_GO_TECNICO_CONTROLE_EXTERNO_2027",
-    "description": "Apostila digital para Técnico de Controle Externo, Especialidade Técnico Administrativo, do Tribunal de Contas do Estado de Goiás (Edital 01/2026, banca FCC, prova em 17/01/2027). PDF de 1.234 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática e Raciocínio Lógico, Legislação Institucional (CF, Constituição de Goiás, Lei Orgânica e Regimento do TCE-GO, Lei 15.122/2005, Estatuto dos servidores de Goiás), Direito Administrativo e Constitucional, Licitações (Lei 14.133/2021), Controle Externo e auditoria (NBASP), AFO, Lei 4.320 e LRF, Contabilidade Pública (NBC TSP e MCASP), Administração Pública e Geral, Estratégia, Comportamento Organizacional, Gestão de Pessoas e Redação FCC. 2.010 questões comentadas, com letra da lei montada do texto oficial e vigente de Goiás, 2 simulados de 70 questões no formato da prova e audiobook em 8 capítulos.",
+    "description": "Apostila digital para Técnico de Controle Externo, Especialidade Técnico Administrativo, do Tribunal de Contas do Estado de Goiás (Edital 01/2026, banca FCC, prova em 17/01/2027). PDF de 1.233 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática e Raciocínio Lógico, Legislação Institucional (CF, Constituição de Goiás, Lei Orgânica e Regimento do TCE-GO, Lei 15.122/2005, Estatuto dos servidores de Goiás), Direito Administrativo e Constitucional, Licitações (Lei 14.133/2021), Controle Externo e auditoria (NBASP), AFO, Lei 4.320 e LRF, Contabilidade Pública (NBC TSP e MCASP), Administração Pública e Geral, Estratégia, Comportamento Organizacional, Gestão de Pessoas e Redação FCC. 2.010 questões comentadas, com letra da lei montada do texto oficial e vigente de Goiás, 2 simulados de 70 questões no formato da prova e audiobook em 8 capítulos.",
     "proofPoints": [
-      "PDF com 1.234 páginas, todo o edital do Técnico Administrativo",
+      "PDF com 1.233 páginas, todo o edital do Técnico Administrativo",
       "2.010 questões com gabarito comentado",
       "Leis de Goiás no texto oficial vigente (Casa Civil)",
       "2 simulados de 70 questões no formato FCC (25 gerais + 45 específicas)",
@@ -2084,7 +2084,7 @@
       "sourceUrl": "https://www.concursosfcc.com.br/"
     },
     "seoTitle": "Apostila TCE-GO Técnico de Controle Externo | Trilha Aprova",
-    "seoDescription": "Apostila TCE-GO 2026 Técnico Administrativo (FCC): 1.234 páginas, 2.010 questões comentadas, 2 simulados de 70 e audiobook.",
+    "seoDescription": "Apostila TCE-GO 2026 Técnico Administrativo (FCC): 1.233 páginas, 2.010 questões comentadas, 2 simulados de 70 e audiobook.",
     "storefront": {
       "badge": "TCE-GO 2026 • TÉCNICO DE CONTROLE EXTERNO • FCC",
       "cover3d": "/assets/capa-tce-go-tecnico-controle-externo-2027-completa-3d.webp",
@@ -2094,7 +2094,7 @@
       "combo": [
         {
           "titulo": "Apostila Completa",
-          "detalhe": "1.234 páginas: todo o edital + Redação FCC"
+          "detalhe": "1.233 páginas: todo o edital + Redação FCC"
         },
         {
           "titulo": "Caderno de Simulados",
@@ -2119,7 +2119,7 @@
         "inscricoes": "encerradas em 06/11/2026",
         "requisito": "Ensino médio",
         "url": "https://www.concursosfcc.com.br",
-        "paginas": 1234,
+        "paginas": 1233,
         "questoes": 2010
       },
       "area": "administrativo"
@@ -3323,9 +3323,9 @@
     "currency": "brl",
     "priceCents": 1990,
     "stripePriceEnv": "STRIPE_PRICE_CADERNOS_QUESTOES_POR_BANCA",
-    "description": "Quatro cadernos de questões em um só material, cada um no estilo de uma banca: VUNESP, FGV, FCC e Cebraspe. 792 páginas com raio-X de cada banca (como cobra, pegadinhas e estratégia de prova), técnicas de resolução e 2.010 questões inéditas com gabarito comentado em Língua Portuguesa, Matemática e Raciocínio Lógico, Informática e Noções de Direito: 450 por banca de múltipla escolha e 500 itens de Certo ou Errado no estilo Cebraspe, mais um simulado de 40 questões por banca. Audiobook em 8 capítulos com questões resolvidas em voz alta e resumo narrado.",
+    "description": "Quatro cadernos de questões em um só material, cada um no estilo de uma banca: VUNESP, FGV, FCC e Cebraspe. 885 páginas com raio-X de cada banca (como cobra, pegadinhas e estratégia de prova), técnicas de resolução e 2.010 questões inéditas com gabarito comentado em Língua Portuguesa, Matemática e Raciocínio Lógico, Informática e Noções de Direito: 450 por banca de múltipla escolha e 500 itens de Certo ou Errado no estilo Cebraspe, mais um simulado de 40 questões por banca. Audiobook em 8 capítulos com questões resolvidas em voz alta e resumo narrado.",
     "seoTitle": "Cadernos de Questões por Banca | Trilha Aprova",
-    "seoDescription": "Cadernos de questões VUNESP, FGV, FCC e Cebraspe: 792 páginas, 2.010 questões comentadas, 4 simulados e audiobook.",
+    "seoDescription": "Cadernos de questões VUNESP, FGV, FCC e Cebraspe: 885 páginas, 2.010 questões comentadas, 4 simulados e audiobook.",
     "storefront": {
       "badge": "VUNESP • FGV • FCC • CEBRASPE • QUESTÕES COMENTADAS",
       "cover3d": "/assets/capa-cadernos-questoes-por-banca-completa-3d.webp",
@@ -3335,7 +3335,7 @@
       "combo": [
         {
           "titulo": "Cadernos por Banca",
-          "detalhe": "4 cadernos · 792 páginas · raio-X de cada banca"
+          "detalhe": "4 cadernos · 885 páginas · raio-X de cada banca"
         },
         {
           "titulo": "Caderno de Simulados",
@@ -3360,7 +3360,7 @@
         "inscricoes": null,
         "requisito": null,
         "url": null,
-        "paginas": "792",
+        "paginas": "885",
         "questoes": 2010
       },
       "bullets": [
@@ -3378,7 +3378,7 @@
       "downsell": []
     },
     "proofPoints": [
-      "792 páginas em 4 cadernos, com leitura confortável",
+      "885 páginas em 4 cadernos, com leitura confortável",
       "2.010 questões com gabarito comentado",
       "Raio-X e estratégia de prova de cada banca",
       "500 itens de Certo ou Errado no estilo Cebraspe",
@@ -3595,5 +3595,144 @@
       "informatica-para-concursos",
       "redacao-nivel-fundamental-2026"
     ]
+  },
+  "ifg-assistente-administracao-2027": {
+    "slug": "ifg-assistente-administracao-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Instituto Federal de Goiás (IFG) - Edital 001/2026 (Técnico-Administrativos)",
+    "examBoard": "Instituto AOCP",
+    "category": "Concursos públicos",
+    "name": "Assistente em Administração - IFG + audiobook",
+    "shortName": "IFG Assistente em Administração",
+    "edition": "Edição 2026/2027, pós-edital 001/2026, atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Assistente em Administração (TAE, nível D) do Instituto Federal de Goiás",
+    "currency": "brl",
+    "priceCents": 3090,
+    "stripePriceEnv": "STRIPE_PRICE_IFG_ASSISTENTE_ADMINISTRACAO_2027",
+    "description": "Apostila digital para Assistente em Administração do Instituto Federal de Goiás (IFG), Técnico-Administrativo em Educação nível D (Edital 001/2026, banca Instituto AOCP, prova em 14/02/2027). PDF de 916 páginas com todo o conteúdo do edital: Língua Portuguesa, Legislação (Constituição: Administração Pública, Educação e Ciência e Tecnologia; LDB; Lei 11.892/2008 dos Institutos Federais; Lei 11.091/2005 da carreira TAE; Código de Ética do Decreto 1.171/1994; Lei 8.112/1990; Lei 9.784/1999; Lei 14.133/2021; LAI; LGPD e Lei de Improbidade), Raciocínio Lógico e Matemática, Informática e os Conhecimentos Específicos: redação oficial, arquivologia, gestão documental e protocolo, administração, comportamento organizacional, gestão de pessoas, ética, recursos materiais e patrimoniais, logística e administração financeira. 1.602 questões comentadas, letra da lei montada do texto vigente do Planalto, 2 simulados de 50 questões no formato da prova e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 916 páginas, todo o edital do Assistente em Administração",
+      "1.602 questões com gabarito comentado",
+      "Leis no texto vigente do Planalto, sem dispositivos revogados",
+      "2 simulados de 50 questões no formato do Instituto AOCP, com os pesos da prova",
+      "Conhecimentos Específicos (60% da nota) explicados do zero, com cálculos de estoque e finanças",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "ifg-assistente-administracao-2027/images/capa.png",
+      "pdfKey": "ifg-assistente-administracao-2027/docs/apostila-ifg-assistente-administracao-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_IFG_Assistente_em_Administracao.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - IFG Assistente em Administração",
+        "key": "ifg-assistente-administracao-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_IFG.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova do IFG e a legislação da educação federal",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/01-prova-e-legislacao-educacao.mp3",
+          "downloadName": "01-prova-e-legislacao-educacao.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Português: interpretação, semântica, ortografia, pontuação e crase",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/02-portugues-1.mp3",
+          "downloadName": "02-portugues-1.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Português: morfologia, sintaxe, concordância e colocação",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/03-portugues-2.mp3",
+          "downloadName": "03-portugues-2.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Lei 8.112, processo administrativo, licitações, improbidade, LAI e LGPD",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/04-legislacao-servidor.mp3",
+          "downloadName": "04-legislacao-servidor.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Raciocínio lógico e informática",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/05-rlm-e-informatica.mp3",
+          "downloadName": "05-rlm-e-informatica.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Redação oficial, arquivologia e protocolo",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/06-redacao-oficial-arquivologia.mp3",
+          "downloadName": "06-redacao-oficial-arquivologia.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Administração, comportamento organizacional, gestão de pessoas e ética",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/07-administracao-pessoas-etica.mp3",
+          "downloadName": "07-administracao-pessoas-etica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Recursos materiais, patrimônio, logística e finanças",
+          "key": "ifg-assistente-administracao-2027/audio/pt-br-v1/08-materiais-financas.mp3",
+          "downloadName": "08-materiais-financas.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-14",
+      "confirmed": false,
+      "source": "Instituto AOCP, Edital 001/2026 IFG (Técnico-Administrativos em Educação) — inscrições de 24/11 a 23/12/2026, prova objetiva prevista para 14/02/2027 (Anexo I, cronograma previsto)",
+      "sourceUrl": "https://www.institutoaocp.org.br/"
+    },
+    "seoTitle": "Apostila IFG Assistente em Administração 2026 | Trilha Aprova",
+    "seoDescription": "Apostila IFG 2026 Assistente em Administração (Instituto AOCP): 916 páginas, 1.602 questões comentadas, 2 simulados de 50 e audiobook.",
+    "storefront": {
+      "badge": "IFG 2026 • ASSISTENTE EM ADMINISTRAÇÃO • INSTITUTO AOCP",
+      "cover3d": "/assets/capa-ifg-assistente-administracao-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "IFG: cargo federal com nível médio. Todo o edital do Assistente em Administração, com leis vigentes e audiobook",
+      "shortTag": "IFG · Assistente em Administração",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "916 páginas: todo o edital do nível D"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.502 questões de fixação comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "LDB, Lei 11.892, Lei 11.091, Código de Ética e Lei 8.112"
+        }
+      ],
+      "subheadline": "Assistente em Administração, Técnico-Administrativo em Educação nível D · Banca Instituto AOCP · Prova prevista para 14/02/2027",
+      "comboCovers": [
+        "/assets/capa-ifg-assistente-administracao-2027-simulados-3d.webp",
+        "/assets/capa-ifg-assistente-administracao-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Instituto Federal de Goiás (campi em Aparecida de Goiânia, Goiás, Formosa, Jataí, Goiânia, Senador Canedo e Uruaçu)",
+        "cargo": "Assistente em Administração — nível D",
+        "salario": "R$ 3.181,39 + benefícios",
+        "vagas": "14",
+        "taxa": "R$ 160,00",
+        "inscricoes": "24/11 a 23/12/2026",
+        "requisito": "Ensino médio profissionalizante, ou médio completo + 12 meses de experiência",
+        "url": "https://www.institutoaocp.org.br",
+        "paginas": 916,
+        "questoes": 1602
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

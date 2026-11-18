@@ -91,7 +91,7 @@ PRODUCT_EXPECTATIONS = {
         'topics': ['direito constitucional', 'administrativo', 'gabarito', 'simulado'],
     },
     'cadernos-questoes-por-banca': {
-        'pages': 792,
+        'pages': 885,
         'topics': ['vunesp', 'fgv', 'cebraspe', 'gabarito', 'simulado'],
     },
     'kit-base-plano-de-estudos': {
@@ -99,8 +99,12 @@ PRODUCT_EXPECTATIONS = {
         'pages': 60,
         'topics': ['plano de estudos', 'ciclo', 'revisão', 'simulado'],
     },
+    'ifg-assistente-administracao-2027': {
+        'pages': 916,
+        'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],
+    },
     'tce-go-tecnico-controle-externo-2027': {
-        'pages': 1234,
+        'pages': 1233,
         'topics': ['tce-go', 'controle externo', 'fcc', 'gabarito', 'simulado'],
     },
     'informatica-para-concursos': {
