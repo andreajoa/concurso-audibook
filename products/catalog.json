@@ -2462,5 +2462,146 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "portugues-completo-concursos": {
+    "slug": "portugues-completo-concursos",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Língua Portuguesa",
+    "name": "Português Completo para Concursos + audiobook",
+    "shortName": "Português Completo para Concursos",
+    "edition": "Edição 2026/2027, de acordo com o Acordo Ortográfico vigente e o Manual de Redação da Presidência (3ª ed.), atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 2790,
+    "stripePriceEnv": "STRIPE_PRICE_PORTUGUES_COMPLETO_CONCURSOS",
+    "description": "Apostila completa de Língua Portuguesa para qualquer concurso: 16 módulos em 751 páginas, do jeito que as bancas cobram. Interpretação, tipologia e gêneros, coesão e reescrita, semântica, ortografia, acentuação e hífen, morfologia, sintaxe do período simples e composto, pontuação, concordância, regência, crase, colocação pronominal e redação oficial (Manual da Presidência, 3ª ed.). 1.526 questões comentadas no estilo de VUNESP, FGV, FCC, Cebraspe e Cesgranrio, incluindo itens de Certo ou Errado, 3 simulados de 40 questões por banca, audiobook em 8 capítulos e resumo narrado.",
+    "seoTitle": "Apostila de Português para Concursos | Trilha Aprova",
+    "seoDescription": "Português completo para concursos: 751 páginas, 1.526 questões comentadas no estilo das bancas, 3 simulados (VUNESP, FGV, Cebraspe) e audiobook.",
+    "storefront": {
+      "badge": "PORTUGUÊS PARA CONCURSOS • TODOS OS NÍVEIS • TODAS AS BANCAS",
+      "cover3d": "/assets/capa-portugues-completo-concursos-completa-3d.webp",
+      "cta": "Quero o Português Completo + audiobook",
+      "headline": "A matéria que mais cai em todos os concursos, completa, com 1.526 questões comentadas e audiobook",
+      "shortTag": "Português · Todos os concursos",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "16 módulos · 751 páginas: da interpretação à crase"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.526 questões comentadas + 3 simulados por banca"
+        },
+        {
+          "titulo": "Caderno de Redação Oficial",
+          "detalhe": "Manual da Presidência: ofício, tratamento e fechos"
+        }
+      ],
+      "subheadline": "Para concursos de nível fundamental, médio e superior · Estilo VUNESP, FGV, FCC, Cebraspe e Cesgranrio · Sem data de validade",
+      "comboCovers": [
+        "/assets/capa-portugues-completo-concursos-simulados-3d.webp",
+        "/assets/capa-portugues-completo-concursos-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Língua Portuguesa · todos os níveis",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": 751,
+        "questoes": 1526
+      },
+      "bullets": [
+        "Todo o programa de Português que aparece nos editais, do fundamental ao superior",
+        "1.526 questões comentadas, com 4 ou 5 alternativas e itens de Certo ou Errado",
+        "3 simulados de 40 questões: VUNESP, FGV e Cebraspe",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "area": "redacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "751 páginas em 16 módulos, com leitura confortável",
+      "1.526 questões comentadas no estilo das principais bancas",
+      "Itens de Certo ou Errado no estilo Cebraspe",
+      "3 simulados de 40 questões: VUNESP, FGV e Cebraspe",
+      "Redação oficial pelo Manual da Presidência (3ª edição)",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "portugues-completo-concursos/images/capa.png",
+      "pdfKey": "portugues-completo-concursos/docs/apostila-portugues-completo-concursos.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Portugues_Completo_Concursos.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Português Completo",
+        "key": "portugues-completo-concursos/audio/resumo.mp3",
+        "downloadName": "Resumo_Portugues_Completo.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar o material, interpretação, tipologia e gêneros",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/01-interpretacao-e-textos.mp3",
+          "downloadName": "01-interpretacao-e-textos.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Coesão, coerência, reescrita e o sentido das palavras",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/02-coesao-e-semantica.mp3",
+          "downloadName": "02-coesao-e-semantica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Ortografia, acentuação, hífen e porquês",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/03-ortografia-e-acentuacao.mp3",
+          "downloadName": "03-ortografia-e-acentuacao.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Classes de palavras: formação, nomes, pronomes, verbos e conectivos",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/04-morfologia.mp3",
+          "downloadName": "04-morfologia.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Sintaxe do período simples e do período composto",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/05-sintaxe.mp3",
+          "downloadName": "05-sintaxe.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Pontuação e concordância",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/06-pontuacao-e-concordancia.mp3",
+          "downloadName": "06-pontuacao-e-concordancia.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Regência, crase e colocação pronominal",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/07-regencia-crase-colocacao.mp3",
+          "downloadName": "07-regencia-crase-colocacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Redação oficial",
+          "key": "portugues-completo-concursos/audio/pt-br-v1/08-redacao-oficial.mp3",
+          "downloadName": "08-redacao-oficial.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }

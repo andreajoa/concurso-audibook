@@ -146,6 +146,10 @@ SPEC = {
    completa=('SOLDADO', 'PM-SP', ['Fundação VUNESP • 882 páginas • 1.530 questões comentadas', 'Português • Matemática • Conhecimentos Gerais • Informática', 'Administração Pública • Redação VUNESP • legislação na íntegra']),
    simulados=['2 simulados de 60 questões • 5 alternativas • formato da prova', 'Português 20 • Matemática 15 • Gerais 15 • Informática 5 • Adm. 5', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Constituição Federal: arts. 5º, 14 a 16, 37, 38, 42 e 144', 'Constituição Paulista: Executivo, Justiça Militar, servidores e PM', 'Lei de Acesso à Informação e Decreto estadual nº 68.155/2023'])),
+ 'portugues-completo-concursos': dict(sim_t1='SIMULADOS', sigla='PORTUGUÊS', cobre='PARA TODOS OS CONCURSOS • NÍVEIS FUNDAMENTAL, MÉDIO E SUPERIOR', ed='ACORDO ORTOGRÁFICO VIGENTE', lomb=['PORTUGUÊS', 'COMPLETO', 'CONCURSOS'],
+   completa=('PORTUGUÊS', 'COMPLETO', ['751 páginas • 1.526 questões comentadas • estilo das bancas', 'interpretação • coesão • semântica • ortografia • morfologia • sintaxe', 'pontuação • concordância • regência • crase • colocação • redação oficial']),
+   simulados=['3 simulados de 40 questões: VUNESP, FGV e Cebraspe', 'múltipla escolha e itens de Certo ou Errado', 'gabarito comentado questão a questão'],
+   terceiro=('REDAÇÃO OFICIAL', ['Manual de Redação da Presidência da República (3ª ed.)', 'padrão ofício • pronomes de tratamento • fechos', 'correio eletrônico • requerimento • atestado'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
