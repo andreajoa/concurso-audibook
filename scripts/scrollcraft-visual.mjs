@@ -27,7 +27,7 @@ async function homeShot(name,viewport,reducedMotion='no-preference'){
 await homeShot('desktop-hero',{width:1440,height:1100});
 await homeShot('mobile-hero',{width:390,height:844});
 
-const context=await browser.newContext({viewport:{width:1440,height:1100}});const page=await context.newPage();await page.goto(base,{waitUntil:'networkidle'});
+const context=await browser.newContext({viewport:{width:1440,height:1100}});const page=await context.newPage();await page.goto(base,{waitUntil:'networkidle',timeout:120000});
 const stackTop=await page.locator('.stack-cards').evaluate(el=>el.getBoundingClientRect().top+scrollY);await page.evaluate(y=>scrollTo(0,y+420),stackTop);await page.waitForTimeout(450);const stackStyle=await page.locator('[data-stack-card]').first().evaluate(el=>({transform:getComputedStyle(el).transform,filter:getComputedStyle(el).filter}));if(stackStyle.transform==='none'&&stackStyle.filter==='none')throw new Error('stacking cards did not respond to scroll');
 const trailTop=await page.locator('.trail-section').evaluate(el=>el.getBoundingClientRect().top+scrollY);await page.evaluate(y=>scrollTo(0,y+260),trailTop);await page.waitForTimeout(500);const progress=await page.locator('[data-trail-map]').evaluate(el=>getComputedStyle(el).getPropertyValue('--trail-progress').trim());if(!progress||Number(progress)<=0)throw new Error(`trail signature move did not advance: ${progress}`);await page.screenshot({path:'scrollcraft-artifacts/desktop-signature.png',fullPage:false});await context.close();
 
