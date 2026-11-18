@@ -122,7 +122,7 @@ module.exports = async (req,res) => {
       if (!session.metadata?.access_email_sent) {
         const accessUrl=`${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
         const extras=String(session.metadata?.bump_slugs||'').split(',').map(x=>x.trim()).filter(x=>x&&x!==slug);
-        const nomes=[product.name,...extras.map(x=>getProduct(x)?.name).filter(Boolean)].join(' + ');
+        const nomes=[product.name,...(product.includes||[]).map(x=>getProduct(x)?.name).filter(Boolean),...extras.map(x=>getProduct(x)?.name).filter(Boolean)].join(' + ');
         await sendAccessEmail({to:email,productName:nomes,accessUrl,idempotencyKey:`purchase-access-${session.id}`});
         await updateSessionMetadata(session.id,{access_email_sent:event.id});
       }
