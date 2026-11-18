@@ -42,6 +42,8 @@ PRODUCT_EXPECTATIONS = {
     },
     'matao-sp-fiscal-de-obras-ed02-2026': {
         'pages': 443,
+        # Páginas 226–284: reprodução oficial digitalizada (imagem, sem camada de texto).
+        'imagePages': list(range(226, 285)),
         'topics': ['fiscal de obras', 'matão', 'ibam', 'gabarito', 'simulado'],
     },
     'tjsp-escrevente-tecnico-judiciario-2026': {
@@ -83,6 +85,10 @@ PRODUCT_EXPECTATIONS = {
     'matematica-raciocinio-logico-concursos': {
         'pages': 643,
         'topics': ['matemática', 'raciocínio lógico', 'gabarito', 'simulado'],
+    },
+    'direito-constitucional-administrativo-concursos': {
+        'pages': 806,
+        'topics': ['direito constitucional', 'administrativo', 'gabarito', 'simulado'],
     },
     'informatica-para-concursos': {
         'pages': 616,
