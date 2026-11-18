@@ -3167,5 +3167,293 @@
       ]
     },
     "exam": null
+  },
+  "cadernos-questoes-por-banca": {
+    "slug": "cadernos-questoes-por-banca",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Cadernos de questões",
+    "name": "Cadernos de Questões por Banca: VUNESP, FGV, FCC e Cebraspe + audiobook",
+    "shortName": "Cadernos de Questões por Banca",
+    "edition": "Edição 2026/2027, atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 1990,
+    "stripePriceEnv": "STRIPE_PRICE_CADERNOS_QUESTOES_POR_BANCA",
+    "description": "Quatro cadernos de questões em um só material, cada um no estilo de uma banca: VUNESP, FGV, FCC e Cebraspe. 792 páginas com raio-X de cada banca (como cobra, pegadinhas e estratégia de prova), técnicas de resolução e 2.010 questões inéditas com gabarito comentado em Língua Portuguesa, Matemática e Raciocínio Lógico, Informática e Noções de Direito: 450 por banca de múltipla escolha e 500 itens de Certo ou Errado no estilo Cebraspe, mais um simulado de 40 questões por banca. Audiobook em 8 capítulos com questões resolvidas em voz alta e resumo narrado.",
+    "seoTitle": "Cadernos de Questões por Banca | Trilha Aprova",
+    "seoDescription": "Cadernos de questões VUNESP, FGV, FCC e Cebraspe: 792 páginas, 2.010 questões comentadas, 4 simulados e audiobook.",
+    "storefront": {
+      "badge": "VUNESP • FGV • FCC • CEBRASPE • QUESTÕES COMENTADAS",
+      "cover3d": "/assets/capa-cadernos-questoes-por-banca-completa-3d.webp",
+      "cta": "Quero os 4 cadernos + audiobook",
+      "headline": "Treine no estilo exato da sua banca: 2.010 questões comentadas de VUNESP, FGV, FCC e Cebraspe",
+      "shortTag": "Cadernos por banca · VUNESP, FGV, FCC e Cebraspe",
+      "combo": [
+        {
+          "titulo": "Cadernos por Banca",
+          "detalhe": "4 cadernos · 792 páginas · raio-X de cada banca"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1 simulado de 40 questões por banca"
+        },
+        {
+          "titulo": "Caderno Cebraspe",
+          "detalhe": "500 itens de Certo ou Errado comentados"
+        }
+      ],
+      "subheadline": "Português, Matemática e RLM, Informática e Noções de Direito · Questões inéditas no estilo de cada banca, todas comentadas",
+      "comboCovers": [
+        "/assets/capa-cadernos-questoes-por-banca-simulados-3d.webp",
+        "/assets/capa-cadernos-questoes-por-banca-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "VUNESP, FGV, FCC e Cebraspe · todos os concursos",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": "792",
+        "questoes": 2010
+      },
+      "bullets": [
+        "Raio-X de cada banca: como cobra, pegadinhas e estratégia de prova",
+        "450 questões por banca de múltipla escolha + 500 itens Cebraspe de Certo ou Errado",
+        "Gabarito comentado em todas as 2.010 questões (os cadernos comuns trazem só a letra)",
+        "Audiobook com questões resolvidas em voz alta + resumo narrado"
+      ],
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "792 páginas em 4 cadernos, com leitura confortável",
+      "2.010 questões com gabarito comentado",
+      "Raio-X e estratégia de prova de cada banca",
+      "500 itens de Certo ou Errado no estilo Cebraspe",
+      "4 simulados de 40 questões, um por banca",
+      "Audiobook com questões resolvidas em voz alta",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "cadernos-questoes-por-banca/images/capa.png",
+      "pdfKey": "cadernos-questoes-por-banca/docs/apostila-cadernos-questoes-por-banca.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Cadernos_por_Banca.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Cadernos por Banca",
+        "key": "cadernos-questoes-por-banca/audio/resumo.mp3",
+        "downloadName": "Resumo_Cadernos_por_Banca.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar os cadernos e técnicas de prova",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/01-como-usar-e-tecnicas.mp3",
+          "downloadName": "01-como-usar-e-tecnicas.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "VUNESP: raio-X e Língua Portuguesa",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/02-vunesp-portugues.mp3",
+          "downloadName": "02-vunesp-portugues.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "VUNESP: Matemática, Informática e Direito",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/03-vunesp-matematica-informatica-direito.mp3",
+          "downloadName": "03-vunesp-matematica-informatica-direito.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "FGV: raio-X e Língua Portuguesa",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/04-fgv-portugues.mp3",
+          "downloadName": "04-fgv-portugues.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "FGV: Matemática, Informática e Direito",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/05-fgv-matematica-informatica-direito.mp3",
+          "downloadName": "05-fgv-matematica-informatica-direito.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "FCC: raio-X e Língua Portuguesa",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/06-fcc-portugues.mp3",
+          "downloadName": "06-fcc-portugues.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "FCC: Matemática, Informática e Direito",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/07-fcc-matematica-informatica-direito.mp3",
+          "downloadName": "07-fcc-matematica-informatica-direito.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Cebraspe: Certo ou Errado",
+          "key": "cadernos-questoes-por-banca/audio/pt-br-v1/08-cebraspe.mp3",
+          "downloadName": "08-cebraspe.mp3"
+        }
+      ]
+    },
+    "exam": null
+  },
+  "kit-base-plano-de-estudos": {
+    "slug": "kit-base-plano-de-estudos",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Kit",
+    "name": "Kit Base para Concursos: Português, Matemática, Informática, Redação + Plano de Estudos",
+    "shortName": "Kit Base + Plano de Estudos",
+    "edition": "Edição 2026/2027, atualizada em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 2790,
+    "stripePriceEnv": "STRIPE_PRICE_KIT_BASE_PLANO_DE_ESTUDOS",
+    "description": "O Kit Base reúne em uma só compra as quatro apostilas da base comum dos concursos — Português Completo, Matemática e Raciocínio Lógico, Informática e Redação — e um Plano de Estudos exclusivo: como funciona um concurso, diagnóstico e metas, ciclo de estudos, técnicas com base científica, revisões e caderno de erros, planos de 30, 60 e 90 dias, rotina de redação, reta final e fichas para imprimir, com simulado diagnóstico de 60 questões. São 2.395 páginas e 5.627 questões comentadas no total, cada apostila com o próprio PDF e audiobook.",
+    "seoTitle": "Kit Base para Concursos + Plano de Estudos | Trilha Aprova",
+    "seoDescription": "Kit Base: Português, Matemática e RLM, Informática, Redação e Plano de Estudos. 2.395 páginas, 5.627 questões e audiobooks.",
+    "storefront": {
+      "badge": "KIT BASE • 4 APOSTILAS + PLANO DE ESTUDOS",
+      "cover3d": "/assets/capa-kit-base-plano-de-estudos-completa-3d.webp",
+      "cta": "Quero o Kit Base completo",
+      "headline": "Tudo o que cai em quase todo concurso, em um só kit: 4 apostilas, 5.627 questões comentadas, audiobooks e um plano de estudos",
+      "shortTag": "Kit Base · Português, Matemática, Informática e Redação",
+      "combo": [
+        {
+          "titulo": "Plano de Estudos",
+          "detalhe": "planos de 30, 60 e 90 dias + fichas"
+        },
+        {
+          "titulo": "4 Apostilas Completas",
+          "detalhe": "Português, Matemática e RLM, Informática, Redação"
+        },
+        {
+          "titulo": "Audiobooks",
+          "detalhe": "um audiobook por apostila + o do Plano"
+        }
+      ],
+      "subheadline": "Base comum de concursos de nível médio e superior · Cada apostila com PDF e audiobook próprios · Pagamento único",
+      "comboCovers": [
+        "/assets/capa-kit-base-plano-de-estudos-simulados-3d.webp",
+        "/assets/capa-kit-base-plano-de-estudos-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Base comum · todos os concursos",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": "2.395",
+        "questoes": 5627
+      },
+      "bullets": [
+        "Português Completo (751 págs), Matemática e RLM (643 págs), Informática (616 págs) e Redação (325 págs)",
+        "Plano de Estudos exclusivo com planos de 30, 60 e 90 dias e simulado diagnóstico",
+        "5.627 questões comentadas no total",
+        "Audiobook de cada apostila e do Plano de Estudos"
+      ],
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "2.395 páginas em 5 materiais",
+      "4 apostilas completas, cada uma com PDF e audiobook",
+      "Plano de Estudos com planos de 30, 60 e 90 dias",
+      "5.627 questões comentadas",
+      "Simulado diagnóstico de 60 questões",
+      "Fichas de controle para imprimir",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "kit-base-plano-de-estudos/images/capa.png",
+      "pdfKey": "kit-base-plano-de-estudos/docs/plano-de-estudos-kit-base.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Kit_Base_Plano_de_Estudos.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Plano de Estudos",
+        "key": "kit-base-plano-de-estudos/audio/resumo.mp3",
+        "downloadName": "Resumo_Plano_de_Estudos.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Como usar o Kit e como funciona um concurso",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/01-como-funciona-um-concurso.mp3",
+          "downloadName": "01-como-funciona-um-concurso.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Diagnóstico e metas",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/02-diagnostico-e-metas.mp3",
+          "downloadName": "02-diagnostico-e-metas.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Ciclo de estudos",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/03-ciclo-de-estudos.mp3",
+          "downloadName": "03-ciclo-de-estudos.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Técnicas de estudo com base científica",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/04-tecnicas-de-estudo.mp3",
+          "downloadName": "04-tecnicas-de-estudo.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Revisões e caderno de erros",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/05-revisoes-e-caderno-de-erros.mp3",
+          "downloadName": "05-revisoes-e-caderno-de-erros.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Planos de 30, 60 e 90 dias",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/06-planos-30-60-90-dias.mp3",
+          "downloadName": "06-planos-30-60-90-dias.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Rotina de redação, reta final e dia da prova",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/07-redacao-e-reta-final.mp3",
+          "downloadName": "07-redacao-e-reta-final.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Rotina, saúde e constância",
+          "key": "kit-base-plano-de-estudos/audio/pt-br-v1/08-rotina-saude-e-constancia.mp3",
+          "downloadName": "08-rotina-saude-e-constancia.mp3"
+        }
+      ]
+    },
+    "exam": null,
+    "includes": [
+      "portugues-completo-concursos",
+      "matematica-raciocinio-logico-concursos",
+      "informatica-para-concursos",
+      "redacao-nivel-fundamental-2026"
+    ]
   }
 }
