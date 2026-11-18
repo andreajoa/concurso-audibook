@@ -3026,5 +3026,146 @@
       ]
     },
     "exam": null
+  },
+  "direito-constitucional-administrativo-concursos": {
+    "slug": "direito-constitucional-administrativo-concursos",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concursos públicos",
+    "examBoard": "Conforme edital",
+    "category": "Direito",
+    "name": "Direito Constitucional e Administrativo para Concursos + audiobook",
+    "shortName": "Direito Constitucional e Administrativo",
+    "edition": "Edição 2026/2027, texto legal vigente em 18/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a concursos de nível fundamental, médio e superior",
+    "currency": "brl",
+    "priceCents": 2790,
+    "stripePriceEnv": "STRIPE_PRICE_DIREITO_CONSTITUCIONAL_ADMINISTRATIVO_CONCURSOS",
+    "description": "Apostila de Direito Constitucional e Direito Administrativo para qualquer concurso: 13 módulos em 806 páginas, com teoria direta, tabelas de revisão e as pegadinhas das bancas. Princípios fundamentais, direitos e garantias (art. 5º) e remédios constitucionais, direitos sociais, nacionalidade e direitos políticos, organização do Estado e competências, Administração Pública e servidores na Constituição (arts. 37 a 41), Poderes e processo legislativo, princípios, organização, poderes e atos administrativos, responsabilidade civil do Estado, processo administrativo (Lei nº 9.784/1999), licitações e contratos (Lei nº 14.133/2021), servidores federais (Lei nº 8.112/1990), improbidade (Lei nº 8.429/1992, com a Lei nº 14.230/2021) e Lei de Acesso à Informação. 1.759 questões comentadas, com letra da lei conferida no texto oficial, itens de Certo ou Errado, 2 simulados de 40 questões e audiobook em 8 capítulos com resumo narrado.",
+    "seoTitle": "Direito Constitucional e Administrativo | Trilha Aprova",
+    "seoDescription": "Direito Constitucional e Administrativo para concursos: 806 páginas, 1.759 questões comentadas, letra da lei vigente, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "DIREITO CONSTITUCIONAL E ADMINISTRATIVO • TODAS AS BANCAS",
+      "cover3d": "/assets/capa-direito-constitucional-administrativo-concursos-completa-3d.webp",
+      "cta": "Quero o Direito Constitucional e Administrativo + audiobook",
+      "headline": "Constituição e Direito Administrativo na letra da lei vigente, com 1.759 questões comentadas e audiobook",
+      "shortTag": "Direito Constitucional e Administrativo · Todos os concursos",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "13 módulos · 806 páginas: da CF à Lei 14.133"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "1.759 questões comentadas + 2 simulados"
+        },
+        {
+          "titulo": "Caderno de Letra da Lei",
+          "detalhe": "art. 5º, art. 37, 8.112, 9.784, 14.133, LAI"
+        }
+      ],
+      "subheadline": "Para concursos de nível médio e superior · Estilo VUNESP, FCC, FGV e Cebraspe · Lei nº 14.133/2021 e Lei nº 14.230/2021",
+      "comboCovers": [
+        "/assets/capa-direito-constitucional-administrativo-concursos-simulados-3d.webp",
+        "/assets/capa-direito-constitucional-administrativo-concursos-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Vários concursos",
+        "cargo": "Direito Constitucional e Administrativo · todos os concursos",
+        "salario": null,
+        "vagas": null,
+        "taxa": null,
+        "inscricoes": null,
+        "requisito": null,
+        "url": null,
+        "paginas": "806",
+        "questoes": 1759
+      },
+      "bullets": [
+        "Constituição Federal e Direito Administrativo do jeito que os editais cobram",
+        "Questões de letra da lei montadas a partir do texto oficial e vigente do Planalto",
+        "1.759 questões comentadas, com 4 ou 5 alternativas e itens de Certo ou Errado",
+        "Audiobook em 8 capítulos + resumo narrado"
+      ],
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "806 páginas em 13 módulos, com leitura confortável",
+      "1.759 questões comentadas, com o texto literal da lei no gabarito",
+      "Itens de Certo ou Errado no estilo Cebraspe",
+      "2 simulados de 40 questões com gabarito comentado",
+      "Nova Lei de Licitações e reforma da improbidade já incorporadas",
+      "Resumo em áudio + audiobook completo em 8 capítulos",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "direito-constitucional-administrativo-concursos/images/capa.png",
+      "pdfKey": "direito-constitucional-administrativo-concursos/docs/apostila-direito-constitucional-administrativo-concursos.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Direito_Constitucional_Administrativo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Direito Constitucional e Administrativo",
+        "key": "direito-constitucional-administrativo-concursos/audio/resumo.mp3",
+        "downloadName": "Resumo_Direito_Constitucional_Administrativo.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Princípios fundamentais e direitos individuais",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/01-teoria-e-direitos-fundamentais.mp3",
+          "downloadName": "01-teoria-e-direitos-fundamentais.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Direitos sociais, nacionalidade e direitos políticos",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/02-direitos-sociais-e-politicos.mp3",
+          "downloadName": "02-direitos-sociais-e-politicos.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Organização do Estado e Administração Pública na CF",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/03-estado-e-administracao-na-cf.mp3",
+          "downloadName": "03-estado-e-administracao-na-cf.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Legislativo, Executivo, Judiciário e funções essenciais",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/04-poderes.mp3",
+          "downloadName": "04-poderes.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito Administrativo: princípios, organização, poderes e atos",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/05-direito-administrativo.mp3",
+          "downloadName": "05-direito-administrativo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Processo administrativo e licitações",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/06-processo-e-licitacoes.mp3",
+          "downloadName": "06-processo-e-licitacoes.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Agentes públicos e a Lei 8.112",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/07-servidores-publicos.mp3",
+          "downloadName": "07-servidores-publicos.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Improbidade, acesso à informação e controle",
+          "key": "direito-constitucional-administrativo-concursos/audio/pt-br-v1/08-improbidade-lai-controle.mp3",
+          "downloadName": "08-improbidade-lai-controle.mp3"
+        }
+      ]
+    },
+    "exam": null
   }
 }
