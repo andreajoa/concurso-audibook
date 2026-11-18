@@ -5,6 +5,9 @@ on:
   pull_request:
   repository_dispatch:
     types: [nexacloud-redeploy]
+  schedule:
+    # todo dia às 03:05 de Brasília: páginas refeitas com a data do dia (inscrições encerradas, produto após a prova sai da vitrine)
+    - cron: '5 6 * * *'
 permissions:
   id-token: write
   contents: read

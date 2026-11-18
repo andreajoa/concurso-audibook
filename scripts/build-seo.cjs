@@ -30,15 +30,24 @@ const AUTHOR_NAME = 'Trilha Aprova';
 const INSTAGRAM_URL = 'https://www.instagram.com/trilhaaprova.concursos/';
 const BUILD_DATE = process.env.SITE_UPDATED || new Date().toISOString().slice(0, 10);
 
-const products = Object.values(catalog).filter(p => p.active && p.kind !== 'simulados');
+// Datas (18/11/2026): produto cuja prova já passou sai da vitrine na próxima geração (o deploy roda todo dia);
+// a entrega a quem comprou continua pelo catálogo completo. Inscrições com data final vencida viram "encerradas".
+const { sellable, inscricoesTexto } = require('../lib/exam-watch');
+const BUILD_NOW = process.env.SITE_UPDATED ? new Date(BUILD_DATE + 'T12:00:00Z') : new Date();
+const vendavel = p => !!p && p.active === true && sellable(p, BUILD_NOW);
+for (const p of Object.values(catalog)) {
+  const k = p && p.storefront && p.storefront.concurso;
+  if (k && k.inscricoes) k.inscricoes = inscricoesTexto(k.inscricoes, BUILD_DATE);
+}
+const products = Object.values(catalog).filter(p => vendavel(p) && p.kind !== 'simulados');
 // Cadernos de simulados avulsos (13/11/2026): produto só em PDF, com página própria em /simulados/<slug>.
-const simulados = Object.values(catalog).filter(p => p.active && p.kind === 'simulados');
+const simulados = Object.values(catalog).filter(p => vendavel(p) && p.kind === 'simulados');
 const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
 
 // Páginas geradas de produtos fora de venda não podem continuar publicadas
 // apenas porque seus HTMLs antigos permanecem versionados no repositório.
 // A entrega paga usa o catálogo completo e permanece preservada.
-for (const product of Object.values(catalog).filter(p => p.active === false)) {
+for (const product of Object.values(catalog).filter(p => !vendavel(p))) {
   const stalePage = 'public/' + (product.kind === 'simulados' ? 'simulados/' : 'apostilas/') + product.slug + '.html';
   if (fs.existsSync(stalePage)) fs.unlinkSync(stalePage);
 }
@@ -1371,7 +1380,7 @@ function apostilaMunicipio(m) {
   if (m.uf !== 'SP' || m.municipioSlug !== 'matao') return '';
   const slug = 'matao-sp-assistente-administrativo-2026';
   const p = catalog[slug];
-  const disponivel = p?.active === true && p?.assets?.chapters?.length === 8;
+  const disponivel = vendavel(p) && p?.assets?.chapters?.length === 8;
   const capa = disponivel
     ? p.storefront.cover3d
     : '/assets/apostila-matao-assistente-administrativo-3d.png';
