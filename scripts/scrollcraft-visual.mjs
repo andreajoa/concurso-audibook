@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 fs.mkdirSync('scrollcraft-artifacts',{recursive:true});
-const base=process.env.SCROLLCRAFT_URL||'https://concurso-audibook.vercel.app';
+const base=process.env.SCROLLCRAFT_URL||'https://www.concursotrilhaaprova.online';
 const browser=await chromium.launch({headless:true});
 
 async function coverStats(locator){

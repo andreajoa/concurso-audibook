@@ -14,59 +14,106 @@ from pypdf import PdfReader
 
 
 PRODUCT_EXPECTATIONS = {
+    # Páginas = PDF entregue ao comprador (conferido no R2 em 18/11/2026) = páginas anunciadas no catálogo.
+    'redacao-nivel-fundamental-2026': {
+        # Edição 3.0 (15/11/2026), áudio pt-br-v3.
+        'pages': 325,
+        'topics': ['redação', 'dissertação', 'gabarito'],
+    },
+    'curso-redacao-concursos-2026': {
+        'pages': 728,
+        'topics': ['redação', 'gabarito', 'dissertação'],
+    },
+    'professor-adjunto-i-ibam-santos-2026': {
+        'pages': 650,
+        'topics': ['professor adjunto i', 'ibam', 'língua portuguesa', 'educação infantil', 'simulado'],
+    },
+    'sme-sp-peif-pre-edital-2026': {
+        # Edição ampliada; o arquivo de origem de 220 páginas foi substituído.
+        'pages': 770,
+        'topics': ['sme-sp', 'peif', 'currículo da cidade', 'gabarito'],
+    },
     'matao-sp-assistente-administrativo-2026': {
-        'pages': 49,
+        # 469 páginas de estudo + anexo de legislação na íntegra (Leis 8.159 e 14.133).
+        'pages': 595,
+        # Páginas 349–407: reprodução oficial digitalizada (imagem, sem camada de texto).
+        'imagePages': list(range(349, 408)),
         'topics': ['assistente administrativo', 'matão', 'ibam', 'gabarito', 'simulado'],
+    },
+    'matao-sp-fiscal-de-obras-ed02-2026': {
+        'pages': 443,
+        # Páginas 226–284: reprodução oficial digitalizada (imagem, sem camada de texto).
+        'imagePages': list(range(226, 285)),
+        'topics': ['fiscal de obras', 'matão', 'ibam', 'gabarito', 'simulado'],
+    },
+    'tjsp-escrevente-tecnico-judiciario-2026': {
+        'pages': 1060,
+        'topics': ['escrevente técnico judiciário', 'tjsp', 'vunesp', 'gabarito', 'simulado'],
+    },
+    'aparecida-de-goiania-pe1-pedagogia-2026': {
+        'pages': 673,
+        'topics': ['aparecida de goiânia', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
+    },
+    'aparecida-de-goiania-agente-educativo-2026': {
+        'pages': 651,
+        'topics': ['agente educativo', 'aparecida', 'gabarito', 'simulado'],
+    },
+    'simulados-aparecida-de-goiania-pe1-pedagogia-2026': {
+        'pages': 73,
+        'topics': ['aparecida', 'simulado', 'gabarito'],
+    },
+    'banestes-tecnico-bancario-2026': {
+        'pages': 578,
+        'topics': ['banestes', 'técnico bancário', 'fundação carlos chagas', 'gabarito', 'simulado'],
+    },
+    'ibge-recenseador-censo-agro-2026': {
+        'pages': 600,
+        'topics': ['ibge', 'recenseador', 'cesgranrio', 'gabarito', 'simulado'],
+    },
+    'pm-sp-aluno-soldado-2027': {
+        'pages': 882,
+        'topics': ['soldado', 'vunesp', 'gabarito', 'simulado'],
+    },
+    'portugues-completo-concursos': {
+        'pages': 751,
+        'topics': ['português', 'gabarito', 'simulado', 'crase'],
+    },
+    'conhecimentos-pedagogicos-professor': {
+        'pages': 706,
+        'topics': ['pedagógicos', 'ldb', 'simulado'],
+    },
+    'matematica-raciocinio-logico-concursos': {
+        'pages': 643,
+        'topics': ['matemática', 'raciocínio lógico', 'gabarito', 'simulado'],
+    },
+    'direito-constitucional-administrativo-concursos': {
+        'pages': 806,
+        'topics': ['direito constitucional', 'administrativo', 'gabarito', 'simulado'],
+    },
+    'cadernos-questoes-por-banca': {
+        'pages': 792,
+        'topics': ['vunesp', 'fgv', 'cebraspe', 'gabarito', 'simulado'],
+    },
+    'kit-base-plano-de-estudos': {
+        # PDF próprio do kit = Plano de Estudos (60 págs); as páginas anunciadas somam as 4 apostilas incluídas.
+        'pages': 60,
+        'topics': ['plano de estudos', 'ciclo', 'revisão', 'simulado'],
+    },
+    'informatica-para-concursos': {
+        'pages': 616,
+        'topics': ['informática', 'excel', 'gabarito', 'simulado'],
     },
     'detran-sp-agente-de-transito-2026': {
         'pages': 49,
         'topics': ['detran-sp', 'agente estadual de trânsito', 'instituto avalia', 'contran', 'gabarito'],
     },
-    'sme-sp-peif-pre-edital-2026': {
-        'pages': 220,
-        'topics': ['sme-sp', 'peif', 'pré-edital', 'currículo da cidade', 'gabarito'],
-    },
     'autores-ibam-2026': {
         'pages': 34,
         'topics': ['autores', 'ibam', 'gabarito'],
     },
-    'redacao-nivel-fundamental-2026': {
-        'pages': 19,
-        'topics': ['redação', 'dissertação', 'gabarito'],
-    },
     'secretario-de-unidade-escolar-ibam-santos-2026': {
         'pages': 84,
         'topics': ['secretário', 'ibam', 'língua portuguesa', 'raciocínio lógico', 'eca', 'simulado'],
-    },
-    'matao-sp-fiscal-de-obras-ed02-2026': {
-        'pages': 49,
-        'topics': ['fiscal de obras', 'matão', 'ibam', 'gabarito', 'simulado'],
-    },
-    'tjsp-escrevente-tecnico-judiciario-2026': {
-        # 86 pages of study content plus 464 pages of official edital legislation.
-        'pages': 550,
-        'topics': ['escrevente técnico judiciário', 'tjsp', 'vunesp', 'gabarito', 'simulado'],
-    },
-    'aparecida-de-goiania-pe1-pedagogia-2026': {
-        # 91 pages of study content plus 233 pages of official legislation.
-        'pages': 324,
-        'topics': ['aparecida de goiânia', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
-    },
-    'banestes-tecnico-bancario-2026': {
-        # 101 pages of study content plus 145 pages of the Banestes ethics guide and legislation.
-        'pages': 246,
-        'topics': ['banestes', 'técnico bancário', 'fundação carlos chagas', 'gabarito', 'simulado'],
-    },
-    'ibge-recenseador-censo-agro-2026': {
-        # 74 pages of study content plus 76 pages with the official IBGE technical document and edital annexes.
-        'pages': 150,
-        'topics': ['ibge', 'recenseador', 'cesgranrio', 'gabarito', 'simulado'],
-    },
-    'professor-adjunto-i-ibam-santos-2026': {
-        'pages': 132,
-        # The supplied paperback ends with a blank verso, verified in both PDF readers.
-        'blankPages': [132],
-        'topics': ['professor adjunto i', 'ibam', 'língua portuguesa', 'educação infantil', 'simulado'],
     },
 }
 
@@ -94,8 +141,13 @@ def main():
             if not product.get('active'):
                 continue
             assets = product['assets']
-            tracks = [assets['summary'], *assets['chapters']]
-            if product.get('kind') == 'curso':  # curso em aulas: resumo + pelo menos 8 aulas
+            if product.get('kind') == 'simulados':  # caderno avulso de simulados: só PDF, sem áudio
+                tracks = []
+            else:
+                tracks = [assets['summary'], *assets['chapters']]
+            if product.get('kind') == 'simulados':
+                require(not assets.get('chapters'), f'{slug}: simulados product should not list audio')
+            elif product.get('kind') == 'curso':  # curso em aulas: resumo + pelo menos 8 aulas
                 require(len(tracks) >= 9, f'{slug}: expected summary and at least eight lessons')
             else:
                 require(len(tracks) == 9, f'{slug}: expected summary and eight chapters')
@@ -104,7 +156,10 @@ def main():
             s3.download_file(bucket, assets['pdfKey'], str(pdf))
             pages = [page.extract_text() or '' for page in PdfReader(pdf).pages]
             source = santos_sources.get(slug)
-            peif = peif_source if slug == peif_source['slug'] else None
+            pdf_sha = hashlib.sha256(pdf.read_bytes()).hexdigest()
+            peif = peif_source if slug == peif_source['slug'] and pdf_sha == peif_source['pdfSha256'] else None
+            if slug == peif_source['slug'] and not peif:
+                print(f'NOTE {slug}: edição ampliada à venda; manifesto de origem descreve a edição anterior', flush=True)
             expectation = PRODUCT_EXPECTATIONS.get(slug)
             require(source or expectation, f'{slug}: missing media audit expectations')
 
@@ -114,9 +169,16 @@ def main():
                 allowed_blank = set(expectation['blankPages'])
                 require(all(not pages[n - 1].strip() for n in allowed_blank), f'{slug}: expected blank verso changed')
                 readable_pages = [text for n, text in enumerate(pages, 1) if n not in allowed_blank]
+            if expectation and expectation.get('imagePages'):
+                image_pages = set(expectation['imagePages'])
+                require(all(not pages[n - 1].strip() for n in image_pages), f'{slug}: expected image-only pages changed')
+                readable_pages = [text for n, text in enumerate(pages, 1) if n not in image_pages and n not in set(expectation.get('blankPages', []))]
             require(all(p.strip() for p in readable_pages), f'{slug}: unreadable PDF content pages')
             expected = source['pageCount'] if source else expectation['pages']
             require(len(pages) == expected, f'{slug}: unexpected PDF page count: {len(pages)} != {expected}')
+            announced = (product.get('storefront') or {}).get('concurso', {}).get('paginas')
+            if announced and not product.get('includes'):
+                require(int(str(announced).replace('.', '')) == len(pages), f'{slug}: storefront announces {announced} pages but PDF has {len(pages)}')
             body = '\n'.join(pages).lower()
             if source:
                 topics = ['agente de portaria' if slug.startswith('agente-') else 'inspetor de alunos', 'ibam', 'gabarito']
@@ -157,8 +219,11 @@ def main():
                 require(ranges == source['chapters'], f'{slug}: manifest chapter pages differ from source')
                 covered = [page for first, last in ranges for page in range(first, last + 1)]
                 require(covered == list(range(2, expected + 1)), f'{slug}: missing, repeated or unordered source pages')
-            if slug == 'matao-sp-assistente-administrativo-2026':
-                metadata = json.loads(Path('products/matao-2026-final-media.json').read_text())
+            matao_meta = json.loads(Path('products/matao-2026-final-media.json').read_text())
+            if slug == 'matao-sp-assistente-administrativo-2026' and pdf_sha != matao_meta['files']['pdf']['sha256']:
+                print(f'NOTE {slug}: edição ampliada à venda; manifesto de origem descreve a edição anterior', flush=True)
+            elif slug == 'matao-sp-assistente-administrativo-2026':
+                metadata = matao_meta
                 require(hashlib.sha256(pdf.read_bytes()).hexdigest() == metadata['files']['pdf']['sha256'],
                     'Matão: complete PDF differs from the audited publication')
                 cover = work / 'cover-original.png'
@@ -178,7 +243,7 @@ def main():
                 require(completion.get('summary') == assets['summary']['key']
                     and completion.get('chapterKeys') == [ch['key'] for ch in assets['chapters']],
                     'Matão: source manifest does not match buyer playback and download keys')
-            if slug == 'redacao-nivel-fundamental-2026':
+            if slug == 'redacao-nivel-fundamental-2026' and not assets['pdfKey'].endswith('-v3.pdf'):
                 manifest = json.loads(s3.get_object(Bucket=bucket,
                     Key=f'{slug}/audio/manifest.json')['Body'].read())
                 require(manifest['pdfKey'] == assets['pdfKey'], 'Redacao manifest: wrong PDF')
@@ -195,7 +260,7 @@ def main():
                 digest = hashlib.sha256(media.read_bytes()).hexdigest()
                 if source or peif:
                     require(digest == santos_tracks[track['key']]['sha256'], f'{slug}/{track["id"]}: audio differs from completion manifest')
-                if slug == 'matao-sp-assistente-administrativo-2026':
+                if slug == 'matao-sp-assistente-administrativo-2026' and pdf_sha == matao_meta['files']['pdf']['sha256']:
                     actual = s3.head_object(Bucket=bucket, Key=track['key'])
                     require(actual.get('Metadata', {}).get('sha256') == digest,
                         f'{slug}/{track["id"]}: recording checksum differs from private upload')
@@ -227,7 +292,7 @@ def main():
                         f'{slug}/{track["id"]}: signed streaming range failed')
                 durations.append(round(seconds, 2))
                 print(f'PASS {slug}/{track["id"]}: MP3 decoded; signed streaming; {seconds:.1f}s', flush=True)
-            report.append({'slug': slug, 'pdf_pages': len(pages), 'summary_seconds': durations[0],
+            report.append({'slug': slug, 'pdf_pages': len(pages), 'summary_seconds': durations[0] if durations else None,
                 'chapter_seconds': durations[1:], 'total_seconds': round(sum(durations), 2)})
     print(json.dumps(report, ensure_ascii=False, indent=2))
     print('PASS: distinct product audio; all files decoded; summary and chapters available privately.')
