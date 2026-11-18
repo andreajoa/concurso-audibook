@@ -132,8 +132,13 @@ def main():
             if not product.get('active'):
                 continue
             assets = product['assets']
-            tracks = [assets['summary'], *assets['chapters']]
-            if product.get('kind') == 'curso':  # curso em aulas: resumo + pelo menos 8 aulas
+            if product.get('kind') == 'simulados':  # caderno avulso de simulados: só PDF, sem áudio
+                tracks = []
+            else:
+                tracks = [assets['summary'], *assets['chapters']]
+            if product.get('kind') == 'simulados':
+                require(not assets.get('chapters'), f'{slug}: simulados product should not list audio')
+            elif product.get('kind') == 'curso':  # curso em aulas: resumo + pelo menos 8 aulas
                 require(len(tracks) >= 9, f'{slug}: expected summary and at least eight lessons')
             else:
                 require(len(tracks) == 9, f'{slug}: expected summary and eight chapters')
@@ -278,7 +283,7 @@ def main():
                         f'{slug}/{track["id"]}: signed streaming range failed')
                 durations.append(round(seconds, 2))
                 print(f'PASS {slug}/{track["id"]}: MP3 decoded; signed streaming; {seconds:.1f}s', flush=True)
-            report.append({'slug': slug, 'pdf_pages': len(pages), 'summary_seconds': durations[0],
+            report.append({'slug': slug, 'pdf_pages': len(pages), 'summary_seconds': durations[0] if durations else None,
                 'chapter_seconds': durations[1:], 'total_seconds': round(sum(durations), 2)})
     print(json.dumps(report, ensure_ascii=False, indent=2))
     print('PASS: distinct product audio; all files decoded; summary and chapters available privately.')
