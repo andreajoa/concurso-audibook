@@ -3873,5 +3873,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "petrolina-de-goias-professor-pedagogo-2027": {
+    "slug": "petrolina-de-goias-professor-pedagogo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de Petrolina de Goiás (GO) - Edital 001/2026",
+    "examBoard": "Ganzaroli Assessoria",
+    "category": "Concursos públicos",
+    "name": "Professor Pedagogo Nível 1 - Petrolina de Goiás + audiobook",
+    "shortName": "Petrolina de Goiás Professor Pedagogo",
+    "edition": "Edição 2026/2027, pós-edital 001/2026, atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor Pedagogo Nível 1 da Prefeitura de Petrolina de Goiás (GO)",
+    "currency": "brl",
+    "priceCents": 5090,
+    "stripePriceEnv": "STRIPE_PRICE_PETROLINA_DE_GOIAS_PROFESSOR_PEDAGOGO_2027",
+    "description": "Apostila digital para Professor Pedagogo Nível 1 da Prefeitura de Petrolina de Goiás (GO), Edital 001/2026, banca Ganzaroli, prova objetiva e redação em 10/01/2027. PDF de 660 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática, Conhecimentos Gerais (história de Petrolina de Goiás, Goiás, Brasil, Constituição, Administração Pública e governança) e Conhecimentos Específicos: fundamentos da educação, teorias da aprendizagem, currículo, PPP, didática, educação infantil, alfabetização e letramento, avaliação, inclusão, legislação educacional (CF, LDB, ECA, PNE, BNCC, LBI) e o Estatuto e Plano de Carreira do Magistério de Petrolina de Goiás (Lei 1.408/2026), mais a redação com os critérios do edital. 1.439 questões comentadas de 4 alternativas, 2 simulados de 40 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 660 páginas, todo o edital do Professor Pedagogo Nível 1",
+      "1.439 questões comentadas de 4 alternativas, como na prova",
+      "Estatuto do Magistério de Petrolina de Goiás (Lei 1.408/2026) explicado e com questões",
+      "2 simulados de 40 questões com os pesos da prova",
+      "Redação de 20 a 25 linhas com os critérios de correção do edital",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "petrolina-de-goias-professor-pedagogo-2027/images/capa.png",
+      "pdfKey": "petrolina-de-goias-professor-pedagogo-2027/docs/apostila-petrolina-de-goias-professor-pedagogo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Petrolina_de_Goias_Professor_Pedagogo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Petrolina de Goiás Professor Pedagogo",
+        "key": "petrolina-de-goias-professor-pedagogo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Petrolina_de_Goias.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa: leitura e sentidos",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: gramática aplicada",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática e conhecimentos gerais: Petrolina de Goiás, Goiás e Brasil",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/03-matematica-conhecimentos-gerais.mp3",
+          "downloadName": "03-matematica-conhecimentos-gerais.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Fundamentos, aprendizagem, currículo e didática",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/04-fundamentos-curriculo.mp3",
+          "downloadName": "04-fundamentos-curriculo.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Educação infantil, alfabetização, avaliação e inclusão",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/05-infantil-alfabetizacao-inclusao.mp3",
+          "downloadName": "05-infantil-alfabetizacao-inclusao.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Legislação educacional",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/06-legislacao-educacional.mp3",
+          "downloadName": "06-legislacao-educacional.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Estatuto do Magistério de Petrolina de Goiás",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/07-estatuto-magisterio.mp3",
+          "downloadName": "07-estatuto-magisterio.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Redação dissertativo-argumentativa",
+          "key": "petrolina-de-goias-professor-pedagogo-2027/audio/pt-br-v1/08-redacao.mp3",
+          "downloadName": "08-redacao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-10",
+      "confirmed": false,
+      "source": "Ganzaroli Assessoria, Edital 001/2026 da Prefeitura de Petrolina de Goiás — inscrições encerradas em 12/10/2026; prova objetiva e redação previstas para 10/01/2027 (Anexo I)",
+      "sourceUrl": "https://app.ganzaroliassessoria.com.br/concurso_detalhes.aspx?conid=75"
+    },
+    "seoTitle": "Apostila Professor Pedagogo Petrolina de Goiás | Trilha Aprova",
+    "seoDescription": "Apostila Professor Pedagogo Petrolina de Goiás (Ganzaroli): 660 páginas, 1.439 questões, Estatuto do Magistério, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "PETROLINA DE GOIÁS 2026 • PROFESSOR PEDAGOGO • GANZAROLI",
+      "cover3d": "/assets/capa-petrolina-de-goias-professor-pedagogo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Petrolina de Goiás: Professor Pedagogo com até R$ 5.130. Todo o edital, Estatuto do Magistério e audiobook para a prova de 10/01",
+      "shortTag": "Petrolina de Goiás · Professor Pedagogo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "660 páginas: todo o edital + redação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 + 1.359 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Estatuto do Magistério (Lei 1.408/2026), LDB, ECA e PNE"
+        }
+      ],
+      "subheadline": "Professor Pedagogo Nível 1 · Banca Ganzaroli · Prova em 10/01/2027",
+      "comboCovers": [
+        "/assets/capa-petrolina-de-goias-professor-pedagogo-2027-simulados-3d.webp",
+        "/assets/capa-petrolina-de-goias-professor-pedagogo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de Petrolina de Goiás (GO)",
+        "cargo": "Professor Pedagogo Nível 1",
+        "salario": "R$ 3.847,97 (30h) / R$ 5.130,63 (40h)",
+        "vagas": "10 + 30 CR",
+        "taxa": "R$ 150,00",
+        "inscricoes": "encerradas em 12/10/2026",
+        "requisito": "Licenciatura plena em Pedagogia",
+        "url": "https://app.ganzaroliassessoria.com.br/concurso_detalhes.aspx?conid=75",
+        "paginas": 660,
+        "questoes": 1439
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
