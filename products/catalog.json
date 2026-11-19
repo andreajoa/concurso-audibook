@@ -4290,5 +4290,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "campo-limpo-de-goias-professor-2027": {
+    "slug": "campo-limpo-de-goias-professor-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de Campo Limpo de Goiás (GO) - Concurso Público 01/2026 (Edital 01)",
+    "examBoard": "ITAME",
+    "category": "Concursos públicos",
+    "name": "Professor - Campo Limpo de Goiás + audiobook",
+    "shortName": "Campo Limpo de Goiás Professor",
+    "edition": "Edição 2026/2027, pós-edital, atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor da Prefeitura de Campo Limpo de Goiás (GO)",
+    "currency": "brl",
+    "priceCents": 4290,
+    "stripePriceEnv": "STRIPE_PRICE_CAMPO_LIMPO_PROFESSOR_2027",
+    "description": "Apostila digital para Professor da Prefeitura de Campo Limpo de Goiás (GO), Concurso Público 01/2026, banca ITAME, prova e redação previstas para 14/03/2027. PDF de 748 páginas com todo o conteúdo do edital: Língua Portuguesa, Redação (critérios da ITAME, de 20 a 30 linhas), Noções de Informática, Conhecimentos Gerais, História e Geografia de Campo Limpo de Goiás, de Goiás e do Brasil, Conhecimentos Específicos de Pedagogia (fundamentos, alfabetização, literatura infantil, avaliação, inclusão, BNCC, Fundeb, piso, EJA) e a legislação comum: Constituição (arts. 1º a 6º), Lei Orgânica (com as Emendas 004/2016 e 006/2018) e Estatuto dos Servidores (LC 006/2008, com as alterações até 2026), além do Estatuto do Magistério. 1.535 questões comentadas de 4 alternativas, 2 simulados de 50 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 748 páginas, todo o edital do cargo de Professor",
+      "1.535 questões comentadas de 4 alternativas, como na prova",
+      "Lei Orgânica e Estatuto dos Servidores de Campo Limpo, com as alterações até 2026",
+      "Redação com os 5 critérios da ITAME e texto-modelo",
+      "2 simulados de 50 questões com os pesos da prova",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "campo-limpo-de-goias-professor-2027/images/capa.png",
+      "pdfKey": "campo-limpo-de-goias-professor-2027/docs/apostila-campo-limpo-de-goias-professor-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Campo_Limpo_de_Goias_Professor.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Campo Limpo de Goiás Professor",
+        "key": "campo-limpo-de-goias-professor-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Campo_Limpo.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa: leitura e sentidos",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: gramática aplicada",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Redação: texto dissertativo-argumentativo",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/03-redacao.mp3",
+          "downloadName": "03-redacao.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Campo Limpo de Goiás, Goiás e Brasil e noções de informática",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/04-conhecimentos-gerais-informatica.mp3",
+          "downloadName": "04-conhecimentos-gerais-informatica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Fundamentos, aprendizagem, currículo e didática",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/05-fundamentos-curriculo.mp3",
+          "downloadName": "05-fundamentos-curriculo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Alfabetização, avaliação, inclusão e prática docente",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/06-alfabetizacao-inclusao.mp3",
+          "downloadName": "06-alfabetizacao-inclusao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Legislação educacional",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/07-legislacao-educacional.mp3",
+          "downloadName": "07-legislacao-educacional.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Constituição, Lei Orgânica e Estatuto dos Servidores de Campo Limpo de Goiás",
+          "key": "campo-limpo-de-goias-professor-2027/audio/pt-br-v1/08-legislacao-municipal.mp3",
+          "downloadName": "08-legislacao-municipal.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-14",
+      "confirmed": false,
+      "source": "ITAME, Edital 01 do Concurso Público 01/2026 de Campo Limpo de Goiás — inscrições de 21/12/2026 a 21/01/2027; provas objetivas e redação previstas para 14/03/2027 (podendo ocorrer também em 13/03)",
+      "sourceUrl": "https://itame.selecao.net.br/informacoes/39/"
+    },
+    "seoTitle": "Apostila Professor Campo Limpo de Goiás GO | Trilha Aprova",
+    "seoDescription": "Apostila Professor Campo Limpo de Goiás (ITAME): 748 páginas, 1.535 questões, Lei Orgânica, Estatuto, redação e audiobook.",
+    "storefront": {
+      "badge": "CAMPO LIMPO DE GOIÁS 2027 • PROFESSOR • ITAME",
+      "cover3d": "/assets/capa-campo-limpo-de-goias-professor-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Campo Limpo de Goiás: Professor com R$ 4.042 e 35 vagas. Todo o edital, Lei Orgânica, Estatuto, redação e audiobook",
+      "shortTag": "Campo Limpo de Goiás · Professor",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "748 páginas: todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.435 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Estatuto (LC 006/2008), CF arts. 1º a 6º, LDB e ECA"
+        }
+      ],
+      "subheadline": "Professor · Banca ITAME · Prova e redação previstas para 14/03/2027",
+      "comboCovers": [
+        "/assets/capa-campo-limpo-de-goias-professor-2027-simulados-3d.webp",
+        "/assets/capa-campo-limpo-de-goias-professor-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de Campo Limpo de Goiás (GO)",
+        "cargo": "Professor",
+        "salario": "R$ 4.042,61 (30h)",
+        "vagas": "35 + 105 CR",
+        "taxa": null,
+        "inscricoes": "21/12/2026 a 21/01/2027",
+        "requisito": "Superior em Pedagogia ou licenciatura",
+        "url": "https://itame.selecao.net.br/informacoes/39/",
+        "paginas": 748,
+        "questoes": 1535
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
