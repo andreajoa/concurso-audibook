@@ -2460,9 +2460,33 @@ fs.writeFileSync('public/feed.xml', feed);
  * "grátis" nem "3 por 1", para não gerar reprovação por deturpação.
  * ------------------------------------------------------------------ */
 
+// Apostila nova entra no feed sozinha (catálogo → build diário → busca diária do
+// Merchant Center). Para não depender de quem escreve o catálogo, o texto do feed
+// passa por esta limpeza: tira chamada promocional que o Google trata como
+// deturpação ou "texto promocional" e que não descreve o produto.
+// tests/merchant-feed.test.cjs barra o deploy se sobrar alguma.
+const MERCHANT_PROMO = [
+  [/\b\d+\s+(apostilas|materiais|cadernos)\s+pelo\s+pre[çc]o\s+de\s+(1|um)\b/gi, ''],
+  [/\bpelo\s+pre[çc]o\s+de\s+(1|um|uma)\b/gi, ''],
+  [/\b(totalmente\s+)?gr[áa]tis\b/gi, 'incluso'],
+  [/\b(totalmente\s+)?gratuitos?\b/gi, 'incluído'],
+  [/\b(totalmente\s+)?gratuitas?\b/gi, 'incluída'],
+  [/\b(frete|envio)\s+incluso\b/gi, 'entrega digital'],
+  [/\b(aprova[çc][ãa]o\s+garantida|garantimos\s+(a\s+)?(sua\s+)?aprova[çc][ãa]o|passe\s+garantido)\b/gi, ''],
+  [/\b(imperd[íi]vel|promo[çc][ãa]o|oferta\s+rel[âa]mpago|[úu]ltimas\s+unidades|s[óo]\s+hoje|compre\s+j[áa]|desconto\s+de\s+\d+\s*%)\b/gi, ''],
+  [/[!]+/g, '.'],
+  [/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/gu, '']
+];
+const merchantClean = text => {
+  let t = String(text || '');
+  for (const [re, by] of MERCHANT_PROMO) t = t.replace(re, by);
+  return t.replace(/\s+([,.;:])/g, '$1').replace(/([.;:,])\1+/g, '$1').replace(/\s*\+\s*incluso\b/gi, ' + audiobook incluso')
+    .replace(/audiobook\s+\+\s+audiobook/gi, 'audiobook').replace(/\s+/g, ' ').replace(/^[\s,.;:·—+-]+|[\s,;:·—+-]+$/g, '').trim();
+};
+
 const merchantTitle = p => {
   // "no Papel" é o nome comercial do SME-SP, mas no feed sugeriria livro impresso.
-  const base = String(p.name).replace(/\s+no papel\b/i, '').replace(/\s+/g, ' ').trim();
+  const base = merchantClean(String(p.name).replace(/\s+no papel\b/i, '')) || merchantClean(p.shortName) || p.slug;
   const titulo = p.kind === 'curso' || p.kind === 'simulados' || /^(apostila|curso|kit|cadernos?)\b/i.test(base)
     ? base
     : 'Apostila ' + base;
@@ -2472,7 +2496,7 @@ const merchantDescription = p => {
   const entrega = p.kind === 'simulados'
     ? ' Produto digital em PDF, liberado na área do aluno logo após a confirmação do pagamento. Não há envio físico.'
     : ' Produto digital: PDF e áudios liberados na área do aluno logo após a confirmação do pagamento. Não há envio físico.';
-  const texto = String(p.description).replace(/\s+/g, ' ').trim() + entrega +
+  const texto = merchantClean(p.description) + entrega +
     ' Material independente, sem vínculo com bancas ou órgãos públicos.';
   return texto.length > 5000 ? texto.slice(0, 4997).trimEnd() + '...' : texto;
 };
