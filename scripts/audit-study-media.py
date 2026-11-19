@@ -107,6 +107,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 660,
         'topics': ['petrolina', 'pedagogo', 'ganzaroli', 'gabarito', 'simulado'],
     },
+    'faina-professor-pedagogo-2027': {
+        'pages': 826,
+        'topics': ['faina', 'pedagogo', 'itame', 'gabarito', 'simulado'],
+    },
     'ifg-assistente-administracao-2027': {
         'pages': 916,
         'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],
