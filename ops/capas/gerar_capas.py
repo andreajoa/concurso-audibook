@@ -195,6 +195,11 @@ SPEC = {
    completa=('UIRAPURU', 'PROFESSOR PEDAGOGO', ['Ganzaroli • 657 páginas • 1.431 questões comentadas', 'Português • Matemática • Conhecimentos Gerais', 'Pedagogia • Legislação • Estatuto do Magistério • Redação']),
    simulados=['2 simulados de 40 questões • 4 alternativas', 'pesos da prova: Português 2 • Específicos 1,5', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Estatuto do Magistério (Lei 479/2013)', 'LDB • ECA • PNE 2026–2036 • BNCC • LBI', 'Constituição: arts. 205 a 214'])),
+ 'campo-limpo-de-goias-professor-2027': dict(sim_t1='SIMULADOS', sigla='CAMPO LIMPO', cobre='CAMPO LIMPO DE GOIÁS • 2026/2027', ed='CONCURSO Nº 01/2026 • ITAME', lomb=['CAMPO LIMPO', 'PROFESSOR', 'ITAME • 2027'],
+   completa=('CAMPO LIMPO', 'PROFESSOR', ['ITAME • 748 páginas • 1.535 questões comentadas', 'Português • Redação • Informática • Conhecimentos Gerais', 'Pedagogia • Legislação educacional • Lei Orgânica e Estatuto']),
+   simulados=['2 simulados de 50 questões • 4 alternativas', 'Específicos e Legislação: 30 questões, peso 1,5', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Lei Orgânica de Campo Limpo (2014)', 'Estatuto dos Servidores (LC 006/2008)', 'CF arts. 1º a 6º • LDB • ECA • Fundeb']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],

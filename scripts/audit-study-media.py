@@ -115,6 +115,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 657,
         'topics': ['uirapuru', 'pedagogo', 'ganzaroli', 'gabarito', 'simulado'],
     },
+    'campo-limpo-de-goias-professor-2027': {
+        'pages': 748,
+        'topics': ['campo limpo', 'professor', 'itame', 'gabarito', 'simulado'],
+    },
     'ifg-assistente-administracao-2027': {
         'pages': 916,
         'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],
