@@ -200,6 +200,11 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'Específicos e Legislação: 30 questões, peso 1,5', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Lei Orgânica de Campo Limpo (2014)', 'Estatuto dos Servidores (LC 006/2008)', 'CF arts. 1º a 6º • LDB • ECA • Fundeb']))
 ,
+ 'sao-francisco-de-goias-professor-2027': dict(sim_t1='SIMULADOS', sigla='SÃO FRANCISCO', cobre='SÃO FRANCISCO DE GOIÁS • 2026/2027', ed='CONCURSO Nº 001/2026 • VERSÁTIL', lomb=['SÃO FRANCISCO', 'PROFESSOR', 'VERSÁTIL • 2027'],
+   completa=('SÃO FRANCISCO', 'PROFESSOR', ['Versátil • 873 páginas • 1.885 questões comentadas', 'Português • Matemática e Desenho • Atualidades • Informática', 'Educação Infantil • Prova didática • Lei Orgânica e Estatuto']),
+   simulados=['2 simulados de 45 questões • 4 alternativas', 'Específicos e Legislação: 15 questões, peso 3', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Lei Orgânica de São Francisco (com emendas de 2024)', 'Estatuto do Magistério (LC 300/2020)', 'LDB • ECA • BNCC • DCNEI']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
