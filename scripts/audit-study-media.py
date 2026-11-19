@@ -99,6 +99,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 60,
         'topics': ['plano de estudos', 'ciclo', 'revisão', 'simulado'],
     },
+    'sao-luis-montes-belos-professor-pedagogia-2027': {
+        'pages': 782,
+        'topics': ['montes belos', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
+    },
     'ifg-assistente-administracao-2027': {
         'pages': 916,
         'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],

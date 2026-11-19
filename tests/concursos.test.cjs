@@ -250,7 +250,6 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
   const fs = require('node:fs');
   const home = fs.readFileSync('public/index.html', 'utf8');
   const anunciado = /([\d.]+) vagas com inscrição aberta agora/.exec(home);
-  assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
 
   const structured = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .flatMap(match => { const value = JSON.parse(match[1]); return value['@graph'] || [value]; });
@@ -258,6 +257,9 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
   assert.match(buildDate || '', /^\d{4}-\d{2}-\d{2}$/, 'a home precisa declarar a data da própria atualização');
   const abertos = dataset.map(c => cn.normalize(c, buildDate)).filter(c => c.status === 'inscricoes_abertas');
   const soma = abertos.reduce((s, c) => s + (c.vagas || 0), 0);
+  // Sem certame aberto com vagas declaradas, a home não pode anunciar total nenhum.
+  if (!soma) { assert.equal(anunciado, null, 'a home anuncia vagas abertas que a base não tem'); return; }
+  assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
   assert.equal(Number(anunciado[1].replace(/\./g, '')), soma);
 
   const semVagas = abertos.filter(c => c.vagas == null).length;
