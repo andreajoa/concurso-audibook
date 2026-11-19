@@ -56,6 +56,29 @@ const COVER = products[0].storefront.cover3d;
 const socialImageFor = product => ORIGIN + '/assets/social/' + product.slug + '.jpg';
 const absoluteImageUrl = image => new URL(String(image), ORIGIN + '/').href;
 
+// Merchant Center / Search Console (19/11/2026): produto 100% digital, liberado na hora,
+// sem frete. O Google pede shippingDetails e política de devolução coerentes com o
+// feed (public/merchant-feed.xml) e com as páginas /entrega-e-acesso e /cancelamentos.
+const DIGITAL_SHIPPING = {
+  '@type': 'OfferShippingDetails',
+  shippingRate: { '@type': 'MonetaryAmount', value: '0.00', currency: 'BRL' },
+  shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'BR' },
+  deliveryTime: {
+    '@type': 'ShippingDeliveryTime',
+    handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+    transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' }
+  }
+};
+const RETURN_POLICY = {
+  '@type': 'MerchantReturnPolicy',
+  applicableCountry: 'BR',
+  returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+  merchantReturnDays: 7,
+  returnFees: 'https://schema.org/FreeReturn',
+  refundType: 'https://schema.org/FullRefund',
+  merchantReturnLink: ORIGIN + '/cancelamentos'
+};
+
 const verification = process.env.GOOGLE_SITE_VERIFICATION || 'WBWn3z5Lp6fkNKGivLwE5zUfi6LWK94BWs6NcQl2puY';
 if (!/^[A-Za-z0-9_-]{10,200}$/.test(verification)) throw new Error('Invalid Search Console verification token');
 
@@ -383,7 +406,7 @@ const crumbsHtml = trail => `<nav class="crumbs" aria-label="Trilha de navegaç�
     : `<a href="${t[1]}">${esc(t[0])}</a><span class="crumb-sep" aria-hidden="true">›</span>`).join('')
 }</nav>`;
 
-const disclaimer = '<p class="page-note">Material independente de estudo, sem vínculo com órgãos públicos ou bancas organizadoras. Não divulgamos vagas, datas ou inscrições abertas e não há garantia de aprovação. Confirme sempre as informações no edital oficial.</p>';
+const disclaimer = '<p class="page-note">Material independente de estudo, sem vínculo com órgãos públicos ou bancas organizadoras. Vagas, datas e inscrições citadas vêm da página oficial de cada órgão, com a data da conferência, e não há garantia de aprovação. Confirme sempre as informações no edital oficial.</p>';
 
 /* ------------------------------------------------------------------ *
  * Faixa de abertura do portal
@@ -624,14 +647,13 @@ for (const p of products) {
     '@id': url + '#product',
     name: p.shortName,
     description: p.description,
-    image: [p.storefront.cover3d],
+    image: [absoluteImageUrl(p.storefront.cover3d)],
     sku: p.slug,
     category: p.category,
     inLanguage: 'pt-BR',
     brand: { '@type': 'Brand', name: 'Trilha Aprova' },
     manufacturer: { '@id': ORIGIN + '/#organization' },
     author: { '@id': ORIGIN + '/#organization' },
-    audience: { '@type': 'EducationalAudience', educationalRole: 'student', audienceType: p.audience },
     isFamilyFriendly: true,
     offers: {
       '@type': 'Offer',
@@ -644,15 +666,8 @@ for (const p of products) {
       areaServed: { '@type': 'Country', name: 'Brasil' },
       eligibleRegion: { '@type': 'Country', name: 'Brasil' },
       seller: { '@id': ORIGIN + '/#organization' },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'BR',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 7,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        returnFees: 'https://schema.org/FreeReturn',
-        merchantReturnLink: ORIGIN + '/cancelamentos'
-      }
+      shippingDetails: DIGITAL_SHIPPING,
+      hasMerchantReturnPolicy: RETURN_POLICY
     }
   };
 
@@ -857,9 +872,9 @@ for (const s of simulados) {
   const k = (ap.storefront && ap.storefront.concurso) || {};
   const comp = [['Língua Portuguesa', 10, 3], ['Raciocínio Lógico-Matemático', 5, 1], ['Realidade de Goiás e de Aparecida de Goiânia', 5, 1], ['Conhecimentos Específicos', 30, 2]];
   const productNode = {
-    '@type': 'Product', '@id': url + '#product', name: s.name, description: s.description, image: [s.storefront.cover3d],
+    '@type': 'Product', '@id': url + '#product', name: s.name, description: s.description, image: [absoluteImageUrl(s.storefront.cover3d)],
     sku: s.slug, category: s.category, inLanguage: 'pt-BR', brand: { '@type': 'Brand', name: 'Trilha Aprova' },
-    offers: { '@type': 'Offer', '@id': url + '#offer', url, price: money(s.priceCents), priceCurrency: 'BRL', availability: 'https://schema.org/InStock', seller: { '@id': ORIGIN + '/#organization' } }
+    offers: { '@type': 'Offer', '@id': url + '#offer', url, price: money(s.priceCents), priceCurrency: 'BRL', availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', seller: { '@id': ORIGIN + '/#organization' }, shippingDetails: DIGITAL_SHIPPING, hasMerchantReturnPolicy: RETURN_POLICY }
   };
   renderPage({
     path,
@@ -1124,7 +1139,7 @@ renderPage({
     disclaimer,
   faq: [
     { q: 'Com que frequência saem matérias novas?', a: 'A seção é atualizada semanalmente. Cada matéria trata de um assunto de preparação — leitura de edital, cronograma, revisão, questões, redação ou rotina de estudo.' },
-    { q: 'Vocês publicam concursos abertos nas matérias?', a: 'Não. Não divulgamos vagas, datas de prova, prazos de inscrição nem salários, porque essas informações mudam e só têm validade no edital oficial do órgão. As matérias tratam de método e preparação.' },
+    { q: 'Vocês publicam concursos abertos nas matérias?', a: 'As matérias tratam de método e preparação. Vagas, prazos de inscrição e datas de prova ficam nas fichas de concursos, sempre com o link da página oficial do órgão e a data em que a informação foi conferida, porque esses dados mudam e só valem no edital oficial.' },
     { q: 'As matérias são gratuitas?', a: 'Sim. Todo o conteúdo desta seção é aberto, sem cadastro e sem pagamento. As apostilas em PDF com audiobook são vendidas à parte.' },
     { q: 'Posso acompanhar as publicações?', a: 'Sim, pelo feed RSS do site em /feed.xml, que reúne as matérias e os guias de estudo assim que são publicados.' }
   ],
@@ -1648,13 +1663,13 @@ renderPage({
     ['Autoria dos materiais', AUTHOR_NAME],
     ['Tipo de operação', 'Editora digital independente'],
     ['Vínculo com bancas ou órgãos públicos', 'Nenhum'],
-    ['Modelo de venda', 'Compra única por apostila, sem assinatura'],
+    ['Modelo de venda', 'Compra única por apostila, sem assinatura; sincronização opcional do Caderno de Erros por R$ 19,90/mês'],
     ['Atendimento', SUPPORT_EMAIL]
   ],
   body:
     '<h2>O que a Trilha Aprova faz</h2><p>Publicamos materiais de estudo direcionados: cada apostila tem um recorte declarado — uma banca, um conjunto de cargos, um tipo de prova — em vez de tentar cobrir todo o edital de qualquer concurso. O material é entregue em PDF e em audiobook, porque leitura e revisão em áudio resolvem momentos diferentes da rotina de quem estuda trabalhando.</p>' +
     `<h2>Quem escreve</h2><p>Os materiais são escritos por ${esc(AUTHOR_NAME)}, com foco em educação, educação especial e produção textual. O trabalho parte de conteúdos programáticos reais de editais e do estilo de formulação das bancas, organizando os assuntos por contraste — que é onde as provas costumam montar as alternativas parecidas.</p>` +
-    '<h2>O que não fazemos</h2><ul><li>Não divulgamos vagas, datas, inscrições abertas ou notas de corte.</li><li>Não publicamos avaliações, depoimentos ou números de aprovação que não possamos comprovar.</li><li>Não prometemos aprovação: nenhum material sério pode fazer isso.</li><li>Não vendemos assinatura nem cobrança recorrente.</li><li>Não temos relação institucional com bancas ou órgãos públicos.</li></ul>' +
+    '<h2>O que não fazemos</h2><ul><li>Não publicamos vaga, data ou inscrição sem a fonte: cada ficha de concurso aponta para a página oficial do órgão e mostra quando foi conferida.</li><li>Não publicamos avaliações, depoimentos ou números de aprovação que não possamos comprovar.</li><li>Não prometemos aprovação: nenhum material sério pode fazer isso.</li><li>Não cobramos assinatura pelas apostilas: cada uma é paga uma vez. A única cobrança mensal do site é a sincronização opcional do Caderno de Erros (R$ 19,90/mês), que pode ser cancelada a qualquer momento.</li><li>Não temos relação institucional com bancas ou órgãos públicos.</li></ul>' +
     '<h2>Como o conteúdo é revisado</h2><p>Quando um edital é retificado ou uma informação de referência muda, o material e as páginas públicas são corrigidos. As páginas de guia trazem a data da última atualização no rodapé do texto. Se você encontrar algo incorreto, escreva para o atendimento — correções são tratadas como prioridade.</p>' +
     `<h2>Atendimento</h2><p>Dúvidas sobre compra, acesso, reembolso ou conteúdo: <a href="/contato">formulário de contato</a> ou <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Perdeu o link da sua compra? Use <a href="/recuperar">recuperar minha compra</a> com o mesmo e-mail do pagamento.</p>` +
     '<h2>Materiais publicados</h2><ul>' + productLinks + '</ul>',
@@ -2348,6 +2363,17 @@ const robots =
   'Disallow: /recuperar\n' +
   'Disallow: /caderno-ativado\n' +
   'Disallow: /gsc/\n\n' +
+  // Merchant Center (19/11/2026): o Storebot-Google confere preço e disponibilidade
+  // também no checkout, então /comprar fica liberado só para ele.
+  'User-agent: Storebot-Google\n' +
+  'Allow: /\n' +
+  'Disallow: /api/\n' +
+  'Disallow: /acesso\n' +
+  'Disallow: /dashboard\n' +
+  'Disallow: /obrigado\n' +
+  'Disallow: /recuperar\n' +
+  'Disallow: /caderno-ativado\n' +
+  'Disallow: /gsc/\n\n' +
   AI_AGENTS.map(a => `User-agent: ${a}\nAllow: /\nDisallow: /api/\nDisallow: /acesso\nDisallow: /dashboard\n`).join('\n') +
   '\n' +
   `Sitemap: ${ORIGIN}/sitemap.xml\n`;
@@ -2424,6 +2450,63 @@ const feed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '</item>').join('') +
   '</channel></rss>\n';
 fs.writeFileSync('public/feed.xml', feed);
+
+/* ------------------------------------------------------------------ *
+ * merchant-feed.xml — feed de produtos do Google Merchant Center
+ * (19/11/2026). Só entra o que está à venda hoje (mesmo filtro da vitrine).
+ * PDF é "e-book" para o Google: proibido em anúncios do Shopping, permitido
+ * nas listagens gratuitas. Por isso todo item sai com
+ * excluded_destination=Shopping_ads, e o texto do feed é descritivo, sem
+ * "grátis" nem "3 por 1", para não gerar reprovação por deturpação.
+ * ------------------------------------------------------------------ */
+
+const merchantTitle = p => {
+  // "no Papel" é o nome comercial do SME-SP, mas no feed sugeriria livro impresso.
+  const base = String(p.name).replace(/\s+no papel\b/i, '').replace(/\s+/g, ' ').trim();
+  const titulo = p.kind === 'curso' || p.kind === 'simulados' || /^(apostila|curso|kit|cadernos?)\b/i.test(base)
+    ? base
+    : 'Apostila ' + base;
+  return titulo.length > 150 ? titulo.slice(0, 147).trimEnd() + '...' : titulo;
+};
+const merchantDescription = p => {
+  const entrega = p.kind === 'simulados'
+    ? ' Produto digital em PDF, liberado na área do aluno logo após a confirmação do pagamento. Não há envio físico.'
+    : ' Produto digital: PDF e áudios liberados na área do aluno logo após a confirmação do pagamento. Não há envio físico.';
+  const texto = String(p.description).replace(/\s+/g, ' ').trim() + entrega +
+    ' Material independente, sem vínculo com bancas ou órgãos públicos.';
+  return texto.length > 5000 ? texto.slice(0, 4997).trimEnd() + '...' : texto;
+};
+const merchantItem = p => {
+  const pagina = ORIGIN + (p.kind === 'simulados' ? '/simulados/' : '/apostilas/') + p.slug;
+  const extras = ((p.storefront && p.storefront.comboCovers) || []).slice(0, 10);
+  return '<item>' +
+    `<g:id>${esc(p.slug)}</g:id>` +
+    `<g:title>${esc(merchantTitle(p))}</g:title>` +
+    `<g:description>${esc(merchantDescription(p))}</g:description>` +
+    `<g:link>${pagina}</g:link>` +
+    `<g:image_link>${esc(absoluteImageUrl(p.storefront.cover3d))}</g:image_link>` +
+    extras.map(i => `<g:additional_image_link>${esc(absoluteImageUrl(i))}</g:additional_image_link>`).join('') +
+    '<g:availability>in_stock</g:availability>' +
+    `<g:price>${money(p.priceCents)} BRL</g:price>` +
+    '<g:condition>new</g:condition>' +
+    '<g:brand>Trilha Aprova</g:brand>' +
+    '<g:identifier_exists>no</g:identifier_exists>' +
+    '<g:google_product_category>543542</g:google_product_category>' +
+    `<g:product_type>${p.kind === 'simulados' ? 'Simulados para concurso &gt; PDF' : p.kind === 'curso' ? 'Cursos para concurso &gt; PDF + audiobook' : 'Apostilas para concurso &gt; PDF + audiobook'}</g:product_type>` +
+    '<g:shipping><g:country>BR</g:country><g:service>Entrega digital</g:service><g:price>0.00 BRL</g:price>' +
+    '<g:min_handling_time>0</g:min_handling_time><g:max_handling_time>0</g:max_handling_time>' +
+    '<g:min_transit_time>0</g:min_transit_time><g:max_transit_time>0</g:max_transit_time></g:shipping>' +
+    '<g:excluded_destination>Shopping_ads</g:excluded_destination>' +
+    '</item>';
+};
+const merchantFeed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel>' +
+  '<title>Trilha Aprova — apostilas digitais para concursos</title>' +
+  `<link>${ORIGIN}/</link>` +
+  '<description>Apostilas em PDF com audiobook e simulados para concursos públicos. Entrega digital para todo o Brasil.</description>' +
+  [...products, ...simulados].map(merchantItem).join('') +
+  '</channel></rss>\n';
+fs.writeFileSync('public/merchant-feed.xml', merchantFeed);
 
 /* ------------------------------------------------------------------ *
  * IndexNow
