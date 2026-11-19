@@ -264,6 +264,9 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
   }
   assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
   const soma = abertos.reduce((s, c) => s + (c.vagas || 0), 0);
+  // Sem certame aberto com vagas declaradas, a home não pode anunciar total nenhum.
+  if (!soma) { assert.equal(anunciado, null, 'a home anuncia vagas abertas que a base não tem'); return; }
+  assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
   assert.equal(Number(anunciado[1].replace(/\./g, '')), soma);
 
   const semVagas = abertos.filter(c => c.vagas == null).length;
