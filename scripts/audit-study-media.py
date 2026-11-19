@@ -103,6 +103,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 782,
         'topics': ['montes belos', 'pedagogia', 'verbena', 'gabarito', 'simulado'],
     },
+    'petrolina-de-goias-professor-pedagogo-2027': {
+        'pages': 660,
+        'topics': ['petrolina', 'pedagogo', 'ganzaroli', 'gabarito', 'simulado'],
+    },
     'ifg-assistente-administracao-2027': {
         'pages': 916,
         'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],
