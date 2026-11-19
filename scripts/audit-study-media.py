@@ -58,6 +58,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 658,
         'topics': ['auxiliar de secretaria', 'aparecida', 'verbena', 'gabarito', 'simulado'],
     },
+    'aparecida-de-goiania-pe1-educacao-fisica-2026': {
+        'pages': 307,
+        'topics': ['educação física', 'aparecida', 'verbena', 'gabarito', 'simulado'],
+    },
     'aparecida-de-goiania-agente-educativo-2026': {
         'pages': 651,
         'topics': ['agente educativo', 'aparecida', 'gabarito', 'simulado'],
