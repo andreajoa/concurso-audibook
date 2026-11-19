@@ -256,6 +256,13 @@ test('o total de vagas da home é a soma da base, não um número redondo', () =
   const buildDate = structured.find(node => node['@type'] === 'WebPage')?.dateModified;
   assert.match(buildDate || '', /^\d{4}-\d{2}-\d{2}$/, 'a home precisa declarar a data da própria atualização');
   const abertos = dataset.map(c => cn.normalize(c, buildDate)).filter(c => c.status === 'inscricoes_abertas');
+  // Dia sem nenhum certame aberto (ex.: 19/11/2026, Matão encerrou em 18/11): a home
+  // não pode anunciar vaga nenhuma, e o deploy diário não pode quebrar por isso.
+  if (!abertos.length) {
+    assert.ok(!anunciado || Number(anunciado[1].replace(/\./g, '')) === 0, 'a home anuncia vagas sem certame aberto na base');
+    return;
+  }
+  assert.ok(anunciado, 'a home deixou de anunciar o total de vagas');
   const soma = abertos.reduce((s, c) => s + (c.vagas || 0), 0);
   // Sem certame aberto com vagas declaradas, a home não pode anunciar total nenhum.
   if (!soma) { assert.equal(anunciado, null, 'a home anuncia vagas abertas que a base não tem'); return; }

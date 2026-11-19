@@ -12,6 +12,16 @@ Disallow: /recuperar
 Disallow: /caderno-ativado
 Disallow: /gsc/
 
+User-agent: Storebot-Google
+Allow: /
+Disallow: /api/
+Disallow: /acesso
+Disallow: /dashboard
+Disallow: /obrigado
+Disallow: /recuperar
+Disallow: /caderno-ativado
+Disallow: /gsc/
+
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
