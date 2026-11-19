@@ -3734,5 +3734,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "sao-luis-montes-belos-professor-pedagogia-2027": {
+    "slug": "sao-luis-montes-belos-professor-pedagogia-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de São Luís de Montes Belos (GO) - Edital 01/2026",
+    "examBoard": "Instituto Verbena/UFG",
+    "category": "Concursos públicos",
+    "name": "Professor Nível II - Pedagogia - São Luís de Montes Belos + audiobook",
+    "shortName": "São Luís de Montes Belos Professor Pedagogia",
+    "edition": "Edição 2026/2027, pós-edital 01/2026 (consolidado pelo Edital Complementar 01/2026), atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor Nível II – Pedagogia da Prefeitura de São Luís de Montes Belos (GO)",
+    "currency": "brl",
+    "priceCents": 3390,
+    "stripePriceEnv": "STRIPE_PRICE_SAO_LUIS_MONTES_BELOS_PROFESSOR_PEDAGOGIA_2027",
+    "description": "Apostila digital para Professor Nível II – Pedagogia da Prefeitura de São Luís de Montes Belos (GO), Edital 01/2026, banca Instituto Verbena/UFG, provas em 24/01/2027. PDF de 782 páginas com todo o conteúdo do edital: Língua Portuguesa, Raciocínio Lógico-Matemático, Realidade de Goiás e de São Luís de Montes Belos, Noções de Informática, Políticas e Legislações Educacionais (CF, LDB, ECA, PNE 2026–2036, BNCC, LBI, Leis 10.639 e 11.645, improbidade, Lei Anticorrupção, Resolução CNE/CP 4/2024), Lei Orgânica do Município e Estatuto dos Servidores (Lei 919/1990) com o texto oficial da Câmara, Conhecimentos Específicos de Pedagogia e a redação dissertativo-argumentativa. 1.653 questões comentadas de 4 alternativas, 2 simulados de 50 questões no formato da prova e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 782 páginas, todo o edital do Professor Nível II – Pedagogia",
+      "1.653 questões comentadas de 4 alternativas, como na prova",
+      "Lei Orgânica e Estatuto (Lei 919/1990) do município, com as emendas de 2026",
+      "2 simulados de 50 questões com os pesos da prova",
+      "Redação dissertativo-argumentativa com os critérios do Instituto Verbena",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "sao-luis-montes-belos-professor-pedagogia-2027/images/capa.png",
+      "pdfKey": "sao-luis-montes-belos-professor-pedagogia-2027/docs/apostila-sao-luis-montes-belos-professor-pedagogia-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Sao_Luis_de_Montes_Belos_Professor_Pedagogia.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - São Luís de Montes Belos Professor Pedagogia",
+        "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Sao_Luis_Montes_Belos.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa: leitura e sentidos",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: gramática aplicada",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Raciocínio lógico, Goiás e São Luís de Montes Belos e informática",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/03-rlm-goias-informatica.mp3",
+          "downloadName": "03-rlm-goias-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Políticas e legislações educacionais",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/04-politicas-legislacao.mp3",
+          "downloadName": "04-politicas-legislacao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Sociedade, aprendizagem, currículo e projeto pedagógico",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/05-aprendizagem-curriculo.mp3",
+          "downloadName": "05-aprendizagem-curriculo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Inclusão, alfabetização, avaliação e prática docente",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/06-inclusao-alfabetizacao.mp3",
+          "downloadName": "06-inclusao-alfabetizacao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Lei Orgânica e Estatuto dos servidores de São Luís de Montes Belos",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/07-legislacao-municipal.mp3",
+          "downloadName": "07-legislacao-municipal.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Redação dissertativo-argumentativa",
+          "key": "sao-luis-montes-belos-professor-pedagogia-2027/audio/pt-br-v1/08-redacao.mp3",
+          "downloadName": "08-redacao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-24",
+      "confirmed": false,
+      "source": "Instituto Verbena/UFG, Edital 01/2026 da Prefeitura de São Luís de Montes Belos — inscrições reabertas de 24/11 a 18/12/2026 (Comunicado 01/2026); provas objetiva e de redação em 24/01/2027",
+      "sourceUrl": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-sao-luis-dos-montes-belos/"
+    },
+    "seoTitle": "Apostila São Luís de Montes Belos Professor Pedagogia 2026 | Trilha Aprova",
+    "seoDescription": "Apostila Professor Pedagogia São Luís de Montes Belos (Instituto Verbena): 782 páginas, 1.653 questões, Lei Orgânica e Estatuto, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "SÃO LUÍS DE MONTES BELOS 2026 • PROFESSOR PEDAGOGIA • VERBENA",
+      "cover3d": "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "São Luís de Montes Belos: 62 vagas de Professor com R$ 4.362. Todo o edital, Lei Orgânica e Estatuto do município e audiobook",
+      "shortTag": "São Luís de Montes Belos · Professor Pedagogia",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "782 páginas: todo o edital + redação"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.553 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Estatuto (Lei 919/1990), LDB, ECA e PNE"
+        }
+      ],
+      "subheadline": "Professor Nível II – Pedagogia · Banca Instituto Verbena/UFG · Provas em 24/01/2027",
+      "comboCovers": [
+        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-simulados-3d.webp",
+        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de São Luís de Montes Belos (GO)",
+        "cargo": "Professor Nível II – Pedagogia",
+        "salario": "R$ 4.362,19 (30h)",
+        "vagas": "62 + 310 CR",
+        "taxa": "R$ 150,00",
+        "inscricoes": "24/11 a 18/12/2026",
+        "requisito": "Licenciatura em Pedagogia e/ou Normal Superior",
+        "url": "https://sistemas.institutoverbena.ufg.br/2026/concurso-prefeitura-sao-luis-dos-montes-belos/",
+        "paginas": 782,
+        "questoes": 1653
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
