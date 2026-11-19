@@ -115,6 +115,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 657,
         'topics': ['uirapuru', 'pedagogo', 'ganzaroli', 'gabarito', 'simulado'],
     },
+    'sao-francisco-de-goias-professor-2027': {
+        'pages': 873,
+        'topics': ['são francisco', 'professor', 'versátil', 'gabarito', 'simulado'],
+    },
     'campo-limpo-de-goias-professor-2027': {
         'pages': 748,
         'topics': ['campo limpo', 'professor', 'itame', 'gabarito', 'simulado'],

@@ -4429,5 +4429,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "sao-francisco-de-goias-professor-2027": {
+    "slug": "sao-francisco-de-goias-professor-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de São Francisco de Goiás (GO) - Concurso Público 001/2026",
+    "examBoard": "Versátil",
+    "category": "Concursos públicos",
+    "name": "Professor - São Francisco de Goiás + audiobook",
+    "shortName": "São Francisco de Goiás Professor",
+    "edition": "Edição 2026/2027, pós-edital, atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor(a) da Prefeitura de São Francisco de Goiás (GO)",
+    "currency": "brl",
+    "priceCents": 4290,
+    "stripePriceEnv": "STRIPE_PRICE_SAO_FRANCISCO_PROFESSOR_2027",
+    "description": "Apostila digital para Professor(a) da Prefeitura de São Francisco de Goiás (GO), Concurso Público 001/2026, banca Versátil, prova objetiva prevista para 14/02/2027. PDF de 873 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática e Desenho Geométrico, Conhecimentos Gerais e Atualidades (2024 em diante), Noções de Informática, Aspectos Históricos e Geográficos de São Francisco de Goiás, Conhecimentos Específicos de Educação Infantil (desenvolvimento infantil, brincadeira, campos de experiência da BNCC, linguagem, alfabetização, inclusão, avaliação, cuidado e saúde, ECA e LDB) e a Legislação Municipal: Lei Orgânica (com as Emendas 001 e 002 de 2024) e Estatuto do Magistério (LC 300/2020, com a LC 449/2026). Capítulo da prova didática com plano de aula-modelo. 1.885 questões comentadas de 4 alternativas, 2 simulados de 45 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 873 páginas, todo o edital do cargo de Professor(a)",
+      "1.885 questões comentadas de 4 alternativas, como na prova",
+      "Lei Orgânica (com as emendas de 2024) e Estatuto do Magistério de São Francisco",
+      "Prova didática: critérios do edital e plano de aula-modelo",
+      "2 simulados de 45 questões com os pesos da prova",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "sao-francisco-de-goias-professor-2027/images/capa.png",
+      "pdfKey": "sao-francisco-de-goias-professor-2027/docs/apostila-sao-francisco-de-goias-professor-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Sao_Francisco_de_Goias_Professor.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - São Francisco de Goiás Professor",
+        "key": "sao-francisco-de-goias-professor-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Sao_Francisco.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa: leitura e sentidos",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: gramática aplicada",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática e Desenho Geométrico",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/03-matematica-desenho.mp3",
+          "downloadName": "03-matematica-desenho.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Atualidades, São Francisco de Goiás e noções de informática",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/04-gerais-sao-francisco-informatica.mp3",
+          "downloadName": "04-gerais-sao-francisco-informatica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Atribuições, desenvolvimento infantil, currículo e didática",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/05-fundamentos-curriculo.mp3",
+          "downloadName": "05-fundamentos-curriculo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Educação Infantil, alfabetização, inclusão, avaliação e prova didática",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/06-educacao-infantil-prova-didatica.mp3",
+          "downloadName": "06-educacao-infantil-prova-didatica.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Legislação educacional",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/07-legislacao-educacional.mp3",
+          "downloadName": "07-legislacao-educacional.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Lei Orgânica e Estatuto do Magistério de São Francisco de Goiás",
+          "key": "sao-francisco-de-goias-professor-2027/audio/pt-br-v1/08-legislacao-municipal.mp3",
+          "downloadName": "08-legislacao-municipal.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-14",
+      "confirmed": false,
+      "source": "Versátil, Edital de Abertura nº 001/2026 do Concurso Público 001/2026 de São Francisco de Goiás — inscrições de 07/12/2026 a 07/01/2027; provas objetivas previstas para 14/02/2027 (podendo ocorrer também em 13/02); prova didática prevista para 04/04/2027",
+      "sourceUrl": "https://portal.versatilsolucoesadm.com.br/"
+    },
+    "seoTitle": "Apostila Professor São Francisco de Goiás GO | Trilha Aprova",
+    "seoDescription": "Apostila Professor São Francisco de Goiás (Versátil): 873 páginas, 1.885 questões, Lei Orgânica, Estatuto, prova didática e audiobook.",
+    "storefront": {
+      "badge": "SÃO FRANCISCO DE GOIÁS 2027 • PROFESSOR • VERSÁTIL",
+      "cover3d": "/assets/capa-sao-francisco-de-goias-professor-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "São Francisco de Goiás: Professor com R$ 3.489 e 30 horas. Todo o edital, prova didática, Lei Orgânica, Estatuto e audiobook",
+      "shortTag": "São Francisco de Goiás · Professor",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "873 páginas: todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 45 + 1.795 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Estatuto do Magistério (LC 300/2020), LDB e ECA"
+        }
+      ],
+      "subheadline": "Professor(a) · Banca Versátil · Prova objetiva prevista para 14/02/2027",
+      "comboCovers": [
+        "/assets/capa-sao-francisco-de-goias-professor-2027-simulados-3d.webp",
+        "/assets/capa-sao-francisco-de-goias-professor-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de São Francisco de Goiás (GO)",
+        "cargo": "Professor(a)",
+        "salario": "R$ 3.489,91 (30h)",
+        "vagas": "5 + 25 CR",
+        "taxa": "R$ 180,00",
+        "inscricoes": "07/12/2026 a 07/01/2027",
+        "requisito": "Superior em Pedagogia",
+        "url": "https://portal.versatilsolucoesadm.com.br/",
+        "paginas": 873,
+        "questoes": 1885
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
