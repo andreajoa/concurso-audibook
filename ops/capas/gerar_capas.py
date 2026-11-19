@@ -186,6 +186,11 @@ SPEC = {
    completa=('PETROLINA', 'PROFESSOR PEDAGOGO', ['Ganzaroli • 660 páginas • 1.439 questões comentadas', 'Português • Matemática • Conhecimentos Gerais', 'Pedagogia • Legislação • Estatuto do Magistério • Redação']),
    simulados=['2 simulados de 40 questões • 4 alternativas', 'pesos da prova: Português 2 • Específicos 1,5', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Estatuto do Magistério (Lei 1.408/2026)', 'LDB • ECA • PNE 2026–2036 • BNCC • LBI', 'Constituição: arts. 205 a 214'])),
+ 'faina-professor-pedagogo-2027': dict(sim_t1='SIMULADOS', sigla='FAINA', cobre='FAINA • GOIÁS • 2026/2027', ed='CONCURSO Nº 01/2024 • ITAME', lomb=['FAINA', 'PEDAGOGO', 'ITAME • 2027'],
+   completa=('FAINA', 'PROFESSOR PEDAGOGO', ['ITAME • 826 páginas • 1.833 questões comentadas', 'Português • Matemática • Informática • Conhecimentos Gerais', 'Pedagogia • Legislação educacional • Lei Orgânica e Estatuto']),
+   simulados=['2 simulados de 40 questões • 4 alternativas', 'Específicos e Legislação: peso 3', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Lei Orgânica de Faina (revisão 2020)', 'Estatuto dos Servidores (Lei 025/1990)', 'CF arts. 1º a 6º • LDB • ECA • Fundeb']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],

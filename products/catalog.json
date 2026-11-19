@@ -3830,7 +3830,7 @@
     "seoDescription": "Apostila Professor Pedagogia São Luís de Montes Belos (Instituto Verbena): 782 páginas, 1.653 questões, Lei Orgânica e Estatuto, 2 simulados e audiobook.",
     "storefront": {
       "badge": "SÃO LUÍS DE MONTES BELOS 2026 • PROFESSOR PEDAGOGIA • VERBENA",
-      "cover3d": "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-completa-3d.webp",
+      "cover3d": "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-completa-3d.webp?v=2",
       "cta": "Comprar apostila com audiobook",
       "headline": "São Luís de Montes Belos: 62 vagas de Professor com R$ 4.362. Todo o edital, Lei Orgânica e Estatuto do município e audiobook",
       "shortTag": "São Luís de Montes Belos · Professor Pedagogia",
@@ -3850,8 +3850,8 @@
       ],
       "subheadline": "Professor Nível II – Pedagogia · Banca Instituto Verbena/UFG · Provas em 24/01/2027",
       "comboCovers": [
-        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-simulados-3d.webp",
-        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-terceiro-3d.webp"
+        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-simulados-3d.webp?v=2",
+        "/assets/capa-sao-luis-montes-belos-professor-pedagogia-2027-terceiro-3d.webp?v=2"
       ],
       "concurso": {
         "local": "Prefeitura de São Luís de Montes Belos (GO)",
@@ -4003,6 +4003,145 @@
         "url": "https://app.ganzaroliassessoria.com.br/concurso_detalhes.aspx?conid=75",
         "paginas": 660,
         "questoes": 1439
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
+  "faina-professor-pedagogo-2027": {
+    "slug": "faina-professor-pedagogo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de Faina (GO) - Concurso Público 01/2024 (Edital 02/2024 e Complementar 01)",
+    "examBoard": "ITAME",
+    "category": "Concursos públicos",
+    "name": "Professor(a) - Pedagogo - Faina + audiobook",
+    "shortName": "Faina Professor Pedagogo",
+    "edition": "Edição 2026/2027, pós-edital (com o Edital Complementar 01), atualizada em 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor(a) – Pedagogo da Prefeitura de Faina (GO)",
+    "currency": "brl",
+    "priceCents": 3790,
+    "stripePriceEnv": "STRIPE_PRICE_FAINA_PROFESSOR_PEDAGOGO_2027",
+    "description": "Apostila digital para Professor(a) – Pedagogo da Prefeitura de Faina (GO), Concurso Público 01/2024 reaberto pelo Edital Complementar 01, banca ITAME, prova prevista para 31/01/2027. PDF de 826 páginas com todo o conteúdo do edital: Língua Portuguesa, Matemática (incluindo polinômios, sistemas lineares e Tales), Noções de Informática, Conhecimentos Gerais, História e Geografia de Faina, de Goiás e do Brasil, Conhecimentos Específicos de Pedagogia (fundamentos, alfabetização, literatura infantil, avaliação, inclusão, BNCC, Fundeb, piso, EJA) e a legislação comum: Constituição (arts. 1º a 6º), Lei Orgânica e Estatuto dos Servidores de Faina (Lei 025/1990). 1.833 questões comentadas de 4 alternativas, 2 simulados de 40 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF com 826 páginas, todo o edital do Professor(a) – Pedagogo",
+      "1.833 questões comentadas de 4 alternativas, como na prova",
+      "Lei Orgânica e Estatuto dos Servidores de Faina, com as mudanças de 2020",
+      "2 simulados de 40 questões com os pesos da prova",
+      "Específicos e Legislação (metade da nota) explicados do zero",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "faina-professor-pedagogo-2027/images/capa.png",
+      "pdfKey": "faina-professor-pedagogo-2027/docs/apostila-faina-professor-pedagogo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Faina_Professor_Pedagogo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Faina Professor Pedagogo",
+        "key": "faina-professor-pedagogo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Faina.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa: leitura e sentidos",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: gramática aplicada",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/02-portugues-gramatica.mp3",
+          "downloadName": "02-portugues-gramatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Faina, Goiás e Brasil e noções de informática",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/04-conhecimentos-gerais-informatica.mp3",
+          "downloadName": "04-conhecimentos-gerais-informatica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Fundamentos, aprendizagem, currículo e didática",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/05-fundamentos-curriculo.mp3",
+          "downloadName": "05-fundamentos-curriculo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Alfabetização, avaliação, inclusão e prática docente",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/06-alfabetizacao-inclusao.mp3",
+          "downloadName": "06-alfabetizacao-inclusao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Legislação educacional",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/07-legislacao-educacional.mp3",
+          "downloadName": "07-legislacao-educacional.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Constituição, Lei Orgânica e Estatuto dos Servidores de Faina",
+          "key": "faina-professor-pedagogo-2027/audio/pt-br-v1/08-legislacao-municipal.mp3",
+          "downloadName": "08-legislacao-municipal.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-31",
+      "confirmed": false,
+      "source": "ITAME, Edital Complementar 01 do Concurso Público 01/2024 de Faina — inscrições de 03/11 a 03/12/2026; provas objetivas previstas para 31/01/2027 (podendo ocorrer também em 30/01)",
+      "sourceUrl": "https://itame.selecao.net.br/informacoes/26/"
+    },
+    "seoTitle": "Apostila Professor Pedagogo Faina GO | Trilha Aprova",
+    "seoDescription": "Apostila Professor Pedagogo Faina (ITAME): 826 páginas, 1.833 questões, Lei Orgânica e Estatuto, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "FAINA 2026 • PROFESSOR(A) PEDAGOGO • ITAME",
+      "cover3d": "/assets/capa-faina-professor-pedagogo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Faina: Professor Pedagogo com R$ 3.793 e inscrições até 03/12. Todo o edital, Lei Orgânica e Estatuto e audiobook",
+      "shortTag": "Faina · Professor(a) Pedagogo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "826 páginas: todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 + 1.753 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Estatuto (Lei 025/1990), CF arts. 1º a 6º, LDB e ECA"
+        }
+      ],
+      "subheadline": "Professor(a) – Pedagogo · Banca ITAME · Prova prevista para 31/01/2027",
+      "comboCovers": [
+        "/assets/capa-faina-professor-pedagogo-2027-simulados-3d.webp",
+        "/assets/capa-faina-professor-pedagogo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de Faina (GO)",
+        "cargo": "Professor(a) – Pedagogo",
+        "salario": "R$ 3.793,21 (30h)",
+        "vagas": "5 + 15 CR",
+        "taxa": null,
+        "inscricoes": "03/11 a 03/12/2026",
+        "requisito": "Licenciatura em Pedagogia",
+        "url": "https://itame.selecao.net.br/informacoes/26/",
+        "paginas": 826,
+        "questoes": 1833
       },
       "area": "educacao"
     },
