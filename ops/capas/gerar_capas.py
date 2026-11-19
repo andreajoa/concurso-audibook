@@ -205,6 +205,11 @@ SPEC = {
    simulados=['2 simulados de 45 questões • 4 alternativas', 'Específicos e Legislação: 15 questões, peso 3', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Lei Orgânica de São Francisco (com emendas de 2024)', 'Estatuto do Magistério (LC 300/2020)', 'LDB • ECA • BNCC • DCNEI']))
 ,
+ 'aparecida-de-goiania-auxiliar-de-secretaria-2026': dict(sim_t1='SIMULADOS', sigla='AUX. DE SECRETARIA', cobre='PREFEITURA DE APARECIDA DE GOIÂNIA • 2026', ed='EDITAL Nº 01/2026 • VERBENA/UFG', lomb=['APARECIDA', 'DE GOIÂNIA', 'AUX. SECRETARIA • 2026'],
+   completa=('AUXILIAR DE', 'SECRETARIA', ['Verbena/UFG • 658 páginas • 1.302 questões comentadas', 'Português • Raciocínio Lógico • Goiás e Aparecida', 'Secretaria escolar • Arquivo • LAI e LGPD • Redação oficial']),
+   simulados=['2 simulados de 40 questões • 4 alternativas', 'pesos da prova: Português 4 • Específicos 2', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Constituição: arts. 205 a 214', 'LDB • ECA • LAI • LGPD', 'Lei Orgânica de Aparecida de Goiânia']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
