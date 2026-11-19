@@ -210,6 +210,11 @@ SPEC = {
    simulados=['2 simulados de 40 questões • 4 alternativas', 'pesos da prova: Português 4 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Constituição: arts. 205 a 214', 'LDB • ECA • LAI • LGPD', 'Lei Orgânica de Aparecida de Goiânia']))
 ,
+ 'aparecida-de-goiania-pe1-educacao-fisica-2026': dict(sim_t1='SIMULADOS', sigla='EDUCAÇÃO FÍSICA', cobre='PREFEITURA DE APARECIDA DE GOIÂNIA • 2026', ed='EDITAL Nº 01/2026 • VERBENA/UFG', lomb=['APARECIDA', 'DE GOIÂNIA', 'PE-I ED. FÍSICA • 2026'],
+   completa=('PE-I', 'EDUCAÇÃO FÍSICA', ['Verbena/UFG • 307 páginas • 868 questões comentadas', 'Português • Redação • Raciocínio Lógico • Goiás', 'BNCC • Abordagens • Esporte educacional • Saúde • Inclusão']),
+   simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
+   terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
