@@ -111,6 +111,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 826,
         'topics': ['faina', 'pedagogo', 'itame', 'gabarito', 'simulado'],
     },
+    'uirapuru-professor-pedagogo-2027': {
+        'pages': 657,
+        'topics': ['uirapuru', 'pedagogo', 'ganzaroli', 'gabarito', 'simulado'],
+    },
     'ifg-assistente-administracao-2027': {
         'pages': 916,
         'topics': ['ifg', 'arquivologia', 'aocp', 'gabarito', 'simulado'],

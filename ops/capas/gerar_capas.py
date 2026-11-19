@@ -191,6 +191,10 @@ SPEC = {
    simulados=['2 simulados de 40 questões • 4 alternativas', 'Específicos e Legislação: peso 3', 'gabarito comentado questão a questão'],
    terceiro=('LEGISLAÇÃO', ['Lei Orgânica de Faina (revisão 2020)', 'Estatuto dos Servidores (Lei 025/1990)', 'CF arts. 1º a 6º • LDB • ECA • Fundeb']))
 ,
+ 'uirapuru-professor-pedagogo-2027': dict(sim_t1='SIMULADOS', sigla='UIRAPURU', cobre='UIRAPURU • GOIÁS • 2026/2027', ed='EDITAL Nº 001/2026 • GANZAROLI', lomb=['UIRAPURU', 'PEDAGOGO', 'GANZAROLI • 2027'],
+   completa=('UIRAPURU', 'PROFESSOR PEDAGOGO', ['Ganzaroli • 657 páginas • 1.431 questões comentadas', 'Português • Matemática • Conhecimentos Gerais', 'Pedagogia • Legislação • Estatuto do Magistério • Redação']),
+   simulados=['2 simulados de 40 questões • 4 alternativas', 'pesos da prova: Português 2 • Específicos 1,5', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Estatuto do Magistério (Lei 479/2013)', 'LDB • ECA • PNE 2026–2036 • BNCC • LBI', 'Constituição: arts. 205 a 214'])),
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
