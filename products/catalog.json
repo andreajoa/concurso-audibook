@@ -4846,5 +4846,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "camara-santa-helena-de-goias-tecnico-legislativo-2027": {
+    "slug": "camara-santa-helena-de-goias-tecnico-legislativo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Câmara Municipal de Santa Helena de Goiás - Concurso Público 01/2026",
+    "examBoard": "ITAME",
+    "category": "Concursos públicos",
+    "name": "Técnico Legislativo e Agente Administrativo - Câmara de Santa Helena de Goiás 2027 + audiobook",
+    "shortName": "Técnico Legislativo Câmara Santa Helena 2027",
+    "edition": "Pós-edital 01/2026, edição de 19/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Técnico Legislativo e Agente Administrativo (nível médio), Câmara Municipal de Santa Helena de Goiás/GO",
+    "currency": "brl",
+    "priceCents": 2990,
+    "stripePriceEnv": "STRIPE_PRICE_CAMARA_SANTA_HELENA_TECNICO_2027",
+    "description": "Apostila digital para Técnico Legislativo e Agente Administrativo da Câmara Municipal de Santa Helena de Goiás/GO, Concurso Público 01/2026, banca ITAME, prova em 21/02/2027. PDF único de 638 páginas com 1.204 questões comentadas de 4 alternativas, no formato da prova: Língua Portuguesa, Matemática, Informática, Conhecimentos Gerais, História e Geografia de Santa Helena e todos os Conhecimentos Específicos e Legislação (peso 3): Constituição e Administração Pública, Poder Legislativo municipal e processo legislativo, LC 95/1998, atendimento (Lei 13.460/2017), redação oficial, arquivo e documentos eletrônicos, orçamento, LRF, licitações (Lei 14.133/2021), controle e TCM-GO, LAI, LGPD e improbidade, Lei Orgânica, Regimento Interno (Resolução 180/2020), Estatuto (Lei 1.664/1992) e as Leis 3.207 e 3.208/2023 da Câmara. 2 simulados de 35 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF único com 638 páginas",
+      "1.204 questões comentadas, 4 alternativas como na prova",
+      "2 simulados de 35 questões com a distribuição e os pesos do edital",
+      "Regimento Interno, Lei Orgânica, Estatuto e Leis 3.207 e 3.208/2023",
+      "Poder Legislativo, processo legislativo e redação de leis (LC 95/1998)",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "camara-santa-helena-de-goias-tecnico-legislativo-2027/images/capa.png",
+      "pdfKey": "camara-santa-helena-de-goias-tecnico-legislativo-2027/docs/apostila-camara-santa-helena-de-goias-tecnico-legislativo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Camara_Santa_Helena_Tecnico_Legislativo_2027.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Técnico Legislativo Câmara de Santa Helena 2027",
+        "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Camara_Santa_Helena_2027.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Matemática e raciocínio lógico",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/02-matematica.mp3",
+          "downloadName": "02-matematica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Santa Helena de Goiás, atualidades e informática",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/03-gerais-e-informatica.mp3",
+          "downloadName": "03-gerais-e-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Constituição e Administração Pública",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/04-constituicao-administracao.mp3",
+          "downloadName": "04-constituicao-administracao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Poder Legislativo e processo legislativo",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/05-poder-legislativo.mp3",
+          "downloadName": "05-poder-legislativo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Atendimento, redação oficial, arquivo e documentos eletrônicos",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/06-rotinas-administrativas.mp3",
+          "downloadName": "06-rotinas-administrativas.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Orçamento, licitações, controle, LAI e LGPD",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/07-orcamento-controle-lai.mp3",
+          "downloadName": "07-orcamento-controle-lai.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Lei Orgânica, Regimento Interno e Estatuto de Santa Helena",
+          "key": "camara-santa-helena-de-goias-tecnico-legislativo-2027/audio/pt-br-v1/08-legislacao-municipal.mp3",
+          "downloadName": "08-legislacao-municipal.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-21",
+      "confirmed": false,
+      "source": "ITAME, Edital 01/2026 da Câmara de Santa Helena de Goiás — inscrições de 13/12/2026 a 13/01/2027, prova objetiva prevista para 21/02/2027",
+      "sourceUrl": "https://www.itame.com.br/"
+    },
+    "seoTitle": "Apostila Técnico Legislativo Câmara Santa Helena 2027 | Trilha Aprova",
+    "seoDescription": "Apostila Técnico Legislativo e Agente Administrativo da Câmara de Santa Helena de Goiás 2027 (ITAME): 1.204 questões, Regimento e audiobook.",
+    "storefront": {
+      "badge": "CÂMARA DE SANTA HELENA DE GOIÁS • TÉCNICO LEGISLATIVO • ITAME",
+      "cover3d": "/assets/capa-camara-santa-helena-de-goias-tecnico-legislativo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "12 vagas + 36 de reserva na Câmara de Santa Helena: Regimento, Lei Orgânica, processo legislativo e audiobook",
+      "shortTag": "Câmara de Santa Helena · Técnico Legislativo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "638 páginas: todo o edital"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 35 + 1.134 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Regimento Interno, Estatuto e Leis 3.207 e 3.208"
+        }
+      ],
+      "subheadline": "Técnico Legislativo e Agente Administrativo · Nível médio · Banca ITAME · Prova em 21/02/2027",
+      "comboCovers": [
+        "/assets/capa-camara-santa-helena-de-goias-tecnico-legislativo-2027-simulados-3d.webp",
+        "/assets/capa-camara-santa-helena-de-goias-tecnico-legislativo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Câmara Municipal de Santa Helena de Goiás (GO)",
+        "cargo": "Técnico Legislativo e Agente Administrativo",
+        "salario": "R$ 2.709,06 e R$ 2.002,58 (40h)",
+        "vagas": "12 + 36 CR",
+        "taxa": "R$ 100,00",
+        "inscricoes": "13/12/2026 a 13/01/2027",
+        "requisito": "Ensino médio",
+        "url": "https://www.itame.com.br/",
+        "paginas": 638,
+        "questoes": 1204
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

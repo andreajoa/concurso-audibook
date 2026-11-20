@@ -215,6 +215,11 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'camara-santa-helena-de-goias-tecnico-legislativo-2027': dict(sim_t1='SIMULADOS', sigla='TÉC. LEGISLATIVO', cobre='CÂMARA DE SANTA HELENA DE GOIÁS • 2027', ed='CONCURSO Nº 01/2026 • ITAME', lomb=['CÂMARA DE', 'SANTA HELENA', 'TÉC. LEGISLATIVO • 2027'],
+   completa=('TÉCNICO', 'LEGISLATIVO', ['Agente Administrativo incluso • 1.204 questões comentadas', 'Português • Matemática • Informática • Santa Helena', 'Processo legislativo • Arquivo • Orçamento • LAI e LGPD']),
+   simulados=['2 simulados de 35 questões • 4 alternativas', 'Específicos e Legislação: 10 questões, peso 3', 'gabarito comentado questão a questão'],
+   terceiro=('LEGISLAÇÃO', ['Lei Orgânica e Regimento Interno', 'Estatuto (Lei 1.664/1992)', 'Leis 3.207 e 3.208/2023 da Câmara']))
+,
  'conhecimentos-pedagogicos-professor': dict(sim_t1='SIMULADOS', sigla='PEDAGOGIA', cobre='CONCURSOS DE PROFESSOR • PEDAGOGO • COORDENADOR • DIRETOR', ed='LEGISLAÇÃO VIGENTE • NOVO PNE', lomb=['CONHECIMENTOS', 'PEDAGÓGICOS', 'PROFESSOR'],
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],

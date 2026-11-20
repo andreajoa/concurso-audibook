@@ -62,6 +62,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 307,
         'topics': ['educação física', 'aparecida', 'verbena', 'gabarito', 'simulado'],
     },
+    'camara-santa-helena-de-goias-tecnico-legislativo-2027': {
+        'pages': 638,
+        'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
+    },
     'aparecida-de-goiania-agente-educativo-2026': {
         'pages': 651,
         'topics': ['agente educativo', 'aparecida', 'gabarito', 'simulado'],
