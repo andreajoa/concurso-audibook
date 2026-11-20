@@ -1,4 +1,4 @@
-name: Câmara Santa Helena - Analista - capítulos 7 e 8 do audiobook (8 capítulos)
+name: Câmara Santa Helena - capítulo 3 (leitura de IP) do Analista e do Técnico
 on:
   push:
     branches: [claude/csa-media]
@@ -20,8 +20,8 @@ jobs:
       max-parallel: 6
       matrix:
         include:
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770636110, nome: 07-financas-licitacoes-controle }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770636110, nome: 08-transparencia-documentos-legislacao }
+          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770650166, nome: 03-gerais-e-informatica }
+          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770650166, nome: 03-gerais-e-informatica }
     steps:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
@@ -34,7 +34,7 @@ jobs:
           gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671783 > v.onnx.json
           sha256sum v.onnx | grep -q '^765f0809' || { echo 'hash da voz diferente'; exit 1; }
           gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/${{ matrix.asset }} > tts.zip
-          unzip -q tts.zip -d tts && test -s "tts/${{ matrix.nome }}.txt"
+          unzip -q tts.zip -d tts0 && mkdir -p tts && cp "tts0/${{ matrix.prefix }}/${{ matrix.nome }}.txt" tts/ && test -s "tts/${{ matrix.nome }}.txt"
       - name: Sintetizar, validar ritmo e enviar ao R2
         run: |
           python - <<'PY'
