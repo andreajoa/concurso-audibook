@@ -1,42 +1,50 @@
 name: Generate Redacao audiobook to Cloudflare R2
-
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "scripts/generate_redacao_audiobook.py"
-
 permissions:
   contents: read
-
-concurrency:
-  group: generate-redacao-audiobook
-  cancel-in-progress: true
-
 jobs:
-  generate:
+  retrieve-pdf:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 10
     env:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install audio tools
+      - name: Prepare PDF retrieval
+        run: python -m pip install --disable-pip-version-check boto3 pypdf
+      - name: Download Trilha Aprova PDF from private R2
+        shell: bash
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Install Python dependencies
-        run: python -m pip install --disable-pip-version-check requests boto3 pypdf pymupdf piper-tts
-
-      - name: Generate cover and Brazilian Portuguese audiobook chapters
-        run: python scripts/generate_redacao_audiobook.py
+          python - <<'PY'
+          import boto3,os
+          from botocore.config import Config
+          from pypdf import PdfReader
+          endpoint="https://dbad4dc0550693a69d5956df7344e001.r2.cloudflarestorage.com"
+          s3=boto3.client("s3",endpoint_url=endpoint,region_name="auto",aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],config=Config(signature_version="s3v4"))
+          bucket="apostila"
+          prefix="redacao-nivel-fundamental-2026/docs/"
+          result=s3.list_objects_v2(Bucket=bucket,Prefix=prefix)
+          objects=result.get("Contents",[])
+          print("Found PDF candidates:", [(x["Key"],x["Size"]) for x in objects])
+          wanted=[
+            prefix+"redacao-ensino-fundamental-completo-2026-v3.pdf",
+            prefix+"redacao-ensino-fundamental-completo-2026.pdf"
+          ]
+          keys={obj["Key"] for obj in objects}
+          key=next((k for k in wanted if k in keys),None)
+          if not key:
+            raise RuntimeError("Full PDF not found on this R2 bucket")
+          os.makedirs("deliverable",exist_ok=True)
+          target="deliverable/Trilha_Aprova_Redacao_Nivel_Fundamental_2026.pdf"
+          s3.download_file(bucket,key,target)
+          pages=len(PdfReader(target).pages)
+          print("Downloaded:",key,"pages:",pages,"bytes:",os.path.getsize(target))
+          if pages<30: raise RuntimeError("Suspiciously short PDF, refusing to deliver sample")
+          PY
+      - name: Upload PDF for owner retrieval
+        uses: actions/upload-artifact@v4
+        with:
+          name: trilha-aprova-redacao-fundamental-2026
+          path: deliverable/Trilha_Aprova_Redacao_Nivel_Fundamental_2026.pdf
+          retention-days: 1
