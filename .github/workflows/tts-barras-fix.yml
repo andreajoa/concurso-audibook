@@ -1,0 +1,103 @@
+name: Audiobooks - correção da leitura de frações e datas (10 produtos, 46 capítulos)
+on:
+  push:
+    branches: [claude/tts-barras-fix]
+permissions:
+  contents: read
+concurrency:
+  group: tts-barras-fix
+  cancel-in-progress: false
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+  R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        include:
+          - { prefix: tce-go-tecnico-controle-externo-2027, nome: 01-prova-e-lei-organica }
+          - { prefix: tce-go-tecnico-controle-externo-2027, nome: 07-direito-e-licitacoes }
+          - { prefix: ifg-assistente-administracao-2027, nome: 01-prova-e-legislacao-educacao }
+          - { prefix: ifg-assistente-administracao-2027, nome: 04-legislacao-servidor }
+          - { prefix: ifg-assistente-administracao-2027, nome: 05-rlm-e-informatica }
+          - { prefix: ifg-assistente-administracao-2027, nome: 06-redacao-oficial-arquivologia }
+          - { prefix: ifg-assistente-administracao-2027, nome: resumo }
+          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 03-rlm-goias-informatica }
+          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 04-politicas-legislacao }
+          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 05-aprendizagem-curriculo }
+          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 07-legislacao-municipal }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 03-matematica-conhecimentos-gerais }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 04-fundamentos-curriculo }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 06-legislacao-educacional }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 07-estatuto-magisterio }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 08-redacao }
+          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: resumo }
+          - { prefix: faina-professor-pedagogo-2027, nome: 03-matematica }
+          - { prefix: faina-professor-pedagogo-2027, nome: 04-conhecimentos-gerais-informatica }
+          - { prefix: faina-professor-pedagogo-2027, nome: 05-fundamentos-curriculo }
+          - { prefix: faina-professor-pedagogo-2027, nome: 07-legislacao-educacional }
+          - { prefix: faina-professor-pedagogo-2027, nome: 08-legislacao-municipal }
+          - { prefix: faina-professor-pedagogo-2027, nome: resumo }
+          - { prefix: uirapuru-professor-pedagogo-2027, nome: 03-matematica-conhecimentos-gerais }
+          - { prefix: uirapuru-professor-pedagogo-2027, nome: 04-fundamentos-curriculo }
+          - { prefix: uirapuru-professor-pedagogo-2027, nome: 06-legislacao-educacional }
+          - { prefix: uirapuru-professor-pedagogo-2027, nome: 07-estatuto-magisterio }
+          - { prefix: uirapuru-professor-pedagogo-2027, nome: 08-redacao }
+          - { prefix: campo-limpo-de-goias-professor-2027, nome: 04-conhecimentos-gerais-informatica }
+          - { prefix: campo-limpo-de-goias-professor-2027, nome: 05-fundamentos-curriculo }
+          - { prefix: campo-limpo-de-goias-professor-2027, nome: 07-legislacao-educacional }
+          - { prefix: campo-limpo-de-goias-professor-2027, nome: 08-legislacao-municipal }
+          - { prefix: campo-limpo-de-goias-professor-2027, nome: resumo }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: 03-matematica-desenho }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: 04-gerais-sao-francisco-informatica }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: 05-fundamentos-curriculo }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: 07-legislacao-educacional }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: 08-legislacao-municipal }
+          - { prefix: sao-francisco-de-goias-professor-2027, nome: resumo }
+          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 03-raciocinio-e-goias }
+          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 04-etica-constituicao-ldb }
+          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 05-eca-e-atendimento }
+          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 07-redacao-oficial-informatica }
+          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: 02-redacao-raciocinio-goias }
+          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: 03-legislacao-lei-organica }
+          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: resumo }
+    steps:
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: |
+          for t in 1 2 3; do sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 20; done
+          python -m pip install -q piper-tts==1.4.2 boto3
+      - name: Voz aprovada e roteiro
+        run: |
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671778 > v.onnx
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671783 > v.onnx.json
+          sha256sum v.onnx | grep -q '^765f0809' || { echo 'hash da voz diferente'; exit 1; }
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/770686998 > tts.zip
+          test "$(stat -c%s tts.zip)" -eq 531597 && unzip -q tts.zip -d tts && test -s "tts/${{ matrix.prefix }}/${{ matrix.nome }}.txt"
+      - name: Sintetizar, validar ritmo e enviar ao R2 (mesma chave)
+        run: |
+          python - <<'PY'
+          import wave, subprocess, os, boto3
+          from piper import PiperVoice
+          P = '${{ matrix.prefix }}'; n = '${{ matrix.nome }}'
+          text = open(f'tts/{P}/{n}.txt', encoding='utf-8').read()
+          v = PiperVoice.load('v.onnx')
+          with wave.open(f'{n}.wav', 'wb') as w: v.synthesize_wav(text, w)
+          subprocess.run(['ffmpeg','-hide_banner','-y','-v','error','-i',f'{n}.wav','-c:a','libmp3lame','-b:a','128k','-ac','1','-ar','44100',f'{n}.mp3'], check=True)
+          secs = float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',f'{n}.mp3'], text=True))
+          words = len(text.split()); print(P, n, round(secs), 's', words, 'palavras', round(words/secs, 2), 'pal/s')
+          assert secs > 60 and 1.2 < words / secs < 3.6, 'ritmo estranho'
+          subprocess.run(['ffmpeg','-v','error','-xerror','-i',f'{n}.mp3','-f','null','-'], check=True)
+          key = f'{P}/audio/resumo.mp3' if n == 'resumo' else f'{P}/audio/pt-br-v1/{n}.mp3'
+          s3 = boto3.client('s3', endpoint_url='https://dbad4dc0550693a69d5956df7344e001.r2.cloudflarestorage.com',
+                            aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'], region_name='auto')
+          old = s3.head_object(Bucket='apostila', Key=key)['ContentLength']
+          s3.upload_file(f'{n}.mp3', 'apostila', key, ExtraArgs={'ContentType': 'audio/mpeg'})
+          h = s3.head_object(Bucket='apostila', Key=key); assert h['ContentLength'] == os.path.getsize(f'{n}.mp3')
+          print('R2_OK', key, 'antes', old, 'agora', h['ContentLength'], round(secs))
+          PY
