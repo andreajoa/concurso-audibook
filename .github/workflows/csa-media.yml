@@ -1,4 +1,4 @@
-name: Câmara Santa Helena - Analista (novo) e Técnico (correção) - PDF e audiobook na nuvem
+name: Câmara Santa Helena - Analista - capítulos 7 e 8 do audiobook (8 capítulos)
 on:
   push:
     branches: [claude/csa-media]
@@ -12,38 +12,6 @@ env:
   R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
   R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 jobs:
-  pdf:
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { asset: 770613724, size: 1780272, slug: camara-santa-helena-de-goias-analista-legislativo-2027 }
-          - { asset: 770613726, size: 1678531, slug: camara-santa-helena-de-goias-tecnico-legislativo-2027 }
-    steps:
-      - uses: actions/setup-python@v5
-        with: { python-version: '3.12' }
-      - run: python -m pip install -q pymupdf boto3
-      - name: Baixar pacote
-        run: |
-          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/${{ matrix.asset }} > b.zip
-          test "$(stat -c%s b.zip)" -eq ${{ matrix.size }} && mkdir v1 && unzip -q b.zip -d v1
-      - name: Montar PDF (Chrome headless) e conferir páginas vazias
-        run: cd v1 && CHROME="$(which google-chrome || which google-chrome-stable || which chromium)" python -u build_cloud.py
-      - name: Enviar PDF ao R2 (privado)
-        run: |
-          python - <<'PY'
-          import boto3, os
-          slug = '${{ matrix.slug }}'
-          s3 = boto3.client('s3', endpoint_url='https://dbad4dc0550693a69d5956df7344e001.r2.cloudflarestorage.com',
-                            aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'], region_name='auto')
-          key = f'{slug}/docs/apostila-{slug}.pdf'
-          s3.upload_file('v1/apostila.pdf', 'apostila', key, ExtraArgs={'ContentType': 'application/pdf'})
-          h = s3.head_object(Bucket='apostila', Key=key); assert h['ContentLength'] == os.path.getsize('v1/apostila.pdf'); print('R2_OK', key, h['ContentLength'])
-          PY
-      - name: Guardar PDF no rascunho (para amostra e capa)
-        run: cp v1/apostila.pdf pdf_${{ matrix.slug }}.pdf && gh release upload untagged-178c210d37c1b32d5982 pdf_${{ matrix.slug }}.pdf --clobber -R ${{ github.repository }}
   tts:
     runs-on: ubuntu-latest
     timeout-minutes: 120
@@ -52,23 +20,8 @@ jobs:
       max-parallel: 6
       matrix:
         include:
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: resumo }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 01-prova-e-portugues }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 02-matematica }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 03-gerais-e-informatica }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 04-constituicao-municipio }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 05-legislativo-tecnica }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 06-administrativo-gestao }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 07-financas-licitacoes }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 08-controle-integridade-documentos }
-          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770613722, nome: 09-legislacao-municipal }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: resumo }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 02-matematica }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 03-gerais-e-informatica }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 04-constituicao-administracao }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 05-poder-legislativo }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 07-orcamento-controle-lai }
-          - { prefix: camara-santa-helena-de-goias-tecnico-legislativo-2027, asset: 770613721, nome: 08-legislacao-municipal }
+          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770636110, nome: 07-financas-licitacoes-controle }
+          - { prefix: camara-santa-helena-de-goias-analista-legislativo-2027, asset: 770636110, nome: 08-transparencia-documentos-legislacao }
     steps:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
