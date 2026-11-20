@@ -3,7 +3,7 @@ on:
   push:
     branches: [claude/tts-barras-fix]
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: tts-barras-fix
   cancel-in-progress: false
