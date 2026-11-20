@@ -1,4 +1,4 @@
-name: Audiobooks - correção da leitura de frações e datas (10 produtos, 46 capítulos)
+name: Audiobooks - correção de frações - São Luís capítulo 7 (refazer)
 on:
   push:
     branches: [claude/tts-barras-fix]
@@ -13,59 +13,14 @@ env:
   R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 jobs:
   tts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     strategy:
       fail-fast: false
       max-parallel: 12
       matrix:
         include:
-          - { prefix: tce-go-tecnico-controle-externo-2027, nome: 01-prova-e-lei-organica }
-          - { prefix: tce-go-tecnico-controle-externo-2027, nome: 07-direito-e-licitacoes }
-          - { prefix: ifg-assistente-administracao-2027, nome: 01-prova-e-legislacao-educacao }
-          - { prefix: ifg-assistente-administracao-2027, nome: 04-legislacao-servidor }
-          - { prefix: ifg-assistente-administracao-2027, nome: 05-rlm-e-informatica }
-          - { prefix: ifg-assistente-administracao-2027, nome: 06-redacao-oficial-arquivologia }
-          - { prefix: ifg-assistente-administracao-2027, nome: resumo }
-          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 03-rlm-goias-informatica }
-          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 04-politicas-legislacao }
-          - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 05-aprendizagem-curriculo }
           - { prefix: sao-luis-montes-belos-professor-pedagogia-2027, nome: 07-legislacao-municipal }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 03-matematica-conhecimentos-gerais }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 04-fundamentos-curriculo }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 06-legislacao-educacional }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 07-estatuto-magisterio }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: 08-redacao }
-          - { prefix: petrolina-de-goias-professor-pedagogo-2027, nome: resumo }
-          - { prefix: faina-professor-pedagogo-2027, nome: 03-matematica }
-          - { prefix: faina-professor-pedagogo-2027, nome: 04-conhecimentos-gerais-informatica }
-          - { prefix: faina-professor-pedagogo-2027, nome: 05-fundamentos-curriculo }
-          - { prefix: faina-professor-pedagogo-2027, nome: 07-legislacao-educacional }
-          - { prefix: faina-professor-pedagogo-2027, nome: 08-legislacao-municipal }
-          - { prefix: faina-professor-pedagogo-2027, nome: resumo }
-          - { prefix: uirapuru-professor-pedagogo-2027, nome: 03-matematica-conhecimentos-gerais }
-          - { prefix: uirapuru-professor-pedagogo-2027, nome: 04-fundamentos-curriculo }
-          - { prefix: uirapuru-professor-pedagogo-2027, nome: 06-legislacao-educacional }
-          - { prefix: uirapuru-professor-pedagogo-2027, nome: 07-estatuto-magisterio }
-          - { prefix: uirapuru-professor-pedagogo-2027, nome: 08-redacao }
-          - { prefix: campo-limpo-de-goias-professor-2027, nome: 04-conhecimentos-gerais-informatica }
-          - { prefix: campo-limpo-de-goias-professor-2027, nome: 05-fundamentos-curriculo }
-          - { prefix: campo-limpo-de-goias-professor-2027, nome: 07-legislacao-educacional }
-          - { prefix: campo-limpo-de-goias-professor-2027, nome: 08-legislacao-municipal }
-          - { prefix: campo-limpo-de-goias-professor-2027, nome: resumo }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: 03-matematica-desenho }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: 04-gerais-sao-francisco-informatica }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: 05-fundamentos-curriculo }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: 07-legislacao-educacional }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: 08-legislacao-municipal }
-          - { prefix: sao-francisco-de-goias-professor-2027, nome: resumo }
-          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 03-raciocinio-e-goias }
-          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 04-etica-constituicao-ldb }
-          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 05-eca-e-atendimento }
-          - { prefix: aparecida-de-goiania-auxiliar-de-secretaria-2026, nome: 07-redacao-oficial-informatica }
-          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: 02-redacao-raciocinio-goias }
-          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: 03-legislacao-lei-organica }
-          - { prefix: aparecida-de-goiania-pe1-educacao-fisica-2026, nome: resumo }
     steps:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
