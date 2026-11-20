@@ -4985,5 +4985,144 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "camara-santa-helena-de-goias-analista-legislativo-2027": {
+    "slug": "camara-santa-helena-de-goias-analista-legislativo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Câmara Municipal de Santa Helena de Goiás - Concurso Público 01/2026",
+    "examBoard": "ITAME",
+    "category": "Concursos públicos",
+    "name": "Analista Legislativo - Câmara de Santa Helena de Goiás 2027 + audiobook",
+    "shortName": "Analista Legislativo Câmara Santa Helena 2027",
+    "edition": "Pós-edital 01/2026, edição de 20/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Analista Legislativo (nível superior), Câmara Municipal de Santa Helena de Goiás/GO",
+    "currency": "brl",
+    "priceCents": 4090,
+    "stripePriceEnv": "STRIPE_PRICE_CAMARA_SANTA_HELENA_ANALISTA_2027",
+    "description": "Apostila digital para Analista Legislativo da Câmara Municipal de Santa Helena de Goiás/GO, Concurso Público 01/2026, banca ITAME, prova em 21/02/2027. PDF único de 972 páginas com 1.787 questões comentadas de 4 alternativas, no formato da prova de nível superior: Língua Portuguesa, Matemática, Informática (com PowerPoint e Outlook), Conhecimentos Gerais e todos os Conhecimentos Específicos e Legislação (peso 3): Constituição e Município (arts. 18, 29, 29-A, 30, 31, 37 a 41 e 163 a 169) e Constituição de Goiás, processo legislativo, técnica legislativa (LC 95/1998 e Decreto 12.002/2024), LINDB, Direito Administrativo e processo administrativo, gestão de processos, projetos, pessoas e patrimônio, AFO, Lei 4.320/1964, LRF, LC 131/2009 e contabilidade pública, licitações (Lei 14.133/2021 e LC 123/2006), convênios e parcerias (Lei 13.019/2014), controle e TCM-GO (Lei 15.958/2007), LAI, Lei 13.460/2017, LGPD, improbidade, Lei Anticorrupção, governança, gestão documental, assinaturas eletrônicas, Governo Digital, indicadores e redação técnica, Lei Orgânica, Regimento Interno (Resolução 180/2020), Estatuto (Lei 1.664/1992) e as Leis 3.207 e 3.208/2023 da Câmara. 2 simulados de 40 questões e audiobook em 8 capítulos.",
+    "proofPoints": [
+      "PDF único com 972 páginas",
+      "1.787 questões comentadas, 4 alternativas como na prova",
+      "2 simulados de 40 questões com a distribuição e os pesos do nível superior",
+      "Constituição e Município, técnica legislativa (LC 95/1998) e LINDB",
+      "AFO, LRF, licitações, parcerias (MROSC) e TCM-GO",
+      "Audiobook em 8 capítulos + resumo narrado"
+    ],
+    "assets": {
+      "coverKey": "camara-santa-helena-de-goias-analista-legislativo-2027/images/capa.png",
+      "pdfKey": "camara-santa-helena-de-goias-analista-legislativo-2027/docs/apostila-camara-santa-helena-de-goias-analista-legislativo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Camara_Santa_Helena_Analista_Legislativo_2027.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Analista Legislativo Câmara de Santa Helena 2027",
+        "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Analista_Camara_Santa_Helena_2027.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e Língua Portuguesa",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Matemática e raciocínio lógico",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/02-matematica.mp3",
+          "downloadName": "02-matematica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Santa Helena de Goiás, atualidades e informática",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/03-gerais-e-informatica.mp3",
+          "downloadName": "03-gerais-e-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "A Constituição e o Município",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/04-constituicao-municipio.mp3",
+          "downloadName": "04-constituicao-municipio.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Processo legislativo, técnica legislativa e LINDB",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/05-legislativo-tecnica.mp3",
+          "downloadName": "05-legislativo-tecnica.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Administrativo, processos, gestão e patrimônio",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/06-administrativo-gestao.mp3",
+          "downloadName": "06-administrativo-gestao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Orçamento, LRF, contabilidade pública, licitações, parcerias e controle",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/07-financas-licitacoes-controle.mp3",
+          "downloadName": "07-financas-licitacoes-controle.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Transparência, integridade, documentos, TI e legislação de Santa Helena",
+          "key": "camara-santa-helena-de-goias-analista-legislativo-2027/audio/pt-br-v1/08-transparencia-documentos-legislacao.mp3",
+          "downloadName": "08-transparencia-documentos-legislacao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-21",
+      "confirmed": false,
+      "source": "ITAME, Edital 01/2026 da Câmara de Santa Helena de Goiás — inscrições de 13/12/2026 a 13/01/2027, prova objetiva prevista para 21/02/2027",
+      "sourceUrl": "https://www.itame.com.br/"
+    },
+    "seoTitle": "Apostila Analista Legislativo Câmara Santa Helena 2027 | Trilha Aprova",
+    "seoDescription": "Apostila Analista Legislativo da Câmara de Santa Helena de Goiás 2027 (ITAME): 1.787 questões, LC 95, LRF, TCM-GO e audiobook.",
+    "storefront": {
+      "badge": "CÂMARA DE SANTA HELENA DE GOIÁS • ANALISTA LEGISLATIVO • ITAME",
+      "cover3d": "/assets/capa-camara-santa-helena-de-goias-analista-legislativo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "10 vagas + 30 de reserva para Analista Legislativo em Santa Helena: Constituição, técnica legislativa, LRF, TCM-GO e audiobook",
+      "shortTag": "Câmara de Santa Helena · Analista Legislativo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "972 páginas: todo o edital de nível superior"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 + 1.707 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei Orgânica, Regimento Interno, Estatuto e Leis 3.207 e 3.208"
+        }
+      ],
+      "subheadline": "Analista Legislativo · Nível superior (qualquer área) · Banca ITAME · Prova em 21/02/2027",
+      "comboCovers": [
+        "/assets/capa-camara-santa-helena-de-goias-analista-legislativo-2027-simulados-3d.webp",
+        "/assets/capa-camara-santa-helena-de-goias-analista-legislativo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Câmara Municipal de Santa Helena de Goiás (GO)",
+        "cargo": "Analista Legislativo",
+        "salario": "R$ 3.386,33 (40h)",
+        "vagas": "10 + 30 CR",
+        "taxa": "R$ 130,00",
+        "inscricoes": "13/12/2026 a 13/01/2027",
+        "requisito": "Curso superior completo em qualquer área",
+        "url": "https://www.itame.com.br/",
+        "paginas": 972,
+        "questoes": 1787
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

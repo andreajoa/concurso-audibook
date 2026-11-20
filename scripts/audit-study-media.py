@@ -66,6 +66,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 638,
         'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
     },
+    'camara-santa-helena-de-goias-analista-legislativo-2027': {
+        'pages': 972,
+        'topics': ['analista legislativo', 'santa helena', 'técnica legislativa', 'gabarito', 'simulado'],
+    },
     'aparecida-de-goiania-agente-educativo-2026': {
         'pages': 651,
         'topics': ['agente educativo', 'aparecida', 'gabarito', 'simulado'],
