@@ -1,4 +1,4 @@
-name: Audiobooks - correção de frações - São Luís capítulo 7 (refazer)
+name: Audiobooks - São Luís capítulo 7 (frases quebradas para o Piper)
 on:
   push:
     branches: [claude/tts-barras-fix]
@@ -32,8 +32,8 @@ jobs:
           gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671778 > v.onnx
           gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671783 > v.onnx.json
           sha256sum v.onnx | grep -q '^765f0809' || { echo 'hash da voz diferente'; exit 1; }
-          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/770686998 > tts.zip
-          test "$(stat -c%s tts.zip)" -eq 531597 && unzip -q tts.zip -d tts && test -s "tts/${{ matrix.prefix }}/${{ matrix.nome }}.txt"
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/771427909 > tts.zip
+          test "$(stat -c%s tts.zip)" -eq 10315 && unzip -q tts.zip -d tts && test -s "tts/${{ matrix.prefix }}/${{ matrix.nome }}.txt"
       - name: Sintetizar, validar ritmo e enviar ao R2 (mesma chave)
         run: |
           python - <<'PY'
