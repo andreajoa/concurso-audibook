@@ -66,6 +66,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 638,
         'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
     },
+    'inss-tecnico-do-seguro-social-2026': {
+        'pages': 1252,
+        'topics': ['técnico do seguro social', 'inss', 'seguridade social', 'gabarito', 'simulado'],
+    },
     'camara-santa-helena-de-goias-analista-legislativo-2027': {
         'pages': 972,
         'topics': ['analista legislativo', 'santa helena', 'técnica legislativa', 'gabarito', 'simulado'],

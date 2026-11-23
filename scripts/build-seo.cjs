@@ -635,7 +635,7 @@ for (const p of products) {
   const fit = p.kind === 'curso'
     ? 'Este curso serve para concursos públicos de nível médio e superior com prova de redação ou questões discursivas, de qualquer banca. O tipo de texto, o número de linhas e os critérios de correção estão no edital do seu concurso, que sempre prevalece. A nota da Correção Trilha Aprova é uma estimativa para treino.'
     : p.preEdital
-    ? 'Esta é uma edição pré-edital para SME-SP PEIF 2026, organizada com referências históricas. Não representa o programa oficial de um futuro edital. Confira as regras, disciplinas e atualizações publicadas pela SME-SP antes da compra.'
+    ? (p.preEditalFit || 'Esta é uma edição pré-edital para SME-SP PEIF 2026, organizada com referências históricas. Não representa o programa oficial de um futuro edital. Confira as regras, disciplinas e atualizações publicadas pela SME-SP antes da compra.')
     : isAutores
     ? 'Esta apostila revisa autores para Professor Adjunto I e Professor Adjunto II — Educação Especial, com foco na banca IBAM e na edição Santos 2026. Não substitui o estudo de todas as disciplinas do edital.'
     : isRedacao
@@ -694,7 +694,9 @@ for (const p of products) {
     { q: 'Como recebo o material depois de pagar?', a: 'A confirmação do pagamento libera automaticamente uma área individual com o PDF e os arquivos de áudio, para leitura, reprodução e download. Não há envio físico.' },
     { q: 'Esta apostila serve para o meu concurso?', a: fit + ' Compare o sumário com o anexo de conteúdo programático do seu edital antes de comprar.' },
     { q: 'Posso pedir reembolso?', a: 'Sim. O Código de Defesa do Consumidor prevê o prazo de 7 dias para o direito de arrependimento em compras pela internet. Basta solicitar pelo canal de atendimento dentro do prazo.' },
-    { q: 'Preciso de internet para usar o material?', a: 'Apenas para acessar a área individual e baixar os arquivos. Depois do download, o PDF e os áudios podem ser usados sem conexão.' }
+    { q: 'Preciso de internet para usar o material?', a: 'Apenas para acessar a área individual e baixar os arquivos. Depois do download, o PDF e os áudios podem ser usados sem conexão.' },
+    // Perguntas próprias do produto (fatos conferidos no edital e na legislação), quando o catálogo as traz.
+    ...(Array.isArray(p.faqExtra) ? p.faqExtra.filter(f => f && f.q && f.a) : [])
   ];
 
   const keyFacts = [
@@ -803,7 +805,7 @@ for (const p of products) {
     description: p.seoDescription || p.description,
     kicker: `${p.edition} · ${p.category}`,
     lead: p.preEdital
-      ? `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`
+      ? (p.preEditalLead || `Prepare-se para SME-SP PEIF com 220 páginas de estudo, resumo complementar e ${p.assets.chapters.length} capítulos de audiobook, por ${brl(p.priceCents)} em pagamento único. Esta é uma edição pré-edital da Trilha Aprova: confirme a banca, as regras e o programa no futuro edital oficial.`)
       : `${p.name} é um material digital de ${brl(p.priceCents)}, em pagamento único, que reúne PDF, resumo em áudio e ${p.assets.chapters.length} capítulos de audiobook. Foi escrito por ${AUTHOR_NAME} para ${p.audience.toLowerCase()}, tendo como referência ${p.contest} e a banca ${p.examBoard}.`,
     keyFacts: [],
     body,
