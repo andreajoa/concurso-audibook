@@ -5124,5 +5124,166 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "inss-tecnico-do-seguro-social-2026": {
+    "slug": "inss-tecnico-do-seguro-social-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "INSS — Técnico do Seguro Social (pré-edital; base: Edital nº 1/2022, Cebraspe)",
+    "examBoard": "a definir no novo edital (último concurso: Cebraspe)",
+    "category": "Concursos públicos",
+    "name": "Apostila INSS 2026 Técnico do Seguro Social · pré-edital + audiobook",
+    "shortName": "INSS Técnico do Seguro Social — Pré-edital 2026",
+    "edition": "Pré-edital · edição de 23/11/2026 · legislação atualizada até novembro de 2026",
+    "author": "Trilha Aprova",
+    "audience": "Técnico do Seguro Social (nível médio), Instituto Nacional do Seguro Social — INSS",
+    "currency": "brl",
+    "priceCents": 4990,
+    "stripePriceEnv": "STRIPE_PRICE_INSS_TECNICO_SEGURO_SOCIAL_2026",
+    "description": "Apostila digital pré-edital para Técnico do Seguro Social do INSS, baseada no último edital (Edital nº 1 – INSS, de 12/9/2022, banca Cebraspe) e com a legislação atualizada até novembro de 2026. PDF único de 1.252 páginas com 2.484 questões comentadas, a maioria no formato Certo ou Errado do Cebraspe, 2 simulados de 120 itens (50 básicos + 70 específicos) e caderno de legislação em texto oficial. Conhecimentos Básicos: Língua Portuguesa e redação oficial, Ética no Serviço Público (Decretos 1.171/1994 e 6.029/2007), Direito Constitucional e Administrativo (Lei 8.112/1990, Lei 8.429/1992, Lei 9.784/1999), Informática com Windows e LibreOffice e Raciocínio Lógico. Conhecimentos Específicos completos: Seguridade Social e legislação previdenciária, segurados do RGPS, financiamento e salário de contribuição, arrecadação, decadência, crimes e recursos ao CRPS, plano de benefícios, aposentadorias da EC 103/2019 e da LC 142/2013, benefícios por incapacidade, pensão por morte, auxílio-reclusão, salário-maternidade e salário-família, acumulação, serviço social e reabilitação, pensões especiais, seguro-defeso, LOAS, BPC e auxílio-inclusão, regimes próprios, CTC, contagem recíproca e compensação, IN PRES/INSS 128/2022 e saúde e qualidade de vida no serviço público. Inclui as mudanças das Leis 15.077/2024, 15.108/2025, 15.156/2025, 15.157/2025, 15.222/2025, 15.265/2025, 15.327/2026, 15.363/2026 e 15.415/2026. Audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.252 páginas",
+      "2.484 questões comentadas, a maioria Certo ou Errado (modelo Cebraspe)",
+      "2 simulados de 120 itens: 50 básicos + 70 específicos, como na prova de 2022",
+      "Seguridade, RGPS, custeio, benefícios e EC 103/2019 com regras de transição de 2026",
+      "LOAS, BPC, auxílio-inclusão, pensões especiais e seguro-defeso",
+      "Legislação atualizada até novembro de 2026 (Leis 15.077/2024 a 15.415/2026)",
+      "Caderno de legislação: Leis 8.212 e 8.213/1991, EC 103, LC 142, LOAS e Código de Ética",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "inss-tecnico-do-seguro-social-2026/images/capa.png",
+      "pdfKey": "inss-tecnico-do-seguro-social-2026/docs/apostila-inss-tecnico-do-seguro-social-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_INSS_Tecnico_do_Seguro_Social_Pre_Edital.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - INSS Técnico do Seguro Social (Conhecimentos Específicos e Ética)",
+        "key": "inss-tecnico-do-seguro-social-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_INSS_Tecnico_do_Seguro_Social.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova, a situação do concurso, Língua Portuguesa e redação oficial",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/01-prova-e-portugues.mp3",
+          "downloadName": "01-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Ética no serviço público, Direito Constitucional e Direito Administrativo",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/02-etica-e-direito.mp3",
+          "downloadName": "02-etica-e-direito.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Informática (Windows e LibreOffice) e raciocínio lógico",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/03-informatica-e-logica.mp3",
+          "downloadName": "03-informatica-e-logica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Seguridade Social, legislação previdenciária e segurados do RGPS",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/04-seguridade-e-segurados.mp3",
+          "downloadName": "04-seguridade-e-segurados.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Custeio, salário de contribuição, arrecadação, crimes e recursos",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/05-custeio-e-arrecadacao.mp3",
+          "downloadName": "05-custeio-e-arrecadacao.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Plano de benefícios, carência, cálculo, aposentadorias e incapacidade",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/06-beneficios-e-aposentadorias.mp3",
+          "downloadName": "06-beneficios-e-aposentadorias.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Pensão, auxílio-reclusão, maternidade, família, acumulação e pensões especiais",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/07-pensao-familia-e-especiais.mp3",
+          "downloadName": "07-pensao-familia-e-especiais.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "LOAS, BPC e auxílio-inclusão, regimes próprios, CTC e o servidor do INSS",
+          "key": "inss-tecnico-do-seguro-social-2026/audio/pt-br-v1/08-loas-rpps-e-servidor.mp3",
+          "downloadName": "08-loas-rpps-e-servidor.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Técnico do Seguro Social do INSS, organizada pelo conteúdo do último edital (Edital nº 1 – INSS, de 12/9/2022, Cebraspe) e pela legislação vigente em novembro de 2026. Até a data desta edição, o novo concurso ainda aguardava autorização e edital. Quando o edital sair, confira o conteúdo programático e a banca.",
+    "preEditalLead": "Comece antes do edital do INSS: 1.252 páginas, 2.484 questões comentadas no formato Certo ou Errado do Cebraspe, 2 simulados de 120 itens, lei seca atualizada e audiobook em 8 capítulos, por R$ 49,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026: confirme a banca e o programa quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "O concurso do INSS já tem edital publicado?",
+        "a": "Até 23/11/2026, não. O INSS pediu autorização ao Ministério da Gestão para um novo concurso, com cerca de 10 mil vagas segundo as notícias, mas ainda não havia autorização nem edital. Por isso esta apostila é pré-edital e segue o último edital, de 2022."
+      },
+      {
+        "q": "Qual foi a banca do último concurso do INSS para Técnico do Seguro Social?",
+        "a": "O Cebraspe, no Edital nº 1 – INSS, de 12/9/2022 (e também em 2015/2016). A prova teve 120 itens Certo ou Errado: 50 de Conhecimentos Básicos e 70 de Conhecimentos Específicos, em 3h30, com um item errado anulando um certo."
+      },
+      {
+        "q": "O que cai na prova de Técnico do Seguro Social?",
+        "a": "Conhecimentos Básicos: Língua Portuguesa, Ética no Serviço Público, Noções de Direito Constitucional e Administrativo, Informática e Raciocínio Lógico. Conhecimentos Específicos: Seguridade Social, RGPS, custeio, benefícios, Leis 8.212 e 8.213/1991, EC 103/2019, LC 142/2013, LOAS, pensões especiais, seguro-defeso e regimes próprios."
+      },
+      {
+        "q": "A apostila está atualizada com a reforma da Previdência e as leis recentes?",
+        "a": "Sim. Traz as regras da EC 103/2019, com os valores das transições em 2026 (93 e 103 pontos; idade mínima progressiva de 59 anos e 6 meses e 64 anos e 6 meses), e as mudanças de 2024 a 2026, como o novo BPC (Lei 15.077/2024), a perícia por telemedicina ou análise documental e o fim do desconto de mensalidades associativas (Lei 15.327/2026)."
+      },
+      {
+        "q": "Qual é o requisito e a remuneração do cargo?",
+        "a": "No edital de 2022, o cargo exigia ensino médio completo e a remuneração inicial podia chegar a R$ 5.905,79, com jornada de 40 horas e regime estatutário da Lei 8.112/1990. Os valores do novo edital podem ser atualizados."
+      }
+    ],
+    "seoTitle": "Apostila INSS 2026 Técnico do Seguro Social | Trilha Aprova",
+    "seoDescription": "Apostila INSS 2026 Técnico do Seguro Social pré-edital: 1.252 páginas, 2.484 questões Certo ou Errado (Cebraspe), lei seca e audiobook.",
+    "storefront": {
+      "badge": "INSS • TÉCNICO DO SEGURO SOCIAL • EDIÇÃO PRÉ-EDITAL",
+      "cover3d": "/assets/capa-inss-tecnico-do-seguro-social-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Comece antes do edital: Técnico do Seguro Social do INSS com a legislação de 2026 e 2.484 questões Certo ou Errado",
+      "shortTag": "INSS · Técnico do Seguro Social",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.252 páginas: Básicos + todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 120 itens + 2.244 questões comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Leis 8.212 e 8.213, EC 103, LC 142, LOAS e Código de Ética"
+        }
+      ],
+      "subheadline": "Técnico do Seguro Social · Nível médio · Último edital: Cebraspe (2022) · Edição pré-edital",
+      "comboCovers": [
+        "/assets/capa-inss-tecnico-do-seguro-social-2026-simulados-3d.webp",
+        "/assets/capa-inss-tecnico-do-seguro-social-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Nacional (Gerências Executivas do INSS)",
+        "cargo": "Técnico do Seguro Social",
+        "salario": "até R$ 5.905,79 (edital de 2022)",
+        "vagas": "Pré-edital",
+        "taxa": null,
+        "inscricoes": "edital ainda não publicado",
+        "requisito": "Ensino médio completo",
+        "url": "https://www.gov.br/inss/pt-br",
+        "paginas": 1252,
+        "questoes": 2484
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

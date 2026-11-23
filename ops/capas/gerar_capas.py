@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'inss-tecnico-do-seguro-social-2026': dict(sim_t1='SIMULADOS', sigla='INSS', cobre='INSTITUTO NACIONAL DO SEGURO SOCIAL • PRÉ-EDITAL', ed='BASE: EDITAL Nº 1/2022 • CEBRASPE', lomb=['INSS', 'TÉCNICO', 'PRÉ-EDITAL'],
+   completa=('INSS', 'TÉCNICO DO SEGURO SOCIAL', ['Pré-edital • 2.484 questões comentadas • Certo ou Errado', 'Seguridade • RGPS • Custeio • Benefícios • EC 103/2019', 'LOAS e BPC • Ética • Direito • Informática • Português']),
+   simulados=['2 simulados de 120 itens Certo ou Errado • modelo Cebraspe', '50 Conhecimentos Básicos + 70 Específicos', 'gabarito comentado item a item'],
+   terceiro=('LEGISLAÇÃO', ['Leis 8.212 e 8.213/1991 • EC 103/2019 • LC 142/2013', 'LOAS (Lei 8.742/1993) • seguro-defeso', 'Código de Ética (Decreto 1.171/1994) • texto oficial'])),
  'camara-santa-helena-de-goias-analista-legislativo-2027': dict(sim_t1='SIMULADOS', sigla='ANALISTA LEGISLATIVO', cobre='CÂMARA DE SANTA HELENA DE GOIÁS • 2027', ed='CONCURSO Nº 01/2026 • ITAME', lomb=['CÂMARA DE', 'SANTA HELENA', 'ANALISTA • 2027'],
    completa=('ANALISTA', 'LEGISLATIVO', ['Nível superior • 1.787 questões comentadas', 'Constituição e Município • Técnica legislativa • LINDB', 'AFO e LRF • Licitações • Controle e TCM-GO • Legislação']),
    simulados=['2 simulados de 40 questões • 4 alternativas', 'Específicos e Legislação: 10 questões, peso 3', 'gabarito comentado questão a questão'],
