@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'seduc-ma-professor-lingua-portuguesa-2026': dict(sim_t1='SIMULADOS', sigla='SEDUC-MA', cobre='CONCURSO UNIFICADO DO MARANHÃO • 2026', ed='EDITAL Nº 01/2026 • FCC', lomb=['SEDUC-MA', 'PROFESSOR', 'LÍNGUA PORTUGUESA'],
+   completa=('PROFESSOR', 'LÍNGUA PORTUGUESA', ['Cargo 22 • 291 vagas • 1.764 questões comentadas', 'Literatura • Leitura • Produção • Análise linguística', 'Maranhão • Matemática e RLM • Informática • Redação FCC']),
+   simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('REDAÇÃO FCC', ['Dissertativo-argumentativa • 20 a 30 linhas', 'Grade do edital: tema 7 + norma 3', 'Modelos comentados e temas para treinar'])),
  'inss-tecnico-do-seguro-social-2026': dict(sim_t1='SIMULADOS', sigla='INSS', cobre='INSTITUTO NACIONAL DO SEGURO SOCIAL • PRÉ-EDITAL', ed='BASE: EDITAL Nº 1/2022 • CEBRASPE', lomb=['INSS', 'TÉCNICO', 'PRÉ-EDITAL'],
    completa=('INSS', 'TÉCNICO DO SEGURO SOCIAL', ['Pré-edital • 2.484 questões comentadas • Certo ou Errado', 'Seguridade • RGPS • Custeio • Benefícios • EC 103/2019', 'LOAS e BPC • Ética • Direito • Informática • Português']),
    simulados=['2 simulados de 120 itens Certo ou Errado • modelo Cebraspe', '50 Conhecimentos Básicos + 70 Específicos', 'gabarito comentado item a item'],

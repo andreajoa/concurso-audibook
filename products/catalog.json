@@ -5285,5 +5285,170 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "seduc-ma-professor-lingua-portuguesa-2026": {
+    "slug": "seduc-ma-professor-lingua-portuguesa-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Público Unificado do Estado do Maranhão — SEDUC-MA, Edital nº 01/2026 (FCC), cargo 22: Professor de Língua Portuguesa",
+    "examBoard": "FCC (Fundação Carlos Chagas)",
+    "category": "Concursos públicos",
+    "name": "Apostila SEDUC-MA 2026 Professor de Língua Portuguesa · Concurso Unificado MA (FCC) + audiobook",
+    "shortName": "SEDUC-MA Professor de Língua Portuguesa — Concurso Unificado MA",
+    "edition": "Pós-edital · edição de 24/11/2026 · Edital nº 01/2026 (FCC), publicado em 17/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Professor(a) de Língua Portuguesa da Secretaria de Estado da Educação do Maranhão (SEDUC-MA), cargo 22 do Concurso Unificado MA",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEDUC_MA_PROFESSOR_LP_2026",
+    "description": "Apostila digital para Professor de Língua Portuguesa da SEDUC-MA no Concurso Público Unificado do Estado do Maranhão, feita pelo Edital nº 01/2026 de Abertura de Inscrições (FCC, cargo 22, 291 vagas). PDF único de 1.062 páginas com 1.764 questões comentadas de cinco alternativas no estilo FCC e 2 simulados de 50 questões (20 Conhecimentos Gerais + 30 Específicos), com o cálculo da nota pelos pesos do edital. Conhecimentos Gerais do cargo 22: Matemática e Raciocínio Lógico (relações arbitrárias, sequências, frações, proporções, porcentagem e estatística com desvio médio, variância e desvio padrão), Geografia e História do Maranhão (território, biomas, Lençóis, MATOPIBA, Carajás e Itaqui, povos indígenas e quilombolas, França Equinocial, Revolta de Beckman, adesão à Independência, Balaiada, grandes projetos, Bumba meu boi, Tambor de Crioula e Tambor de Mina) e Noções de Informática (Windows, Office e Google Workspace, Gmail e Outlook, Teams, Zoom e Meet, segurança, nuvem, IA generativa com Copilot e Gemini, LGPD, Lei do Governo Digital e assinaturas eletrônicas). Conhecimentos Específicos completos: Literatura brasileira do Barroco ao contemporâneo, com os autores maranhenses e o item de literatura capixaba do edital; linguagem e interação, funções e figuras de linguagem; leitura (compreensão literal, interpretativa e crítica, coesão, indícios contextuais, relações de sentido, organização retórica, pressupostos e subentendidos); produção de textos, gêneros e tipologia, fatores de textualidade e novo Acordo Ortográfico; análise linguística (norma culta e variedades, oralidade e escrita, linguagem da internet, estrutura do vocábulo, categorias semânticas, sintaxe, papéis semânticos, pronome relativo, conjunções, pronomes de tratamento, concordância, regência, crase, colocação e pontuação). Inclui curso de Redação no padrão FCC, com a grade de correção do edital (tema 7 pontos, norma 3 pontos), e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.062 páginas, feito pelo Edital nº 01/2026 (FCC)",
+      "1.764 questões comentadas com cinco alternativas, no estilo FCC",
+      "2 simulados de 50 questões: 20 Gerais + 30 Específicos, com o cálculo da nota pelos pesos 1 e 2",
+      "Literatura brasileira completa, com Gonçalves Dias, Maria Firmina, Aluísio Azevedo, Gullar e outros maranhenses",
+      "Análise linguística: variedades, papéis semânticos, sintaxe, concordância, regência, crase e pontuação",
+      "Geografia e História do Maranhão: Balaiada, França Equinocial, Lençóis, Carajás e Bumba meu boi",
+      "Informática do edital: Google Workspace, Teams, Zoom, Meet, Copilot, Gemini e governo digital",
+      "Redação dissertativo-argumentativa no padrão FCC (20 a 30 linhas, nota mínima 6)",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "seduc-ma-professor-lingua-portuguesa-2026/images/capa.png",
+      "pdfKey": "seduc-ma-professor-lingua-portuguesa-2026/docs/apostila-seduc-ma-professor-lingua-portuguesa-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEDUC_MA_Professor_Lingua_Portuguesa.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEDUC-MA Professor de Língua Portuguesa (revisão da véspera)",
+        "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_SEDUC_MA_Professor_Lingua_Portuguesa.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FCC e a Geografia e a História do Maranhão",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/01-a-prova-e-o-maranhao.mp3",
+          "downloadName": "01-a-prova-e-o-maranhao.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Matemática, raciocínio lógico e noções de informática",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/02-matematica-e-informatica.mp3",
+          "downloadName": "02-matematica-e-informatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Literatura brasileira do Barroco aos dias atuais, com os autores maranhenses",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/03-literatura-brasileira.mp3",
+          "downloadName": "03-literatura-brasileira.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Linguagem e interação, funções e figuras de linguagem e leitura",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/04-linguagem-e-leitura.mp3",
+          "downloadName": "04-linguagem-e-leitura.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Produção de textos, coerência e coesão e o novo Acordo Ortográfico",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/05-producao-de-textos.mp3",
+          "downloadName": "05-producao-de-textos.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Variedades linguísticas, oralidade e escrita, internet e morfologia",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/06-variedades-e-morfologia.mp3",
+          "downloadName": "06-variedades-e-morfologia.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Sintaxe, papéis semânticos, concordância, regência, crase e pontuação",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/07-sintaxe-e-norma.mp3",
+          "downloadName": "07-sintaxe-e-norma.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "A redação dissertativo-argumentativa no padrão FCC",
+          "key": "seduc-ma-professor-lingua-portuguesa-2026/audio/pt-br-v1/08-redacao-fcc.mp3",
+          "downloadName": "08-redacao-fcc.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-04",
+      "confirmed": false,
+      "source": "FCC, Edital nº 01/2026 de Abertura de Inscrições do Concurso Público Unificado do Estado do Maranhão (17/11/2026) — inscrições de 14/12/2026 a 29/01/2027; aplicação das provas objetivas e discursivas prevista para 04/04/2027 (Anexo IV, cronograma sujeito a alterações)",
+      "sourceUrl": "https://www.concursosfcc.com.br/"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Língua Portuguesa no Concurso Unificado do Maranhão?",
+        "a": "São 291 vagas para o cargo 22, Professor de Língua Portuguesa da SEDUC-MA: 204 de ampla concorrência, 29 para pessoas com deficiência e 58 para candidatos negros. O vencimento inicial é de R$ 3.836,25 para 40 horas semanais, mais gratificações (Anexo VI do edital)."
+      },
+      {
+        "q": "Quando é a prova da SEDUC-MA para professor e qual é a banca?",
+        "a": "A banca é a Fundação Carlos Chagas (FCC). As inscrições vão de 14/12/2026 a 29/01/2027 (taxa de R$ 120,00), e as provas objetivas e a redação estão previstas para 04/04/2027, de manhã, com 4 horas de duração, em Balsas, Barra do Corda, Caxias, Colinas, Imperatriz, Pinheiro e São Luís."
+      },
+      {
+        "q": "Como é a prova de Professor de Língua Portuguesa da SEDUC-MA?",
+        "a": "São 20 questões de Conhecimentos Gerais (peso 1) e 30 de Conhecimentos Específicos (peso 2), todas com cinco alternativas, mais uma redação dissertativo-argumentativa de 20 a 30 linhas. É preciso média 6,00 nas objetivas e nota 6,00 na redação. Para o cargo 22, os Gerais são Matemática e Raciocínio Lógico, Geografia e História do Maranhão e Informática, sem Língua Portuguesa."
+      },
+      {
+        "q": "O que cai em Conhecimentos Específicos para Professor de Língua Portuguesa?",
+        "a": "Literatura brasileira (do Barroco ao contemporâneo), linguagem e interação, leitura, produção de textos e novo Acordo Ortográfico e análise linguística: variedades, oralidade e escrita, linguagem da internet, estrutura do vocábulo, sintaxe, papéis semânticos, concordância, regência, colocação e pontuação. A apostila segue o Anexo V do edital item por item."
+      },
+      {
+        "q": "Como a FCC corrige a redação da SEDUC-MA?",
+        "a": "A grade do edital dá até 7 pontos ao tema (recorte temático 2, interpretação crítica dos textos de apoio 2 e progressão textual 3) e 3 pontos à norma-padrão (vocabulário 0,8, coesão 1,6 e morfossintaxe 0,6). A conclusão não pode se reduzir a propostas de solução desarticuladas, e textos com até 7 linhas recebem zero."
+      }
+    ],
+    "seoTitle": "Apostila SEDUC-MA 2026 Professor de Português FCC | Trilha Aprova",
+    "seoDescription": "Apostila SEDUC-MA 2026 Professor de Língua Portuguesa (Concurso Unificado MA, FCC): 1.062 págs, 1.764 questões, redação FCC e audiobook.",
+    "storefront": {
+      "badge": "CONCURSO UNIFICADO MA • SEDUC • PROFESSOR DE LÍNGUA PORTUGUESA • FCC",
+      "cover3d": "/assets/capa-seduc-ma-professor-lingua-portuguesa-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEDUC-MA: 291 vagas para Professor de Língua Portuguesa. Literatura, Linguística, Maranhão, Redação FCC e 1.764 questões",
+      "shortTag": "SEDUC-MA · Professor de Língua Portuguesa",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.062 páginas: Gerais + todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.664 questões comentadas"
+        },
+        {
+          "titulo": "Curso de Redação FCC",
+          "detalhe": "Grade do edital, modelos e temas para treinar"
+        }
+      ],
+      "subheadline": "Professor(a) de Língua Portuguesa · Banca FCC · Prova prevista para 04/04/2027",
+      "comboCovers": [
+        "/assets/capa-seduc-ma-professor-lingua-portuguesa-2026-simulados-3d.webp",
+        "/assets/capa-seduc-ma-professor-lingua-portuguesa-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria de Estado da Educação do Maranhão (SEDUC-MA)",
+        "cargo": "Professor(a) de Língua Portuguesa",
+        "salario": "R$ 3.836,25 + gratificações (40h)",
+        "vagas": "291",
+        "taxa": "R$ 120,00",
+        "inscricoes": "14/12/2026 a 29/01/2027",
+        "requisito": "Licenciatura em Letras com habilitação em Língua Portuguesa",
+        "url": "https://www.concursosfcc.com.br/",
+        "paginas": 1062,
+        "questoes": 1764
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

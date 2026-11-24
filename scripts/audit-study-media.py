@@ -66,6 +66,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 638,
         'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
     },
+    'seduc-ma-professor-lingua-portuguesa-2026': {
+        'pages': 1062,
+        'topics': ['língua portuguesa', 'literatura', 'maranhão', 'gabarito', 'simulado'],
+    },
     'inss-tecnico-do-seguro-social-2026': {
         'pages': 1252,
         'topics': ['técnico do seguro social', 'inss', 'seguridade social', 'gabarito', 'simulado'],
