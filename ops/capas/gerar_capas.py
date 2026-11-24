@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'cetesb-tecnico-administrativo-2026': dict(sim_t1='SIMULADOS', sigla='CETESB', cobre='COMPANHIA AMBIENTAL DO ESTADO DE SÃO PAULO', ed='EDITAL Nº 02/2026 • FCC', lomb=['CETESB', 'TÉCNICO', 'ADMINISTRATIVO'],
+   completa=('TÉCNICO', 'ADMINISTRATIVO', ['Nível médio • 1.592 questões comentadas • 5 alternativas', 'Administração Geral • Pessoas • Materiais e Logística', 'Lei 13.303/2016 • Direito Administrativo • Português • RLM']),
+   simulados=['2 simulados de 60 questões • 5 alternativas', '30 Conhecimentos Básicos + 30 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('LEI 13.303/2016', ['Arts. 28 a 90 em texto oficial', 'Licitações e contratos das estatais', 'Gestão e fiscalização de contratos'])),
  'seduc-ma-professor-lingua-portuguesa-2026': dict(sim_t1='SIMULADOS', sigla='SEDUC-MA', cobre='CONCURSO UNIFICADO DO MARANHÃO • 2026', ed='EDITAL Nº 01/2026 • FCC', lomb=['SEDUC-MA', 'PROFESSOR', 'LÍNGUA PORTUGUESA'],
    completa=('PROFESSOR', 'LÍNGUA PORTUGUESA', ['Cargo 22 • 291 vagas • 1.764 questões comentadas', 'Literatura • Leitura • Produção • Análise linguística', 'Maranhão • Matemática e RLM • Informática • Redação FCC']),
    simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],

@@ -5450,5 +5450,169 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "cetesb-tecnico-administrativo-2026": {
+    "slug": "cetesb-tecnico-administrativo-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "CETESB — Companhia Ambiental do Estado de São Paulo, Concurso Público 2026, Edital nº 02/2026 (FCC), emprego S: Técnico Administrativo",
+    "examBoard": "FCC (Fundação Carlos Chagas)",
+    "category": "Concursos públicos",
+    "name": "Apostila CETESB 2026 Técnico Administrativo (FCC) + audiobook",
+    "shortName": "CETESB Técnico Administrativo 2026",
+    "edition": "Pós-edital · edição de 24/11/2026 · Edital nº 02/2026 (FCC)",
+    "author": "Trilha Aprova",
+    "audience": "Técnico Administrativo (nível médio) da CETESB — Companhia Ambiental do Estado de São Paulo",
+    "currency": "brl",
+    "priceCents": 4290,
+    "stripePriceEnv": "STRIPE_PRICE_CETESB_TECNICO_ADMINISTRATIVO_2026",
+    "description": "Apostila digital para Técnico Administrativo da CETESB (Companhia Ambiental do Estado de São Paulo), feita pelo Edital nº 02/2026 da FCC. PDF único de 1.022 páginas com 1.592 questões comentadas de cinco alternativas no estilo FCC e 2 simulados de 60 questões (30 Básicos + 30 Específicos), com o cálculo da nota pelos pesos do edital. Conhecimentos Básicos: Língua Portuguesa, Matemática e Raciocínio Lógico (porcentagem e juros, equações, sistemas, medidas, gráficos, sequências e princípio da regressão), Informática (Windows 11, Word, Excel e PowerPoint 2024, Outlook, OneDrive, Google Drive, Teams, Meet, segurança, LGPD e IA com ChatGPT, Copilot e Gemini) e Noções de Administração Pública (estruturas e departamentalização, gestão pública × privada, princípios, resultados, comunicação e redes, avaliação de desempenho, processos, projetos e qualidade). Conhecimentos Específicos completos: Direito Administrativo (organização administrativa, estatais, ato administrativo, cargo, emprego e função, acumulação, poderes), Administração Geral (TGA, funções administrativas, 5 Ps e escolas de Mintzberg), Gestão de Pessoas (recrutamento, seleção, treinamento, cargos e salários, benefícios, QVT), Comportamento Organizacional (atitudes, emoções, personalidade, valores, percepção, decisão, cultura e clima), Administração de Materiais e Logística (estoques, ponto de pedido, lote econômico, curva ABC, SKU, almoxarifado, compras, fornecedores e transportes), Gestão e Fiscalização de Contratos pela Lei nº 13.303/2016 (arts. 28 a 90, com a lei seca) e Ética no serviço público. Audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.022 páginas, feito pelo Edital nº 02/2026 (FCC)",
+      "1.592 questões comentadas com cinco alternativas, no estilo FCC",
+      "2 simulados de 60 questões: 30 Básicos + 30 Específicos, com o cálculo da nota (pesos 1 e 2)",
+      "Lei 13.303/2016 (arts. 28 a 90) e Ética explicadas, com 115 questões e a lei seca completa",
+      "Administração Geral, Gestão de Pessoas e Comportamento Organizacional (Mintzberg, Chiavenato, Robbins)",
+      "Materiais e Logística: ponto de pedido, lote econômico, curva ABC, almoxarifado e transportes",
+      "Informática do edital: Office 2024, Google Workspace, Teams, Meet e IA (ChatGPT, Copilot, Gemini)",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "cetesb-tecnico-administrativo-2026/images/capa.png",
+      "pdfKey": "cetesb-tecnico-administrativo-2026/docs/apostila-cetesb-tecnico-administrativo-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_CETESB_Tecnico_Administrativo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - CETESB Técnico Administrativo (revisão da véspera)",
+        "key": "cetesb-tecnico-administrativo-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_CETESB_Tecnico_Administrativo.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FCC e Língua Portuguesa: interpretação, semântica, figuras e discurso",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/01-a-prova-e-o-portugues-1.mp3",
+          "downloadName": "01-a-prova-e-o-portugues-1.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: ortografia, morfologia, sintaxe, concordância, regência, crase e pontuação",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/02-portugues-2.mp3",
+          "downloadName": "02-portugues-2.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática, raciocínio lógico e informática",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/03-matematica-e-informatica.mp3",
+          "downloadName": "03-matematica-e-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Noções de Administração Pública e de Direito Administrativo",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/04-administracao-publica-e-direito.mp3",
+          "downloadName": "04-administracao-publica-e-direito.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Administração Geral, gestão estratégica, gestão de pessoas e comportamento organizacional",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/05-administracao-geral-e-pessoas.mp3",
+          "downloadName": "05-administracao-geral-e-pessoas.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Administração de materiais, compras, almoxarifado e transportes",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/06-materiais-e-logistica.mp3",
+          "downloadName": "06-materiais-e-logistica.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Lei 13.303/2016: licitações, contratos, fiscalização e ética",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/07-lei-13303-contratos-e-etica.mp3",
+          "downloadName": "07-lei-13303-contratos-e-etica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Lei seca: arts. 28 a 90 da Lei 13.303/2016",
+          "key": "cetesb-tecnico-administrativo-2026/audio/pt-br-v1/08-lei-seca-13303.mp3",
+          "downloadName": "08-lei-seca-13303.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-02-21",
+      "confirmed": false,
+      "source": "FCC, Edital nº 02/2026 da CETESB (abertura de inscrições para empregos de nível médio e técnico) — inscrições de 12/11/2026 a 14/12/2026; aplicação das provas objetivas prevista para 21/02/2027 (Anexo VII)",
+      "sourceUrl": "https://www.concursosfcc.com.br/concursos/cetes126/index.html"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Técnico Administrativo no concurso da CETESB?",
+        "a": "O Edital nº 02/2026 oferece 17 vagas para Técnico Administrativo, mais cadastro de reserva: 7 na Grande São Paulo e as demais nas regiões de Bauru, Campinas, Mogi Guaçu, Presidente Prudente, Ribeirão Preto, São José do Rio Preto e Sorocaba. A remuneração inicial é de R$ 5.614,38 para 40 horas semanais, no regime da CLT."
+      },
+      {
+        "q": "Quando é a prova da CETESB e qual é a banca?",
+        "a": "A banca é a Fundação Carlos Chagas (FCC). As inscrições vão de 12/11/2026 a 14/12/2026, com taxa de R$ 60,00, e a prova objetiva está prevista para 21/02/2027."
+      },
+      {
+        "q": "Como é a prova de Técnico Administrativo da CETESB?",
+        "a": "São 60 questões de cinco alternativas em 3 horas: 30 de Conhecimentos Básicos (10 de Língua Portuguesa, 10 de Matemática e Raciocínio Lógico, 5 de Informática e 5 de Noções de Administração Pública), com peso 1, e 30 de Conhecimentos Específicos, com peso 2. A nota mínima é 5,00 e não há redação."
+      },
+      {
+        "q": "O que cai em Conhecimentos Específicos para Técnico Administrativo da CETESB?",
+        "a": "Noções de Direito Administrativo, Administração Geral (teorias, gestão estratégica, gestão de pessoas, comportamento organizacional), Administração de Materiais e Logística, Gestão e Fiscalização de Contratos pela Lei nº 13.303/2016 (arts. 28 a 90) e Ética no serviço público."
+      },
+      {
+        "q": "Por que a CETESB cobra a Lei 13.303/2016 e não a Lei 14.133/2021?",
+        "a": "Porque a CETESB é uma empresa estatal paulista, e as licitações e os contratos das empresas públicas e sociedades de economia mista seguem o Estatuto das Estatais, a Lei nº 13.303/2016. Por isso o edital pede os arts. 28 a 90: dispensa e inexigibilidade, procedimento licitatório, contratos, garantias, alterações e sanções."
+      }
+    ],
+    "seoTitle": "Apostila CETESB 2026 Técnico Administrativo FCC | Trilha Aprova",
+    "seoDescription": "Apostila CETESB 2026 Técnico Administrativo (FCC): 1.022 págs, 1.592 questões, Lei 13.303 com lei seca, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "CETESB 2026 • TÉCNICO ADMINISTRATIVO • FCC",
+      "cover3d": "/assets/capa-cetesb-tecnico-administrativo-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "CETESB: Técnico Administrativo com R$ 5.614,38. Todo o edital, Lei 13.303 com lei seca, 1.592 questões FCC e audiobook",
+      "shortTag": "CETESB · Técnico Administrativo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.022 páginas: Básicos + todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 60 + 1.472 questões comentadas"
+        },
+        {
+          "titulo": "Lei 13.303/2016",
+          "detalhe": "Arts. 28 a 90 em texto oficial"
+        }
+      ],
+      "subheadline": "Técnico Administrativo · Nível médio · Banca FCC · Prova prevista para 21/02/2027",
+      "comboCovers": [
+        "/assets/capa-cetesb-tecnico-administrativo-2026-simulados-3d.webp",
+        "/assets/capa-cetesb-tecnico-administrativo-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "CETESB — Companhia Ambiental do Estado de São Paulo",
+        "cargo": "Técnico Administrativo",
+        "salario": "R$ 5.614,38 (40h)",
+        "vagas": "17 + CR",
+        "taxa": "R$ 60,00",
+        "inscricoes": "12/11/2026 a 14/12/2026",
+        "requisito": "Ensino médio completo",
+        "url": "https://www.concursosfcc.com.br/concursos/cetes126/index.html",
+        "paginas": 1022,
+        "questoes": 1592
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }
