@@ -70,6 +70,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1679,
         'topics': ['agente de polícia', 'pernambuco', 'cebraspe', 'gabarito', 'simulado'],
     },
+    'see-sp-professor-matematica-2027': {
+        'pages': 672,
+        'topics': ['gestão de sala de aula', 'lemov', 'currículo paulista', 'gabarito', 'simulado'],
+    },
     'santana-de-parnaiba-alfabetizado-2027': {
         'pages': 685,
         'topics': ['santana de parnaíba', 'separação silábica', 'raciocínio lógico', 'gabarito', 'simulado'],

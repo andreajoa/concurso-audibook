@@ -1846,6 +1846,175 @@
       "downsell": []
     }
   },
+  "see-sp-professor-matematica-2027": {
+    "slug": "see-sp-professor-matematica-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Matemática",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Matemática (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Matemática (PEFM)",
+    "edition": "Pós-edital · edição de 26/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Matemática da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_MATEMATICA_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Matemática da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 672 páginas com 1.516 questões comentadas de cinco alternativas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Matemática. Bloco I completo: gestão de sala de aula segundo as quatro obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as 19 técnicas de Doug Lemov cobradas. Matemática: Currículo Paulista e didática (letramento matemático, Pólya, Duval, Vergnaud, van Hiele), números (conjuntos, frações, porcentagem, potências, radicais, notação científica e proporcionalidade), álgebra (expressões, equações do 1º e 2º grau, sistemas lineares), funções (afim, quadrática, exponencial, logarítmica e trigonométricas, PA e PG), geometria e medidas (áreas por decomposição, semelhança, Pitágoras, trigonometria, geometria espacial) e combinatória, probabilidade e estatística. Inclui módulo da prova discursiva (critérios do edital e resposta-modelo sobre função quadrática), guia da prova prática de simulação de aula em vídeo (rubrica comentada e roteiro de aula de combinações simples) e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 672 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.516 questões comentadas com cinco alternativas, no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Matemática)",
+      "Gestão de sala de aula: os capítulos cobrados de Weinstein, Wiggins e McTighe e Willingham",
+      "As 19 técnicas de Lemov do edital, com o erro que cada uma corrige",
+      "Currículo Paulista e didática da Matemática (Pólya, Duval, Vergnaud, van Hiele)",
+      "Os 4 temas das aulas da prova prática: sistemas, áreas por decomposição, função quadrática e combinações",
+      "Discursiva com resposta-modelo e aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-matematica-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-matematica-2027/docs/apostila-see-sp-professor-matematica-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_Matematica.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Matemática (revisão da véspera)",
+        "key": "see-sp-professor-matematica-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_Matematica.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo Paulista e didática da Matemática",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/02-curriculo-e-didatica.mp3",
+          "downloadName": "02-curriculo-e-didatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Números: conjuntos, frações, porcentagem, potências, radicais e proporcionalidade",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/03-numeros.mp3",
+          "downloadName": "03-numeros.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Álgebra: expressões, equações e sistemas lineares",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/04-algebra.mp3",
+          "downloadName": "04-algebra.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Funções e sequências: afim, quadrática, exponencial, logarítmica, trigonométricas, PA e PG",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/05-funcoes.mp3",
+          "downloadName": "05-funcoes.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Geometria e medidas",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/06-geometria.mp3",
+          "downloadName": "06-geometria.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Combinatória, probabilidade e estatística",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/07-combinatoria-probabilidade-estatistica.mp3",
+          "downloadName": "07-combinatoria-probabilidade-estatistica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "A prova discursiva e a aula em vídeo",
+          "key": "see-sp-professor-matematica-2027/audio/pt-br-v1/08-discursiva-e-aula.mp3",
+          "downloadName": "08-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, manhã, para Matemática",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Matemática na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 1.262 são de Matemática (505 na jornada completa de 25 horas e 757 na jornada ampliada de 40 horas), o componente com mais vagas. O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Matemática no período da manhã)."
+      },
+      {
+        "q": "Como é a prova de Professor de Matemática da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Matemática), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Quais aulas de Matemática podem ser usadas na prova prática em vídeo?",
+        "a": "O Anexo XII indica quatro aulas do material da rede: 8º ano, sistemas de equações do 1º grau com duas incógnitas; 7º ano, cálculo de área de figuras planas por decomposição; 1ª série, elementos de uma função polinomial do 2º grau; e 3ª série, cálculo do número de combinações simples. O vídeo é avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Matemática na rede estadual de São Paulo?",
+        "a": "Licenciatura em Matemática ou outra licenciatura com habilitação em Matemática admitida no Anexo IV do edital (por exemplo, Ciências Exatas, Física, Química ou Computação com habilitação em Matemática)."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Matemática FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Matemática (PEFM, FGV): 1.516 questões, gestão de sala de aula, Lemov, funções, geometria, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE MATEMÁTICA • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-matematica-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 1.262 vagas para Professor de Matemática. Gestão de sala de aula, as técnicas de Lemov, Currículo Paulista e 1.516 questões",
+      "shortTag": "SEE-SP · Professor de Matemática",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "672 páginas: Gestão de sala de aula + toda a Matemática"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.456 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiro do vídeo"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Matemática · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-matematica-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-matematica-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Matemática (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "1.262",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura com habilitação em Matemática",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 672,
+        "questoes": 1516
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "santana-de-parnaiba-alfabetizado-2027": {
     "slug": "santana-de-parnaiba-alfabetizado-2027",
     "active": true,
