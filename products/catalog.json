@@ -5614,5 +5614,173 @@
       "crossSell": [],
       "downsell": []
     }
+  },
+  "guarda-municipal-campinas-2026": {
+    "slug": "guarda-municipal-campinas-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura Municipal de Campinas (SP) — Concurso Público 2026 da Guarda Municipal, Edital nº 02/2026 (VUNESP), cargo 91952: Guarda Municipal – 3ª Classe",
+    "examBoard": "Fundação VUNESP",
+    "category": "Concursos públicos",
+    "name": "Apostila Guarda Municipal de Campinas 2026 (GCM, VUNESP) + audiobook",
+    "shortName": "GCM Campinas Guarda Municipal 2026",
+    "edition": "Pós-edital · edição de 26/11/2026 · Edital nº 02/2026 (VUNESP)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Guarda Municipal – 3ª Classe da Prefeitura de Campinas (SP), nível médio",
+    "currency": "brl",
+    "priceCents": 2990,
+    "stripePriceEnv": "STRIPE_PRICE_GUARDA_MUNICIPAL_CAMPINAS_2026",
+    "description": "Apostila digital para Guarda Municipal – 3ª Classe de Campinas (GCM Campinas), feita pelo Edital nº 02/2026 da VUNESP, item por item do Anexo I. PDF único de 1.417 páginas com 1.594 questões comentadas de cinco alternativas no estilo VUNESP e 2 simulados de 50 questões (12 de Português, 6 de Matemática, 2 de Legislação Municipal e 30 de Conhecimentos Específicos). Conhecimentos Gerais: Língua Portuguesa (leitura, sinônimos e antônimos, sentido figurado, classes de palavras, pontuação, concordância, regência, colocação pronominal e crase), Matemática e Raciocínio Lógico (frações, MMC e MDC, porcentagem, regra de três, equações, medidas, média, geometria com Pitágoras e Tales, lógica e sequências) e Legislação Municipal (Lei nº 1.399/1955, art. 15 e arts. 184 a 204, e Decreto nº 21.019/2020). Conhecimentos Específicos completos: Geografia de Campinas e da Região Metropolitana (20 municípios, 11 vizinhos, 7 distritos e próprios públicos, com dados do IBGE), Estatuto Geral das Guardas Municipais (Lei 13.022/2014), Susp (Lei 13.675/2018), uso da força (Lei 13.060/2014 e Decreto 12.341/2024), porte de arma da guarda (Decreto 11.615/2023), DUDH, ECA, Estatuto da Pessoa Idosa, Lei Maria da Penha, Lei SP 14.187/2010, Código Penal com as penas novas da Lei 15.397/2026, Abuso de Autoridade, Crimes Ambientais, inquérito e prisão em flagrante (CPP), Código de Trânsito Brasileiro e CTN (taxas e poder de polícia). Lei seca de toda a legislação do edital e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.417 páginas, feito pelo Edital nº 02/2026 (VUNESP)",
+      "1.594 questões comentadas com cinco alternativas, no estilo VUNESP",
+      "2 simulados de 50 questões no formato exato da prova (12 + 6 + 2 + 30)",
+      "Estatuto Geral das Guardas Municipais, Susp, uso da força e porte de arma explicados",
+      "Código Penal atualizado com as penas novas de furto, roubo e latrocínio (Lei 15.397/2026)",
+      "Geografia de Campinas e da RMC com dados oficiais do IBGE (Censo 2022)",
+      "Lei seca de toda a legislação do edital, inclusive Lei 1.399/1955 e Decreto 21.019/2020",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "guarda-municipal-campinas-2026/images/capa.png",
+      "pdfKey": "guarda-municipal-campinas-2026/docs/apostila-guarda-municipal-campinas-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_GCM_Campinas_Guarda_Municipal.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Guarda Municipal de Campinas (revisão da véspera)",
+        "key": "guarda-municipal-campinas-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_GCM_Campinas_Guarda_Municipal.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso, a prova da VUNESP e Língua Portuguesa: leitura, sinônimos, antônimos e sentido figurado",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/01-a-prova-e-o-portugues-1.mp3",
+          "downloadName": "01-a-prova-e-o-portugues-1.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: classes de palavras, pontuação, concordância, regência, colocação pronominal e crase",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/02-portugues-2.mp3",
+          "downloadName": "02-portugues-2.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática e raciocínio lógico; Estatuto dos Funcionários de Campinas e avaliação probatória",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/03-matematica-e-legislacao-municipal.mp3",
+          "downloadName": "03-matematica-e-legislacao-municipal.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Campinas e a RMC; Estatuto Geral das Guardas Municipais, Susp, uso da força e porte de arma",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/04-campinas-e-guardas-municipais.mp3",
+          "downloadName": "04-campinas-e-guardas-municipais.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direitos humanos e vulneráveis: DUDH, ECA, Pessoa Idosa, Maria da Penha e Lei SP 14.187",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/05-direitos-humanos-e-vulneraveis.mp3",
+          "downloadName": "05-direitos-humanos-e-vulneraveis.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Penal: pessoa, patrimônio e Administração; abuso de autoridade e crimes ambientais",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/06-direito-penal.mp3",
+          "downloadName": "06-direito-penal.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Inquérito, prisão em flagrante, Código de Trânsito Brasileiro e taxas (CTN)",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/07-processo-penal-transito-e-ctn.mp3",
+          "downloadName": "07-processo-penal-transito-e-ctn.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Lei seca: Lei 13.022/2014, Lei 13.060/2014 e Decreto 12.341/2024",
+          "key": "guarda-municipal-campinas-2026/audio/pt-br-v1/08-lei-seca-guardas.mp3",
+          "downloadName": "08-lei-seca-guardas.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-21",
+      "confirmed": false,
+      "source": "Fundação VUNESP, Edital nº 02/2026 da Prefeitura de Campinas (DOM de 11/11/2026) — inscrições de 25/11/2026 a 08/01/2027; Prova Objetiva prevista para 21/03/2027, às 13h (item 12.1.3)",
+      "sourceUrl": "https://www.vunesp.com.br/PCAM2602"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há no concurso da Guarda Municipal de Campinas e qual é o salário?",
+        "a": "O Edital nº 02/2026 oferece 100 vagas de Guarda Municipal – 3ª Classe: 50 de ampla concorrência, 15 para o sexo feminino, 25 para pessoas pretas ou pardas, 5 para pessoas com deficiência, 3 para indígenas e 2 para quilombolas. O vencimento base é de R$ 3.796,61, acrescido das vantagens do cargo."
+      },
+      {
+        "q": "Quando é a prova da GCM Campinas e qual é a banca?",
+        "a": "A banca é a Fundação VUNESP. As inscrições vão de 25/11/2026 a 08/01/2027, pelo site vunesp.com.br/PCAM2602, com taxa de R$ 67,90. A Prova Objetiva está prevista para 21/03/2027, às 13h, preferencialmente em Campinas."
+      },
+      {
+        "q": "Quais são os requisitos para ser Guarda Municipal em Campinas?",
+        "a": "Ensino médio completo, CNH no mínimo categoria B, altura mínima de 1,60 m para homens e 1,55 m para mulheres e idade entre 18 e 35 anos na data do último dia de inscrições."
+      },
+      {
+        "q": "Como é a prova objetiva da Guarda Municipal de Campinas?",
+        "a": "São 50 questões de cinco alternativas em 3 horas: 12 de Língua Portuguesa, 6 de Matemática e Raciocínio Lógico, 2 de Legislação Municipal e 30 de Conhecimentos Específicos. É habilitado quem acerta pelo menos 50% e fica entre os 1.750 mais bem classificados nas listas. Depois vêm altura, TAF, avaliação psicológica, exame médico, pesquisa social, avaliação para porte de arma e Curso de Formação."
+      },
+      {
+        "q": "O que cai em Conhecimentos Específicos para Guarda Municipal de Campinas?",
+        "a": "Aspectos geográficos e urbanos de Campinas e da Região Metropolitana e um bloco de legislação: Estatuto Geral das Guardas Municipais (Lei 13.022/2014), ECA, Estatuto da Pessoa Idosa, Código Penal, Lei Maria da Penha, DUDH, Lei SP 14.187/2010, Código de Trânsito Brasileiro, CTN (arts. 77 a 79), Susp, Crimes Ambientais, Lei 13.060/2014, Decreto 12.341/2024, Abuso de Autoridade, CPP (inquérito e flagrante) e Decreto 11.615/2023."
+      },
+      {
+        "q": "Como é o TAF da Guarda Municipal de Campinas?",
+        "a": "São 5 provas: barra fixa (flexão para homens e isometria para mulheres), abdominal em 1 minuto, flexão de braço em 1 minuto, corrida de 50 metros e corrida de 12 minutos. A nota é a média das cinco; é preciso ter 50 pontos ou mais e pelo menos 20 em cada prova. A nota do TAF soma-se à da prova objetiva."
+      }
+    ],
+    "seoTitle": "Apostila Guarda Municipal de Campinas 2026 GCM VUNESP | Trilha",
+    "seoDescription": "Apostila GCM Campinas 2026 (VUNESP): 1.417 págs, 1.594 questões, Estatuto das Guardas, Penal, CTB, lei seca, 2 simulados e audiobook.",
+    "storefront": {
+      "badge": "GCM CAMPINAS 2026 • GUARDA MUNICIPAL • VUNESP",
+      "cover3d": "/assets/capa-guarda-municipal-campinas-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Guarda Municipal de Campinas: 100 vagas. Todo o edital, Estatuto das Guardas, Penal, Trânsito, 1.594 questões VUNESP e audiobook",
+      "shortTag": "GCM Campinas · Guarda Municipal",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.417 páginas: Gerais + todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.494 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Completa",
+          "detalhe": "Toda a legislação do edital em texto oficial"
+        }
+      ],
+      "subheadline": "Guarda Municipal – 3ª Classe · Nível médio · Banca VUNESP · Prova prevista para 21/03/2027",
+      "comboCovers": [
+        "/assets/capa-guarda-municipal-campinas-2026-simulados-3d.webp",
+        "/assets/capa-guarda-municipal-campinas-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura Municipal de Campinas (SP)",
+        "cargo": "Guarda Municipal – 3ª Classe",
+        "salario": "R$ 3.796,61 + vantagens",
+        "vagas": "100",
+        "taxa": "R$ 67,90",
+        "inscricoes": "25/11/2026 a 08/01/2027",
+        "requisito": "Ensino médio + CNH B",
+        "url": "https://www.vunesp.com.br/PCAM2602",
+        "paginas": 1417,
+        "questoes": 1594
+      },
+      "area": "seguranca"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
   }
 }

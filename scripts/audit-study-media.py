@@ -66,6 +66,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 638,
         'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
     },
+    'guarda-municipal-campinas-2026': {
+        'pages': 1417,
+        'topics': ['guarda municipal', 'campinas', '13.022', 'gabarito', 'simulado'],
+    },
     'cetesb-tecnico-administrativo-2026': {
         'pages': 1022,
         'topics': ['técnico administrativo', 'cetesb', '13.303', 'gabarito', 'simulado'],

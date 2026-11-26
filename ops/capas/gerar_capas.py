@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'guarda-municipal-campinas-2026': dict(sim_t1='SIMULADOS', sigla='GCM CAMPINAS', cobre='PREFEITURA MUNICIPAL DE CAMPINAS • SP', ed='EDITAL Nº 02/2026 • VUNESP', lomb=['GCM', 'CAMPINAS', 'GUARDA MUNICIPAL'],
+   completa=('GUARDA', 'MUNICIPAL', ['3ª Classe • 1.594 questões comentadas • 5 alternativas', 'Estatuto das Guardas • Penal • CTB • ECA • Maria da Penha', 'Geografia de Campinas • Legislação Municipal • Português • RLM']),
+   simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('LEI SECA COMPLETA', ['Lei 13.022 • Susp • Lei 13.060 • armas', 'CP • CPP • CTB • ECA • Pessoa Idosa', 'Lei 1.399/1955 e Decreto 21.019/2020'])),
  'cetesb-tecnico-administrativo-2026': dict(sim_t1='SIMULADOS', sigla='CETESB', cobre='COMPANHIA AMBIENTAL DO ESTADO DE SÃO PAULO', ed='EDITAL Nº 02/2026 • FCC', lomb=['CETESB', 'TÉCNICO', 'ADMINISTRATIVO'],
    completa=('TÉCNICO', 'ADMINISTRATIVO', ['Nível médio • 1.592 questões comentadas • 5 alternativas', 'Administração Geral • Pessoas • Materiais e Logística', 'Lei 13.303/2016 • Direito Administrativo • Português • RLM']),
    simulados=['2 simulados de 60 questões • 5 alternativas', '30 Conhecimentos Básicos + 30 Específicos', 'gabarito comentado questão a questão'],
