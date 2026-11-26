@@ -1271,153 +1271,174 @@
       "note": "Prova objetiva realizada em 01/11/2026. Produto retirado da venda em 12/11/2026; manter acesso dos compradores anteriores."
     }
   },
-  "matao-sp-assistente-administrativo-2026": {
-    "slug": "matao-sp-assistente-administrativo-2026",
+  "pc-pe-agente-de-policia-2026": {
+    "slug": "pc-pe-agente-de-policia-2026",
     "active": true,
     "brand": "Trilha Aprova",
-    "contest": "Prefeitura de Matão - Concurso Público 01/2026",
-    "examBoard": "IBAM",
+    "contest": "Polícia Civil de Pernambuco (PCPE) — Concurso Público 2026, Edital nº 1 – PCPE, de 2 de outubro de 2026 (Cebraspe), Cargo 1: Agente de Polícia",
+    "examBoard": "Cebraspe",
     "category": "Concursos públicos",
-    "name": "Assistente Administrativo - Prefeitura de Matão 2026 + audiobook",
-    "shortName": "Assistente Administrativo - Matão 2026",
-    "edition": "Edital 01/2026 · Banca IBAM · Edição completa",
+    "name": "Apostila PC-PE Agente de Polícia 2026 (Cebraspe) + audiobook",
+    "shortName": "PC-PE Agente de Polícia 2026",
+    "edition": "Pós-edital · edição de 26/11/2026 · Edital nº 1 – PCPE/2026 (Cebraspe), com as retificações dos Editais nº 2 e nº 3",
     "author": "Trilha Aprova",
-    "audience": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP",
+    "audience": "Candidatos a Agente de Polícia da Polícia Civil de Pernambuco, nível superior em qualquer área",
     "currency": "brl",
-    "priceCents": 2990,
-    "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
-    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 595 páginas e 891 questões comentadas.",
-    "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
-    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 595 páginas, 891 questões comentadas, simulados e audiobook em português brasileiro.",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_PC_PE_AGENTE_DE_POLICIA_2026",
+    "description": "Apostila digital para Agente de Polícia da Polícia Civil de Pernambuco (PC-PE), feita pelo Edital nº 1 – PCPE/2026 do Cebraspe, item por item do conteúdo programático. PDF único de 1.679 páginas com 1.834 questões comentadas de cinco alternativas (a prova da PC-PE é de múltipla escolha A a E) e 2 simulados de 60 questões no formato exato da prova: 20 de Noções de Direito e 40 de Conhecimentos Específicos. Noções de Direito completas: Legislação Estadual de Pernambuco (Constituição Estadual, arts. 101 a 105-B; Estatuto do Policial Civil, Lei 6.425/1972; Estatuto do Servidor, Lei 6.123/1968; LC 137/2008 e LC 317/2015), Direito Constitucional, Direito Administrativo, Direito Penal (princípios, aplicação da lei penal, crimes contra a pessoa, o patrimônio, a dignidade sexual e a Administração), legislação penal especial (hediondos, racismo, abuso de autoridade, tortura, ECA, organizações criminosas, crimes de trânsito, Maria da Penha, Lei de Drogas, Lei Henry Borel, crimes ambientais, Estatuto do Desarmamento e Estatuto da Juventude) e Direito Processual Penal (inquérito, provas e cadeia de custódia, prisões, cautelares, fiança, prisão temporária, Juizados e Lei 12.830). Conhecimentos Específicos: Língua Portuguesa com redação oficial, Informática (Windows, Microsoft 365, redes, deep web e dark web, segurança e nuvem), Raciocínio Lógico, Contabilidade Geral e Estatística. Inclui módulo da redação de 30 linhas sobre segurança pública (fórmula de nota do Cebraspe e redações-modelo), lei seca de toda a legislação do edital e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.679 páginas, feito pelo Edital nº 1 – PCPE/2026 (Cebraspe)",
+      "1.834 questões comentadas com cinco alternativas, no formato da prova da PC-PE",
+      "2 simulados de 60 questões no formato exato da prova (20 de Direito + 40 Específicos)",
+      "Legislação de Pernambuco completa: CE-PE, Leis 6.425 e 6.123, LCs 137 e 317",
+      "Contabilidade Geral e Estatística do zero, com exercícios resolvidos",
+      "Penal, Processo Penal e 13 leis especiais com as penas atualizadas",
+      "Redação de segurança pública: como o Cebraspe calcula a nota e 3 redações-modelo",
+      "Lei seca de toda a legislação de Noções de Direito do edital",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "pc-pe-agente-de-policia-2026/images/capa.png",
+      "pdfKey": "pc-pe-agente-de-policia-2026/docs/apostila-pc-pe-agente-de-policia-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_PC-PE_Agente_de_Policia.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - PC-PE Agente de Polícia (revisão da véspera)",
+        "key": "pc-pe-agente-de-policia-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_PC-PE_Agente_de_Policia.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso da PC-PE, Língua Portuguesa (compreensão e significação) e correspondência oficial",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/01-a-prova-portugues-e-redacao-oficial.mp3",
+          "downloadName": "01-a-prova-portugues-e-redacao-oficial.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa: ortografia, morfossintaxe, pontuação, concordância, regência, crase e colocação",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/02-portugues-2.mp3",
+          "downloadName": "02-portugues-2.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Informática: Windows, Microsoft 365, redes, internet, segurança, nuvem, deep web e dark web",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/03-informatica.mp3",
+          "downloadName": "03-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Raciocínio lógico, matemática e estatística",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/04-raciocinio-logico-e-estatistica.mp3",
+          "downloadName": "04-raciocinio-logico-e-estatistica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Contabilidade geral e legislação estadual de Pernambuco",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/05-contabilidade-e-legislacao-de-pernambuco.mp3",
+          "downloadName": "05-contabilidade-e-legislacao-de-pernambuco.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito constitucional e direito administrativo",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/06-direito-constitucional-e-administrativo.mp3",
+          "downloadName": "06-direito-constitucional-e-administrativo.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Direito Penal e Processo Penal: aplicação da lei penal, crimes do CP, inquérito, provas, prisões e cautelares",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/07-direito-penal-e-processo-penal.mp3",
+          "downloadName": "07-direito-penal-e-processo-penal.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Legislação penal especial (hediondos, tortura, ECA, drogas, desarmamento, abuso, Maria da Penha, trânsito) e redação",
+          "key": "pc-pe-agente-de-policia-2026/audio/pt-br-v1/08-legislacao-penal-especial-e-redacao.mp3",
+          "downloadName": "08-legislacao-penal-especial-e-redacao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-07",
+      "confirmed": false,
+      "source": "Cebraspe, Edital nº 1 – PCPE, de 2/10/2026 (Anexo I, cronograma) — inscrições de 15/10/2026 a 16/12/2026; provas objetivas e discursiva de Agente de Polícia em 7/3/2027, à tarde",
+      "sourceUrl": "https://www.cebraspe.org.br/concursos/pc_pe_26"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Agente de Polícia na PC-PE e qual é o salário?",
+        "a": "O Edital nº 1 – PCPE/2026 oferece 1.200 vagas de Agente de Polícia (780 de ampla concorrência, 60 para pessoas com deficiência, 300 para pessoas pretas e pardas, 36 para indígenas e 24 para quilombolas), dentro de um total de 1.315 vagas. A remuneração inicial é de R$ 5.667,92 (Lei Complementar nº 551/2024)."
+      },
+      {
+        "q": "Quando é a prova da PC-PE e qual é a banca?",
+        "a": "A banca é o Cebraspe. As inscrições vão de 15/10/2026 a 16/12/2026, até as 18h, pelo site cebraspe.org.br/concursos/pc_pe_26, com taxa de R$ 250,00 paga até 18/12/2026. As provas objetivas e a discursiva de Agente de Polícia estão marcadas para 7/3/2027, à tarde, em Arcoverde, Caruaru, Petrolina e Recife."
+      },
+      {
+        "q": "Quais são os requisitos para ser Agente de Polícia em Pernambuco?",
+        "a": "Diploma de nível superior em qualquer área, reconhecido pelo MEC, e Carteira Nacional de Habilitação categoria B ou superior, além de 18 anos completos na posse, quitação eleitoral e militar e aptidão física e mental."
+      },
+      {
+        "q": "Como é a prova objetiva de Agente de Polícia da PC-PE?",
+        "a": "São 60 questões de múltipla escolha com cinco alternativas (A a E), e não itens de Certo ou Errado: 20 de Noções de Direito e 40 de Conhecimentos Específicos, valendo 1 ponto cada, sem desconto por erro. É eliminado quem faz menos de 30 pontos. A redação, de até 30 linhas sobre tema atual de segurança pública, vale 30 pontos, e é preciso tirar pelo menos 15."
+      },
+      {
+        "q": "O que cai na prova de Agente de Polícia da PC-PE?",
+        "a": "Noções de Direito: legislação estadual (Constituição de Pernambuco, arts. 101 a 105-B, Leis 6.425/1972 e 6.123/1968, LCs 137/2008 e 317/2015), Direito Constitucional, Administrativo, Penal (com 13 leis especiais) e Processual Penal. Conhecimentos Específicos: Língua Portuguesa, Informática, Raciocínio Lógico, Contabilidade Geral e Estatística."
+      },
+      {
+        "q": "Quais são as etapas do concurso da Polícia Civil de Pernambuco?",
+        "a": "Na primeira etapa: provas objetivas e discursiva, exames médicos, prova de capacidade física, investigação social e avaliação psicológica, todas eliminatórias. Na segunda etapa vem o Curso de Formação Profissional, na ACADEPOL, em Recife."
+      }
+    ],
+    "seoTitle": "Apostila PC-PE Agente de Polícia 2026 Cebraspe | Trilha",
+    "seoDescription": "Apostila PC-PE Agente de Polícia (Cebraspe): 1.679 págs, 1.834 questões A–E, legislação de PE, Penal, Contabilidade, lei seca, simulados e audiobook.",
     "storefront": {
-      "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
-      "cover3d": "/assets/capa-matao-sp-assistente-administrativo-2026-completa-3d.webp",
+      "badge": "PC-PE 2026 • AGENTE DE POLÍCIA • CEBRASPE",
+      "cover3d": "/assets/capa-pc-pe-agente-de-policia-2026-completa-3d.webp",
       "cta": "Comprar apostila com audiobook",
-      "headline": "Assistente Administrativo Matão 2026: teoria, simulados e audiobook num combo só",
-      "shortTag": "Matão · Assistente Adm.",
+      "headline": "PC-PE Agente de Polícia: 1.200 vagas. Todo o edital, legislação de Pernambuco, Penal, Contabilidade, 1.834 questões e audiobook",
+      "shortTag": "PC-PE · Agente de Polícia",
       "combo": [
         {
           "titulo": "Apostila Completa",
-          "detalhe": "Teoria do edital e legislação aplicada"
+          "detalhe": "1.679 páginas: Noções de Direito + Específicos"
         },
         {
           "titulo": "Caderno de Simulados",
-          "detalhe": "891 questões comentadas, com 2 simulados de 40 itens"
+          "detalhe": "2 simulados de 60 + 1.714 questões comentadas"
         },
         {
-          "titulo": "Caderno de Revisão",
-          "detalhe": "Roteiro da primeira leitura à revisão"
+          "titulo": "Lei Seca Completa",
+          "detalhe": "Toda a legislação do edital em texto oficial"
         }
       ],
-      "subheadline": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP · Banca IBAM · Prova prevista para 06/12/2026",
+      "subheadline": "Agente de Polícia · Nível superior · Banca Cebraspe · Prova em 07/03/2027",
       "comboCovers": [
-        "/assets/capa-matao-sp-assistente-administrativo-2026-simulados-3d.webp",
-        "/assets/capa-matao-sp-assistente-administrativo-2026-terceiro-3d.webp"
+        "/assets/capa-pc-pe-agente-de-policia-2026-simulados-3d.webp",
+        "/assets/capa-pc-pe-agente-de-policia-2026-terceiro-3d.webp"
       ],
       "concurso": {
-        "local": "Matão/SP",
-        "cargo": "Assistente Administrativo",
-        "salario": "R$ 2.588,00",
-        "vagas": "10",
-        "taxa": "R$ 76,50",
-        "inscricoes": "encerradas",
-        "requisito": "Ensino médio",
-        "url": "https://www.ibam-concursos.org.br",
-        "paginas": 595,
-        "questoes": 891
+        "local": "Polícia Civil de Pernambuco (PE)",
+        "cargo": "Agente de Polícia",
+        "salario": "R$ 5.667,92",
+        "vagas": "1.200",
+        "taxa": "R$ 250,00",
+        "inscricoes": "15/10/2026 a 16/12/2026",
+        "requisito": "Nível superior + CNH B",
+        "url": "https://www.cebraspe.org.br/concursos/pc_pe_26",
+        "paginas": 1679,
+        "questoes": 1834
       },
-      "area": "administrativo"
+      "area": "seguranca",
+      "destaque": true
     },
     "funnel": {
       "orderBump": [],
       "upsell": [],
       "crossSell": [],
       "downsell": []
-    },
-    "proofPoints": [
-      "595 páginas na edição ampliada, com anexo de legislação na íntegra para o cargo 101, Assistente Administrativo",
-      "891 questões autorais comentadas: banco de 731 por tema + 80 exercícios e dois simulados de 40 itens",
-      "Caderno normativo: Lei Orgânica de Matão, LAI, LGPD, Improbidade, Arquivos, LRF e Lei de Licitações",
-      "8 capítulos de audiobook narrados em português brasileiro",
-      "1 resumo em áudio para revisão de véspera",
-      "PDF para leitura e download após pagamento",
-      "Pagamento único e recuperação de acesso pelo e-mail da compra"
-    ],
-    "assets": {
-      "coverKey": "matao-sp-assistente-administrativo-2026/images/capa.png",
-      "pdfKey": "matao-sp-assistente-administrativo-2026/docs/apostila-matao-sp-assistente-administrativo-2026.pdf",
-      "pdfDownloadName": "Apostila_Assistente_Administrativo_Matao_2026.pdf",
-      "summary": {
-        "id": "summary",
-        "title": "Resumo em áudio - Assistente Administrativo Matão 2026",
-        "subtitle": "Visão geral da prova, cargo e estudo",
-        "key": "matao-sp-assistente-administrativo-2026/audio/resumo.mp3",
-        "downloadName": "Resumo_Assistente_Administrativo_Matao_2026.mp3"
-      },
-      "chapters": [
-        {
-          "id": "c1",
-          "title": "Antes de começar e raio-X da prova",
-          "subtitle": "40 questões, pesos e estratégia de estudo",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/01-antes-de-comecar-raio-x.mp3",
-          "downloadName": "01-antes-de-comecar-raio-x.mp3"
-        },
-        {
-          "id": "c2",
-          "title": "Língua Portuguesa",
-          "subtitle": "Interpretação, gramática, coesão, reescrita",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/02-portugues.mp3",
-          "downloadName": "02-portugues.mp3"
-        },
-        {
-          "id": "c3",
-          "title": "Matemática",
-          "subtitle": "Proporções, porcentagem, juros, médias e gráficos",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/03-matematica.mp3",
-          "downloadName": "03-matematica.mp3"
-        },
-        {
-          "id": "c4",
-          "title": "Noções de Informática",
-          "subtitle": "Arquivos, planilhas, internet e segurança",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/04-informatica.mp3",
-          "downloadName": "04-informatica.mp3"
-        },
-        {
-          "id": "c5",
-          "title": "Legislação Municipal e Federal",
-          "subtitle": "Lei Orgânica, LC 2/2023, LAI, LGPD e Lei 13.460",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/05-legislacao.mp3",
-          "downloadName": "05-legislacao.mp3"
-        },
-        {
-          "id": "c6",
-          "title": "Conhecimentos Específicos",
-          "subtitle": "Protocolo, arquivos, documentos e rotinas administrativas",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/06-conhecimentos-especificos.mp3",
-          "downloadName": "06-conhecimentos-especificos.mp3"
-        },
-        {
-          "id": "c7",
-          "title": "Questões de treinamento e simulados",
-          "subtitle": "Treino autoral conforme edital",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/07-questoes-simulados.mp3",
-          "downloadName": "07-questoes-simulados.mp3"
-        },
-        {
-          "id": "c8",
-          "title": "Gabarito comentado e revisão final",
-          "subtitle": "Correções e revisão de véspera",
-          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/08-gabarito-revisao.mp3",
-          "downloadName": "08-gabarito-revisao.mp3"
-        }
-      ]
-    },
-    "exam": {
-      "date": "2026-12-06",
-      "confirmed": false,
-      "source": "IBAM - Concurso Público 01/2026 Prefeitura de Matão",
-      "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/204/"
     }
   },
   "matao-sp-fiscal-de-obras-ed02-2026": {
@@ -5781,6 +5802,155 @@
       "upsell": [],
       "crossSell": [],
       "downsell": []
+    }
+  },
+  "matao-sp-assistente-administrativo-2026": {
+    "slug": "matao-sp-assistente-administrativo-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura de Matão - Concurso Público 01/2026",
+    "examBoard": "IBAM",
+    "category": "Concursos públicos",
+    "name": "Assistente Administrativo - Prefeitura de Matão 2026 + audiobook",
+    "shortName": "Assistente Administrativo - Matão 2026",
+    "edition": "Edital 01/2026 · Banca IBAM · Edição completa",
+    "author": "Trilha Aprova",
+    "audience": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP",
+    "currency": "brl",
+    "priceCents": 2990,
+    "stripePriceEnv": "STRIPE_PRICE_MATAO_SP_ASSISTENTE_ADMINISTRATIVO_2026",
+    "description": "Apostila digital de 49 páginas para Agente de Gestão Pública, especialidade Assistente Administrativo, Prefeitura de Matão/SP (IBAM), com 160 questões autorais comentadas, dois simulados de 40 questões, resumo e oito capítulos de audiobook em português brasileiro. Edição ampliada com 595 páginas e 891 questões comentadas.",
+    "seoTitle": "Assistente Administrativo Matão 2026 | Trilha Aprova",
+    "seoDescription": "Estude para Assistente Administrativo de Matão, edital 01/2026 (IBAM): 595 páginas, 891 questões comentadas, simulados e audiobook em português brasileiro.",
+    "storefront": {
+      "badge": "MATÃO 2026 • ASSISTENTE ADMINISTRATIVO • IBAM",
+      "cover3d": "/assets/capa-matao-sp-assistente-administrativo-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Assistente Administrativo Matão 2026: teoria, simulados e audiobook num combo só",
+      "shortTag": "Matão · Assistente Adm.",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria do edital e legislação aplicada"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "891 questões comentadas, com 2 simulados de 40 itens"
+        },
+        {
+          "titulo": "Caderno de Revisão",
+          "detalhe": "Roteiro da primeira leitura à revisão"
+        }
+      ],
+      "subheadline": "Agente de Gestão Pública - Assistente Administrativo, código 101 - Matão/SP · Banca IBAM · Prova prevista para 06/12/2026",
+      "comboCovers": [
+        "/assets/capa-matao-sp-assistente-administrativo-2026-simulados-3d.webp",
+        "/assets/capa-matao-sp-assistente-administrativo-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Matão/SP",
+        "cargo": "Assistente Administrativo",
+        "salario": "R$ 2.588,00",
+        "vagas": "10",
+        "taxa": "R$ 76,50",
+        "inscricoes": "encerradas",
+        "requisito": "Ensino médio",
+        "url": "https://www.ibam-concursos.org.br",
+        "paginas": 595,
+        "questoes": 891
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "proofPoints": [
+      "595 páginas na edição ampliada, com anexo de legislação na íntegra para o cargo 101, Assistente Administrativo",
+      "891 questões autorais comentadas: banco de 731 por tema + 80 exercícios e dois simulados de 40 itens",
+      "Caderno normativo: Lei Orgânica de Matão, LAI, LGPD, Improbidade, Arquivos, LRF e Lei de Licitações",
+      "8 capítulos de audiobook narrados em português brasileiro",
+      "1 resumo em áudio para revisão de véspera",
+      "PDF para leitura e download após pagamento",
+      "Pagamento único e recuperação de acesso pelo e-mail da compra"
+    ],
+    "assets": {
+      "coverKey": "matao-sp-assistente-administrativo-2026/images/capa.png",
+      "pdfKey": "matao-sp-assistente-administrativo-2026/docs/apostila-matao-sp-assistente-administrativo-2026.pdf",
+      "pdfDownloadName": "Apostila_Assistente_Administrativo_Matao_2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Assistente Administrativo Matão 2026",
+        "subtitle": "Visão geral da prova, cargo e estudo",
+        "key": "matao-sp-assistente-administrativo-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Assistente_Administrativo_Matao_2026.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "Antes de começar e raio-X da prova",
+          "subtitle": "40 questões, pesos e estratégia de estudo",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/01-antes-de-comecar-raio-x.mp3",
+          "downloadName": "01-antes-de-comecar-raio-x.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa",
+          "subtitle": "Interpretação, gramática, coesão, reescrita",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/02-portugues.mp3",
+          "downloadName": "02-portugues.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matemática",
+          "subtitle": "Proporções, porcentagem, juros, médias e gráficos",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/03-matematica.mp3",
+          "downloadName": "03-matematica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Noções de Informática",
+          "subtitle": "Arquivos, planilhas, internet e segurança",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/04-informatica.mp3",
+          "downloadName": "04-informatica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Legislação Municipal e Federal",
+          "subtitle": "Lei Orgânica, LC 2/2023, LAI, LGPD e Lei 13.460",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/05-legislacao.mp3",
+          "downloadName": "05-legislacao.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Conhecimentos Específicos",
+          "subtitle": "Protocolo, arquivos, documentos e rotinas administrativas",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/06-conhecimentos-especificos.mp3",
+          "downloadName": "06-conhecimentos-especificos.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Questões de treinamento e simulados",
+          "subtitle": "Treino autoral conforme edital",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/07-questoes-simulados.mp3",
+          "downloadName": "07-questoes-simulados.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Gabarito comentado e revisão final",
+          "subtitle": "Correções e revisão de véspera",
+          "key": "matao-sp-assistente-administrativo-2026/audio/pt-br-v1/08-gabarito-revisao.mp3",
+          "downloadName": "08-gabarito-revisao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2026-12-06",
+      "confirmed": false,
+      "source": "IBAM - Concurso Público 01/2026 Prefeitura de Matão",
+      "sourceUrl": "https://www.ibamsp-concursos.org.br/informacoes/204/"
     }
   }
 }

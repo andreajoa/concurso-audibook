@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'pc-pe-agente-de-policia-2026': dict(sim_t1='SIMULADOS', sigla='PC-PE', cobre='POLÍCIA CIVIL DE PERNAMBUCO', ed='EDITAL Nº 1 – PCPE/2026 • CEBRASPE', lomb=['PC-PE', 'AGENTE', 'DE POLÍCIA'],
+   completa=('AGENTE', 'DE POLÍCIA', ['1.200 vagas • 1.834 questões comentadas • 5 alternativas', 'Penal • Processo Penal • Leis Especiais • Legislação de PE', 'Contabilidade • Estatística • Português • Informática • RLM']),
+   simulados=['2 simulados de 60 questões • 5 alternativas', '20 Noções de Direito + 40 Conhecimentos Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('LEI SECA COMPLETA', ['CE-PE • Leis 6.425 e 6.123 • LC 137 e 317', 'CP • CPP • Drogas • Hediondos • Desarmamento', 'ECA • Maria da Penha • Tortura • Lei 12.850'])),
  'guarda-municipal-campinas-2026': dict(sim_t1='SIMULADOS', sigla='GCM CAMPINAS', cobre='PREFEITURA MUNICIPAL DE CAMPINAS • SP', ed='EDITAL Nº 02/2026 • VUNESP', lomb=['GCM', 'CAMPINAS', 'GUARDA MUNICIPAL'],
    completa=('GUARDA', 'MUNICIPAL', ['3ª Classe • 1.594 questões comentadas • 5 alternativas', 'Estatuto das Guardas • Penal • CTB • ECA • Maria da Penha', 'Geografia de Campinas • Legislação Municipal • Português • RLM']),
    simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],

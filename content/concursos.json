@@ -1,5 +1,37 @@
 [
   {
+    "id": "pe-pcpe-agente-escrivao-delegado-01-2026",
+    "orgao": "Polícia Civil de Pernambuco (PCPE)",
+    "municipio": "Recife",
+    "uf": "PE",
+    "banca": "Cebraspe",
+    "edital": "Edital nº 1 – PCPE, de 2 de outubro de 2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-10-15",
+    "inscricaoFim": "2026-12-16",
+    "dataProva": "2027-03-07",
+    "dataProvaConfirmada": false,
+    "vagas": 1315,
+    "salarioMin": 5667.92,
+    "salarioMax": 13560.0,
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Agente de Polícia",
+      "Escrivão de Polícia",
+      "Delegado de Polícia"
+    ],
+    "taxaInscricao": 250.0,
+    "sourceUrl": "https://www.cebraspe.org.br/concursos/pc_pe_26",
+    "editalUrl": "https://cdn.cebraspe.org.br/concursos/pc_pe_26/arquivos/19E649EFD47D414D072E0EBB585FDBE3E315F1A3D8F6C94626FB29E70ECB66FB.pdf",
+    "produtos": [
+      "pc-pe-agente-de-policia-2026"
+    ],
+    "resumo": "Concurso estadual da Polícia Civil de Pernambuco com 1.315 vagas: 1.200 de Agente de Polícia e 70 de Escrivão (R$ 5.667,92, nível superior em qualquer área e CNH B) e 45 de Delegado (R$ 13.560,00). Inscrições de 15/10 a 16/12/2026 no site do Cebraspe, taxa de R$ 250,00 para Agente e Escrivão. Provas objetivas e discursiva de Agente e Escrivão em 07/03/2027 (Delegado em 14/03/2027), em Arcoverde, Caruaru, Petrolina e Recife.",
+    "capturedAt": "2026-11-26"
+  },
+  {
     "id": "sp-santos-prefeitura-73-2026",
     "orgao": "Prefeitura Municipal de Santos",
     "municipio": "Santos",

@@ -43,6 +43,8 @@ const products = Object.values(catalog).filter(p => vendavel(p) && p.kind !== 's
 // Cadernos de simulados avulsos (13/11/2026): produto só em PDF, com página própria em /simulados/<slug>.
 const simulados = Object.values(catalog).filter(p => vendavel(p) && p.kind === 'simulados');
 const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
+// Apostila em evidência na home (catálogo: storefront.destaque). Pedido do André em 26/11/2026: a PC-PE entra no lugar de Matão.
+const destaque = products.find(p => p.storefront && p.storefront.destaque) || null;
 
 // Páginas geradas de produtos fora de venda não podem continuar publicadas
 // apenas porque seus HTMLs antigos permanecem versionados no repositório.
@@ -271,7 +273,11 @@ const plantaoItens = (() => {
 
   const prova = concursos.filter(c => c.dataProva && c.dataProva >= BUILD_DATE)
     .sort((a, b) => a.dataProva.localeCompare(b.dataProva))[0];
-  if (prova) itens.push(`${prova.municipio} tem prova prevista para ${cn.brDate(prova.dataProva)}`);
+  if (prova && !destaque) itens.push(`${prova.municipio} tem prova prevista para ${cn.brDate(prova.dataProva)}`);
+  if (destaque) {
+    const k = destaque.storefront.concurso || {};
+    itens.unshift(`${destaque.storefront.shortTag}: ${k.vagas ? k.vagas + ' vagas, ' : ''}apostila completa com audiobook já disponível`);
+  }
 
   return itens.length ? itens : [`${concursos.length} certames conferidos nas páginas oficiais dos órgãos`];
 })();
@@ -1739,7 +1745,7 @@ renderPage({
  * ------------------------------------------------------------------ */
 
 const homeFaq = [
-  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, a partir de ${brl(MIN_PRICE)} cada. A edição completa de Matão já está disponível para compra.` },
+  { q: 'O valor é mensal?', a: `Não. As apostilas atualmente à venda são compras únicas, a partir de ${brl(MIN_PRICE)} cada. ${destaque ? `Em destaque: a apostila ${destaque.shortName} (${destaque.examBoard}) já está disponível para compra.` : ''}` },
   { q: 'O material garante aprovação?', a: 'Nenhum material sério pode prometer aprovação sozinho. A proposta da Trilha Aprova é reduzir dispersão, melhorar a qualidade da revisão e ajudar você a chegar à prova mais preparado para reconhecer o conteúdo cobrado.' },
   { q: 'Posso baixar o PDF e os áudios?', a: 'Sim. Após a confirmação do pagamento, os formatos incluídos podem ser usados online e baixados na sua área de acesso.' },
   { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
