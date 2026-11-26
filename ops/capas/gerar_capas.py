@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'santana-de-parnaiba-alfabetizado-2027': dict(sim_t1='SIMULADOS', sigla='SANTANA DE PARNAÍBA', cobre='PREFEITURA MUNICIPAL DE SANTANA DE PARNAÍBA • SP', ed='CONCURSO PÚBLICO Nº 07/2026 • INSTITUTO MAIS', lomb=['SANTANA DE PARNAÍBA', 'NÍVEL', 'ALFABETIZADO'],
+   completa=('NÍVEL', 'ALFABETIZADO', ['Agente de Alimentação • Serviços Públicos • Limpeza • Serviços Gerais', '1.645 questões comentadas • 4 alternativas', 'Português • Matemática • Raciocínio Lógico • Prova Prática']),
+   simulados=['2 simulados de 30 questões • 4 alternativas', '15 Português + 8 Matemática + 7 Raciocínio Lógico', 'gabarito comentado questão a questão'],
+   terceiro=('PROVA PRÁTICA', ['Higiene e boas práticas na cozinha', 'Limpeza, EPI e segurança no trabalho', 'Coleta seletiva e atendimento ao público'])),
  'policia-penal-pe-2026': dict(sim_t1='SIMULADOS', sigla='POLÍCIA PENAL PE', cobre='SECRETARIA DE ADMINISTRAÇÃO PENITENCIÁRIA • PE', ed='EDITAL Nº 1 – SAD/SEAP-PE/2026 • CEBRASPE', lomb=['POLÍCIA PENAL', 'PERNAMBUCO', 'POLICIAL PENAL'],
    completa=('POLICIAL', 'PENAL', ['700 vagas • 1.563 questões comentadas • 5 alternativas', 'Execução Penal • LEP • Código Penitenciário de PE', 'Penal • Processo Penal • Direitos Humanos • Ética • Português']),
    simulados=['2 simulados de 60 questões • 5 alternativas', '20 Conhecimentos Gerais + 40 Específicos', 'gabarito comentado questão a questão'],
