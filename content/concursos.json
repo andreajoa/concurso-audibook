@@ -32,6 +32,36 @@
     "capturedAt": "2026-11-26"
   },
   {
+    "id": "pe-seap-policial-penal-01-2026",
+    "orgao": "Secretaria de Administração Penitenciária e Ressocialização de Pernambuco (SEAP-PE) — Polícia Penal",
+    "municipio": "Recife",
+    "uf": "PE",
+    "banca": "Cebraspe",
+    "edital": "Edital nº 1 – SAD/SEAP-PE, de 3 de novembro de 2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-11-12",
+    "inscricaoFim": "2027-01-04",
+    "dataProva": "2027-03-21",
+    "dataProvaConfirmada": false,
+    "vagas": 700,
+    "salarioMin": 5667.92,
+    "salarioMax": 5667.92,
+    "escolaridade": [
+      "superior"
+    ],
+    "cargos": [
+      "Policial Penal"
+    ],
+    "taxaInscricao": 250.0,
+    "sourceUrl": "https://www.cebraspe.org.br/concursos/seap_pe_26",
+    "editalUrl": "https://cdn.cebraspe.org.br/concursos/seap_pe_26/arquivos/2327822CE642EE75B289D1FEF1BD0A9FCD699F971AC65A85CA07D3786DCF7AC4.pdf",
+    "produtos": [
+      "policia-penal-pe-2026"
+    ],
+    "resumo": "Concurso da Polícia Penal de Pernambuco com 700 vagas de Policial Penal (537 no quadro masculino e 163 no feminino), nível superior em qualquer área e CNH B, remuneração de R$ 5.667,92. Inscrições de 12/11/2026 a 04/01/2027 no site do Cebraspe, taxa de R$ 250,00. Provas objetivas e discursiva previstas para 21/03/2027, à tarde, em Caruaru, Petrolina e Recife.",
+    "capturedAt": "2026-11-26"
+  },
+  {
     "id": "sp-santos-prefeitura-73-2026",
     "orgao": "Prefeitura Municipal de Santos",
     "municipio": "Santos",
