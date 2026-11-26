@@ -70,6 +70,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1679,
         'topics': ['agente de polícia', 'pernambuco', 'cebraspe', 'gabarito', 'simulado'],
     },
+    'see-sp-professor-lingua-portuguesa-2027': {
+        'pages': 834,
+        'topics': ['gestão de sala de aula', 'lemov', 'currículo paulista', 'gabarito', 'simulado'],
+    },
     'policia-penal-pe-2026': {
         'pages': 1796,
         'topics': ['policial penal', 'pernambuco', 'execução penal', 'cebraspe', 'gabarito', 'simulado'],

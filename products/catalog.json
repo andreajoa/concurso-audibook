@@ -1677,6 +1677,175 @@
       "downsell": []
     }
   },
+  "see-sp-professor-lingua-portuguesa-2027": {
+    "slug": "see-sp-professor-lingua-portuguesa-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Língua Portuguesa",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Língua Portuguesa (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Língua Portuguesa (PEFM)",
+    "edition": "Pós-edital · edição de 26/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Língua Portuguesa da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_LINGUA_PORTUGUESA_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Língua Portuguesa da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 834 páginas com 1.521 questões comentadas de cinco alternativas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Língua Portuguesa. Bloco I completo: gestão de sala de aula segundo as quatro obras do edital (Weinstein e Novodvorsky, capítulos 4, 7 e 8; Wiggins e McTighe, planejamento reverso e \"pensando como um avaliador\"; Willingham, capítulos 1, 3 e 5) e as 19 técnicas de Doug Lemov cobradas, com o erro que cada uma corrige. Língua Portuguesa: Currículo Paulista e BNCC (eixos, campos de atuação e habilidades), gêneros discursivos e leitura, coesão, coerência, modalização, argumentação e intertextualidade, análise linguística (variação, ortografia, sintaxe, concordância, regência, crase e colocação), literatura do Barroco a Paulo Leminski e produção, revisão e reescrita de textos. Inclui módulo da prova discursiva (critérios do edital e resposta-modelo), guia da prova prática de simulação de aula em vídeo (rubrica comentada e roteiro de 6 minutos) e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 834 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.521 questões comentadas com cinco alternativas, no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Língua Portuguesa)",
+      "Gestão de sala de aula: os capítulos cobrados de Weinstein, Wiggins e McTighe e Willingham",
+      "As 19 técnicas de Lemov do edital, com o erro que cada uma corrige",
+      "Currículo Paulista e BNCC de Língua Portuguesa",
+      "Literatura do Barroco a Paulo Leminski (tema da prova prática)",
+      "Discursiva: critérios do edital e resposta-modelo; aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-lingua-portuguesa-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-lingua-portuguesa-2027/docs/apostila-see-sp-professor-lingua-portuguesa-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_Lingua_Portuguesa.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Língua Portuguesa (revisão da véspera)",
+        "key": "see-sp-professor-lingua-portuguesa-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_Lingua_Portuguesa.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo Paulista e BNCC de Língua Portuguesa",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/02-curriculo-paulista.mp3",
+          "downloadName": "02-curriculo-paulista.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Gêneros discursivos, leitura e construção de sentidos",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/03-generos-e-leitura.mp3",
+          "downloadName": "03-generos-e-leitura.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Coesão, coerência, modalização, argumentação e intertextualidade",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/04-coesao-e-argumentacao.mp3",
+          "downloadName": "04-coesao-e-argumentacao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Análise linguística: variação, ortografia, acentuação, estrutura e classes de palavras",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/05-analise-linguistica-1.mp3",
+          "downloadName": "05-analise-linguistica-1.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Análise linguística: sintaxe, pontuação, concordância, regência, crase e colocação",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/06-analise-linguistica-2.mp3",
+          "downloadName": "06-analise-linguistica-2.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Literatura e formação cultural, do Barroco a Paulo Leminski",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/07-literatura.mp3",
+          "downloadName": "07-literatura.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Produção e reescrita de textos, prova discursiva e aula em vídeo",
+          "key": "see-sp-professor-lingua-portuguesa-2027/audio/pt-br-v1/08-producao-discursiva-e-aula.mp3",
+          "downloadName": "08-producao-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, manhã, para Língua Portuguesa",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Língua Portuguesa na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 1.197 são de Língua Portuguesa (478 na jornada completa de 25 horas e 719 na jornada ampliada de 40 horas). O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Língua Portuguesa no período da manhã)."
+      },
+      {
+        "q": "Como é a prova de Professor de Língua Portuguesa da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Língua Portuguesa), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "O que é a prova prática de simulação de aula da SEE-SP?",
+        "a": "É um vídeo de 5 a 7 minutos gravado pelo candidato a partir de uma das aulas do material da rede indicadas no Anexo XII (em Língua Portuguesa: 7º ano, marcas culturais na língua; 9º ano, intertextualidade; 1ª série, Do interesse de todos; 3ª série, poesia de Paulo Leminski). É avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Língua Portuguesa na rede estadual de São Paulo?",
+        "a": "Licenciatura plena com habilitação em Língua Portuguesa (Letras), conforme o Capítulo 3 e o Anexo do edital."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Português FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Língua Portuguesa (PEFM, FGV): 834 págs, 1.521 questões, gestão de sala de aula, Lemov, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE LÍNGUA PORTUGUESA • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-lingua-portuguesa-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 1.197 vagas para Professor de Língua Portuguesa. Gestão de sala de aula, as técnicas de Lemov, Currículo Paulista e 1.521 questões",
+      "shortTag": "SEE-SP · Professor de Língua Portuguesa",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "834 páginas: Gestão de sala de aula + toda a Língua Portuguesa"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.461 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiro do vídeo"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Língua Portuguesa · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-lingua-portuguesa-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-lingua-portuguesa-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Língua Portuguesa (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "1.197",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Letras com habilitação em Língua Portuguesa",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 834,
+        "questoes": 1521
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "matao-sp-fiscal-de-obras-ed02-2026": {
     "slug": "matao-sp-fiscal-de-obras-ed02-2026",
     "active": true,
