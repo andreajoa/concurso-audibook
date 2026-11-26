@@ -1,5 +1,44 @@
 [
   {
+    "id": "sp-coren-01-2026",
+    "orgao": "Conselho Regional de Enfermagem de São Paulo (Coren-SP)",
+    "municipio": "São Paulo",
+    "uf": "SP",
+    "banca": "Instituto Quadrix",
+    "edital": "Concurso Público nº 01/2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-11-26",
+    "inscricaoFim": "2027-01-11",
+    "dataProva": "2027-03-07",
+    "dataProvaConfirmada": false,
+    "vagas": 280,
+    "salarioMin": 5389.0,
+    "salarioMax": 10692.0,
+    "escolaridade": [
+      "medio",
+      "superior"
+    ],
+    "cargos": [
+      "Assistente Administrativo",
+      "Enfermeiro Fiscal",
+      "Analista Suporte à Gestão",
+      "Analista Técnico",
+      "Analista Ciências de Dados e IA",
+      "Analista Desenvolvimento de Sistemas",
+      "Auditor",
+      "Contador",
+      "Enfermeiro Apoio às Atividades Finalísticas"
+    ],
+    "taxaInscricao": 93.83,
+    "sourceUrl": "https://www.quadrix.org.br/informacoes/3075/",
+    "editalUrl": "https://anexos-r2.selecao.net.br/uploads/861/concursos/3075/anexos/a10260c5-f08b-4290-9ee3-b3be6d126724.pdf",
+    "produtos": [
+      "coren-sp-assistente-administrativo-2027"
+    ],
+    "resumo": "Concurso do Coren-SP com 280 oportunidades (76 vagas imediatas e 204 de cadastro reserva) em nove cargos de nível médio e superior, com salários de R$ 5.389,00 (Assistente Administrativo, 89 vagas) a R$ 10.692,00 (Enfermeiro Fiscal, 90 vagas), regime CLT. Inscrições de 26/11/2026 a 11/01/2027 no site do Instituto Quadrix; taxas de R$ 93,83 (médio) e R$ 109,60 (superior). Provas objetiva (120 itens Certo ou Errado) e discursiva em 07/03/2027.",
+    "capturedAt": "2026-11-26"
+  },
+  {
     "id": "sp-santana-de-parnaiba-07-2026",
     "orgao": "Prefeitura do Município de Santana de Parnaíba",
     "municipio": "Santana de Parnaíba",

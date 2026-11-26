@@ -70,6 +70,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1679,
         'topics': ['agente de polícia', 'pernambuco', 'cebraspe', 'gabarito', 'simulado'],
     },
+    'coren-sp-assistente-administrativo-2027': {
+        'pages': 638,
+        'topics': ['coren-sp', 'cofen', 'gabarito', 'simulado', 'lgpd'],
+    },
     'see-sp-professor-matematica-2027': {
         'pages': 672,
         'topics': ['gestão de sala de aula', 'lemov', 'currículo paulista', 'gabarito', 'simulado'],
