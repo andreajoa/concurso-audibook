@@ -215,6 +215,10 @@ SPEC = {
    simulados=['2 simulados de 50 questões • 4 alternativas', 'pesos da prova: Português 3 • Específicos 2', 'gabarito comentado questão a questão'],
    terceiro=('EDUCAÇÃO FÍSICA', ['BNCC: unidades temáticas e dimensões', 'Abordagens pedagógicas e história', 'Esporte educacional • corpo e saúde']))
 ,
+ 'policia-penal-pe-2026': dict(sim_t1='SIMULADOS', sigla='POLÍCIA PENAL PE', cobre='SECRETARIA DE ADMINISTRAÇÃO PENITENCIÁRIA • PE', ed='EDITAL Nº 1 – SAD/SEAP-PE/2026 • CEBRASPE', lomb=['POLÍCIA PENAL', 'PERNAMBUCO', 'POLICIAL PENAL'],
+   completa=('POLICIAL', 'PENAL', ['700 vagas • 1.563 questões comentadas • 5 alternativas', 'Execução Penal • LEP • Código Penitenciário de PE', 'Penal • Processo Penal • Direitos Humanos • Ética • Português']),
+   simulados=['2 simulados de 60 questões • 5 alternativas', '20 Conhecimentos Gerais + 40 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('LEI SECA COMPLETA', ['LEP • Código Penitenciário • LCs 106, 150, 422', 'CP • CPP • Antifacção • Lavagem • Drogas', 'Lei 6.123 • 8.112 (PAD) • Código de Ética PE'])),
  'pc-pe-agente-de-policia-2026': dict(sim_t1='SIMULADOS', sigla='PC-PE', cobre='POLÍCIA CIVIL DE PERNAMBUCO', ed='EDITAL Nº 1 – PCPE/2026 • CEBRASPE', lomb=['PC-PE', 'AGENTE', 'DE POLÍCIA'],
    completa=('AGENTE', 'DE POLÍCIA', ['1.200 vagas • 1.834 questões comentadas • 5 alternativas', 'Penal • Processo Penal • Leis Especiais • Legislação de PE', 'Contabilidade • Estatística • Português • Informática • RLM']),
    simulados=['2 simulados de 60 questões • 5 alternativas', '20 Noções de Direito + 40 Conhecimentos Específicos', 'gabarito comentado questão a questão'],

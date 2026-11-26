@@ -1508,6 +1508,175 @@
       "downsell": []
     }
   },
+  "policia-penal-pe-2026": {
+    "slug": "policia-penal-pe-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Polícia Penal de Pernambuco (SEAP-PE) — Concurso Público 2026, Edital nº 1 – SAD/SEAP-PE (Portaria Conjunta SAD/SEAP nº 320, de 3 de novembro de 2026), Cebraspe, cargo de Policial Penal",
+    "examBoard": "Cebraspe",
+    "category": "Concursos públicos",
+    "name": "Apostila Polícia Penal PE 2026 – Policial Penal (Cebraspe) + audiobook",
+    "shortName": "Polícia Penal PE – Policial Penal 2026",
+    "edition": "Pós-edital · edição de 26/11/2026 · Edital nº 1 – SAD/SEAP-PE/2026 (Cebraspe)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Policial Penal de Pernambuco, nível superior em qualquer área",
+    "currency": "brl",
+    "priceCents": 4790,
+    "stripePriceEnv": "STRIPE_PRICE_POLICIA_PENAL_PE_2026",
+    "description": "Apostila digital para Policial Penal de Pernambuco (SEAP-PE), feita pelo Edital nº 1 – SAD/SEAP-PE/2026 do Cebraspe, item por item do conteúdo programático. PDF único de 1.796 páginas com 1.563 questões comentadas de cinco alternativas (a prova é de múltipla escolha A a E) e 2 simulados de 60 questões no formato exato da prova: 20 de Conhecimentos Gerais e 40 de Conhecimentos Específicos. Conhecimentos Gerais: Língua Portuguesa, Ética no Serviço Público (Código de Ética dos Agentes Públicos de PE, Decreto 46.852/2018, e processo disciplinar), Legislação Estadual (Código Penitenciário de Pernambuco, Lei 15.755/2016; LCs 106/2007, 150/2009, 422/2019 e 478/2022; Constituição de Pernambuco com a EC 53/2020; Estatuto do Servidor, Lei 6.123/1968) e Noções de Informática com LGPD. Conhecimentos Específicos: Direito Administrativo, Direito Constitucional, Direito Penal, Direito Processual Penal, legislação especial (drogas, hediondos, tortura, abuso de autoridade, organizações criminosas, Lei Antifacção 15.358/2026, lavagem de dinheiro, interceptação telefônica, Estatuto do Desarmamento, Maria da Penha, ECA, Pessoa Idosa, crimes ambientais, de trânsito e eleitorais), Execução Penal (LEP com as mudanças de 2024 a 2026, presídios federais, Lei 11.671/2008 e resoluções do CNPCP) e Noções de Direitos Humanos. Inclui módulo da prova discursiva (fórmula de nota do Cebraspe e textos-modelo), lei seca de toda a legislação do edital e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.796 páginas, feito pelo Edital nº 1 – SAD/SEAP-PE/2026 (Cebraspe)",
+      "1.563 questões comentadas com cinco alternativas, no formato da prova",
+      "2 simulados de 60 questões no formato exato da prova (20 Gerais + 40 Específicos)",
+      "Execução Penal completa: LEP atualizada, RDD, remição, progressão e presídios federais",
+      "Legislação de Pernambuco: Código Penitenciário, LCs 106, 150, 422 e 478 e Constituição Estadual",
+      "Penal, Processo Penal e 19 leis especiais, inclusive a Lei Antifacção de 2026",
+      "Ética, PAD e Direitos Humanos (DUDH, Pacto de São José e Regras de Mandela)",
+      "Lei seca de toda a legislação do edital",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "policia-penal-pe-2026/images/capa.png",
+      "pdfKey": "policia-penal-pe-2026/docs/apostila-policia-penal-pe-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Policia_Penal_PE.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Polícia Penal PE (revisão da véspera)",
+        "key": "policia-penal-pe-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Policia_Penal_PE.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso da Polícia Penal de Pernambuco e Língua Portuguesa",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/01-a-prova-e-portugues.mp3",
+          "downloadName": "01-a-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Ética no serviço público e legislação estadual: Código Penitenciário e leis da Polícia Penal",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/02-etica-e-legislacao-estadual.mp3",
+          "downloadName": "02-etica-e-legislacao-estadual.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Noções de informática e Lei Geral de Proteção de Dados",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/03-informatica.mp3",
+          "downloadName": "03-informatica.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Direito administrativo",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/04-direito-administrativo.mp3",
+          "downloadName": "04-direito-administrativo.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito constitucional",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/05-direito-constitucional.mp3",
+          "downloadName": "05-direito-constitucional.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito penal e direito processual penal",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/06-direito-penal-e-processo-penal.mp3",
+          "downloadName": "06-direito-penal-e-processo-penal.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Legislação especial: drogas, hediondos, organizações criminosas, Lei Antifacção, lavagem, interceptação e outras",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/07-legislacao-especial.mp3",
+          "downloadName": "07-legislacao-especial.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Execução penal, direitos humanos e a redação",
+          "key": "policia-penal-pe-2026/audio/pt-br-v1/08-execucao-penal-direitos-humanos-e-redacao.mp3",
+          "downloadName": "08-execucao-penal-direitos-humanos-e-redacao.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-21",
+      "confirmed": false,
+      "source": "Cebraspe, Edital nº 1 – SAD/SEAP-PE, de 3/11/2026 (Anexo I, cronograma) — inscrições de 12/11/2026 a 4/1/2027; provas objetivas e discursiva em 21/3/2027, à tarde",
+      "sourceUrl": "https://www.cebraspe.org.br/concursos/seap_pe_26"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Policial Penal em Pernambuco e qual é o salário?",
+        "a": "O Edital nº 1 – SAD/SEAP-PE/2026 oferece 700 vagas de Policial Penal: 537 no quadro masculino e 163 no feminino, com reservas para pessoas com deficiência, pretas ou pardas, indígenas e quilombolas. A remuneração inicial é de R$ 5.667,92 (vencimento-base de R$ 2.833,96 mais a Gratificação de Risco de 100%), pela Lei Complementar nº 552/2024."
+      },
+      {
+        "q": "Quando é a prova da Polícia Penal de Pernambuco e qual é a banca?",
+        "a": "A banca é o Cebraspe. As inscrições vão de 12/11/2026 a 4/1/2027, até as 18h, pelo site cebraspe.org.br/concursos/seap_pe_26, com taxa de R$ 250,00 paga até 6/1/2027. As provas objetivas e a discursiva estão previstas para 21/3/2027, à tarde, com duração de 4 horas e 30 minutos, em Caruaru, Petrolina e Recife."
+      },
+      {
+        "q": "Quais são os requisitos para ser Policial Penal em Pernambuco?",
+        "a": "Diploma de nível superior em qualquer área, reconhecido pelo MEC, e Carteira Nacional de Habilitação categoria B ou superior, além de 18 anos completos na posse, quitação eleitoral e militar e aptidão física e mental."
+      },
+      {
+        "q": "Como é a prova objetiva de Policial Penal da SEAP-PE?",
+        "a": "São 60 questões de múltipla escolha com cinco alternativas (A a E): 20 de Conhecimentos Gerais (P1) e 40 de Conhecimentos Específicos (P2). A prova discursiva (P3) é corrigida apenas para quem passa nas objetivas, e a nota segue a fórmula do Cebraspe, que desconta os erros de língua."
+      },
+      {
+        "q": "O que cai na prova de Policial Penal de Pernambuco?",
+        "a": "Conhecimentos Gerais: Língua Portuguesa, Ética no Serviço Público, Legislação Estadual (Código Penitenciário de PE, LCs 106, 150, 422 e 478, Constituição Estadual e Lei 6.123/1968) e Informática. Conhecimentos Específicos: Direito Administrativo, Constitucional, Penal, Processual Penal, legislação especial, Execução Penal e Direitos Humanos."
+      },
+      {
+        "q": "Quais são as etapas do concurso da Polícia Penal de PE?",
+        "a": "Na primeira etapa: provas objetivas e discursiva, exames médicos, exames de aptidão física, avaliação psicológica e investigação social, todas eliminatórias. Na segunda etapa vem o curso de formação profissional, eliminatório e classificatório."
+      }
+    ],
+    "seoTitle": "Apostila Polícia Penal PE 2026 Cebraspe | Trilha",
+    "seoDescription": "Apostila Polícia Penal PE (Cebraspe): 1.796 págs, 1.563 questões A–E, Execução Penal, Código Penitenciário, lei seca, simulados e audiobook.",
+    "storefront": {
+      "badge": "POLÍCIA PENAL PE 2026 • POLICIAL PENAL • CEBRASPE",
+      "cover3d": "/assets/capa-policia-penal-pe-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Polícia Penal PE: 700 vagas. Todo o edital, Execução Penal, Código Penitenciário de PE, 1.563 questões e audiobook",
+      "shortTag": "Polícia Penal PE · Policial Penal",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.796 páginas: Conhecimentos Gerais + Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 60 + 1.443 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Completa",
+          "detalhe": "Toda a legislação do edital em texto oficial"
+        }
+      ],
+      "subheadline": "Policial Penal · Nível superior · Banca Cebraspe · Prova em 21/03/2027",
+      "comboCovers": [
+        "/assets/capa-policia-penal-pe-2026-simulados-3d.webp",
+        "/assets/capa-policia-penal-pe-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Polícia Penal de Pernambuco (PE)",
+        "cargo": "Policial Penal",
+        "salario": "R$ 5.667,92",
+        "vagas": "700",
+        "taxa": "R$ 250,00",
+        "inscricoes": "12/11/2026 a 04/01/2027",
+        "requisito": "Nível superior + CNH B",
+        "url": "https://www.cebraspe.org.br/concursos/seap_pe_26",
+        "paginas": 1796,
+        "questoes": 1563
+      },
+      "area": "seguranca"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "matao-sp-fiscal-de-obras-ed02-2026": {
     "slug": "matao-sp-fiscal-de-obras-ed02-2026",
     "active": true,
