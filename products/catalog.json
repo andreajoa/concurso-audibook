@@ -2015,6 +2015,171 @@
       "downsell": []
     }
   },
+  "coren-sp-assistente-administrativo-2027": {
+    "slug": "coren-sp-assistente-administrativo-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Conselho Regional de Enfermagem de São Paulo (Coren-SP) — Concurso Público nº 01/2026 (Instituto Quadrix), cargo 200: Assistente Administrativo",
+    "examBoard": "Instituto Quadrix",
+    "category": "Concursos públicos",
+    "name": "Apostila Coren-SP 2027 Assistente Administrativo (Quadrix) + audiobook",
+    "shortName": "Coren-SP Assistente Administrativo",
+    "edition": "Pós-edital · edição de 26/11/2026 · Concurso Público nº 01/2026 do Coren-SP (Instituto Quadrix)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos ao cargo de Assistente Administrativo do Conselho Regional de Enfermagem de São Paulo, nível médio",
+    "currency": "brl",
+    "priceCents": 3290,
+    "stripePriceEnv": "STRIPE_PRICE_COREN_SP_ASSISTENTE_ADMINISTRATIVO_2027",
+    "description": "Apostila digital para Assistente Administrativo do Conselho Regional de Enfermagem de São Paulo (Coren-SP), feita pelo Concurso Público nº 01/2026 do Instituto Quadrix, item por item do conteúdo programático. PDF de 638 páginas com 1.892 itens Certo ou Errado comentados (a prova do Coren-SP é de 120 itens Certo ou Errado, em que cada erro anula um acerto) e 2 simulados de 120 itens no formato exato da prova: 40 de Conhecimentos Básicos, 30 de Conhecimentos Complementares e 50 de Conhecimentos Específicos. Básicos: Língua Portuguesa com redação oficial, Raciocínio Lógico e Matemática (inclusive matemática financeira) e Noções de Informática (Windows 10 e 11, Android e iOS, redes, navegadores, Outlook, Teams e Meet, nuvem, segurança e backup). Complementares: Word, Excel, PowerPoint e Inteligência Artificial generativa (ChatGPT, Copilot, Gemini e Claude, prompts, verificação e proteção de dados). Específicos: princípios da Administração Pública, Código de Ética dos Empregados do Sistema Cofen/Conselhos Regionais (Resolução Cofen 507/2016), assédio e discriminação (Resolução Cofen 768/2024), atendimento e Lei 13.146/2015, LAI, LGPD, rotinas administrativas e gestão documental, materiais, patrimônio e Lei 14.133/2021, e o Sistema Cofen/Coren (Lei 5.905/1973 e Resoluções Cofen 769/2024, 721/2023, 782/2025 e 784/2025). Inclui o estudo de caso da prova discursiva com resposta-modelo, lei seca das normas específicas e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 638 páginas, feito pelo Concurso Público nº 01/2026 do Coren-SP (Instituto Quadrix)",
+      "1.892 itens Certo ou Errado comentados, no formato da prova",
+      "2 simulados de 120 itens (40 Básicos + 30 Complementares + 50 Específicos)",
+      "Sistema Cofen/Coren: Lei 5.905/1973 e Resoluções 769/2024, 721/2023, 782/2025 e 784/2025",
+      "Ética dos empregados (Res. 507/2016) e política contra assédio (Res. 768/2024)",
+      "LAI, LGPD, Estatuto da Pessoa com Deficiência e Lei 14.133/2021",
+      "Office e Inteligência Artificial generativa, como pede o edital",
+      "Discursiva: estudo de caso com resposta-modelo e cálculo da nota",
+      "Lei seca das normas específicas e audiobook em 8 capítulos + resumo",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "coren-sp-assistente-administrativo-2027/images/capa.png",
+      "pdfKey": "coren-sp-assistente-administrativo-2027/docs/apostila-coren-sp-assistente-administrativo-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Coren-SP_Assistente_Administrativo.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Coren-SP Assistente Administrativo (revisão da véspera)",
+        "key": "coren-sp-assistente-administrativo-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Coren-SP_Assistente_Administrativo.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova do Instituto Quadrix e a Língua Portuguesa",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/01-a-prova-e-o-portugues.mp3",
+          "downloadName": "01-a-prova-e-o-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Raciocínio lógico e matemática",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/02-raciocinio-logico-e-matematica.mp3",
+          "downloadName": "02-raciocinio-logico-e-matematica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Informática, pacote Office e inteligência artificial",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/03-informatica-office-e-ia.mp3",
+          "downloadName": "03-informatica-office-e-ia.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Administração pública, Código de Ética dos Empregados e política contra o assédio",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/04-administracao-publica-e-etica.mp3",
+          "downloadName": "04-administracao-publica-e-etica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Atendimento, Estatuto da Pessoa com Deficiência, LAI e LGPD",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/05-atendimento-lai-e-lgpd.mp3",
+          "downloadName": "05-atendimento-lai-e-lgpd.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Rotinas administrativas e gestão documental",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/06-rotinas-e-gestao-documental.mp3",
+          "downloadName": "06-rotinas-e-gestao-documental.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Materiais, patrimônio e contratações públicas",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/07-materiais-e-contratacoes.mp3",
+          "downloadName": "07-materiais-e-contratacoes.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "O Sistema Cofen/Coren e a prova discursiva",
+          "key": "coren-sp-assistente-administrativo-2027/audio/pt-br-v1/08-sistema-cofen-coren-e-discursiva.mp3",
+          "downloadName": "08-sistema-cofen-coren-e-discursiva.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-07",
+      "confirmed": false,
+      "source": "Instituto Quadrix, Concurso Público nº 01/2026 do Coren-SP (Anexo I, cronograma) — inscrições de 26/11/2026 a 11/01/2027; provas objetiva e discursiva em 07/03/2027, à tarde, para Assistente Administrativo",
+      "sourceUrl": "https://www.quadrix.org.br/informacoes/3075/"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Assistente Administrativo no Coren-SP e qual é o salário?",
+        "a": "O edital oferece 89 vagas de Assistente Administrativo: 29 imediatas (18 de ampla concorrência, 2 para pessoas com deficiência, 7 para pessoas negras, 1 para indígenas e 1 para quilombolas) e 60 de cadastro reserva, com lotação em São Paulo e jornada de 40 horas. O salário-base é de R$ 5.389,00, mais benefícios como vale-alimentação de R$ 756,38 e vale-refeição de R$ 69,27 por dia trabalhado. A contratação é pela CLT."
+      },
+      {
+        "q": "Quando é a prova do Coren-SP e qual é a banca?",
+        "a": "A banca é o Instituto Quadrix. As inscrições vão de 26/11/2026 a 11/01/2027, até as 23h, com taxa de R$ 93,83 para o nível médio, paga até 12/01/2027. As provas objetiva e discursiva estão previstas para 07/03/2027, no turno da tarde para Assistente Administrativo, com duração de 4 horas."
+      },
+      {
+        "q": "Como é a prova de Assistente Administrativo do Coren-SP?",
+        "a": "A prova objetiva tem 120 itens Certo ou Errado: 40 de Conhecimentos Básicos (mínimo de 10 pontos), 30 de Conhecimentos Complementares (mínimo de 8) e 50 de Conhecimentos Específicos (mínimo de 12), com mínimo total de 34 pontos. Cada item certo vale +1 e cada item errado vale −1. A prova discursiva é um estudo de caso de 20 a 30 linhas, valendo 100 pontos, com aprovação a partir de 50."
+      },
+      {
+        "q": "O que cai nos Conhecimentos Específicos de Assistente Administrativo do Coren-SP?",
+        "a": "Administração Pública e ética (Resoluções Cofen 507/2016 e 768/2024), atendimento e proteção da informação (Lei 13.146/2015, LAI e LGPD), rotinas administrativas e gestão documental, materiais, patrimônio e contratações públicas (Lei 14.133/2021) e o Sistema Cofen/Coren (Lei 5.905/1973 e Resoluções Cofen 769/2024, 721/2023, 782/2025 e 784/2025)."
+      },
+      {
+        "q": "Qual é o requisito para Assistente Administrativo do Coren-SP?",
+        "a": "Diploma ou certificado de conclusão do ensino médio, fornecido por instituição de ensino regularmente autorizada."
+      }
+    ],
+    "seoTitle": "Apostila Coren-SP 2027 Assistente Administrativo Quadrix | Trilha",
+    "seoDescription": "Apostila Coren-SP Assistente Administrativo (Quadrix): 1.892 itens Certo ou Errado, Sistema Cofen/Coren, LAI, LGPD, Office e IA, lei seca e audiobook.",
+    "storefront": {
+      "badge": "COREN-SP 2027 • ASSISTENTE ADMINISTRATIVO • QUADRIX",
+      "cover3d": "/assets/capa-coren-sp-assistente-administrativo-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Coren-SP: 89 vagas para Assistente Administrativo. Sistema Cofen/Coren, LAI, LGPD, Office e IA e 1.892 itens Certo ou Errado",
+      "shortTag": "Coren-SP · Assistente Administrativo",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Básicos, Complementares e todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 120 + 1.652 itens comentados"
+        },
+        {
+          "titulo": "Lei Seca e Discursiva",
+          "detalhe": "Normas do Cofen na íntegra e estudo de caso"
+        }
+      ],
+      "subheadline": "Assistente Administrativo · Nível médio · Banca Instituto Quadrix · Prova em 07/03/2027",
+      "comboCovers": [
+        "/assets/capa-coren-sp-assistente-administrativo-2027-simulados-3d.webp",
+        "/assets/capa-coren-sp-assistente-administrativo-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Conselho Regional de Enfermagem de São Paulo (Coren-SP)",
+        "cargo": "Assistente Administrativo",
+        "salario": "R$ 5.389,00 + benefícios",
+        "vagas": "89",
+        "taxa": "R$ 93,83",
+        "inscricoes": "26/11/2026 a 11/01/2027",
+        "requisito": "Ensino médio completo",
+        "url": "https://www.quadrix.org.br/informacoes/3075/",
+        "paginas": 638,
+        "questoes": 1892
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "santana-de-parnaiba-alfabetizado-2027": {
     "slug": "santana-de-parnaiba-alfabetizado-2027",
     "active": true,
