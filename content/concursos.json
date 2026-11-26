@@ -1,5 +1,46 @@
 [
   {
+    "id": "sp-santana-de-parnaiba-07-2026",
+    "orgao": "Prefeitura do Município de Santana de Parnaíba",
+    "municipio": "Santana de Parnaíba",
+    "uf": "SP",
+    "banca": "Instituto Mais",
+    "edital": "Concurso Público nº 07/2026",
+    "status": "inscricoes_abertas",
+    "inscricaoInicio": "2026-11-11",
+    "inscricaoFim": "2026-12-08",
+    "dataProva": "2027-01-10",
+    "dataProvaConfirmada": false,
+    "vagas": 76,
+    "salarioMin": 1897.52,
+    "salarioMax": 7497.97,
+    "escolaridade": [
+      "alfabetizado",
+      "fundamental",
+      "medio",
+      "tecnico",
+      "superior"
+    ],
+    "cargos": [
+      "Agente de Serviços de Alimentação",
+      "Agente de Serviços Públicos",
+      "Agente de Limpeza Pública",
+      "Agente de Serviços Gerais",
+      "Agente de Atendimento",
+      "Monitor Assistencial",
+      "Fonoaudiólogo",
+      "Outros"
+    ],
+    "taxaInscricao": 54.0,
+    "sourceUrl": "https://imais.org.br/concursos/detalhesconcurso/79",
+    "editalUrl": "https://imais.org.br/concursos/detalhesconcurso/79",
+    "produtos": [
+      "santana-de-parnaiba-alfabetizado-2027"
+    ],
+    "resumo": "Concurso da Prefeitura de Santana de Parnaíba (SP) com 76 vagas e cadastro reserva, do nível alfabetizado ao superior, com vencimentos de R$ 1.897,52 a R$ 7.497,97. Os cargos de nível alfabetizado somam 55 vagas (30 de Agente de Serviços de Alimentação, 15 de Agente de Serviços Públicos e 10 de Agente de Limpeza Pública). Inscrições de 11/11 a 08/12/2026 no site do Instituto Mais; taxas de R$ 54,00, R$ 66,00 e R$ 81,00. Prova objetiva prevista para 10/01/2027.",
+    "capturedAt": "2026-11-26"
+  },
+  {
     "id": "sp-seduc-pefm-01-2026",
     "orgao": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
     "municipio": "São Paulo",

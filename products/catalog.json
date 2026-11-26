@@ -1846,6 +1846,170 @@
       "downsell": []
     }
   },
+  "santana-de-parnaiba-alfabetizado-2027": {
+    "slug": "santana-de-parnaiba-alfabetizado-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Prefeitura do Município de Santana de Parnaíba (SP) — Concurso Público nº 07/2026 (Instituto Mais), cargos de nível alfabetizado: Agente de Serviços de Alimentação, Agente de Serviços Públicos, Agente de Limpeza Pública e Agente de Serviços Gerais",
+    "examBoard": "Instituto Mais",
+    "category": "Concursos públicos",
+    "name": "Apostila Prefeitura de Santana de Parnaíba 2027 – Nível Alfabetizado (Instituto Mais) + audiobook",
+    "shortName": "Santana de Parnaíba – Nível Alfabetizado",
+    "edition": "Pós-edital · edição de 26/11/2026 · Concurso Público nº 07/2026 (Instituto Mais), edital de abertura retificado",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos aos cargos de nível alfabetizado da Prefeitura de Santana de Parnaíba (SP): Agente de Serviços de Alimentação, Agente de Serviços Públicos, Agente de Limpeza Pública e Agente de Serviços Gerais",
+    "currency": "brl",
+    "priceCents": 1590,
+    "stripePriceEnv": "STRIPE_PRICE_SANTANA_DE_PARNAIBA_ALFABETIZADO_2027",
+    "description": "Apostila digital comum aos cargos de nível alfabetizado da Prefeitura de Santana de Parnaíba (SP), feita pelo Concurso Público nº 07/2026 do Instituto Mais: Agente de Serviços de Alimentação (30 vagas), Agente de Serviços Públicos (15 vagas), Agente de Limpeza Pública (10 vagas) e Agente de Serviços Gerais (cadastro reserva). Os quatro cargos fazem a mesma prova objetiva: 30 questões de quatro alternativas, sendo 15 de Língua Portuguesa, 8 de Matemática e 7 de Raciocínio Lógico. PDF de 685 páginas com 1.645 questões comentadas de quatro alternativas, no formato do Instituto Mais, e 2 simulados de 30 questões. Língua Portuguesa explicada do zero (separação silábica, plural, conjugação de verbos, concordância, frases corretas e incorretas, ortografia, pontuação e compreensão de textos); Matemática passo a passo (as quatro operações, frações, decimais, dinheiro, medidas de comprimento, massa, capacidade e tempo); Raciocínio Lógico sem medo (sequências, analogias, deduções, todo/algum/nenhum, proposições, tabelas-verdade, leis de De Morgan, contagem e probabilidade). Inclui guia da prova prática (higiene e boas práticas na cozinha, limpeza, EPI, segurança no trabalho e coleta seletiva) e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 685 páginas, feito pelo Concurso Público nº 07/2026 (Instituto Mais)",
+      "Serve para os 4 cargos de nível alfabetizado, que fazem a mesma prova",
+      "1.645 questões comentadas com 4 alternativas, no formato do Instituto Mais",
+      "2 simulados de 30 questões (15 Português + 8 Matemática + 7 Raciocínio Lógico)",
+      "Português e Matemática explicados do zero, com exemplos do dia a dia",
+      "Raciocínio Lógico sem medo: sequências, todo/algum/nenhum, De Morgan, probabilidade",
+      "Guia da prova prática: cozinha, limpeza, EPI e segurança",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "santana-de-parnaiba-alfabetizado-2027/images/capa.png",
+      "pdfKey": "santana-de-parnaiba-alfabetizado-2027/docs/apostila-santana-de-parnaiba-alfabetizado-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Santana_de_Parnaiba_Alfabetizado.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Santana de Parnaíba Nível Alfabetizado (revisão da véspera)",
+        "key": "santana-de-parnaiba-alfabetizado-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Santana_de_Parnaiba_Alfabetizado.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova e o português básico: sílabas, plural, verbos, concordância, frases corretas e ortografia",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/01-a-prova-e-o-portugues-basico.mp3",
+          "downloadName": "01-a-prova-e-o-portugues-basico.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Compreensão de textos e classes de palavras",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/02-leitura-e-classes-de-palavras.mp3",
+          "downloadName": "02-leitura-e-classes-de-palavras.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Pontuação e concordância",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/03-pontuacao-e-concordancia.mp3",
+          "downloadName": "03-pontuacao-e-concordancia.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Matemática: as quatro operações, frações, decimais, dinheiro e medidas",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/04-matematica-basica.mp3",
+          "downloadName": "04-matematica-basica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Matemática: resumos, MMC e MDC, proporção e regra de três",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/05-matematica-resumos.mp3",
+          "downloadName": "05-matematica-resumos.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Raciocínio lógico: sequências, argumentação, proposições e De Morgan",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/06-raciocinio-logico.mp3",
+          "downloadName": "06-raciocinio-logico.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Raciocínio lógico: contagem e probabilidade",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/07-contagem-e-probabilidade.mp3",
+          "downloadName": "07-contagem-e-probabilidade.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "A prova prática: higiene, segurança e boas práticas",
+          "key": "santana-de-parnaiba-alfabetizado-2027/audio/pt-br-v1/08-prova-pratica.mp3",
+          "downloadName": "08-prova-pratica.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-01-10",
+      "confirmed": false,
+      "source": "Instituto Mais, Concurso Público nº 07/2026 da Prefeitura de Santana de Parnaíba — inscrições de 11/11 a 08/12/2026; prova objetiva prevista para 10/01/2027 (manhã: Agente de Limpeza Pública e Agente de Serviços Públicos; tarde: Agente de Serviços de Alimentação e Agente de Serviços Gerais)",
+      "sourceUrl": "https://imais.org.br/concursos/detalhesconcurso/79"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há nos cargos de nível alfabetizado de Santana de Parnaíba e qual é o salário?",
+        "a": "O Concurso Público nº 07/2026 oferece 30 vagas de Agente de Serviços de Alimentação (R$ 2.035,16), 15 de Agente de Serviços Públicos (R$ 2.214,33), 10 de Agente de Limpeza Pública (R$ 2.247,13, com insalubridade) e cadastro reserva de Agente de Serviços Gerais (R$ 1.897,52), todos com 40 horas semanais. Os quatro cargos recebem vale-alimentação de R$ 650,00 e auxílio-transporte."
+      },
+      {
+        "q": "Quando é a prova de Santana de Parnaíba e qual é a banca?",
+        "a": "A banca é o Instituto Mais. As inscrições vão de 11/11 a 08/12/2026, até as 17h, no site imais.org.br, com taxa de R$ 54,00 para o nível alfabetizado. A prova objetiva está prevista para 10/01/2027, com duração de 3 horas: de manhã para Agente de Limpeza Pública e Agente de Serviços Públicos, e à tarde para Agente de Serviços de Alimentação e Agente de Serviços Gerais."
+      },
+      {
+        "q": "Como é a prova dos cargos de nível alfabetizado?",
+        "a": "São 30 questões de múltipla escolha com 4 alternativas: 15 de Língua Portuguesa, 8 de Matemática e 7 de Raciocínio Lógico, valendo de 0 a 100 pontos. É preciso fazer pelo menos 50 pontos. Depois vem a prova prática, para a qual são convocados, na ampla concorrência, os 200 primeiros de Agente de Serviços de Alimentação e de Agente de Serviços Públicos e os 50 primeiros de Agente de Limpeza Pública e de Agente de Serviços Gerais."
+      },
+      {
+        "q": "Esta apostila serve para qual cargo?",
+        "a": "Para os quatro cargos de nível alfabetizado que fazem a mesma prova: Agente de Serviços de Alimentação, Agente de Serviços Públicos, Agente de Limpeza Pública e Agente de Serviços Gerais. Os cargos de Oficial de Manutenção (Eletricista e Pedreiro) têm conhecimentos específicos próprios e não são cobertos."
+      },
+      {
+        "q": "Dá para se inscrever em mais de um cargo?",
+        "a": "Sim, desde que as provas sejam em períodos diferentes. Por exemplo, é possível fazer Agente de Serviços Públicos (manhã) e Agente de Serviços de Alimentação (tarde)."
+      }
+    ],
+    "seoTitle": "Apostila Santana de Parnaíba 2027 Alfabetizado | Trilha Aprova",
+    "seoDescription": "Apostila Prefeitura de Santana de Parnaíba (Instituto Mais), nível alfabetizado: 1.645 questões, Português, Matemática, Raciocínio Lógico e audiobook.",
+    "storefront": {
+      "badge": "SANTANA DE PARNAÍBA 2027 • NÍVEL ALFABETIZADO • INSTITUTO MAIS",
+      "cover3d": "/assets/capa-santana-de-parnaiba-alfabetizado-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Santana de Parnaíba: 55 vagas de nível alfabetizado. Português, Matemática e Raciocínio Lógico do zero, 1.645 questões e prova prática",
+      "shortTag": "Santana de Parnaíba · Nível Alfabetizado",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Português, Matemática e Raciocínio Lógico do zero"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.585 questões comentadas"
+        },
+        {
+          "titulo": "Guia da Prova Prática",
+          "detalhe": "Cozinha, limpeza, EPI e segurança no trabalho"
+        }
+      ],
+      "subheadline": "Agente de Alimentação, Serviços Públicos, Limpeza e Serviços Gerais · Instituto Mais · Prova em 10/01/2027",
+      "comboCovers": [
+        "/assets/capa-santana-de-parnaiba-alfabetizado-2027-simulados-3d.webp",
+        "/assets/capa-santana-de-parnaiba-alfabetizado-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Prefeitura de Santana de Parnaíba (SP)",
+        "cargo": "Agentes de nível alfabetizado",
+        "salario": "R$ 1.897,52 a R$ 2.247,13 + vale-alimentação de R$ 650,00",
+        "vagas": "55",
+        "taxa": "R$ 54,00",
+        "inscricoes": "11/11/2026 a 08/12/2026",
+        "requisito": "Alfabetizado",
+        "url": "https://imais.org.br/concursos/detalhesconcurso/79",
+        "paginas": 685,
+        "questoes": 1645
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "matao-sp-fiscal-de-obras-ed02-2026": {
     "slug": "matao-sp-fiscal-de-obras-ed02-2026",
     "active": true,
