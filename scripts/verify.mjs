@@ -11,9 +11,9 @@ const normalized=html.toLowerCase();
 for(const marker of ['pagamento único','pagamento','audiobook','pdf','buy-button','trilha aprova'])if(!normalized.includes(marker))fail('sales home missing '+marker);
 // 13/11/2026: preço direto, sem preço de referência riscado (pedido do André).
 if(/<del[^>]*>R\$/i.test(html))fail('home must show the direct price, without a crossed-out reference price');
-if(!html.includes('/assets/apostila-matao-assistente-administrativo-3d.png'))fail('storefront missing Matão feature cover');
+const destaqueHome=Object.values(JSON.parse(fs.readFileSync('products/catalog.json','utf8'))).find(p=>p.storefront&&p.storefront.destaque);if(!destaqueHome)fail('catalog has no featured product (storefront.destaque)');else if(!html.includes('data-sc-object="'+destaqueHome.slug+'"')||!html.includes(destaqueHome.storefront.cover3d))fail('home hero is not the featured product');
 if(html.includes('data-sc-object="autores-ibam-2026"'))fail('discontinued Santos product is still the home feature');
-if(!html.includes('href="/comprar?produto=matao-sp-assistente-administrativo-2026"'))fail('Matão disponível deve ter checkout de compra na home');
+if(destaqueHome&&!html.includes('href="/comprar?produto='+destaqueHome.slug+'"'))fail('featured product must have checkout on the home');
 if(!html.includes('/assets/trilha-aprova-logo.webp'))fail('storefront missing Trilha Aprova logo');
 if(/materials\.json|\/app\.js|pub-[a-z0-9]+\.r2\.dev/i.test(html))fail('sales home exposes legacy/public library assets');
 if(/\bstripe\b/i.test(html)||/\bstripe\b/i.test(buy))fail('payment provider name must not appear in customer-facing HTML');
