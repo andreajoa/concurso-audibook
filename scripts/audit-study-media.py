@@ -66,6 +66,14 @@ PRODUCT_EXPECTATIONS = {
         'pages': 638,
         'topics': ['técnico legislativo', 'santa helena', 'regimento', 'gabarito', 'simulado'],
     },
+    'pc-pe-agente-de-policia-2026': {
+        'pages': 1679,
+        'topics': ['agente de polícia', 'pernambuco', 'cebraspe', 'gabarito', 'simulado'],
+    },
+    'policia-penal-pe-2026': {
+        'pages': 1796,
+        'topics': ['policial penal', 'pernambuco', 'execução penal', 'cebraspe', 'gabarito', 'simulado'],
+    },
     'guarda-municipal-campinas-2026': {
         'pages': 1417,
         'topics': ['guarda municipal', 'campinas', '13.022', 'gabarito', 'simulado'],
