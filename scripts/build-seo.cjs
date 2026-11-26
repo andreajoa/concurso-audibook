@@ -1767,11 +1767,51 @@ const homeNodes = [
   }
 ];
 
+
+/* Bloco de destaque da home (capa grande, números, conteúdo, método e formato).
+   Vem do produto com storefront.destaque no catálogo: trocar a apostila em
+   evidência é só mudar esse campo (pedido do André, 26/11/2026). */
+function destaqueHomeHtml(p) {
+  const d = p.storefront.destaqueHome || {};
+  const k = p.storefront.concurso || {};
+  const preco = brl(p.priceCents);
+  const comprar = `/comprar?produto=${esc(p.slug)}`;
+  return `<section class="catalog-hero shell" id="apostilas" data-sc-object="${esc(p.slug)}"><div class="catalog-hero-media" aria-label="Capa da apostila ${esc(p.shortName)}"><div class="cover-aura" aria-hidden="true"></div>` +
+    `<a href="/apostilas/${esc(p.slug)}"><img class="catalog-cover" src="${esc(assetVer(p.storefront.cover3d))}" width="600" height="750" loading="eager" decoding="async" fetchpriority="high" alt="Capa da apostila ${esc(p.shortName)}, edição completa"></a></div>` +
+    `<div class="catalog-label"><span class="catalog-index">APOSTILA EM DESTAQUE • DISPONÍVEL</span><span class="product-tag">${esc(d.tag || p.storefront.badge)}</span>` +
+    `<h1>${esc(d.titulo || p.shortName)} <em>${esc(d.tituloEm || '')}</em></h1><p class="catalog-summary">${esc(d.resumo || p.description)}</p>` +
+    '<dl class="spec-list">' +
+    `<div><dt>Conteúdo</dt><dd>${esc(d.conteudo || '')}</dd></div>` +
+    `<div><dt>Prova</dt><dd>${esc(d.prova || '')}</dd></div>` +
+    '<div><dt>Formatos</dt><dd>PDF completo + resumo de áudio + audiobook com oito capítulos em português brasileiro</dd></div>' +
+    '<div><dt>Disponibilidade</dt><dd>Acesso digital individual liberado após a confirmação do pagamento.</dd></div></dl>' +
+    `<div class="price-stack hero-price"><span>oferta da apostila completa · pagamento único</span><strong>${preco}</strong><small>pagamento único • acesso online e download após a confirmação</small></div>` +
+    `<a class="buy-button catalog-buy" href="${comprar}">Comprar apostila por ${preco}</a>` +
+    `<p class="catalog-security">Pagamento protegido e acesso individual ao PDF, resumo em áudio e oito capítulos do audiobook após confirmação.</p></div></section>` +
+    `<section class="specimen-strip" aria-label="Dados do concurso ${esc(p.shortName)}"><div class="shell specimen-grid">` +
+    (d.numeros || []).map(([n, t]) => `<article><b>${esc(n)}</b><span>${esc(t)}</span></article>`).join('') + '</div></section>' +
+    `<section class="scroll-statement shell"><span class="eyebrow">TRILHA APROVA • ${esc((p.storefront.shortTag || p.shortName).toUpperCase())}</span><p class="scroll-fill" data-scroll-fill>${esc(d.frase || '')}</p></section>` +
+    `<section class="section shell evidence-section" id="metodo"><div class="section-heading"><span class="eyebrow">APOSTILA COMPLETA • ${esc((p.storefront.shortTag || '').toUpperCase())}</span><h2>Conteúdo conforme o edital do cargo de ${esc(k.cargo || d.titulo || '')}.</h2></div><div class="stack-cards">` +
+    (d.cards || []).map(([t, x], i) => `<article class="stack-card spotlight-card" data-stack-card style="--stack-i:${i}"><span class="stack-num">${String(i + 1).padStart(2, '0')}</span><div><h3>${esc(t)}</h3><p>${esc(x)}</p></div></article>`).join('') + '</div></section>' +
+    `<section class="section trail-section" id="trilha"><div class="shell trail-layout"><div class="trail-copy"><span class="eyebrow">MÉTODO TRILHA APROVA</span><h2>Um roteiro de preparação para a prova de ${esc(d.titulo || '')}.</h2><p>A apostila segue o edital item por item. A sequência orienta o estudo, do diagnóstico aos exercícios e à revisão em áudio.</p></div>` +
+    '<div class="trail-map" data-trail-map><div class="trail-line" aria-hidden="true"><span class="trail-fill"></span><i class="trail-dot"></i></div>' +
+    (d.trilha || []).map(([sm, t, x], i) => `<article class="trail-stop" data-trail-stop><b>${i + 1}</b><div><small>${esc(sm)}</small><h3>${esc(t)}</h3><p>${esc(x)}</p></div></article>`).join('') + '</div></div></section>' +
+    `<section class="section shell format-section"><div class="format-stage xp-format"><div class="format-copy"><span class="eyebrow">EDIÇÃO COMPLETA</span><h2>Leia. Ouça. Pratique.</h2><p>${esc(d.resumo || '')} O acesso é liberado após a confirmação do pagamento.</p>` +
+    `<div class="format-labels"><span>PDF completo</span><span>${esc(k.questoes ? k.questoes.toLocaleString('pt-BR') + ' questões comentadas' : 'Questões comentadas')}</span><span>Audiobook em pt-BR</span><span>Acesso digital após pagamento</span></div></div>` +
+    '<div class="format-benefits" aria-label="O que vem na apostila">' +
+    `<article class="format-benefit"><small class="panel-kicker">LEITURA</small><h3>PDF direcionado</h3><p>${esc(k.paginas ? k.paginas.toLocaleString('pt-BR') + ' páginas' : 'Conteúdo')} feitas pelo edital, com lei seca de toda a legislação cobrada.</p></article>` +
+    '<article class="format-benefit"><small class="panel-kicker">ESCUTA</small><h3>Audiobook em pt-BR</h3><p>Oito capítulos e um resumo da véspera, com narração em português brasileiro, na área do comprador.</p></article>' +
+    `<article class="format-benefit"><small class="panel-kicker">TREINO</small><h3>Questões e simulados</h3><p>${esc(k.questoes ? k.questoes.toLocaleString('pt-BR') : '')} questões com comentários e simulados no formato da prova.</p></article></div></div></section>`;
+}
 let home = fs.readFileSync('public/index.html', 'utf8')
   .replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g, '')
   .replace(/<meta name="google-site-verification"[^>]*>/g, '')
   .replace(/<!-- discovery:start -->[\s\S]*?<!-- discovery:end -->/g, '');
 
+if (destaque) {
+  home = home.replace(/<!-- destaque:start -->[\s\S]*?<!-- destaque:end -->/, () => '<!-- destaque:start -->' + destaqueHomeHtml(destaque) + '<!-- destaque:end -->')
+    .replace(/<!-- destaque-faq:start -->[\s\S]*?<!-- destaque-faq:end -->/, () => '<!-- destaque-faq:start --><details><summary>O valor é mensal?</summary><p>Não. Cada apostila é uma compra única. A apostila em destaque, ' + esc(destaque.shortName) + ', custa ' + brl(destaque.priceCents) + ', em pagamento único.</p></details><!-- destaque-faq:end -->');
+}
 home = home
   .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(homeTitle)}</title>`)
   .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(homeDescription)}">`)

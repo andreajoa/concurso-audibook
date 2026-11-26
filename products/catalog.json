@@ -1432,7 +1432,74 @@
         "questoes": 1834
       },
       "area": "seguranca",
-      "destaque": true
+      "destaque": true,
+      "destaqueHome": {
+        "tag": "POLÍCIA CIVIL DE PERNAMBUCO • EDITAL Nº 1/2026 • CEBRASPE",
+        "titulo": "Agente de Polícia",
+        "tituloEm": "— PC-PE 2026",
+        "resumo": "Apostila completa para Agente de Polícia da Polícia Civil de Pernambuco: 1.679 páginas, 1.834 questões comentadas de cinco alternativas, dois simulados de 60 questões, lei seca e audiobook em português brasileiro.",
+        "conteudo": "Legislação de PE, Constitucional, Administrativo, Penal, Processo Penal, Português, Informática, Raciocínio Lógico, Contabilidade e Estatística",
+        "prova": "60 questões A–E + redação; 07/03/2027 (tarde)",
+        "numeros": [
+          [
+            "1.200",
+            "vagas de Agente de Polícia"
+          ],
+          [
+            "60",
+            "questões objetivas (20 + 40)"
+          ],
+          [
+            "1.834",
+            "questões comentadas na apostila"
+          ],
+          [
+            "8",
+            "capítulos do audiobook em pt-BR"
+          ]
+        ],
+        "frase": "Estude com direção: a apostila completa da PC-PE já está disponível em PDF e em audiobook.",
+        "cards": [
+          [
+            "Noções de Direito",
+            "Legislação de Pernambuco, Constitucional, Administrativo, Penal, 13 leis especiais e Processo Penal."
+          ],
+          [
+            "Conhecimentos Específicos",
+            "Português, Informática, Raciocínio Lógico, Contabilidade Geral e Estatística do zero."
+          ],
+          [
+            "Redação",
+            "Como o Cebraspe calcula a nota e três redações-modelo sobre segurança pública."
+          ],
+          [
+            "Treino e áudio",
+            "1.834 questões comentadas, dois simulados de 60 e audiobook em oito capítulos."
+          ]
+        ],
+        "trilha": [
+          [
+            "DIAGNÓSTICO",
+            "Entenda o edital",
+            "São 60 questões objetivas: 20 de Noções de Direito e 40 de Conhecimentos Específicos, mais a redação."
+          ],
+          [
+            "FUNDAMENTOS",
+            "Aprenda a teoria",
+            "Direito, legislação de PE, Português, Informática, Raciocínio Lógico, Contabilidade e Estatística."
+          ],
+          [
+            "TREINO",
+            "Resolva as questões",
+            "Questões de cinco alternativas comentadas e dois simulados no formato da prova."
+          ],
+          [
+            "REVISÃO",
+            "Revise ouvindo",
+            "Audiobook em oito capítulos e resumo da véspera, em português brasileiro."
+          ]
+        ]
+      }
     },
     "funnel": {
       "orderBump": [],
