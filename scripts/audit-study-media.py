@@ -78,6 +78,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 831,
         'topics': ['coren-sp', 'interdição ética', 'dimensionamento', 'gabarito', 'simulado'],
     },
+    'see-sp-professor-geografia-2027': {
+        'pages': 682,
+        'topics': ['gestão de sala de aula', 'lemov', 'coordenadas geográficas', 'gabarito', 'simulado'],
+    },
     'see-sp-professor-educacao-fisica-2027': {
         'pages': 497,
         'topics': ['gestão de sala de aula', 'lemov', 'lógica interna', 'gabarito', 'simulado'],
