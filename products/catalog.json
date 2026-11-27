@@ -3233,6 +3233,190 @@
       "downsell": []
     }
   },
+  "see-sp-professor-educacao-especial-tea-2027": {
+    "slug": "see-sp-professor-educacao-especial-tea-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), área Educação Especial – Transtorno do Espectro Autista (TEA)",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Educação Especial – Autismo (TEA) (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Educação Especial – TEA (PEFM)",
+    "edition": "Pós-edital · edição de 27/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Educação Especial na área de Transtorno do Espectro Autista (TEA) da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_EDUCACAO_ESPECIAL_TEA_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) na área de Educação Especial – Transtorno do Espectro Autista (TEA) da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 860 páginas com 1.515 questões comentadas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Educação Especial. Bloco I completo: gestão de sala de aula segundo as obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as técnicas de Doug Lemov cobradas. Educação Especial – TEA: educação inclusiva sob a ótica da neurodiversidade, equidade, autorregulação emocional, barreiras sensoriais, ambientais e comunicacionais, ambientes livres de bullying, Eugênio Cunha (Autismo na escola); marcos legais com a Lei Berenice Piana e as normas paulistas sobre TEA; a Política de Educação Especial de São Paulo pela Resolução SEDUC nº 129/2025 e seus cinco documentos orientadores; DUA focado nas barreiras sensoriais e de engajamento (hiperfoco, suportes visuais, rotinas, transições, avaliação sem penalizar a interação social); práticas baseadas em evidências (CAA, PECS, TEACCH, histórias sociais, mediação por pares, avaliação funcional do comportamento, manejo de crises); Estudo de Caso, PAEE, PEI e Relatório de Acolhimento; o estudante com TEA no DSM-5-TR (critérios e níveis de suporte) e a dupla excepcionalidade com altas habilidades (Virgolim e Renzulli). Inclui a prova discursiva com resposta-modelo e o vídeo de Atendimento Educacional Especializado com a rubrica de 3 dimensões e roteiros para os dois estudos de caso do edital, e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 860 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.515 questões comentadas no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Educação Especial)",
+      "Gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+      "Neurodiversidade, autorregulação, barreiras sensoriais e combate ao bullying (Eugênio Cunha)",
+      "Resolução SEDUC nº 129/2025 e os 5 documentos orientadores: AEE, Ensino Colaborativo, papéis e comissões",
+      "Práticas baseadas em evidências: CAA, PECS (6 fases), TEACCH, histórias sociais e avaliação funcional",
+      "DUA no TEA: hiperfoco, suportes visuais, rotinas, transições e avaliação sem penalizar a interação",
+      "DSM-5-TR, níveis de suporte e dupla excepcionalidade (Virgolim e Renzulli)",
+      "Roteiros do vídeo de AEE para os dois estudos de caso do edital (Gabriel e Mariana)",
+      "Discursiva com resposta-modelo e rubrica da Educação Especial comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-educacao-especial-tea-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-educacao-especial-tea-2027/docs/apostila-see-sp-professor-educacao-especial-tea-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Educacao_Especial_TEA.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Educação Especial TEA (revisão da véspera)",
+        "key": "see-sp-professor-educacao-especial-tea-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Educacao_Especial_TEA.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Inclusão e neurodiversidade",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/02-inclusao-e-neurodiversidade.mp3",
+          "downloadName": "02-inclusao-e-neurodiversidade.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Marcos legais e Lei Berenice Piana",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/03-marcos-legais.mp3",
+          "downloadName": "03-marcos-legais.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Resolução SEDUC nº 129/2025 e a política paulista",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/04-resolucao-seduc-129.mp3",
+          "downloadName": "04-resolucao-seduc-129.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "DUA no TEA: rotinas, transições e avaliação",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/05-desenho-universal-para-a-aprendizagem-no-tea.mp3",
+          "downloadName": "05-desenho-universal-para-a-aprendizagem-no-tea.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Práticas baseadas em evidências: CAA, PECS e TEACCH",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/06-praticas-baseadas-em-evidencias.mp3",
+          "downloadName": "06-praticas-baseadas-em-evidencias.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Estudo de Caso, PAEE, PEI e o estudante com TEA",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/07-documentacao-e-o-estudante-com-tea.mp3",
+          "downloadName": "07-documentacao-e-o-estudante-com-tea.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Discursiva e vídeo de AEE",
+          "key": "see-sp-professor-educacao-especial-tea-2027/audio/pt-br-v1/08-discursiva-e-video-de-aee.mp3",
+          "downloadName": "08-discursiva-e-video-de-aee.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, tarde, para Educação Especial – TEA",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Educação Especial – TEA na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 106 são de Educação Especial – Transtorno do Espectro Autista, todas na jornada completa de 25 horas (101 de ampla concorrência e 5 reservadas a pessoas com deficiência). O subsídio inicial é de R$ 3.478,13."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Educação Especial – TEA no período da tarde, das 15h às 19h)."
+      },
+      {
+        "q": "Como é a prova de Educação Especial – TEA da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Educação Especial – TEA), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática em vídeo de 5 a 7 minutos simulando um Atendimento Educacional Especializado a partir de um estudo de caso do edital, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Como é o vídeo da prova prática de Educação Especial – TEA?",
+        "a": "O candidato escolhe um dos dois estudos de caso de TEA do Anexo XII (Gabriel Henrique, 13 anos, 7º ano, nível 1 de apoio; ou Mariana Vitória, 8 anos, 3º ano, nível 2 de apoio) e grava de 5 a 7 minutos simulando um Atendimento Educacional Especializado presencial. A avaliação tem três dimensões de 10 pontos: clareza e foco ligados ao Estudo de Caso e ao PAEE, uso de tecnologia assistiva e recursos de acessibilidade, e identificação de barreiras e estratégias pedagógicas."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Educação Especial – TEA na rede estadual de São Paulo?",
+        "a": "Uma das formações do Anexo IV do edital (Resolução SEDUC nº 165/2025): Licenciatura em Educação Especial ou em Educação Especial e Inclusiva; Pedagogia com habilitação em TEA/TGD; Pedagogia ou Normal Superior com especialização em TEA/TGD; Pedagogia ou qualquer licenciatura com pós-graduação lato sensu em TEA/TGD; mestrado ou doutorado em TEA/TGD com formação docente prévia; ou especialização em TEA/TGD conforme as Deliberações ou autorizada por MEC/CNE ou Conselhos."
+      },
+      {
+        "q": "Onde vejo as vagas de Educação Especial – TEA da minha região e a cidade de prova?",
+        "a": "No guia do concurso por região (concurso-professor-see-sp-2027), com as vagas de cada componente nas 11 regiões de classificação, as 77 cidades de prova e os municípios atendidos por cada Unidade Regional de Ensino."
+      },
+      {
+        "q": "O que é a Resolução SEDUC nº 129/2025 e por que ela cai na prova?",
+        "a": "É a norma de 30/09/2025 que regulamenta a Política de Educação Especial do Estado de São Paulo. Ela define o Estudo de Caso, o PAEE e o PEI, o prazo de 30 dias letivos, o AEE em Sala de Recursos e na Modalidade Itinerante, o Projeto Ensino Colaborativo e os papéis de cada profissional. Seus cinco documentos orientadores estão na bibliografia do edital."
+      },
+      {
+        "q": "Quais livros caem na parte específica de TEA?",
+        "a": "Autismo na escola, de Eugênio Cunha; Desenho Universal para a Aprendizagem, de Sebastián-Heredero, Prais e Vitaliano; Altas habilidades/superdotação: um diálogo pedagógico urgente, de Angela Virgolim; e os cinco documentos orientadores da Resolução SEDUC nº 129/2025."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Educação Especial TEA Autismo FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Educação Especial – Autismo (TEA) (PEFM, FGV): neurodiversidade, CAA, PECS, DUA, Resolução 129/2025, 1.515 questões e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • EDUCAÇÃO ESPECIAL – TEA • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-educacao-especial-tea-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 106 vagas para Professor de Educação Especial – Autismo (TEA). Neurodiversidade, CAA, PECS, DUA, Resolução 129/2025 e 1.515 questões",
+      "shortTag": "SEE-SP · Educação Especial – TEA",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "860 páginas: Gestão de sala de aula + toda a Educação Especial – TEA"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.455 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Vídeo de AEE",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiros dos 2 estudos de caso"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Educação Especial – TEA · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-educacao-especial-tea-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-educacao-especial-tea-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Educação Especial – TEA (PEFM)",
+        "salario": "R$ 3.478,13 (25h)",
+        "vagas": "106",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Educação Especial ou formação em TEA/TGD (Anexo IV)",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 860,
+        "questoes": 1515
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "coren-sp-assistente-administrativo-2027": {
     "slug": "coren-sp-assistente-administrativo-2027",
     "active": true,

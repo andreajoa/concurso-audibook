@@ -78,6 +78,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 831,
         'topics': ['coren-sp', 'interdição ética', 'dimensionamento', 'gabarito', 'simulado'],
     },
+    'see-sp-professor-educacao-especial-tea-2027': {
+        'pages': 860,
+        'topics': ['gestão de sala de aula', 'lemov', 'neurodiversidade', 'gabarito', 'simulado'],
+    },
     'see-sp-professor-educacao-especial-di-2027': {
         'pages': 868,
         'topics': ['gestão de sala de aula', 'lemov', 'estudo de caso', 'gabarito', 'simulado'],
