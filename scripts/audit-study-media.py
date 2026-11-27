@@ -80,7 +80,7 @@ PRODUCT_EXPECTATIONS = {
     },
     'see-sp-professor-geografia-2027': {
         'pages': 682,
-        'topics': ['gestão de sala de aula', 'lemov', 'coordenadas geográficas', 'gabarito', 'simulado'],
+        'topics': ['gestão de sala de aula', 'lemov', 'fusos horários', 'gabarito', 'simulado'],
     },
     'see-sp-professor-educacao-fisica-2027': {
         'pages': 497,
