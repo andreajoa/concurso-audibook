@@ -8,9 +8,11 @@ const catalog = require('../products/catalog.json');
 const product = catalog[slug];
 const coverPath = 'public/assets/apostila-professor-adjunto-i-3d.png';
 
-test('Professor Adjunto I is a complete sellable product with isolated private assets', () => {
+test('Professor Adjunto I fica guardado: fora da venda, com os arquivos dos compradores preservados', () => {
   assert.ok(product);
-  assert.equal(product.active, true);
+  assert.equal(product.active, false);
+  assert.equal(product.withdrawal.preserveExistingAccess, true);
+  assert.equal(product.withdrawal.reuseForNextContest, true);
   assert.ok(Number.isInteger(product.priceCents) && product.priceCents >= 990, 'preço definido pela pesquisa de concorrentes');
   assert.equal(product.assets.chapters.length, 8);
   const keys = [product.assets.pdfKey, product.assets.coverKey, product.assets.summary.key,
@@ -29,12 +31,8 @@ test('Professor cover is the validated real PNG binary supplied for the product'
     'ffb24a6d1c9a8cc8eda4eaadc37a68a6474e105f07d9790c77bbb416f85da013');
 });
 
-test('Professor storefront page uses a normal binary URL, never an inline data URI', () => {
-  const page = fs.readFileSync('public/apostilas/' + slug + '.html', 'utf8');
-  assert.match(page, /Professor Adjunto I/);
-  assert.match(page, /apostila-professor-adjunto-i-3d\.png/);
-  assert.doesNotMatch(page, /data:image\//i);
-  assert.doesNotMatch(page, /Esta apostila trabalha redação para candidatos de ensino fundamental completo/);
-  const title = page.match(/<title>(.*?)<\/title>/s)?.[1] || '';
-  assert.ok(title.length > 20 && title.length <= 60, title);
+test('Professor Adjunto I saiu do site: sem página pública e com 301 para o catálogo', () => {
+  assert.equal(fs.existsSync('public/apostilas/' + slug + '.html'), false);
+  const redirects = require('../vercel.json').redirects;
+  assert.ok(redirects.some(r => r.source === '/apostilas/' + slug && r.destination === '/apostilas-para-concurso' && r.permanent));
 });

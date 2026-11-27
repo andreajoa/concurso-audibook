@@ -18,11 +18,11 @@ test('textos sem data ou já encerrados não mudam', () => {
   assert.equal(inscricoesTexto(null, '2027-01-01'), null);
 });
 
-test('Santos e Matão Assistente saem da venda no dia seguinte à prova', () => {
+test('Matão Assistente sai da venda no dia seguinte à prova; Santos já foi retirada', () => {
   const catalog = require('../products/catalog.json');
   const santos = catalog['professor-adjunto-i-ibam-santos-2026'];
   const matao = catalog['matao-sp-assistente-administrativo-2026'];
-  assert.equal(sellable(santos, new Date('2026-11-29T12:00:00Z')), true);
+  assert.equal(santos.active, false);
   assert.equal(sellable(santos, new Date('2026-11-30T12:00:00Z')), false);
   assert.equal(sellable(matao, new Date('2026-12-06T12:00:00Z')), true);
   assert.equal(sellable(matao, new Date('2026-12-07T12:00:00Z')), false);
