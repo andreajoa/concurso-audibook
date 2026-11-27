@@ -313,6 +313,10 @@ SPEC = {
    completa=('OFICIAL', 'DE JUSTIÇA', ['132 vagas • 2.465 questões comentadas • 5 alternativas', 'O oficial no CPC • hora certa • penhora • avaliação', 'Normas da Corregedoria • CPP • CP • Civil • LEF']),
    simulados=['2 simulados de 70 questões • modelo Vunesp', '15 Português + 40 Específicos + 15 Gerais', 'gabarito comentado questão a questão'],
    terceiro=('DISCURSIVA E LEI SECA', ['2 questões discursivas • 0 a 40 pontos', 'Questões-modelo: hora certa e arrombamento', 'Artigos exatos do Anexo VIII do edital'])),
+ 'seduc-ma-professor-matematica-2026': dict(sim_t1='SIMULADOS', sigla='SEDUC-MA', cobre='CONCURSO UNIFICADO DO MARANHÃO • 2026', ed='EDITAL Nº 01/2026 • FCC', lomb=['SEDUC-MA', 'PROFESSOR', 'MATEMÁTICA'],
+   completa=('PROFESSOR', 'MATEMÁTICA', ['Cargo 23 • 277 vagas • 2.056 questões comentadas', 'Funções • Polinômios • Geometria analítica • Probabilidade', 'Didática • Português • Maranhão • Informática • Redação FCC']),
+   simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('REDAÇÃO FCC', ['Dissertativo-argumentativa • 20 a 30 linhas', 'Grade do edital: tema 7 + norma 3', 'Modelos comentados e temas para treinar'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
