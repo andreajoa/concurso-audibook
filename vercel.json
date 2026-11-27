@@ -150,6 +150,11 @@
       "source": "/apostilas/detran-sp-agente-de-transito-2026",
       "destination": "/apostilas-para-concurso",
       "permanent": true
+    },
+    {
+      "source": "/apostilas/professor-adjunto-i-ibam-santos-2026",
+      "destination": "/apostilas-para-concurso",
+      "permanent": true
     }
   ]
 }

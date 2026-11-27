@@ -854,7 +854,7 @@
   },
   "professor-adjunto-i-ibam-santos-2026": {
     "slug": "professor-adjunto-i-ibam-santos-2026",
-    "active": true,
+    "active": false,
     "brand": "Trilha Aprova",
     "contest": "Concurso Prefeitura de Santos — Edital nº 79/2026",
     "examBoard": "IBAM",
@@ -1000,9 +1000,15 @@
       "confirmed": false,
       "source": "Edital nº 79/2026 — Prefeitura de Santos (banca IBAM)",
       "sourceUrl": "https://www.santos.sp.gov.br/?q=servico/concursos-publicos",
-      "note": "Data prevista no material conforme o edital; confirmar a convocação oficial antes da prova."
+      "note": "Prova prevista para 29/11/2026. Produto retirado da venda em 27/11/2026 e guardado para o próximo concurso; manter acesso dos compradores anteriores."
     },
-    "seoTitle": "Professor Adjunto I Santos 2026 + audiobook | Trilha Aprova"
+    "seoTitle": "Professor Adjunto I Santos 2026 + audiobook | Trilha Aprova",
+    "withdrawal": {
+      "date": "2026-11-27",
+      "reason": "Retirada da venda e do site a 2 dias da prova (29/11/2026), por decisão do André. Material GUARDADO para o próximo concurso de Professor Adjunto I (ou cargo equivalente) em Santos: quando sair o novo edital, trocar a base do edital, revisar conteúdo, legislação, questões e datas, e só então reativar.",
+      "preserveExistingAccess": true,
+      "reuseForNextContest": true
+    }
   },
   "sme-sp-peif-pre-edital-2026": {
     "slug": "sme-sp-peif-pre-edital-2026",
