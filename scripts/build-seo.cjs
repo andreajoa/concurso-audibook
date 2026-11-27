@@ -21,6 +21,7 @@ const tools = require('../content/ferramentas.json');
 // trava de fonte oficial vivem em lib/concursos.js.
 const concursosRaw = require('../content/concursos.json');
 const cn = require('../lib/concursos.js');
+const { classifyProduct, productH1, buildTaxonomyHubs } = require('../lib/taxonomy.js');
 
 const ORIGIN = 'https://www.concursotrilhaaprova.online';
 const SUPPORT_EMAIL = 'suporte@concursotrilhaaprova.online';
@@ -40,6 +41,7 @@ for (const p of Object.values(catalog)) {
   if (k && k.inscricoes) k.inscricoes = inscricoesTexto(k.inscricoes, BUILD_DATE);
 }
 const products = Object.values(catalog).filter(p => vendavel(p) && p.kind !== 'simulados');
+const taxonomy = buildTaxonomyHubs(products);
 // Cadernos de simulados avulsos (13/11/2026): produto só em PDF, com página própria em /simulados/<slug>.
 const simulados = Object.values(catalog).filter(p => vendavel(p) && p.kind === 'simulados');
 const MIN_PRICE = Math.min(...products.map(p => p.priceCents));
@@ -96,28 +98,30 @@ const brl = cents => 'R$ ' + money(cents).replace('.', ',');
 
 const areaServed = [
   { '@type': 'Country', name: 'Brasil' },
-  ...cities.map(c => ({ '@type': 'City', name: c.city, addressRegion: c.state, addressCountry: 'BR' }))
+  ...taxonomy.stateHubs
+    .filter(s => s.slug !== 'nacional')
+    .map(s => ({ '@type': 'State', name: s.fullName.replace(/\s*\([A-Z]{2}\)$/, ''), addressCountry: 'BR' }))
 ];
 
 const organization = {
   '@type': ['Organization', 'EducationalOrganization'],
   '@id': ORIGIN + '/#organization',
   name: 'Trilha Aprova',
-  alternateName: 'Trilha Aprova — apostilas para concursos',
+  alternateName: 'Trilha Aprova — Apostilas para Concursos Públicos',
   url: ORIGIN + '/',
   email: SUPPORT_EMAIL,
-  description: 'Editora digital independente de apostilas em PDF com audiobook para candidatos a concursos públicos no Brasil.',
+  description: 'Editora digital independente de apostilas em PDF com audiobook grátis e questões comentadas para concursos públicos em todo o Brasil.',
   logo: { '@type': 'ImageObject', '@id': ORIGIN + '/#logo', url: ORIGIN + '/assets/trilha-aprova-logo.webp', width: 180, height: 84, caption: 'Trilha Aprova' },
   image: { '@id': ORIGIN + '/#logo' },
   sameAs: [INSTAGRAM_URL],
   knowsLanguage: 'pt-BR',
   knowsAbout: [
     'Concursos públicos no Brasil',
-    'Apostilas para concurso',
-    'Audiobooks de estudo',
-    'Preparação para concursos na Baixada Santista',
-    'Banca IBAM',
-    'Redação para concursos de nível fundamental'
+    'Apostilas para concursos públicos em PDF',
+    'Audiobooks de estudo para concursos',
+    'Questões comentadas e simulados para concursos',
+    'Bancas FGV, VUNESP, Cebraspe, FCC, Cesgranrio, IBAM, Verbena/UFG, ITAME, Quadrix e AOCP',
+    'Concursos de Educação, Área Administrativa, Policial, Tribunais, Bancária e Fiscal'
   ],
   areaServed,
   contactPoint: {
@@ -136,7 +140,15 @@ const website = {
   url: ORIGIN + '/',
   inLanguage: 'pt-BR',
   publisher: { '@id': ORIGIN + '/#organization' },
-  copyrightHolder: { '@id': ORIGIN + '/#organization' }
+  copyrightHolder: { '@id': ORIGIN + '/#organization' },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: ORIGIN + '/concursos?q={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  }
 };
 
 const BASE_NODES = [organization, website];
@@ -460,6 +472,7 @@ function heroSlot(path) {
   const seoLocal = path.match(/^\/concursos-publicos-([a-z0-9-]+)$/);
   if (seoLocal) return CIDADES_DO_LITORAL.has(seoLocal[1]) ? 'cidade-litoral' : 'cidade-interior';
 
+  if (path === '/apostilas-por-banca' || /^\/apostilas\/(banca|area|estado|nivel)\//.test(path)) return 'apostilas';
   if (path.startsWith('/apostilas/')) return 'apostila-detalhe';
   if (path.startsWith('/materias/')) return 'artigo';
   if (path.startsWith('/ferramentas/')) return 'ferramentas';
@@ -561,8 +574,9 @@ function seoBlock({ path, title, description, image, nodes }) {
     `<meta name="twitter:description" content="${esc(description)}">` +
     `<meta name="twitter:image" content="${esc(socialImage)}">` +
     `<meta name="author" content="${esc(AUTHOR_NAME)}">` +
-    '<meta name="geo.region" content="BR-SP">' +
-    '<meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">' +
+    (/^\/(concursos-baixada-santista|concursos-publicos-|concursos\/sp\/(santos|guaruja|sao-vicente|praia-grande|cubatao))/.test(path)
+      ? '<meta name="geo.region" content="BR-SP"><meta name="geo.placename" content="Santos, Baixada Santista, São Paulo, Brasil">'
+      : '<meta name="geo.region" content="BR"><meta name="geo.placename" content="Brasil">') +
     FAVICON_TAGS +
     '<link rel="manifest" href="/site.webmanifest">' +
     '<link rel="alternate" type="application/rss+xml" title="Trilha Aprova — guias de estudo" href="/feed.xml">' +
@@ -744,10 +758,33 @@ for (const p of products) {
     `<span class="combo-audio-badge"><b>+ Audiobook</b>${nCap} capítulos</span></div>` +
     `<ol class="combo-labels">${ordered.map(c => `<li><strong>${esc(c.titulo)}</strong><span>${esc(c.detalhe)}</span></li>`).join('')}</ol>`;
   const checks = (sf.bullets && sf.bullets.length ? sf.bullets : p.proofPoints.slice(0, 4));
+  const h1Text = productH1(p);
+  const hookText = sf.headline && sf.headline.trim().toLowerCase() !== h1Text.toLowerCase() ? sf.headline : '';
+  const pTax = classifyProduct(p);
+  const taxLinks = [];
+  if (pTax.board && taxonomy.boardHubs.some(h => h.slug === pTax.board.slug)) {
+    taxLinks.push([`/apostilas/banca/${pTax.board.slug}`, `Apostilas banca ${pTax.board.name}`]);
+  }
+  for (const aSlug of pTax.areas) {
+    const h = taxonomy.areaHubs.find(x => x.slug === aSlug);
+    if (h) taxLinks.push([h.path, `Área: ${h.label}`]);
+  }
+  for (const sSlug of pTax.states) {
+    const h = taxonomy.stateHubs.find(x => x.slug === sSlug);
+    if (h) taxLinks.push([h.path, h.label]);
+  }
+  for (const lSlug of pTax.levels.slice(0, 2)) {
+    const h = taxonomy.levelHubs.find(x => x.slug === lSlug);
+    if (h) taxLinks.push([h.path, h.label]);
+  }
+  const taxNavHtml = taxLinks.length
+    ? `<nav class="combo-tax-nav" aria-label="Categorias desta apostila">${taxLinks.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('')}</nav>`
+    : '';
   const hero = crumbs => '<section class="combo-hero"><div class="combo-hero-inner"><div class="combo-hero-copy">' + crumbs +
     `<span class="combo-kicker">${esc(sf.badge || p.shortName)}</span>` +
     `<p class="combo-perks"><span>${PERK}</span><span>+ Audiobook GRÁTIS</span></p>` +
-    `<h1>${esc(sf.headline || ('Leia, ouça e treine: o combo completo para ' + p.shortName))}</h1>` +
+    `<h1>${esc(h1Text)}</h1>` +
+    (hookText ? `<p class="combo-lead-hook">${esc(hookText)}</p>` : '') +
     `<p class="combo-sub">${esc(sf.subheadline || p.audience)}</p>` +
     `<ul class="combo-checks">${checks.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` +
     `<div class="combo-price-row"><div><span class="combo-price-label">${p.kind === 'curso' ? 'Curso + correção + audiobook por' : '3 apostilas + audiobook por'}</span><span class="combo-price">${brl(p.priceCents)}</span><span class="combo-price-note">pagamento único · acesso imediato</span></div>` +
@@ -800,7 +837,8 @@ for (const p of products) {
         '<p class="combo-lead">Aproveite a viagem para a prova: concursos da mesma área costumam cobrar conteúdos parecidos.</p>' +
         `<div class="ac-grid">${list.map(o => apostilaCard(o)).join('')}</div></section>` : '';
     })() +
-    '<p class="combo-more"><a href="/apostilas-para-concurso">Ver todas as apostilas da Trilha Aprova</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
+    taxNavHtml +
+    '<p class="combo-more"><a href="/apostilas-para-concurso">Ver todas as apostilas da Trilha Aprova</a> · <a href="/apostilas-por-banca">Ver apostilas por banca</a> · <a href="/como-estudar-com-apostila-e-audiobook">Como combinar PDF e audiobook</a></p>' +
     disclaimer +
     `<div class="combo-sticky" role="region" aria-label="Comprar"><span><b>${brl(p.priceCents)}</b> · ${esc(p.shortName)}</span><a href="${buyUrl}">Comprar agora</a></div>`;
 
@@ -922,42 +960,62 @@ for (const s of simulados) {
 }
 
 /* ------------------------------------------------------------------ *
- * Hub do catálogo
+ * Hub do catálogo + hubs taxonômicos (Banca, Área, Estado, Escolaridade)
  * ------------------------------------------------------------------ */
+
+const hubChipList = (hubs, currentPath = '') =>
+  '<ul class="hub-chips">' +
+  hubs.map(h => h.path === currentPath
+    ? `<li><span class="hub-chip-active">${esc(h.label)} <small>(${h.items.length})</small></span></li>`
+    : `<li><a href="${h.path}">${esc(h.label)} <small>(${h.items.length})</small></a></li>`).join('') +
+  '</ul>';
+
+const catalogDirectoryHtml = (currentPath = '') =>
+  '<nav class="hub-nav" aria-label="Filtrar apostilas por categoria">' +
+  `<div class="hub-nav-group"><span class="hub-nav-label">Por área / carreira</span>${hubChipList(taxonomy.areaHubs, currentPath)}</div>` +
+  `<div class="hub-nav-group"><span class="hub-nav-label">Por banca organizadora</span>${hubChipList(taxonomy.boardHubs, currentPath)}</div>` +
+  `<div class="hub-nav-group"><span class="hub-nav-label">Por estado / abrangência</span>${hubChipList(taxonomy.stateHubs, currentPath)}</div>` +
+  `<div class="hub-nav-group"><span class="hub-nav-label">Por escolaridade</span>${hubChipList(taxonomy.levelHubs, currentPath)}</div>` +
+  '</nav>';
+
+const boardNamesSummary = taxonomy.boardHubs.map(b => b.label).join(', ');
+const stateNamesSummary = taxonomy.stateHubs.filter(s => s.slug !== 'nacional').map(s => s.label).join(', ');
 
 renderPage({
   path: '/apostilas-para-concurso',
-  title: 'Apostilas para concurso com audiobook',
-  metaTitle: 'Apostilas para concurso público com audiobook | Trilha Aprova',
-  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Combos de 3 apostilas + audiobook grátis, a partir de R$ 19,90, com acesso imediato.',
-  kicker: 'CATÁLOGO',
-  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
+  title: 'Apostilas para Concursos Públicos em PDF e Audiobook',
+  metaTitle: 'Comprar Apostilas para Concursos em PDF e Audiobook | Trilha Aprova',
+  description: `Catálogo de apostilas para concursos públicos em PDF com audiobook grátis. Combos de 3 cadernos a partir de ${brl(MIN_PRICE)} com acesso imediato.`,
+  kicker: 'CATÁLOGO COMPLETO',
+  lead: `A Trilha Aprova publica apostilas digitais para concursos públicos em todo o Brasil. Cada material reúne 3 cadernos no PDF completo, questões comentadas, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura.`,
   keyFacts: [
-    ['Apostilas disponíveis', String(products.length)],
+    ['Apostilas disponíveis', `${products.length} títulos ativos`],
     ['Preço por apostila', `a partir de ${brl(MIN_PRICE)} — pagamento único`],
-    ['Formatos incluídos', 'PDF, resumo em áudio e audiobook em 8 capítulos'],
-    ['Entrega', 'Digital e imediata, válida em todo o Brasil'],
-    ['Autoria', AUTHOR_NAME]
+    ['Bancas cobertas', boardNamesSummary],
+    ['Formatos incluídos', 'PDF completo, resumo em áudio e audiobook em 8 capítulos'],
+    ['Entrega', 'Digital e imediata após confirmação do pagamento, em todo o Brasil']
   ],
   body:
-    '<h2>Materiais disponíveis</h2>' +
+    '<h2>Navegue por banca, área, estado ou escolaridade</h2>' +
+    catalogDirectoryHtml('/apostilas-para-concurso') +
+    '<h2>Todas as apostilas disponíveis</h2>' +
     '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>' +
-    '<h2>O que vem em cada apostila</h2><ul><li>PDF completo para ler online ou baixar.</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook dividido em capítulos por assunto.</li><li>Questões com gabarito comentado.</li><li>Acesso individual recuperável pelo e-mail da compra.</li></ul>' +
-    '<h2>Como escolher entre elas</h2><p>A escolha depende do cargo do seu edital, não do preço. Se o cargo é de professor com conteúdo pedagógico, comece pela apostila de autores. Se o cargo é de nível fundamental com prova de redação, comece pela apostila de redação. Em caso de dúvida, leia o guia sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa</a>.</p>' +
-    '<h2>Preparação por região</h2><ul class="city-links">' + cityLinks + '</ul>' +
+    '<h2>O que vem em cada apostila</h2><ul><li>PDF completo organizado pelo conteúdo programático do edital (combo de 3 cadernos).</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook em português brasileiro dividido em capítulos por assunto.</li><li>Questões comentadas e simulados no estilo da banca.</li><li>Acesso individual online e para download, recuperável pelo e-mail da compra.</li></ul>' +
+    '<h2>Como escolher a apostila certa</h2><p>Escolha sempre pelo cargo, órgão e banca do seu edital. Se o seu edital ainda não foi publicado ou se você quer reforçar a base comum à maioria das provas, comece pelas <a href="/apostilas/area/materias-basicas-e-redacao">apostilas de matérias básicas e redação</a>. Em caso de dúvida, leia o guia completo sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa para concurso</a> e use nossas <a href="/ferramentas">ferramentas gratuitas de estudo</a>.</p>' +
+    '<h2>Guias regionais — Baixada Santista</h2><ul class="city-links">' + cityLinks + '</ul>' +
     disclaimer,
   styles: ['/apostila-cards.css'],
   scripts: ['/apostila-cards.js'],
   faq: [
-    { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
+    { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length} apostilas ativas cobrindo concursos nacionais e estaduais (${stateNamesSummary}), organizadas por banca (${boardNamesSummary}), área e escolaridade. Novos materiais entram continuamente conforme novos editais são publicados.` },
     { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
-    { q: 'Recebo em quanto tempo?', a: 'Imediatamente. Assim que o pagamento é confirmado, a área individual com o PDF e os áudios é liberada automaticamente.' },
-    { q: 'Vocês entregam em todo o Brasil?', a: 'Sim. Como a entrega é totalmente digital, o material fica disponível para qualquer cidade do país, sem frete e sem prazo de envio.' }
+    { q: 'Recebo em quanto tempo depois de comprar?', a: 'Imediatamente após a confirmação do pagamento. A área individual com o PDF completo e os áudios é liberada automaticamente e o link também chega no seu e-mail.' },
+    { q: 'Vocês entregam em todo o Brasil?', a: 'Sim. Como a entrega é 100% digital (PDF + audiobook para ouvir online ou baixar), o material fica disponível em qualquer cidade do Brasil, sem frete e sem espera.' }
   ],
   nodes: [{
     '@type': 'ItemList',
     '@id': ORIGIN + '/apostilas-para-concurso#list',
-    name: 'Apostilas para concurso com audiobook',
+    name: 'Apostilas para Concursos Públicos em PDF e Audiobook',
     numberOfItems: products.length,
     itemListElement: products.map((p, i) => ({
       '@type': 'ListItem',
@@ -969,6 +1027,129 @@ renderPage({
   priority: '0.9',
   images: products.map(p => p.storefront.cover3d)
 });
+
+/* Índice de bancas (/apostilas-por-banca) */
+renderPage({
+  path: '/apostilas-por-banca',
+  title: 'Apostilas para Concursos por Banca Organizadora',
+  metaTitle: 'Apostilas por Banca: FGV, VUNESP, Cebraspe, FCC | Trilha Aprova',
+  description: 'Escolha sua apostila em PDF com audiobook pela banca organizadora do concurso: FGV, VUNESP, Cebraspe, FCC, Verbena, ITAME, Quadrix, IBAM e mais.',
+  kicker: 'CATÁLOGO POR BANCA',
+  lead: `Cada banca cobra a mesma disciplina de um jeito diferente. Reunimos nossas ${products.length} apostilas digitais organizadas pelas principais bancas organizadoras do Brasil para você treinar no estilo exato da sua prova.`,
+  keyFacts: [
+    ['Bancas com hub dedicado', String(taxonomy.boardHubs.length)],
+    ['Principais organizadoras', boardNamesSummary],
+    ['Formatos', 'PDF completo + questões comentadas + audiobook grátis'],
+    ['Preço', `a partir de ${brl(MIN_PRICE)} — pagamento único`]
+  ],
+  body:
+    '<h2>Escolha a banca do seu concurso</h2>' +
+    `<div class="product-grid">${taxonomy.boardHubs.map(b =>
+      `<article class="product-card"><h3><a href="${b.path}">Banca ${esc(b.fullName)}</a></h3><p>${esc(b.intro)}</p><p><strong>${b.items.length} apostilas disponíveis</strong> · <a href="${b.path}">Ver apostilas ${esc(b.label)} →</a></p></article>`
+    ).join('')}</div>` +
+    '<h2>Explore também por área, estado ou escolaridade</h2>' +
+    catalogDirectoryHtml('/apostilas-por-banca') +
+    '<p>Quer entender como adaptar o estudo ao perfil da organizadora? Leia <a href="/como-estudar-para-concurso-do-zero">como estudar para concurso público do zero</a> e confira nossas <a href="/materias">matérias sobre método de estudo</a>.</p>' +
+    disclaimer,
+  faq: [
+    { q: 'Por que escolher a apostila pela banca organizadora?', a: 'Porque a mesma matéria muda de cobrança conforme a banca: FGV prioriza casos práticos e interpretação, VUNESP e FCC valorizam letra de lei e gramática normativa, e Cebraspe trabalha muito com julgamento preciso de itens.' },
+    { q: 'E se a banca do meu concurso ainda não foi definida?', a: 'Comece pelas apostilas pré-edital ou pelas apostilas de matérias básicas e redação, usando a banca do último concurso apenas como referência inicial até a publicação do novo edital.' },
+    { q: 'As apostilas por banca incluem audiobook?', a: 'Sim. Todas as apostilas do catálogo vêm com PDF completo, questões comentadas, resumo em áudio e audiobook em capítulos em português brasileiro.' }
+  ],
+  nodes: [{
+    '@type': 'ItemList',
+    '@id': ORIGIN + '/apostilas-por-banca#list',
+    name: 'Apostilas por Banca Organizadora',
+    numberOfItems: taxonomy.boardHubs.length,
+    itemListElement: taxonomy.boardHubs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: ORIGIN + b.path,
+      name: `Apostilas banca ${b.fullName}`
+    }))
+  }],
+  trail: [['Apostilas', '/apostilas-para-concurso']],
+  priority: '0.85'
+});
+
+/* Hubs taxonômicos individuais: Banca, Área, Estado e Escolaridade */
+for (const hub of taxonomy.allHubs) {
+  const hubMinPrice = Math.min(...hub.items.map(p => p.priceCents));
+  const siblings = hub.group === 'banca' ? taxonomy.boardHubs
+    : hub.group === 'area' ? taxonomy.areaHubs
+    : hub.group === 'estado' ? taxonomy.stateHubs
+    : taxonomy.levelHubs;
+  const siblingTitle = hub.group === 'banca' ? 'Outras bancas organizadoras'
+    : hub.group === 'area' ? 'Outras áreas de concurso'
+    : hub.group === 'estado' ? 'Outros estados e abrangência'
+    : 'Outras escolaridades';
+  const groupTrail = hub.group === 'banca'
+    ? [['Apostilas', '/apostilas-para-concurso'], ['Por banca', '/apostilas-por-banca']]
+    : [['Apostilas', '/apostilas-para-concurso']];
+
+  const hubFaq = [
+    {
+      q: `Quantas apostilas estão disponíveis em ${hub.fullName}?`,
+      a: `Atualmente esta seção reúne ${hub.items.length} ${hub.items.length === 1 ? 'apostila específica' : 'apostilas específicas'} com venda ativa, a partir de ${brl(hubMinPrice)} em pagamento único, com acesso imediato ao PDF e ao audiobook.`
+    },
+    {
+      q: 'O material inclui questões comentadas e audiobook?',
+      a: 'Sim. Cada apostila da Trilha Aprova entrega PDF completo direcionado ao edital, questões com gabarito comentado, resumo em áudio e audiobook dividido em capítulos em português brasileiro.'
+    },
+    {
+      q: 'Como confirmar se a apostila serve para o meu edital?',
+      a: 'Abra a página da apostila desejada, confira o sumário, a banca e o cargo de referência e compare com o anexo de conteúdo programático do edital oficial antes da compra.'
+    }
+  ];
+
+  const hubBody =
+    (hub.tip ? `<div class="hub-tip"><strong>Como estudar para a banca ${esc(hub.label)}</strong><p>${esc(hub.tip)}</p></div>` : '') +
+    `<h2>Apostilas disponíveis (${hub.items.length})</h2>` +
+    `<div class="ac-grid">${hub.items.map(p => apostilaCard(p)).join('')}</div>` +
+    (hub.complementary.length
+      ? `<h2>Matérias básicas recomendadas para complementar o estudo</h2><p>Disciplinas comuns à maioria dos editais (Português, Redação, Matemática, Informática e Direito) para reforçar sua base junto com a apostila do cargo:</p><div class="ac-grid">${hub.complementary.map(p => apostilaCard(p)).join('')}</div>`
+      : '') +
+    `<h2>${esc(siblingTitle)}</h2>${hubChipList(siblings, hub.path)}` +
+    '<h2>Ferramentas gratuitas para organizar sua preparação</h2>' +
+    '<p>Combine sua apostila com nossas ferramentas gratuitas sem cadastro: <a href="/ferramentas/edital-verticalizado">edital verticalizado</a>, <a href="/ferramentas/cronograma-de-estudos">cronograma por peso</a>, <a href="/ferramentas/trilha-do-dia">trilha do dia</a> e <a href="/ferramentas/caderno-de-erros">caderno de erros</a>.</p>' +
+    '<p><a href="/apostilas-para-concurso">Ver todas as apostilas do catálogo</a> · <a href="/apostilas-por-banca">Ver todas as bancas</a> · <a href="/materias">Ler matérias sobre método de estudo</a></p>' +
+    disclaimer;
+
+  renderPage({
+    path: hub.path,
+    title: hub.title,
+    metaTitle: hub.metaTitle,
+    description: hub.description,
+    kicker: hub.kicker,
+    lead: hub.intro,
+    keyFacts: [
+      ['Apostilas nesta seção', String(hub.items.length)],
+      ['Preço', `a partir de ${brl(hubMinPrice)} — pagamento único`],
+      ['Formatos', 'PDF completo + questões comentadas + audiobook grátis'],
+      ['Entrega', 'Digital e imediata em todo o Brasil']
+    ],
+    body: hubBody,
+    faq: hubFaq,
+    nodes: [{
+      '@type': 'ItemList',
+      '@id': ORIGIN + hub.path + '#list',
+      name: hub.title,
+      numberOfItems: hub.items.length,
+      itemListElement: hub.items.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: ORIGIN + '/apostilas/' + p.slug,
+        name: p.shortName
+      }))
+    }],
+    trail: groupTrail,
+    styles: ['/apostila-cards.css'],
+    scripts: ['/apostila-cards.js'],
+    image: hub.items[0].storefront.cover3d,
+    images: hub.items.slice(0, 6).map(p => p.storefront.cover3d),
+    priority: '0.85'
+  });
+}
 
 /* ------------------------------------------------------------------ *
  * Guias de estudo
@@ -1784,7 +1965,7 @@ renderPage({
   ],
   body:
     '<h2>O que a Trilha Aprova faz</h2><p>Publicamos materiais de estudo direcionados: cada apostila tem um recorte declarado — uma banca, um conjunto de cargos, um tipo de prova — em vez de tentar cobrir todo o edital de qualquer concurso. O material é entregue em PDF e em audiobook, porque leitura e revisão em áudio resolvem momentos diferentes da rotina de quem estuda trabalhando.</p>' +
-    `<h2>Quem escreve</h2><p>Os materiais são escritos por ${esc(AUTHOR_NAME)}, com foco em educação, educação especial e produção textual. O trabalho parte de conteúdos programáticos reais de editais e do estilo de formulação das bancas, organizando os assuntos por contraste — que é onde as provas costumam montar as alternativas parecidas.</p>` +
+    `<h2>Quem escreve</h2><p>Os materiais são desenvolvidos pela equipe editorial da ${esc(AUTHOR_NAME)}, cobrindo concursos de educação, área administrativa, segurança pública, tribunais, carreiras bancárias, fiscais e redação em todo o Brasil. O trabalho parte de conteúdos programáticos reais de editais e do estilo de formulação das bancas, organizando teoria, legislação, questões comentadas e revisão em áudio.</p>` +
     '<h2>O que não fazemos</h2><ul><li>Não publicamos vaga, data ou inscrição sem a fonte: cada ficha de concurso aponta para a página oficial do órgão e mostra quando foi conferida.</li><li>Não publicamos avaliações, depoimentos ou números de aprovação que não possamos comprovar.</li><li>Não prometemos aprovação: nenhum material sério pode fazer isso.</li><li>Não cobramos assinatura pelas apostilas: cada uma é paga uma vez. A única cobrança mensal do site é a sincronização opcional do Caderno de Erros (R$ 19,90/mês), que pode ser cancelada a qualquer momento.</li><li>Não temos relação institucional com bancas ou órgãos públicos.</li></ul>' +
     '<h2>Como o conteúdo é revisado</h2><p>Quando um edital é retificado ou uma informação de referência muda, o material e as páginas públicas são corrigidos. As páginas de guia trazem a data da última atualização no rodapé do texto. Se você encontrar algo incorreto, escreva para o atendimento — correções são tratadas como prioridade.</p>' +
     `<h2>Atendimento</h2><p>Dúvidas sobre compra, acesso, reembolso ou conteúdo: <a href="/contato">formulário de contato</a> ou <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Perdeu o link da sua compra? Use <a href="/recuperar">recuperar minha compra</a> com o mesmo e-mail do pagamento.</p>` +
@@ -1814,8 +1995,8 @@ const hubFaq = [
   { q: 'Como recebo o material?', a: 'A confirmação do pagamento libera automaticamente uma área individual com os arquivos para leitura, reprodução e download. Não há envio físico nem prazo de entrega.' },
   { q: 'Perdi o link de acesso. E agora?', a: 'Use a opção de recuperar minha compra informando o mesmo e-mail utilizado no pagamento. O acesso é reenviado para esse endereço.' },
   { q: 'Posso pedir reembolso?', a: 'Sim. O Código de Defesa do Consumidor prevê o prazo de 7 dias para o direito de arrependimento em compras pela internet. Solicite pelo canal de atendimento informando o e-mail usado na compra.' },
-  { q: 'Vocês divulgam concursos abertos?', a: 'Não. Não publicamos vagas, datas nem inscrições abertas, porque essas informações mudam constantemente e só têm validade no edital oficial do órgão. Nossos guias tratam de preparação e de como ler o edital.' },
-  { q: 'As apostilas servem para concursos fora do litoral de São Paulo?', a: 'Servem, conforme o conteúdo. A apostila de redação é de método e se aplica a concursos de nível fundamental em qualquer estado. A apostila de autores tem como referência a banca IBAM e a edição Santos 2026, mas o conteúdo de autores é cobrado em muitos concursos municipais de educação.' },
+  { q: 'Vocês divulgam concursos abertos?', a: 'Sim, na seção /concursos reunimos fichas conferidas diretamente nas páginas oficiais dos órgãos e das bancas, sempre com a data de verificação e o link oficial do edital. As matérias de método focam preparação perene e sempre remetem ao edital oficial.' },
+  { q: 'As apostilas servem para concursos em todo o Brasil?', a: `Sim. Hoje temos ${products.length} apostilas cobrindo seleções nacionais (como INSS, Receita Federal e IBGE), concursos estaduais e municipais (${stateNamesSummary}) e apostilas de matérias básicas e redação válidas para qualquer edital do país.` },
   { q: 'Audiobook substitui a leitura da apostila?', a: 'Não. O áudio funciona como revisão de conteúdo já lido. Ler, resolver questões e revisar erros continuam sendo as etapas que produzem aprendizado; o áudio aproveita os momentos em que ler é inviável.' },
   { q: 'As apostilas garantem aprovação?', a: 'Não. Nenhum material pode garantir aprovação. O objetivo é direcionar a revisão e melhorar a qualidade do estudo.' }
 ];
@@ -1859,8 +2040,8 @@ const homeFaq = [
   { q: 'E se eu perder meu link?', a: 'Use “Já comprei” no topo da página e recupere o acesso com o mesmo e-mail utilizado na compra.' }
 ];
 
-const homeTitle = 'Apostilas para concursos com audiobook | Trilha Aprova';
-const homeDescription = 'Apostilas digitais para concursos públicos, com materiais organizados, questões comentadas e audiobooks para estudar e revisar com a Trilha Aprova.';
+const homeTitle = 'Apostilas para Concursos Públicos em PDF e Audiobook | Trilha Aprova';
+const homeDescription = 'Compre apostilas digitais para concursos públicos em PDF com audiobook grátis e questões comentadas. Acesso imediato para todo o Brasil na Trilha Aprova.';
 const HOME_FEATURE_IMAGE = ORIGIN + '/assets/social/trilha-aprova.jpg';
 
 const homeNodes = [
@@ -1887,7 +2068,7 @@ function destaqueHomeHtml(p) {
   return `<section class="catalog-hero shell" id="apostilas" data-sc-object="${esc(p.slug)}"><div class="catalog-hero-media" aria-label="Capa da apostila ${esc(p.shortName)}"><div class="cover-aura" aria-hidden="true"></div>` +
     `<a href="/apostilas/${esc(p.slug)}"><img class="catalog-cover" src="${esc(assetVer(p.storefront.cover3d))}" width="600" height="750" loading="eager" decoding="async" fetchpriority="high" alt="Capa da apostila ${esc(p.shortName)}, edição completa"></a></div>` +
     `<div class="catalog-label"><span class="catalog-index">APOSTILA EM DESTAQUE • DISPONÍVEL</span><span class="product-tag">${esc(d.tag || p.storefront.badge)}</span>` +
-    `<h1>${esc(d.titulo || p.shortName)} <em>${esc(d.tituloEm || '')}</em></h1><p class="catalog-summary">${esc(d.resumo || p.description)}</p>` +
+    `<h2 class="catalog-hero-title">${esc(d.titulo || p.shortName)} <em>${esc(d.tituloEm || '')}</em></h2><p class="catalog-summary">${esc(d.resumo || p.description)}</p>` +
     '<dl class="spec-list">' +
     `<div><dt>Conteúdo</dt><dd>${esc(d.conteudo || '')}</dd></div>` +
     `<div><dt>Prova</dt><dd>${esc(d.prova || '')}</dd></div>` +
@@ -1917,8 +2098,14 @@ let home = fs.readFileSync('public/index.html', 'utf8')
   .replace(/<!-- discovery:start -->[\s\S]*?<!-- discovery:end -->/g, '');
 
 if (destaque) {
+  const dk = destaque.storefront.concurso || {};
+  const dPreco = brl(destaque.priceCents);
+  const dClose = `<section class="catalog-close"><div class="shell close-grid"><div><span class="catalog-index">${esc((destaque.storefront.shortTag || destaque.shortName).toUpperCase())} • DISPONÍVEL</span><h2>${esc((dk.cargo || destaque.shortName).toUpperCase())}${destaque.examBoard ? ' • ' + esc(destaque.examBoard.toUpperCase()) : ''}</h2><p>Apostila completa com PDF, questões comentadas, resumo e audiobook disponível para compra imediata.</p></div><div class="close-buy"><div><strong>${dPreco}</strong></div><a class="buy-button" href="/comprar?produto=${esc(destaque.slug)}">Comprar esta apostila</a></div></div></section>`;
+  const dMobileBar = `<div class="mobile-buybar" aria-label="Compra rápida da apostila ${esc(destaque.shortName)}"><div><strong>${dPreco}</strong></div><a href="/comprar?produto=${esc(destaque.slug)}">Comprar ${esc(destaque.storefront.shortTag || destaque.shortName)}</a></div>`;
   home = home.replace(/<!-- destaque:start -->[\s\S]*?<!-- destaque:end -->/, () => '<!-- destaque:start -->' + destaqueHomeHtml(destaque) + '<!-- destaque:end -->')
-    .replace(/<!-- destaque-faq:start -->[\s\S]*?<!-- destaque-faq:end -->/, () => '<!-- destaque-faq:start --><details><summary>O valor é mensal?</summary><p>Não. Cada apostila é uma compra única. A apostila em destaque, ' + esc(destaque.shortName) + ', custa ' + brl(destaque.priceCents) + ', em pagamento único.</p></details><!-- destaque-faq:end -->');
+    .replace(/<!-- destaque-faq:start -->[\s\S]*?<!-- destaque-faq:end -->/, () => '<!-- destaque-faq:start --><details><summary>O valor é mensal?</summary><p>Não. Cada apostila é uma compra única. A apostila em destaque, ' + esc(destaque.shortName) + ', custa ' + dPreco + ', em pagamento único.</p></details><!-- destaque-faq:end -->')
+    .replace(/<section class="catalog-close">[\s\S]*?<\/section>/, () => dClose)
+    .replace(/<div class="mobile-buybar"[\s\S]*?<\/div><\/div>|<div class="mobile-buybar"[\s\S]*?<\/a><\/div>/, () => dMobileBar);
 }
 home = home
   .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(homeTitle)}</title>`)
@@ -1939,6 +2126,7 @@ const discovery = '<!-- discovery:start -->' +
   '<div class="section-heading"><span class="eyebrow">ENCONTRE SUA PRÓXIMA LEITURA</span>' +
   '<h2>Apostilas para concursos com PDF e audiobook</h2>' +
   '<p>Conheça o conteúdo de cada material antes de comprar. Os arquivos são digitais, com acesso em todo o Brasil.</p></div>' +
+  catalogDirectoryHtml('/') +
   `<ul>${productLinks}</ul>` +
   '<h3>Ferramentas gratuitas, sem cadastro</h3>' +
   /* A contagem sai de tools.length, não do teclado. Este parágrafo anunciava
@@ -1970,7 +2158,7 @@ home = home.replace('</main>', discovery);
 /* A prateleira do catálogo vem do catálogo: quando uma apostila entra ou sai,
    a home conta a mesma história que a loja, sem ninguém lembrar de editar. */
 const carousel = '<div class="ac-carousel" aria-label="Todas as apostilas"><button type="button" class="ac-car-btn ac-car-prev" aria-label="Anterior">‹</button><div class="ac-car-track">' +
-  products.map(p => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="eager" decoding="async"></a>`).join('') +
+  products.map((p, idx) => `<a class="ac-car-item" href="/apostilas/${p.slug}"><img src="${esc(p.storefront.cover3d)}" alt="Capa da apostila ${esc(p.shortName)}" width="200" height="250" loading="${idx < 6 ? 'eager' : 'lazy'}" decoding="async"></a>`).join('') +
   '</div><button type="button" class="ac-car-btn ac-car-next" aria-label="Próxima">›</button></div>';
 const shelf = '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>';
 
@@ -2320,14 +2508,14 @@ const bannersHtml = '<!-- banners:start -->' +
   /* Navegue por assuntos. */
   '<section class="portal-topics portal-wide"><div class="portal-section-head"><h2>NAVEGUE POR ASSUNTOS</h2></div>' +
   '<div class="portal-topic-grid">' +
-  assuntoLink('⌖', 'Concursos Abertos', '/concursos') +
-  assuntoLink('▤', 'Editais', '/materias/como-ler-um-edital-de-concurso-sem-perder-nada-importante') +
-  assuntoLink('◉', 'Salários', '/concursos') +
-  assuntoLink('▣', 'Provas', '/concursos') +
-  assuntoLink('▥', 'Matérias', '/materias') +
+  assuntoLink('▱', 'Todas as Apostilas', '/apostilas-para-concurso') +
+  assuntoLink('▣', 'Por Banca', '/apostilas-por-banca') +
+  assuntoLink('◇', 'Educação', '/apostilas/area/educacao') +
+  assuntoLink('◉', 'Administrativa', '/apostilas/area/administrativa') +
+  assuntoLink('⌖', 'Policial', '/apostilas/area/policial-e-seguranca') +
+  assuntoLink('▤', 'Concursos Abertos', '/concursos') +
   assuntoLink('⌘', 'Ferramentas', '/ferramentas') +
-  assuntoLink('▱', 'Apostilas', '/apostilas-para-concurso') +
-  assuntoLink('◇', 'Guias de Estudo', '/como-estudar-para-concurso-do-zero') +
+  assuntoLink('▥', 'Matérias', '/materias') +
   '</div></section>' +
   '<!-- banners:end -->';
 
@@ -2365,9 +2553,9 @@ const simHomeHtml = simulados.length ? (() => {
     '</section><!-- simulados:end -->';
 })() : '';
 home = home.replace(/<!-- simulados:start -->[\s\S]*?<!-- simulados:end -->/, '');
-/* Vitrine de capas no topo (13/11/2026): faixa em destaque logo abaixo do menu; clicar na capa abre a apostila. */
+/* Vitrine de capas no topo: carrega o H1 principal da página inicial acima da dobra. */
 const vitrineHtml = '<!-- vitrine-capas:start --><section class="ac-vitrine" aria-label="Apostilas disponíveis"><div class="ac-vitrine-in">' +
-  '<p class="ac-vitrine-t"><b>Apostilas disponíveis</b><span>3 apostilas pelo preço de 1 + audiobook grátis</span></p>' + carousel + '</div></section><!-- vitrine-capas:end -->';
+  '<div class="ac-vitrine-t"><h1>Apostilas para Concursos Públicos em PDF e Audiobook</h1><span>3 apostilas pelo preço de 1 + audiobook grátis</span></div>' + carousel + '</div></section><!-- vitrine-capas:end -->';
 home = home.replace(/<!-- vitrine-capas:start -->[\s\S]*?<!-- vitrine-capas:end -->/, '');
 home = home.replace('<!-- banners:start -->', vitrineHtml + '<!-- banners:start -->');
 home = home.replace('<!-- banners:end -->', '<!-- banners:end -->' + cargosHtml + simHomeHtml);
@@ -2490,7 +2678,7 @@ const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '  <url><loc>' + ORIGIN + u.loc + '</loc>' +
     '<lastmod>' + u.lastmod + '</lastmod>' +
     '<priority>' + u.priority + '</priority>' +
-    [...new Set(u.images)].map(i => '<image:image><image:loc>' + esc(i) + '</image:loc></image:image>').join('') +
+    [...new Set(u.images)].map(i => '<image:image><image:loc>' + esc(absoluteImageUrl(i)) + '</image:loc></image:image>').join('') +
     '</url>').join('\n') +
   '\n</urlset>\n';
 fs.writeFileSync('public/sitemap.xml', sitemap);
@@ -2544,8 +2732,12 @@ const llms =
   '> Editora digital independente de apostilas para concursos públicos no Brasil. Cada apostila reúne PDF, resumo em áudio e audiobook em capítulos, ' +
   `a partir de ${brl(MIN_PRICE)} em pagamento único, com entrega digital imediata para todo o país.\n\n` +
   `Autoria: ${AUTHOR_NAME}. Atendimento: ${SUPPORT_EMAIL}. Idioma: português do Brasil.\n` +
-  'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos, não divulga vagas, datas ou inscrições abertas e não promete aprovação.\n' +
-  'Cobertura: apostilas para concursos com edital publicado em diferentes estados (São Paulo, Goiás, Espírito Santo e outros) e seleções nacionais como o IBGE, sempre conferidas pelo edital do cargo; guias regionais para a Baixada Santista. Venda e entrega: todo o Brasil.\n\n' +
+  'A Trilha Aprova não é banca organizadora, não tem vínculo com órgãos públicos e não promete aprovação. As fichas de concursos em /concursos são conferidas diretamente nas páginas oficiais dos órgãos e das bancas.\n' +
+  `Cobertura: ${products.length} apostilas para concursos nacionais e estaduais (${stateNamesSummary}), organizadas por banca (${boardNamesSummary}), área e escolaridade. Venda e entrega digital imediata para todo o Brasil.\n\n` +
+  '## Catálogo por banca, área, estado e escolaridade\n\n' +
+  `- [Todas as apostilas](${ORIGIN}/apostilas-para-concurso): catálogo completo com ${products.length} apostilas em PDF + audiobook.\n` +
+  `- [Apostilas por banca](${ORIGIN}/apostilas-por-banca): índice completo das bancas organizadoras.\n` +
+  taxonomy.allHubs.map(h => `- [${h.title}](${ORIGIN}${h.path}): ${h.items.length} apostila(s). ${h.description}`).join('\n') + '\n\n' +
   '## Apostilas\n\n' +
   products.map(p => `- [${p.shortName}](${ORIGIN}/apostilas/${p.slug}): ${p.description} Preço: ${brl(p.priceCents)}, pagamento único. Público: ${p.audience}. Referência: ${p.contest}, banca ${p.examBoard}, ${p.edition}.`).join('\n') +
   `\n- [Catálogo completo](${ORIGIN}/apostilas-para-concurso): todas as apostilas disponíveis com PDF e audiobook.\n\n` +
@@ -2595,7 +2787,7 @@ const feed = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>' +
   '<title>Trilha Aprova — guias de estudo para concursos</title>' +
   `<link>${ORIGIN}/</link>` +
-  '<description>Guias de preparação para concursos públicos, com foco na Baixada Santista e em todo o Brasil.</description>' +
+  '<description>Guias de preparação e matérias sobre concursos públicos em todo o Brasil.</description>' +
   '<language>pt-BR</language>' +
   `<lastBuildDate>${new Date(BUILD_DATE + 'T12:00:00Z').toUTCString()}</lastBuildDate>` +
   `<atom:link href="${ORIGIN}/feed.xml" rel="self" type="application/rss+xml"/>` +
@@ -2805,8 +2997,11 @@ for (const file of fs.readdirSync('public')) {
   if (!novo.includes(siteHeader)) {
     novo = novo.replace(/<body([^>]*)>/, (_, attrs) => `<body${attrs}>${siteHeader}`);
   }
-  // Sem a folha de estilo o menu existe mas não tem forma, então ela entra junto.
-  if (!novo.includes(HEADER_CSS_TAG)) novo = novo.replace('</head>', HEADER_CSS_TAG + '</head>');
+  // Sem a folha de estilo o menu existe mas não tem forma, então ela entra junto — sem duplicar /site-header.css.
+  novo = novo
+    .replace(/<link rel="stylesheet" href="\/portal-news\.css">/g, '')
+    .replace(/<link rel="stylesheet" href="\/site-header\.css">/g, '')
+    .replace('</head>', HEADER_CSS_TAG + '</head>');
   // O ícone da aba também: as páginas à mão não passam por renderPage.
   if (!novo.includes('/favicon.svg')) novo = novo.replace('</head>', FAVICON_TAGS + '</head>');
   if (novo === html) continue;

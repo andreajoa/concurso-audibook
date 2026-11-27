@@ -91,6 +91,15 @@
       ]
     },
     {
+      "source": "/((?!api|acesso|dashboard|comprar|obrigado|recuperar|caderno-ativado|gsc|assets|llms|feed\\.xml|sitemap\\.xml).*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -126,6 +135,17 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "concursotrilhaaprova.online"
+        }
+      ],
+      "destination": "https://www.concursotrilhaaprova.online/:path*",
+      "permanent": true
+    },
     {
       "source": "/apostilas/autores-ibam-2026",
       "destination": "/apostilas-para-concurso",

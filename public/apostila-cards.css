@@ -85,7 +85,7 @@
 .ac-vitrine{background:radial-gradient(900px 300px at 50% 0,#173f72 0,#08284f 60%,#061d3a 100%);padding:18px 0 8px;margin:0 0 18px}
 .ac-vitrine-in{max-width:1240px;margin:0 auto;padding:0 16px}
 .ac-vitrine-t{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin:0 0 4px;color:#fff;font-family:system-ui,sans-serif}
-.ac-vitrine-t b{font:400 clamp(20px,2.4vw,28px)/1.2 Georgia,serif}
+.ac-vitrine-t b,.ac-vitrine-t h1{font:400 clamp(20px,2.4vw,28px)/1.2 Georgia,serif;margin:0;color:#fff}
 .ac-vitrine-t span{color:#f1d79c;font:800 13px/1.2 system-ui;letter-spacing:.04em;text-transform:uppercase}
 .ac-vitrine .ac-carousel{margin:0}
 .ac-vitrine .ac-car-track{gap:34px;padding:14px 8px 18px}
@@ -172,3 +172,12 @@
 .simb-amostra{color:#9a7428!important;font:800 14px/1 system-ui;text-decoration:none!important}.simb-amostra:hover{text-decoration:underline!important}
 @media(max-width:980px){.simb{grid-template-columns:minmax(0,300px) minmax(0,1fr)}.simb-cta{grid-column:1/-1;border-left:0;border-top:1px solid #ece5d6;margin:0 26px;padding:22px 0 26px;flex-direction:row;flex-wrap:wrap}.simb-btn{width:auto;padding:15px 28px}}
 @media(max-width:640px){.simb{grid-template-columns:1fr}.simb-vis{border-right:0;border-bottom:1px solid #ece5d6;min-height:260px}.simb-txt{padding:22px 20px}.simb-txt ul{grid-template-columns:1fr}.simb-cta{margin:0 20px;flex-direction:column}.simb-btn{width:100%}}
+/* Diretório de hubs (banca, área, estado, escolaridade) */
+.hub-nav{margin:20px 0 28px;padding:18px 20px;background:#fbf8f1;border:1px solid #e6dece;border-radius:14px;font-family:system-ui,-apple-system,sans-serif}
+.hub-nav-group{margin-bottom:14px}.hub-nav-group:last-child{margin-bottom:0}
+.hub-nav-label{display:block;font:800 11px/1.3 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#85662c;margin:0 0 8px}
+.hub-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.hub-chips a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid #d9cfb8;background:#fff;color:#08284f!important;font:600 14px/1.2 system-ui,sans-serif;text-decoration:none!important}
+.hub-chips a:hover{background:#08284f;color:#fff!important;border-color:#08284f}
+.hub-chips a small,.hub-chip-active small{font:700 12px/1 system-ui,sans-serif;opacity:.75}
+.hub-chip-active{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid #08284f;background:#08284f;color:#fff;font:700 14px/1.2 system-ui,sans-serif}
