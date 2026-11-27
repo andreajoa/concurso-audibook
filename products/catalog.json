@@ -2180,6 +2180,172 @@
       "downsell": []
     }
   },
+  "coren-sp-enfermeiro-fiscal-2027": {
+    "slug": "coren-sp-enfermeiro-fiscal-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Conselho Regional de Enfermagem de São Paulo (Coren-SP) — Concurso Público nº 01/2026 (Instituto Quadrix), cargo 407: Enfermeiro Fiscal",
+    "examBoard": "Instituto Quadrix",
+    "category": "Concursos públicos",
+    "name": "Apostila Coren-SP 2027 Enfermeiro Fiscal (Quadrix) + audiobook",
+    "shortName": "Coren-SP Enfermeiro Fiscal",
+    "edition": "Pós-edital · edição de 26/11/2026 · Concurso Público nº 01/2026 do Coren-SP (Instituto Quadrix)",
+    "author": "Trilha Aprova",
+    "audience": "Enfermeiros candidatos ao cargo de Enfermeiro Fiscal do Conselho Regional de Enfermagem de São Paulo, nível superior",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_COREN_SP_ENFERMEIRO_FISCAL_2027",
+    "description": "Apostila digital para Enfermeiro Fiscal do Conselho Regional de Enfermagem de São Paulo (Coren-SP), feita pelo Concurso Público nº 01/2026 do Instituto Quadrix, item por item do conteúdo programático do cargo 407. PDF de 831 páginas com 2.341 itens Certo ou Errado comentados (a prova do Coren-SP é de 120 itens Certo ou Errado, em que cada erro anula um acerto) e 2 simulados de 120 itens no formato exato da prova: 40 de Conhecimentos Básicos, 30 de Conhecimentos Complementares e 50 de Conhecimentos Específicos. Específicos: Administração Pública, Lei 5.905/1973, ética dos empregados (Res. Cofen 507/2016), assédio (Res. 768/2024), LAI, LGPD e gestão e fiscalização de contratos (Lei 14.133/2021); exercício profissional (Lei 7.498/1986 e Decreto 94.406/1987), Código de Ética dos Profissionais de Enfermagem (Res. 564/2017), Processo de Enfermagem (Res. 736/2024), piso e repouso (Leis 14.434/2022 e 14.602/2023); inscrição e responsabilidade técnica (Res. 769/2024 e 782/2025); poder de polícia, Sistema de Fiscalização (Res. 725/2023 e Manual) e interdição ética (Res. 565/2017); planejamento das ações, dimensionamento (Parecer Normativo Cofen 1/2024), conciliação (Res. 810/2026), Código de Processo Ético (Res. 706/2022) e Comissões de Ética (Res. 792/2025); segurança do paciente (RDC Anvisa 36/2013), biossegurança e registros (Res. 514/2016 e 754/2024); relatórios, comunicação e indicadores. Básicos e Complementares: Língua Portuguesa, Raciocínio Lógico e Matemática, Noções de Informática, Word, Excel, PowerPoint e Inteligência Artificial generativa. Inclui estudo de caso de fiscalização com resposta-modelo, lei seca das normas específicas e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 831 páginas, feito pelo Concurso Público nº 01/2026 do Coren-SP (Instituto Quadrix), cargo 407",
+      "2.341 itens Certo ou Errado comentados, no formato da prova",
+      "2 simulados de 120 itens (40 Básicos + 30 Complementares + 50 Específicos)",
+      "Lei 7.498/1986, Decreto 94.406/1987, Código de Ética (Res. 564/2017) e Processo de Enfermagem (Res. 736/2024)",
+      "Fiscalização: poder de polícia, Res. 725/2023 e Manual, interdição ética (Res. 565/2017)",
+      "Dimensionamento pelo Parecer Normativo Cofen 1/2024, com cálculos",
+      "Conciliação (Res. 810/2026), Código de Processo Ético (Res. 706/2022) e Comissões de Ética (Res. 792/2025)",
+      "Segurança do paciente (RDC 36/2013) e registros (Res. 514/2016 e 754/2024)",
+      "Discursiva: estudo de caso de fiscalização com resposta-modelo",
+      "Lei seca das normas específicas e audiobook em 8 capítulos + resumo",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "coren-sp-enfermeiro-fiscal-2027/images/capa.png",
+      "pdfKey": "coren-sp-enfermeiro-fiscal-2027/docs/apostila-coren-sp-enfermeiro-fiscal-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Coren-SP_Enfermeiro_Fiscal.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Coren-SP Enfermeiro Fiscal (revisão da véspera)",
+        "key": "coren-sp-enfermeiro-fiscal-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Coren-SP_Enfermeiro_Fiscal.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova do Instituto Quadrix e a Língua Portuguesa",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/01-a-prova-e-o-portugues.mp3",
+          "downloadName": "01-a-prova-e-o-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Raciocínio lógico, informática, pacote Office e inteligência artificial",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/02-raciocinio-logico-informatica-e-ia.mp3",
+          "downloadName": "02-raciocinio-logico-informatica-e-ia.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Administração pública, ética dos empregados, assédio, LAI, LGPD e contratos",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/03-administracao-publica-lai-lgpd-e-contratos.mp3",
+          "downloadName": "03-administracao-publica-lai-lgpd-e-contratos.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Exercício profissional e Código de Ética dos Profissionais de Enfermagem",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/04-exercicio-profissional-e-etica.mp3",
+          "downloadName": "04-exercicio-profissional-e-etica.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Inscrição, responsabilidade técnica, poder de polícia e interdição ética",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/05-inscricao-rt-e-fiscalizacao.mp3",
+          "downloadName": "05-inscricao-rt-e-fiscalizacao.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Ações fiscalizatórias, dimensionamento, conciliação e processo ético",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/06-acoes-fiscalizatorias-e-processo-etico.mp3",
+          "downloadName": "06-acoes-fiscalizatorias-e-processo-etico.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Segurança do paciente, biossegurança e registros de enfermagem",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/07-seguranca-do-paciente-e-registros.mp3",
+          "downloadName": "07-seguranca-do-paciente-e-registros.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Relatórios, comunicação, indicadores e a prova discursiva",
+          "key": "coren-sp-enfermeiro-fiscal-2027/audio/pt-br-v1/08-comunicacao-indicadores-e-discursiva.mp3",
+          "downloadName": "08-comunicacao-indicadores-e-discursiva.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-07",
+      "confirmed": false,
+      "source": "Instituto Quadrix, Concurso Público nº 01/2026 do Coren-SP (Anexo I, cronograma) — inscrições de 26/11/2026 a 11/01/2027; provas objetiva e discursiva em 07/03/2027, à tarde, para Enfermeiro Fiscal",
+      "sourceUrl": "https://www.quadrix.org.br/informacoes/3075/"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Enfermeiro Fiscal no Coren-SP e qual é o salário?",
+        "a": "O edital oferece 90 vagas de Enfermeiro Fiscal: 30 imediatas (18 de ampla concorrência, 2 para pessoas com deficiência, 8 para pessoas negras, 1 para indígenas e 1 para quilombolas) e 60 de cadastro reserva, com lotação em São Paulo e jornada de 40 horas. O salário-base é de R$ 10.692,00, mais benefícios como vale-alimentação de R$ 756,38 e vale-refeição de R$ 69,27 por dia trabalhado. A contratação é pela CLT."
+      },
+      {
+        "q": "Quais são os requisitos para Enfermeiro Fiscal do Coren-SP?",
+        "a": "Graduação em Enfermagem; registro ativo em Conselho Regional de Enfermagem há no mínimo 3 anos, com inscrição definitiva ativa no Coren-SP na admissão; experiência mínima de 3 anos como Enfermeiro; CNH categoria B ou superior; disponibilidade para viagens; e certidão de inexistência de condenação em processo ético transitada em julgado nos 5 anos anteriores à contratação, ressalvada a reabilitação."
+      },
+      {
+        "q": "Quando é a prova do Coren-SP e qual é a banca?",
+        "a": "A banca é o Instituto Quadrix. As inscrições vão de 26/11/2026 a 11/01/2027, até as 23h, com taxa de R$ 109,60 para o nível superior. As provas objetiva e discursiva estão previstas para 07/03/2027, no turno da tarde para Enfermeiro Fiscal, com duração de 4 horas."
+      },
+      {
+        "q": "Como é a prova de Enfermeiro Fiscal do Coren-SP?",
+        "a": "A prova objetiva tem 120 itens Certo ou Errado: 40 de Conhecimentos Básicos (mínimo de 10 pontos), 30 de Conhecimentos Complementares (mínimo de 8) e 50 de Conhecimentos Específicos (mínimo de 12), com mínimo total de 34 pontos. Cada item certo vale +1 e cada item errado vale −1. A prova discursiva é um estudo de caso de 20 a 30 linhas, valendo 100 pontos, com aprovação a partir de 50; são corrigidas 180 discursivas de Enfermeiro Fiscal, somadas as listas."
+      },
+      {
+        "q": "O que cai nos Conhecimentos Específicos de Enfermeiro Fiscal do Coren-SP?",
+        "a": "Administração Pública e legislação institucional (Lei 5.905/1973, Res. Cofen 507/2016 e 768/2024, LAI, LGPD e Lei 14.133/2021), exercício profissional e ética (Lei 7.498/1986, Decreto 94.406/1987, Res. 564/2017 e 736/2024, piso e repouso), inscrição e responsabilidade técnica (Res. 769/2024 e 782/2025), fundamentos da fiscalização (poder de polícia, Res. 725/2023, Manual de Fiscalização e Res. 565/2017), planejamento e execução das ações fiscalizatórias (Parecer Normativo Cofen 1/2024), conciliação e processos éticos (Res. 810/2026, 706/2022 e 792/2025), qualidade e segurança (RDC 36/2013), registros (Res. 514/2016 e 754/2024) e comunicação e indicadores."
+      }
+    ],
+    "seoTitle": "Apostila Coren-SP 2027 Enfermeiro Fiscal Quadrix | Trilha",
+    "seoDescription": "Apostila Coren-SP Enfermeiro Fiscal (Quadrix): 2.341 itens Certo ou Errado, Lei 7.498, Código de Ética, fiscalização, dimensionamento, lei seca e audiobook.",
+    "storefront": {
+      "badge": "COREN-SP 2027 • ENFERMEIRO FISCAL • QUADRIX",
+      "cover3d": "/assets/capa-coren-sp-enfermeiro-fiscal-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Coren-SP: 90 vagas para Enfermeiro Fiscal com salário de R$ 10.692. Lei 7.498, Código de Ética, fiscalização e 2.341 itens Certo ou Errado",
+      "shortTag": "Coren-SP · Enfermeiro Fiscal",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Básicos, Complementares e todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 120 + 2.101 itens comentados"
+        },
+        {
+          "titulo": "Lei Seca e Discursiva",
+          "detalhe": "Normas do Cofen na íntegra e estudo de caso"
+        }
+      ],
+      "subheadline": "Enfermeiro Fiscal · Nível superior · Banca Instituto Quadrix · Prova em 07/03/2027",
+      "comboCovers": [
+        "/assets/capa-coren-sp-enfermeiro-fiscal-2027-simulados-3d.webp",
+        "/assets/capa-coren-sp-enfermeiro-fiscal-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Conselho Regional de Enfermagem de São Paulo (Coren-SP)",
+        "cargo": "Enfermeiro Fiscal",
+        "salario": "R$ 10.692,00 + benefícios",
+        "vagas": "90",
+        "taxa": "R$ 109,60",
+        "inscricoes": "26/11/2026 a 11/01/2027",
+        "requisito": "Graduação em Enfermagem, 3 anos de registro no Coren e de experiência e CNH B",
+        "url": "https://www.quadrix.org.br/informacoes/3075/",
+        "paginas": 831,
+        "questoes": 2341
+      },
+      "area": "saude"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "santana-de-parnaiba-alfabetizado-2027": {
     "slug": "santana-de-parnaiba-alfabetizado-2027",
     "active": true,
