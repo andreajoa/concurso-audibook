@@ -1,0 +1,94 @@
+name: TJ-SP Oficial de Justiça - PDF e audiobook na nuvem
+on:
+  push:
+    branches: [claude/tjo-media]
+permissions:
+  contents: write
+concurrency:
+  group: tjo-media
+  cancel-in-progress: false
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+  R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python -m pip install -q pymupdf boto3
+      - name: Baixar pacote
+        run: |
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/802062626 > b.zip
+          test "$(stat -c%s b.zip)" -eq 2141658 && mkdir v1 && unzip -q b.zip -d v1
+      - name: Montar PDF (Chrome headless) e conferir páginas vazias
+        run: cd v1 && CHROME="$(which google-chrome || which google-chrome-stable || which chromium)" python -u build_cloud.py
+      - name: Guardar PDF no rascunho
+        if: always()
+        run: test -f v1/apostila.pdf && cp v1/apostila.pdf pdf_tjsp-oficial-de-justica-2027.pdf && gh release upload untagged-178c210d37c1b32d5982 pdf_tjsp-oficial-de-justica-2027.pdf --clobber -R ${{ github.repository }}
+      - name: Enviar PDF ao R2 (privado)
+        run: |
+          python - <<'PY'
+          import boto3, os
+          slug = 'tjsp-oficial-de-justica-2027'
+          s3 = boto3.client('s3', endpoint_url='https://dbad4dc0550693a69d5956df7344e001.r2.cloudflarestorage.com',
+                            aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'], region_name='auto')
+          key = f'{slug}/docs/apostila-{slug}.pdf'
+          s3.upload_file('v1/apostila.pdf', 'apostila', key, ExtraArgs={'ContentType': 'application/pdf'})
+          h = s3.head_object(Bucket='apostila', Key=key); assert h['ContentLength'] == os.path.getsize('v1/apostila.pdf'); print('R2_OK', key, h['ContentLength'])
+          PY
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        include:
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: resumo }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 01-a-prova-e-portugues }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 02-direito-penal }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 03-processo-penal }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 04-processo-civil-do-oficial }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 05-constitucional-e-administrativo }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 06-direito-civil }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 07-normas-da-corregedoria }
+          - { prefix: tjsp-oficial-de-justica-2027, asset: 802062624, nome: 08-gerais-e-discursiva }
+    steps:
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: |
+          for t in 1 2 3 4 5; do sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 30; done
+          command -v ffmpeg >/dev/null || { echo 'ffmpeg não instalou'; exit 1; }
+          python -m pip install -q piper-tts==1.4.2 boto3
+      - name: Voz aprovada e roteiro
+        run: |
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671778 > v.onnx
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/767671783 > v.onnx.json
+          sha256sum v.onnx | grep -q '^765f0809' || { echo 'hash da voz diferente'; exit 1; }
+          gh api -H 'Accept: application/octet-stream' repos/${{ github.repository }}/releases/assets/${{ matrix.asset }} > tts.zip
+          unzip -q tts.zip -d tts && test -s "tts/${{ matrix.nome }}.txt"
+      - name: Sintetizar, validar ritmo e enviar ao R2
+        run: |
+          python - <<'PY'
+          import wave, subprocess, os, boto3
+          from piper import PiperVoice
+          n = '${{ matrix.nome }}'
+          text = open(f'tts/{n}.txt', encoding='utf-8').read()
+          v = PiperVoice.load('v.onnx')
+          with wave.open(f'{n}.wav', 'wb') as w: v.synthesize_wav(text, w)
+          subprocess.run(['ffmpeg','-hide_banner','-y','-v','error','-i',f'{n}.wav','-c:a','libmp3lame','-b:a','128k','-ac','1','-ar','44100',f'{n}.mp3'], check=True)
+          secs = float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',f'{n}.mp3'], text=True))
+          words = len(text.split()); print(n, round(secs), 's', words, 'palavras', round(words/secs, 2), 'pal/s')
+          assert secs > 60 and 1.2 < words / secs < 3.6, 'ritmo estranho'
+          subprocess.run(['ffmpeg','-v','error','-xerror','-i',f'{n}.mp3','-f','null','-'], check=True)
+          P = '${{ matrix.prefix }}'
+          key = f'{P}/audio/resumo.mp3' if n == 'resumo' else f'{P}/audio/pt-br-v1/{n}.mp3'
+          s3 = boto3.client('s3', endpoint_url='https://dbad4dc0550693a69d5956df7344e001.r2.cloudflarestorage.com',
+                            aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'], region_name='auto')
+          s3.upload_file(f'{n}.mp3', 'apostila', key, ExtraArgs={'ContentType': 'audio/mpeg'})
+          h = s3.head_object(Bucket='apostila', Key=key); assert h['ContentLength'] == os.path.getsize(f'{n}.mp3')
+          print('R2_OK', key, h['ContentLength'], round(secs))
+          PY
