@@ -2877,6 +2877,182 @@
       "downsell": []
     }
   },
+  "see-sp-professor-quimica-2027": {
+    "slug": "see-sp-professor-quimica-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Química",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Química (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Química (PEFM)",
+    "edition": "Pós-edital · edição de 27/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Química da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_QUIMICA_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Química da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 858 páginas com 2.036 questões comentadas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Química. Bloco I completo: gestão de sala de aula segundo as obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as técnicas de Doug Lemov cobradas. Química: Currículo Paulista e BNCC, os três níveis do conhecimento químico, ensino por investigação, experimentação segura e concepções alternativas; substâncias, misturas e separação; modelos atômicos, partículas, isótopos, distribuição eletrônica, tabela e propriedades periódicas; ligações iônica, covalente e metálica, geometria molecular, polaridade e forças intermoleculares; leis ponderais, tipos de reação, balanceamento e oxirredução, mol, gases e estequiometria (limitante, pureza e rendimento); ácidos, bases, sais e óxidos; soluções e concentrações, diluição, titulação e propriedades coligativas; equilíbrio químico, Le Chatelier, pH, hidrólise, tampão e Kps; termoquímica (entalpia, Hess, energia de ligação, entropia e energia livre), cinética química, pilhas, corrosão e eletrólise com Faraday; química analítica qualitativa e quantitativa, gravimetria e volumetria; química ambiental (atmosfera, água, solo, ecotoxicologia e química verde); química nuclear; química orgânica (cadeias, nomenclatura de hidrocarbonetos ramificados, funções, propriedades, isomeria, mecanismos, síntese e polímeros) e bioquímica. Inclui a prova discursiva com resposta-modelo, a aula em vídeo com rubrica comentada e roteiros para as duas aulas de Química do edital, e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 858 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "2.036 questões comentadas no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Química)",
+      "Gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+      "Currículo Paulista e didática: três níveis do conhecimento químico e concepções alternativas",
+      "Cálculo químico: mol, estequiometria, concentração, titulação, pH, Kc, Hess, pilhas e Faraday",
+      "Estrutura atômica, tabela periódica, ligações, geometria e forças intermoleculares",
+      "Química analítica, ambiental e nuclear (meia-vida, decaimentos, Angra, césio-137)",
+      "Orgânica: nomenclatura de ramificados, funções, isomeria, reações, polímeros e bioquímica",
+      "Roteiros das duas aulas da prova prática (partículas atômicas e hidrocarbonetos ramificados)",
+      "Discursiva com resposta-modelo e aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-quimica-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-quimica-2027/docs/apostila-see-sp-professor-quimica-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_de_Quimica.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Química (revisão da véspera)",
+        "key": "see-sp-professor-quimica-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_de_Quimica.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo Paulista e didática da Química",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/02-curriculo-e-didatica.mp3",
+          "downloadName": "02-curriculo-e-didatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Átomo, tabela periódica e ligações",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/03-atomo-tabela-periodica-e-ligacoes.mp3",
+          "downloadName": "03-atomo-tabela-periodica-e-ligacoes.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Reações, estequiometria e funções inorgânicas",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/04-reacoes-estequiometria-e-funcoes.mp3",
+          "downloadName": "04-reacoes-estequiometria-e-funcoes.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Soluções, equilíbrio e pH",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/05-solucoes-equilibrio-e-ph.mp3",
+          "downloadName": "05-solucoes-equilibrio-e-ph.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Termoquímica, cinética e eletroquímica",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/06-termoquimica-cinetica-e-eletroquimica.mp3",
+          "downloadName": "06-termoquimica-cinetica-e-eletroquimica.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Química analítica, ambiental e nuclear",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/07-analitica-ambiental-e-nuclear.mp3",
+          "downloadName": "07-analitica-ambiental-e-nuclear.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Orgânica, bioquímica, discursiva e aula em vídeo",
+          "key": "see-sp-professor-quimica-2027/audio/pt-br-v1/08-organica-bioquimica-discursiva-e-aula.mp3",
+          "downloadName": "08-organica-bioquimica-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, tarde, para Química",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Química na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 231 são de Química (78 na jornada completa de 25 horas e 153 na jornada ampliada de 40 horas). O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Química no período da tarde, das 15h às 19h)."
+      },
+      {
+        "q": "Como é a prova de Professor de Química da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Química), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Quais aulas de Química podem ser usadas na prova prática em vídeo?",
+        "a": "O Anexo XII indica duas aulas do material da rede para Química, ambas do Ensino Médio: 1ª série, Aula 4, \"Partículas atômicas\", e 2ª série, Aula 4, \"Hidrocarbonetos ramificados\". O vídeo é avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Química na rede estadual de São Paulo?",
+        "a": "Licenciatura em Química ou uma das licenciaturas aceitas pelo Anexo IV do edital: Licenciatura Integrada Química/Física; Licenciatura em Ciências Exatas, em Ciências, em Ciências Naturais ou em Ciências Naturais e Matemática com habilitação em Química; Licenciatura em Ciências da Natureza; e Licenciatura em Ciências Biológicas com habilitação em Química."
+      },
+      {
+        "q": "Onde vejo as vagas de Química da minha região e a cidade de prova?",
+        "a": "No guia do concurso por região (concurso-professor-see-sp-2027), com as vagas de cada componente nas 11 regiões de classificação, as 77 cidades de prova e os municípios atendidos por cada Unidade Regional de Ensino."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Química FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Química (PEFM, FGV): 2.036 questões, estequiometria, equilíbrio, eletroquímica, orgânica, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE QUÍMICA • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-quimica-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 231 vagas para Professor de Química. Gestão de sala de aula, estequiometria, equilíbrio, eletroquímica, orgânica e 2.036 questões",
+      "shortTag": "SEE-SP · Professor de Química",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "858 páginas: Gestão de sala de aula + toda a Química"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.976 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiros das 2 aulas"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Química · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-quimica-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-quimica-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Química (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "231",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Química ou equivalente (Anexo IV)",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 858,
+        "questoes": 2036
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "coren-sp-assistente-administrativo-2027": {
     "slug": "coren-sp-assistente-administrativo-2027",
     "active": true,
