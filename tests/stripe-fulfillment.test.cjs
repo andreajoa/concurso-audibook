@@ -35,7 +35,8 @@ test('signed paid events use the same email key as return-page fulfillment; unpa
     assert.equal((await dispatch('checkout.session.completed')).code,200);
     assert.equal((await dispatch('checkout.session.async_payment_succeeded')).code,200);
     assert.deepEqual(sent.map(m=>m.idempotencyKey),['purchase-access-cs_test_fulfillment','purchase-access-cs_test_fulfillment']);
-    assert.ok(sent.every(m=>m.accessUrl==='https://test.invalid/acesso?session_id=cs_test_fulfillment'));
+    // Com segredo no ambiente (build de produção) o link leva o token da trava (lib/acesso-email).
+    assert.ok(sent.every(m=>/^https:\/\/test\.invalid\/acesso\?session_id=cs_test_fulfillment(&t=[A-Za-z0-9_-]{32})?$/.test(m.accessUrl)));
     session.payment_status='unpaid';await dispatch('checkout.session.completed');
     assert.equal(sent.length,2);
     const reads=stripeReads;
