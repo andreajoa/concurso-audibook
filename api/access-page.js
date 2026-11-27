@@ -1,5 +1,7 @@
 const crypto = require('crypto');
-const { verifyPurchase } = require('../lib/stripe');
+const { verifyPurchase, updateSessionMetadata, baseUrl } = require('../lib/stripe');
+const { sendAccessEmail } = require('../lib/email');
+const trava = require('../lib/acesso-email');
 const { getProduct, catalog } = require('../lib/catalog');
 const { rpc } = require('../lib/crm-rpc');
 const footer = require('fs').readFileSync(require('path').join(__dirname, '../lib/site-footer.html'), 'utf8');
@@ -108,6 +110,44 @@ function telaLoginDono(slug, mensagem = '') {
   return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Acesso do proprietário | Trilha Aprova</title><link rel="stylesheet" href="/store.css"><link rel="stylesheet" href="/trilha.css"><link rel="stylesheet" href="/site-footer.css"></head><body class="portal"><header class="portal-header"><div class="shell"><a href="/" class="ta-brand"><img src="/assets/trilha-aprova-logo.webp" alt="Trilha Aprova" style="width:112px;height:54px;object-fit:contain"></a><a class="button-link alt" style="padding:8px 11px" href="/recuperar.html">Recuperar acesso de cliente</a></div></header><main class="portal-main shell" style="max-width:760px"><section class="portal-card" style="margin:42px auto;max-width:560px"><span class="eyebrow">ACESSO DO PROPRIETÁRIO</span><h1 style="margin-bottom:8px">${esc(nome)}</h1><p style="color:#66717e">Este link funciona em qualquer navegador ou dispositivo. Para manter PDFs e audiobooks protegidos, confirme a mesma senha usada no dashboard da Trilha Aprova.</p>${mensagem ? `<p role="alert" style="padding:10px 12px;border-radius:10px;background:#fff1f1;color:#8a1c1c">${esc(mensagem)}</p>` : ''}<form method="post" action="/api/access-page" autocomplete="on"><input type="hidden" name="slug" value="${esc(slugSeguro)}"><label for="senha-dono" style="display:block;font-weight:700;margin:18px 0 7px">Senha do dashboard</label><input id="senha-dono" name="admin" type="password" autocomplete="current-password" required style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #cfd6df;border-radius:10px;font:inherit"><button class="button-link" type="submit" style="margin-top:14px;border:0;cursor:pointer">Abrir apostilas e audiobooks</button></form><p class="legal-note" style="margin-top:18px">Depois da validação, este navegador permanece autorizado por 12 horas. Em outro navegador ou aparelho, basta abrir o mesmo link e informar a senha novamente.</p></section></main>${footer}</body></html>`;
 }
 
+/* Trava do e-mail da compra (ver lib/acesso-email.js): sem passe neste navegador, a página
+   não mostra o material — oferece mandar o link para a caixa de entrada de quem pagou. */
+function telaTravaEmail(sessionId, slug, email, estado = '') {
+  const mascara = esc(trava.mascararEmail(email));
+  const aviso = estado === 'enviado'
+    ? `<p role="status" style="padding:12px 14px;border-radius:10px;background:#eef8f1;color:#1d5b36">Pronto! Enviamos um link de acesso para <strong>${mascara}</strong>. Abra o e-mail (confira também spam e promoções) e toque em <strong>Abrir meu material</strong>.</p>`
+    : estado === 'limite'
+      ? `<p role="alert" style="padding:12px 14px;border-radius:10px;background:#fff6e5;color:#7a4b00">Este material já está liberado no número máximo de aparelhos desta compra (${trava.maxAparelhos()}). O acesso é pessoal. Se você trocou de celular ou computador, <a href="/contato">fale com o suporte</a> para liberar o aparelho novo.</p>`
+    : estado === 'erro'
+      ? `<p role="alert" style="padding:12px 14px;border-radius:10px;background:#fff1f1;color:#8a1c1c">Não conseguimos enviar agora. Tente de novo em alguns minutos ou fale com o suporte.</p>`
+      : '';
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Confirme seu acesso | Trilha Aprova</title><link rel="stylesheet" href="/store.css"><link rel="stylesheet" href="/trilha.css"><link rel="stylesheet" href="/site-footer.css"></head><body class="portal"><header class="portal-header"><div class="shell"><a href="/" class="ta-brand"><img src="/assets/trilha-aprova-logo.webp" alt="Trilha Aprova" style="width:112px;height:54px;object-fit:contain"></a></div></header><main class="portal-main shell" style="max-width:760px"><section class="portal-card" style="margin:42px auto;max-width:560px"><span class="eyebrow">ACESSO PROTEGIDO</span><h1 style="margin-bottom:8px">Confirme pelo e-mail da compra</h1><p style="color:#66717e">Seu material é pessoal e abre apenas pelo e-mail usado no pagamento: <strong>${mascara}</strong>. Vamos mandar um link de acesso para essa caixa de entrada. Depois de abrir pelo e-mail, este navegador fica liberado por 30 dias (até ${trava.maxAparelhos()} aparelhos por compra).</p>${aviso}<form method="post" action="/api/access-page"><input type="hidden" name="acao" value="enviar-acesso"><input type="hidden" name="session_id" value="${esc(sessionId)}"><input type="hidden" name="slug" value="${esc(slug || '')}"><button class="button-link" type="submit" style="margin-top:10px;border:0;cursor:pointer">${estado === 'enviado' ? 'Enviar de novo' : 'Enviar link para ' + mascara}</button></form><p class="legal-note" style="margin-top:18px">Este não é o seu e-mail? Então este acesso pertence a outra pessoa. Para comprar o seu, visite <a href="/apostilas-para-concurso">nossas apostilas</a>.</p></section></main>${footer}</body></html>`;
+}
+
+function responderTrava(res, sessionId, slug, email, estado = '', status = 403) {
+  res.statusCode = status;
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'private, no-store');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  return res.end(telaTravaEmail(sessionId, slug, email, estado));
+}
+
+function enderecoLimpo(sessionId, slug) {
+  return '/acesso?session_id=' + encodeURIComponent(sessionId) + (slug ? '&slug=' + encodeURIComponent(slug) : '');
+}
+
+async function enviarLinkDaCompra(req, purchase, slug) {
+  const nomes = purchase.slugs.map(s => getProduct(s)?.name).filter(Boolean).join(' + ');
+  const janela = Math.floor(Date.now() / (10 * 60 * 1000));
+  return sendAccessEmail({
+    to: purchase.email,
+    productName: nomes || getProduct(purchase.slug).name,
+    accessUrl: trava.linkDeAcesso(baseUrl(req), purchase.session.id, purchase.email, slug),
+    idempotencyKey: `acesso-trava-${purchase.session.id}-${janela}`
+  });
+}
+
 function responderLoginDono(res, slug, mensagem = '', status = 200) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -126,6 +166,24 @@ module.exports = async (req, res) => {
     // A senha vai por POST e nunca precisa ser adicionada ao URL compartilhável.
     if (String(req.method || 'GET').toUpperCase() === 'POST') {
       const formulario = await lerFormulario(req);
+      if (formulario.acao === 'enviar-acesso') {
+        const sid = String(formulario.session_id || '');
+        const pedido = String(formulario.slug || '');
+        const compra = await verifyPurchase(sid);
+        if (!compra || !compra.email) {
+          res.statusCode = 303;
+          res.setHeader('Location', '/recuperar.html');
+          return res.end();
+        }
+        const slugValido = compra.slugs.includes(pedido) ? pedido : '';
+        try {
+          await enviarLinkDaCompra(req, compra, slugValido);
+          return responderTrava(res, sid, slugValido, compra.email, 'enviado', 200);
+        } catch (error) {
+          console.error('acesso_trava_envio', error);
+          return responderTrava(res, sid, slugValido, compra.email, 'erro', 503);
+        }
+      }
       const slug = String(formulario.slug || slugSolicitado || primeiroSlug);
       const senha = String(formulario.admin || '');
       if (!segredoDoPasse() || !(await senhaDoPainelConfere(senha))) {
@@ -165,7 +223,30 @@ module.exports = async (req, res) => {
         return res.end();
       }
       const pedido = String(consulta.slug || '');
-      product = getProduct(purchase.slugs.includes(pedido) ? pedido : purchase.slug);
+      const slugPedido = purchase.slugs.includes(pedido) ? pedido : '';
+
+      // Trava (só compras novas — lib/acesso-email.js): e-mail da compra + limite de aparelhos.
+      if (trava.travaAtiva(purchase.session)) {
+        if (!purchase.email || !trava.segredo()) return responderTrava(res, sessionId, slugPedido, purchase.email || '', 'erro', 503);
+        const token = String(consulta.t || '');
+        const tokenOk = token ? trava.tokenConfere(sessionId, purchase.email, token) : false;
+        if (token && !tokenOk) return responderTrava(res, sessionId, slugPedido, purchase.email);
+        if (!trava.passeValido(req, purchase.session, purchase.email)) {
+          // Libera este aparelho só com o link do e-mail ou no navegador que acabou de pagar.
+          if (!tokenOk && !trava.podeReivindicarPrimeiroNavegador(purchase.session)) return responderTrava(res, sessionId, slugPedido, purchase.email);
+          const novo = trava.novoAparelho(purchase.session);
+          if (!novo) return responderTrava(res, sessionId, slugPedido, purchase.email, 'limite');
+          await updateSessionMetadata(sessionId, novo.metadata);
+          res.setHeader('Set-Cookie', trava.cookieDoPasse(req, sessionId, purchase.email, novo.aparelho));
+        }
+        if (token) {
+          // Tira o token do endereço (histórico, prints e cabeçalho Referer).
+          res.statusCode = 303;
+          res.setHeader('Location', enderecoLimpo(sessionId, slugPedido));
+          return res.end();
+        }
+      }
+      product = getProduct(slugPedido || purchase.slug);
       seletorCliente = seletorDoCliente(sessionId, purchase.slugs, product.slug);
     }
 

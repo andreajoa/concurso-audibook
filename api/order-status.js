@@ -3,6 +3,7 @@ const { getProduct } = require('../lib/catalog');
 const { sendAccessEmail } = require('../lib/email');
 const { rpc } = require('../lib/crm-rpc');
 const { chaveDaSessao } = require('../lib/assinatura');
+const { linkDeAcesso } = require('../lib/acesso-email');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Método não permitido.' });
@@ -22,7 +23,7 @@ module.exports = async (req, res) => {
     const session = purchase.session;
     await rpc('crm_order_paid',{p_session:session.id,p_amount:Number(session.amount_total||product.priceCents)}).catch(error=>console.error('crm_paid_status',error));
     if (!session.metadata?.access_email_sent && purchase.email) {
-      const accessUrl=`${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
+      const accessUrl=linkDeAcesso(baseUrl(req),session.id,purchase.email);
       try {
         await sendAccessEmail({to:purchase.email,productName:product.name,accessUrl,idempotencyKey:`purchase-access-${session.id}`});
         await updateSessionMetadata(session.id,{access_email_sent:`status-${Date.now()}`});

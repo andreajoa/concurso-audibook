@@ -3,6 +3,7 @@ const { baseUrl, retrieveCheckoutSession, updateSessionMetadata, isPaidAndNotRef
 const { getProduct } = require('../lib/catalog');
 const { sendAccessEmail, sendCadernoKeyEmail, sendPaymentFailedEmail, sendRecoveryEmail } = require('../lib/email');
 const { rpc } = require('../lib/crm-rpc');
+const { linkDeAcesso } = require('../lib/acesso-email');
 const assinatura = require('../lib/assinatura');
 
 const SITE_ID = 'concurso_audiobook';
@@ -120,7 +121,7 @@ module.exports = async (req,res) => {
       const analytics=analyticsPayload(session.metadata,'purchase',{eventId:event.id,productName:product.name,valueCents:session.amount_total,stripeSessionId:session.id});
       if (analytics) await rpc('crm_track_event',{payload:analytics}).catch(()=>null);
       if (!session.metadata?.access_email_sent) {
-        const accessUrl=`${baseUrl(req)}/acesso?session_id=${encodeURIComponent(session.id)}`;
+        const accessUrl=linkDeAcesso(baseUrl(req),session.id,email);
         const extras=String(session.metadata?.bump_slugs||'').split(',').map(x=>x.trim()).filter(x=>x&&x!==slug);
         const nomes=[product.name,...(product.includes||[]).map(x=>getProduct(x)?.name).filter(Boolean),...extras.map(x=>getProduct(x)?.name).filter(Boolean)].join(' + ');
         await sendAccessEmail({to:email,productName:nomes,accessUrl,idempotencyKey:`purchase-access-${session.id}`});
