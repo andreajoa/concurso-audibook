@@ -2354,6 +2354,180 @@
       "downsell": []
     }
   },
+  "see-sp-professor-ingles-2027": {
+    "slug": "see-sp-professor-ingles-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Língua Inglesa",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Inglês (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Língua Inglesa (PEFM)",
+    "edition": "Pós-edital · edição de 26/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Língua Inglesa da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_INGLES_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Língua Inglesa da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 673 páginas com 1.503 questões comentadas de cinco alternativas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Língua Inglesa. Bloco I completo: gestão de sala de aula segundo as obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as técnicas de Doug Lemov cobradas. Língua Inglesa: Currículo Paulista e BNCC (inglês como língua franca, os cinco eixos, abordagens de ensino, Krashen e Vygotsky), interação e comunicação (classroom language, rotinas, planos, recomendações e obrigações), conhecimentos linguísticos (pronomes, genitivo, to be, simple present, there is/are, preposições, simple past, will e going to, modais, comparativos, contáveis, prefixos e sufixos, pronomes relativos e condicionais), leitura com textos originais (skimming, scanning, inferência, gêneros, fato e opinião), produção textual e multimodalidade, cultura, World Englishes e argumentação. Inclui a prova discursiva com resposta-modelo, a aula em vídeo com rubrica comentada e roteiros para as quatro aulas de Inglês do edital, e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 673 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.503 questões comentadas com cinco alternativas, no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Língua Inglesa)",
+      "Gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+      "BNCC e didática do inglês: língua franca, cinco eixos, abordagem comunicativa",
+      "Toda a gramática do edital, de pronomes a condicionais, com exercícios",
+      "Leitura com textos originais em inglês: notícias, anúncios, resenhas, tirinhas e posts",
+      "Roteiros das quatro aulas da prova prática (My place, LMK, Learning English, IA)",
+      "Discursiva com resposta-modelo e aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-ingles-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-ingles-2027/docs/apostila-see-sp-professor-ingles-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_de_Ingles.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Inglês (revisão da véspera)",
+        "key": "see-sp-professor-ingles-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_de_Ingles.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo Paulista, BNCC e didática do inglês",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/02-curriculo-e-didatica.mp3",
+          "downloadName": "02-curriculo-e-didatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Interação e comunicação",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/03-interacao-e-comunicacao.mp3",
+          "downloadName": "03-interacao-e-comunicacao.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Conhecimentos linguísticos, parte 1",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/04-gramatica-1.mp3",
+          "downloadName": "04-gramatica-1.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Conhecimentos linguísticos, parte 2",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/05-gramatica-2.mp3",
+          "downloadName": "05-gramatica-2.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Leitura e interpretação de textos",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/06-leitura.mp3",
+          "downloadName": "06-leitura.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Produção, cultura e argumentação",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/07-producao-cultura-e-argumentacao.mp3",
+          "downloadName": "07-producao-cultura-e-argumentacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Discursiva e aula em vídeo",
+          "key": "see-sp-professor-ingles-2027/audio/pt-br-v1/08-discursiva-e-aula.mp3",
+          "downloadName": "08-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, tarde, para Língua Inglesa",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Inglês na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 430 são de Língua Inglesa (145 na jornada completa de 25 horas e 285 na jornada ampliada de 40 horas). O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Língua Inglesa no período da tarde, das 15h às 19h)."
+      },
+      {
+        "q": "Como é a prova de Professor de Língua Inglesa da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Língua Inglesa), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Quais aulas de Língua Inglesa podem ser usadas na prova prática em vídeo?",
+        "a": "O Anexo XII indica quatro aulas do material da rede para Língua Inglesa: 6º ano, Aula 3, \"My place\"; 9º ano, Aula 7, \"LMK if you're up to it!\"; 1ª série, Aula 5, \"Learning English nowadays (Part 3)\"; e 3ª série, Aula 1, \"Artificial Intelligence – Part 1\". O vídeo é avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Língua Inglesa na rede estadual de São Paulo?",
+        "a": "Licenciatura específica em Língua Inglesa; Licenciatura em Letras com habilitação em Tradução e Intérprete Português e Língua Inglesa; Licenciatura em Linguagens e Códigos na Língua Inglesa; ou Licenciatura em Letras com no mínimo 160 horas de estudos de Língua Inglesa (Anexo IV do edital)."
+      },
+      {
+        "q": "Onde vejo as vagas de Inglês da minha região e a cidade de prova?",
+        "a": "No guia do concurso por região (concurso-professor-see-sp-2027), com as vagas de cada componente nas 11 regiões de classificação, as 77 cidades de prova e os municípios atendidos por cada Unidade Regional de Ensino."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Inglês FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Inglês (PEFM, FGV): 1.503 questões, gestão de sala de aula, gramática, leitura, BNCC, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE INGLÊS • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-ingles-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 430 vagas para Professor de Inglês. Gestão de sala de aula, BNCC, gramática, leitura e 1.503 questões",
+      "shortTag": "SEE-SP · Professor de Inglês",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "673 páginas: Gestão de sala de aula + toda a Língua Inglesa"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.443 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiros das 4 aulas"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Língua Inglesa · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-ingles-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-ingles-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Língua Inglesa (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "430",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Língua Inglesa ou Letras com habilitação ou 160h de inglês (Anexo IV)",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 673,
+        "questoes": 1503
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "coren-sp-assistente-administrativo-2027": {
     "slug": "coren-sp-assistente-administrativo-2027",
     "active": true,
