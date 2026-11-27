@@ -1,0 +1,1785 @@
+{
+ "fonte": "Edital SEDUC-SP/FGV de 19/11/2026, Anexos II, II-A e III-A",
+ "sedes": [
+  {
+   "sede": "ADAMANTINA",
+   "ures": [
+    "Adamantina"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Adamantina",
+    "Dracena",
+    "Flora Rica",
+    "Flórida Paulista",
+    "Inúbia Paulista",
+    "Irapuru",
+    "Junqueirópolis",
+    "Lucélia",
+    "Mariápolis",
+    "Monte Castelo",
+    "Nova Guataporanga",
+    "Osvaldo Cruz",
+    "Ouro Verde",
+    "Pacaembu",
+    "Panorama",
+    "Paulicéia",
+    "Pracinha",
+    "Sagres",
+    "Salmourão",
+    "Santa Mercedes",
+    "São João do Pau d'Alho",
+    "Tupi Paulista"
+   ]
+  },
+  {
+   "sede": "AMERICANA",
+   "ures": [
+    "Americana"
+   ],
+   "regiao": [
+    11
+   ],
+   "abrangidos": [
+    "Americana",
+    "Nova Odessa",
+    "Santa Bárbara d'Oeste"
+   ]
+  },
+  {
+   "sede": "ANDRADINA",
+   "ures": [
+    "Andradina"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Andradina",
+    "Castilho",
+    "Guaraçaí",
+    "Ilha Solteira",
+    "Itapura",
+    "Lavínia",
+    "Mirandópolis",
+    "Murutinga do Sul",
+    "Nova Independência",
+    "Pereira Barreto",
+    "Sud Mennucci"
+   ]
+  },
+  {
+   "sede": "APIAÍ",
+   "ures": [
+    "Apiaí"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Apiaí",
+    "Barra do Chapéu",
+    "Guapiara",
+    "Iporanga",
+    "Itaoca",
+    "Itapirapuã Paulista",
+    "Ribeira",
+    "Ribeirão Branco"
+   ]
+  },
+  {
+   "sede": "ARAÇATUBA",
+   "ures": [
+    "Araçatuba"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Araçatuba",
+    "Bento de Abreu",
+    "Guararapes",
+    "Rubiácea",
+    "Santo Antônio do Aracanguá",
+    "Valparaíso"
+   ]
+  },
+  {
+   "sede": "ARARAQUARA",
+   "ures": [
+    "Araraquara"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Américo Brasiliense",
+    "Araraquara",
+    "Boa Esperança do Sul",
+    "Gavião Peixoto",
+    "Matão",
+    "Motuca",
+    "Nova Europa",
+    "Rincão",
+    "Santa Lúcia",
+    "Trabiju"
+   ]
+  },
+  {
+   "sede": "ASSIS",
+   "ures": [
+    "Assis"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Assis",
+    "Borá",
+    "Cândido Mota",
+    "Cruzália",
+    "Florínea",
+    "Iepê",
+    "Lutécia",
+    "Maracaí",
+    "Nantes",
+    "Palmital",
+    "Paraguaçu Paulista",
+    "Pedrinhas Paulista",
+    "Platina",
+    "Tarumã"
+   ]
+  },
+  {
+   "sede": "AVARÉ",
+   "ures": [
+    "Avaré"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Água de Santa Bárbara",
+    "Arandu",
+    "Avaré",
+    "Cerqueira César",
+    "Iaras",
+    "Itaí",
+    "Taquarituba"
+   ]
+  },
+  {
+   "sede": "BARRETOS",
+   "ures": [
+    "Barretos"
+   ],
+   "regiao": [
+    9
+   ],
+   "abrangidos": [
+    "Altair",
+    "Barretos",
+    "Colina",
+    "Colômbia",
+    "Guaíra",
+    "Guaraci",
+    "Jaborandi",
+    "Olímpia",
+    "Severínia"
+   ]
+  },
+  {
+   "sede": "BAURU",
+   "ures": [
+    "Bauru"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Agudos",
+    "Arealva",
+    "Avaí",
+    "Balbinos",
+    "Bauru",
+    "Cabrália Paulista",
+    "Duartina",
+    "Iacanga",
+    "Lençóis Paulista",
+    "Lucianópolis",
+    "Paulistânia",
+    "Pirajuí",
+    "Piratininga",
+    "Presidente Alves",
+    "Reginópolis",
+    "Ubirajara"
+   ]
+  },
+  {
+   "sede": "BIRIGUI",
+   "ures": [
+    "Birigui"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Bilac",
+    "Birigui",
+    "Brejo Alegre",
+    "Buritama",
+    "Coroados",
+    "Gabriel Monteiro",
+    "Glicério",
+    "Lourdes",
+    "Piacatu",
+    "Turiúba"
+   ]
+  },
+  {
+   "sede": "BOTUCATU",
+   "ures": [
+    "Botucatu"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Anhembi",
+    "Areiópolis",
+    "Bofete",
+    "Botucatu",
+    "Cesário Lange",
+    "Conchas",
+    "Itatinga",
+    "Laranjal Paulista",
+    "Pardinho",
+    "Pereiras",
+    "Porangaba",
+    "Pratânia",
+    "Quadra",
+    "São Manuel",
+    "Torre de Pedra"
+   ]
+  },
+  {
+   "sede": "BRAGANÇA PAULISTA",
+   "ures": [
+    "Bragança Paulista"
+   ],
+   "regiao": [
+    6
+   ],
+   "abrangidos": [
+    "Atibaia",
+    "Bom Jesus dos Perdões",
+    "Bragança Paulista",
+    "Joanópolis",
+    "Morungaba",
+    "Nazaré Paulista",
+    "Pedra Bela",
+    "Pinhalzinho",
+    "Piracaia",
+    "Socorro",
+    "Tuiuti",
+    "Vargem"
+   ]
+  },
+  {
+   "sede": "CAIEIRAS",
+   "ures": [
+    "Caieiras"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Caieiras",
+    "Cajamar",
+    "Francisco Morato",
+    "Franco da Rocha",
+    "Mairiporã"
+   ]
+  },
+  {
+   "sede": "CAMPINAS",
+   "ures": [
+    "Campinas Leste",
+    "Campinas Oeste"
+   ],
+   "regiao": [
+    6
+   ],
+   "abrangidos": [
+    "Campinas",
+    "Jaguariúna",
+    "Valinhos",
+    "Vinhedo"
+   ]
+  },
+  {
+   "sede": "CAPIVARI",
+   "ures": [
+    "Capivari"
+   ],
+   "regiao": [
+    11
+   ],
+   "abrangidos": [
+    "Capivari",
+    "Elias Fausto",
+    "Indaiatuba",
+    "Mombuca",
+    "Monte Mor",
+    "Rafard",
+    "Rio das Pedras"
+   ]
+  },
+  {
+   "sede": "CARAGUATATUBA",
+   "ures": [
+    "Caraguatatuba"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Caraguatatuba",
+    "Ilhabela",
+    "São Sebastião",
+    "Ubatuba"
+   ]
+  },
+  {
+   "sede": "CARAPICUÍBA",
+   "ures": [
+    "Carapicuíba"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Carapicuíba",
+    "Cotia"
+   ]
+  },
+  {
+   "sede": "CATANDUVA",
+   "ures": [
+    "Catanduva"
+   ],
+   "regiao": [
+    9
+   ],
+   "abrangidos": [
+    "Ariranha",
+    "Cajobi",
+    "Catanduva",
+    "Catiguá",
+    "Elisiário",
+    "Embaúba",
+    "Itajobi",
+    "Marapoama",
+    "Novais",
+    "Novo Horizonte",
+    "Palmares Paulista",
+    "Paraíso",
+    "Pindorama",
+    "Santa Adélia",
+    "Tabapuã"
+   ]
+  },
+  {
+   "sede": "DIADEMA",
+   "ures": [
+    "Diadema"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Diadema"
+   ]
+  },
+  {
+   "sede": "FERNANDÓPOLIS",
+   "ures": [
+    "Fernandópolis"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Estrela d'Oeste",
+    "Fernandópolis",
+    "General Salgado",
+    "Guarani d'Oeste",
+    "Indiaporã",
+    "Macedônia",
+    "Magda",
+    "Meridiano",
+    "Mira Estrela",
+    "Ouroeste",
+    "Pedranópolis",
+    "Populina",
+    "São João das Duas Pontes",
+    "São João de Iracema",
+    "Turmalina"
+   ]
+  },
+  {
+   "sede": "FRANCA",
+   "ures": [
+    "Franca"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Cristais Paulista",
+    "Franca",
+    "Itirapuã",
+    "Jeriquara",
+    "Patrocínio Paulista",
+    "Pedregulho",
+    "Restinga",
+    "Ribeirão Corrente",
+    "Rifaina",
+    "São José da Bela Vista"
+   ]
+  },
+  {
+   "sede": "GUARATINGUETÁ",
+   "ures": [
+    "Guaratinguetá"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Aparecida",
+    "Arapeí",
+    "Areias",
+    "Bananal",
+    "Cachoeira Paulista",
+    "Canas",
+    "Cruzeiro",
+    "Cunha",
+    "Guaratinguetá",
+    "Lavrinhas",
+    "Lorena",
+    "Piquete",
+    "Potim",
+    "Queluz",
+    "Roseira",
+    "São José do Barreiro",
+    "Silveiras"
+   ]
+  },
+  {
+   "sede": "GUARULHOS",
+   "ures": [
+    "Guarulhos Norte",
+    "Guarulhos Sul"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Guarulhos"
+   ]
+  },
+  {
+   "sede": "ITAPECERICA DA SERRA",
+   "ures": [
+    "Itapecerica da Serra"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Embu-Guaçu",
+    "Juquitiba",
+    "Itapecerica da Serra",
+    "São Lourenço da Serra"
+   ]
+  },
+  {
+   "sede": "ITAPETININGA",
+   "ures": [
+    "Itapetininga"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Alambari",
+    "Angatuba",
+    "Campina do Monte Alegre",
+    "Guareí",
+    "Itapetininga",
+    "Paranapanema",
+    "São Miguel Arcanjo",
+    "Sarapuí",
+    "Tatuí"
+   ]
+  },
+  {
+   "sede": "ITAPEVA",
+   "ures": [
+    "Itapeva"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Buri",
+    "Capão Bonito",
+    "Itapeva",
+    "Nova Campina",
+    "Ribeirão Grande",
+    "Taquarivaí"
+   ]
+  },
+  {
+   "sede": "ITAPEVI",
+   "ures": [
+    "Itapevi"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Barueri",
+    "Itapevi",
+    "Jandira",
+    "Pirapora do Bom Jesus",
+    "Santana do Parnaíba"
+   ]
+  },
+  {
+   "sede": "ITAQUAQUECETUBA",
+   "ures": [
+    "Itaquaquecetuba"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Poá",
+    "Itaquaquecetuba"
+   ]
+  },
+  {
+   "sede": "ITARARÉ",
+   "ures": [
+    "Itararé"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Barão de Antonina",
+    "Bom Sucesso de Itararé",
+    "Coronel Macedo",
+    "Itaberá",
+    "Itaporanga",
+    "Itararé",
+    "Riversul"
+   ]
+  },
+  {
+   "sede": "ITU",
+   "ures": [
+    "Itu"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Boituva",
+    "Cabreúva",
+    "Cerquilho",
+    "Iperó",
+    "Itu",
+    "Jumirim",
+    "Porto Feliz",
+    "Salto",
+    "Tietê"
+   ]
+  },
+  {
+   "sede": "JABOTICABAL",
+   "ures": [
+    "Jaboticabal"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Bebedouro",
+    "Guariba",
+    "Guatapará",
+    "Jaboticabal",
+    "Monte Alto",
+    "Monte Azul Paulista",
+    "Pradópolis",
+    "Taiaçu",
+    "Taiúva",
+    "Taquaral"
+   ]
+  },
+  {
+   "sede": "JACAREÍ",
+   "ures": [
+    "Jacareí"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Arujá",
+    "Guararema",
+    "Igaratá",
+    "Jacareí",
+    "Santa Branca",
+    "Santa Isabel"
+   ]
+  },
+  {
+   "sede": "JALES",
+   "ures": [
+    "Jales"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Aparecida d'Oeste",
+    "Aspásia",
+    "Auriflama",
+    "Dirce Reis",
+    "Dolcinópolis",
+    "Guzolândia",
+    "Jales",
+    "Marinópolis",
+    "Mesópolis",
+    "Nova Canaã Paulista",
+    "Palmeira d'Oeste",
+    "Paranapuã",
+    "Pontalinda",
+    "Rubinéia",
+    "Santa Albertina",
+    "Santa Clara d'Oeste",
+    "Santa Fé do Sul",
+    "Santa Rita d'Oeste",
+    "S anta Salete",
+    "Santana da Ponte Pensa",
+    "São Francisco",
+    "Três Fronteiras",
+    "Urânia",
+    "Vitória Brasil"
+   ]
+  },
+  {
+   "sede": "JAÚ",
+   "ures": [
+    "Jaú"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Bariri",
+    "Barra Bonita",
+    "Bocaina",
+    "Boracéia",
+    "Brotas",
+    "Dois Córregos",
+    "Igaraçu do Tietê",
+    "Itaju",
+    "Itapuí",
+    "Jaú",
+    "Macatuba",
+    "Mineiros do Tietê",
+    "Pederneiras",
+    "Torrinha"
+   ]
+  },
+  {
+   "sede": "JOSÉ BONIFÁCIO",
+   "ures": [
+    "José Bonifácio"
+   ],
+   "regiao": [
+    9
+   ],
+   "abrangidos": [
+    "Adolfo",
+    "Bálsamo",
+    "Irapuã",
+    "Jaci",
+    "José Bonifácio",
+    "Mendonça",
+    "Mirassol",
+    "Monte Aprazível",
+    "Neves Paulista",
+    "Nipoã",
+    "Nova Aliança",
+    "Planalto",
+    "Poloni",
+    "Sales",
+    "Tanabi",
+    "Ubarana",
+    "União Paulista",
+    "Urupês",
+    "Zacarias"
+   ]
+  },
+  {
+   "sede": "JUNDIAÍ",
+   "ures": [
+    "Jundiaí"
+   ],
+   "regiao": [
+    6
+   ],
+   "abrangidos": [
+    "Campo Limpo Paulista",
+    "Itatiba",
+    "Itupeva",
+    "Jarinu",
+    "Jundiaí",
+    "Louveira",
+    "Várzea Paulista"
+   ]
+  },
+  {
+   "sede": "LIMEIRA",
+   "ures": [
+    "Limeira"
+   ],
+   "regiao": [
+    11
+   ],
+   "abrangidos": [
+    "Artur Nogueira",
+    "Cordeirópolis",
+    "Cosmópolis",
+    "Engenheiro Coelho",
+    "Ipeúna",
+    "Iracemápolis",
+    "Limeira",
+    "Rio Claro",
+    "Santa Gertrudes"
+   ]
+  },
+  {
+   "sede": "LINS",
+   "ures": [
+    "Lins"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Cafelândia",
+    "Getulina",
+    "Guaiçara",
+    "Guarantã",
+    "Lins",
+    "Pongaí",
+    "Promissão",
+    "Sabino",
+    "Uru"
+   ]
+  },
+  {
+   "sede": "MARÍLIA",
+   "ures": [
+    "Marília"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Álvaro de Carvalho",
+    "Alvinlândia",
+    "Echaporã",
+    "Fernão",
+    "Gália",
+    "Garça",
+    "Júlio Mesquita",
+    "Lupércio",
+    "Marília",
+    "Ocauçu",
+    "Oriente",
+    "Oscar Bressane",
+    "Pompéia",
+    "Vera Cruz"
+   ]
+  },
+  {
+   "sede": "MAUÁ",
+   "ures": [
+    "Mauá"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Mauá",
+    "Ribeirão Pires",
+    "Rio Grande da Serra"
+   ]
+  },
+  {
+   "sede": "MIRACATU",
+   "ures": [
+    "Miracatu"
+   ],
+   "regiao": [
+    7
+   ],
+   "abrangidos": [
+    "Iguape",
+    "Ilha Comprida",
+    "Itariri",
+    "Juquiá",
+    "Miracatu",
+    "Pedro de Toledo"
+   ]
+  },
+  {
+   "sede": "MIRANTE DO PARANAPANEMA",
+   "ures": [
+    "Mirante do Paranapanema"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Estrela do Norte",
+    "Euclides da Cunha Paulista",
+    "Mirante do Paranapanema",
+    "Narandiba",
+    "Rosana",
+    "Sandovalina",
+    "Tarabai",
+    "Teodoro Sampaio"
+   ]
+  },
+  {
+   "sede": "MOGI DAS CRUZES",
+   "ures": [
+    "Mogi das Cruzes"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Biritiba Mirim",
+    "Mogi das Cruzes",
+    "Salesópolis"
+   ]
+  },
+  {
+   "sede": "MOGI MIRIM",
+   "ures": [
+    "Mogi Mirim"
+   ],
+   "regiao": [
+    6
+   ],
+   "abrangidos": [
+    "Águas de Lindóia",
+    "Amparo",
+    "Conchal",
+    "Estiva Gerbi",
+    "Holambra",
+    "Itapira",
+    "Lindóia",
+    "Mogi Guaçu",
+    "Mogi Mirim",
+    "Monte Alegre do Sul",
+    "Pedreira",
+    "Santo Antônio da Posse",
+    "Serra Negra"
+   ]
+  },
+  {
+   "sede": "OSASCO",
+   "ures": [
+    "Osasco"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Osasco"
+   ]
+  },
+  {
+   "sede": "OURINHOS",
+   "ures": [
+    "Ourinhos"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Bernardino de Campos",
+    "Campos Novos Paulista",
+    "Canitar",
+    "Chavantes",
+    "Espírito Santo do Turvo",
+    "Ibirarema",
+    "Ipaussu",
+    "Ourinhos",
+    "Ribeirão do Sul",
+    "Salto Grande",
+    "Santa Cruz do Rio Pardo",
+    "São Pedro do Turvo"
+   ]
+  },
+  {
+   "sede": "PENÁPOLIS",
+   "ures": [
+    "Penápolis"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Alto Alegre",
+    "Avanhandava",
+    "Barbosa",
+    "Braúna",
+    "Clementina",
+    "Luiziânia",
+    "Penápolis",
+    "Santópolis do Aguapeí"
+   ]
+  },
+  {
+   "sede": "PINDAMONHANGABA",
+   "ures": [
+    "Pindamonhangaba"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Campos do Jordão",
+    "Pindamonhangaba",
+    "Santo Antônio do Pinhal",
+    "São Bento do Sapucaí",
+    "Tremembé"
+   ]
+  },
+  {
+   "sede": "PIRACICABA",
+   "ures": [
+    "Piracicaba"
+   ],
+   "regiao": [
+    11
+   ],
+   "abrangidos": [
+    "Águas de São Pedro",
+    "Charqueada",
+    "Piracicaba",
+    "Saltinho",
+    "Santa Maria da Serra",
+    "São Pedro"
+   ]
+  },
+  {
+   "sede": "PIRAJU",
+   "ures": [
+    "Piraju"
+   ],
+   "regiao": [
+    10
+   ],
+   "abrangidos": [
+    "Fartura",
+    "Manduri",
+    "Óleo",
+    "Piraju",
+    "Sarutaiá",
+    "Taguaí",
+    "Tejupá",
+    "Timburi"
+   ]
+  },
+  {
+   "sede": "PIRASSUNUNGA",
+   "ures": [
+    "Pirassununga"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Analândia",
+    "Araras",
+    "Leme",
+    "Pirassununga",
+    "Porto Ferreira",
+    "Santa Cruz da Conceição",
+    "Santa Cruz das Palmeiras",
+    "Santa Rita do Passa Quatro"
+   ]
+  },
+  {
+   "sede": "PRESIDENTE PRUDENTE",
+   "ures": [
+    "Presidente Prudente"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Alfredo Marcondes",
+    "Álvares Machado",
+    "Anhumas",
+    "Caiabu",
+    "Indiana",
+    "Martinópolis",
+    "Pirapozinho",
+    "Presidente Prudente",
+    "Regente Feijó",
+    "Santo Expedito",
+    "Taciba"
+   ]
+  },
+  {
+   "sede": "REGISTRO",
+   "ures": [
+    "Registro"
+   ],
+   "regiao": [
+    7
+   ],
+   "abrangidos": [
+    "Barra do Turvo",
+    "Cajati",
+    "Cananéia",
+    "Eldorado",
+    "Jacupiranga",
+    "Pariquera Açu",
+    "Registro",
+    "Sete Barras"
+   ]
+  },
+  {
+   "sede": "RIBEIRÃO PRETO",
+   "ures": [
+    "Ribeirão Preto"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Altinópolis",
+    "Batatais",
+    "Brodowski",
+    "Cajuru",
+    "Cássia dos Coqueiros",
+    "Cravinhos",
+    "Luís Antônio",
+    "Ribeirão Preto",
+    "Santa Cruz da Esperança",
+    "Santa Rosa do Viterbo",
+    "Santo Antônio da Alegria",
+    "São Simão",
+    "Serra Azul",
+    "Serrana"
+   ]
+  },
+  {
+   "sede": "SANTO ANASTÁCIO",
+   "ures": [
+    "Santo Anastácio"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Caiuá",
+    "Emilianópolis",
+    "Marabá Paulista",
+    "Piquerobi",
+    "Presidente Bernardes",
+    "Presidente Epitácio",
+    "Presidente Venceslau",
+    "Ribeirão dos Índios",
+    "Santo Anastácio"
+   ]
+  },
+  {
+   "sede": "SANTO ANDRÉ",
+   "ures": [
+    "Santo André"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Santo André"
+   ]
+  },
+  {
+   "sede": "SANTOS",
+   "ures": [
+    "Santos"
+   ],
+   "regiao": [
+    7
+   ],
+   "abrangidos": [
+    "Bertioga",
+    "Cubatão",
+    "Guarujá",
+    "Santos"
+   ]
+  },
+  {
+   "sede": "SÃO BERNARDO DO CAMPO",
+   "ures": [
+    "São Bernardo do Campo"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "São Bernardo do Campo",
+    "São Caetano do Sul"
+   ]
+  },
+  {
+   "sede": "SÃO CARLOS",
+   "ures": [
+    "São Carlos"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Corumbataí",
+    "Descalvado",
+    "Dourado",
+    "Ibaté",
+    "Itirapina",
+    "Ribeirão Bonito",
+    "São Carlos"
+   ]
+  },
+  {
+   "sede": "SÃO JOÃO DA BOA VISTA",
+   "ures": [
+    "São João da Boa Vista"
+   ],
+   "regiao": [
+    6
+   ],
+   "abrangidos": [
+    "Aguaí",
+    "Águas da Prata",
+    "Caconde",
+    "Casa Branca",
+    "Divinolândia",
+    "Espírito Santo do Pinhal",
+    "Itobi",
+    "Mococa",
+    "Santo Antônio do Jardim",
+    "São João da Boa Vista",
+    "São José do Rio Pardo",
+    "São Sebastião da Grama",
+    "Tambaú",
+    "Tapiratiba",
+    "Vargem Grande do Sul"
+   ]
+  },
+  {
+   "sede": "SÃO JOAQUIM DA BARRA",
+   "ures": [
+    "São Joaquim da Barra"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Aramina",
+    "Buritizal",
+    "Guará",
+    "Igarapava",
+    "Ipuã",
+    "Ituverava",
+    "Miguelópolis",
+    "Morro Agudo",
+    "Nuporanga",
+    "Orlândia",
+    "Sales Oliveira",
+    "São Joaquim da Barra"
+   ]
+  },
+  {
+   "sede": "SÃO JOSÉ DO RIO PRETO",
+   "ures": [
+    "São José do Rio Preto"
+   ],
+   "regiao": [
+    9
+   ],
+   "abrangidos": [
+    "Bady Bassitt",
+    "Cedral",
+    "Guapiaçu",
+    "Ibirá",
+    "Icém",
+    "Ipiguá",
+    "Mirassolândia",
+    "Nova Granada",
+    "Onda Verde",
+    "Orindiúva",
+    "Palestina",
+    "Potirendaba",
+    "São José do Rio Preto",
+    "Uchoa"
+   ]
+  },
+  {
+   "sede": "SÃO JOSÉ DOS CAMPOS",
+   "ures": [
+    "São José dos Campos"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Monteiro Lobato",
+    "São José dos Campos"
+   ]
+  },
+  {
+   "sede": "SÃO PAULO",
+   "ures": [
+    "Centro",
+    "Centro Oeste",
+    "Centro Sul",
+    "Leste 1",
+    "Leste 2",
+    "Leste 3",
+    "Leste 4",
+    "Leste 5",
+    "Norte 1",
+    "Norte 2",
+    "Sul 1",
+    "Sul 2",
+    "Sul 3"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "São Paulo (todos os bairros, conforme a distribuição por URE)"
+   ]
+  },
+  {
+   "sede": "URE SÃO ROQUE",
+   "ures": [
+    "São Roque"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Alumínio",
+    "Araçariguama",
+    "Ibiúna",
+    "Mairinque",
+    "São Roque",
+    "Vargem Grande Paulista"
+   ]
+  },
+  {
+   "sede": "SÃO VICENTE",
+   "ures": [
+    "São Vicente"
+   ],
+   "regiao": [
+    7
+   ],
+   "abrangidos": [
+    "Itanhaém",
+    "Mongaguá",
+    "Peruíbe",
+    "Praia Grande",
+    "São Vicente"
+   ]
+  },
+  {
+   "sede": "SERTÃOZINHO",
+   "ures": [
+    "Sertãozinho"
+   ],
+   "regiao": [
+    3
+   ],
+   "abrangidos": [
+    "Barrinha",
+    "Dumont",
+    "Jardinópolis",
+    "Pitangueiras",
+    "Pontal",
+    "Sertãozinho",
+    "Terra Roxa",
+    "Viradouro"
+   ]
+  },
+  {
+   "sede": "SOROCABA",
+   "ures": [
+    "Sorocaba"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Sorocaba"
+   ]
+  },
+  {
+   "sede": "SUMARÉ",
+   "ures": [
+    "Sumaré"
+   ],
+   "regiao": [
+    11
+   ],
+   "abrangidos": [
+    "Hortolândia",
+    "Paulínia",
+    "Sumaré"
+   ]
+  },
+  {
+   "sede": "SUZANO",
+   "ures": [
+    "Suzano"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Ferraz de Vasconcelos",
+    "Suzano"
+   ]
+  },
+  {
+   "sede": "TABOÃO DA SERRA",
+   "ures": [
+    "Taboão da Serra"
+   ],
+   "regiao": [
+    1
+   ],
+   "abrangidos": [
+    "Taboão da Serra",
+    "Embu das Artes"
+   ]
+  },
+  {
+   "sede": "TAQUARITINGA",
+   "ures": [
+    "Taquaritinga"
+   ],
+   "regiao": [
+    9
+   ],
+   "abrangidos": [
+    "Borborema",
+    "Cândido Rodrigues",
+    "Dobrada",
+    "Fernando Prestes",
+    "Ibitinga",
+    "Itápolis",
+    "Pirangi",
+    "Santa Ernestina",
+    "Tabatinga",
+    "Taquaritinga",
+    "Vista Alegre do Alto"
+   ]
+  },
+  {
+   "sede": "TAUBATÉ",
+   "ures": [
+    "Taubaté"
+   ],
+   "regiao": [
+    8
+   ],
+   "abrangidos": [
+    "Caçapava",
+    "Jambeiro",
+    "Lagoinha",
+    "Natividade da Serra",
+    "Paraibuna",
+    "Redenção da Serra",
+    "São Luís do Paraitinga",
+    "Taubaté"
+   ]
+  },
+  {
+   "sede": "TUPÃ",
+   "ures": [
+    "Tupã"
+   ],
+   "regiao": [
+    4
+   ],
+   "abrangidos": [
+    "Arco-Íris",
+    "Bastos",
+    "Herculândia",
+    "Iacri",
+    "João Ramalho",
+    "Parapuã",
+    "Quatá",
+    "Queiroz",
+    "Quintana",
+    "Rancharia",
+    "Rinópolis",
+    "Tupã"
+   ]
+  },
+  {
+   "sede": "VOTORANTIM",
+   "ures": [
+    "Votorantim"
+   ],
+   "regiao": [
+    5
+   ],
+   "abrangidos": [
+    "Araçoiaba da Serra",
+    "Capela do Alto",
+    "Piedade",
+    "Pilar do Sul",
+    "Salto de Pirapora",
+    "Tapiraí",
+    "Votorantim"
+   ]
+  },
+  {
+   "sede": "VOTUPORANGA",
+   "ures": [
+    "Votuporanga"
+   ],
+   "regiao": [
+    2
+   ],
+   "abrangidos": [
+    "Álvares Florence",
+    "Américo de Campos",
+    "Cardoso",
+    "Cosmorama",
+    "Floreal",
+    "Gastão Vidigal",
+    "Macaubal",
+    "Monções",
+    "Nhandeara",
+    "Nova Castilho",
+    "Nova Luzitânia",
+    "Parisi",
+    "Paulo de Faria",
+    "Pontes Gestal",
+    "Riolândia",
+    "Sebastianópolis do Sul",
+    "Valentim Gentil",
+    "Votuporanga"
+   ]
+  }
+ ],
+ "regioes": {
+  "1": {
+   "vagas25": {
+    "Ciências": 54,
+    "Educação Especial – DI": 45,
+    "Educação Especial – TEA": 35,
+    "Educação Física": 49,
+    "Física": 62,
+    "Geografia": 29,
+    "Língua Inglesa": 50,
+    "Língua Portuguesa": 150,
+    "Matemática": 190,
+    "Química": 27
+   },
+   "vagas40": {
+    "Ciências": 102,
+    "Educação Física": 95,
+    "Física": 96,
+    "Geografia": 84,
+    "Língua Inglesa": 98,
+    "Língua Portuguesa": 225,
+    "Matemática": 285,
+    "Química": 53
+   },
+   "total": 1729
+  },
+  "2": {
+   "vagas25": {
+    "Ciências": 8,
+    "Educação Especial – DI": 11,
+    "Educação Especial – TEA": 8,
+    "Educação Física": 8,
+    "Física": 10,
+    "Geografia": 4,
+    "Língua Inglesa": 9,
+    "Língua Portuguesa": 80,
+    "Matemática": 34,
+    "Química": 5
+   },
+   "vagas40": {
+    "Ciências": 17,
+    "Educação Física": 15,
+    "Física": 17,
+    "Geografia": 12,
+    "Língua Inglesa": 17,
+    "Língua Portuguesa": 120,
+    "Matemática": 53,
+    "Química": 9
+   },
+   "total": 437
+  },
+  "3": {
+   "vagas25": {
+    "Ciências": 13,
+    "Educação Especial – DI": 12,
+    "Educação Especial – TEA": 9,
+    "Educação Física": 12,
+    "Física": 16,
+    "Geografia": 7,
+    "Língua Inglesa": 13,
+    "Língua Portuguesa": 36,
+    "Matemática": 39,
+    "Química": 7
+   },
+   "vagas40": {
+    "Ciências": 26,
+    "Educação Física": 24,
+    "Física": 24,
+    "Geografia": 21,
+    "Língua Inglesa": 25,
+    "Língua Portuguesa": 55,
+    "Matemática": 58,
+    "Química": 13
+   },
+   "total": 410
+  },
+  "4": {
+   "vagas25": {
+    "Ciências": 11,
+    "Educação Especial – DI": 11,
+    "Educação Especial – TEA": 8,
+    "Educação Física": 11,
+    "Física": 13,
+    "Geografia": 6,
+    "Língua Inglesa": 11,
+    "Língua Portuguesa": 31,
+    "Matemática": 35,
+    "Química": 6
+   },
+   "vagas40": {
+    "Ciências": 22,
+    "Educação Física": 20,
+    "Física": 19,
+    "Geografia": 18,
+    "Língua Inglesa": 21,
+    "Língua Portuguesa": 46,
+    "Matemática": 56,
+    "Química": 11
+   },
+   "total": 356
+  },
+  "5": {
+   "vagas25": {
+    "Ciências": 13,
+    "Educação Especial – DI": 12,
+    "Educação Especial – TEA": 9,
+    "Educação Física": 11,
+    "Física": 16,
+    "Geografia": 7,
+    "Língua Inglesa": 12,
+    "Língua Portuguesa": 36,
+    "Matemática": 38,
+    "Química": 7
+   },
+   "vagas40": {
+    "Ciências": 25,
+    "Educação Física": 23,
+    "Física": 22,
+    "Geografia": 20,
+    "Língua Inglesa": 25,
+    "Língua Portuguesa": 54,
+    "Matemática": 60,
+    "Química": 13
+   },
+   "total": 403
+  },
+  "6": {
+   "vagas25": {
+    "Ciências": 10,
+    "Educação Especial – DI": 8,
+    "Educação Especial – TEA": 7,
+    "Educação Física": 9,
+    "Física": 11,
+    "Geografia": 5,
+    "Língua Inglesa": 9,
+    "Língua Portuguesa": 26,
+    "Matemática": 30,
+    "Química": 5
+   },
+   "vagas40": {
+    "Ciências": 19,
+    "Educação Física": 18,
+    "Física": 18,
+    "Geografia": 15,
+    "Língua Inglesa": 18,
+    "Língua Portuguesa": 40,
+    "Matemática": 44,
+    "Química": 10
+   },
+   "total": 302
+  },
+  "7": {
+   "vagas25": {
+    "Ciências": 6,
+    "Educação Especial – DI": 6,
+    "Educação Especial – TEA": 4,
+    "Educação Física": 6,
+    "Física": 7,
+    "Geografia": 3,
+    "Língua Inglesa": 6,
+    "Língua Portuguesa": 18,
+    "Matemática": 21,
+    "Química": 3
+   },
+   "vagas40": {
+    "Ciências": 13,
+    "Educação Física": 12,
+    "Física": 12,
+    "Geografia": 10,
+    "Língua Inglesa": 12,
+    "Língua Portuguesa": 27,
+    "Matemática": 29,
+    "Química": 7
+   },
+   "total": 202
+  },
+  "8": {
+   "vagas25": {
+    "Ciências": 10,
+    "Educação Especial – DI": 8,
+    "Educação Especial – TEA": 7,
+    "Educação Física": 8,
+    "Física": 11,
+    "Geografia": 5,
+    "Língua Inglesa": 9,
+    "Língua Portuguesa": 26,
+    "Matemática": 31,
+    "Química": 4
+   },
+   "vagas40": {
+    "Ciências": 19,
+    "Educação Física": 18,
+    "Física": 18,
+    "Geografia": 15,
+    "Língua Inglesa": 18,
+    "Língua Portuguesa": 40,
+    "Matemática": 44,
+    "Química": 10
+   },
+   "total": 301
+  },
+  "9": {
+   "vagas25": {
+    "Ciências": 8,
+    "Educação Especial – DI": 8,
+    "Educação Especial – TEA": 6,
+    "Educação Física": 8,
+    "Física": 9,
+    "Geografia": 5,
+    "Língua Inglesa": 8,
+    "Língua Portuguesa": 22,
+    "Matemática": 25,
+    "Química": 4
+   },
+   "vagas40": {
+    "Ciências": 16,
+    "Educação Física": 15,
+    "Física": 15,
+    "Geografia": 13,
+    "Língua Inglesa": 15,
+    "Língua Portuguesa": 33,
+    "Matemática": 37,
+    "Química": 8
+   },
+   "total": 255
+  },
+  "10": {
+   "vagas25": {
+    "Ciências": 11,
+    "Educação Especial – DI": 10,
+    "Educação Especial – TEA": 7,
+    "Educação Física": 10,
+    "Física": 13,
+    "Geografia": 6,
+    "Língua Inglesa": 11,
+    "Língua Portuguesa": 31,
+    "Matemática": 36,
+    "Química": 6
+   },
+   "vagas40": {
+    "Ciências": 22,
+    "Educação Física": 20,
+    "Física": 19,
+    "Geografia": 18,
+    "Língua Inglesa": 21,
+    "Língua Portuguesa": 46,
+    "Matemática": 55,
+    "Química": 11
+   },
+   "total": 353
+  },
+  "11": {
+   "vagas25": {
+    "Ciências": 8,
+    "Educação Especial – DI": 7,
+    "Educação Especial – TEA": 6,
+    "Educação Física": 8,
+    "Física": 9,
+    "Geografia": 4,
+    "Língua Inglesa": 7,
+    "Língua Portuguesa": 22,
+    "Matemática": 26,
+    "Química": 4
+   },
+   "vagas40": {
+    "Ciências": 16,
+    "Educação Física": 15,
+    "Física": 15,
+    "Geografia": 13,
+    "Língua Inglesa": 15,
+    "Língua Portuguesa": 33,
+    "Matemática": 36,
+    "Química": 8
+   },
+   "total": 252
+  }
+ }
+}

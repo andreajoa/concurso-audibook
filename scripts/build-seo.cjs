@@ -765,6 +765,7 @@ for (const p of products) {
     `<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Audiobook em ${nCap} capítulos</h3><p>Ouça no ônibus, na cozinha ou caminhando. Português brasileiro, com download.</p></article>` +
     '<article class="combo-card combo-card-bonus"><span class="combo-num">+</span><h3>Resumo em áudio</h3><p>Revisão narrada para a véspera da prova.</p></article>' +
     '</div></section>' +
+    (p.slug.startsWith('see-sp-professor-') ? '<section class="combo-section"><h2>Vagas na sua região e cidade de prova</h2><p>Veja quantas vagas há em cada uma das 11 regiões de classificação, em quais das 77 cidades a prova é aplicada e a qual região pertence o seu município: <a href="/concurso-professor-see-sp-2027">concurso professor SEE-SP 2027 por região e cidade</a>.</p></section>' : '') +
     (hasSample || hasAudioSample ? '<section class="combo-section combo-sample" id="amostra"><h2>Experimente antes de comprar</h2>' +
       '<p>Selecionamos as partes mais fortes da apostila: capa, sumário, páginas de teoria com dicas e quadros e um trecho dos simulados.</p><div class="combo-sample-row">' +
       (hasSample ? `<a class="combo-sample-pdf" href="${sampleBase}.pdf?v=${ASSET_VERSION}" target="_blank" rel="noopener">Ler a amostra em PDF</a>` : '') +
@@ -1656,6 +1657,113 @@ for (const c of cities) {
   });
 }
 
+
+/* ------------------------------------------------------------------ *
+ * Concurso SEE-SP (PEFM 2027): página central + 11 regiões de classificação
+ * Fonte única: content/seesp-regioes.json, extraído dos Anexos II, II-A e III-A
+ * do edital (FGV, 19/11/2026). Uma página por REGIÃO (conteúdo próprio: vagas,
+ * URE, cidades de prova e municípios atendidos), e não uma por cidade, para não
+ * repetir a mesma página trocando só o nome do município.
+ * ------------------------------------------------------------------ */
+var seespRegioes = [];
+{
+  const SEESP = require('../content/seesp-regioes.json');
+  const HUB = '/concurso-professor-see-sp-2027';
+  const titleCase = s => s.toLowerCase().replace(/(^|[\s'-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()).replace(/ (Da|De|Do|Das|Dos|D')(?= )/g, m => m.toLowerCase());
+  const slugify = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const seeProducts = products.filter(p => p.slug.startsWith('see-sp-professor-'));
+  const disciplinaDoProduto = p => (p.storefront && p.storefront.concurso && p.storefront.concurso.cargo || p.shortName).replace(/^Professor de /, '').replace(/ \(PEFM\)$/, '');
+  const regioes = Object.entries(SEESP.regioes).map(([n, r]) => {
+    const sedes = SEESP.sedes.filter(s => s.regiao.includes(Number(n))).map(s => ({ ...s, nome: titleCase(s.sede) }));
+    const principais = sedes.slice().sort((a, b) => b.abrangidos.length - a.abrangidos.length).slice(0, 3).map(s => s.nome);
+    const destaque = sedes.find(s => /CAMPINAS|SÃO PAULO|SANTOS|RIBEIRÃO PRETO|SOROCABA|BAURU|SÃO JOSÉ DOS CAMPOS|PIRACICABA|SÃO JOSÉ DO RIO PRETO|PRESIDENTE PRUDENTE|ARAÇATUBA/.test(s.sede));
+    const nomes = [...new Set([destaque && destaque.nome, ...principais].filter(Boolean))].slice(0, 3);
+    const municipios = [...new Set(sedes.flatMap(s => s.abrangidos))];
+    return { n: Number(n), ...r, sedes, nomes, municipios, path: `${HUB}/regiao-${n}-${slugify(nomes[0])}` };
+  });
+  seespRegioes = regioes;
+  const tabelaVagas = r => {
+    const discs = Object.keys(r.vagas25);
+    return '<div class="tabela-wrap"><table class="tabela"><thead><tr><th>Componente</th><th>Jornada de 25h</th><th>Jornada de 40h</th><th>Total</th></tr></thead><tbody>' +
+      discs.map(d => { const a = r.vagas25[d] || 0, b = r.vagas40[d] || 0; return `<tr><td>${esc(d)}</td><td>${a}</td><td>${b || '—'}</td><td>${a + b}</td></tr>`; }).join('') +
+      `</tbody><tfoot><tr><th>Total da região</th><th>${Object.values(r.vagas25).reduce((x, y) => x + y, 0)}</th><th>${Object.values(r.vagas40).reduce((x, y) => x + y, 0)}</th><th>${fmtInt(r.total)}</th></tr></tfoot></table></div>`;
+  };
+  const cards = seeProducts.length ? '<div class="ac-grid">' + seeProducts.map(p => apostilaCard(p)).join('') + '</div>' : '';
+  const fonte = '<p class="page-note">Fonte: edital de abertura do concurso PEFM da Secretaria da Educação do Estado de São Paulo, organizado pela FGV e publicado em 19/11/2026 (Anexos II, II-A e III-A), conferido em 27/11/2026. Confirme sempre no site oficial: <a href="https://conhecimento.fgv.br/concursos/concursoseducsp27" rel="external nofollow">conhecimento.fgv.br/concursos/concursoseducsp27</a>.</p>';
+  const comoFunciona = '<h2>Como funciona o concurso</h2><p>A inscrição é feita no site da FGV, com escolha do componente curricular, da jornada (25h ou 40h) e de uma região de classificação. A prova objetiva tem 30 questões (10 de gestão de sala de aula, comuns a todos, e 20 específicas), a discursiva tem 2 questões de até 20 linhas, e há uma prova prática de simulação de aula em vídeo, enviado de 19/03 a 02/04/2027. As provas objetiva e discursiva estão previstas para 25/04/2027. O município escolhido para fazer a prova não altera a região de classificação nem vincula a escolha de vagas.</p>';
+
+  for (const r of regioes) {
+    const outras = regioes.filter(o => o.n !== r.n);
+    const linhas = r.sedes.map(s => `<tr><td>${esc(s.nome)}</td><td>${esc(s.ures.join(', '))}</td><td>${esc(s.abrangidos.join(', '))}</td></tr>`).join('');
+    const maiores = Object.entries({ ...r.vagas25 }).map(([d, v]) => [d, v + (r.vagas40[d] || 0)]).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    const body =
+      `<h2>Vagas para professor na Região ${r.n} (${esc(r.nomes.join(', '))})</h2>` +
+      `<p>A Região ${r.n} de classificação reúne ${r.sedes.reduce((x, s) => x + s.ures.length, 0)} Unidade(s) Regional(is) de Ensino e ${fmtInt(r.municipios.length)} município(s) atendido(s). Segundo o Anexo III-A do edital, são ${fmtInt(r.total)} vagas na região, com mais vagas em ${esc(maiores.map(([d, v]) => `${d} (${v})`).join(', '))}.</p>` +
+      tabelaVagas(r) +
+      '<p>Na Educação Especial (DI e TEA) só há vagas na jornada de 25 horas. As vagas reservadas a pessoas com deficiência são apuradas no âmbito estadual (Anexo III), não por região.</p>' +
+      `<h2>Cidades de prova e municípios atendidos na Região ${r.n}</h2>` +
+      '<div class="tabela-wrap"><table class="tabela"><thead><tr><th>Município-sede da prova</th><th>Unidade Regional de Ensino (URE)</th><th>Municípios atendidos</th></tr></thead><tbody>' + linhas + '</tbody></table></div>' +
+      comoFunciona +
+      '<h2>Apostilas para o concurso de professor da SEE-SP</h2><p>Cada apostila segue o Anexo VI do edital para o componente curricular, com gestão de sala de aula, questões comentadas no formato da FGV, simulados, discursiva, roteiro da aula em vídeo e audiobook.</p>' + cards +
+      '<h2>Outras regiões do concurso</h2><ul class="city-links">' + outras.map(o => `<li><a href="${o.path}">Região ${o.n} — ${esc(o.nomes.join(', '))}</a></li>`).join('') + `</ul><p><a href="${HUB}">Voltar ao panorama do concurso e à busca por cidade</a>.</p>` +
+      fonte + disclaimer;
+    const faq = [
+      { q: `Quantas vagas de professor há na Região ${r.n} da SEE-SP?`, a: `O Anexo III-A do edital distribui ${fmtInt(r.total)} vagas para a Região ${r.n}, somando as jornadas de 25 e 40 horas. Os componentes com mais vagas na região são ${maiores.map(([d, v]) => `${d} (${v})`).join(', ')}.` },
+      { q: `Onde faço a prova se moro em ${r.municipios[0]}?`, a: `O candidato escolhe, na inscrição, um dos 77 municípios-sede de aplicação. Na Região ${r.n}, as cidades de prova são ${r.sedes.map(s => s.nome).join(', ')}. A escolha do município de prova não altera a região de classificação.` },
+      { q: `Quais Unidades Regionais de Ensino fazem parte da Região ${r.n}?`, a: `Integram a Região ${r.n}: ${r.sedes.flatMap(s => s.ures).join(', ')} (Anexo II do edital).` }
+    ];
+    renderPage({
+      path: r.path,
+      title: `Concurso professor SEE-SP 2027 — Região ${r.n}: ${r.nomes.join(', ')}`,
+      metaTitle: `Professor SEE-SP 2027 Região ${r.n} (${r.nomes[0]}): vagas | Trilha Aprova`,
+      description: `Vagas por disciplina, cidades de prova e os ${r.municipios.length} municípios da Região ${r.n} (${r.nomes[0]}) no concurso de professor SEE-SP 2027 (FGV).`,
+      kicker: `SEE-SP 2027 · REGIÃO ${r.n} · ${fmtInt(r.total)} VAGAS`,
+      lead: `Guia da Região ${r.n} de classificação do concurso PEFM da Secretaria da Educação de São Paulo: quantas vagas há em cada componente curricular, em quais cidades a prova é aplicada e quais municípios são atendidos por cada Unidade Regional de Ensino.`,
+      keyFacts: [['Região de classificação', `Região ${r.n}`], ['Vagas na região', fmtInt(r.total)], ['Cidades de prova', String(r.sedes.length)], ['Municípios atendidos', fmtInt(r.municipios.length)], ['Banca', 'FGV'], ['Prova (data provável)', '25/04/2027']],
+      body, faq,
+      nodes: [{ '@type': 'WebPageElement', '@id': ORIGIN + r.path + '#regiao', name: `Região ${r.n} do concurso de professor da SEE-SP`,
+        about: { '@type': 'AdministrativeArea', name: `Região ${r.n} de classificação — ${r.nomes.join(', ')}`, containsPlace: r.sedes.map(s => ({ '@type': 'City', name: s.nome, addressRegion: 'SP', addressCountry: 'BR' })) },
+        isPartOf: { '@id': ORIGIN + r.path + '#webpage' } }],
+      trail: [['Concursos', '/concursos'], ['Concurso professor SEE-SP 2027', HUB]],
+      styles: ['/apostila-cards.css'], scripts: ['/apostila-cards.js'],
+      priority: '0.7'
+    });
+  }
+
+  const todos = regioes.flatMap(r => r.sedes.flatMap(s => s.abrangidos.map(m => [m, r, s]))).filter(([m]) => !/^São Paulo \(/.test(m));
+  todos.push(['São Paulo (capital)', regioes.find(r => r.n === 1), regioes.find(r => r.n === 1).sedes.find(s => s.sede === 'SÃO PAULO')]);
+  todos.sort((a, b) => a[0].localeCompare(b[0], 'pt-BR'));
+  const letras = {};
+  for (const t of todos) (letras[t[0][0].toUpperCase()] = letras[t[0][0].toUpperCase()] || []).push(t);
+  const busca = Object.entries(letras).map(([L, arr]) => `<h3>${esc(L)}</h3><ul class="municipio-links">` +
+    arr.map(([m, r, s]) => `<li><a href="${r.path}">${esc(m)}</a> — Região ${r.n}, prova em ${esc(s.nome)}</li>`).join('') + '</ul>').join('');
+  const hubBody =
+    '<h2>As 11 regiões de classificação</h2><div class="tabela-wrap"><table class="tabela"><thead><tr><th>Região</th><th>Principais cidades</th><th>Vagas</th><th>Municípios atendidos</th></tr></thead><tbody>' +
+    regioes.map(r => `<tr><td><a href="${r.path}">Região ${r.n}</a></td><td>${esc(r.nomes.join(', '))}</td><td>${fmtInt(r.total)}</td><td>${fmtInt(r.municipios.length)}</td></tr>`).join('') +
+    '</tbody></table></div>' + comoFunciona +
+    '<h2>Apostilas por componente curricular</h2>' + cards +
+    '<h2>Encontre a sua cidade</h2><p>Todos os municípios atendidos pelas Unidades Regionais de Ensino, em ordem alfabética, com a região de classificação e a cidade onde a prova é aplicada (Anexo II-A).</p>' + busca +
+    fonte + disclaimer;
+  renderPage({
+    path: HUB,
+    title: 'Concurso professor SEE-SP 2027: vagas por região e cidade de prova',
+    metaTitle: 'Concurso Professor SEE-SP 2027: vagas por região | Trilha Aprova',
+    description: 'As 5.000 vagas do concurso de professor da SEE-SP 2027 (FGV) por região, as 77 cidades de prova e os municípios atendidos por cada uma.',
+    kicker: 'SEE-SP 2027 · FGV · 5.000 VAGAS',
+    lead: 'Panorama do concurso de Professor de Ensino Fundamental e Médio da Secretaria da Educação de São Paulo: as 11 regiões de classificação, as vagas de cada uma, as 77 cidades de prova e a lista completa de municípios atendidos, para você saber onde concorrer e onde fazer a prova.',
+    keyFacts: [['Vagas', '5.000'], ['Regiões de classificação', '11'], ['Cidades de prova', '77'], ['Unidades Regionais de Ensino', '91'], ['Banca', 'FGV'], ['Prova (data provável)', '25/04/2027']],
+    body: hubBody,
+    faq: [
+      { q: 'Em quantas cidades é aplicada a prova da SEE-SP 2027?', a: 'O Anexo II-A do edital lista 77 municípios-sede de aplicação, correspondentes às 91 Unidades Regionais de Ensino do estado. O candidato escolhe um deles na inscrição.' },
+      { q: 'A cidade da prova define onde vou trabalhar?', a: 'Não. A escolha do município de prova não altera a região nem a URE indicadas na inscrição e não vincula a escolha de vagas (item 4 do Capítulo 2 do edital).' },
+      { q: 'Qual região tem mais vagas?', a: 'A Região 1, que reúne a capital e a Grande São Paulo, concentra 1.729 das 5.000 vagas, segundo o Anexo III-A.' }
+    ],
+    trail: [['Concursos', '/concursos']],
+    styles: ['/apostila-cards.css'], scripts: ['/apostila-cards.js'],
+    priority: '0.8'
+  });
+}
+
 /* ------------------------------------------------------------------ *
  * Página de autoria (E-E-A-T)
  * ------------------------------------------------------------------ */
@@ -2441,6 +2549,9 @@ const llms =
   '## Apostilas\n\n' +
   products.map(p => `- [${p.shortName}](${ORIGIN}/apostilas/${p.slug}): ${p.description} Preço: ${brl(p.priceCents)}, pagamento único. Público: ${p.audience}. Referência: ${p.contest}, banca ${p.examBoard}, ${p.edition}.`).join('\n') +
   `\n- [Catálogo completo](${ORIGIN}/apostilas-para-concurso): todas as apostilas disponíveis com PDF e audiobook.\n\n` +
+  '## Concurso professor SEE-SP 2027 por região\n\n' +
+  `- [Panorama do concurso e busca por cidade](${ORIGIN}/concurso-professor-see-sp-2027): as 5.000 vagas por região de classificação, as 77 cidades de prova e os municípios atendidos (edital FGV de 19/11/2026).\n` +
+  seespRegioes.map(r => `- [Região ${r.n} — ${r.nomes.join(', ')}](${ORIGIN}${r.path}): ${fmtInt(r.total)} vagas, ${r.sedes.length} cidade(s) de prova e ${r.municipios.length} município(s) atendido(s).`).join('\n') + '\n\n' +
   '## Guias de estudo\n\n' +
   guides.map(g => `- [${g.title}](${ORIGIN}/${g.slug}): ${g.description}`).join('\n') +
   '\n\n## Matérias (atualizadas semanalmente)\n\n' +
