@@ -4198,6 +4198,148 @@
       "downsell": []
     }
   },
+  "tjsp-oficial-de-justica-2027": {
+    "slug": "tjsp-oficial-de-justica-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Tribunal de Justiça de São Paulo - Edital 01/2026 (Oficial de Justiça)",
+    "examBoard": "VUNESP",
+    "category": "Concursos públicos",
+    "name": "Apostila Oficial de Justiça TJ-SP 2026 + audiobook",
+    "shortName": "Oficial de Justiça TJ-SP 2026",
+    "edition": "Edição pós-edital 01/2026, de 27/11/2026, com a legislação vigente",
+    "author": "Trilha Aprova",
+    "audience": "Oficial de Justiça, Capital e 1ª à 10ª Região Administrativa Judiciária, TJ-SP",
+    "currency": "brl",
+    "priceCents": 4190,
+    "stripePriceEnv": "STRIPE_PRICE_TJSP_OFICIAL_JUSTICA_2027",
+    "description": "Apostila digital para Oficial de Justiça do Tribunal de Justiça de São Paulo, feita item por item pelo Anexo VIII do Edital de Abertura nº 01/2026 (Vunesp; 132 vagas + cadastro de reserva; prova em 14/3/2027), com a legislação vigente. PDF único de 1.946 páginas com 2.465 questões comentadas de cinco alternativas, no modelo Vunesp, 2 simulados de 70 questões (15 de Português, 40 de Específicos e 15 de Gerais), módulo de discursiva com questões-modelo do dia a dia do oficial e caderno de lei seca exatamente com os artigos do edital. Específicos: o Oficial de Justiça no CPC (citação, hora certa, edital, intimação, arresto, penhora, arrombamento e avaliação), Normas de Serviço da Corregedoria (Capítulo VII: deveres, vedações, prazos de cumprimento de mandados, certidões e ressarcimento), Processo Penal (citações e intimações, busca, prisão, nulidades, habeas corpus e Juizados), Direito Penal (ação penal, prescrição e crimes contra a Administração e a Justiça), Constitucional, Estatuto dos Funcionários Públicos de SP e improbidade, Código Civil e LINDB, Lei de Execução Fiscal, Resolução CNJ 354/2020 e taxa judiciária (Lei 11.608/2003). Gerais: Estatuto da Pessoa com Deficiência e atualidades, Matemática e Raciocínio Lógico e Informática (Windows, Microsoft 365, Word, Excel, Teams e OneDrive). Audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.946 páginas",
+      "2.465 questões comentadas de 5 alternativas, modelo Vunesp",
+      "2 simulados de 70 questões: 15 Português + 40 Específicos + 15 Gerais",
+      "O Oficial no CPC: citação, hora certa, penhora, arrombamento e avaliação",
+      "Normas da Corregedoria: prazos dos mandados, vedações e certidões",
+      "Discursiva com questões-modelo do dia a dia do oficial",
+      "Lei seca com exatamente os artigos do Anexo VIII",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "tjsp-oficial-de-justica-2027/images/capa.png",
+      "pdfKey": "tjsp-oficial-de-justica-2027/docs/apostila-tjsp-oficial-de-justica-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Oficial_de_Justica_TJSP_2026.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Oficial de Justiça TJ-SP",
+        "key": "tjsp-oficial-de-justica-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Oficial_de_Justica_TJSP.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso, a prova da Vunesp e Língua Portuguesa",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/01-a-prova-e-portugues.mp3",
+          "downloadName": "01-a-prova-e-portugues.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Direito Penal: ação penal, prescrição e os crimes do edital",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/02-direito-penal.mp3",
+          "downloadName": "02-direito-penal.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Processo Penal: citações, intimações, busca, prisão, nulidades e habeas corpus",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/03-processo-penal.mp3",
+          "downloadName": "03-processo-penal.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Processo Civil: o Oficial de Justiça, citação, hora certa, penhora e avaliação",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/04-processo-civil-do-oficial.mp3",
+          "downloadName": "04-processo-civil-do-oficial.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito Constitucional e Direito Administrativo",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/05-constitucional-e-administrativo.mp3",
+          "downloadName": "05-constitucional-e-administrativo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Civil e Lei de Introdução",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/06-direito-civil.mp3",
+          "downloadName": "06-direito-civil.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Normas da Corregedoria, Execução Fiscal, Resolução CNJ 354 e taxa judiciária",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/07-normas-da-corregedoria.mp3",
+          "downloadName": "07-normas-da-corregedoria.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Estatuto da Pessoa com Deficiência, Matemática, Informática e discursiva",
+          "key": "tjsp-oficial-de-justica-2027/audio/pt-br-v1/08-gerais-e-discursiva.mp3",
+          "downloadName": "08-gerais-e-discursiva.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-03-14",
+      "confirmed": false,
+      "source": "VUNESP, Edital de Abertura 01/2026 TJSP (Oficial de Justiça) — inscrições até 10/12/2026, provas objetiva e discursiva previstas para 14/03/2027",
+      "sourceUrl": "https://www.vunesp.com.br"
+    },
+    "seoTitle": "Apostila Oficial de Justiça TJ-SP 2026 + audiobook | Trilha Aprova",
+    "seoDescription": "Apostila Oficial de Justiça TJ-SP 2026 (Vunesp): 1.946 páginas, 2.465 questões comentadas, Normas da Corregedoria, lei seca e audiobook.",
+    "storefront": {
+      "badge": "TJ-SP 2026 • OFICIAL DE JUSTIÇA • VUNESP",
+      "cover3d": "/assets/capa-tjsp-oficial-de-justica-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Oficial de Justiça TJ-SP 2026: o CPC do oficial, as Normas da Corregedoria e 2.465 questões no modelo Vunesp",
+      "shortTag": "TJ-SP · Oficial de Justiça",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "Teoria de todo o Anexo VIII + discursiva"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 70 questões + 2.325 questões de fixação comentadas"
+        },
+        {
+          "titulo": "Caderno de Legislação",
+          "detalhe": "Lei seca do edital: CPC, CPP, CP, CC, CF, Estatuto SP, NSCGJ, LEF e EPD"
+        }
+      ],
+      "subheadline": "Oficial de Justiça, Capital e 1ª à 10ª RAJ, TJ-SP · Banca VUNESP · Prova prevista para 14/03/2027",
+      "comboCovers": [
+        "/assets/capa-tjsp-oficial-de-justica-2027-simulados-3d.webp",
+        "/assets/capa-tjsp-oficial-de-justica-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Tribunal de Justiça de SP",
+        "cargo": "Oficial de Justiça",
+        "salario": "R$ 9.856,95",
+        "vagas": "132 + cadastro de reserva",
+        "taxa": null,
+        "inscricoes": "28/10 a 10/12/2026",
+        "requisito": "Ensino superior em qualquer área",
+        "url": "https://www.vunesp.com.br",
+        "paginas": 1946,
+        "questoes": 2465
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "aparecida-de-goiania-pe1-pedagogia-2026": {
     "slug": "aparecida-de-goiania-pe1-pedagogia-2026",
     "active": true,

@@ -46,6 +46,10 @@ PRODUCT_EXPECTATIONS = {
         'imagePages': list(range(226, 285)),
         'topics': ['fiscal de obras', 'matão', 'ibam', 'gabarito', 'simulado'],
     },
+    'tjsp-oficial-de-justica-2027': {
+        'pages': 1946,
+        'topics': ['oficial de justiça', 'tj-sp', 'corregedoria', 'gabarito', 'simulado'],
+    },
     'tjsp-escrevente-tecnico-judiciario-2026': {
         'pages': 1060,
         'topics': ['escrevente técnico judiciário', 'tjsp', 'vunesp', 'gabarito', 'simulado'],
