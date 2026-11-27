@@ -6,6 +6,7 @@ const { getProduct, catalog } = require('../lib/catalog');
 const { rpc } = require('../lib/crm-rpc');
 const footer = require('fs').readFileSync(require('path').join(__dirname, '../lib/site-footer.html'), 'utf8');
 const { signedProductAssets } = require('../lib/r2');
+const { localDoPedido, somarLocal } = require('../lib/geo');
 
 const esc = value => String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -246,6 +247,9 @@ module.exports = async (req, res) => {
           return res.end();
         }
       }
+      // Cidades de onde a compradora abre o material (dashboard). Só grava quando aparece cidade nova.
+      const novaLista = somarLocal(purchase.session.metadata?.acesso_locais, localDoPedido(req));
+      if (novaLista) await updateSessionMetadata(sessionId, { acesso_locais: novaLista }).catch(error => console.error('acesso_local', error));
       product = getProduct(slugPedido || purchase.slug);
       seletorCliente = seletorDoCliente(sessionId, purchase.slugs, product.slug);
     }
