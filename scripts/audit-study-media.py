@@ -138,6 +138,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1062,
         'topics': ['língua portuguesa', 'literatura', 'maranhão', 'gabarito', 'simulado'],
     },
+    'receita-federal-analista-tributario-2027': {
+        'pages': 3316,
+        'topics': ['analista-tributário', 'receita federal', 'código tributário nacional', 'gabarito', 'simulado'],
+    },
     'inss-tecnico-do-seguro-social-2026': {
         'pages': 1252,
         'topics': ['técnico do seguro social', 'inss', 'seguridade social', 'gabarito', 'simulado'],

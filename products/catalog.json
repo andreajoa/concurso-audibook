@@ -7778,6 +7778,168 @@
       "downsell": []
     }
   },
+  "receita-federal-analista-tributario-2027": {
+    "slug": "receita-federal-analista-tributario-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Receita Federal — Analista-Tributário (pré-edital; base: Edital nº 1/2022, FGV)",
+    "examBoard": "FGV (contratada para o novo concurso; também banca do edital de 2022)",
+    "category": "Concursos públicos",
+    "name": "Apostila Receita Federal 2027 Analista-Tributário · pré-edital + audiobook",
+    "shortName": "Receita Federal Analista-Tributário — Pré-edital 2027",
+    "edition": "Pré-edital · edição de 27/11/2026 · legislação vigente em novembro de 2026",
+    "author": "Trilha Aprova",
+    "audience": "Analista-Tributário da Receita Federal do Brasil (nível superior)",
+    "currency": "brl",
+    "priceCents": 10390,
+    "stripePriceEnv": "STRIPE_PRICE_RECEITA_FEDERAL_ANALISTA_TRIBUTARIO_2027",
+    "description": "Apostila digital pré-edital para Analista-Tributário da Receita Federal do Brasil, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e com todo o conteúdo pela legislação vigente em novembro de 2026, conferida no texto oficial do Planalto. PDF único de 3.316 páginas com 3.818 questões comentadas de múltipla escolha (A a E, modelo FGV), 2 simulados de 140 questões na distribuição da prova, módulo de discursiva com questões-modelo e caderno de lei seca. Conhecimentos básicos: Língua Portuguesa, Língua Inglesa, Raciocínio Lógico-Matemático e Estatística, Contabilidade Geral, Administração Geral e Pública e Fluência em Dados. Conhecimentos específicos: Direito Constitucional, Direito Administrativo, Direito Tributário (CTN, Constituição com a reforma tributária da EC 132/2023, IBS, CBS e Imposto Seletivo, processo administrativo fiscal do Decreto 70.235/1972), Direito Previdenciário, Legislação Tributária (II, IE, ITR, IR com a Lei 15.270/2025, IPI, IOF, PIS/Cofins, CSLL, Cides e LC 214/2025) e Legislação Aduaneira (Regulamento Aduaneiro). Audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 3.316 páginas",
+      "3.818 questões comentadas de múltipla escolha (A a E, modelo FGV)",
+      "2 simulados de 140 questões: 75 básicas + 65 específicas, como na prova de 2022",
+      "CTN e processo administrativo fiscal na redação vigente (impugnação em 20 dias úteis)",
+      "Reforma tributária: IBS, CBS, Imposto Seletivo e a transição de 2026 a 2033",
+      "IR com a Lei 15.270/2025 e Legislação Aduaneira pelo Regulamento Aduaneiro",
+      "Discursiva de 30 pontos com questões-modelo comentadas",
+      "Caderno de lei seca: CF tributária, CTN, PAF, Lei 8.137 e Regulamento Aduaneiro",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "receita-federal-analista-tributario-2027/images/capa.png",
+      "pdfKey": "receita-federal-analista-tributario-2027/docs/apostila-receita-federal-analista-tributario-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Receita_Federal_Analista_Tributario_Pre_Edital.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Receita Federal Analista-Tributário",
+        "key": "receita-federal-analista-tributario-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_Receita_Federal_Analista_Tributario.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A situação do concurso, a prova da FGV, Língua Portuguesa e Língua Inglesa",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/01-prova-portugues-e-ingles.mp3",
+          "downloadName": "01-prova-portugues-e-ingles.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Raciocínio lógico, estatística e Contabilidade Geral",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/02-logica-estatistica-e-contabilidade.mp3",
+          "downloadName": "02-logica-estatistica-e-contabilidade.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Administração Geral e Pública e Fluência em Dados",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/03-administracao-e-fluencia-em-dados.mp3",
+          "downloadName": "03-administracao-e-fluencia-em-dados.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Direito Constitucional e Direito Administrativo",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/04-direito-constitucional-e-administrativo.mp3",
+          "downloadName": "04-direito-constitucional-e-administrativo.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito Tributário: CTN, sistema tributário com a reforma e processo administrativo fiscal",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/05-direito-tributario.mp3",
+          "downloadName": "05-direito-tributario.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Previdenciário: seguridade, segurados, custeio, arrecadação e crimes",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/06-direito-previdenciario.mp3",
+          "downloadName": "06-direito-previdenciario.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Legislação Tributária: impostos e contribuições federais e a reforma do consumo",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/07-legislacao-tributaria.mp3",
+          "downloadName": "07-legislacao-tributaria.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Legislação Aduaneira e prova discursiva",
+          "key": "receita-federal-analista-tributario-2027/audio/pt-br-v1/08-legislacao-aduaneira-e-discursiva.mp3",
+          "downloadName": "08-legislacao-aduaneira-e-discursiva.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "O concurso da Receita Federal já tem edital publicado?",
+        "a": "Até 27/11/2026, não. O concurso foi autorizado pela Portaria MGI nº 5.505, de 3/7/2026, com 146 vagas de nível superior (116 para Analista-Tributário e 30 para Auditor-Fiscal), e a FGV foi contratada como banca. O edital deve sair até o início de janeiro de 2027. Por isso esta apostila é pré-edital e segue o último edital, de 2022."
+      },
+      {
+        "q": "Como foi a prova de Analista-Tributário no último concurso?",
+        "a": "No Edital nº 1/2022, da FGV, a prova objetiva teve 140 questões de múltipla escolha com cinco alternativas: 75 de conhecimentos básicos e 65 de específicos. Era preciso acertar pelo menos 50% em cada módulo, sem zerar disciplina. Houve ainda 1 questão discursiva de 30 pontos."
+      },
+      {
+        "q": "A apostila está atualizada com a reforma tributária?",
+        "a": "Sim. Traz a Constituição com a EC nº 132/2023 (IBS, CBS, Imposto Seletivo e Comitê Gestor), a transição do ADCT de 2026 a 2033, a LC nº 214/2025, a reforma do IR da Lei nº 15.270/2025 e o CTN e o Decreto 70.235/1972 na redação vigente, como as 10 hipóteses de suspensão do art. 151 e a impugnação em 20 dias úteis."
+      },
+      {
+        "q": "Qual é o requisito e a remuneração do cargo?",
+        "a": "No edital de 2022, o cargo exigia curso superior completo em qualquer área e a remuneração inicial era de R$ 11.684,39. Os valores do novo edital podem ser atualizados."
+      },
+      {
+        "q": "E se o novo edital mudar o conteúdo?",
+        "a": "Quem comprar recebe sem custo a versão atualizada, conferida item por item com o novo edital."
+      }
+    ],
+    "seoTitle": "Apostila Receita Federal 2027 Analista-Tributário | Trilha Aprova",
+    "seoDescription": "Apostila Receita Federal Analista-Tributário pré-edital: 3.316 páginas, 3.818 questões modelo FGV, reforma tributária, lei seca e audiobook.",
+    "storefront": {
+      "badge": "RECEITA FEDERAL • ANALISTA-TRIBUTÁRIO • EDIÇÃO PRÉ-EDITAL",
+      "cover3d": "/assets/capa-receita-federal-analista-tributario-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Comece antes do edital: Analista-Tributário da Receita Federal com a reforma tributária e 3.818 questões no modelo FGV",
+      "shortTag": "Receita Federal · Analista-Tributário",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "3.316 páginas: básicos + todos os específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 140 questões + 3.538 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Lei Seca",
+          "detalhe": "discursiva de 30 pontos, CF tributária, CTN, PAF e Regulamento Aduaneiro"
+        }
+      ],
+      "subheadline": "Analista-Tributário · Nível superior · Banca FGV · Edição pré-edital",
+      "comboCovers": [
+        "/assets/capa-receita-federal-analista-tributario-2027-simulados-3d.webp",
+        "/assets/capa-receita-federal-analista-tributario-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Nacional (unidades da Receita Federal)",
+        "cargo": "Analista-Tributário da Receita Federal do Brasil",
+        "salario": "R$ 11.684,39 (edital de 2022)",
+        "vagas": "116 autorizadas (Portaria MGI 5.505/2026)",
+        "taxa": null,
+        "inscricoes": "edital ainda não publicado",
+        "requisito": "Curso superior completo em qualquer área",
+        "url": "https://www.gov.br/receitafederal/pt-br",
+        "paginas": 3316,
+        "questoes": 3818
+      },
+      "area": "administrativo"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "seduc-ma-professor-lingua-portuguesa-2026": {
     "slug": "seduc-ma-professor-lingua-portuguesa-2026",
     "active": true,

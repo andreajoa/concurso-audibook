@@ -305,6 +305,10 @@ SPEC = {
    completa=('CONHECIMENTOS', 'PEDAGÓGICOS', ['706 páginas • 1.519 questões comentadas • lei vigente', 'LDB • ECA • Constituição • novo PNE • BNCC • Fundeb', 'teóricos • didática • avaliação • alfabetização • inclusão • casos']),
    simulados=['2 simulados de 40 questões com gabarito comentado', 'múltipla escolha e itens de Certo ou Errado', '1.519 questões em 13 módulos de treino'],
    terceiro=('LEGISLAÇÃO', ['LDB (Lei nº 9.394/1996) na íntegra, redação vigente', 'Constituição, arts. 205 a 214 • ECA: educação e Conselho Tutelar', 'Lei Brasileira de Inclusão • Lei do Bullying (13.185/2015)'])),
+ 'receita-federal-analista-tributario-2027': dict(sim_t1='SIMULADOS', sigla='RECEITA FEDERAL', cobre='SECRETARIA ESPECIAL DA RECEITA FEDERAL DO BRASIL • PRÉ-EDITAL', ed='BASE: EDITAL Nº 1/2022 • FGV', lomb=['RECEITA FEDERAL', 'ANALISTA-TRIBUTÁRIO', 'PRÉ-EDITAL'],
+   completa=('ANALISTA', 'TRIBUTÁRIO', ['Pré-edital • 3.818 questões comentadas • 5 alternativas', 'CTN • PAF • Reforma tributária • IR (Lei 15.270/2025)', 'Legislação Tributária e Aduaneira • Contabilidade • Dados']),
+   simulados=['2 simulados de 140 questões • modelo FGV', '75 Conhecimentos Básicos + 65 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('DISCURSIVA E LEI SECA', ['1 questão de 30 pontos • critérios do edital', 'Questões-modelo comentadas: CTN e aduaneiro', 'CF tributária • CTN • PAF • Regulamento Aduaneiro'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
