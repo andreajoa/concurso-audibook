@@ -2702,6 +2702,181 @@
       "downsell": []
     }
   },
+  "see-sp-professor-geografia-2027": {
+    "slug": "see-sp-professor-geografia-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Geografia",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Geografia (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Geografia (PEFM)",
+    "edition": "Pós-edital · edição de 26/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Geografia da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_GEOGRAFIA_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Geografia da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 682 páginas com 1.632 questões comentadas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Geografia. Bloco I completo: gestão de sala de aula segundo as obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as técnicas de Doug Lemov cobradas. Geografia: Currículo Paulista e BNCC (unidades temáticas e princípios do raciocínio geográfico), didática e alfabetização cartográfica; paisagem, lugar, espaço geográfico, território e região; cartografia com coordenadas, fusos horários, escalas, projeções, curvas de nível, mapas temáticos e sensoriamento remoto; estrutura da Terra, tectônica e relevo, clima, massas de ar, El Niño e mudanças climáticas, bacias hidrográficas, biomas, energia e sustentabilidade; formação territorial e regionalizações do Brasil (IBGE, complexos regionais, Região Concentrada); população, indicadores demográficos, Censo 2022, migrações, urbanização, rede urbana e espaço agrário; globalização, divisão internacional do trabalho, blocos econômicos, indústria 4.0 e mundo do trabalho, IDH e Gini; demografia mundial, refugiados, Estado e nação, ONU e geopolítica do Oriente Médio, Rússia, China e Índia. Inclui a prova discursiva com resposta-modelo, a aula em vídeo com rubrica comentada e roteiros para as quatro aulas de Geografia do edital, e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 682 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.632 questões comentadas no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Geografia)",
+      "Gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+      "BNCC: unidades temáticas e os 7 princípios do raciocínio geográfico",
+      "Cartografia com cálculo: escala, fusos horários, coordenadas e curvas de nível",
+      "Brasil: relevo, clima, biomas, bacias, regionalizações, população (Censo 2022), urbanização e campo",
+      "Globalização, blocos econômicos, ONU e geopolítica (Oriente Médio, Rússia, China e Índia)",
+      "Roteiros das quatro aulas da prova prática (espaço geográfico, coordenadas, climatologia, demografia)",
+      "Discursiva com resposta-modelo e aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-geografia-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-geografia-2027/docs/apostila-see-sp-professor-geografia-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_de_Geografia.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Geografia (revisão da véspera)",
+        "key": "see-sp-professor-geografia-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_de_Geografia.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo, conceitos e cartografia",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/02-curriculo-conceitos-e-cartografia.mp3",
+          "downloadName": "02-curriculo-conceitos-e-cartografia.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Natureza e questões ambientais",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/03-natureza-e-ambiente.mp3",
+          "downloadName": "03-natureza-e-ambiente.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Território e regionalização do Brasil",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/04-territorio-e-regionalizacao.mp3",
+          "downloadName": "04-territorio-e-regionalizacao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "População, urbanização e campo",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/05-populacao-urbanizacao-e-campo.mp3",
+          "downloadName": "05-populacao-urbanizacao-e-campo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Globalização e mundo do trabalho",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/06-globalizacao-e-trabalho.mp3",
+          "downloadName": "06-globalizacao-e-trabalho.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Migrações e geopolítica",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/07-mundo-migracoes-e-geopolitica.mp3",
+          "downloadName": "07-mundo-migracoes-e-geopolitica.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Discursiva e aula em vídeo",
+          "key": "see-sp-professor-geografia-2027/audio/pt-br-v1/08-discursiva-e-aula.mp3",
+          "downloadName": "08-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, tarde, para Geografia",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Geografia na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 320 são de Geografia (81 na jornada completa de 25 horas e 239 na jornada ampliada de 40 horas). O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Geografia no período da tarde, das 15h às 19h)."
+      },
+      {
+        "q": "Como é a prova de Professor de Geografia da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Geografia), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Quais aulas de Geografia podem ser usadas na prova prática em vídeo?",
+        "a": "O Anexo XII indica quatro aulas do material da rede para Geografia: 6º ano, Aula 5, \"O espaço geográfico\"; 6º ano, Aula 7, \"Sistema de coordenadas geográficas\"; 1ª série, Aula 1, \"Climatologia e Meteorologia\"; e 2ª série, Aula 2, \"Demografia brasileira\". O vídeo é avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Geografia na rede estadual de São Paulo?",
+        "a": "Licenciatura em Geografia ou uma das licenciaturas aceitas pelo Anexo IV do edital, como Licenciatura Integrada em História e Geografia, Licenciatura Interdisciplinar em Ciências Humanas e Sociais, Estudos Sociais ou Ciências Sociais com habilitação em Geografia, Ciências Humanas – Geografia, História com habilitação em Geografia e Licenciatura Intercultural – Ciências Sociais."
+      },
+      {
+        "q": "Onde vejo as vagas de Geografia da minha região e a cidade de prova?",
+        "a": "No guia do concurso por região (concurso-professor-see-sp-2027), com as vagas de cada componente nas 11 regiões de classificação, as 77 cidades de prova e os municípios atendidos por cada Unidade Regional de Ensino."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Geografia FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Geografia (PEFM, FGV): 1.632 questões, cartografia, Brasil, globalização, geopolítica, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE GEOGRAFIA • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-geografia-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 320 vagas para Professor de Geografia. Gestão de sala de aula, cartografia, Brasil, globalização, geopolítica e 1.632 questões",
+      "shortTag": "SEE-SP · Professor de Geografia",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "682 páginas: Gestão de sala de aula + toda a Geografia"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.572 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiros das 4 aulas"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Geografia · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-geografia-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-geografia-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Geografia (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "320",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Geografia ou equivalente (Anexo IV)",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 682,
+        "questoes": 1632
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "coren-sp-assistente-administrativo-2027": {
     "slug": "coren-sp-assistente-administrativo-2027",
     "active": true,
