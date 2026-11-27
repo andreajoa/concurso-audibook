@@ -2185,6 +2185,175 @@
       "downsell": []
     }
   },
+  "see-sp-professor-ciencias-2027": {
+    "slug": "see-sp-professor-ciencias-2027",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP) — Concurso Público para Professor de Ensino Fundamental e Médio (PEFM), edital publicado em 19/11/2026 (FGV), opção Ciências",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SEE-SP 2027 Professor de Ciências (PEFM · FGV) + audiobook",
+    "shortName": "SEE-SP Professor de Ciências (PEFM)",
+    "edition": "Pós-edital · edição de 26/11/2026 · edital de abertura da SEDUC-SP/FGV de 19/11/2026, com as retificações de 23 e 25/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Professor de Ensino Fundamental e Médio de Ciências (Anos Finais do Ensino Fundamental) da rede estadual de São Paulo",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_SEE_SP_PROFESSOR_CIENCIAS_2027",
+    "description": "Apostila digital para Professor de Ensino Fundamental e Médio (PEFM) de Ciências da Secretaria da Educação do Estado de São Paulo, feita pelo edital da FGV publicado em 19/11/2026, item por item do Anexo VI. PDF único de 671 páginas com 1.548 questões comentadas de cinco alternativas e 2 simulados de 30 questões no formato exato da prova: 10 de gestão de sala de aula e 20 de Ciências. Bloco I completo: gestão de sala de aula segundo as obras do edital (Weinstein e Novodvorsky, Wiggins e McTighe, Willingham) e as técnicas de Doug Lemov cobradas. Ciências: Currículo Paulista e didática (letramento científico, ensino por investigação, concepções alternativas, Ausubel), matéria e transformações químicas (substâncias, misturas e separação, modelo de partículas, modelos atômicos, equações e leis ponderais), energia, máquinas e radiações (calor, máquinas simples e térmicas, combustíveis, fontes de energia, circuitos e consumo, radiações na saúde e camada de ozônio), célula e sistemas do corpo humano, nutrição e saúde pública, reprodução e sexualidade, hereditariedade e evolução, ecologia e sustentabilidade, e Terra e Universo (estrutura e movimentos da Terra, Sol–Terra–Lua, Sistema Solar, tempo e clima). Inclui a prova discursiva com resposta-modelo, a aula em vídeo com rubrica comentada e roteiros para as duas aulas de Ciências do edital, e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 671 páginas, feito pelo edital da SEE-SP/FGV de 19/11/2026",
+      "1.548 questões comentadas com cinco alternativas, no formato da FGV",
+      "2 simulados de 30 questões no formato exato da prova (10 Gestão + 20 Ciências)",
+      "Gestão de sala de aula: Weinstein, Wiggins e McTighe, Willingham e as técnicas de Lemov",
+      "Currículo Paulista e didática de Ciências: letramento científico, investigação e concepções alternativas",
+      "Matéria, energia, corpo humano, saúde, hereditariedade, ecologia e Terra e Universo",
+      "Roteiros das duas aulas da prova prática: camada de ozônio (7º ano) e radiação na saúde (9º ano)",
+      "Discursiva com resposta-modelo e aula em vídeo com rubrica comentada",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "see-sp-professor-ciencias-2027/images/capa.png",
+      "pdfKey": "see-sp-professor-ciencias-2027/docs/apostila-see-sp-professor-ciencias-2027.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEE-SP_Professor_de_Ciencias.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEE-SP Professor de Ciências (revisão da véspera)",
+        "key": "see-sp-professor-ciencias-2027/audio/resumo.mp3",
+        "downloadName": "Resumo_SEE-SP_Professor_de_Ciencias.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FGV e a gestão de sala de aula",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/01-a-prova-e-a-gestao-da-sala-de-aula.mp3",
+          "downloadName": "01-a-prova-e-a-gestao-da-sala-de-aula.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Currículo Paulista e didática de Ciências",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/02-curriculo-e-didatica.mp3",
+          "downloadName": "02-curriculo-e-didatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Matéria e transformações químicas",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/03-materia-e-transformacoes.mp3",
+          "downloadName": "03-materia-e-transformacoes.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Energia, máquinas e radiações",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/04-energia-maquinas-e-radiacoes.mp3",
+          "downloadName": "04-energia-maquinas-e-radiacoes.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "A célula e o corpo humano",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/05-celula-e-corpo-humano.mp3",
+          "downloadName": "05-celula-e-corpo-humano.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Saúde, reprodução, hereditariedade e evolução",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/06-saude-hereditariedade-e-evolucao.mp3",
+          "downloadName": "06-saude-hereditariedade-e-evolucao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Ecologia e sustentabilidade",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/07-ecologia-e-sustentabilidade.mp3",
+          "downloadName": "07-ecologia-e-sustentabilidade.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Terra e Universo, discursiva e aula em vídeo",
+          "key": "see-sp-professor-ciencias-2027/audio/pt-br-v1/08-terra-universo-discursiva-e-aula.mp3",
+          "downloadName": "08-terra-universo-discursiva-e-aula.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-25",
+      "confirmed": false,
+      "source": "FGV, edital de abertura do concurso PEFM da SEDUC-SP, de 19/11/2026 (Anexo I, cronograma) — inscrições de 26/11/2026 a 15/02/2027; envio do vídeo de 19/03 a 02/04/2027; provas objetiva e discursiva em 25/04/2027, tarde, para Ciências",
+      "sourceUrl": "https://conhecimento.fgv.br/concursos/concursoseducsp27"
+    },
+    "faqExtra": [
+      {
+        "q": "Quantas vagas há para Professor de Ciências na SEE-SP e qual é o salário?",
+        "a": "O edital oferece 5.000 vagas de Professor de Ensino Fundamental e Médio, das quais 449 são de Ciências (152 na jornada completa de 25 horas e 297 na jornada ampliada de 40 horas). O subsídio inicial é de R$ 3.478,13 (25h) ou R$ 5.565,00 (40h)."
+      },
+      {
+        "q": "Quando é a prova da SEE-SP para professor e qual é a banca?",
+        "a": "A banca é a FGV. As inscrições vão das 16h de 26/11/2026 às 16h de 15/02/2027, no site da FGV, com taxa de R$ 64,00. O vídeo da prova prática deve ser enviado de 19/03 a 02/04/2027, e as provas objetiva e discursiva estão previstas para 25/04/2027 (Ciências no período da tarde, das 15h às 19h)."
+      },
+      {
+        "q": "Como é a prova de Professor de Ciências da SEE-SP?",
+        "a": "São quatro etapas: prova objetiva de 30 questões de cinco alternativas (10 de gestão de sala de aula, comuns a todos, e 20 de Ciências), valendo 30 pontos com mínimo de 15; prova discursiva com 2 questões de até 20 linhas, valendo 20 pontos com mínimo de 10; prova prática de simulação de aula em vídeo de 5 a 7 minutos, valendo 30 pontos com mínimo de 15; e avaliação de títulos e experiência, classificatória, até 20 pontos."
+      },
+      {
+        "q": "Quais livros caem na parte de gestão de sala de aula da SEE-SP?",
+        "a": "O Anexo VI indica capítulos de quatro obras: Gestão da sala de aula, de Weinstein e Novodvorsky (capítulos 4, 7 e 8); Planejamento para a compreensão, de Wiggins e McTighe (capítulos 1 e 7); Por que os alunos não gostam da escola?, de Willingham (capítulos 1, 3 e 5); e 19 técnicas de Aula nota 10 3.0, de Doug Lemov."
+      },
+      {
+        "q": "Quais aulas de Ciências podem ser usadas na prova prática em vídeo?",
+        "a": "O Anexo XII indica duas aulas do material da rede para Ciências: 7º ano, Aula 8, \"Camada de ozônio\"; e 9º ano, Aula 9, \"A importância da radiação na área da saúde\". O vídeo é avaliado em quatro dimensões: clareza das orientações, engajamento, mediação didática e verificação da aprendizagem."
+      },
+      {
+        "q": "Qual é o requisito para ser Professor de Ciências na rede estadual de São Paulo?",
+        "a": "Licenciatura em Ciências Biológicas ou Biologia, História Natural, Ciências (e suas variantes, como Ciências – Biologia ou Ciências – Matemática e Física), Ciências da Natureza ou Ciências Naturais, entre as formações listadas no Anexo IV do edital."
+      }
+    ],
+    "seoTitle": "Apostila SEE-SP 2027 Professor de Ciências FGV | Trilha Aprova",
+    "seoDescription": "Apostila SEE-SP Professor de Ciências (PEFM, FGV): 1.548 questões, gestão de sala de aula, matéria, energia, corpo humano, ecologia, simulados e audiobook.",
+    "storefront": {
+      "badge": "SEE-SP 2027 • PROFESSOR DE CIÊNCIAS • FGV",
+      "cover3d": "/assets/capa-see-sp-professor-ciencias-2027-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEE-SP: 449 vagas para Professor de Ciências. Gestão de sala de aula, Currículo Paulista e 1.548 questões de matéria a Terra e Universo",
+      "shortTag": "SEE-SP · Professor de Ciências",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "671 páginas: Gestão de sala de aula + todas as Ciências"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 30 + 1.488 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva e Aula em Vídeo",
+          "detalhe": "Critérios do edital, resposta-modelo e roteiros das aulas"
+        }
+      ],
+      "subheadline": "Professor de Ensino Fundamental e Médio · Ciências · Banca FGV · Prova em 25/04/2027",
+      "comboCovers": [
+        "/assets/capa-see-sp-professor-ciencias-2027-simulados-3d.webp",
+        "/assets/capa-see-sp-professor-ciencias-2027-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria da Educação do Estado de São Paulo (SEDUC-SP)",
+        "cargo": "Professor de Ciências (PEFM)",
+        "salario": "R$ 3.478,13 (25h) a R$ 5.565,00 (40h)",
+        "vagas": "449",
+        "taxa": "R$ 64,00",
+        "inscricoes": "26/11/2026 a 15/02/2027",
+        "requisito": "Licenciatura em Ciências, Biologia ou Ciências da Natureza (Anexo IV)",
+        "url": "https://conhecimento.fgv.br/concursos/concursoseducsp27",
+        "paginas": 671,
+        "questoes": 1548
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "coren-sp-assistente-administrativo-2027": {
     "slug": "coren-sp-assistente-administrativo-2027",
     "active": true,
