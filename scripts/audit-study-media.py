@@ -138,6 +138,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1022,
         'topics': ['técnico administrativo', 'cetesb', '13.303', 'gabarito', 'simulado'],
     },
+    'seduc-ma-professor-matematica-2026': {
+        'pages': 1108,
+        'topics': ['professor de matemática', 'seduc-ma', 'maranhão', 'gabarito', 'simulado'],
+    },
     'seduc-ma-professor-lingua-portuguesa-2026': {
         'pages': 1062,
         'topics': ['língua portuguesa', 'literatura', 'maranhão', 'gabarito', 'simulado'],
