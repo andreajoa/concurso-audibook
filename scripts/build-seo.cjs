@@ -927,9 +927,9 @@ for (const s of simulados) {
 
 renderPage({
   path: '/apostilas-para-concurso',
-  title: 'Apostilas para concurso com audiobook',
-  metaTitle: 'Apostilas para concurso público com audiobook | Trilha Aprova',
-  description: 'Apostilas digitais para concursos públicos, em PDF com audiobook. Combos de 3 apostilas + audiobook grátis, a partir de R$ 19,90, com acesso imediato.',
+  title: 'Apostilas para concurso em PDF com audiobook',
+  metaTitle: 'Comprar apostila para concurso em PDF com audiobook | Trilha Aprova',
+  description: 'Comprar apostila para concurso público em PDF, com audiobook e questões comentadas. Apostila para concurso pelo edital, pagamento único e acesso imediato.',
   kicker: 'CATÁLOGO',
   lead: `A Trilha Aprova publica apostilas digitais para concursos públicos no Brasil. Cada material reúne PDF para leitura, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura. A entrega é digital e imediata após a confirmação do pagamento.`,
   keyFacts: [
@@ -943,12 +943,17 @@ renderPage({
     '<h2>Materiais disponíveis</h2>' +
     '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>' +
     '<h2>O que vem em cada apostila</h2><ul><li>PDF completo para ler online ou baixar.</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook dividido em capítulos por assunto.</li><li>Questões com gabarito comentado.</li><li>Acesso individual recuperável pelo e-mail da compra.</li></ul>' +
+    '<h2>Comprar apostila para concurso: como funciona</h2><p>Para comprar apostila para concurso na Trilha Aprova, escolha a apostila do seu cargo, clique em comprar e pague por Pix ou cartão. A apostila para concurso em PDF e o audiobook são liberados na hora, na sua área individual, sem frete e sem assinatura. Cada concurso tem uma apostila feita pelo edital publicado, com a banca, as disciplinas e os pesos da prova, além de questões comentadas e simulados no formato da banca.</p>' +
+    '<h2>Apostila para concurso em PDF ou impressa?</h2><p>A apostila para concurso em PDF chega na hora, pode ser lida no celular, no computador ou impressa, e é atualizada mais rápido quando o edital muda. Na Trilha Aprova, toda apostila para concurso público vem em PDF com audiobook, para estudar também no trânsito ou na academia.</p>' +
     '<h2>Como escolher entre elas</h2><p>A escolha depende do cargo do seu edital, não do preço. Se o cargo é de professor com conteúdo pedagógico, comece pela apostila de autores. Se o cargo é de nível fundamental com prova de redação, comece pela apostila de redação. Em caso de dúvida, leia o guia sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa</a>.</p>' +
     '<h2>Preparação por região</h2><ul class="city-links">' + cityLinks + '</ul>' +
     disclaimer,
   styles: ['/apostila-cards.css'],
   scripts: ['/apostila-cards.js'],
   faq: [
+    { q: 'Onde comprar apostila para concurso?', a: `Na Trilha Aprova, em ${ORIGIN.replace('https://', '')}: cada apostila para concurso é feita pelo edital do cargo, vem em PDF com audiobook e questões comentadas, custa a partir de ${brl(MIN_PRICE)} em pagamento único e é liberada na hora após o Pix ou o cartão.` },
+    { q: 'Qual apostila para concurso comprar?', a: 'A do seu cargo e do edital em vigor. Confira se a apostila traz a banca, as disciplinas e os pesos do edital publicado; na Trilha Aprova, cada página mostra o edital usado, o número de páginas, de questões e o sumário antes da compra.' },
+    { q: 'Apostila para concurso em PDF vale a pena?', a: 'Sim, quando é feita pelo edital: o PDF chega na hora, custa menos que a impressa, pode ser impresso em casa e é atualizado mais rápido. As apostilas da Trilha Aprova também incluem audiobook e simulados no formato da banca.' },
     { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length}: ${products.map(p => p.shortName).join(' e ')}. Novos materiais entram no mesmo catálogo, com concurso, banca e oferta próprios.` },
     { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
     { q: 'Recebo em quanto tempo?', a: 'Imediatamente. Assim que o pagamento é confirmado, a área individual com o PDF e os áudios é liberada automaticamente.' },
