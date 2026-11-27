@@ -309,6 +309,10 @@ SPEC = {
    completa=('ANALISTA', 'TRIBUTÁRIO', ['Pré-edital • 3.818 questões comentadas • 5 alternativas', 'CTN • PAF • Reforma tributária • IR (Lei 15.270/2025)', 'Legislação Tributária e Aduaneira • Contabilidade • Dados']),
    simulados=['2 simulados de 140 questões • modelo FGV', '75 Conhecimentos Básicos + 65 Específicos', 'gabarito comentado questão a questão'],
    terceiro=('DISCURSIVA E LEI SECA', ['1 questão de 30 pontos • critérios do edital', 'Questões-modelo comentadas: CTN e aduaneiro', 'CF tributária • CTN • PAF • Regulamento Aduaneiro'])),
+ 'tjsp-oficial-de-justica-2027': dict(sim_t1='SIMULADOS', sigla='TJ-SP', cobre='TRIBUNAL DE JUSTIÇA DO ESTADO DE SÃO PAULO', ed='EDITAL Nº 01/2026 • VUNESP', lomb=['TJ-SP', 'OFICIAL', 'DE JUSTIÇA'],
+   completa=('OFICIAL', 'DE JUSTIÇA', ['132 vagas • 2.465 questões comentadas • 5 alternativas', 'O oficial no CPC • hora certa • penhora • avaliação', 'Normas da Corregedoria • CPP • CP • Civil • LEF']),
+   simulados=['2 simulados de 70 questões • modelo Vunesp', '15 Português + 40 Específicos + 15 Gerais', 'gabarito comentado questão a questão'],
+   terceiro=('DISCURSIVA E LEI SECA', ['2 questões discursivas • 0 a 40 pontos', 'Questões-modelo: hora certa e arrombamento', 'Artigos exatos do Anexo VIII do edital'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
