@@ -321,6 +321,10 @@ SPEC = {
    completa=('SUPERVISÃO', 'ESCOLAR', ['Cargo 10 • 170 vagas • 1.753 questões comentadas', 'Socioeducativo • SINASE • PIA • CRAS e CREAS', 'Fundamentos • Currículo • Avaliação • EJA • Inclusão']),
    simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
    terceiro=('REDAÇÃO E LEI SECA', ['Redação FCC • 20 a 30 linhas', 'ECA • Lei do Sinase • LOAS • LDB', 'Leis 13.257 e 13.431 • LBI'])),
+ 'ministerio-saude-tecnico-analista-2026': dict(sim_t1='SIMULADOS', sigla='MINISTÉRIO DA SAÚDE', cobre='FUNDO NACIONAL DE SAÚDE • PROCESSO SELETIVO 2026', ed='EDITAL Nº 1/2026 • INSTITUTO AVALIA', lomb=['MINISTÉRIO', 'DA SAÚDE', 'TÉCNICO E ANALISTAS'],
+   completa=('TÉCNICO E', 'ANALISTAS', ['Perfis 401 a 405 • mesma prova • 1.737 questões', 'Legislação do SUS: Lei 8.080 • Lei 8.142 • LC 141', 'Decretos 7.508 e 1.232 • Direito • Português • Lógica']),
+   simulados=['2 simulados de 40 questões • 5 alternativas', '20 Conhecimentos Gerais + 20 Legislação do SUS', 'gabarito comentado questão a questão'],
+   terceiro=('LEI SECA DO SUS', ['Lei 8.080 • Lei 8.142 • LC 141/2012', 'Decretos 7.508/2011 e 1.232/1994', 'Constituição • Leis 8.112, 8.745 e 13.460'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
