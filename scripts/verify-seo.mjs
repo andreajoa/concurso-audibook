@@ -99,7 +99,19 @@ for (const loc of locs) {
 }
 if (new Set(locs).size !== locs.length) fail('sitemap com URLs duplicadas');
 if (!/<lastmod>/.test(sitemap)) fail('sitemap sem lastmod');
-ok(`sitemap com ${locs.length} URLs, todas existentes em disco`);
+const imgLocs = [...sitemap.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map((m) => m[1]);
+const badImgLocs = imgLocs.filter((u) => !/^https:\/\//.test(u));
+if (badImgLocs.length) fail(`sitemap com ${badImgLocs.length} image:loc relativa(s), ex.: ${badImgLocs[0]}`);
+else ok(`sitemap com ${locs.length} URLs e ${imgLocs.length} imagens absolutas, todas existentes em disco`);
+
+// Home: H1 transacional de catálogo (não produto único), SearchAction e sem CSS duplicado
+const homeH1 = (home.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+if (!/apostilas para concursos/i.test(homeH1)) fail(`home H1 fora do tema principal: "${homeH1}"`);
+else ok(`home H1 transacional: "${homeH1}"`);
+if (!/"SearchAction"/.test(home)) fail('home sem SearchAction no schema WebSite');
+else ok('home com SearchAction no schema WebSite');
+if ((home.match(/href="\/site-header\.css"/g) || []).length > 1) fail('home carrega /site-header.css duplicado');
+else ok('home sem folhas /site-header.css duplicadas');
 
 // -------------------------------------------------------------------- robots
 const robots = read('public/robots.txt');
@@ -125,7 +137,15 @@ const subdir = (d) => exists(d) ? fs.readdirSync(path.join(root, d)).filter((f) 
 const pages = fs.readdirSync(path.join(root, 'public'))
   .filter((f) => f.endsWith('.html'))
   .map((f) => `public/${f}`)
-  .concat(subdir('public/apostilas'), subdir('public/materias'), subdir('public/ferramentas'));
+  .concat(
+    subdir('public/apostilas'),
+    subdir('public/apostilas/banca'),
+    subdir('public/apostilas/area'),
+    subdir('public/apostilas/estado'),
+    subdir('public/apostilas/nivel'),
+    subdir('public/materias'),
+    subdir('public/ferramentas')
+  );
 
 const titles = new Map();
 const descriptions = new Map();

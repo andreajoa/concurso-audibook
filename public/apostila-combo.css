@@ -3,8 +3,12 @@
 .combo-hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
 .combo-hero .crumbs,.combo-hero .crumbs a{color:#c9d6e6;font-size:13px}
 .combo-kicker{display:inline-block;margin:14px 0 10px;padding:6px 12px;border-radius:999px;background:rgba(202,166,90,.16);color:#f1d79c;font:700 12px/1.3 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.combo-hero h1{font:400 clamp(30px,4.4vw,50px)/1.1 Georgia,serif;margin:6px 0 14px;color:#fff}
+.combo-hero h1{font:400 clamp(28px,4vw,44px)/1.12 Georgia,serif;margin:6px 0 10px;color:#fff}
+.combo-lead-hook{color:#f1d79c;font:600 clamp(17px,1.9vw,21px)/1.35 system-ui,sans-serif;margin:0 0 10px;max-width:640px}
 .combo-sub{color:#d4dfec;font-size:16px;margin:0 0 18px;max-width:620px}
+.combo-tax-nav{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.combo-tax-nav a{display:inline-block;padding:7px 13px;border-radius:999px;border:1px solid #d7dfe8;background:#f7f9fc;color:#08284f!important;font:600 13px/1.2 system-ui,sans-serif;text-decoration:none!important}
+.combo-tax-nav a:hover{background:#f3ead6;border-color:#caa65a}
 .combo-checks{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:8px}
 .combo-checks li{position:relative;padding-left:30px;color:#eef3f9;font-size:16px;line-height:1.45}
 .combo-checks li:before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:#caa65a;color:#08284f;font:800 13px/20px system-ui;text-align:center}
