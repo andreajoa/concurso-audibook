@@ -337,6 +337,10 @@ SPEC = {
    completa=('ESPECIALISTA', 'RECURSOS HÍDRICOS', ['77 vagas • 2.430 questões comentadas', 'Hidrologia • Hidráulica • Barragens • Aquíferos', 'Gestão integrada • Qualidade da água • Geoprocessamento']),
    simulados=['2 simulados de 70 questões • 5 alternativas', '20 Gerais + 50 Específicos', 'gabarito comentado questão a questão'],
    terceiro=('DISCURSIVA E LEI SECA', ['2 questões de 40 linhas • 6 modelos', 'Leis 9.433/1997 e 7.663/1991 • LC 1.413/2024', 'Lei 12.334/2010 • Res. CNRH 241/2024'])),
+ 'sp-aguas-especialista-gestao-ambiental-2026': dict(sim_t1='SIMULADOS', sigla='SP ÁGUAS', cobre='AGÊNCIA DE ÁGUAS DO ESTADO DE SÃO PAULO', ed='EDITAL Nº 01/2026 • FGV', lomb=['SP ÁGUAS', 'ESPECIALISTA', 'GESTÃO AMBIENTAL'],
+   completa=('ESPECIALISTA', 'GESTÃO AMBIENTAL', ['59 vagas • 2.741 questões comentadas', 'Política ambiental • APP e mananciais • CONAMA 357', 'Crimes ambientais • Resíduos • Hidrologia e clima']),
+   simulados=['2 simulados de 70 questões • 5 alternativas', '20 Gerais + 50 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('DISCURSIVA E LEI SECA', ['2 questões de 40 linhas • 7 modelos', 'Leis 6.938, 9.605, 12.305 e 12.651', 'LC 140/2011 • Lei 9.433 • leis paulistas'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
