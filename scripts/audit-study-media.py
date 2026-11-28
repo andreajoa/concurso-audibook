@@ -138,6 +138,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1022,
         'topics': ['técnico administrativo', 'cetesb', '13.303', 'gabarito', 'simulado'],
     },
+    'seduc-ma-especialista-supervisao-escolar-2026': {
+        'pages': 1151,
+        'topics': ['supervisão escolar', 'seduc-ma', 'socioeducativo', 'gabarito', 'simulado'],
+    },
     'seduc-ma-professor-matematica-2026': {
         'pages': 1108,
         'topics': ['professor de matemática', 'seduc-ma', 'maranhão', 'gabarito', 'simulado'],

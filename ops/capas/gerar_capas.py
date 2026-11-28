@@ -317,6 +317,10 @@ SPEC = {
    completa=('PROFESSOR', 'MATEMÁTICA', ['Cargo 23 • 277 vagas • 2.056 questões comentadas', 'Funções • Polinômios • Geometria analítica • Probabilidade', 'Didática • Português • Maranhão • Informática • Redação FCC']),
    simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
    terceiro=('REDAÇÃO FCC', ['Dissertativo-argumentativa • 20 a 30 linhas', 'Grade do edital: tema 7 + norma 3', 'Modelos comentados e temas para treinar'])),
+ 'seduc-ma-especialista-supervisao-escolar-2026': dict(sim_t1='SIMULADOS', sigla='SEDUC-MA', cobre='CONCURSO UNIFICADO DO MARANHÃO • 2026', ed='EDITAL Nº 01/2026 • FCC', lomb=['SEDUC-MA', 'SUPERVISÃO', 'ESCOLAR'],
+   completa=('SUPERVISÃO', 'ESCOLAR', ['Cargo 10 • 170 vagas • 1.753 questões comentadas', 'Socioeducativo • SINASE • PIA • CRAS e CREAS', 'Fundamentos • Currículo • Avaliação • EJA • Inclusão']),
+   simulados=['2 simulados de 50 questões • 5 alternativas', '20 Conhecimentos Gerais + 30 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('REDAÇÃO E LEI SECA', ['Redação FCC • 20 a 30 linhas', 'ECA • Lei do Sinase • LOAS • LDB', 'Leis 13.257 e 13.431 • LBI'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
