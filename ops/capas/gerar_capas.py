@@ -329,6 +329,10 @@ SPEC = {
    completa=('GESTOR', 'PERFIL 406', ['50 questões com pesos • 2.117 questões comentadas', 'Adm. Pública Federal • Finanças Públicas • LRF', 'Políticas Públicas • Legislação do SUS • Direito']),
    simulados=['2 simulados de 50 questões • 5 alternativas', 'ordem e pesos da Tabela 10.2 do edital', 'gabarito comentado questão a questão'],
    terceiro=('LEI SECA', ['Lei 8.080 • Lei 8.142 • LC 141 • decretos', 'Decreto-Lei 200/1967 • LRF (LC 101/2000)', 'Constituição • Leis 8.112, 8.745 e 13.460'])),
+ 'pc-ac-oficial-investigador-2026': dict(sim_t1='SIMULADOS', sigla='PC-AC', cobre='POLÍCIA CIVIL DO ESTADO DO ACRE', ed='EDITAL Nº 001/2026 SEAD/PCAC • IDECAN', lomb=['PC-AC', 'OFICIAL', 'INVESTIGADOR'],
+   completa=('OFICIAL', 'INVESTIGADOR', ['74 vagas • 2.650 questões comentadas', 'Análise de dados • Contabilidade • Estatística • TI', 'Arquivologia • Direito • Realidade do Acre']),
+   simulados=['2 simulados de 100 questões • 5 alternativas', '24 Básicos + 16 Jurídicos + 60 Específicos', 'gabarito comentado questão a questão'],
+   terceiro=('REDAÇÃO E LEI SECA', ['Redação técnica • 20 a 30 linhas', 'Lei 14.735/2023 • LC 129/2004 (AC)', 'CP • CPP • Leis 9.455, 12.037 e 13.869'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
