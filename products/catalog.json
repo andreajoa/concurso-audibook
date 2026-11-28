@@ -1514,6 +1514,168 @@
       "downsell": []
     }
   },
+  "pc-ac-oficial-investigador-2026": {
+    "slug": "pc-ac-oficial-investigador-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso da Polícia Civil do Estado do Acre (PC-AC) — Edital nº 001/2026 SEAD/PCAC, Idecan: Oficial Investigador de Polícia",
+    "examBoard": "Idecan",
+    "category": "Concursos públicos",
+    "name": "Apostila PC-AC 2026 Oficial Investigador de Polícia · Polícia Civil do Acre (Idecan) em PDF + audiobook",
+    "shortName": "PC-AC — Oficial Investigador de Polícia",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 001/2026 SEAD/PCAC (Idecan), de 05/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos ao cargo de Oficial Investigador de Polícia da Polícia Civil do Estado do Acre (74 vagas, nível superior em qualquer área)",
+    "currency": "brl",
+    "priceCents": 5690,
+    "stripePriceEnv": "STRIPE_PRICE_PC_AC_OFICIAL_INVESTIGADOR_2026",
+    "description": "Apostila digital para Oficial Investigador de Polícia da Polícia Civil do Acre (PC-AC), feita pelo Edital nº 001/2026 SEAD/PCAC (Idecan, 74 vagas, R$ 6.342,07). PDF único de 1.963 páginas com 2.650 questões comentadas de cinco alternativas, 2 simulados de 100 questões na ordem do edital (24 Básicos, 16 Jurídicos e 60 Específicos com peso 2) e lei seca. Conhecimentos Básicos: Língua Portuguesa (com gêneros digitais e IA), Raciocínio Lógico, Noções de Informática (Windows 11, Linux Ubuntu, Word, Writer, Excel e Calc) e a realidade étnica, social, geográfica, cultural, política e econômica do Acre. Conhecimentos Jurídicos: Direito Constitucional (com o art. 144 e a Constituição do Acre), Direito Administrativo e improbidade, Direito Penal e Processual Penal (fé pública, crimes contra a administração, tortura, abuso de autoridade, identificação criminal, inquérito, provas, cadeia de custódia e prisões) e Legislação Institucional (Lei nº 14.735/2023, LC nº 129/2004 e PCCR). Todos os Conhecimentos Específicos: Contabilidade Geral e Análise Financeira (extratos, PIX, TED e movimentações atípicas), Estatística, Arquivologia, Tecnologia e Segurança da Informação, Análise de Dados e Informações (vínculos, linha do tempo, registros de comunicação e análise geográfica) e Noções de Administração. Inclui guia da redação técnica com modelos comentados e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.963 páginas, feito pelo Edital nº 001/2026 SEAD/PCAC (Idecan)",
+      "2.650 questões comentadas com cinco alternativas, no formato da banca",
+      "2 simulados de 100 questões na ordem do edital, com o cálculo da nota (peso 2 nos Específicos)",
+      "Todos os Específicos: Contabilidade e Análise Financeira, Estatística, Arquivologia, TI, Análise de Dados e Administração",
+      "Análise de vínculos, linha do tempo, registros de comunicação, movimentações financeiras atípicas",
+      "Lei Orgânica Nacional das Polícias Civis (Lei 14.735/2023) e LC 129/2004 do Acre",
+      "Realidade do Acre: história, geografia, povos, política, economia e segurança pública",
+      "Redação técnica (20 a 30 linhas) com modelos comentados",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "pc-ac-oficial-investigador-2026/images/capa.png",
+      "pdfKey": "pc-ac-oficial-investigador-2026/docs/apostila-pc-ac-oficial-investigador-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_PC_AC_Oficial_Investigador.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - PC-AC Oficial Investigador",
+        "key": "pc-ac-oficial-investigador-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_PC_AC_Oficial_Investigador.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso da PC-AC e a realidade do Estado do Acre",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/01-o-concurso-e-a-realidade-do-acre.mp3",
+          "downloadName": "01-o-concurso-e-a-realidade-do-acre.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Análise de dados e informações; TI e segurança da informação",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/02-analise-de-dados-e-tecnologia.mp3",
+          "downloadName": "02-analise-de-dados-e-tecnologia.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Contabilidade geral e análise financeira",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/03-contabilidade-e-analise-financeira.mp3",
+          "downloadName": "03-contabilidade-e-analise-financeira.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Estatística, arquivologia e noções de administração",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/04-estatistica-arquivologia-e-administracao.mp3",
+          "downloadName": "04-estatistica-arquivologia-e-administracao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Noções de Direito Penal e Processual Penal",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/05-direito-penal-e-processual-penal.mp3",
+          "downloadName": "05-direito-penal-e-processual-penal.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Constitucional, Administrativo e Legislação Institucional",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/06-constitucional-administrativo-e-institucional.mp3",
+          "downloadName": "06-constitucional-administrativo-e-institucional.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Língua Portuguesa e redação técnica",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/07-lingua-portuguesa-e-redacao.mp3",
+          "downloadName": "07-lingua-portuguesa-e-redacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Raciocínio Lógico e Noções de Informática",
+          "key": "pc-ac-oficial-investigador-2026/audio/pt-br-v1/08-raciocinio-logico-e-informatica.mp3",
+          "downloadName": "08-raciocinio-logico-e-informatica.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila da PC-AC 2026 para Oficial Investigador?",
+        "a": "R$ 56,90 em pagamento único, com PDF de 1.963 páginas, 2.650 questões comentadas, 2 simulados de 100 questões, lei seca, guia da redação técnica e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Oficial Investigador da Polícia Civil do Acre?",
+        "a": "São 100 questões de cinco alternativas: 24 de Conhecimentos Básicos (Português, Raciocínio Lógico, Informática e Realidade do Acre) e 16 de Conhecimentos Jurídicos (Constitucional, Administrativo, Penal e Processual Penal e Legislação Institucional), com peso 1, e 60 de Conhecimentos Específicos, com peso 2 (Contabilidade e Análise Financeira, Estatística, Arquivologia, TI e Segurança da Informação, Análise de Dados e Informações e Administração). Há ainda uma redação técnica de 20 a 30 linhas, valendo 40 pontos."
+      },
+      {
+        "q": "Quando é a prova da PC-AC 2026?",
+        "a": "As provas objetiva e discursiva estão previstas para 24/01/2027, no turno da manhã, com 5 horas de duração. As inscrições vão de 11/11 a 14/12/2026 no site do Idecan, com taxa de R$ 105,00. São 74 vagas de Oficial Investigador, distribuídas por município, com remuneração inicial de R$ 6.342,07."
+      },
+      {
+        "q": "Qual a formação exigida para Oficial Investigador da PC-AC?",
+        "a": "Diploma de curso superior completo em qualquer área, reconhecido pelo MEC, e Carteira Nacional de Habilitação na categoria mínima AB, conforme o edital e a Lei nº 14.735/2023."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila PC-AC 2026 Oficial Investigador em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila PC-AC 2026 Oficial Investigador de Polícia em PDF (Idecan): Específicos completos, Realidade do Acre, simulados e audiobook.",
+    "storefront": {
+      "badge": "PC-AC 2026 • OFICIAL INVESTIGADOR DE POLÍCIA • IDECAN",
+      "cover3d": "/assets/capa-pc-ac-oficial-investigador-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "PC-AC 2026: 74 vagas de Oficial Investigador. Todos os Específicos (peso 2), Realidade do Acre, Direito, redação técnica e 2.650 questões",
+      "shortTag": "PC-AC · Oficial Investigador",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.963 páginas: Básicos, Jurídicos e Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 100 + 2.450 questões comentadas"
+        },
+        {
+          "titulo": "Redação Técnica",
+          "detalhe": "Roteiro, critérios e modelos comentados"
+        }
+      ],
+      "subheadline": "Oficial Investigador de Polícia · Banca Idecan · Prova prevista para 24/01/2027",
+      "comboCovers": [
+        "/assets/capa-pc-ac-oficial-investigador-2026-simulados-3d.webp",
+        "/assets/capa-pc-ac-oficial-investigador-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Polícia Civil do Estado do Acre (vagas por município)",
+        "cargo": "Oficial Investigador de Polícia",
+        "salario": "R$ 6.342,07",
+        "vagas": "74",
+        "taxa": "R$ 105,00",
+        "inscricoes": "11/11/2026 a 14/12/2026",
+        "requisito": "Nível superior em qualquer área + CNH categoria AB",
+        "url": "https://www.idecan.org.br/",
+        "paginas": 1963,
+        "questoes": 2650
+      },
+      "area": "seguranca"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "policia-penal-pe-2026": {
     "slug": "policia-penal-pe-2026",
     "active": true,
