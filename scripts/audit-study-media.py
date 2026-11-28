@@ -142,6 +142,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 2130,
         'topics': ['ministério da saúde', 'gestor', 'lei nº 8.080', 'gabarito', 'simulado'],
     },
+    'sp-aguas-especialista-gestao-recursos-hidricos-2026': {
+        'pages': 1416,
+        'topics': ['sp águas', 'recursos hídricos', 'outorga', 'gabarito', 'simulado'],
+    },
     'pc-ac-oficial-investigador-2026': {
         'pages': 1963,
         'topics': ['pc-ac', 'oficial investigador', 'acre', 'gabarito', 'simulado'],
