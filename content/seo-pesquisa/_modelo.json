@@ -1,0 +1,35 @@
+{
+  "slug": "<slug do produto em products/catalog.json; o arquivo se chama <slug>.json>",
+  "data": "AAAA-MM-DD (dia da pesquisa, antes de escrever a página)",
+  "consultaPrincipal": "<a busca que a página quer ganhar, como o candidato digita: ex. apostila guarda municipal campinas>",
+  "concorrentes": [
+    {
+      "url": "https://<página de concorrente no topo do Google para a consulta principal>",
+      "titulo": "<title que ela mostra no Google>",
+      "cobre": ["<o que a página deles responde: vagas, salário, banca, data da prova, conteúdo programático, nº de questões...>"]
+    }
+  ],
+  "caudaLonga": [
+    { "consulta": "<busca real mais específica, com intenção de compra: ex. apostila gcm campinas pdf vunesp>", "fonte": "autocomplete | pessoas-tambem-perguntam | buscas-relacionadas | keyword-planner | google-trends | search-console | concorrente" }
+  ],
+  "lacunas": [
+    {
+      "pergunta": "<pergunta que os concorrentes respondem e o candidato faz: ex. Qual é o salário da Guarda Municipal de Campinas?>",
+      "resposta": "<trecho curto e literal que precisa aparecer no texto da página, com fato estável do edital: ex. R$ 4.030,08>",
+      "fonte": "<de onde veio o fato: ex. Edital nº 02/2026, item 2.1>"
+    }
+  ],
+  "forunsNoTopo": [
+    { "url": "https://<thread de Reddit, fórum ou Q&A que aparece no Google para a consulta>", "nota": "<o que perguntam lá; participar só de forma genuína e manual>" }
+  ],
+  "geo": [
+    {
+      "data": "AAAA-MM-DD (D+14 depois de publicar)",
+      "plataforma": "chatgpt | perplexity | google-ai-mode | google-ai-overview | gemini | copilot | claude",
+      "pergunta": "<como o candidato pergunta: ex. qual a melhor apostila para guarda municipal de campinas 2026?>",
+      "trilhaAparece": false,
+      "trilhaCitada": false,
+      "quemAparece": ["<marcas e sites que a resposta cita>"]
+    }
+  ]
+}

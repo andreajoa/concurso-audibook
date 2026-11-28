@@ -29,6 +29,10 @@ O build publica `llms.txt` (índice curto no formato llmstxt.org) e `llms-full.t
 
 As páginas são escritas para serem citáveis: um parágrafo `.answer` que responde a pergunta logo abaixo do h1, uma lista `.key-facts` com os dados objetivos, e o FAQ em `<h3>`/`<p>` (não em `<details>`, que esconde o texto de parte dos extratores). O `SpeakableSpecification` aponta para esses mesmos seletores.
 
+Desde 07/05/2026 o Google não mostra mais FAQ como destaque nos resultados. O `FAQPage` continua no JSON-LD porque o Google segue usando a marcação para entender a página e as IAs extraem as respostas dela; o ganho é de compreensão, não visual.
+
+O passo a passo de SEO/GEO de cada apostila nova (pesquisa de concorrentes, cauda longa, lacunas, medição em IA e poda) está em `docs/seo-geo-pos-apostila.md`, com a trava `npm run verify:seo-licoes`.
+
 ## O que `npm run verify:seo` bloqueia
 
 `scripts/verify-seo.mjs` roda dentro do `npm run build` e falha o build quando:
