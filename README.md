@@ -21,6 +21,8 @@ Para publicar conteúdo novo, edite o JSON correspondente e rode o build; não e
 
 `npm run verify:seo` roda junto do build e derruba a publicação se a verificação do Search Console quebrar, se o sitemap apontar para página inexistente, se faltar canonical/h1/JSON-LD, se dois títulos ficarem iguais ou se uma página de cidade virar página-ponte. Os detalhes estão em `docs/search-console.md`.
 
+**Toda apostila nova termina com o ritual de `docs/seo-geo-pos-apostila.md`** antes de começar a próxima: ficha de pesquisa em `content/seo-pesquisa/<slug>.json` (concorrentes do topo do Google, buscas de cauda longa e as lacunas que a página precisa responder), texto sem repetição forçada de palavra-chave, publicação e, depois, medição nas respostas de IA (D+14) e poda (D+90). `npm run verify:seo-licoes` roda no build e não deixa publicar apostila sem ficha, com lacuna sem resposta na página ou com keyword stuffing; `npm run seo:acompanhamento` lista o que vence depois de publicar.
+
 ## Publicação automática
 
 Os cron jobs compartilham `api/cron.js`. Os endereços `/api/marketing-cron` e `/api/editorial-cron` são preservados por rewrites em `vercel.json`, com os mesmos horários e autenticação por `CRON_SECRET`. Os handlers ficam em `lib/` para manter o deploy dentro do limite de 12 funções do plano Hobby. `npm test` verifica esse limite e o roteamento dos jobs.
