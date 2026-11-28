@@ -142,6 +142,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 2130,
         'topics': ['ministério da saúde', 'gestor', 'lei nº 8.080', 'gabarito', 'simulado'],
     },
+    'pc-ac-oficial-investigador-2026': {
+        'pages': 1963,
+        'topics': ['pc-ac', 'oficial investigador', 'acre', 'gabarito', 'simulado'],
+    },
     'ministerio-saude-tecnico-analista-2026': {
         'pages': 1723,
         'topics': ['ministério da saúde', 'sus', 'lei nº 8.080', 'gabarito', 'simulado'],
