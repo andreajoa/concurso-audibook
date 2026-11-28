@@ -8601,6 +8601,168 @@
       }
     ]
   },
+  "ministerio-saude-tecnico-analista-2026": {
+    "slug": "ministerio-saude-tecnico-analista-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde) — Edital nº 1/2026, Instituto Avalia: Técnico Administrativo e Analistas (perfis 401 a 405)",
+    "examBoard": "Instituto Avalia",
+    "category": "Concursos públicos",
+    "name": "Apostila Ministério da Saúde 2026 Técnico Administrativo e Analistas · Processo Seletivo FNS (Instituto Avalia) em PDF + audiobook",
+    "shortName": "Ministério da Saúde — Técnico e Analistas (FNS)",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 1, de 11/11/2026 (Instituto Avalia)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Técnico Administrativo (401), Analista de Dados e Controle de Qualidade (402), Analista de Requisitos Processuais, Normativos, Econômicos, Financeiros e Políticas de Saúde (403), Analista Técnico em Edificações (404) e Analista Técnico em Equipamentos (405) do Ministério da Saúde – Fundo Nacional de Saúde",
+    "currency": "brl",
+    "priceCents": 2690,
+    "stripePriceEnv": "STRIPE_PRICE_MINISTERIO_SAUDE_TECNICO_ANALISTA_2026",
+    "description": "Apostila digital para o Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde), Edital nº 1/2026, organizado pelo Instituto Avalia: os perfis 401 (Técnico Administrativo), 402 (Analista de Dados e Controle de Qualidade), 403 (Analista de Requisitos Processuais, Normativos, Econômicos, Financeiros e Políticas de Saúde), 404 (Analista Técnico em Edificações) e 405 (Analista Técnico em Equipamentos) fazem a mesma prova de 40 questões, e esta apostila cobre todos. PDF único de 1.723 páginas com 1.737 questões comentadas de cinco alternativas, 2 simulados de 40 questões na ordem do edital (Português, Direito Administrativo, Direito Constitucional, Raciocínio Lógico e 20 de Legislação Federal do SUS) e lei seca completa. Legislação Federal do SUS, que vale metade da prova, conferida no texto vigente: Lei nº 8.080/1990 (com as mudanças de 2024 a 2026: atenção humanizada, Complexo Econômico-Industrial da Saúde, Conitec, imunoterapia e tempo de espera), Lei nº 8.142/1990, Decreto nº 7.508/2011, Decreto nº 1.232/1994 e Lei Complementar nº 141/2012 (com as LCs nº 209/2024, 227/2026 e 234/2026). Direito Constitucional com os arts. 196 a 200 e as emendas de 2024 a 2026 (EC 140/2026 dos agentes comunitários de saúde, EC 141/2026 da jornada de 40 horas e EC 138/2025). Direito Administrativo com a Lei nº 14.133/2021 e os valores de 2026, Lei nº 13.460/2017, Decreto nº 9.094/2017, Lei nº 8.745/1993 com a Lei nº 15.367/2026 e Lei nº 8.112/1990. Inclui audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.723 páginas, feito pelo Edital nº 1/2026 (Instituto Avalia)",
+      "Serve para os 5 perfis com a mesma prova: Técnico Administrativo e Analistas 402 a 405",
+      "1.737 questões comentadas com cinco alternativas, no formato da banca",
+      "2 simulados de 40 questões na ordem do edital, com o cálculo da nota (2 pontos por acerto)",
+      "Legislação do SUS completa: Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141",
+      "Atualizada até novembro de 2026: EC 140 e 141/2026, Lei 15.367/2026, LC 227 e 234/2026",
+      "Direito Constitucional (arts. 196 a 200) e Direito Administrativo (Leis 14.133, 13.460, 8.745 e 8.112)",
+      "Português e Raciocínio Lógico com lógica de primeira ordem e matrizes",
+      "Lei seca de todas as normas do edital, no texto vigente",
+      "Audiobook em 8 capítulos + resumo narrado · pagamento único"
+    ],
+    "assets": {
+      "coverKey": "ministerio-saude-tecnico-analista-2026/images/capa.png",
+      "pdfKey": "ministerio-saude-tecnico-analista-2026/docs/apostila-ministerio-saude-tecnico-analista-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Ministerio_da_Saude_Tecnico_e_Analistas.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Ministério da Saúde Técnico e Analistas",
+        "key": "ministerio-saude-tecnico-analista-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Ministerio_da_Saude_Tecnico_Analistas.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O processo seletivo do Ministério da Saúde, a prova do Instituto Avalia e como estudar",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/01-o-processo-seletivo.mp3",
+          "downloadName": "01-o-processo-seletivo.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Legislação do SUS, parte 1: Lei nº 8.080/1990 (Lei Orgânica da Saúde)",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/02-lei-8080.mp3",
+          "downloadName": "02-lei-8080.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Legislação do SUS, parte 2: Lei nº 8.142/1990 e Decreto nº 7.508/2011",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/03-lei-8142-e-decreto-7508.mp3",
+          "downloadName": "03-lei-8142-e-decreto-7508.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Legislação do SUS, parte 3: financiamento, LC nº 141/2012, Decreto nº 1.232/1994 e o FNS",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/04-financiamento-do-sus.mp3",
+          "downloadName": "04-financiamento-do-sus.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito Constitucional e a saúde na Constituição",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/05-direito-constitucional.mp3",
+          "downloadName": "05-direito-constitucional.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Administrativo: Lei 14.133, Lei 8.112, Lei 13.460, Decreto 9.094 e Lei 8.745",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/06-direito-administrativo.mp3",
+          "downloadName": "06-direito-administrativo.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Língua Portuguesa",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/07-lingua-portuguesa.mp3",
+          "downloadName": "07-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Raciocínio Lógico",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/08-raciocinio-logico.mp3",
+          "downloadName": "08-raciocinio-logico.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila do Ministério da Saúde 2026 para Técnico e Analista?",
+        "a": "R$ 26,90 em pagamento único, com PDF de 1.723 páginas, 1.737 questões comentadas, 2 simulados de 40 questões, lei seca completa e audiobook em 8 capítulos."
+      },
+      {
+        "q": "A apostila serve para Analista de Requisitos, Analista de Dados, Edificações e Equipamentos?",
+        "a": "Sim. Pelo Edital nº 1/2026, os perfis 401 (Técnico Administrativo), 402, 403, 404 e 405 fazem a mesma prova objetiva de 40 questões, com o mesmo conteúdo do Anexo III. O perfil 406 (Gestor) tem prova diferente."
+      },
+      {
+        "q": "O que cai na prova do processo seletivo do Ministério da Saúde (FNS)?",
+        "a": "São 40 questões de cinco alternativas, cada uma valendo 2 pontos: 5 de Língua Portuguesa, 5 de Direito Administrativo, 5 de Direito Constitucional, 5 de Raciocínio Lógico e 20 de Legislação Federal do SUS (Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141). É eliminado quem fizer menos de 40 de 80 pontos ou zerar alguma área."
+      },
+      {
+        "q": "Quando é a prova do Ministério da Saúde 2026 do Instituto Avalia?",
+        "a": "A prova objetiva está prevista para 17/01/2027, à tarde, em Brasília, Goiânia, Belo Horizonte, São Paulo, Curitiba, Recife e Belém. As inscrições vão de 12/11 a 14/12/2026 no site do Instituto Avalia, com taxa de R$ 60,00."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila Ministério da Saúde 2026 Técnico e Analista | Trilha Aprova",
+    "seoDescription": "Comprar apostila Ministério da Saúde 2026 em PDF (FNS, Instituto Avalia): Técnico Administrativo e Analistas, Legislação do SUS atualizada e audiobook.",
+    "storefront": {
+      "badge": "PROCESSO SELETIVO • MINISTÉRIO DA SAÚDE • FNS • INSTITUTO AVALIA",
+      "cover3d": "/assets/capa-ministerio-saude-tecnico-analista-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Ministério da Saúde 2026: a mesma prova para Técnico e 4 cargos de Analista. Legislação do SUS atualizada, 1.737 questões e simulados de 40",
+      "shortTag": "Ministério da Saúde · Técnico e Analistas",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.723 páginas: Gerais + toda a Legislação do SUS"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 + 1.657 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Atualizada",
+          "detalhe": "Leis 8.080, 8.142, LC 141, decretos e Constituição"
+        }
+      ],
+      "subheadline": "Técnico Administrativo e Analistas (perfis 401 a 405) · Instituto Avalia · Prova prevista para 17/01/2027",
+      "comboCovers": [
+        "/assets/capa-ministerio-saude-tecnico-analista-2026-simulados-3d.webp",
+        "/assets/capa-ministerio-saude-tecnico-analista-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Ministério da Saúde – Fundo Nacional de Saúde (Brasília, Goiânia, Belo Horizonte, São Paulo, Curitiba, Recife e Belém)",
+        "cargo": "Técnico Administrativo e Analistas (perfis 401 a 405)",
+        "salario": "R$ 4.740,51 a R$ 7.647,20 (40h)",
+        "vagas": "284 imediatas + 412 em cadastro de reserva (perfis 401 a 405)",
+        "taxa": "R$ 60,00",
+        "inscricoes": "12/11/2026 a 14/12/2026",
+        "requisito": "Nível superior (área conforme o perfil)",
+        "url": "https://www.avalia.org.br/concursos/644",
+        "paginas": 1723,
+        "questoes": 1737
+      },
+      "area": "saude"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "cetesb-tecnico-administrativo-2026": {
     "slug": "cetesb-tecnico-administrativo-2026",
     "active": true,
