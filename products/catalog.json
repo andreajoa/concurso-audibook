@@ -4292,8 +4292,8 @@
       "source": "VUNESP, Edital de Abertura 01/2026 TJSP (Oficial de Justiça) — inscrições até 10/12/2026, provas objetiva e discursiva previstas para 14/03/2027",
       "sourceUrl": "https://www.vunesp.com.br"
     },
-    "seoTitle": "Apostila Oficial de Justiça TJ-SP 2026 + audiobook | Trilha Aprova",
-    "seoDescription": "Apostila Oficial de Justiça TJ-SP 2026 (Vunesp): 1.946 páginas, 2.465 questões comentadas, Normas da Corregedoria, lei seca e audiobook.",
+    "seoTitle": "Apostila Oficial de Justiça TJ-SP 2026 em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Oficial de Justiça TJ-SP 2026 em PDF (Vunesp): 1.946 páginas, 2.465 questões, Normas da Corregedoria, lei seca e audiobook.",
     "storefront": {
       "badge": "TJ-SP 2026 • OFICIAL DE JUSTIÇA • VUNESP",
       "cover3d": "/assets/capa-tjsp-oficial-de-justica-2027-completa-3d.webp",
@@ -4338,7 +4338,25 @@
       "upsell": [],
       "crossSell": [],
       "downsell": []
-    }
+    },
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila do Oficial de Justiça TJ-SP 2026?",
+        "a": "R$ 41,90 em pagamento único, com PDF de 1.946 páginas, 2.465 questões comentadas, 2 simulados de 70 questões, discursiva, lei seca do edital e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Oficial de Justiça do TJ-SP?",
+        "a": "Pelo Edital nº 01/2026 (Vunesp), são 70 questões: 15 de Língua Portuguesa, 40 de Conhecimentos Específicos (Direito Penal, Processual Penal, Processual Civil, Constitucional, Administrativo, Civil e Legislação Especial com as Normas da Corregedoria) e 15 de Conhecimentos Gerais (Atualidades e Estatuto da Pessoa com Deficiência, Matemática e Raciocínio Lógico e Informática), além de 2 questões discursivas."
+      },
+      {
+        "q": "Quando é a prova do Oficial de Justiça TJ-SP?",
+        "a": "A prova objetiva e discursiva está prevista para 14/3/2027, à tarde. As inscrições vão até 10/12/2026 no site da Vunesp. São 132 vagas e salário de R$ 9.856,95."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ]
   },
   "aparecida-de-goiania-pe1-pedagogia-2026": {
     "slug": "aparecida-de-goiania-pe1-pedagogia-2026",
@@ -8038,10 +8056,18 @@
       {
         "q": "E se o novo edital mudar o conteúdo?",
         "a": "Quem comprar recebe sem custo a versão atualizada, conferida item por item com o novo edital."
+      },
+      {
+        "q": "Quanto custa a apostila da Receita Federal Analista-Tributário?",
+        "a": "R$ 103,90 em pagamento único, com PDF de 3.316 páginas, 3.818 questões comentadas, 2 simulados de 140 questões, discursiva, lei seca e audiobook, com atualização gratuita quando sair o novo edital."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
       }
     ],
-    "seoTitle": "Apostila Receita Federal 2027 Analista-Tributário | Trilha Aprova",
-    "seoDescription": "Apostila Receita Federal Analista-Tributário pré-edital: 3.316 páginas, 3.818 questões modelo FGV, reforma tributária, lei seca e audiobook.",
+    "seoTitle": "Apostila Receita Federal Analista-Tributário em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Receita Federal Analista-Tributário em PDF (pré-edital FGV): 3.316 páginas, 3.818 questões, reforma tributária e audiobook.",
     "storefront": {
       "badge": "RECEITA FEDERAL • ANALISTA-TRIBUTÁRIO • EDIÇÃO PRÉ-EDITAL",
       "cover3d": "/assets/capa-receita-federal-analista-tributario-2027-completa-3d.webp",
@@ -8348,8 +8374,8 @@
       "source": "FCC, Edital nº 01/2026 de Abertura de Inscrições do Concurso Público Unificado do Estado do Maranhão (17/11/2026) — inscrições de 14/12/2026 a 29/01/2027; aplicação das provas objetivas e discursivas prevista para 04/04/2027 (Anexo IV, cronograma sujeito a alterações)",
       "sourceUrl": "https://www.concursosfcc.com.br/"
     },
-    "seoTitle": "Apostila SEDUC-MA Professor de Matemática 2026 | Trilha Aprova",
-    "seoDescription": "Apostila SEDUC-MA Professor de Matemática (Concurso Unificado MA, FCC): 1.108 páginas, 2.056 questões, 2 simulados, redação e audiobook.",
+    "seoTitle": "Apostila Concurso Unificado MA 2026 Matemática em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Concurso Unificado MA 2026 SEDUC-MA Professor de Matemática em PDF (FCC): 1.108 páginas, 2.056 questões, redação e audiobook.",
     "storefront": {
       "badge": "CONCURSO UNIFICADO MA • SEDUC • PROFESSOR DE MATEMÁTICA • FCC",
       "cover3d": "/assets/capa-seduc-ma-professor-matematica-2026-completa-3d.webp",
@@ -8388,6 +8414,509 @@
         "questoes": 2056
       },
       "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila de Professor de Matemática da SEDUC-MA?",
+        "a": "R$ 34,90 em pagamento único, com PDF de 1.108 páginas, 2.056 questões comentadas (320 calculadas), 2 simulados de 50 questões, curso de redação FCC e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Professor de Matemática do Concurso Unificado MA?",
+        "a": "Pelo Edital nº 01/2026 (FCC), cargo 23: 20 questões de Conhecimentos Gerais (Língua Portuguesa, Geografia e História do Maranhão e Informática), com peso 1, e 30 de Matemática (números, funções, polinômios, sistemas, geometria, trigonometria, geometria analítica, probabilidade, estatística e didática), com peso 2, além de redação."
+      },
+      {
+        "q": "Quando é a prova do Concurso Unificado do Maranhão?",
+        "a": "As provas objetivas e a redação estão previstas para 4/4/2027, pela manhã. As inscrições vão de 14/12/2026 a 29/01/2027 no site da FCC; para Professor de Matemática são 277 vagas e vencimento de R$ 3.836,25."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ]
+  },
+  "seduc-ma-especialista-supervisao-escolar-2026": {
+    "slug": "seduc-ma-especialista-supervisao-escolar-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso Público Unificado do Estado do Maranhão — SEDUC-MA, Edital nº 01/2026 (FCC), cargo 10: Especialista em Educação – Supervisão Escolar",
+    "examBoard": "FCC (Fundação Carlos Chagas)",
+    "category": "Concursos públicos",
+    "name": "Apostila SEDUC-MA 2026 Especialista em Educação – Supervisão Escolar · Concurso Unificado MA (FCC) + audiobook",
+    "shortName": "SEDUC-MA Supervisão Escolar — Concurso Unificado MA",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 01/2026 (FCC), publicado em 17/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Especialista em Educação – Supervisão Escolar da Secretaria de Estado da Educação do Maranhão (SEDUC-MA), cargo 10 do Concurso Unificado MA",
+    "currency": "brl",
+    "priceCents": 3690,
+    "stripePriceEnv": "STRIPE_PRICE_SEDUC_MA_SUPERVISAO_ESCOLAR_2026",
+    "description": "Apostila digital para Especialista em Educação – Supervisão Escolar da SEDUC-MA no Concurso Público Unificado do Estado do Maranhão, feita pelo Edital nº 01/2026 de Abertura de Inscrições (FCC, cargo 10, 170 vagas). PDF único de 1.151 páginas com 1.753 questões comentadas de cinco alternativas no estilo FCC, 2 simulados de 50 questões (20 Conhecimentos Gerais + 30 Específicos) com o cálculo da nota pelos pesos do edital, e caderno de lei seca. Conhecimentos Gerais: Língua Portuguesa, Matemática e Raciocínio Lógico, Geografia e História do Maranhão e Noções de Informática. Conhecimentos Específicos completos, com o foco socioeducativo do edital conferido no texto vigente do ECA, da Lei do Sinase (Lei nº 12.594/2012), da LOAS e do documento oficial SINASE (Conanda, 2006): Parâmetros da Gestão Pedagógica no Atendimento Socioeducativo (diretrizes, dimensões e os oito eixos: suporte institucional e pedagógico; diversidade étnico-racial, de gênero e orientação sexual; educação; esporte, cultura e lazer; saúde; abordagem familiar e comunitária; profissionalização, trabalho e previdência; segurança), Plano Individual de Atendimento (PIA), plano operativo e atividades socioeducativas, papel do pedagogo, medidas socioeducativas, políticas públicas para a infância e a adolescência, educação e vulnerabilidade, rede de proteção social (CRAS, CREAS, PAIF, PAEFI e Conselho Tutelar), escuta protegida (Lei nº 13.431/2017), fundamentos filosóficos, sociológicos e psicológicos da educação, função social da escola e direito à educação, currículo, planejamento, plano e projetos, acompanhamento e avaliação, Educação de Jovens e Adultos, educação inclusiva e processo formativo de educadores. Inclui curso de Redação no padrão FCC e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.151 páginas, feito pelo Edital nº 01/2026 (FCC), cargo 10",
+      "1.753 questões comentadas com cinco alternativas, no estilo FCC",
+      "2 simulados de 50 questões: 20 Gerais + 30 Específicos, com o cálculo da nota pelos pesos 1 e 2",
+      "Atendimento socioeducativo: SINASE, PIA, parâmetros da gestão pedagógica e papel do pedagogo",
+      "Rede de proteção: CRAS, CREAS, PAIF, PAEFI, Conselho Tutelar e escuta protegida",
+      "Fundamentos, currículo, planejamento, avaliação, EJA, inclusão e formação de educadores",
+      "Lei seca: ECA, Lei do Sinase, LOAS, LDB, LBI e Leis 13.257 e 13.431",
+      "Redação dissertativo-argumentativa no padrão FCC (20 a 30 linhas, nota mínima 6)",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "seduc-ma-especialista-supervisao-escolar-2026/images/capa.png",
+      "pdfKey": "seduc-ma-especialista-supervisao-escolar-2026/docs/apostila-seduc-ma-especialista-supervisao-escolar-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SEDUC_MA_Supervisao_Escolar.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SEDUC-MA Supervisão Escolar",
+        "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_SEDUC_MA_Supervisao_Escolar.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "A prova da FCC e a Geografia e a História do Maranhão",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/01-a-prova-e-o-maranhao.mp3",
+          "downloadName": "01-a-prova-e-o-maranhao.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Língua Portuguesa, matemática, raciocínio lógico e noções de informática",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/02-portugues-matematica-e-informatica.mp3",
+          "downloadName": "02-portugues-matematica-e-informatica.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Fundamentos filosóficos, sociológicos e psicológicos da educação e direito à educação",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/03-fundamentos-da-educacao.mp3",
+          "downloadName": "03-fundamentos-da-educacao.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Políticas para a infância e a adolescência, educação e vulnerabilidade e rede de proteção",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/04-politicas-e-rede-de-protecao.mp3",
+          "downloadName": "04-politicas-e-rede-de-protecao.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Atendimento socioeducativo, parâmetros do SINASE, PIA e o papel do pedagogo",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/05-atendimento-socioeducativo.mp3",
+          "downloadName": "05-atendimento-socioeducativo.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Currículo, planejamento, projetos e avaliação",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/06-curriculo-planejamento-avaliacao.mp3",
+          "downloadName": "06-curriculo-planejamento-avaliacao.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Educação de jovens e adultos, educação inclusiva e formação de educadores",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/07-eja-inclusao-formacao.mp3",
+          "downloadName": "07-eja-inclusao-formacao.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "A redação dissertativo-argumentativa no padrão FCC",
+          "key": "seduc-ma-especialista-supervisao-escolar-2026/audio/pt-br-v1/08-redacao-fcc.mp3",
+          "downloadName": "08-redacao-fcc.mp3"
+        }
+      ]
+    },
+    "exam": {
+      "date": "2027-04-04",
+      "confirmed": false,
+      "source": "FCC, Edital nº 01/2026 de Abertura de Inscrições do Concurso Público Unificado do Estado do Maranhão (17/11/2026) — inscrições de 14/12/2026 a 29/01/2027; aplicação das provas objetivas e discursivas prevista para 04/04/2027 (Anexo IV, cronograma sujeito a alterações)",
+      "sourceUrl": "https://www.concursosfcc.com.br/"
+    },
+    "seoTitle": "Apostila Unificado MA 2026 Supervisão Escolar em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Concurso Unificado MA 2026 SEDUC-MA Especialista em Educação Supervisão Escolar em PDF (FCC): socioeducativo, SINASE, PIA e audiobook.",
+    "storefront": {
+      "badge": "CONCURSO UNIFICADO MA • SEDUC • SUPERVISÃO ESCOLAR • FCC",
+      "cover3d": "/assets/capa-seduc-ma-especialista-supervisao-escolar-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SEDUC-MA: 170 vagas para Supervisão Escolar. Socioeducativo, SINASE, PIA, rede de proteção, Maranhão e 1.753 questões",
+      "shortTag": "SEDUC-MA · Supervisão Escolar",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.151 páginas: Gerais + todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 1.653 questões comentadas"
+        },
+        {
+          "titulo": "Curso de Redação FCC",
+          "detalhe": "Grade do edital, modelos e temas para treinar"
+        }
+      ],
+      "subheadline": "Especialista em Educação – Supervisão Escolar · Banca FCC · Prova prevista para 04/04/2027",
+      "comboCovers": [
+        "/assets/capa-seduc-ma-especialista-supervisao-escolar-2026-simulados-3d.webp",
+        "/assets/capa-seduc-ma-especialista-supervisao-escolar-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Secretaria de Estado da Educação do Maranhão (SEDUC-MA)",
+        "cargo": "Especialista em Educação – Supervisão Escolar",
+        "salario": "R$ 1.918,12 (40h)",
+        "vagas": "170",
+        "taxa": "R$ 120,00",
+        "inscricoes": "14/12/2026 a 29/01/2027",
+        "requisito": "Licenciatura plena em Pedagogia",
+        "url": "https://www.concursosfcc.com.br/",
+        "paginas": 1151,
+        "questoes": 1753
+      },
+      "area": "educacao"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    },
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila de Supervisão Escolar da SEDUC-MA?",
+        "a": "R$ 36,90 em pagamento único, com PDF de 1.151 páginas, 1.753 questões comentadas, 2 simulados de 50 questões, lei seca, curso de redação FCC e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Especialista em Educação – Supervisão Escolar do Concurso Unificado MA?",
+        "a": "Pelo Edital nº 01/2026 (FCC), cargo 10: 20 questões de Conhecimentos Gerais (Língua Portuguesa, Matemática e Raciocínio Lógico, Geografia e História do Maranhão e Informática), com peso 1, e 30 de Conhecimentos Específicos, com peso 2, com foco no atendimento socioeducativo (parâmetros do SINASE, PIA, rede de proteção, CRAS e CREAS), fundamentos da educação, currículo, planejamento, avaliação, EJA, inclusão e formação de educadores, além de redação."
+      },
+      {
+        "q": "Quando é a prova do Concurso Unificado do Maranhão para Supervisão Escolar?",
+        "a": "As provas objetivas e a redação estão previstas para 4/4/2027, pela manhã. As inscrições vão de 14/12/2026 a 29/01/2027 no site da FCC; para Especialista em Educação – Supervisão Escolar são 170 vagas, com vencimento inicial de R$ 1.918,12 para 40 horas."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ]
+  },
+  "ministerio-saude-tecnico-analista-2026": {
+    "slug": "ministerio-saude-tecnico-analista-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde) — Edital nº 1/2026, Instituto Avalia: Técnico Administrativo e Analistas (perfis 401 a 405)",
+    "examBoard": "Instituto Avalia",
+    "category": "Concursos públicos",
+    "name": "Apostila Ministério da Saúde 2026 Técnico Administrativo e Analistas · Processo Seletivo FNS (Instituto Avalia) em PDF + audiobook",
+    "shortName": "Ministério da Saúde — Técnico e Analistas (FNS)",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 1, de 11/11/2026 (Instituto Avalia)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos a Técnico Administrativo (401), Analista de Dados e Controle de Qualidade (402), Analista de Requisitos Processuais, Normativos, Econômicos, Financeiros e Políticas de Saúde (403), Analista Técnico em Edificações (404) e Analista Técnico em Equipamentos (405) do Ministério da Saúde – Fundo Nacional de Saúde",
+    "currency": "brl",
+    "priceCents": 2690,
+    "stripePriceEnv": "STRIPE_PRICE_MINISTERIO_SAUDE_TECNICO_ANALISTA_2026",
+    "description": "Apostila digital para o Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde), Edital nº 1/2026, organizado pelo Instituto Avalia: os perfis 401 (Técnico Administrativo), 402 (Analista de Dados e Controle de Qualidade), 403 (Analista de Requisitos Processuais, Normativos, Econômicos, Financeiros e Políticas de Saúde), 404 (Analista Técnico em Edificações) e 405 (Analista Técnico em Equipamentos) fazem a mesma prova de 40 questões, e esta apostila cobre todos. PDF único de 1.723 páginas com 1.737 questões comentadas de cinco alternativas, 2 simulados de 40 questões na ordem do edital (Português, Direito Administrativo, Direito Constitucional, Raciocínio Lógico e 20 de Legislação Federal do SUS) e lei seca completa. Legislação Federal do SUS, que vale metade da prova, conferida no texto vigente: Lei nº 8.080/1990 (com as mudanças de 2024 a 2026: atenção humanizada, Complexo Econômico-Industrial da Saúde, Conitec, imunoterapia e tempo de espera), Lei nº 8.142/1990, Decreto nº 7.508/2011, Decreto nº 1.232/1994 e Lei Complementar nº 141/2012 (com as LCs nº 209/2024, 227/2026 e 234/2026). Direito Constitucional com os arts. 196 a 200 e as emendas de 2024 a 2026 (EC 140/2026 dos agentes comunitários de saúde, EC 141/2026 da jornada de 40 horas e EC 138/2025). Direito Administrativo com a Lei nº 14.133/2021 e os valores de 2026, Lei nº 13.460/2017, Decreto nº 9.094/2017, Lei nº 8.745/1993 com a Lei nº 15.367/2026 e Lei nº 8.112/1990. Inclui audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.723 páginas, feito pelo Edital nº 1/2026 (Instituto Avalia)",
+      "Serve para os 5 perfis com a mesma prova: Técnico Administrativo e Analistas 402 a 405",
+      "1.737 questões comentadas com cinco alternativas, no formato da banca",
+      "2 simulados de 40 questões na ordem do edital, com o cálculo da nota (2 pontos por acerto)",
+      "Legislação do SUS completa: Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141",
+      "Atualizada até novembro de 2026: EC 140 e 141/2026, Lei 15.367/2026, LC 227 e 234/2026",
+      "Direito Constitucional (arts. 196 a 200) e Direito Administrativo (Leis 14.133, 13.460, 8.745 e 8.112)",
+      "Português e Raciocínio Lógico com lógica de primeira ordem e matrizes",
+      "Lei seca de todas as normas do edital, no texto vigente",
+      "Audiobook em 8 capítulos + resumo narrado · pagamento único"
+    ],
+    "assets": {
+      "coverKey": "ministerio-saude-tecnico-analista-2026/images/capa.png",
+      "pdfKey": "ministerio-saude-tecnico-analista-2026/docs/apostila-ministerio-saude-tecnico-analista-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Ministerio_da_Saude_Tecnico_e_Analistas.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Ministério da Saúde Técnico e Analistas",
+        "key": "ministerio-saude-tecnico-analista-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Ministerio_da_Saude_Tecnico_Analistas.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O processo seletivo do Ministério da Saúde, a prova do Instituto Avalia e como estudar",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/01-o-processo-seletivo.mp3",
+          "downloadName": "01-o-processo-seletivo.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Legislação do SUS, parte 1: Lei nº 8.080/1990 (Lei Orgânica da Saúde)",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/02-lei-8080.mp3",
+          "downloadName": "02-lei-8080.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Legislação do SUS, parte 2: Lei nº 8.142/1990 e Decreto nº 7.508/2011",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/03-lei-8142-e-decreto-7508.mp3",
+          "downloadName": "03-lei-8142-e-decreto-7508.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Legislação do SUS, parte 3: financiamento, LC nº 141/2012, Decreto nº 1.232/1994 e o FNS",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/04-financiamento-do-sus.mp3",
+          "downloadName": "04-financiamento-do-sus.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Direito Constitucional e a saúde na Constituição",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/05-direito-constitucional.mp3",
+          "downloadName": "05-direito-constitucional.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Administrativo: Lei 14.133, Lei 8.112, Lei 13.460, Decreto 9.094 e Lei 8.745",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/06-direito-administrativo.mp3",
+          "downloadName": "06-direito-administrativo.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Língua Portuguesa",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/07-lingua-portuguesa.mp3",
+          "downloadName": "07-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Raciocínio Lógico",
+          "key": "ministerio-saude-tecnico-analista-2026/audio/pt-br-v1/08-raciocinio-logico.mp3",
+          "downloadName": "08-raciocinio-logico.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila do Ministério da Saúde 2026 para Técnico e Analista?",
+        "a": "R$ 26,90 em pagamento único, com PDF de 1.723 páginas, 1.737 questões comentadas, 2 simulados de 40 questões, lei seca completa e audiobook em 8 capítulos."
+      },
+      {
+        "q": "A apostila serve para Analista de Requisitos, Analista de Dados, Edificações e Equipamentos?",
+        "a": "Sim. Pelo Edital nº 1/2026, os perfis 401 (Técnico Administrativo), 402, 403, 404 e 405 fazem a mesma prova objetiva de 40 questões, com o mesmo conteúdo do Anexo III. O perfil 406 (Gestor) tem prova diferente."
+      },
+      {
+        "q": "O que cai na prova do processo seletivo do Ministério da Saúde (FNS)?",
+        "a": "São 40 questões de cinco alternativas, cada uma valendo 2 pontos: 5 de Língua Portuguesa, 5 de Direito Administrativo, 5 de Direito Constitucional, 5 de Raciocínio Lógico e 20 de Legislação Federal do SUS (Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141). É eliminado quem fizer menos de 40 de 80 pontos ou zerar alguma área."
+      },
+      {
+        "q": "Quando é a prova do Ministério da Saúde 2026 do Instituto Avalia?",
+        "a": "A prova objetiva está prevista para 17/01/2027, à tarde, em Brasília, Goiânia, Belo Horizonte, São Paulo, Curitiba, Recife e Belém. As inscrições vão de 12/11 a 14/12/2026 no site do Instituto Avalia, com taxa de R$ 60,00."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila Ministério da Saúde 2026 Técnico e Analista | Trilha Aprova",
+    "seoDescription": "Comprar apostila Ministério da Saúde 2026 em PDF (FNS, Instituto Avalia): Técnico Administrativo e Analistas, Legislação do SUS atualizada e audiobook.",
+    "storefront": {
+      "badge": "PROCESSO SELETIVO • MINISTÉRIO DA SAÚDE • FNS • INSTITUTO AVALIA",
+      "cover3d": "/assets/capa-ministerio-saude-tecnico-analista-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Ministério da Saúde 2026: a mesma prova para Técnico e 4 cargos de Analista. Legislação do SUS atualizada, 1.737 questões e simulados de 40",
+      "shortTag": "Ministério da Saúde · Técnico e Analistas",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.723 páginas: Gerais + toda a Legislação do SUS"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 40 + 1.657 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Atualizada",
+          "detalhe": "Leis 8.080, 8.142, LC 141, decretos e Constituição"
+        }
+      ],
+      "subheadline": "Técnico Administrativo e Analistas (perfis 401 a 405) · Instituto Avalia · Prova prevista para 17/01/2027",
+      "comboCovers": [
+        "/assets/capa-ministerio-saude-tecnico-analista-2026-simulados-3d.webp",
+        "/assets/capa-ministerio-saude-tecnico-analista-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Ministério da Saúde – Fundo Nacional de Saúde (Brasília, Goiânia, Belo Horizonte, São Paulo, Curitiba, Recife e Belém)",
+        "cargo": "Técnico Administrativo e Analistas (perfis 401 a 405)",
+        "salario": "R$ 4.740,51 a R$ 7.647,20 (40h)",
+        "vagas": "284 imediatas + 412 em cadastro de reserva (perfis 401 a 405)",
+        "taxa": "R$ 60,00",
+        "inscricoes": "12/11/2026 a 14/12/2026",
+        "requisito": "Nível superior (área conforme o perfil)",
+        "url": "https://www.avalia.org.br/concursos/644",
+        "paginas": 1723,
+        "questoes": 1737
+      },
+      "area": "saude"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
+  "ministerio-saude-gestor-2026": {
+    "slug": "ministerio-saude-gestor-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde) — Edital nº 1/2026, Instituto Avalia: perfil 406 – Gestor",
+    "examBoard": "Instituto Avalia",
+    "category": "Concursos públicos",
+    "name": "Apostila Ministério da Saúde 2026 Gestor · Processo Seletivo FNS (Instituto Avalia) em PDF + audiobook",
+    "shortName": "Ministério da Saúde — Gestor (FNS)",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 1, de 11/11/2026 (Instituto Avalia)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos ao perfil 406 – Gestor do Ministério da Saúde – Fundo Nacional de Saúde (vagas em Brasília, subsídio de R$ 10.354,29)",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_MINISTERIO_SAUDE_GESTOR_2026",
+    "description": "Apostila digital para o perfil 406 – Gestor do Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde), Edital nº 1/2026, Instituto Avalia: prova de 50 questões com pesos diferentes por disciplina. PDF único de 2.130 páginas com 2.117 questões comentadas de cinco alternativas, 2 simulados de 50 questões na ordem e com os pesos da Tabela 10.2 do edital e lei seca completa. Conhecimentos Gerais: Língua Portuguesa, Raciocínio Lógico, Direito Constitucional (com os arts. 196 a 200 e as emendas de 2024 a 2026) e Direito Administrativo (Lei 14.133 com os valores de 2026, Lei 13.460, Decreto 9.094, Lei 8.745 com a Lei 15.367/2026 e Lei 8.112). Legislação Federal do SUS no texto vigente: Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141. Específicos do Gestor: Administração Pública Federal (arts. 37 a 41 da Constituição e Decreto-Lei nº 200/1967), Finanças Públicas (funções econômicas do Estado, tributação, financiamento das políticas públicas, PPA, LDO e LOA, federalismo fiscal com a reforma tributária e Lei de Responsabilidade Fiscal) e Políticas Públicas de saúde (história do SUS, estrutura, financiamento e critérios de alocação, determinantes da demanda, modelos assistenciais e análise de políticas). Inclui audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 2.130 páginas, feito pelo Edital nº 1/2026 (Instituto Avalia), perfil 406",
+      "2.117 questões comentadas com cinco alternativas, no formato da banca",
+      "2 simulados de 50 questões com a ordem e os pesos da Tabela 10.2 do edital",
+      "Administração Pública Federal: arts. 37 a 41 da CF e Decreto-Lei nº 200/1967",
+      "Finanças Públicas: Musgrave, tributação, PPA/LDO/LOA, federalismo fiscal, reforma tributária e LRF",
+      "Políticas Públicas de saúde: modelos assistenciais, demanda, alocação de recursos e ciclo de políticas",
+      "Legislação do SUS completa e atualizada até novembro de 2026",
+      "Lei seca: SUS, Constituição, DL 200, LRF e Leis 8.112, 8.745, 13.460 e 14.133",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "ministerio-saude-gestor-2026/images/capa.png",
+      "pdfKey": "ministerio-saude-gestor-2026/docs/apostila-ministerio-saude-gestor-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Ministerio_da_Saude_Gestor.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Ministério da Saúde Gestor",
+        "key": "ministerio-saude-gestor-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Ministerio_da_Saude_Gestor.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O processo seletivo do Gestor e as Políticas Públicas de saúde",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/01-o-processo-seletivo-e-as-politicas-publicas.mp3",
+          "downloadName": "01-o-processo-seletivo-e-as-politicas-publicas.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Legislação do SUS, parte 1: Lei nº 8.080/1990",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/02-lei-8080.mp3",
+          "downloadName": "02-lei-8080.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Legislação do SUS, partes 2 e 3: Lei nº 8.142, Decreto nº 7.508, LC nº 141 e Decreto nº 1.232",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/03-lei-8142-decreto-7508-e-financiamento.mp3",
+          "downloadName": "03-lei-8142-decreto-7508-e-financiamento.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Administração Pública Federal: CF, arts. 37 a 41, e Decreto-Lei nº 200/1967",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/04-administracao-publica-federal.mp3",
+          "downloadName": "04-administracao-publica-federal.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Finanças Públicas: funções do Estado, tributação, orçamento, federalismo fiscal e LRF",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/05-financas-publicas.mp3",
+          "downloadName": "05-financas-publicas.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Constitucional e Direito Administrativo",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/06-direito-constitucional-e-administrativo.mp3",
+          "downloadName": "06-direito-constitucional-e-administrativo.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Língua Portuguesa",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/07-lingua-portuguesa.mp3",
+          "downloadName": "07-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Raciocínio Lógico",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/08-raciocinio-logico.mp3",
+          "downloadName": "08-raciocinio-logico.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila do Ministério da Saúde 2026 para Gestor?",
+        "a": "R$ 34,90 em pagamento único, com PDF de 2.130 páginas, 2.117 questões comentadas, 2 simulados de 50 questões, lei seca completa e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Gestor do Ministério da Saúde (FNS)?",
+        "a": "São 50 questões de cinco alternativas: Língua Portuguesa (5, peso 2), Direito Administrativo (5, peso 1,5), Direito Constitucional (5, peso 1,5), Raciocínio Lógico (5, peso 1), Legislação Federal do SUS (10, peso 1,5), Administração Pública Federal (10, peso 1,5), Finanças Públicas (5, peso 2) e Políticas Públicas (5, peso 2), somando 80 pontos. É eliminado quem fizer menos de 40 pontos ou zerar alguma área."
+      },
+      {
+        "q": "Qual a diferença entre a apostila de Gestor e a de Técnico e Analista?",
+        "a": "Os perfis 401 a 405 (Técnico Administrativo e Analistas) fazem uma prova de 40 questões, com 20 de Legislação do SUS. O Gestor (406) faz outra prova, de 50 questões, com Administração Pública Federal, Finanças Públicas e Políticas Públicas. Por isso, esta apostila tem três módulos a mais e simulados próprios."
+      },
+      {
+        "q": "Quando é a prova do Ministério da Saúde 2026 para Gestor?",
+        "a": "A prova objetiva está prevista para 17/01/2027, à tarde. As inscrições vão de 12/11 a 14/12/2026 no site do Instituto Avalia, com taxa de R$ 60,00. As 16 vagas imediatas e o cadastro de reserva do Gestor são em Brasília."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila Ministério da Saúde 2026 Gestor em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Ministério da Saúde 2026 Gestor em PDF (FNS, Instituto Avalia): SUS, Administração Pública Federal, Finanças e Políticas Públicas.",
+    "storefront": {
+      "badge": "PROCESSO SELETIVO • MINISTÉRIO DA SAÚDE • FNS • GESTOR",
+      "cover3d": "/assets/capa-ministerio-saude-gestor-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Ministério da Saúde 2026, Gestor: R$ 10.354,29 em Brasília. SUS, Administração Pública Federal, Finanças, Políticas Públicas e 2.117 questões",
+      "shortTag": "Ministério da Saúde · Gestor",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "2.130 páginas: Gerais + SUS + específicos do Gestor"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 2.017 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Atualizada",
+          "detalhe": "SUS, Constituição, DL 200 e LRF"
+        }
+      ],
+      "subheadline": "Gestor (perfil 406) · Instituto Avalia · Prova prevista para 17/01/2027",
+      "comboCovers": [
+        "/assets/capa-ministerio-saude-gestor-2026-simulados-3d.webp",
+        "/assets/capa-ministerio-saude-gestor-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Ministério da Saúde – Fundo Nacional de Saúde (Brasília/DF)",
+        "cargo": "Gestor (perfil 406)",
+        "salario": "R$ 10.354,29 (40h)",
+        "vagas": "16 imediatas + 47 em cadastro de reserva (Brasília)",
+        "taxa": "R$ 60,00",
+        "inscricoes": "12/11/2026 a 14/12/2026",
+        "requisito": "Nível superior em Administração, Contábeis, Economia, Gestão Pública, Direito ou área da saúde",
+        "url": "https://www.avalia.org.br/concursos/644",
+        "paginas": 2130,
+        "questoes": 2117
+      },
+      "area": "saude"
     },
     "funnel": {
       "orderBump": [],

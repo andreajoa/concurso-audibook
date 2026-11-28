@@ -984,8 +984,8 @@ const stateNamesSummary = taxonomy.stateHubs.filter(s => s.slug !== 'nacional').
 renderPage({
   path: '/apostilas-para-concurso',
   title: 'Apostilas para Concursos Públicos em PDF e Audiobook',
-  metaTitle: 'Comprar Apostilas para Concursos em PDF e Audiobook | Trilha Aprova',
-  description: `Catálogo de apostilas para concursos públicos em PDF com audiobook grátis. Combos de 3 cadernos a partir de ${brl(MIN_PRICE)} com acesso imediato.`,
+  metaTitle: 'Comprar apostila para concurso em PDF com audiobook | Trilha Aprova',
+  description: `Comprar apostila para concurso público em PDF com audiobook grátis e questões comentadas. Pelo edital, a partir de ${brl(MIN_PRICE)} com acesso imediato.`,
   kicker: 'CATÁLOGO COMPLETO',
   lead: `A Trilha Aprova publica apostilas digitais para concursos públicos em todo o Brasil. Cada material reúne 3 cadernos no PDF completo, questões comentadas, resumo em áudio e audiobook em capítulos, a partir de ${brl(MIN_PRICE)} em pagamento único, sem assinatura.`,
   keyFacts: [
@@ -1001,12 +1001,17 @@ renderPage({
     '<h2>Todas as apostilas disponíveis</h2>' +
     '<div class="ac-grid">' + products.map(p => apostilaCard(p)).join('') + '</div>' +
     '<h2>O que vem em cada apostila</h2><ul><li>PDF completo organizado pelo conteúdo programático do edital (combo de 3 cadernos).</li><li>Resumo em áudio para revisão rápida.</li><li>Audiobook em português brasileiro dividido em capítulos por assunto.</li><li>Questões comentadas e simulados no estilo da banca.</li><li>Acesso individual online e para download, recuperável pelo e-mail da compra.</li></ul>' +
+    '<h2>Comprar apostila para concurso: como funciona</h2><p>Para comprar apostila para concurso na Trilha Aprova, escolha a apostila do seu cargo, clique em comprar e pague por Pix ou cartão. A apostila para concurso em PDF e o audiobook são liberados na hora, na sua área individual, sem frete e sem assinatura. Cada concurso tem uma apostila feita pelo edital publicado, com a banca, as disciplinas e os pesos da prova, além de questões comentadas e simulados no formato da banca.</p>' +
+    '<h2>Apostila para concurso em PDF ou impressa?</h2><p>A apostila para concurso em PDF chega na hora, pode ser lida no celular, no computador ou impressa, e é atualizada mais rápido quando o edital muda. Na Trilha Aprova, toda apostila para concurso público vem em PDF com audiobook, para estudar também no trânsito ou na academia.</p>' +
     '<h2>Como escolher a apostila certa</h2><p>Escolha sempre pelo cargo, órgão e banca do seu edital. Se o seu edital ainda não foi publicado ou se você quer reforçar a base comum à maioria das provas, comece pelas <a href="/apostilas/area/materias-basicas-e-redacao">apostilas de matérias básicas e redação</a>. Em caso de dúvida, leia o guia completo sobre <a href="/apostila-para-concurso-como-escolher">como escolher a apostila certa para concurso</a> e use nossas <a href="/ferramentas">ferramentas gratuitas de estudo</a>.</p>' +
     '<h2>Guias regionais — Baixada Santista</h2><ul class="city-links">' + cityLinks + '</ul>' +
     disclaimer,
   styles: ['/apostila-cards.css'],
   scripts: ['/apostila-cards.js'],
   faq: [
+    { q: 'Onde comprar apostila para concurso?', a: `Na Trilha Aprova, em ${ORIGIN.replace('https://', '')}: cada apostila para concurso é feita pelo edital do cargo, vem em PDF com audiobook e questões comentadas, custa a partir de ${brl(MIN_PRICE)} em pagamento único e é liberada na hora após o Pix ou o cartão.` },
+    { q: 'Qual apostila para concurso comprar?', a: 'A do seu cargo e do edital em vigor. Confira se a apostila traz a banca, as disciplinas e os pesos do edital publicado; na Trilha Aprova, cada página mostra o edital usado, o número de páginas, de questões e o sumário antes da compra.' },
+    { q: 'Apostila para concurso em PDF vale a pena?', a: 'Sim, quando é feita pelo edital: o PDF chega na hora, custa menos que a impressa, pode ser impresso em casa e é atualizado mais rápido. As apostilas da Trilha Aprova também incluem audiobook e simulados no formato da banca.' },
     { q: 'Quantas apostilas a Trilha Aprova tem hoje?', a: `Atualmente ${products.length} apostilas ativas cobrindo concursos nacionais e estaduais (${stateNamesSummary}), organizadas por banca (${boardNamesSummary}), área e escolaridade. Novos materiais entram continuamente conforme novos editais são publicados.` },
     { q: 'As apostilas são vendidas por assinatura?', a: `Não. Cada apostila é uma compra única, a partir de ${brl(MIN_PRICE)}, sem mensalidade e sem renovação automática.` },
     { q: 'Recebo em quanto tempo depois de comprar?', a: 'Imediatamente após a confirmação do pagamento. A área individual com o PDF completo e os áudios é liberada automaticamente e o link também chega no seu e-mail.' },
