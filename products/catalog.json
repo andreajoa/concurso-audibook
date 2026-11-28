@@ -1837,6 +1837,167 @@
       "downsell": []
     }
   },
+  "sp-aguas-especialista-gestao-ambiental-2026": {
+    "slug": "sp-aguas-especialista-gestao-ambiental-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Concurso da Agência de Águas do Estado de São Paulo (SP Águas) — Edital nº 01/2026, FGV: Especialista em Regulação e Fiscalização de Recursos Hídricos I, ênfase Gestão Ambiental e Recursos Hídricos",
+    "examBoard": "FGV",
+    "category": "Concursos públicos",
+    "name": "Apostila SP Águas 2026 Especialista em Regulação e Fiscalização de Recursos Hídricos I · Gestão Ambiental e Recursos Hídricos (FGV) em PDF + audiobook",
+    "shortName": "SP Águas — Especialista · Gestão Ambiental e Recursos Hídricos",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 01/2026 (FGV), publicado em 10/11/2026",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos ao emprego de Especialista em Regulação e Fiscalização de Recursos Hídricos I, ênfase Gestão Ambiental e Recursos Hídricos, da SP Águas (59 vagas, nível superior em qualquer área)",
+    "currency": "brl",
+    "priceCents": 3390,
+    "stripePriceEnv": "STRIPE_PRICE_SP_AGUAS_ESPECIALISTA_GAMB_2026",
+    "description": "Apostila digital para Especialista em Regulação e Fiscalização de Recursos Hídricos I, ênfase Gestão Ambiental e Recursos Hídricos, da Agência de Águas do Estado de São Paulo (SP Águas), feita pelo Edital nº 01/2026 (FGV, 59 vagas, R$ 12.070,00). PDF único de 1.813 páginas com 2.741 questões comentadas de cinco alternativas, 2 simulados de 70 questões na ordem do edital (20 Conhecimentos Gerais e 50 Específicos) e lei seca. Conhecimentos Gerais: Pensamento Analítico, Quantitativo e Ciência de Dados; Gestão, Regulação e Legislação de Recursos Hídricos (Lei nº 9.433/1997, Lei Estadual nº 7.663/1991, SIGRH e SP Águas); Fundamentos do Estado, Direito Administrativo e Ética; Transformação e Mentalidade Digital. Todos os Conhecimentos Específicos: Política e Governança Ambiental em São Paulo (CF, art. 225, LC nº 140/2011, Lei nº 6.938/1981, Lei nº 9.509/1997, SEMIL, CETESB e SP Águas); Águas, Ecossistemas e Gestão Integrada de Bacias (serviços ecossistêmicos, Soluções Baseadas na Natureza, mananciais e APRM, APP, Reserva Legal e CAR); Geoprocessamento e Sensoriamento Remoto; Qualidade Ambiental, Poluição e Infrações (CONAMA 357 e 430, Decreto nº 8.468/1976, Lei nº 9.605/1998, Política Nacional de Resíduos Sólidos e áreas contaminadas); Hidrologia e Mudanças Climáticas (erosão, riscos, Política Estadual de Mudanças Climáticas e PAC 2050). Inclui guia da prova discursiva com respostas-modelo e audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 1.813 páginas, feito pelo Edital nº 01/2026 da SP Águas (FGV)",
+      "2.741 questões comentadas com cinco alternativas, no formato da FGV",
+      "2 simulados de 70 questões na ordem do edital (20 Gerais + 50 Específicos)",
+      "Todos os Específicos: política ambiental, águas e ecossistemas, geoprocessamento, qualidade e poluição, hidrologia e clima",
+      "APP, Reserva Legal, CAR, mananciais (APRM), CONAMA 357/430 e padrões paulistas de lançamento",
+      "Leis 6.938, 9.433, 9.605, 12.305, 12.651, LC 140 e leis paulistas no texto vigente",
+      "Prova discursiva: método e 7 respostas-modelo de até 40 linhas",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "sp-aguas-especialista-gestao-ambiental-2026/images/capa.png",
+      "pdfKey": "sp-aguas-especialista-gestao-ambiental-2026/docs/apostila-sp-aguas-especialista-gestao-ambiental-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_SP_Aguas_Especialista_Gestao_Ambiental.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - SP Águas Especialista em Gestão Ambiental e Recursos Hídricos",
+        "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_SP_Aguas_Especialista_Gestao_Ambiental.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O concurso da SP Águas e a política e a governança ambiental em São Paulo",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/01-o-concurso-e-a-politica-ambiental.mp3",
+          "downloadName": "01-o-concurso-e-a-politica-ambiental.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Águas, ecossistemas aquáticos e gestão integrada de bacias",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/02-aguas-ecossistemas-e-bacias.mp3",
+          "downloadName": "02-aguas-ecossistemas-e-bacias.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Qualidade ambiental, poluição e infrações",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/03-qualidade-poluicao-e-infracoes.mp3",
+          "downloadName": "03-qualidade-poluicao-e-infracoes.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Conceitos de hidrologia e mudanças climáticas",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/04-hidrologia-e-mudancas-climaticas.mp3",
+          "downloadName": "04-hidrologia-e-mudancas-climaticas.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Geoprocessamento e sensoriamento remoto",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/05-geoprocessamento.mp3",
+          "downloadName": "05-geoprocessamento.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Gestão, regulação e legislação de recursos hídricos",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/06-gestao-e-legislacao-de-recursos-hidricos.mp3",
+          "downloadName": "06-gestao-e-legislacao-de-recursos-hidricos.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Pensamento analítico, ciência de dados e transformação digital",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/07-pensamento-analitico-e-digital.mp3",
+          "downloadName": "07-pensamento-analitico-e-digital.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Estado, Direito Administrativo, ética e a prova discursiva",
+          "key": "sp-aguas-especialista-gestao-ambiental-2026/audio/pt-br-v1/08-estado-etica-e-discursiva.mp3",
+          "downloadName": "08-estado-etica-e-discursiva.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila da SP Águas 2026 para Especialista em Gestão Ambiental e Recursos Hídricos?",
+        "a": "R$ 33,90 em pagamento único, com PDF de 1.813 páginas, 2.741 questões comentadas, 2 simulados de 70 questões, lei seca, guia da prova discursiva e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova da SP Águas para Especialista em Gestão Ambiental e Recursos Hídricos?",
+        "a": "São 70 questões de cinco alternativas: 20 de Conhecimentos Gerais (Pensamento Analítico e Ciência de Dados; Gestão, Regulação e Legislação de Recursos Hídricos; Estado, Direito Administrativo e Ética; Transformação e Mentalidade Digital) e 50 de Conhecimentos Específicos (Política e Governança Ambiental em São Paulo; Águas, Ecossistemas Aquáticos e Gestão Integrada de Bacias; Geoprocessamento e Sensoriamento Remoto; Qualidade Ambiental, Poluição e Infrações; Hidrologia e Mudanças Climáticas). Há ainda prova discursiva com 2 questões de até 40 linhas, valendo 40 pontos, e avaliação de títulos."
+      },
+      {
+        "q": "Quando é a prova da SP Águas 2026?",
+        "a": "As provas objetiva e discursiva estão previstas para 31/01/2027, na cidade de São Paulo: a objetiva das 8h às 12h e a discursiva das 15h às 19h. As inscrições vão de 17/11 a 17/12/2026 no site da FGV, com taxa de R$ 110,00. São 59 vagas na ênfase Gestão Ambiental e Recursos Hídricos, com salário inicial de R$ 12.070,00."
+      },
+      {
+        "q": "Qual a formação exigida para Especialista da SP Águas?",
+        "a": "Graduação em curso de ensino superior completo, em qualquer área, conforme o Edital nº 01/2026. O regime é celetista (CLT), com jornada de 40 horas semanais."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila SP Águas 2026 Gestão Ambiental e Recursos Hídricos | Trilha",
+    "seoDescription": "Comprar apostila SP Águas 2026 Especialista em Gestão Ambiental e Recursos Hídricos (FGV) em PDF: Específicos completos, legislação, simulados e audiobook.",
+    "storefront": {
+      "badge": "SP ÁGUAS 2026 • ESPECIALISTA • GESTÃO AMBIENTAL E RECURSOS HÍDRICOS • FGV",
+      "cover3d": "/assets/capa-sp-aguas-especialista-gestao-ambiental-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "SP Águas 2026: 59 vagas de Especialista em Gestão Ambiental e Recursos Hídricos (R$ 12.070). Todos os Específicos, legislação ambiental, discursiva e 2.741 questões",
+      "shortTag": "SP Águas · Gestão Ambiental",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "1.813 páginas: Gerais e todos os Específicos"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 70 + 2.601 questões comentadas"
+        },
+        {
+          "titulo": "Discursiva Comentada",
+          "detalhe": "Método e 7 respostas-modelo de 40 linhas"
+        }
+      ],
+      "subheadline": "Especialista em Regulação e Fiscalização de Recursos Hídricos I · Banca FGV · Prova em 31/01/2027",
+      "comboCovers": [
+        "/assets/capa-sp-aguas-especialista-gestao-ambiental-2026-simulados-3d.webp",
+        "/assets/capa-sp-aguas-especialista-gestao-ambiental-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Agência de Águas do Estado de São Paulo (sede na capital ou unidades regionais)",
+        "cargo": "Especialista em Regulação e Fiscalização de Recursos Hídricos I — Gestão Ambiental e Recursos Hídricos",
+        "salario": "R$ 12.070,00",
+        "vagas": "59",
+        "taxa": "R$ 110,00",
+        "inscricoes": "17/11/2026 a 17/12/2026",
+        "requisito": "Nível superior completo em qualquer área",
+        "url": "https://conhecimento.fgv.br/concursos/spaguas26",
+        "paginas": 1813,
+        "questoes": 2741
+      },
+      "area": "tecnico"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "policia-penal-pe-2026": {
     "slug": "policia-penal-pe-2026",
     "active": true,
