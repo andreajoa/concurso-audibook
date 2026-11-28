@@ -8763,6 +8763,168 @@
       "downsell": []
     }
   },
+  "ministerio-saude-gestor-2026": {
+    "slug": "ministerio-saude-gestor-2026",
+    "active": true,
+    "brand": "Trilha Aprova",
+    "contest": "Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde) — Edital nº 1/2026, Instituto Avalia: perfil 406 – Gestor",
+    "examBoard": "Instituto Avalia",
+    "category": "Concursos públicos",
+    "name": "Apostila Ministério da Saúde 2026 Gestor · Processo Seletivo FNS (Instituto Avalia) em PDF + audiobook",
+    "shortName": "Ministério da Saúde — Gestor (FNS)",
+    "edition": "Pós-edital · edição de 28/11/2026 · Edital nº 1, de 11/11/2026 (Instituto Avalia)",
+    "author": "Trilha Aprova",
+    "audience": "Candidatos ao perfil 406 – Gestor do Ministério da Saúde – Fundo Nacional de Saúde (vagas em Brasília, subsídio de R$ 10.354,29)",
+    "currency": "brl",
+    "priceCents": 3490,
+    "stripePriceEnv": "STRIPE_PRICE_MINISTERIO_SAUDE_GESTOR_2026",
+    "description": "Apostila digital para o perfil 406 – Gestor do Processo Seletivo Simplificado do Ministério da Saúde (Fundo Nacional de Saúde), Edital nº 1/2026, Instituto Avalia: prova de 50 questões com pesos diferentes por disciplina. PDF único de 2.130 páginas com 2.117 questões comentadas de cinco alternativas, 2 simulados de 50 questões na ordem e com os pesos da Tabela 10.2 do edital e lei seca completa. Conhecimentos Gerais: Língua Portuguesa, Raciocínio Lógico, Direito Constitucional (com os arts. 196 a 200 e as emendas de 2024 a 2026) e Direito Administrativo (Lei 14.133 com os valores de 2026, Lei 13.460, Decreto 9.094, Lei 8.745 com a Lei 15.367/2026 e Lei 8.112). Legislação Federal do SUS no texto vigente: Lei 8.080, Lei 8.142, Decreto 7.508, Decreto 1.232 e LC 141. Específicos do Gestor: Administração Pública Federal (arts. 37 a 41 da Constituição e Decreto-Lei nº 200/1967), Finanças Públicas (funções econômicas do Estado, tributação, financiamento das políticas públicas, PPA, LDO e LOA, federalismo fiscal com a reforma tributária e Lei de Responsabilidade Fiscal) e Políticas Públicas de saúde (história do SUS, estrutura, financiamento e critérios de alocação, determinantes da demanda, modelos assistenciais e análise de políticas). Inclui audiobook em 8 capítulos + resumo narrado.",
+    "proofPoints": [
+      "PDF único com 2.130 páginas, feito pelo Edital nº 1/2026 (Instituto Avalia), perfil 406",
+      "2.117 questões comentadas com cinco alternativas, no formato da banca",
+      "2 simulados de 50 questões com a ordem e os pesos da Tabela 10.2 do edital",
+      "Administração Pública Federal: arts. 37 a 41 da CF e Decreto-Lei nº 200/1967",
+      "Finanças Públicas: Musgrave, tributação, PPA/LDO/LOA, federalismo fiscal, reforma tributária e LRF",
+      "Políticas Públicas de saúde: modelos assistenciais, demanda, alocação de recursos e ciclo de políticas",
+      "Legislação do SUS completa e atualizada até novembro de 2026",
+      "Lei seca: SUS, Constituição, DL 200, LRF e Leis 8.112, 8.745, 13.460 e 14.133",
+      "Audiobook em 8 capítulos + resumo narrado",
+      "Pagamento único — sem assinatura"
+    ],
+    "assets": {
+      "coverKey": "ministerio-saude-gestor-2026/images/capa.png",
+      "pdfKey": "ministerio-saude-gestor-2026/docs/apostila-ministerio-saude-gestor-2026.pdf",
+      "pdfDownloadName": "Trilha_Aprova_Ministerio_da_Saude_Gestor.pdf",
+      "summary": {
+        "id": "summary",
+        "title": "Resumo em áudio - Ministério da Saúde Gestor",
+        "key": "ministerio-saude-gestor-2026/audio/resumo.mp3",
+        "downloadName": "Resumo_Ministerio_da_Saude_Gestor.mp3"
+      },
+      "chapters": [
+        {
+          "id": "c1",
+          "title": "O processo seletivo do Gestor e as Políticas Públicas de saúde",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/01-o-processo-seletivo-e-as-politicas-publicas.mp3",
+          "downloadName": "01-o-processo-seletivo-e-as-politicas-publicas.mp3"
+        },
+        {
+          "id": "c2",
+          "title": "Legislação do SUS, parte 1: Lei nº 8.080/1990",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/02-lei-8080.mp3",
+          "downloadName": "02-lei-8080.mp3"
+        },
+        {
+          "id": "c3",
+          "title": "Legislação do SUS, partes 2 e 3: Lei nº 8.142, Decreto nº 7.508, LC nº 141 e Decreto nº 1.232",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/03-lei-8142-decreto-7508-e-financiamento.mp3",
+          "downloadName": "03-lei-8142-decreto-7508-e-financiamento.mp3"
+        },
+        {
+          "id": "c4",
+          "title": "Administração Pública Federal: CF, arts. 37 a 41, e Decreto-Lei nº 200/1967",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/04-administracao-publica-federal.mp3",
+          "downloadName": "04-administracao-publica-federal.mp3"
+        },
+        {
+          "id": "c5",
+          "title": "Finanças Públicas: funções do Estado, tributação, orçamento, federalismo fiscal e LRF",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/05-financas-publicas.mp3",
+          "downloadName": "05-financas-publicas.mp3"
+        },
+        {
+          "id": "c6",
+          "title": "Direito Constitucional e Direito Administrativo",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/06-direito-constitucional-e-administrativo.mp3",
+          "downloadName": "06-direito-constitucional-e-administrativo.mp3"
+        },
+        {
+          "id": "c7",
+          "title": "Língua Portuguesa",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/07-lingua-portuguesa.mp3",
+          "downloadName": "07-lingua-portuguesa.mp3"
+        },
+        {
+          "id": "c8",
+          "title": "Raciocínio Lógico",
+          "key": "ministerio-saude-gestor-2026/audio/pt-br-v1/08-raciocinio-logico.mp3",
+          "downloadName": "08-raciocinio-logico.mp3"
+        }
+      ]
+    },
+    "preEdital": true,
+    "preEditalFit": "Esta é uma edição pré-edital para Analista-Tributário da Receita Federal, organizada pela estrutura do último edital (Edital nº 1/2022, FGV) e pela legislação vigente em novembro de 2026. O concurso foi autorizado (Portaria MGI nº 5.505/2026), mas o edital ainda não havia sido publicado na data desta edição. Quando o edital sair, confira o conteúdo programático; quem comprou recebe a atualização sem custo.",
+    "preEditalLead": "Comece antes do edital da Receita Federal: 3.316 páginas, 3.818 questões comentadas no modelo FGV, 2 simulados de 140 questões, discursiva, lei seca vigente e audiobook em 8 capítulos, por R$ 103,90 em pagamento único. Esta é uma edição pré-edital da Trilha Aprova, baseada no Edital nº 1/2022 e na legislação de novembro de 2026, com atualização gratuita quando o novo edital for publicado.",
+    "faqExtra": [
+      {
+        "q": "Quanto custa a apostila do Ministério da Saúde 2026 para Gestor?",
+        "a": "R$ 34,90 em pagamento único, com PDF de 2.130 páginas, 2.117 questões comentadas, 2 simulados de 50 questões, lei seca completa e audiobook em 8 capítulos."
+      },
+      {
+        "q": "O que cai na prova de Gestor do Ministério da Saúde (FNS)?",
+        "a": "São 50 questões de cinco alternativas: Língua Portuguesa (5, peso 2), Direito Administrativo (5, peso 1,5), Direito Constitucional (5, peso 1,5), Raciocínio Lógico (5, peso 1), Legislação Federal do SUS (10, peso 1,5), Administração Pública Federal (10, peso 1,5), Finanças Públicas (5, peso 2) e Políticas Públicas (5, peso 2), somando 80 pontos. É eliminado quem fizer menos de 40 pontos ou zerar alguma área."
+      },
+      {
+        "q": "Qual a diferença entre a apostila de Gestor e a de Técnico e Analista?",
+        "a": "Os perfis 401 a 405 (Técnico Administrativo e Analistas) fazem uma prova de 40 questões, com 20 de Legislação do SUS. O Gestor (406) faz outra prova, de 50 questões, com Administração Pública Federal, Finanças Públicas e Políticas Públicas. Por isso, esta apostila tem três módulos a mais e simulados próprios."
+      },
+      {
+        "q": "Quando é a prova do Ministério da Saúde 2026 para Gestor?",
+        "a": "A prova objetiva está prevista para 17/01/2027, à tarde. As inscrições vão de 12/11 a 14/12/2026 no site do Instituto Avalia, com taxa de R$ 60,00. As 16 vagas imediatas e o cadastro de reserva do Gestor são em Brasília."
+      },
+      {
+        "q": "Onde comprar a apostila em PDF?",
+        "a": "Aqui mesmo, no site da Trilha Aprova: o pagamento é único, por Pix ou cartão, e o PDF e o audiobook são liberados na hora, na área individual do comprador, sem frete e para todo o Brasil."
+      }
+    ],
+    "seoTitle": "Apostila Ministério da Saúde 2026 Gestor em PDF | Trilha Aprova",
+    "seoDescription": "Comprar apostila Ministério da Saúde 2026 Gestor em PDF (FNS, Instituto Avalia): SUS, Administração Pública Federal, Finanças e Políticas Públicas.",
+    "storefront": {
+      "badge": "PROCESSO SELETIVO • MINISTÉRIO DA SAÚDE • FNS • GESTOR",
+      "cover3d": "/assets/capa-ministerio-saude-gestor-2026-completa-3d.webp",
+      "cta": "Comprar apostila com audiobook",
+      "headline": "Ministério da Saúde 2026, Gestor: R$ 10.354,29 em Brasília. SUS, Administração Pública Federal, Finanças, Políticas Públicas e 2.117 questões",
+      "shortTag": "Ministério da Saúde · Gestor",
+      "combo": [
+        {
+          "titulo": "Apostila Completa",
+          "detalhe": "2.130 páginas: Gerais + SUS + específicos do Gestor"
+        },
+        {
+          "titulo": "Caderno de Simulados",
+          "detalhe": "2 simulados de 50 + 2.017 questões comentadas"
+        },
+        {
+          "titulo": "Lei Seca Atualizada",
+          "detalhe": "SUS, Constituição, DL 200 e LRF"
+        }
+      ],
+      "subheadline": "Gestor (perfil 406) · Instituto Avalia · Prova prevista para 17/01/2027",
+      "comboCovers": [
+        "/assets/capa-ministerio-saude-gestor-2026-simulados-3d.webp",
+        "/assets/capa-ministerio-saude-gestor-2026-terceiro-3d.webp"
+      ],
+      "concurso": {
+        "local": "Ministério da Saúde – Fundo Nacional de Saúde (Brasília/DF)",
+        "cargo": "Gestor (perfil 406)",
+        "salario": "R$ 10.354,29 (40h)",
+        "vagas": "16 imediatas + 47 em cadastro de reserva (Brasília)",
+        "taxa": "R$ 60,00",
+        "inscricoes": "12/11/2026 a 14/12/2026",
+        "requisito": "Nível superior em Administração, Contábeis, Economia, Gestão Pública, Direito ou área da saúde",
+        "url": "https://www.avalia.org.br/concursos/644",
+        "paginas": 2130,
+        "questoes": 2117
+      },
+      "area": "saude"
+    },
+    "funnel": {
+      "orderBump": [],
+      "upsell": [],
+      "crossSell": [],
+      "downsell": []
+    }
+  },
   "cetesb-tecnico-administrativo-2026": {
     "slug": "cetesb-tecnico-administrativo-2026",
     "active": true,

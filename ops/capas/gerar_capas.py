@@ -325,6 +325,10 @@ SPEC = {
    completa=('TÉCNICO E', 'ANALISTAS', ['Perfis 401 a 405 • mesma prova • 1.737 questões', 'Legislação do SUS: Lei 8.080 • Lei 8.142 • LC 141', 'Decretos 7.508 e 1.232 • Direito • Português • Lógica']),
    simulados=['2 simulados de 40 questões • 5 alternativas', '20 Conhecimentos Gerais + 20 Legislação do SUS', 'gabarito comentado questão a questão'],
    terceiro=('LEI SECA DO SUS', ['Lei 8.080 • Lei 8.142 • LC 141/2012', 'Decretos 7.508/2011 e 1.232/1994', 'Constituição • Leis 8.112, 8.745 e 13.460'])),
+ 'ministerio-saude-gestor-2026': dict(sim_t1='SIMULADOS', sigla='MINISTÉRIO DA SAÚDE', cobre='FUNDO NACIONAL DE SAÚDE • PROCESSO SELETIVO 2026', ed='EDITAL Nº 1/2026 • INSTITUTO AVALIA', lomb=['MINISTÉRIO', 'DA SAÚDE', 'GESTOR'],
+   completa=('GESTOR', 'PERFIL 406', ['50 questões com pesos • 2.117 questões comentadas', 'Adm. Pública Federal • Finanças Públicas • LRF', 'Políticas Públicas • Legislação do SUS • Direito']),
+   simulados=['2 simulados de 50 questões • 5 alternativas', 'ordem e pesos da Tabela 10.2 do edital', 'gabarito comentado questão a questão'],
+   terceiro=('LEI SECA', ['Lei 8.080 • Lei 8.142 • LC 141 • decretos', 'Decreto-Lei 200/1967 • LRF (LC 101/2000)', 'Constituição • Leis 8.112, 8.745 e 13.460'])),
 }
 
 # Produtos avulsos de simulados: UMA capa no mesmo molde (capa-<slug>-3d.png), com os números do próprio produto.
