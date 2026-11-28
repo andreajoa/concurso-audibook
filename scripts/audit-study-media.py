@@ -138,6 +138,10 @@ PRODUCT_EXPECTATIONS = {
         'pages': 1022,
         'topics': ['técnico administrativo', 'cetesb', '13.303', 'gabarito', 'simulado'],
     },
+    'ministerio-saude-gestor-2026': {
+        'pages': 2130,
+        'topics': ['ministério da saúde', 'gestor', 'lei nº 8.080', 'gabarito', 'simulado'],
+    },
     'ministerio-saude-tecnico-analista-2026': {
         'pages': 1723,
         'topics': ['ministério da saúde', 'sus', 'lei nº 8.080', 'gabarito', 'simulado'],
